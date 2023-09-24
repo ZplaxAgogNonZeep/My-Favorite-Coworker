@@ -17,12 +17,14 @@ position = Vector2(535, 386)
 [node name="EggBase" type="Sprite2D" parent="Egg"]
 texture = ExtResource("1_7ks5b")
 
-[node name="RoomBackground" type="Node2D" parent="Egg"]
+[node name="GameArea" type="Node2D" parent="Egg"]
+
+[node name="Pet" type="Node2D" parent="Egg/GameArea"]
+
+[node name="RoomBackground" type="Node2D" parent="Egg/GameArea"]
 position = Vector2(-331, -185)
 
-[node name="Sprite" type="Sprite2D" parent="Egg/RoomBackground"]
+[node name="Sprite" type="Sprite2D" parent="Egg/GameArea/RoomBackground"]
 position = Vector2(331, 187.28)
 scale = Vector2(0.365, 0.377812)
 texture = SubResource("NoiseTexture2D_0r0t8")
-
-[node name="PetContainer" type="Node2D" parent="Egg"]

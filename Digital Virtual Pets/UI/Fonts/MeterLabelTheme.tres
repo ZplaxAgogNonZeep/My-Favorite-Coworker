@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dg8innd23voq6"]
+
+[ext_resource type="FontFile" uid="uid://h8wqp26lnjmi" path="res://UI/Fonts/Not Jam UI 12.ttf" id="1_3jthl"]
+
+[resource]
+default_font = ExtResource("1_3jthl")

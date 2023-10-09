@@ -1,27 +1,23 @@
 extends Node2D
 
-@export
-var leftBoundry : Marker2D
-@export
-var rightBoundry : Marker2D
-@export
-var sprite : AnimatedSprite2D
-
 @onready var gameArea = get_parent()
 @onready var type := get_node_or_null("Type")
-
-var hungerValue : int = 100
-var joyValue : int = 100
-
-# Roam Variables
 @onready var targetPosn : Vector2 = position
 @onready var previousPosn := position
 @onready var defaultPosition := position
 
+@export var leftBoundry : Marker2D
+@export var rightBoundry : Marker2D
+@export var sprite : AnimatedSprite2D
 @export var roamSpeed := .1
+
+var hungerValue : int = 100
+var joyValue : int = 100
 
 var menuMode : bool = false
 var isRoaming := false
+
+
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,13 +1,54 @@
-[gd_scene load_steps=11 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=17 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
 [ext_resource type="Texture2D" uid="uid://cxp7kadfow6y7" path="res://Assets/Art/PlaceHolders/background.png" id="2_4ghtk"]
 [ext_resource type="Texture2D" uid="uid://ojee7m82c32h" path="res://Assets/Art/PlaceHolders/AgumonSprite.png" id="3_rmlcu"]
 [ext_resource type="Script" path="res://Device/GameArea.gd" id="3_ymaw0"]
-[ext_resource type="Script" path="res://Device/RoomBackground.gd" id="4_rlyqa"]
+[ext_resource type="Script" path="res://Device/Background.gd" id="4_48a5c"]
+[ext_resource type="Script" path="res://UI/HeartBar.gd" id="6_rciw2"]
 [ext_resource type="Script" path="res://Pets/Pet.gd" id="6_xxhv2"]
 [ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="7_4237e"]
+[ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/Heart-Sheet.png" id="7_b2ve0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd3cq"]
+atlas = ExtResource("7_b2ve0")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biuce"]
+atlas = ExtResource("7_b2ve0")
+region = Rect2(0, 72, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgdli"]
+atlas = ExtResource("7_b2ve0")
+region = Rect2(0, 36, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvm0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd3cq")
+}],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biuce")
+}],
+"loop": true,
+"name": &"Full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgdli")
+}],
+"loop": true,
+"name": &"Half Full",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjrme"]
 atlas = ExtResource("3_rmlcu")
@@ -34,43 +75,52 @@ script = ExtResource("1_ptlsy")
 position = Vector2(0, -256)
 texture = ExtResource("1_momwt")
 
-[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background", "testBar1", "testBar2")]
+[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background")]
 position = Vector2(0, -232)
 script = ExtResource("3_ymaw0")
 device = NodePath("..")
 activePet = NodePath("PupPet")
-background = NodePath("RoomBackground")
-testBar1 = NodePath("RoomBackground/CanvasLayer/ProgressBar")
-testBar2 = NodePath("RoomBackground/CanvasLayer/ProgressBar2")
+background = NodePath("Background")
 
 [node name="HungerTimer" type="Timer" parent="Device/GameArea"]
 
 [node name="JoyTimer" type="Timer" parent="Device/GameArea"]
 
-[node name="RoomBackground" type="Node2D" parent="Device/GameArea"]
-script = ExtResource("4_rlyqa")
+[node name="Background" type="Node2D" parent="Device/GameArea"]
+script = ExtResource("4_48a5c")
 
-[node name="Sprite" type="Sprite2D" parent="Device/GameArea/RoomBackground"]
+[node name="Sprite" type="Sprite2D" parent="Device/GameArea/Background"]
 texture = ExtResource("2_4ghtk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Device/GameArea/RoomBackground"]
+[node name="CanvasLayer" type="CanvasLayer" parent="Device/GameArea/Background"]
 
-[node name="ProgressBar" type="ProgressBar" parent="Device/GameArea/RoomBackground/CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="Device/GameArea/Background/CanvasLayer"]
+visible = false
 offset_left = 200.0
 offset_top = 304.0
-offset_right = 400.0
+offset_right = 296.0
 offset_bottom = 331.0
 step = 1.0
 show_percentage = false
 
-[node name="ProgressBar2" type="ProgressBar" parent="Device/GameArea/RoomBackground/CanvasLayer"]
-offset_left = 200.0
-offset_top = 336.0
-offset_right = 400.0
-offset_bottom = 363.0
+[node name="ProgressBar2" type="ProgressBar" parent="Device/GameArea/Background/CanvasLayer"]
+visible = false
+offset_left = 312.0
+offset_top = 304.0
+offset_right = 408.0
+offset_bottom = 331.0
 step = 1.0
 rounded = true
 show_percentage = false
+
+[node name="Hungerbar" type="Node2D" parent="Device/GameArea/Background/CanvasLayer"]
+position = Vector2(216, 320)
+script = ExtResource("6_rciw2")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+sprite_frames = SubResource("SpriteFrames_kvm0p")
+animation = &"Empty"
 
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite")]
 position = Vector2(0, 40)

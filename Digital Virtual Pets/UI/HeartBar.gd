@@ -1,12 +1,30 @@
 extends Node2D
 
+@export_category("Read Only")
+@export var DEBUG_fill := 0
+@export var DEBUG_max := 0
 
+var heartObjects : Array = []
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	for child in get_children():
+		heartObjects.append(child)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func updateBar(fillAmount : int, maxValue : int):
+	DEBUG_max = maxValue
+	DEBUG_fill = fillAmount
+	
+	var segmentAmount : int = maxValue / heartObjects.size()
+	
+	var count = 0
+	for child in heartObjects:
+		if fillAmount >= segmentAmount * (count + 1):
+			child.animation = "Full"
+		else:
+			if fillAmount >= ((segmentAmount) * .5) + (segmentAmount * count):
+				child.animation = "Half Full"
+			else:
+				child.animation = "Empty"
+		
+		count += 1

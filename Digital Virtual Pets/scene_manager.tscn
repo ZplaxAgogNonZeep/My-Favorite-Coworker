@@ -76,16 +76,21 @@ script = ExtResource("1_ptlsy")
 position = Vector2(0, -256)
 texture = ExtResource("1_momwt")
 
-[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background")]
+[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background", "timers", "joyBar", "hungerBar")]
 position = Vector2(0, -232)
 script = ExtResource("3_ymaw0")
 device = NodePath("..")
 activePet = NodePath("PupPet")
 background = NodePath("Background")
+timers = NodePath("GameTimers")
+joyBar = NodePath("Background/StatusBar/JoyBar")
+hungerBar = NodePath("Background/StatusBar/Hungerbar")
 
-[node name="HungerTimer" type="Timer" parent="Device/GameArea"]
+[node name="GameTimers" type="Node" parent="Device/GameArea"]
 
-[node name="JoyTimer" type="Timer" parent="Device/GameArea"]
+[node name="HungerTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+
+[node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
 
 [node name="Background" type="Node2D" parent="Device/GameArea"]
 script = ExtResource("4_48a5c")
@@ -93,9 +98,9 @@ script = ExtResource("4_48a5c")
 [node name="Sprite" type="Sprite2D" parent="Device/GameArea/Background"]
 texture = ExtResource("2_4ghtk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Device/GameArea/Background"]
+[node name="StatusBar" type="CanvasLayer" parent="Device/GameArea/Background"]
 
-[node name="HungerLabel" type="Label" parent="Device/GameArea/Background/CanvasLayer"]
+[node name="HungerLabel" type="Label" parent="Device/GameArea/Background/StatusBar"]
 offset_left = 200.0
 offset_top = 296.0
 offset_right = 296.0
@@ -107,7 +112,7 @@ text = "Hunger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="JoyLabel" type="Label" parent="Device/GameArea/Background/CanvasLayer"]
+[node name="JoyLabel" type="Label" parent="Device/GameArea/Background/StatusBar"]
 offset_left = 312.0
 offset_top = 296.0
 offset_right = 408.0
@@ -119,62 +124,62 @@ text = "Joy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hungerbar" type="Node2D" parent="Device/GameArea/Background/CanvasLayer"]
+[node name="Hungerbar" type="Node2D" parent="Device/GameArea/Background/StatusBar"]
 position = Vector2(208, 328)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
 position = Vector2(80, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
 position = Vector2(120, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/Hungerbar"]
+[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
 position = Vector2(160, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="JoyBar" type="Node2D" parent="Device/GameArea/Background/CanvasLayer"]
+[node name="JoyBar" type="Node2D" parent="Device/GameArea/Background/StatusBar"]
 position = Vector2(320, 328)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/JoyBar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/JoyBar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/JoyBar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
 position = Vector2(80, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/JoyBar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
 position = Vector2(120, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/CanvasLayer/JoyBar"]
+[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
 position = Vector2(160, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
@@ -203,6 +208,6 @@ position = Vector2(-88, 40)
 [node name="RightBoundry" type="Marker2D" parent="Device/GameArea"]
 position = Vector2(88, 40)
 
-[connection signal="timeout" from="Device/GameArea/HungerTimer" to="Device/GameArea" method="tickHunger"]
-[connection signal="timeout" from="Device/GameArea/JoyTimer" to="Device/GameArea" method="tickJoy"]
+[connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
+[connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
 [connection signal="timeout" from="Device/GameArea/PupPet/Type/MoveTimer" to="Device/GameArea/PupPet/Type" method="_on_move_timer_timeout"]

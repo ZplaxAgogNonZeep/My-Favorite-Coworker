@@ -1,5 +1,8 @@
 extends Node2D
 
+const MAX_HUNGER : int = 100
+const MAX_JOY : int = 100
+
 @onready var gameArea = get_parent()
 @onready var type := get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position

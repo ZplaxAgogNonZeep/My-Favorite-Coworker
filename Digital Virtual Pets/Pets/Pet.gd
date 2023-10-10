@@ -9,15 +9,19 @@ const MAX_JOY : int = 100
 @onready var previousPosn := position
 @onready var defaultPosition := position
 
+@export_category("Object References")
 @export var leftBoundry : Marker2D
 @export var rightBoundry : Marker2D
 @export var sprite : AnimatedSprite2D
-@export var roamSpeed := .1
+@export_category("Pet Values")
+@export var roamSpeed := .5
 
 var hungerValue : int = 100
 var joyValue : int = 100
 
-var menuMode : bool = false
+var petState := Enums.PetState.ROAMING
+
+#var menuMode := false
 var isRoaming := false
 
 
@@ -30,7 +34,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not menuMode:
+	if petState == Enums.PetState.ROAMING:
 		if (targetPosn):
 			if (targetPosn.x > rightBoundry.position.x):
 				targetPosn.x = rightBoundry.position.x
@@ -66,8 +70,9 @@ func getNextPosition():
 	randomize()
 	return Vector2(randi_range(RightMostPosn, LeftMostPosn), position.y)
 
+
 func goToPosition(posn : Vector2):
-	if menuMode:
+	if petState == Enums.PetState.MENU:
 		position = posn
-	else:
+	elif petState == Enums.PetState.ROAMING:
 		targetPosn = posn

@@ -12,6 +12,18 @@ const TIMER_TIME := 5
 @export var joyBar : Node2D
 @export var hungerBar : Node2D
 
+func _ready():
+	tickHunger()
+	tickJoy()
+
+func _unhandled_input(event):
+	if Input.is_action_just_released("Debug"):
+		activePet.hungerValue = 100
+		hungerBar.updateBar(activePet.hungerValue, activePet.MAX_HUNGER)
+		activePet.joyValue = 100
+		joyBar.updateBar(activePet.joyValue, activePet.MAX_JOY)
+
+
 func tickHunger():
 	print("Ticking Hunger")
 	randomize()
@@ -28,16 +40,7 @@ func tickJoy():
 	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 
-func _unhandled_input(event):
-	if Input.is_action_just_released("Debug"):
-		activePet.hungerValue = 100
-		hungerBar.updateBar(activePet.hungerValue, activePet.MAX_HUNGER)
-		activePet.joyValue = 100
-		joyBar.updateBar(activePet.joyValue, activePet.MAX_JOY)
 
 
-func _ready():
-	tickHunger()
-	tickJoy()
 
 

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Interface="*res://GlobalScripts/interface.gd"
 Enums="*res://GlobalScripts/enums.gd"
+GameEvents="*res://GlobalScripts/game_events.gd"
 
 [display]
 

@@ -83,8 +83,8 @@ device = NodePath("..")
 activePet = NodePath("PupPet")
 background = NodePath("Background")
 timers = NodePath("GameTimers")
-joyBar = NodePath("Background/StatusBar/JoyBar")
-hungerBar = NodePath("Background/StatusBar/Hungerbar")
+joyBar = NodePath("Background/StatusBars/JoyBar")
+hungerBar = NodePath("Background/StatusBars/Hungerbar")
 
 [node name="GameTimers" type="Node" parent="Device/GameArea"]
 
@@ -98,9 +98,9 @@ script = ExtResource("4_48a5c")
 [node name="Sprite" type="Sprite2D" parent="Device/GameArea/Background"]
 texture = ExtResource("2_4ghtk")
 
-[node name="StatusBar" type="CanvasLayer" parent="Device/GameArea/Background"]
+[node name="StatusBars" type="CanvasLayer" parent="Device/GameArea/Background"]
 
-[node name="HungerLabel" type="Label" parent="Device/GameArea/Background/StatusBar"]
+[node name="HungerLabel" type="Label" parent="Device/GameArea/Background/StatusBars"]
 offset_left = 200.0
 offset_top = 296.0
 offset_right = 296.0
@@ -112,7 +112,7 @@ text = "Hunger"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="JoyLabel" type="Label" parent="Device/GameArea/Background/StatusBar"]
+[node name="JoyLabel" type="Label" parent="Device/GameArea/Background/StatusBars"]
 offset_left = 312.0
 offset_top = 296.0
 offset_right = 408.0
@@ -124,62 +124,62 @@ text = "Joy"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hungerbar" type="Node2D" parent="Device/GameArea/Background/StatusBar"]
+[node name="Hungerbar" type="Node2D" parent="Device/GameArea/Background/StatusBars"]
 position = Vector2(208, 328)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(80, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(120, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/Hungerbar"]
+[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(160, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="JoyBar" type="Node2D" parent="Device/GameArea/Background/StatusBar"]
+[node name="JoyBar" type="Node2D" parent="Device/GameArea/Background/StatusBars"]
 position = Vector2(320, 328)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(40, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(80, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(120, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBar/JoyBar"]
+[node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(160, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
@@ -190,7 +190,6 @@ script = ExtResource("6_xxhv2")
 leftBoundry = NodePath("../LeftBoundry")
 rightBoundry = NodePath("../RightBoundry")
 sprite = NodePath("AgumonSprite")
-roamSpeed = 0.5
 metadata/_edit_group_ = true
 
 [node name="Type" type="Node" parent="Device/GameArea/PupPet"]

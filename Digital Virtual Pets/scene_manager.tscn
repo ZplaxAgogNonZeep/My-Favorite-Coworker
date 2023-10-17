@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=23 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="7_4237e"]
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png" id="7_hboao"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/UI/Heart-Sheet.png" id="10_7iaaw"]
+[ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://Assets/Art/Aesprite/UI/Menu/MiniMenu.png" id="11_5anri"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -52,6 +53,10 @@ animations = [{
 "name": &"Half Full",
 "speed": 5.0
 }]
+
+[sub_resource type="Theme" id="Theme_28hwl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj81u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjrme"]
 atlas = ExtResource("3_rmlcu")
@@ -103,7 +108,7 @@ texture = ExtResource("2_4ghtk")
 [node name="StatusBars" type="CanvasLayer" parent="Device/GameArea/Background"]
 
 [node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/Background/StatusBars"]
-position = Vector2(208.5, 312.5)
+position = Vector2(208, 312)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ciosv")
 
@@ -203,6 +208,35 @@ position = Vector2(160, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
+
+[node name="Menu" type="CanvasLayer" parent="Device/GameArea/Background"]
+
+[node name="MiniMenu" type="Panel" parent="Device/GameArea/Background/Menu"]
+offset_left = 192.0
+offset_top = 296.0
+offset_right = 416.0
+offset_bottom = 520.0
+theme = SubResource("Theme_28hwl")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vj81u")
+metadata/_edit_lock_ = true
+
+[node name="MiniMenuSprite" type="Sprite2D" parent="Device/GameArea/Background/Menu/MiniMenu"]
+position = Vector2(112, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("11_5anri")
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Device/GameArea/Background/Menu/MiniMenu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 184.0
+offset_right = 76.0
+offset_bottom = 216.0
+theme = ExtResource("6_2f3jj")
+theme_override_font_sizes/font_size = 24
+text = "FEED"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar")]
 position = Vector2(0, 40)

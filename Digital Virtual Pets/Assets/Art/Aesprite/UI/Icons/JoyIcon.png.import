@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drrgqpmwm5jkv"
-path="res://.godot/imported/Heart-Sheet.png-60ca51b077ce5ad396ca5a05a5237dea.ctex"
+uid="uid://3ch885s2wx46"
+path="res://.godot/imported/JoyIcon.png-b40876b34676b0ef76480107a68976f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Aesprite/Heart-Sheet.png"
-dest_files=["res://.godot/imported/Heart-Sheet.png-60ca51b077ce5ad396ca5a05a5237dea.ctex"]
+source_file="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png"
+dest_files=["res://.godot/imported/JoyIcon.png-b40876b34676b0ef76480107a68976f5.ctex"]
 
 [params]
 

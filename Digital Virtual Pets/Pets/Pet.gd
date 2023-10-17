@@ -73,12 +73,14 @@ func _process(delta):
 
 
 func tickHunger():
+	type.onTickHunger()
 	randomize()
 	hungerValue -= randi_range(1, 5)
 	hungerBar.updateBar(hungerValue, MAX_HUNGER)
 
 
 func tickJoy():
+	type.onTickJoy()
 	randomize()
 	joyValue -= randi_range(0, 5)
 	joyBar.updateBar(joyValue, MAX_JOY)
@@ -87,9 +89,8 @@ func tickJoy():
 # Utility Functions
 
 func personalityMod(statToIncrease : Enums.AbilityStat, value):
-	var finalValue = value + personalityModifiers[statToIncrease]
-	
-	return finalValue
+	var modifiedValue = value + personalityModifiers[statToIncrease]
+	return modifiedValue
 
 
 func getNextPosition():

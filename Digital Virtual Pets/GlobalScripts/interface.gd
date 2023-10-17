@@ -1,10 +1,15 @@
 extends Node
 
-
 class PetType:
 	var petName : String
 	
 	func roamBehavior():
+		pass
+	
+	func onTickHunger():
+		pass
+	
+	func onTickJoy():
 		pass
 
 

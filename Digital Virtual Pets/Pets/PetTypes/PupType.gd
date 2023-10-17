@@ -14,6 +14,11 @@ func roamBehavior():
 		randomize()
 		$MoveTimer.start(randf_range(waitIntervalMin, waitIntervalMax))
 
+func onTickHunger():
+	pass
+
+func onTickJoy():
+	pass
 
 func _on_move_timer_timeout():
 	print("move timeout")

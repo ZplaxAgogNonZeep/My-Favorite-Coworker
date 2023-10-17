@@ -25,18 +25,12 @@ func _unhandled_input(event):
 
 
 func tickHunger():
-	print("Ticking Hunger")
-	randomize()
-	activePet.hungerValue -= randi_range(1, 5)
-	hungerBar.updateBar(activePet.hungerValue, activePet.MAX_HUNGER)
+	GameEvents.TickHunger.emit()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 
 func tickJoy():
-	print("ticking Joy")
-	randomize()
-	activePet.joyValue -= randi_range(0, 5)
-	joyBar.updateBar(activePet.joyValue, activePet.MAX_JOY)
+	GameEvents.TickJoy.emit()
 	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 

@@ -13,26 +13,40 @@ const MAX_JOY : int = 100
 @export var leftBoundry : Marker2D
 @export var rightBoundry : Marker2D
 @export var sprite : AnimatedSprite2D
+# These two should probably be moved to being instanced when the pet is spawned in
+@export var hungerBar : Node2D
+@export var joyBar : Node2D
 @export_category("Pet Values")
 @export var roamSpeed := .5
+@export var personality : Enums.Personality
+@export var abilityStats : Dictionary = {
+	Enums.AbilityStat.POW:0, 
+	Enums.AbilityStat.END: 0,
+	Enums.AbilityStat.SPD: 0,
+	Enums.AbilityStat.BAL: 0}
+
+# Order of Stats follow order in enum:
+# [POW, END, SPD, BAL]
+var personalityModifiers : Dictionary = {
+	Enums.Personality.MEAN : [1,1,0,-1],
+	Enums.Personality.CALM : [-1,0,1,1],
+	Enums.Personality.FOCUSED : [0,1,-1,1],
+	Enums.Personality.AIRHEAD : [0,0,0,0]
+}
 
 var hungerValue : int = 100
 var joyValue : int = 100
-
 var petState := Enums.PetState.ROAMING
 
 #var menuMode := false
 var isRoaming := false
 
 
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	#goToPosition(gameArea.leftBoundry.position)
-	pass
+	GameEvents.TickHunger.connect(tickHunger)
+	GameEvents.TickJoy.connect(tickJoy)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if petState == Enums.PetState.ROAMING:
 		if (targetPosn):
@@ -54,10 +68,29 @@ func _process(delta):
 			else:
 				isRoaming = false
 		
-		
-		
 		type.roamBehavior()
 		previousPosn = position
+
+
+func tickHunger():
+	randomize()
+	hungerValue -= randi_range(1, 5)
+	hungerBar.updateBar(hungerValue, MAX_HUNGER)
+
+
+func tickJoy():
+	randomize()
+	joyValue -= randi_range(0, 5)
+	joyBar.updateBar(joyValue, MAX_JOY)
+
+
+# Utility Functions
+
+func personalityMod(statToIncrease : Enums.AbilityStat, value):
+	var finalValue = value + personalityModifiers[statToIncrease]
+	
+	return finalValue
+
 
 func getNextPosition():
 	var RightMostPosn = position.x + 48

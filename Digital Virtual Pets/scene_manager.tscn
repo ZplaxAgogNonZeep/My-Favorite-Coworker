@@ -184,12 +184,14 @@ position = Vector2(160, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite")]
+[node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar")]
 position = Vector2(0, 40)
 script = ExtResource("6_xxhv2")
 leftBoundry = NodePath("../LeftBoundry")
 rightBoundry = NodePath("../RightBoundry")
 sprite = NodePath("AgumonSprite")
+hungerBar = NodePath("../Background/StatusBars/Hungerbar")
+joyBar = NodePath("../Background/StatusBars/JoyBar")
 metadata/_edit_group_ = true
 
 [node name="Type" type="Node" parent="Device/GameArea/PupPet"]

@@ -11,26 +11,26 @@
 [ext_resource type="Script" path="res://UI/HeartBar.gd" id="6_rciw2"]
 [ext_resource type="Script" path="res://Pets/Pet.gd" id="6_xxhv2"]
 [ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="7_4237e"]
-[ext_resource type="Texture2D" path="res://Assets/Art/Aesprite/Heart-Sheet.png" id="7_b2ve0"]
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png" id="7_hboao"]
+[ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/UI/Heart-Sheet.png" id="10_7iaaw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dd3cq"]
-atlas = ExtResource("7_b2ve0")
-region = Rect2(0, 0, 36, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
+atlas = ExtResource("10_7iaaw")
+region = Rect2(0, 0, 9, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_biuce"]
-atlas = ExtResource("7_b2ve0")
-region = Rect2(0, 72, 36, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq7vu"]
+atlas = ExtResource("10_7iaaw")
+region = Rect2(0, 18, 9, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xgdli"]
-atlas = ExtResource("7_b2ve0")
-region = Rect2(0, 36, 36, 36)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo5ek"]
+atlas = ExtResource("10_7iaaw")
+region = Rect2(0, 9, 9, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kvm0p"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dd3cq")
+"texture": SubResource("AtlasTexture_kxubh")
 }],
 "loop": true,
 "name": &"Empty",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_biuce")
+"texture": SubResource("AtlasTexture_iq7vu")
 }],
 "loop": true,
 "name": &"Full",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xgdli")
+"texture": SubResource("AtlasTexture_mo5ek")
 }],
 "loop": true,
 "name": &"Half Full",
@@ -141,26 +141,31 @@ script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
 [node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(40, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(80, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(120, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/Hungerbar"]
 position = Vector2(160, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
@@ -171,26 +176,31 @@ script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
 
 [node name="Heart1" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart2" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(40, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart3" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(80, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart4" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(120, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="Heart5" type="AnimatedSprite2D" parent="Device/GameArea/Background/StatusBars/JoyBar"]
 position = Vector2(160, 0)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 

@@ -104,6 +104,7 @@ script = ExtResource("4_48a5c")
 
 [node name="BackdropSprite" type="Sprite2D" parent="Device/GameArea/Background"]
 texture = ExtResource("2_4ghtk")
+metadata/_edit_lock_ = true
 
 [node name="StatusBars" type="CanvasLayer" parent="Device/GameArea/Background"]
 
@@ -226,20 +227,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("11_5anri")
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Device/GameArea/Background/Menu/MiniMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 184.0
-offset_right = 76.0
-offset_bottom = 216.0
-theme = ExtResource("6_2f3jj")
-theme_override_font_sizes/font_size = 24
-text = "FEED"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar")]
-position = Vector2(0, 40)
+position = Vector2(0, 16)
 script = ExtResource("6_xxhv2")
 leftBoundry = NodePath("../LeftBoundry")
 rightBoundry = NodePath("../RightBoundry")
@@ -256,12 +245,13 @@ script = ExtResource("7_4237e")
 [node name="AgumonSprite" type="AnimatedSprite2D" parent="Device/GameArea/PupPet"]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_prxbw")
+metadata/_edit_lock_ = true
 
 [node name="LeftBoundry" type="Marker2D" parent="Device/GameArea"]
-position = Vector2(-88, 40)
+position = Vector2(-88, 16)
 
 [node name="RightBoundry" type="Marker2D" parent="Device/GameArea"]
-position = Vector2(88, 40)
+position = Vector2(88, 16)
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]

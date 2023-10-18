@@ -24,6 +24,8 @@ func _unhandled_input(event):
 		joyBar.updateBar(activePet.joyValue, activePet.MAX_JOY)
 
 
+# Timer Controls
+
 func tickHunger():
 	GameEvents.TickHunger.emit()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)

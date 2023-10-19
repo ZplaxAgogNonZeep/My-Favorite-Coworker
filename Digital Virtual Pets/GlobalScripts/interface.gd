@@ -12,6 +12,17 @@ class PetType:
 	func onTickJoy():
 		pass
 
+class HighlightButton:
+	var isHighlighted
+	
+	func initializeButton():
+		pass
+	
+	func toggleHighlight():
+		pass
+	
+	func selectButton():
+		pass
 
 
 func _ready():

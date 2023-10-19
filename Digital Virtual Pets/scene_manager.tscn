@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=30 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png" id="7_hboao"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/UI/Heart-Sheet.png" id="10_7iaaw"]
 [ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://Assets/Art/Aesprite/UI/Menu/MiniMenu.png" id="11_5anri"]
+[ext_resource type="PackedScene" uid="uid://dlf22tttashco" path="res://UI/MenuButtons/InstancedScenes/icon_menu_button.tscn" id="12_b3g5n"]
 [ext_resource type="Texture2D" uid="uid://cbfn3oph7ino4" path="res://Assets/Art/Aesprite/UI/Icons/StatsIcon.png" id="12_ifp0x"]
+[ext_resource type="SpriteFrames" uid="uid://dddluc0c1v18a" path="res://Assets/AnimationFrames/Icons/JoyIconFrames.tres" id="13_r2ubs"]
+[ext_resource type="Texture2D" uid="uid://b6yl5vxvjayev" path="res://Assets/Art/Aesprite/UI/Icons/StatsIcon-Sheet.png" id="14_52bgn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -58,6 +61,33 @@ animations = [{
 [sub_resource type="Theme" id="Theme_28hwl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj81u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjhqc"]
+atlas = ExtResource("14_52bgn")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x85mu"]
+atlas = ExtResource("14_52bgn")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmpma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjhqc")
+}],
+"loop": true,
+"name": &"Selected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x85mu")
+}],
+"loop": true,
+"name": &"Unselected",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rjrme"]
 atlas = ExtResource("3_rmlcu")
@@ -228,53 +258,30 @@ scale = Vector2(4, 4)
 texture = ExtResource("11_5anri")
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Device/GameArea/Background/Menu/MiniMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 184.0
-offset_right = 72.0
-offset_bottom = 216.0
-theme = ExtResource("6_2f3jj")
-text = "FEED"
-horizontal_alignment = 1
-vertical_alignment = 2
+[node name="Feed" parent="Device/GameArea/Background/Menu/MiniMenu" instance=ExtResource("12_b3g5n")]
+metadata/_edit_group_ = true
 
-[node name="MeatIcon" type="Sprite2D" parent="Device/GameArea/Background/Menu/MiniMenu/Label"]
-position = Vector2(32, 8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ciosv")
+[node name="Play" parent="Device/GameArea/Background/Menu/MiniMenu" instance=ExtResource("12_b3g5n")]
+offset_left = 80.0
+offset_right = 144.0
+metadata/_edit_group_ = true
 
-[node name="Label2" type="Label" parent="Device/GameArea/Background/Menu/MiniMenu"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 184.0
-offset_right = 152.0
-offset_bottom = 216.0
-theme = ExtResource("6_2f3jj")
+[node name="OptionName" parent="Device/GameArea/Background/Menu/MiniMenu/Play" index="1"]
 text = "PLAY"
-horizontal_alignment = 1
-vertical_alignment = 2
 
-[node name="PlayIcon" type="Sprite2D" parent="Device/GameArea/Background/Menu/MiniMenu/Label2"]
-position = Vector2(40, 8)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_hboao")
+[node name="OptionIcon" parent="Device/GameArea/Background/Menu/MiniMenu/Play" index="2"]
+sprite_frames = ExtResource("13_r2ubs")
 
-[node name="Label3" type="Label" parent="Device/GameArea/Background/Menu/MiniMenu"]
-layout_mode = 0
+[node name="Stats" parent="Device/GameArea/Background/Menu/MiniMenu" instance=ExtResource("12_b3g5n")]
 offset_left = 152.0
-offset_top = 184.0
 offset_right = 216.0
-offset_bottom = 216.0
-theme = ExtResource("6_2f3jj")
-text = "STATS"
-horizontal_alignment = 1
-vertical_alignment = 2
+metadata/_edit_group_ = true
 
-[node name="StatsIcon" type="Sprite2D" parent="Device/GameArea/Background/Menu/MiniMenu/Label3"]
-position = Vector2(32, 8)
-scale = Vector2(2, 2)
-texture = ExtResource("12_ifp0x")
+[node name="OptionName" parent="Device/GameArea/Background/Menu/MiniMenu/Stats" index="1"]
+text = "STATS"
+
+[node name="OptionIcon" parent="Device/GameArea/Background/Menu/MiniMenu/Stats" index="2"]
+sprite_frames = SubResource("SpriteFrames_qmpma")
 
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar")]
 position = Vector2(0, 16)
@@ -309,3 +316,6 @@ texture = ExtResource("12_ifp0x")
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
 [connection signal="timeout" from="Device/GameArea/PupPet/Type/MoveTimer" to="Device/GameArea/PupPet/Type" method="_on_move_timer_timeout"]
+
+[editable path="Device/GameArea/Background/Menu/MiniMenu/Play"]
+[editable path="Device/GameArea/Background/Menu/MiniMenu/Stats"]

@@ -1,11 +1,34 @@
 extends Control
 
+var implements = [Interface.HighlightButton]
 
-# Called when the node enters the scene tree for the first time.
+signal ButtonSelected
+
+@onready var rect := $SelectionRect
+@onready var label := $OptionName
+@onready var icon := $OptionIcon
+
+var isHighlighted := false
+
 func _ready():
-	pass # Replace with function body.
+	initializeButton()
+
+func initializeButton():
+	toggleHighlight(false)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func toggleHighlight(highlight : bool):
+	isHighlighted = highlight
+	
+	if (highlight):
+		rect.color = Color(0,0,0)
+		label.add_theme_color_override("font_color", Color("d5ded5"))
+		icon.animation = "Selected"
+	else:
+		rect.color = Color("d5ded5")
+		label.add_theme_color_override("font_color", Color(0, 0, 0))
+		icon.animation = "Unselected"
+
+
+func selectButton():
+	ButtonSelected.emit()

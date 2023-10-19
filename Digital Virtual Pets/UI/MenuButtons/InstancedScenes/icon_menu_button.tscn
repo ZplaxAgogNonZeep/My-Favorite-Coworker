@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlf22tttashco"]
+
+[ext_resource type="Script" path="res://UI/MenuButtons/MiniMenuOption.gd" id="1_7ol67"]
+[ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://UI/Fonts/MeterLabelTheme.tres" id="2_lc0w2"]
+[ext_resource type="SpriteFrames" uid="uid://b6u6tkw1fg2y1" path="res://Assets/AnimationFrames/Icons/FoodIconFrames.tres" id="3_losng"]
+
+[node name="IconMenuButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 8.0
+offset_top = 184.0
+offset_right = 72.0
+offset_bottom = 216.0
+script = ExtResource("1_7ol67")
+
+[node name="SelectionRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.835294, 0.870588, 0.835294, 1)
+
+[node name="OptionName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lc0w2")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "FEED"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="OptionIcon" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 10)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("3_losng")
+animation = &"Unselected"

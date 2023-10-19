@@ -20,7 +20,7 @@ const MAX_JOY : int = 100
 @export var roamSpeed := .5
 @export var personality : Enums.Personality
 @export var abilityStats : Dictionary = {
-	Enums.AbilityStat.POW:0, 
+	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
 	Enums.AbilityStat.BAL: 0}
@@ -45,6 +45,7 @@ var isRoaming := false
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
+	Enums.Personality.values()
 
 
 func _process(delta):
@@ -86,10 +87,10 @@ func tickJoy():
 	joyBar.updateBar(joyValue, MAX_JOY)
 
 
-# Utility Functions
+# Utility Functions ================================================================================
 
 func personalityMod(statToIncrease : Enums.AbilityStat, value):
-	var modifiedValue = value + personalityModifiers[statToIncrease]
+	var modifiedValue = value + personalityModifiers[personality][statToIncrease]
 	return modifiedValue
 
 

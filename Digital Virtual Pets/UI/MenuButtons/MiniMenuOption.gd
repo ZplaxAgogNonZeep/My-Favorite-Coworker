@@ -10,9 +10,6 @@ signal ButtonSelected
 
 var isHighlighted := false
 
-func _ready():
-	initializeButton()
-
 func initializeButton():
 	toggleHighlight(false)
 

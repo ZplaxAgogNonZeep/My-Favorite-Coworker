@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=31 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png" id="7_hboao"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/UI/Heart-Sheet.png" id="10_7iaaw"]
 [ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://Assets/Art/Aesprite/UI/Menu/MiniMenu.png" id="11_5anri"]
+[ext_resource type="Script" path="res://UI/MenuButtons/ButtonController.gd" id="11_5bsub"]
 [ext_resource type="PackedScene" uid="uid://dlf22tttashco" path="res://UI/MenuButtons/InstancedScenes/icon_menu_button.tscn" id="12_b3g5n"]
 [ext_resource type="Texture2D" uid="uid://cbfn3oph7ino4" path="res://Assets/Art/Aesprite/UI/Icons/StatsIcon.png" id="12_ifp0x"]
 [ext_resource type="SpriteFrames" uid="uid://dddluc0c1v18a" path="res://Assets/AnimationFrames/Icons/JoyIconFrames.tres" id="13_r2ubs"]
@@ -251,6 +252,10 @@ offset_bottom = 520.0
 theme = SubResource("Theme_28hwl")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vj81u")
 metadata/_edit_lock_ = true
+
+[node name="ButtonController" type="Node" parent="Device/GameArea/Background/Menu/MiniMenu" node_paths=PackedStringArray("buttonArray")]
+script = ExtResource("11_5bsub")
+buttonArray = [NodePath("../Feed"), NodePath("../Play"), NodePath("../Stats")]
 
 [node name="MiniMenuSprite" type="Sprite2D" parent="Device/GameArea/Background/Menu/MiniMenu"]
 position = Vector2(112, 112)

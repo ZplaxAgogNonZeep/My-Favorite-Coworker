@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=34 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dlf22tttashco" path="res://UI/MenuButtons/InstancedScenes/icon_menu_button.tscn" id="12_b3g5n"]
 [ext_resource type="SpriteFrames" uid="uid://dddluc0c1v18a" path="res://Assets/AnimationFrames/Icons/JoyIconFrames.tres" id="13_r2ubs"]
 [ext_resource type="Texture2D" uid="uid://b6yl5vxvjayev" path="res://Assets/Art/Aesprite/UI/Icons/StatsIcon-Sheet.png" id="14_52bgn"]
+[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="20_5lfdq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -126,8 +127,8 @@ device = NodePath("..")
 activePet = NodePath("PupPet")
 background = NodePath("Background")
 timers = NodePath("GameTimers")
-boundries = [NodePath("LeftBoundry"), NodePath("RightBoundry")]
-ObjectSpawnLocations = NodePath("SpawnLocationA")
+boundries = [NodePath("Markers/LeftBoundry"), NodePath("Markers/RightBoundry")]
+ObjectSpawnLocations = NodePath("Markers/SpawnLocationA")
 joyBar = NodePath("Background/StatusBars/JoyBar")
 hungerBar = NodePath("Background/StatusBars/Hungerbar")
 foodInstance = ExtResource("4_s2fvp")
@@ -135,8 +136,23 @@ foodInstance = ExtResource("4_s2fvp")
 [node name="GameTimers" type="Node" parent="Device/GameArea"]
 
 [node name="HungerTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+script = ExtResource("20_5lfdq")
 
 [node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+script = ExtResource("20_5lfdq")
+
+[node name="Markers" type="Node2D" parent="Device/GameArea"]
+
+[node name="LeftBoundry" type="Marker2D" parent="Device/GameArea/Markers"]
+position = Vector2(-88, 32)
+gizmo_extents = 64.0
+
+[node name="RightBoundry" type="Marker2D" parent="Device/GameArea/Markers"]
+position = Vector2(88, 32)
+gizmo_extents = 64.0
+
+[node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea/Markers"]
+position = Vector2(-72, -48)
 
 [node name="Background" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("miniMenu")]
 script = ExtResource("4_48a5c")
@@ -301,8 +317,8 @@ sprite_frames = SubResource("SpriteFrames_qmpma")
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar") groups=["Pet"]]
 position = Vector2(0, 32)
 script = ExtResource("6_xxhv2")
-leftBoundry = NodePath("../LeftBoundry")
-rightBoundry = NodePath("../RightBoundry")
+leftBoundry = NodePath("../Markers/LeftBoundry")
+rightBoundry = NodePath("../Markers/RightBoundry")
 sprite = NodePath("Sprite")
 hungerBar = NodePath("../Background/StatusBars/Hungerbar")
 joyBar = NodePath("../Background/StatusBars/JoyBar")
@@ -311,6 +327,7 @@ joyBar = NodePath("../Background/StatusBars/JoyBar")
 script = ExtResource("7_4237e")
 
 [node name="MoveTimer" type="Timer" parent="Device/GameArea/PupPet/Type"]
+script = ExtResource("20_5lfdq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Device/GameArea/PupPet"]
 position = Vector2(0, -16)
@@ -335,17 +352,6 @@ metadata/_edit_lock_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PupPet/RightObjectColl"]
 position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_jamv8")
-
-[node name="LeftBoundry" type="Marker2D" parent="Device/GameArea"]
-position = Vector2(-88, 32)
-gizmo_extents = 64.0
-
-[node name="RightBoundry" type="Marker2D" parent="Device/GameArea"]
-position = Vector2(88, 32)
-gizmo_extents = 64.0
-
-[node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea"]
-position = Vector2(-72, -48)
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]

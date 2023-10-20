@@ -3,6 +3,13 @@ extends Node2D
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 
+const personalityModifiers : Dictionary = {
+	Enums.Personality.MEAN : [1,1,0,-1],
+	Enums.Personality.CALM : [-1,0,1,1],
+	Enums.Personality.FOCUSED : [0,1,-1,1],
+	Enums.Personality.AIRHEAD : [0,0,0,0]
+	}# Order of Stats follow order in enum: [POW, END, SPD, BAL]
+
 @onready var gameArea = get_parent()
 @onready var type := get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position
@@ -23,16 +30,8 @@ const MAX_JOY : int = 100
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
-	Enums.AbilityStat.BAL: 0}
-
-# Order of Stats follow order in enum:
-# [POW, END, SPD, BAL]
-var personalityModifiers : Dictionary = {
-	Enums.Personality.MEAN : [1,1,0,-1],
-	Enums.Personality.CALM : [-1,0,1,1],
-	Enums.Personality.FOCUSED : [0,1,-1,1],
-	Enums.Personality.AIRHEAD : [0,0,0,0]
-}
+	Enums.AbilityStat.BAL: 0
+	}
 
 var hungerValue : int = 50
 var joyValue : int = 100
@@ -49,10 +48,7 @@ func _ready():
 func _process(delta):
 	if petState == Enums.PetState.ROAMING:
 		if (targetPosn):
-			if (targetPosn.x > rightBoundry.position.x):
-				targetPosn.x = rightBoundry.position.x
-			if (targetPosn.x < leftBoundry.position.x):
-				targetPosn.x = leftBoundry.position.x
+			alineToBoundry()
 			
 			if (position.x != targetPosn.x):
 				if not isRoaming:
@@ -60,15 +56,13 @@ func _process(delta):
 				
 				position -= (position - targetPosn).normalized() * roamSpeed
 				
-				if (position.x < previousPosn.x and sprite.flip_h):
-					sprite.flip_h = false
-				elif (position.x > previousPosn.x and not sprite.flip_h):
-					sprite.flip_h = true
+				setDirection()
 			else:
 				isRoaming = false
 		
 		type.roamBehavior()
 		previousPosn = position
+		
 	elif petState == Enums.PetState.FEEDING:
 		type.feedingBehavior()
 
@@ -85,12 +79,15 @@ func eatFood(foodObject):
 	
 	foodObject.queue_free()
 	petState = Enums.PetState.ROAMING
+	
+	GameEvents.UnpauseTimers.emit()
 
 
 # Events ===========================================================================================
 
 func feedPet():
 	if (get_tree().get_nodes_in_group("Food").size() > 0):
+		GameEvents.PauseTimers.emit()
 		await get_tree().create_timer(2).timeout
 		targetPosn = get_tree().get_nodes_in_group("Food")[0].position
 	else:
@@ -111,6 +108,20 @@ func tickJoy():
 
 
 # Utility Functions ================================================================================
+
+func alineToBoundry():
+	if (targetPosn.x > rightBoundry.position.x):
+		targetPosn.x = rightBoundry.position.x
+	if (targetPosn.x < leftBoundry.position.x):
+		targetPosn.x = leftBoundry.position.x
+
+
+func setDirection():
+	if (position.x < previousPosn.x and sprite.flip_h):
+		sprite.flip_h = false
+	elif (position.x > previousPosn.x and not sprite.flip_h):
+		sprite.flip_h = true
+
 
 func personalityMod(statToIncrease : Enums.AbilityStat, value):
 	var modifiedValue = value + personalityModifiers[personality][statToIncrease]
@@ -135,7 +146,7 @@ func goToPosition(posn : Vector2):
 	elif petState == Enums.PetState.ROAMING:
 		targetPosn = posn
 
-# Object Singals ===================================================================================
+# Collision Singals ===================================================================================
 
 func objectCollision(area):
 	if area.get_parent().implements.has(Interface.Food):

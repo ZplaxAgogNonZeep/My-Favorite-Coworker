@@ -34,18 +34,16 @@ var personalityModifiers : Dictionary = {
 	Enums.Personality.AIRHEAD : [0,0,0,0]
 }
 
-var hungerValue : int = 100
+var hungerValue : int = 50
 var joyValue : int = 100
 var petState := Enums.PetState.ROAMING
-
-#var menuMode := false
 var isRoaming := false
 
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
-	Enums.Personality.values()
+	GameEvents.FoodPlaced.connect(feedPet)
 
 
 func _process(delta):
@@ -71,7 +69,32 @@ func _process(delta):
 		
 		type.roamBehavior()
 		previousPosn = position
+	elif petState == Enums.PetState.FEEDING:
+		type.feedingBehavior()
 
+
+func eatFood(foodObject):
+	petState = Enums.PetState.FEEDING
+	await get_tree().create_timer(2).timeout
+	type.onEatFood()
+	hungerValue += foodObject.feedAmount
+	
+	if hungerValue > MAX_HUNGER:
+		hungerValue = MAX_HUNGER
+	hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	
+	foodObject.queue_free()
+	petState = Enums.PetState.ROAMING
+
+
+# Events ===========================================================================================
+
+func feedPet():
+	if (get_tree().get_nodes_in_group("Food").size() > 0):
+		await get_tree().create_timer(2).timeout
+		targetPosn = get_tree().get_nodes_in_group("Food")[0].position
+	else:
+		petState = Enums.PetState.ROAMING
 
 func tickHunger():
 	type.onTickHunger()
@@ -111,3 +134,17 @@ func goToPosition(posn : Vector2):
 		position = posn
 	elif petState == Enums.PetState.ROAMING:
 		targetPosn = posn
+
+# Object Singals ===================================================================================
+
+func objectCollision(area):
+	if area.get_parent().implements.has(Interface.Food):
+		eatFood(area.get_parent())
+
+
+func _on_left_object_coll_area_entered(area):
+	objectCollision(area)
+
+
+func _on_right_object_coll_area_entered(area):
+	objectCollision(area)

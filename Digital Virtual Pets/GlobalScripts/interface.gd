@@ -6,11 +6,22 @@ class PetType:
 	func roamBehavior():
 		pass
 	
+	func feedingBehavior():
+		pass
+	
 	func onTickHunger():
 		pass
 	
 	func onTickJoy():
 		pass
+	
+	func onEatFood():
+		pass
+
+class Food:
+	var feedAmount : int
+	
+	
 
 class HighlightButton:
 	var isHighlighted
@@ -24,6 +35,9 @@ class HighlightButton:
 	func selectButton():
 		pass
 
+class MenuState:
+	func takeInput(input : Enums.InputType):
+		pass
 
 func _ready():
 	var allLoadedNodes = getAllDecendants(get_tree().root)

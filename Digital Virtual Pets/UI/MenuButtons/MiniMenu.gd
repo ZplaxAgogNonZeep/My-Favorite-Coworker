@@ -1,11 +1,37 @@
 extends Panel
 
+var implements = [Interface.MenuState]
 
-# Called when the node enters the scene tree for the first time.
+@export var buttonController : Node
+
 func _ready():
-	pass # Replace with function body.
+	$Feed.ButtonSelected.connect(onFeedSelected)
+	$Play.ButtonSelected.connect(onPlaySelected)
+	$Stats.ButtonSelected.connect(onStatsSelected)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func takeInput(input : Enums.InputType):
+	if (buttonController.active):
+		match input:
+			Enums.InputType.LEFTBUTTON:
+				buttonController.cycle(-1)
+			Enums.InputType.RIGHTBUTTON:
+				buttonController.cycle(1)
+			Enums.InputType.MIDDLEBUTTON:
+				buttonController.select()
+	else:
+		buttonController.setActive(true)
+	
+
+
+func onFeedSelected():
+	print("Feed Selected")
+	GameEvents.FeedPet.emit()
+
+
+func onPlaySelected():
+	pass
+
+
+func onStatsSelected():
 	pass

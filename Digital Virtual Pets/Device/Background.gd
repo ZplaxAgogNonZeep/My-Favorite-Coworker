@@ -1,10 +1,14 @@
 extends Node2D
 
-enum MenuState {MINIMIZED, FEED, PLAY, STATS}
+enum MenuState {MINIMIZED, PLAY, STATS}
+
+@export var miniMenu : Panel
+
+var currentState : MenuState
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	currentState = MenuState.MINIMIZED
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,4 +17,16 @@ func _process(delta):
 
 
 func _unhandled_input(event):
-	pass
+	if Input.is_action_just_pressed("LeftButton"):
+		sendInput(Enums.InputType.LEFTBUTTON)
+	elif Input.is_action_just_pressed("MiddleButton"):
+		sendInput(Enums.InputType.MIDDLEBUTTON)
+	elif Input.is_action_just_pressed("RightButton"):
+		sendInput(Enums.InputType.RIGHTBUTTON)
+
+
+func sendInput(input : Enums.InputType):
+	match currentState:
+		MenuState.MINIMIZED:
+			if miniMenu.implements.has(Interface.MenuState):
+				miniMenu.takeInput(input)

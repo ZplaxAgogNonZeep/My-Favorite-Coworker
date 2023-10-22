@@ -26,6 +26,10 @@ GameEvents="*res://GlobalScripts/game_events.gd"
 window/size/viewport_width=576
 window/size/resizable=false
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
 [importer_defaults]
 
 image={}

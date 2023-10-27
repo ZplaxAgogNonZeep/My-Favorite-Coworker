@@ -8,10 +8,12 @@ enum MenuState {MINIMIZED, PLAY, STATS}
 @export var playMenu : Panel
 
 var currentState : MenuState
+var stateReference : Panel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	currentState = MenuState.MINIMIZED
+	stateReference = miniMenu
 	
 	if miniMenu.implements.has(Interface.MenuState):
 		miniMenu.stateMachine = self
@@ -37,9 +39,29 @@ func _unhandled_input(event):
 	elif Input.is_action_just_pressed("RightButton"):
 		sendInput(Enums.InputType.RIGHTBUTTON)
 
+func setState(state: MenuState):
+	if (stateReference):
+		stateReference.exitMenu()
+	currentState = state
+	
+	match state:
+		MenuState.MINIMIZED:
+			stateReference = miniMenu
+		MenuState.STATS:
+			stateReference = statMenu
+		MenuState.PLAY:
+			stateReference = playMenu
+	
+	stateReference.initializeMenu()
 
 func sendInput(input : Enums.InputType):
 	match currentState:
 		MenuState.MINIMIZED:
 			if miniMenu.implements.has(Interface.MenuState):
 				miniMenu.takeInput(input)
+		MenuState.PLAY:
+			if playMenu.implements.has(Interface.MenuState):
+				playMenu.takeInput(input)
+		MenuState.STATS:
+			if statMenu.implements.has(Interface.MenuState):
+				statMenu.takeInput(input)

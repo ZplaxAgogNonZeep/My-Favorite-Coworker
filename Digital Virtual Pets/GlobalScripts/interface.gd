@@ -38,6 +38,12 @@ class HighlightButton:
 class MenuState:
 	var stateMachine : Node2D
 	
+	func initializeMenu():
+		pass
+	
+	func exitMenu():
+		pass
+	
 	func takeInput(input : Enums.InputType):
 		pass
 

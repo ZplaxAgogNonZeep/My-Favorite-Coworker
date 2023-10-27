@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=36 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="20_5lfdq"]
 [ext_resource type="Script" path="res://UI/MenuButtons/StatMenu.gd" id="20_wktbo"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="21_pqakk"]
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/Stage1/UnknownPet.png" id="22_b60mb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -118,6 +119,7 @@ script = ExtResource("1_ptlsy")
 [node name="EggBase" type="Sprite2D" parent="Device"]
 position = Vector2(0, -256)
 texture = ExtResource("1_momwt")
+metadata/_edit_lock_ = true
 
 [node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background", "timers", "boundries", "ObjectSpawnLocations", "joyBar", "hungerBar")]
 position = Vector2(0, -232)
@@ -133,14 +135,6 @@ hungerBar = NodePath("MenuManager/StatusBars/Hungerbar")
 foodInstance = ExtResource("4_s2fvp")
 metadata/_edit_lock_ = true
 
-[node name="GameTimers" type="Node" parent="Device/GameArea"]
-
-[node name="HungerTimer" type="Timer" parent="Device/GameArea/GameTimers"]
-script = ExtResource("20_5lfdq")
-
-[node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
-script = ExtResource("20_5lfdq")
-
 [node name="Markers" type="Node2D" parent="Device/GameArea"]
 metadata/_edit_lock_ = true
 
@@ -154,6 +148,14 @@ gizmo_extents = 64.0
 
 [node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea/Markers"]
 position = Vector2(-72, -48)
+
+[node name="GameTimers" type="Node" parent="Device/GameArea"]
+
+[node name="HungerTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+script = ExtResource("20_5lfdq")
+
+[node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+script = ExtResource("20_5lfdq")
 
 [node name="MenuManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu")]
 script = ExtResource("4_48a5c")
@@ -316,6 +318,7 @@ text = "STATS"
 sprite_frames = SubResource("SpriteFrames_qmpma")
 
 [node name="StatMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu"]
+visible = false
 offset_left = 192.0
 offset_top = 296.0
 offset_right = 416.0
@@ -329,6 +332,11 @@ position = Vector2(112, 112)
 scale = Vector2(4, 4)
 texture = ExtResource("21_pqakk")
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
+position = Vector2(152, 96)
+scale = Vector2(4, 4)
+texture = ExtResource("22_b60mb")
 
 [node name="Personality" type="Label" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
 layout_mode = 0
@@ -428,6 +436,9 @@ rightBoundry = NodePath("../Markers/RightBoundry")
 sprite = NodePath("Sprite")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
+roamSpeed = null
+personality = null
+abilityStats = null
 
 [node name="Type" type="Node" parent="Device/GameArea/PupPet"]
 script = ExtResource("7_4237e")

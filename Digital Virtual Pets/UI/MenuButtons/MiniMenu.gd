@@ -11,6 +11,11 @@ func _ready():
 	$Play.ButtonSelected.connect(onPlaySelected)
 	$Stats.ButtonSelected.connect(onStatsSelected)
 
+func initializeMenu():
+		pass
+	
+func exitMenu():
+		pass
 
 func takeInput(input : Enums.InputType):
 	if (buttonController.active):
@@ -36,4 +41,4 @@ func onPlaySelected():
 
 
 func onStatsSelected():
-	pass
+	stateMachine.setState(stateMachine.MenuState.STATS)

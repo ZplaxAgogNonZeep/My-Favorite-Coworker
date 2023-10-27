@@ -44,6 +44,8 @@ func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
 	GameEvents.FoodPlaced.connect(feedPet)
+	GameEvents.PauseGame.connect()
+	GameEvents.UnpauseGame.connect()
 	
 	hungerBar.updateBar(hungerValue, MAX_HUNGER)
 	joyBar.updateBar(joyValue, MAX_JOY)
@@ -89,6 +91,12 @@ func eatFood(foodObject):
 
 
 # Events ===========================================================================================
+
+func gamePaused():
+	pass
+
+func gameUnpaused():
+	pass
 
 func feedPet():
 	if (get_tree().get_nodes_in_group("Food").size() > 0):

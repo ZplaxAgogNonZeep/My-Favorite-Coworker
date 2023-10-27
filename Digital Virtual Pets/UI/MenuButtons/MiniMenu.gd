@@ -37,7 +37,7 @@ func onFeedSelected():
 
 
 func onPlaySelected():
-	pass
+	stateMachine.setState(stateMachine.MenuState.PLAY)
 
 
 func onStatsSelected():

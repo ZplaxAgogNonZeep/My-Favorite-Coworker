@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=38 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="21_pqakk"]
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/Stage1/UnknownPet.png" id="22_b60mb"]
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
+[ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -158,10 +159,11 @@ script = ExtResource("20_5lfdq")
 [node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
 script = ExtResource("20_5lfdq")
 
-[node name="MenuManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu")]
+[node name="MenuManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu")]
 script = ExtResource("4_48a5c")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
+playMenu = NodePath("Menu/PlayMenu")
 
 [node name="BackdropSprite" type="Sprite2D" parent="Device/GameArea/MenuManager"]
 texture = ExtResource("2_4ghtk")
@@ -301,6 +303,9 @@ offset_left = 80.0
 offset_right = 144.0
 metadata/_edit_group_ = true
 
+[node name="SelectionRect" parent="Device/GameArea/MenuManager/Menu/MiniMenu/Play" index="0"]
+color = Color(0.835294, 0.870588, 0.835294, 1)
+
 [node name="OptionName" parent="Device/GameArea/MenuManager/Menu/MiniMenu/Play" index="1"]
 text = "PLAY"
 
@@ -430,6 +435,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+visible = false
 offset_left = 192.0
 offset_top = 296.0
 offset_right = 416.0
@@ -448,14 +454,35 @@ metadata/_edit_lock_ = true
 layout_mode = 0
 offset_right = 224.0
 offset_bottom = 224.0
+metadata/_edit_lock_ = true
 
-[node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+[node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("11_5bsub")
+buttonArray = [NodePath("../Guess"), NodePath("../Exit")]
+
+[node name="Exit" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
+offset_left = 72.0
+offset_top = 144.0
+offset_right = 152.0
+offset_bottom = 168.0
+metadata/_edit_group_ = true
+
+[node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit" index="1"]
+text = "Exit"
+
+[node name="Guess" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
+offset_left = 16.0
+offset_right = 88.0
+metadata/_edit_group_ = true
+
+[node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess" index="1"]
+text = "Guess!"
 
 [node name="MiniGameContainer" type="Panel" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 layout_mode = 0
 offset_right = 224.0
 offset_bottom = 224.0
+metadata/_edit_lock_ = true
 
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar") groups=["Pet"]]
 position = Vector2(0, 32)
@@ -506,3 +533,5 @@ shape = SubResource("RectangleShape2D_jamv8")
 
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Stats"]
+[editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
+[editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]

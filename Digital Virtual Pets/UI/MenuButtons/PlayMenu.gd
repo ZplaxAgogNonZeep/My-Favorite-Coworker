@@ -9,18 +9,35 @@ var stateMachine : Node2D
 
 var state = PlayState.MENU
 
+func _ready():
+	$GameMenu/Guess.ButtonSelected.connect(onGuessSelected)
 
 func initializeMenu():
+	visible = true
 	GameEvents.PauseGame.emit()
+	buttonController.setActive(true)
 
 
 func exitMenu():
+	visible = false
+	buttonController.setActive(false)
 	GameEvents.UnpauseGame.emit()
 
 
 func takeInput(input : Enums.InputType):
 	match state:
 		PlayState.MENU:
-			pass
+			match input:
+				Enums.InputType.MIDDLEBUTTON:
+					buttonController.select()
+				Enums.InputType.LEFTBUTTON:
+					buttonController.cycle(-1)
+				Enums.InputType.RIGHTBUTTON:
+					buttonController.cycle(1)
 		PlayState.GAME:
 			pass
+
+
+func onGuessSelected():
+	print("Guess Game Selected")
+	pass

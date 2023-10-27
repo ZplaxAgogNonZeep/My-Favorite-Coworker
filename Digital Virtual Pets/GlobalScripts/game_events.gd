@@ -9,3 +9,4 @@ signal TickJoy
 # Game Events
 signal FeedPet
 signal FoodPlaced
+signal Cry

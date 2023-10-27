@@ -33,16 +33,20 @@ const personalityModifiers : Dictionary = {
 	Enums.AbilityStat.BAL: 0
 	}
 
-var hungerValue : int = 50
+var hungerValue : int = 100
 var joyValue : int = 100
 var petState := Enums.PetState.ROAMING
 var isRoaming := false
-
+var isFoodReached := false
+var traumaCount := 0
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
 	GameEvents.FoodPlaced.connect(feedPet)
+	
+	hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	joyBar.updateBar(joyValue, MAX_JOY)
 
 
 func _process(delta):
@@ -55,12 +59,11 @@ func _process(delta):
 					isRoaming = true
 				
 				position -= (position - targetPosn).normalized() * roamSpeed
-				
-				setDirection()
 			else:
 				isRoaming = false
 		
 		type.roamBehavior()
+		setSpriteDirection()
 		previousPosn = position
 		
 	elif petState == Enums.PetState.FEEDING:
@@ -75,9 +78,11 @@ func eatFood(foodObject):
 	
 	if hungerValue > MAX_HUNGER:
 		hungerValue = MAX_HUNGER
+	
 	hungerBar.updateBar(hungerValue, MAX_HUNGER)
 	
 	foodObject.queue_free()
+	targetPosn = position
 	petState = Enums.PetState.ROAMING
 	
 	GameEvents.UnpauseTimers.emit()
@@ -87,11 +92,13 @@ func eatFood(foodObject):
 
 func feedPet():
 	if (get_tree().get_nodes_in_group("Food").size() > 0):
-		GameEvents.PauseTimers.emit()
-		await get_tree().create_timer(2).timeout
-		targetPosn = get_tree().get_nodes_in_group("Food")[0].position
+		if (not isFoodReached):
+			GameEvents.PauseTimers.emit()
+			await get_tree().create_timer(2).timeout
+			targetPosn = get_tree().get_nodes_in_group("Food")[0].position
 	else:
 		petState = Enums.PetState.ROAMING
+
 
 func tickHunger():
 	type.onTickHunger()
@@ -116,7 +123,7 @@ func alineToBoundry():
 		targetPosn.x = leftBoundry.position.x
 
 
-func setDirection():
+func setSpriteDirection():
 	if (position.x < previousPosn.x and sprite.flip_h):
 		sprite.flip_h = false
 	elif (position.x > previousPosn.x and not sprite.flip_h):
@@ -148,14 +155,25 @@ func goToPosition(posn : Vector2):
 
 # Collision Singals ===================================================================================
 
-func objectCollision(area):
+func objectCollisionEnter(area):
 	if area.get_parent().implements.has(Interface.Food):
+		isFoodReached = true
 		eatFood(area.get_parent())
 
+func objectCollisionExit(area):
+	if area.get_parent().implements.has(Interface.Food):
+		isFoodReached = false
 
 func _on_left_object_coll_area_entered(area):
-	objectCollision(area)
+	objectCollisionEnter(area)
 
 
 func _on_right_object_coll_area_entered(area):
-	objectCollision(area)
+	objectCollisionEnter(area)
+
+
+func _on_left_object_coll_area_exited(area):
+	objectCollisionExit(area)
+
+func _on_right_object_coll_area_exited(area):
+	objectCollisionExit(area)

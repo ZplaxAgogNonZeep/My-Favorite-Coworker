@@ -357,7 +357,9 @@ shape = SubResource("RectangleShape2D_jamv8")
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
 [connection signal="timeout" from="Device/GameArea/PupPet/Type/MoveTimer" to="Device/GameArea/PupPet/Type" method="_on_move_timer_timeout"]
 [connection signal="area_entered" from="Device/GameArea/PupPet/LeftObjectColl" to="Device/GameArea/PupPet" method="_on_left_object_coll_area_entered"]
+[connection signal="area_exited" from="Device/GameArea/PupPet/LeftObjectColl" to="Device/GameArea/PupPet" method="_on_left_object_coll_area_exited"]
 [connection signal="area_entered" from="Device/GameArea/PupPet/RightObjectColl" to="Device/GameArea/PupPet" method="_on_right_object_coll_area_entered"]
+[connection signal="area_exited" from="Device/GameArea/PupPet/RightObjectColl" to="Device/GameArea/PupPet" method="_on_right_object_coll_area_exited"]
 
 [editable path="Device/GameArea/Background/Menu/MiniMenu/Play"]
 [editable path="Device/GameArea/Background/Menu/MiniMenu/Stats"]

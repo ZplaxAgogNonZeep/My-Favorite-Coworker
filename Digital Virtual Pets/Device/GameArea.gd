@@ -16,8 +16,8 @@ const TIMER_TIME := 5
 @export var foodInstance : PackedScene
 
 func _ready():
-	tickHunger()
-	tickJoy()
+	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
 	GameEvents.FeedPet.connect(feed)
 
 func _unhandled_input(event):

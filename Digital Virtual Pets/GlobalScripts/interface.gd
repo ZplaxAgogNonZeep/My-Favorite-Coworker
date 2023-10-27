@@ -36,6 +36,8 @@ class HighlightButton:
 		pass
 
 class MenuState:
+	var stateMachine : Node2D
+	
 	func takeInput(input : Enums.InputType):
 		pass
 

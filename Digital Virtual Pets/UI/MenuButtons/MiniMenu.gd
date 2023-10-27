@@ -4,6 +4,8 @@ var implements = [Interface.MenuState]
 
 @export var buttonController : Node
 
+var stateMachine : Node2D
+
 func _ready():
 	$Feed.ButtonSelected.connect(onFeedSelected)
 	$Play.ButtonSelected.connect(onPlaySelected)

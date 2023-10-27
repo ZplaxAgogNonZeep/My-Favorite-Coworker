@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=37 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://UI/MenuButtons/StatMenu.gd" id="20_wktbo"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="21_pqakk"]
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/Stage1/UnknownPet.png" id="22_b60mb"]
+[ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -428,6 +429,34 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+offset_left = 192.0
+offset_top = 296.0
+offset_right = 416.0
+offset_bottom = 520.0
+theme = ExtResource("13_d41y6")
+script = ExtResource("23_a34r3")
+buttonController = NodePath("GameMenu/ButtonController")
+
+[node name="BlankMenuSprite2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
+position = Vector2(112, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("21_pqakk")
+metadata/_edit_lock_ = true
+
+[node name="GameMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 224.0
+
+[node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+script = ExtResource("11_5bsub")
+
+[node name="MiniGameContainer" type="Panel" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
+layout_mode = 0
+offset_right = 224.0
+offset_bottom = 224.0
+
 [node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar") groups=["Pet"]]
 position = Vector2(0, 32)
 script = ExtResource("6_xxhv2")
@@ -436,9 +465,6 @@ rightBoundry = NodePath("../Markers/RightBoundry")
 sprite = NodePath("Sprite")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
-roamSpeed = null
-personality = null
-abilityStats = null
 
 [node name="Type" type="Node" parent="Device/GameArea/PupPet"]
 script = ExtResource("7_4237e")

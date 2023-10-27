@@ -6,6 +6,7 @@ var stateMachine : Node2D
 
 func initializeMenu():
 		visible = true
+		GameEvents.PauseGame.emit()
 		
 		if (get_tree().get_nodes_in_group("Pet").size() > 0):
 			var pet = get_tree().get_nodes_in_group("Pet")[0]
@@ -27,6 +28,8 @@ func exitMenu():
 	$End/Value.text = "00"
 	$Spd/Value.text = "00"
 	$Bal/Value.text = "00"
+	
+	GameEvents.UnpauseGame.emit()
 
 
 func takeInput(input : Enums.InputType):

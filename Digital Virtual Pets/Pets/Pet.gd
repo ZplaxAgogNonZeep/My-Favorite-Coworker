@@ -36,6 +36,7 @@ const personalityModifiers : Dictionary = {
 var hungerValue : int = 100
 var joyValue : int = 100
 var petState := Enums.PetState.ROAMING
+var stateOnUnpause : Enums.PetState
 var isRoaming := false
 var isFoodReached := false
 var traumaCount := 0
@@ -44,8 +45,8 @@ func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
 	GameEvents.FoodPlaced.connect(feedPet)
-	GameEvents.PauseGame.connect()
-	GameEvents.UnpauseGame.connect()
+	GameEvents.PauseGame.connect(gamePaused)
+	GameEvents.UnpauseGame.connect(gameUnpaused)
 	
 	hungerBar.updateBar(hungerValue, MAX_HUNGER)
 	joyBar.updateBar(joyValue, MAX_JOY)
@@ -93,10 +94,11 @@ func eatFood(foodObject):
 # Events ===========================================================================================
 
 func gamePaused():
-	pass
+	stateOnUnpause = petState
+	petState = Enums.PetState.MENU
 
 func gameUnpaused():
-	pass
+	petState = stateOnUnpause
 
 func feedPet():
 	if (get_tree().get_nodes_in_group("Food").size() > 0):
@@ -123,6 +125,9 @@ func tickJoy():
 
 
 # Utility Functions ================================================================================
+
+func pauseAllTimers():
+	pass
 
 func alineToBoundry():
 	if (targetPosn.x > rightBoundry.position.x):

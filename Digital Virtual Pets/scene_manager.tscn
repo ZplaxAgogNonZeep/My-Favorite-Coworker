@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=39 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/Stage1/UnknownPet.png" id="22_b60mb"]
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
+[ext_resource type="Script" path="res://Games/Guess/GuessGame.gd" id="25_nye5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -482,6 +483,12 @@ layout_mode = 0
 offset_right = 224.0
 offset_bottom = 224.0
 metadata/_edit_lock_ = true
+
+[node name="GuessGame" type="Control" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer"]
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("25_nye5e")
 
 [node name="Label" type="Label" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 layout_mode = 0

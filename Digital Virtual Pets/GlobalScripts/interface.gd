@@ -20,8 +20,7 @@ class PetType:
 
 class Food:
 	var feedAmount : int
-	
-	
+
 
 class HighlightButton:
 	var isHighlighted
@@ -46,6 +45,16 @@ class MenuState:
 	
 	func takeInput(input : Enums.InputType):
 		pass
+
+class MiniGame:
+	
+	func startGame():
+		pass
+	
+	func endGame():
+		pass
+
+# General Function =================================================================================
 
 func _ready():
 	var allLoadedNodes = getAllDecendants(get_tree().root)

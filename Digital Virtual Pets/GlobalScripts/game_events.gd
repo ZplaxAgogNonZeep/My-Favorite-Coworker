@@ -11,6 +11,7 @@ signal TickHunger
 signal TickJoy
 
 # Game Events
+signal SpawnPetOnStart
 signal NewPetSpawned
 signal EvolveCheck
 

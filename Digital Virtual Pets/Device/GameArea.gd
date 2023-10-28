@@ -19,10 +19,10 @@ const TIMER_TIME := 5
 var evolveInterval = 30
 
 func _ready():
-	print("Game Area Ready Called")
 	GameEvents.NewPetSpawned.connect(petSpawned)
 	GameEvents.FeedPet.connect(feed)
 	
+	GameEvents.SpawnPetOnStart.emit()
 
 # Events ===========================================================================================
 
@@ -33,7 +33,6 @@ func feed():
 	add_child(food)
 
 func petSpawned():
-	print("Starting Timers")
 	randomize()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
 	randomize()
@@ -43,7 +42,6 @@ func petSpawned():
 # Timer Controls ===================================================================================
 
 func tickHunger():
-	print("Game ticks hunger")
 	GameEvents.TickHunger.emit()
 	randomize()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)

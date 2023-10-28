@@ -13,12 +13,12 @@ var implements = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if not activePet:
-		await get_tree().create_timer(1).timeout
-		# RACE CONDITION
-		spawnNewPet()
+	GameEvents.SpawnPetOnStart.connect(spawnPetOnStart)
 	
 
+func spawnPetOnStart():
+	if (not activePet):
+		spawnNewPet()
 
 func spawnNewPet():
 	var newPet = respawnPet.instantiate()
@@ -28,7 +28,6 @@ func spawnNewPet():
 	
 	activePet = newPet
 	call_deferred("add_child", activePet)
-	print("Game SHOULD emit pet spawned")
 	GameEvents.NewPetSpawned.emit()
 	
 

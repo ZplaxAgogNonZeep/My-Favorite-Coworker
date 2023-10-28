@@ -3,7 +3,7 @@ extends Node2D
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 
-const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
 
 const personalityModifiers : Dictionary = {
 	Enums.Personality.MEAN : [1,1,0,-1],
@@ -22,26 +22,27 @@ const personalityModifiers : Dictionary = {
 @export var sprite : AnimatedSprite2D
 @export_category("Pet Values")
 @export var roamSpeed := .5
-@export var personality : Enums.Personality # SET ON SPAWN
-@export var abilityStats : Dictionary = {
+@export var personality : Enums.Personality # Transfered
+@export var abilityStats : Dictionary = { # Transfered
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
 	Enums.AbilityStat.BAL: 0
 	}
 
-var hungerValue : int = 100
-var joyValue : int = 100
+var hungerValue : int = 100 # Transfered
+var joyValue : int = 100 # Transfered
 var petState := Enums.PetState.ROAMING
 var stateOnUnpause : Enums.PetState
 var isRoaming := false
 var isFoodReached := false
-var traumaCount := 0
+var traumaCount := 0 # Transfered
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
 	GameEvents.TickJoy.connect(tickJoy)
 	GameEvents.FoodPlaced.connect(feedPet)
+	GameEvents.EvolveCheck.connect(evolvePet)
 	GameEvents.PauseGame.connect(gamePaused)
 	GameEvents.UnpauseGame.connect(gameUnpaused)
 	
@@ -148,6 +149,11 @@ func neglectTimeout():
 			GameEvents.PetDied.emit()
 		else:
 			$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1])
+
+func evolvePet():
+	print("Evolve singal received")
+	if (type.getEvolvePet() != null):
+		petManager.evolvePet(type.getEvolvePet())
 
 # Utility Functions ================================================================================
 

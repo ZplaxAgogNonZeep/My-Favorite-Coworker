@@ -32,8 +32,29 @@ func spawnNewPet():
 	GameEvents.NewPetSpawned.emit()
 
 
-func evolvePet():
-	pass
+func evolvePet(evolveTarget: PackedScene):
+	GameEvents.ResetAllTimers
+	var transferVar = [activePet.hungerValue, 
+						activePet.joyValue, 
+						activePet.traumaCount, 
+						activePet.personality,
+						activePet.abilityStats]
+	
+	# Probably need to find a way to transfer unique variables here
+	
+	activePet.queue_free()
+	var evolvedPet = evolveTarget.instantiate()
+	
+	evolvedPet.position = petSpawnPoint.position
+	evolvedPet.hungerValue = transferVar[0]
+	evolvedPet.joyValue = transferVar[1]
+	evolvedPet.traumaCount = transferVar[2]
+	evolvedPet.personality = transferVar[3]
+	evolvedPet.abilityStats = transferVar[4]
+	
+	activePet = evolvedPet
+	call_deferred("add_child", activePet)
+	GameEvents.NewPetSpawned
 
 func killPet():
 	print("Pet has Died!")

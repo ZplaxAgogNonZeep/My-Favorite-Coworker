@@ -2,6 +2,7 @@ extends Node
 
 class PetType:
 	var petName : String
+	var evolvesTo : Array[PackedScene]
 	
 	func roamBehavior():
 		pass
@@ -17,6 +18,9 @@ class PetType:
 	
 	func onEatFood():
 		pass
+	
+	func getEvolvePet():
+		return null
 
 class Food:
 	var feedAmount : int

@@ -3,6 +3,8 @@ extends Node2D
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
+
 const personalityModifiers : Dictionary = {
 	Enums.Personality.MEAN : [1,1,0,-1],
 	Enums.Personality.CALM : [-1,0,1,1],
@@ -85,6 +87,14 @@ func eatFood(foodObject):
 	
 	GameEvents.UnpauseTimers.emit()
 
+func startNeglectTimer():
+	if traumaCount > 5:
+		traumaCount = 5
+	
+	if $Type/NeglectTimer.time_left == 0:
+		print("Neglect Timer called at trauma ", traumaCount)
+		$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount])
+
 
 # Events ===========================================================================================
 
@@ -106,19 +116,38 @@ func feedPet():
 
 
 func tickHunger():
-	print("Pet ticks hunger")
-	type.onTickHunger()
-	randomize()
-	hungerValue -= randi_range(1, 5)
-	petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	if (hungerValue > 0):
+		type.onTickHunger()
+		randomize()
+		hungerValue -= randi_range(1, 5)
+		
+		if hungerValue <= 0:
+			hungerValue = 0
+			traumaCount += 1
+			startNeglectTimer()
+		
+		petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
 
 
 func tickJoy():
-	type.onTickJoy()
-	randomize()
-	joyValue -= randi_range(0, 5)
-	petManager.joyBar.updateBar(joyValue, MAX_JOY)
+	if (joyValue > 0):
+		type.onTickJoy()
+		randomize()
+		joyValue -= randi_range(0, 5)
+		if joyValue <= 0:
+			joyValue = 0
+			traumaCount += 1
+			startNeglectTimer()
+		petManager.joyBar.updateBar(joyValue, MAX_JOY)
 
+func neglectTimeout():
+	print("Neglect timedout with trauma at ", traumaCount)
+	if hungerValue <= 0 or joyValue <= 0:
+		traumaCount += 1
+		if traumaCount > 5:
+			GameEvents.PetDied.emit()
+		else:
+			$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1])
 
 # Utility Functions ================================================================================
 

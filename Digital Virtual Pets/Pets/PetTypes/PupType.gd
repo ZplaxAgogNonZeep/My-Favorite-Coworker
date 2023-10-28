@@ -10,7 +10,6 @@ var petName := "Pup"
 
 func roamBehavior():
 	if not get_parent().isRoaming and $MoveTimer.is_stopped():
-		print("Roam behavior called")
 		randomize()
 		$MoveTimer.start(randf_range(waitIntervalMin, waitIntervalMax))
 
@@ -27,5 +26,4 @@ func onEatFood():
 	pass
 
 func _on_move_timer_timeout():
-	print("move timeout")
 	get_parent().goToPosition(get_parent().getNextPosition())

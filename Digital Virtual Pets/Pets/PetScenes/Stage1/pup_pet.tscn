@@ -35,6 +35,9 @@ script = ExtResource("2_v4c75")
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("3_74jdq")
 
+[node name="NeglectTimer" type="Timer" parent="Type"]
+script = ExtResource("3_74jdq")
+
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 scale = Vector2(0.25, 0.25)
@@ -60,6 +63,7 @@ position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
 [connection signal="area_entered" from="LeftObjectColl" to="." method="_on_left_object_coll_area_entered"]
 [connection signal="area_exited" from="LeftObjectColl" to="." method="_on_left_object_coll_area_exited"]
 [connection signal="area_entered" from="RightObjectColl" to="." method="_on_right_object_coll_area_entered"]

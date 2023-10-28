@@ -14,6 +14,7 @@ var implements = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.SpawnPetOnStart.connect(spawnPetOnStart)
+	GameEvents.PetDied.connect(killPet)
 	
 
 func spawnPetOnStart():
@@ -29,7 +30,7 @@ func spawnNewPet():
 	activePet = newPet
 	call_deferred("add_child", activePet)
 	GameEvents.NewPetSpawned.emit()
-	
+
 
 func evolvePet():
 	pass

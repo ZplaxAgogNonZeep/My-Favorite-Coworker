@@ -14,6 +14,7 @@ signal TickJoy
 signal SpawnPetOnStart
 signal NewPetSpawned
 signal EvolveCheck
+signal PetDied
 
 signal FeedPet
 signal FoodPlaced

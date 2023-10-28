@@ -10,19 +10,14 @@ const personalityModifiers : Dictionary = {
 	Enums.Personality.AIRHEAD : [0,0,0,0]
 	}# Order of Stats follow order in enum: [POW, END, SPD, BAL]
 
-@onready var gameArea = get_parent()
+@onready var petManager = get_parent()
 @onready var type := get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position
 @onready var previousPosn := position
 @onready var defaultPosition := position
 
 @export_category("Object References")
-@export var leftBoundry : Marker2D
-@export var rightBoundry : Marker2D
 @export var sprite : AnimatedSprite2D
-# These two should probably be moved to being instanced when the pet is spawned in
-@export var hungerBar : Node2D
-@export var joyBar : Node2D
 @export_category("Pet Values")
 @export var roamSpeed := .5
 @export var personality : Enums.Personality
@@ -48,8 +43,8 @@ func _ready():
 	GameEvents.PauseGame.connect(gamePaused)
 	GameEvents.UnpauseGame.connect(gameUnpaused)
 	
-	hungerBar.updateBar(hungerValue, MAX_HUNGER)
-	joyBar.updateBar(joyValue, MAX_JOY)
+	petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	petManager.joyBar.updateBar(joyValue, MAX_JOY)
 
 
 func _process(delta):
@@ -82,7 +77,7 @@ func eatFood(foodObject):
 	if hungerValue > MAX_HUNGER:
 		hungerValue = MAX_HUNGER
 	
-	hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
 	
 	foodObject.queue_free()
 	targetPosn = position
@@ -114,14 +109,14 @@ func tickHunger():
 	type.onTickHunger()
 	randomize()
 	hungerValue -= randi_range(1, 5)
-	hungerBar.updateBar(hungerValue, MAX_HUNGER)
+	petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
 
 
 func tickJoy():
 	type.onTickJoy()
 	randomize()
 	joyValue -= randi_range(0, 5)
-	joyBar.updateBar(joyValue, MAX_JOY)
+	petManager.joyBar.updateBar(joyValue, MAX_JOY)
 
 
 # Utility Functions ================================================================================
@@ -130,10 +125,10 @@ func pauseAllTimers():
 	pass
 
 func alineToBoundry():
-	if (targetPosn.x > rightBoundry.position.x):
-		targetPosn.x = rightBoundry.position.x
-	if (targetPosn.x < leftBoundry.position.x):
-		targetPosn.x = leftBoundry.position.x
+	if (targetPosn.x > petManager.rightBoundry.position.x):
+		targetPosn.x = petManager.rightBoundry.position.x
+	if (targetPosn.x < petManager.leftBoundry.position.x):
+		targetPosn.x = petManager.leftBoundry.position.x
 
 
 func setSpriteDirection():
@@ -152,10 +147,10 @@ func getNextPosition():
 	var RightMostPosn = position.x + 48
 	var LeftMostPosn = position.x - 48
 	
-	if (RightMostPosn > rightBoundry.position.x):
-		RightMostPosn = rightBoundry.position.x
-	if (LeftMostPosn < leftBoundry.position.x):
-		LeftMostPosn = leftBoundry.position.x
+	if (RightMostPosn > petManager.rightBoundry.position.x):
+		RightMostPosn = petManager.rightBoundry.position.x
+	if (LeftMostPosn < petManager.leftBoundry.position.x):
+		LeftMostPosn = petManager.leftBoundry.position.x
 	randomize()
 	return Vector2(randi_range(RightMostPosn, LeftMostPosn), position.y)
 

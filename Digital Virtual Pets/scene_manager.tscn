@@ -1,17 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=35 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
 [ext_resource type="Texture2D" uid="uid://cxp7kadfow6y7" path="res://Assets/Art/PlaceHolders/background.png" id="2_4ghtk"]
-[ext_resource type="Texture2D" uid="uid://ojee7m82c32h" path="res://Assets/Art/PlaceHolders/AgumonSprite.png" id="3_rmlcu"]
 [ext_resource type="Script" path="res://Device/GameArea.gd" id="3_ymaw0"]
 [ext_resource type="Script" path="res://Device/Background.gd" id="4_48a5c"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://Objects/InstancedScenes/meat.tscn" id="4_s2fvp"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://UI/Fonts/MeterLabelTheme.tres" id="6_2f3jj"]
 [ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://Assets/Art/Aesprite/UI/Icons/MeatIcon.png" id="6_ciosv"]
 [ext_resource type="Script" path="res://UI/HeartBar.gd" id="6_rciw2"]
-[ext_resource type="Script" path="res://Pets/Pet.gd" id="6_xxhv2"]
-[ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="7_4237e"]
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://Assets/Art/Aesprite/UI/Icons/JoyIcon.png" id="7_hboao"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://Assets/Art/Aesprite/UI/Heart-Sheet.png" id="10_7iaaw"]
 [ext_resource type="Script" path="res://UI/MenuButtons/MiniMenu.gd" id="11_1yuup"]
@@ -28,6 +25,8 @@
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
 [ext_resource type="Script" path="res://Games/Guess/GuessGame.gd" id="25_nye5e"]
+[ext_resource type="Script" path="res://Pets/PetManager.gd" id="26_a6kjk"]
+[ext_resource type="PackedScene" uid="uid://bpcwq03jqltcn" path="res://Pets/PetScenes/Stage1/pup_pet.tscn" id="27_usxi4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -95,24 +94,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rjrme"]
-atlas = ExtResource("3_rmlcu")
-region = Rect2(0, 0, 160, 160)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_prxbw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rjrme")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
-size = Vector2(16, 16)
-
 [node name="SceneManager" type="Node2D"]
 
 [node name="Device" type="Node2D" parent="."]
@@ -124,33 +105,19 @@ position = Vector2(0, -256)
 texture = ExtResource("1_momwt")
 metadata/_edit_lock_ = true
 
-[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "activePet", "background", "timers", "boundries", "ObjectSpawnLocations", "joyBar", "hungerBar")]
+[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "petManager", "menuManager", "timers", "boundries", "ObjectSpawnLocations", "joyBar", "hungerBar")]
 position = Vector2(0, -232)
 script = ExtResource("3_ymaw0")
 device = NodePath("..")
-activePet = NodePath("PupPet")
-background = NodePath("MenuManager")
+petManager = NodePath("PetManager")
+menuManager = NodePath("MenuManager")
 timers = NodePath("GameTimers")
-boundries = [NodePath("Markers/LeftBoundry"), NodePath("Markers/RightBoundry")]
-ObjectSpawnLocations = NodePath("Markers/SpawnLocationA")
+boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
+ObjectSpawnLocations = NodePath("PetManager/Markers/SpawnLocationA")
 joyBar = NodePath("MenuManager/StatusBars/JoyBar")
 hungerBar = NodePath("MenuManager/StatusBars/Hungerbar")
 foodInstance = ExtResource("4_s2fvp")
 metadata/_edit_lock_ = true
-
-[node name="Markers" type="Node2D" parent="Device/GameArea"]
-metadata/_edit_lock_ = true
-
-[node name="LeftBoundry" type="Marker2D" parent="Device/GameArea/Markers"]
-position = Vector2(-88, 32)
-gizmo_extents = 64.0
-
-[node name="RightBoundry" type="Marker2D" parent="Device/GameArea/Markers"]
-position = Vector2(88, 32)
-gizmo_extents = 64.0
-
-[node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea/Markers"]
-position = Vector2(-72, -48)
 
 [node name="GameTimers" type="Node" parent="Device/GameArea"]
 
@@ -433,6 +400,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+visible = false
 offset_left = 192.0
 offset_top = 296.0
 offset_right = 416.0
@@ -501,52 +469,35 @@ text = "Pick a game!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PupPet" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("leftBoundry", "rightBoundry", "sprite", "hungerBar", "joyBar") groups=["Pet"]]
-position = Vector2(0, 32)
-script = ExtResource("6_xxhv2")
-leftBoundry = NodePath("../Markers/LeftBoundry")
-rightBoundry = NodePath("../Markers/RightBoundry")
-sprite = NodePath("Sprite")
+[node name="PetManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "petSpawnPoint")]
+script = ExtResource("26_a6kjk")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
+leftBoundry = NodePath("Markers/LeftBoundry")
+rightBoundry = NodePath("Markers/RightBoundry")
+respawnPet = ExtResource("27_usxi4")
+petSpawnPoint = NodePath("Markers/PetSpawnPoint")
 
-[node name="Type" type="Node" parent="Device/GameArea/PupPet"]
-script = ExtResource("7_4237e")
-
-[node name="MoveTimer" type="Timer" parent="Device/GameArea/PupPet/Type"]
-script = ExtResource("20_5lfdq")
-
-[node name="Sprite" type="AnimatedSprite2D" parent="Device/GameArea/PupPet"]
-position = Vector2(0, -16)
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_prxbw")
-offset = Vector2(0, -15)
-
-[node name="LeftObjectColl" type="Area2D" parent="Device/GameArea/PupPet"]
-collision_layer = 0
-collision_mask = 2
+[node name="Markers" type="Node2D" parent="Device/GameArea/PetManager"]
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PupPet/LeftObjectColl"]
-position = Vector2(-16, -8)
-shape = SubResource("RectangleShape2D_jamv8")
-
-[node name="RightObjectColl" type="Area2D" parent="Device/GameArea/PupPet"]
-collision_layer = 0
-collision_mask = 2
+[node name="PetSpawnPoint" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PupPet/RightObjectColl"]
-position = Vector2(16, -8)
-shape = SubResource("RectangleShape2D_jamv8")
+[node name="LeftBoundry" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(-88, 32)
+gizmo_extents = 64.0
+
+[node name="RightBoundry" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(88, 32)
+gizmo_extents = 64.0
+
+[node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(-72, -48)
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
-[connection signal="timeout" from="Device/GameArea/PupPet/Type/MoveTimer" to="Device/GameArea/PupPet/Type" method="_on_move_timer_timeout"]
-[connection signal="area_entered" from="Device/GameArea/PupPet/LeftObjectColl" to="Device/GameArea/PupPet" method="_on_left_object_coll_area_entered"]
-[connection signal="area_exited" from="Device/GameArea/PupPet/LeftObjectColl" to="Device/GameArea/PupPet" method="_on_left_object_coll_area_exited"]
-[connection signal="area_entered" from="Device/GameArea/PupPet/RightObjectColl" to="Device/GameArea/PupPet" method="_on_right_object_coll_area_entered"]
-[connection signal="area_exited" from="Device/GameArea/PupPet/RightObjectColl" to="Device/GameArea/PupPet" method="_on_right_object_coll_area_exited"]
 
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Stats"]

@@ -14,12 +14,18 @@ var implements = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not activePet:
-		spawnPet()
+		spawnNewPet()
 	
 
 
-func spawnPet():
+func spawnNewPet():
 	var newPet = respawnPet.instantiate()
 	newPet.position = petSpawnPoint.position
+	
+	newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
+	
 	activePet = newPet
 	add_child(newPet)
+
+func evolvePet():
+	pass

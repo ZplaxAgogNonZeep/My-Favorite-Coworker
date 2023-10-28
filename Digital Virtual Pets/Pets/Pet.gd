@@ -20,7 +20,7 @@ const personalityModifiers : Dictionary = {
 @export var sprite : AnimatedSprite2D
 @export_category("Pet Values")
 @export var roamSpeed := .5
-@export var personality : Enums.Personality
+@export var personality : Enums.Personality # SET ON SPAWN
 @export var abilityStats : Dictionary = {
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,

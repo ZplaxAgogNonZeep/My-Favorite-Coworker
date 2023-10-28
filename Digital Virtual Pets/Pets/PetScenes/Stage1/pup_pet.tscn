@@ -23,9 +23,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(16, 16)
 
-[node name="PupPet" type="Node2D" groups=["Pet"]]
+[node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite") groups=["Pet"]]
 position = Vector2(0, 32)
 script = ExtResource("1_3faag")
+sprite = NodePath("Sprite")
+personality = 3
 
 [node name="Type" type="Node" parent="."]
 script = ExtResource("2_v4c75")

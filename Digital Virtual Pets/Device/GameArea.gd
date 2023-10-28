@@ -16,11 +16,12 @@ const TIMER_TIME := 5
 @export_category("Spawnable Objects")
 @export var foodInstance : PackedScene
 
+var evolveInterval = 30
+
 func _ready():
-	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
-	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	print("Game Area Ready Called")
+	GameEvents.NewPetSpawned.connect(petSpawned)
 	GameEvents.FeedPet.connect(feed)
-	
 	
 
 # Events ===========================================================================================
@@ -31,18 +32,32 @@ func feed():
 	food.position = ObjectSpawnLocations.position
 	add_child(food)
 
+func petSpawned():
+	print("Starting Timers")
+	randomize()
+	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	randomize()
+	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/EvolveTimer.start(evolveInterval)
+
 # Timer Controls ===================================================================================
 
 func tickHunger():
+	print("Game ticks hunger")
 	GameEvents.TickHunger.emit()
+	randomize()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 
 func tickJoy():
 	GameEvents.TickJoy.emit()
+	randomize()
 	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 
+func evolveCheck():
+	GameEvents.EvolveCheck.emit()
+	$GameTimers/EvolveTimer.start(evolveInterval)
 
 
 

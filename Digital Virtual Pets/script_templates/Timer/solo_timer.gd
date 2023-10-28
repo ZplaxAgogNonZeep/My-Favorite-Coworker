@@ -5,6 +5,7 @@ func _ready():
 	GameEvents.UnpauseTimers.connect(unpauseTimer)
 	GameEvents.PauseGame.connect(pauseTimer)
 	GameEvents.UnpauseGame.connect(unpauseTimer)
+	GameEvents.ResetAllTimers.connect(stopTimer)
 
 
 func pauseTimer():
@@ -13,3 +14,6 @@ func pauseTimer():
 
 func unpauseTimer():
 	paused = false
+
+func stopTimer():
+	stop()

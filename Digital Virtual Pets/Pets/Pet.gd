@@ -106,6 +106,7 @@ func feedPet():
 
 
 func tickHunger():
+	print("Pet ticks hunger")
 	type.onTickHunger()
 	randomize()
 	hungerValue -= randi_range(1, 5)

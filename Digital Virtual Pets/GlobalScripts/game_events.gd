@@ -1,14 +1,18 @@
 extends Node
 
+signal PauseGame
+signal UnpauseGame
+
 # Timer Events
 signal PauseTimers
 signal UnpauseTimers
+signal ResetAllTimers
 signal TickHunger
 signal TickJoy
 
 # Game Events
-signal PauseGame
-signal UnpauseGame
+signal NewPetSpawned
+signal EvolveCheck
 
 signal FeedPet
 signal FoodPlaced

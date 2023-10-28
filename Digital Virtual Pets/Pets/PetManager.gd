@@ -14,6 +14,8 @@ var implements = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not activePet:
+		await get_tree().create_timer(1).timeout
+		# RACE CONDITION
 		spawnNewPet()
 	
 
@@ -25,7 +27,16 @@ func spawnNewPet():
 	newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
 	
 	activePet = newPet
-	add_child(newPet)
+	call_deferred("add_child", activePet)
+	print("Game SHOULD emit pet spawned")
+	GameEvents.NewPetSpawned.emit()
+	
 
 func evolvePet():
 	pass
+
+func killPet():
+	print("Pet has Died!")
+	GameEvents.ResetAllTimers.emit()
+	activePet.queue_free()
+	spawnNewPet()

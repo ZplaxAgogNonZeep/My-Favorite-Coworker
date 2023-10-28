@@ -3,7 +3,7 @@ extends Node2D
 @export
 var activePet : Node2D
 
-var chatSpeed := 1
+var chatSpeed := .1
 
 
 # Called when the node enters the scene tree for the first time.

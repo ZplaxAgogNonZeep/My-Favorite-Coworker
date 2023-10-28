@@ -127,6 +127,9 @@ script = ExtResource("20_5lfdq")
 [node name="JoyTimer" type="Timer" parent="Device/GameArea/GameTimers"]
 script = ExtResource("20_5lfdq")
 
+[node name="EvolveTimer" type="Timer" parent="Device/GameArea/GameTimers"]
+script = ExtResource("20_5lfdq")
+
 [node name="MenuManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu")]
 script = ExtResource("4_48a5c")
 miniMenu = NodePath("Menu/MiniMenu")
@@ -498,6 +501,7 @@ position = Vector2(-72, -48)
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
+[connection signal="timeout" from="Device/GameArea/GameTimers/EvolveTimer" to="Device/GameArea" method="evolveCheck"]
 
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Stats"]

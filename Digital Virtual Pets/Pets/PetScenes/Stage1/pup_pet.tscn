@@ -28,13 +28,6 @@ size = Vector2(16, 16)
 position = Vector2(0, 32)
 script = ExtResource("1_3faag")
 sprite = NodePath("Sprite")
-personality = 3
-abilityStats = {
-0: 4,
-1: 0,
-2: 0,
-3: 0
-}
 
 [node name="Type" type="Node" parent="."]
 script = ExtResource("2_v4c75")

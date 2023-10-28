@@ -22,14 +22,14 @@ const personalityModifiers : Dictionary = {
 @export var sprite : AnimatedSprite2D
 @export_category("Pet Values")
 @export var roamSpeed := .5
-@export var personality : Enums.Personality # Transfered
-@export var abilityStats : Dictionary = { # Transfered
+
+var abilityStats : Dictionary = { # Transfered
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
 	Enums.AbilityStat.BAL: 0
 	}
-
+var personality : Enums.Personality # Transfered
 var hungerValue : int = 100 # Transfered
 var joyValue : int = 100 # Transfered
 var petState := Enums.PetState.ROAMING

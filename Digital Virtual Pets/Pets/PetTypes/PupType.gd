@@ -11,7 +11,7 @@ var waitIntervalMin := 3.0
 
 var petName := "Pup"
 
-var tempEvolveCondition = true
+@export var tempEvolveCondition = true
 
 func roamBehavior():
 	if not get_parent().isRoaming and $MoveTimer.is_stopped():

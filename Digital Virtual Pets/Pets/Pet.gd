@@ -3,7 +3,7 @@ extends Node2D
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 
-const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [10, 10, 10, 10, 10] # [60, 50, 40, 30, 20]
 
 const personalityModifiers : Dictionary = {
 	Enums.Personality.MEAN : [1,1,0,-1],
@@ -32,11 +32,12 @@ var abilityStats : Dictionary = { # Transfered
 var personality : Enums.Personality # Transfered
 var hungerValue : int = 100 # Transfered
 var joyValue : int = 100 # Transfered
+var traumaCount := 0 # Transfered
+
 var petState := Enums.PetState.ROAMING
 var stateOnUnpause : Enums.PetState
 var isRoaming := false
 var isFoodReached := false
-var traumaCount := 0 # Transfered
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -196,6 +197,10 @@ func goToPosition(posn : Vector2):
 		position = posn
 	elif petState == Enums.PetState.ROAMING:
 		targetPosn = posn
+
+# Getters and Setters
+
+
 
 # Collision Singals ===================================================================================
 

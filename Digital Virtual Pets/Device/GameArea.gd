@@ -16,7 +16,7 @@ const TIMER_TIME := 5
 @export_category("Spawnable Objects")
 @export var foodInstance : PackedScene
 
-var evolveInterval = 30
+var evolveInterval = 15
 
 func _ready():
 	GameEvents.NewPetSpawned.connect(petSpawned)

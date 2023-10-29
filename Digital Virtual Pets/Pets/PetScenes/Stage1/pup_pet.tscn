@@ -32,6 +32,7 @@ sprite = NodePath("Sprite")
 [node name="Type" type="Node" parent="."]
 script = ExtResource("2_v4c75")
 evolvesTo = Array[PackedScene]([ExtResource("3_1x8ub")])
+tempEvolveCondition = false
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("3_74jdq")

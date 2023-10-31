@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="20_5lfdq"]
 [ext_resource type="Script" path="res://UI/MenuButtons/StatMenu.gd" id="20_wktbo"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="21_pqakk"]
-[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/Stage1/UnknownPet.png" id="22_b60mb"]
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/UnknownPet.png" id="22_beqik"]
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
 [ext_resource type="Script" path="res://Games/Guess/GuessGame.gd" id="25_nye5e"]
@@ -292,7 +292,6 @@ text = "STATS"
 sprite_frames = SubResource("SpriteFrames_qmpma")
 
 [node name="StatMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu"]
-visible = false
 offset_left = 192.0
 offset_top = 296.0
 offset_right = 416.0
@@ -307,10 +306,30 @@ scale = Vector2(4, 4)
 texture = ExtResource("21_pqakk")
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
-position = Vector2(152, 96)
+[node name="Display Sprite" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
+position = Vector2(152, 112)
 scale = Vector2(4, 4)
-texture = ExtResource("22_b60mb")
+texture = ExtResource("22_beqik")
+
+[node name="EvoHist0" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+position = Vector2(-12, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_beqik")
+
+[node name="EvoHist1" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+position = Vector2(-3.76, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_beqik")
+
+[node name="EvoHist2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+position = Vector2(4, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_beqik")
+
+[node name="EvoHist3" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+position = Vector2(12, -16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("22_beqik")
 
 [node name="Personality" type="Label" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
 layout_mode = 0

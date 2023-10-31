@@ -38,7 +38,8 @@ func evolvePet(evolveTarget: PackedScene):
 						activePet.joyValue, 
 						activePet.traumaCount, 
 						activePet.personality,
-						activePet.abilityStats]
+						activePet.abilityStats,
+						activePet.evolvedFromIcons + [activePet.iconSprite]]
 	
 	# Probably need to find a way to transfer unique variables here
 	
@@ -51,6 +52,8 @@ func evolvePet(evolveTarget: PackedScene):
 	evolvedPet.traumaCount = transferVar[2]
 	evolvedPet.personality = transferVar[3]
 	evolvedPet.abilityStats = transferVar[4]
+	print(transferVar[5])
+	evolvedPet.evolvedFromIcons = transferVar[5]
 	
 	activePet = evolvedPet
 	call_deferred("add_child", activePet)

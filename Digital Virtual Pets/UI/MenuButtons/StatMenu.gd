@@ -16,6 +16,15 @@ func initializeMenu():
 			$End/Value.text = str(pet.abilityStats[Enums.AbilityStat.END])
 			$Spd/Value.text = str(pet.abilityStats[Enums.AbilityStat.SPD])
 			$Bal/Value.text = str(pet.abilityStats[Enums.AbilityStat.BAL])
+			
+			$"Display Sprite".texture = pet.iconSprite
+			
+			var count = 0
+			for i in pet.evolvedFromIcons:
+				var iconSprite = get_node_or_null("Display Sprite/EvoHist" + str(count))
+				if iconSprite:
+					iconSprite.texture = i
+				
 
 
 func exitMenu():

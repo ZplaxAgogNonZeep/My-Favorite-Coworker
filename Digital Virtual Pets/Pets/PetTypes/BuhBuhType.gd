@@ -2,11 +2,10 @@ extends Node
 
 var implements = [Interface.PetType]
 
-
 var waitIntervalMax := 10.0
 var waitIntervalMin := 3.0
 
-var petName := "Buh"
+var petName := "BuhBuh"
 
 @export var tempEvolveCondition = true
 
@@ -28,10 +27,7 @@ func onEatFood():
 	pass
 
 func getEvolvePet():
-	if tempEvolveCondition:
-		return get_parent().evolvesTo[0]
-	else:
-		return null
+	return null
 
 func _on_move_timer_timeout():
 	get_parent().goToPosition(get_parent().getNextPosition())

@@ -20,8 +20,15 @@ const personalityModifiers : Dictionary = {
 
 @export_category("Object References")
 @export var sprite : AnimatedSprite2D
+@export var leftCollider : Area2D
+@export var rightCollider : Area2D
 @export_category("Pet Values")
+@export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
+@export_category("Misc References")
+@export var iconSprite : Texture2D
+
+var evolvedFromIcons : Array # Transfered
 
 var abilityStats : Dictionary = { # Transfered
 	Enums.AbilityStat.POW: 0, 

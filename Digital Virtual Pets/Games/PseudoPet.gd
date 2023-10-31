@@ -8,8 +8,10 @@ enum MovePhase {IDLE, MOVING, HOPPING, INDICATING}
 
 var phase : MovePhase = MovePhase.IDLE
 var speed : float
+var originalPosn : Vector2
 var startPosn : Vector2
 var endPosn : Vector2
+var repetitions : int
 
 func _process(delta):
 	match phase:
@@ -35,8 +37,14 @@ func setAtLocation(posn : Vector2):
 	pass
 
 
-func hop(numberOfTimes : int):
-	pass
+func hop(numberOfTimes : int, speed : float):
+	originalPosn = position
+	repetitions = numberOfTimes
+	endPosn = position + (Vector2.UP * 5)
+	startPosn = position
+	
+	phase = MovePhase.HOPPING
+	
 
 
 func setDirection(isRight : bool):
@@ -45,6 +53,7 @@ func setDirection(isRight : bool):
 
 func indicateDirection(isRight : bool):
 	speed = .5
+	originalPosn = position
 	startPosn = position
 	if isRight:
 		setDirection(isRight)

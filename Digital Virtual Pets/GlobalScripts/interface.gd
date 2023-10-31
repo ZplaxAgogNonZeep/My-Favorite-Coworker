@@ -50,11 +50,15 @@ class MenuState:
 		pass
 
 class MiniGame:
+	var gameRunning : bool
 	
-	func startGame():
+	func startGame(pet : Node2D):
 		pass
 	
 	func endGame():
+		pass
+	
+	func takeInput(input : Enums.InputType):
 		pass
 
 # General Function =================================================================================

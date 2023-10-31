@@ -56,6 +56,7 @@ func _ready():
 	
 	petManager.hungerBar.updateBar(hungerValue, MAX_HUNGER)
 	petManager.joyBar.updateBar(joyValue, MAX_JOY)
+	sprite.sprite_frames
 
 
 func _process(delta):

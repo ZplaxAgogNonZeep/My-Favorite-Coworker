@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2bbe7a4a3a8k"]
+
+[ext_resource type="Script" path="res://Games/PseudoPet.gd" id="1_o5scy"]
+[ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://Assets/AnimationFrames/Pets/Stage1/Buh.tres" id="2_qt2fo"]
+
+[node name="PseudoPet" type="Node2D"]
+position = Vector2(112, 144)
+script = ExtResource("1_o5scy")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("2_qt2fo")
+animation = &"Idle"
+offset = Vector2(0, -8)

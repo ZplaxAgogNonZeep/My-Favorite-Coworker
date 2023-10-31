@@ -37,8 +37,14 @@ func takeInput(input : Enums.InputType):
 		PlayState.GAME:
 			pass
 
+func getPet():
+	if (get_tree().get_nodes_in_group("Pet").size() > 0):
+		return get_tree().get_nodes_in_group("Pet")[0]
+	else:
+		return null
 
 func onGuessSelected():
 	print("Guess Game Selected")
+	if getPet():
+		$MiniGameContainer/GuessGame.startGame(getPet())
 	
-	pass

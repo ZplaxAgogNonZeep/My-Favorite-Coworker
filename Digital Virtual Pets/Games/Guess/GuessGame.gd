@@ -76,8 +76,8 @@ func onLose():
 	endGame()
 
 func endGame():
-	visible = false
 	playMenu.closeMenu()
+	queue_free()
 
 func takeInput(input : Enums.InputType):
 		if gameRunning:

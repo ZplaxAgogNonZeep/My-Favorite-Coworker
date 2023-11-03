@@ -4,6 +4,7 @@ var implements = [Interface.MenuState]
 enum PlayState {MENU, GAME}
 
 @export var buttonController : Node
+@export var miniGameList : Array[PackedScene]
 
 var stateMachine : Node2D
 var game : Control
@@ -48,8 +49,10 @@ func getPet():
 func onGuessSelected():
 	print("Guess Game Selected")
 	if getPet():
-		game = $MiniGameContainer/GuessGame
-		game.visible = true
-		$MiniGameContainer/GuessGame.startGame(getPet(), self)
+		game = miniGameList[0].instantiate()
+		$MiniGameContainer.add_child(game)
+		game.startGame(getPet(), self)
 		state = PlayState.GAME
+	else:
+		print("COULD NOT FIND PET")
 	

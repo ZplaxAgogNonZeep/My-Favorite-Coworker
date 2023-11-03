@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=35 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -24,12 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/UnknownPet.png" id="22_beqik"]
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
-[ext_resource type="Script" path="res://Games/Guess/GuessGame.gd" id="25_nye5e"]
+[ext_resource type="PackedScene" uid="uid://cxps8l5sseo8p" path="res://Games/Guess/guess_game.tscn" id="25_54tcl"]
 [ext_resource type="Script" path="res://Pets/PetManager.gd" id="26_a6kjk"]
-[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="26_mild3"]
 [ext_resource type="PackedScene" uid="uid://bpcwq03jqltcn" path="res://Pets/PetScenes/Stage1/pup_pet.tscn" id="27_usxi4"]
-[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="28_jp0a1"]
-[ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://Assets/Art/Aesprite/MiniGameAssets/Arrow.png" id="29_248kp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -450,6 +447,7 @@ offset_bottom = 520.0
 theme = ExtResource("13_d41y6")
 script = ExtResource("23_a34r3")
 buttonController = NodePath("GameMenu/ButtonController")
+miniGameList = Array[PackedScene]([ExtResource("25_54tcl")])
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
@@ -504,60 +502,6 @@ layout_mode = 0
 offset_right = 224.0
 offset_bottom = 224.0
 metadata/_edit_lock_ = true
-
-[node name="GuessGame" type="Control" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer" node_paths=PackedStringArray("status")]
-visible = false
-anchors_preset = 0
-offset_right = 224.0
-offset_bottom = 224.0
-script = ExtResource("25_nye5e")
-status = NodePath("Status")
-intervalTime = 1.0
-joyIncrement = 50
-statIncrement = 2
-
-[node name="BlankMenuSprite2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame"]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
-texture = ExtResource("21_pqakk")
-metadata/_edit_lock_ = true
-
-[node name="PseudoPet" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame" instance=ExtResource("26_mild3")]
-position = Vector2(112, 120)
-
-[node name="GameName" type="Label" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 34.0
-theme = ExtResource("28_jp0a1")
-text = "Guess the Direction!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Status" type="Label" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
-offset_right = 216.0
-offset_bottom = 169.0
-theme = ExtResource("28_jp0a1")
-theme_override_font_sizes/font_size = 30
-text = "GUESS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LeftArrow" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame"]
-position = Vector2(32, 96)
-scale = Vector2(3, 3)
-texture = ExtResource("29_248kp")
-
-[node name="RightArrow" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu/MiniGameContainer/GuessGame"]
-position = Vector2(192, 96)
-scale = Vector2(3, 3)
-texture = ExtResource("29_248kp")
-flip_h = true
 
 [node name="PetManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "petSpawnPoint")]
 script = ExtResource("26_a6kjk")

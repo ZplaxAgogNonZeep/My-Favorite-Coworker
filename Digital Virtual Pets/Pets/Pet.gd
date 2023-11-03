@@ -97,6 +97,14 @@ func eatFood(foodObject):
 	
 	GameEvents.UnpauseTimers.emit()
 
+func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease):
+	joyValue += joyIncrement
+	
+	if joyIncrement > MAX_JOY:
+		joyValue = MAX_JOY
+	
+	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
+
 func startNeglectTimer():
 	if traumaCount > 5:
 		traumaCount = 5
@@ -185,6 +193,8 @@ func setSpriteDirection():
 
 func personalityMod(statToIncrease : Enums.AbilityStat, value):
 	var modifiedValue = value + personalityModifiers[personality][statToIncrease]
+	if modifiedValue < 0:
+		modifiedValue = 0
 	return modifiedValue
 
 

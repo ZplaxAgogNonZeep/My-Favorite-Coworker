@@ -51,6 +51,8 @@ class MenuState:
 
 class MiniGame:
 	var gameRunning : bool
+	var joyIncrement : int
+	var statIncrement : int
 	
 	func startGame(pet : Node2D):
 		pass

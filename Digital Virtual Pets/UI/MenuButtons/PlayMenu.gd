@@ -6,7 +6,7 @@ enum PlayState {MENU, GAME}
 @export var buttonController : Node
 
 var stateMachine : Node2D
-
+var game : Control
 var state = PlayState.MENU
 
 func _ready():
@@ -23,6 +23,8 @@ func exitMenu():
 	buttonController.setActive(false)
 	GameEvents.UnpauseGame.emit()
 
+func closeMenu():
+	stateMachine.setState(stateMachine.MenuState.MINIMIZED)
 
 func takeInput(input : Enums.InputType):
 	match state:
@@ -35,7 +37,7 @@ func takeInput(input : Enums.InputType):
 				Enums.InputType.RIGHTBUTTON:
 					buttonController.cycle(1)
 		PlayState.GAME:
-			pass
+			game.takeInput(input)
 
 func getPet():
 	if (get_tree().get_nodes_in_group("Pet").size() > 0):
@@ -46,5 +48,8 @@ func getPet():
 func onGuessSelected():
 	print("Guess Game Selected")
 	if getPet():
-		$MiniGameContainer/GuessGame.startGame(getPet())
+		game = $MiniGameContainer/GuessGame
+		game.visible = true
+		$MiniGameContainer/GuessGame.startGame(getPet(), self)
+		state = PlayState.GAME
 	

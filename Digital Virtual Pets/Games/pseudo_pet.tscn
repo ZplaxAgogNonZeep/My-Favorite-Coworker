@@ -4,7 +4,6 @@
 [ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://Assets/AnimationFrames/Pets/Stage1/Buh.tres" id="2_qt2fo"]
 
 [node name="PseudoPet" type="Node2D"]
-position = Vector2(112, 144)
 script = ExtResource("1_o5scy")
 metadata/_edit_group_ = true
 

@@ -24,6 +24,11 @@ func _ready():
 		statMenu.stateMachine = self
 	else:
 		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
+	
+	if playMenu.implements.has(Interface.MenuState):
+		playMenu.stateMachine = self
+	else:
+		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

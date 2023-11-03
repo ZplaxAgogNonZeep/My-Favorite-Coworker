@@ -12,6 +12,7 @@ var originalPosn : Vector2
 var startPosn : Vector2
 var endPosn : Vector2
 var repetitions : int
+var activeTween : Tween
 
 func _process(delta):
 	match phase:
@@ -29,23 +30,60 @@ func _process(delta):
 				startPosn = endPosn
 				endPosn = tempPosn
 
-func tweenToLocation(posn : Vector2, speed):
-	pass
+func tweenToLocation(posn : Vector2, speed : float):
+	phase = MovePhase.MOVING
+	if activeTween:
+		activeTween.stop()
+		position = originalPosn
+	
+	originalPosn = position
+	startPosn = position
+	endPosn = posn
+	self.speed = speed
+	
+	activeTween = get_tree().create_tween()
+	activeTween.tween_property(self, "position", endPosn, speed).connect("finished", moveTweenComplete)
 
+func moveTweenComplete():
+	phase = MovePhase.IDLE
+	activeTween.stop()
+	activeTween = null
 
 func setAtLocation(posn : Vector2):
-	pass
+	position = posn
+	originalPosn = posn
 
 
-func hop(numberOfTimes : int, speed : float):
+func hop(numberOfTimes : int = 1):
+	if activeTween:
+		activeTween.stop()
+	self.speed = .1
 	originalPosn = position
 	repetitions = numberOfTimes
-	endPosn = position + (Vector2.UP * 5)
+	endPosn = position + (Vector2.UP * 10)
 	startPosn = position
 	
 	phase = MovePhase.HOPPING
+	repetitions -= 1
+	activeTween = get_tree().create_tween()
+	activeTween.tween_property(self, "position", endPosn, speed).connect("finished", endHop)
 	
 
+func endHop():
+	activeTween = get_tree().create_tween()
+	activeTween.tween_property(self, "position", startPosn, speed).connect("finished", hopComplete)
+
+func hopComplete():
+	if repetitions > 0:
+		if activeTween:
+			activeTween.stop()
+		await get_tree().create_timer(.7)
+		activeTween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT)
+		activeTween.tween_property(self, "position", endPosn, speed).connect("finished", endHop)
+		repetitions -= 1
+		
+	else:
+		phase = MovePhase.IDLE
 
 func setDirection(isRight : bool):
 	sprite.flip_h = isRight
@@ -64,4 +102,7 @@ func indicateDirection(isRight : bool):
 		endPosn = position + (Vector2.LEFT * 5)
 	
 	phase = MovePhase.INDICATING
-	
+
+func stopIndicatingDirection():
+	phase = MovePhase.IDLE
+	position = originalPosn

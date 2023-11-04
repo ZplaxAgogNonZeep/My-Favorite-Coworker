@@ -5,7 +5,7 @@ var implements = [Interface.PetType]
 var waitIntervalMax := 10.0
 var waitIntervalMin := 3.0
 
-var petName := "BuhBuh"
+var petName := "NuhBuh"
 
 func roamBehavior():
 	if not get_parent().isRoaming and $MoveTimer.is_stopped():

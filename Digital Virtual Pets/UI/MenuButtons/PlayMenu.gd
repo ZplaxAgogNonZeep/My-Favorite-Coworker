@@ -14,6 +14,7 @@ func _ready():
 	$GameMenu/Guess.ButtonSelected.connect(onGuessSelected)
 
 func initializeMenu():
+	state = PlayState.MENU
 	visible = true
 	GameEvents.PauseGame.emit()
 	buttonController.setActive(true)
@@ -21,6 +22,7 @@ func initializeMenu():
 
 func exitMenu():
 	visible = false
+	game = null
 	buttonController.setActive(false)
 	GameEvents.UnpauseGame.emit()
 
@@ -38,7 +40,8 @@ func takeInput(input : Enums.InputType):
 				Enums.InputType.RIGHTBUTTON:
 					buttonController.cycle(1)
 		PlayState.GAME:
-			game.takeInput(input)
+			if game:
+				game.takeInput(input)
 
 func getPet():
 	if (get_tree().get_nodes_in_group("Pet").size() > 0):

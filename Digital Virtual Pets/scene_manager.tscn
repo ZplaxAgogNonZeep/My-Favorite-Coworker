@@ -259,6 +259,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="MiniMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+z_index = 1
 layout_mode = 0
 offset_left = -112.0
 offset_top = -112.0
@@ -305,6 +306,7 @@ sprite_frames = SubResource("SpriteFrames_qmpma")
 
 [node name="StatMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu"]
 visible = false
+z_index = 1
 layout_mode = 0
 offset_left = -112.0
 offset_top = -112.0
@@ -452,6 +454,7 @@ vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 visible = false
+z_index = 1
 layout_mode = 0
 offset_left = -112.0
 offset_top = -112.0

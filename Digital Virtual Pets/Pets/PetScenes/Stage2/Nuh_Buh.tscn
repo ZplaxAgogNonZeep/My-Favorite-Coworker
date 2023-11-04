@@ -1,38 +1,35 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpcwq03jqltcn"]
+[gd_scene load_steps=7 format=3 uid="uid://c7p8e2mggcbhx"]
 
-[ext_resource type="Script" path="res://Pets/Pet.gd" id="1_3faag"]
-[ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="2_v4c75"]
-[ext_resource type="Texture2D" uid="uid://car1sni0ana1y" path="res://Assets/Art/Aesprite/Pets/Stage1/Buh.png" id="2_yvamj"]
-[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="3_74jdq"]
-[ext_resource type="PackedScene" uid="uid://dtum6p3u11q7f" path="res://Pets/PetScenes/Stage2/buh_buh.tscn" id="3_qsflv"]
-[ext_resource type="PackedScene" uid="uid://c7p8e2mggcbhx" path="res://Pets/PetScenes/Stage2/Nuh_Buh.tscn" id="3_xpkjh"]
-[ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://Assets/AnimationFrames/Pets/Stage1/Buh.tres" id="5_ud18o"]
+[ext_resource type="Script" path="res://Pets/Pet.gd" id="1_culyx"]
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://Assets/Art/Aesprite/Pets/UnknownPet.png" id="2_isgvi"]
+[ext_resource type="Script" path="res://Pets/PetTypes/NuhBuhType.gd" id="3_y3y4t"]
+[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_uk8r7"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://Pets/PetScenes/Unknown_Pet.tres" id="5_1y308"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(16, 16)
 
-[node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
+[node name="NuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
 position = Vector2(0, 32)
-script = ExtResource("1_3faag")
+script = ExtResource("1_culyx")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
-evolvesTo = Array[PackedScene]([ExtResource("3_qsflv"), ExtResource("3_xpkjh")])
-iconSprite = ExtResource("2_yvamj")
+iconSprite = ExtResource("2_isgvi")
 
 [node name="Type" type="Node" parent="."]
-script = ExtResource("2_v4c75")
+script = ExtResource("3_y3y4t")
 
 [node name="MoveTimer" type="Timer" parent="Type"]
-script = ExtResource("3_74jdq")
+script = ExtResource("4_uk8r7")
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
-script = ExtResource("3_74jdq")
+script = ExtResource("4_uk8r7")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 21)
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("5_ud18o")
+sprite_frames = ExtResource("5_1y308")
 animation = &"Idle"
 offset = Vector2(0, -15)
 
@@ -42,7 +39,7 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
-position = Vector2(-16, -8)
+position = Vector2(-24, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
@@ -51,7 +48,7 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
-position = Vector2(16, -8)
+position = Vector2(24, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]

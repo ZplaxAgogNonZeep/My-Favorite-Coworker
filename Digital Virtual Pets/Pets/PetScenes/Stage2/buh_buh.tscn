@@ -1,24 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtum6p3u11q7f"]
+[gd_scene load_steps=7 format=3 uid="uid://dtum6p3u11q7f"]
 
 [ext_resource type="Script" path="res://Pets/Pet.gd" id="1_o8h2t"]
 [ext_resource type="Script" path="res://Pets/PetTypes/BuhBuhType.gd" id="2_yv0mn"]
 [ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_5kpun"]
 [ext_resource type="Texture2D" uid="uid://cmo5v4dknvnnk" path="res://Assets/Art/Aesprite/Pets/Stage2/BuhBuh.png" id="5_1h7wg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2fn8"]
-atlas = ExtResource("5_1h7wg")
-region = Rect2(0, 0, 20, 20)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_jjrsu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2fn8")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://Assets/AnimationFrames/Pets/Stage2/buh_buh.tres" id="5_afefx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(16, 16)
@@ -31,7 +17,6 @@ iconSprite = ExtResource("5_1h7wg")
 
 [node name="Type" type="Node" parent="."]
 script = ExtResource("2_yv0mn")
-tempEvolveCondition = false
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_5kpun")
@@ -42,7 +27,7 @@ script = ExtResource("4_5kpun")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 14.75)
 scale = Vector2(3, 2.95)
-sprite_frames = SubResource("SpriteFrames_jjrsu")
+sprite_frames = ExtResource("5_afefx")
 animation = &"Idle"
 offset = Vector2(0, -15)
 

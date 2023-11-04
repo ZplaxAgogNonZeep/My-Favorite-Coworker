@@ -28,3 +28,6 @@ signal StartShakeDevice
 signal EndShakeDevice
 signal StartHopDevice
 signal endHopDevice
+
+signal FinishedShakeDevice
+signal FinishedHopDevice

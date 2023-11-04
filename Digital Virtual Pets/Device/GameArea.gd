@@ -24,6 +24,13 @@ func _ready():
 	
 	GameEvents.SpawnPetOnStart.emit()
 
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("Debug"):
+		GameEvents.HopDeviceOnce.emit()
+		GameEvents.HopDeviceOnce.emit()
+		GameEvents.ShakeDeviceOnce.emit()
+		GameEvents.HopDeviceOnce.emit()
+
 # Events ===========================================================================================
 
 func feed():

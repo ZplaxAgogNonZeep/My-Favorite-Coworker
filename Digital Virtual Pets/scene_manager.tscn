@@ -99,6 +99,10 @@ animations = [{
 [node name="Device" type="Node2D" parent="."]
 position = Vector2(304, 640)
 script = ExtResource("1_ptlsy")
+shakeDegreeMax = 11.0
+hopHeight = Vector2(0, -30)
+shakeDuration = 0.5
+hopDuration = 0.25
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
 position = Vector2(0, -256)
@@ -140,42 +144,14 @@ playMenu = NodePath("Menu/PlayMenu")
 texture = ExtResource("2_4ghtk")
 metadata/_edit_lock_ = true
 
-[node name="StatusBars" type="CanvasLayer" parent="Device/GameArea/MenuManager"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
-position = Vector2(208, 312)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("6_ciosv")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
-position = Vector2(320, 312)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_hboao")
-
-[node name="HungerLabel" type="Label" parent="Device/GameArea/MenuManager/StatusBars"]
-offset_left = 224.0
-offset_top = 304.0
-offset_right = 320.0
-offset_bottom = 322.0
-theme = ExtResource("6_2f3jj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Hunger"
-vertical_alignment = 1
-
-[node name="JoyLabel" type="Label" parent="Device/GameArea/MenuManager/StatusBars"]
-offset_left = 336.0
-offset_top = 304.0
-offset_right = 432.0
-offset_bottom = 322.0
-theme = ExtResource("6_2f3jj")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Joy"
-vertical_alignment = 1
+[node name="StatusBars" type="Control" parent="Device/GameArea/MenuManager"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Hungerbar" type="Node2D" parent="Device/GameArea/MenuManager/StatusBars"]
-position = Vector2(208, 328)
+position = Vector2(-96, -80)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
@@ -210,7 +186,7 @@ sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
 [node name="JoyBar" type="Node2D" parent="Device/GameArea/MenuManager/StatusBars"]
-position = Vector2(320, 328)
+position = Vector2(16, -80)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("6_rciw2")
 metadata/_edit_group_ = true
@@ -244,17 +220,53 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Menu" type="CanvasLayer" parent="Device/GameArea/MenuManager"]
+[node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
+position = Vector2(-96, -96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ciosv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
+position = Vector2(16, -96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_hboao")
+
+[node name="HungerLabel" type="Label" parent="Device/GameArea/MenuManager/StatusBars"]
+layout_mode = 0
+offset_left = -80.0
+offset_top = -104.0
+offset_right = 16.0
+offset_bottom = -86.0
+theme = ExtResource("6_2f3jj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Hunger"
+vertical_alignment = 1
+
+[node name="JoyLabel" type="Label" parent="Device/GameArea/MenuManager/StatusBars"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = -104.0
+offset_right = 128.0
+offset_bottom = -86.0
+theme = ExtResource("6_2f3jj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Joy"
+vertical_alignment = 1
+
+[node name="Menu" type="Control" parent="Device/GameArea/MenuManager"]
+layout_mode = 3
+anchors_preset = 0
 
 [node name="MiniMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
-offset_left = 192.0
-offset_top = 296.0
-offset_right = 416.0
-offset_bottom = 520.0
+layout_mode = 0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
 theme = ExtResource("13_d41y6")
 script = ExtResource("11_1yuup")
 buttonController = NodePath("ButtonController")
-metadata/_edit_lock_ = true
 
 [node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/MiniMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("11_5bsub")
@@ -293,13 +305,13 @@ sprite_frames = SubResource("SpriteFrames_qmpma")
 
 [node name="StatMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu"]
 visible = false
-offset_left = 192.0
-offset_top = 296.0
-offset_right = 416.0
-offset_bottom = 520.0
+layout_mode = 0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
 theme = ExtResource("13_d41y6")
 script = ExtResource("20_wktbo")
-metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/StatMenu"]
 position = Vector2(112, 112)
@@ -440,15 +452,15 @@ vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 visible = false
-offset_left = 192.0
-offset_top = 296.0
-offset_right = 416.0
-offset_bottom = 520.0
+layout_mode = 0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
 theme = ExtResource("13_d41y6")
 script = ExtResource("23_a34r3")
 buttonController = NodePath("GameMenu/ButtonController")
 miniGameList = Array[PackedScene]([ExtResource("25_54tcl")])
-metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 position = Vector2(112, 112)

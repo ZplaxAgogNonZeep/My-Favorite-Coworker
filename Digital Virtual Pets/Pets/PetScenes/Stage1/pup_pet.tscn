@@ -12,7 +12,6 @@
 size = Vector2(16, 16)
 
 [node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
-position = Vector2(0, 32)
 script = ExtResource("1_3faag")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
@@ -30,11 +29,10 @@ script = ExtResource("3_74jdq")
 script = ExtResource("3_74jdq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 21)
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("5_ud18o")
 animation = &"Idle"
-offset = Vector2(0, -15)
+offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
 collision_layer = 0

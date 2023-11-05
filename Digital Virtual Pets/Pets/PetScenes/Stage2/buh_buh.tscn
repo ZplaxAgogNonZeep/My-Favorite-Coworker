@@ -10,7 +10,6 @@
 size = Vector2(16, 16)
 
 [node name="BuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite") groups=["Pet"]]
-position = Vector2(0, 32)
 script = ExtResource("1_o8h2t")
 sprite = NodePath("Sprite")
 iconSprite = ExtResource("5_1h7wg")
@@ -25,11 +24,10 @@ script = ExtResource("4_5kpun")
 script = ExtResource("4_5kpun")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 14.75)
-scale = Vector2(3, 2.95)
+scale = Vector2(3, 3)
 sprite_frames = ExtResource("5_afefx")
 animation = &"Idle"
-offset = Vector2(0, -15)
+offset = Vector2(0, -10)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
 collision_layer = 0

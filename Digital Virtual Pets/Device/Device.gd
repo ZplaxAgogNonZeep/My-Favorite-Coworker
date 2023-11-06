@@ -10,7 +10,7 @@ enum DeviceAction {HOP, SHAKE}
 @export var shakeDuration : float
 @export var hopDuration : float
 
-var chatSpeed := .1
+@export var chatSpeed : int
 var activeTween : Tween
 var isContinuousShake := false
 var isContinuousHop := false

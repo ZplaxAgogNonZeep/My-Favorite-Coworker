@@ -104,6 +104,7 @@ shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 shakeDuration = 0.5
 hopDuration = 0.25
+chatSpeed = 1
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
 position = Vector2(0, -256)
@@ -454,6 +455,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = -112.0
@@ -522,6 +524,16 @@ metadata/_edit_group_ = true
 [node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish" index="1"]
 text = "Fish!"
 
+[node name="Run" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 88.0
+offset_bottom = 88.0
+metadata/_edit_group_ = true
+
+[node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run" index="1"]
+text = "Run!"
+
 [node name="MiniGameContainer" type="Panel" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 layout_mode = 0
 offset_right = 224.0
@@ -564,3 +576,4 @@ position = Vector2(-72, -48)
 [editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
 [editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]
 [editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish"]
+[editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run"]

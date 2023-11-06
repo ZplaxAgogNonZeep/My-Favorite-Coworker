@@ -56,7 +56,7 @@ class MiniGame:
 	var connectedPet : Node2D
 	var gameRunning : bool
 	
-	func startGame(pet : Node2D):
+	func startGame(pet : Node2D, playMenu : Panel):
 		pass
 	
 	func endGame():

@@ -9,7 +9,7 @@ func setActive(isActive : bool):
 	active = isActive
 	
 	if (buttonArray[index].implements.has(Interface.HighlightButton)):
-		buttonArray[index].toggleHighlight(true)
+		buttonArray[index].toggleHighlight(isActive)
 
 
 func cycle(value : int):

@@ -12,8 +12,9 @@ var playMenu : Panel
 var connectedPet : Node2D
 var gameRunning : bool
 var isCatchWindow : bool
+var catchWindowTimer : SceneTreeTimer
 
-func startGame(pet : Node2D):
+func startGame(pet : Node2D, playMenu : Panel):
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
@@ -32,6 +33,7 @@ func updateGameText(text : String):
 	$Status.text = text
 
 func onWin():
+	$FishingRod.play("ReeledIn")
 	updateGameText("WIN!")
 	$PseudoPet.hop(2)
 	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
@@ -39,6 +41,7 @@ func onWin():
 	endGame()
 
 func onLose():
+	$FishingRod.play("ReeledIn")
 	updateGameText("LOSE")
 	await get_tree().create_timer(1).timeout
 	endGame()
@@ -50,6 +53,8 @@ func endGame():
 func takeInput(input : Enums.InputType):
 	if gameRunning:
 		if input == Enums.InputType.MIDDLEBUTTON:
+			$Timer.stop()
+			$CatchWindow.stop()
 			if isCatchWindow:
 				onWin()
 			else:
@@ -62,4 +67,4 @@ func _on_timer_timeout():
 		isCatchWindow = true
 		updateGameText("FISH")
 		$FishingRod.play("Active")
-		get_tree().create_timer(catchWindowDuration).connect("timeout", onLose)
+		$CatchWindow.start(catchWindowDuration)

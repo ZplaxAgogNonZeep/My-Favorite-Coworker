@@ -63,9 +63,11 @@ joyIncrement = 50
 statToIncrease = 3
 statIncrement = 1
 gameTimerRange = Vector2(3, 7)
-catchWindowDuration = 0.5
+catchWindowDuration = 1.0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="CatchWindow" type="Timer" parent="."]
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]
 position = Vector2(112, 112)
@@ -81,7 +83,7 @@ position = Vector2(88, 96)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_u7mwa")
 animation = &"ReeledIn"
-frame_progress = 0.817335
+frame_progress = 0.567868
 
 [node name="Catch" type="Sprite2D" parent="."]
 visible = false
@@ -113,3 +115,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CatchWindow" to="." method="onLose"]

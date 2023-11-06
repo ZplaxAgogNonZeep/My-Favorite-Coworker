@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=36 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://Assets/Art/PlaceHolders/DeviceSprite.png" id="1_momwt"]
 [ext_resource type="Script" path="res://Device/Device.gd" id="1_ptlsy"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://UI/MenuButtons/PlayMenu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://UI/MenuButtons/InstancedScenes/label_button.tscn" id="24_1oupa"]
 [ext_resource type="PackedScene" uid="uid://cxps8l5sseo8p" path="res://Games/Guess/guess_game.tscn" id="25_54tcl"]
+[ext_resource type="PackedScene" uid="uid://do4loav2wlxtb" path="res://Games/Fish/fishing_game.tscn" id="25_e2ucx"]
 [ext_resource type="Script" path="res://Pets/PetManager.gd" id="26_a6kjk"]
 [ext_resource type="PackedScene" uid="uid://bpcwq03jqltcn" path="res://Pets/PetScenes/Stage1/pup_pet.tscn" id="27_usxi4"]
 
@@ -453,7 +454,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayMenu" type="Panel" parent="Device/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
-visible = false
 z_index = 1
 layout_mode = 0
 offset_left = -112.0
@@ -463,7 +463,7 @@ offset_bottom = 112.0
 theme = ExtResource("13_d41y6")
 script = ExtResource("23_a34r3")
 buttonController = NodePath("GameMenu/ButtonController")
-miniGameList = Array[PackedScene]([ExtResource("25_54tcl")])
+miniGameList = Array[PackedScene]([ExtResource("25_54tcl"), ExtResource("25_e2ucx")])
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 position = Vector2(112, 112)
@@ -490,7 +490,7 @@ vertical_alignment = 1
 
 [node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("11_5bsub")
-buttonArray = [NodePath("../Guess"), NodePath("../Exit")]
+buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Exit")]
 
 [node name="Exit" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
 offset_left = 72.0
@@ -511,6 +511,16 @@ metadata/_edit_group_ = true
 
 [node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess" index="1"]
 text = "Guess!"
+
+[node name="Fish" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
+offset_left = 136.0
+offset_top = 32.0
+offset_right = 208.0
+offset_bottom = 56.0
+metadata/_edit_group_ = true
+
+[node name="OptionName" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish" index="1"]
+text = "Fish!"
 
 [node name="MiniGameContainer" type="Panel" parent="Device/GameArea/MenuManager/Menu/PlayMenu"]
 layout_mode = 0
@@ -553,3 +563,4 @@ position = Vector2(-72, -48)
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Stats"]
 [editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
 [editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]
+[editable path="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish"]

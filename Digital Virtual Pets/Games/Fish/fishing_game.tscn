@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://do4loav2wlxtb"]
+
+[ext_resource type="Script" path="res://Games/Fish/fishing_game.gd" id="1_iowcp"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_8mkhn"]
+[ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://Assets/Art/Aesprite/MiniGameAssets/FishingRod-Sheet.png" id="3_17o4p"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_aqlkw"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_376qc"]
+[ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://Assets/Art/Aesprite/UI/Icons/MeatIcon.png" id="5_xuurv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhc78"]
+atlas = ExtResource("3_17o4p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nceid"]
+atlas = ExtResource("3_17o4p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sknfp"]
+atlas = ExtResource("3_17o4p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eo81"]
+atlas = ExtResource("3_17o4p")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u7mwa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhc78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nceid")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sknfp")
+}],
+"loop": true,
+"name": &"Inactive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eo81")
+}],
+"loop": true,
+"name": &"ReeledIn",
+"speed": 5.0
+}]
+
+[node name="FishGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("1_iowcp")
+joyIncrement = 50
+statToIncrease = 3
+statIncrement = 1
+gameTimerRange = Vector2(3, 7)
+catchWindowDuration = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BlankMenuSprite2" type="Sprite2D" parent="."]
+position = Vector2(112, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("2_8mkhn")
+metadata/_edit_lock_ = true
+
+[node name="PseudoPet" parent="." instance=ExtResource("3_aqlkw")]
+position = Vector2(144, 120)
+
+[node name="FishingRod" type="AnimatedSprite2D" parent="."]
+position = Vector2(88, 96)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_u7mwa")
+animation = &"ReeledIn"
+frame_progress = 0.817335
+
+[node name="Catch" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(80, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_xuurv")
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 34.0
+theme = ExtResource("4_376qc")
+text = "Catch a Fish!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 216.0
+offset_bottom = 169.0
+theme = ExtResource("4_376qc")
+theme_override_font_sizes/font_size = 30
+text = "WAIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

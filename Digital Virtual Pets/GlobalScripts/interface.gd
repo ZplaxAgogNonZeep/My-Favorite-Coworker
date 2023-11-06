@@ -50,9 +50,11 @@ class MenuState:
 		pass
 
 class MiniGame:
+	@export var joyIncrement : int
+	@export var statIncrement : int
+	var playMenu : Panel
+	var connectedPet : Node2D
 	var gameRunning : bool
-	var joyIncrement : int
-	var statIncrement : int
 	
 	func startGame(pet : Node2D):
 		pass

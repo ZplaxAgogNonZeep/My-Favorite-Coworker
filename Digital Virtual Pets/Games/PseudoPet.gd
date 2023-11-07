@@ -2,6 +2,11 @@ extends Node2D
 
 var implements = []
 
+signal AreaEntered
+signal AreaExited
+signal BodyEntered
+signal BodyExited
+
 enum MovePhase {IDLE, MOVING, HOPPING, INDICATING}
 
 @onready var sprite = $AnimatedSprite2D
@@ -106,3 +111,17 @@ func indicateDirection(isRight : bool):
 func stopIndicatingDirection():
 	phase = MovePhase.IDLE
 	position = originalPosn
+
+# Signals ==========================================================================================
+
+func areaCollide(isEnter : bool):
+	if isEnter:
+		pass
+	else:
+		pass
+
+func bodyCollide(isEnter : bool):
+	if isEnter:
+		pass
+	else:
+		pass

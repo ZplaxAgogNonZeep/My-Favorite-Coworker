@@ -3,8 +3,9 @@
 [ext_resource type="Script" path="res://Games/PseudoPet.gd" id="1_o5scy"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://Assets/AnimationFrames/Pets/Unknown_Pet.tres" id="2_4uxxp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_302nr"]
-size = Vector2(48, 48)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysjiw"]
+radius = 16.0
+height = 48.0
 
 [node name="PseudoPet" type="Node2D"]
 script = ExtResource("1_o5scy")
@@ -16,10 +17,12 @@ animation = &"Idle"
 offset = Vector2(0, -8)
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -24)
-shape = SubResource("RectangleShape2D_302nr")
+shape = SubResource("CapsuleShape2D_ysjiw")
 
 [connection signal="area_entered" from="Area2D" to="." method="areaCollide" binds= [true]]
 [connection signal="area_exited" from="Area2D" to="." method="areaCollide" binds= [false]]

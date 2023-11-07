@@ -1,11 +1,11 @@
 extends Sprite2D
 
 @export var scrollElements : Array[Node2D]
-@export var isScrolling := false
 @export var speed : float
 @export_range(-1, 1) var direction : int
 
 var validSetUp := false
+var isScrolling := false
 var wrapPosns : Array[Vector2]
 
 func _ready():
@@ -35,7 +35,7 @@ func changeDirection():
 func _process(delta):
 	if isScrolling and validSetUp:
 		for element in scrollElements:
-			element.position.x += speed * direction
+			element.position.x += (speed * delta) * direction
 			
 			if direction == 1:
 				if element.position.x > wrapPosns[0].x:

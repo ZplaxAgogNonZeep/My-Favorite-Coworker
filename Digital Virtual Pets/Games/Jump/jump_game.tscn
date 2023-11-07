@@ -9,14 +9,22 @@
 [ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://Assets/Art/Aesprite/MiniGameAssets/Hurdle.png" id="6_4pyyq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dan0o"]
-size = Vector2(5, 5.33333)
+size = Vector2(1.33333, 3.33334)
 
-[node name="JumpGame" type="Control"]
+[node name="JumpGame" type="Control" node_paths=PackedStringArray("background", "hurdle")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 224.0
 script = ExtResource("1_5ul8j")
+background = NodePath("BlankMenuSprite2")
+hurdle = NodePath("Hurdle")
+joyIncrement = 50
+statIncrement = 2
+statToIncrease = 2
+speed = 20
+jumpDuration = 1.0
+repetitionRange = Vector2(2, 4)
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="." node_paths=PackedStringArray("scrollElements")]
@@ -26,7 +34,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("2_qff5g")
 script = ExtResource("3_c8eis")
 scrollElements = [NodePath("Track0"), NodePath("Track1"), NodePath("Track2"), NodePath("Track3")]
-speed = 0.3
+speed = 1.0
 direction = -1
 metadata/_edit_lock_ = true
 
@@ -76,21 +84,29 @@ offset_right = 216.0
 offset_bottom = 169.0
 theme = ExtResource("4_nxl2w")
 theme_override_font_sizes/font_size = 30
-text = "WAIT"
+text = "JUMP"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
 [node name="Hurdle" type="Sprite2D" parent="."]
-position = Vector2(184, 88)
+position = Vector2(192, 88)
 scale = Vector2(3, 3)
 texture = ExtResource("6_4pyyq")
-metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="Hurdle"]
+collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurdle/Area2D"]
-position = Vector2(-0.166668, 5.33334)
+position = Vector2(-0.333332, 6.33334)
 shape = SubResource("RectangleShape2D_dan0o")
 debug_color = Color(0, 0.588235, 0.764706, 0.419608)
+
+[node name="HurdleWrapStart" type="Marker2D" parent="."]
+position = Vector2(208, 104)
+
+[node name="HurdleWrapEnd" type="Marker2D" parent="."]
+position = Vector2(16, 104)
+
+[node name="JumpHeight" type="Marker2D" parent="."]
+position = Vector2(112, 88)

@@ -6,6 +6,7 @@ signal AreaEntered
 signal AreaExited
 signal BodyEntered
 signal BodyExited
+signal TweenToFinished
 
 enum MovePhase {IDLE, MOVING, HOPPING, INDICATING}
 
@@ -47,12 +48,13 @@ func tweenToLocation(posn : Vector2, speed : float):
 	self.speed = speed
 	
 	activeTween = get_tree().create_tween()
+	activeTween.set_ease(Tween.EASE_IN_OUT)
 	activeTween.tween_property(self, "position", endPosn, speed).connect("finished", moveTweenComplete)
 
 func moveTweenComplete():
 	phase = MovePhase.IDLE
-	activeTween.stop()
 	activeTween = null
+	TweenToFinished.emit()
 
 func setAtLocation(posn : Vector2):
 	position = posn
@@ -114,14 +116,14 @@ func stopIndicatingDirection():
 
 # Signals ==========================================================================================
 
-func areaCollide(isEnter : bool):
+func areaCollide(area : Area2D, isEnter : bool):
 	if isEnter:
-		pass
+		AreaEntered.emit()
 	else:
-		pass
+		AreaExited.emit()
 
-func bodyCollide(isEnter : bool):
+func bodyCollide(body : Node2D, isEnter : bool):
 	if isEnter:
-		pass
+		BodyEntered.emit()
 	else:
-		pass
+		BodyExited.emit()

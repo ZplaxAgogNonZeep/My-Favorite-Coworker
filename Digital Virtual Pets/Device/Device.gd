@@ -5,12 +5,14 @@ enum DeviceAction {HOP, SHAKE}
 @onready var originalPosn := position
 
 @export var activePet : Node2D
+@export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
 @export var shakeDuration : float
 @export var hopDuration : float
+@export_category("Modifiers")
+@export var chatSpeed : float
 
-@export var chatSpeed : int
 var activeTween : Tween
 var isContinuousShake := false
 var isContinuousHop := false

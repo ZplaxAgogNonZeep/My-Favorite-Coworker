@@ -105,7 +105,7 @@ shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 shakeDuration = 0.5
 hopDuration = 0.25
-chatSpeed = 1
+chatSpeed = 0.1
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
 position = Vector2(0, -256)
@@ -223,12 +223,12 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 
-[node name="Sprite2D" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
+[node name="HungerIcon" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
 position = Vector2(-96, -96)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_ciosv")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
+[node name="JoyIcon" type="Sprite2D" parent="Device/GameArea/MenuManager/StatusBars"]
 position = Vector2(16, -96)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_hboao")

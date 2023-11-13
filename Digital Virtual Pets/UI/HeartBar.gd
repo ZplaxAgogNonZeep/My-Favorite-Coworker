@@ -11,7 +11,6 @@ func updateBar(fillAmount : int, maxValue : int):
 	var segmentAmount : int = maxValue / heartObjects.size()
 	
 	var count = 0
-	print("Updating bar with ", fillAmount, " / ", maxValue)
 	for child in heartObjects:
 		if fillAmount >= segmentAmount * (count + 1):
 			child.animation = "Full"

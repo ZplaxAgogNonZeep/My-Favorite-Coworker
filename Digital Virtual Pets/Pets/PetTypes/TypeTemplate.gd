@@ -3,6 +3,22 @@ extends Node
 var implements = [Interface.PetType]
 
 var petName := "blank"
-# Called when the node enters the scene tree for the first time.
+	
+func roamBehavior():
+	pass
 
+func feedingBehavior():
+	pass
+
+func onTickHunger():
+	pass
+
+func onTickJoy():
+	pass
+
+func onEatFood():
+	pass
+
+func getEvolvePet():
+	return null
 

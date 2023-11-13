@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bifauo7clkw3i"]
+
+[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://Assets/Art/Aesprite/Pets/Stage3/HeRohBuh.png" id="1_u3t3g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lbki"]
+atlas = ExtResource("1_u3t3g")
+region = Rect2(0, 0, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lbki")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]

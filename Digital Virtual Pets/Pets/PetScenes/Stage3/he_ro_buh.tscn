@@ -1,35 +1,35 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtum6p3u11q7f"]
+[gd_scene load_steps=7 format=3 uid="uid://clldflk42myex"]
 
-[ext_resource type="Script" path="res://Pets/Pet.gd" id="1_o8h2t"]
-[ext_resource type="PackedScene" uid="uid://clldflk42myex" path="res://Pets/PetScenes/Stage3/he_ro_buh.tscn" id="2_j7q2h"]
-[ext_resource type="Script" path="res://Pets/PetTypes/BuhBuhType.gd" id="2_yv0mn"]
-[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_5kpun"]
-[ext_resource type="Texture2D" uid="uid://cmo5v4dknvnnk" path="res://Assets/Art/Aesprite/Pets/Stage2/BuhBuh.png" id="5_1h7wg"]
-[ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://Assets/AnimationFrames/Pets/Stage2/buh_buh.tres" id="5_afefx"]
+[ext_resource type="Script" path="res://Pets/Pet.gd" id="1_a0r6y"]
+[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://Assets/Art/Aesprite/Pets/Stage3/HeRohBuh.png" id="2_ldnqk"]
+[ext_resource type="Script" path="res://Pets/PetTypes/HeRoBuh.gd" id="3_ctpwi"]
+[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_qd7at"]
+[ext_resource type="SpriteFrames" uid="uid://bifauo7clkw3i" path="res://Assets/AnimationFrames/Pets/Stage3/he_ro_buh.tres" id="5_3aiv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(16, 16)
 
-[node name="BuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite") groups=["Pet"]]
-script = ExtResource("1_o8h2t")
+[node name="BuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
+script = ExtResource("1_a0r6y")
 sprite = NodePath("Sprite")
-evolvesTo = Array[PackedScene]([ExtResource("2_j7q2h")])
-iconSprite = ExtResource("5_1h7wg")
+leftCollider = NodePath("LeftObjectColl")
+rightCollider = NodePath("RightObjectColl")
+iconSprite = ExtResource("2_ldnqk")
 
 [node name="Type" type="Node" parent="."]
-script = ExtResource("2_yv0mn")
+script = ExtResource("3_ctpwi")
 
 [node name="MoveTimer" type="Timer" parent="Type"]
-script = ExtResource("4_5kpun")
+script = ExtResource("4_qd7at")
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
-script = ExtResource("4_5kpun")
+script = ExtResource("4_qd7at")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("5_afefx")
+sprite_frames = ExtResource("5_3aiv0")
 animation = &"Idle"
-offset = Vector2(0, -10)
+offset = Vector2(0, -12)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
 collision_layer = 0
@@ -37,7 +37,7 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
-position = Vector2(-24, -8)
+position = Vector2(-32, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
@@ -46,7 +46,7 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
-position = Vector2(24, -8)
+position = Vector2(32, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]

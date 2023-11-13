@@ -18,12 +18,14 @@ func initializeMenu():
 			$Bal/Value.text = str(pet.abilityStats[Enums.AbilityStat.BAL])
 			
 			$"Display Sprite".texture = pet.iconSprite
+			$"Display Sprite".offset = pet.sprite.offset
 			
 			var count = 0
 			for i in pet.evolvedFromIcons:
 				var iconSprite = get_node_or_null("Display Sprite/EvoHist" + str(count))
 				if iconSprite:
 					iconSprite.texture = i
+				count+=1
 				
 
 

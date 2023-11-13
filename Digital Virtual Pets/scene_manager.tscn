@@ -493,7 +493,7 @@ vertical_alignment = 1
 
 [node name="ButtonController" type="Node" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("11_5bsub")
-buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Exit"), NodePath("../Run")]
+buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Run"), NodePath("../Exit")]
 
 [node name="Exit" parent="Device/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("24_1oupa")]
 offset_left = 72.0

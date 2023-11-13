@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7p8e2mggcbhx"]
+[gd_scene load_steps=8 format=3 uid="uid://c7p8e2mggcbhx"]
 
 [ext_resource type="Script" path="res://Pets/Pet.gd" id="1_culyx"]
+[ext_resource type="PackedScene" uid="uid://clldflk42myex" path="res://Pets/PetScenes/Stage3/he_ro_buh.tscn" id="2_8e336"]
 [ext_resource type="Script" path="res://Pets/PetTypes/NuhBuhType.gd" id="3_y3y4t"]
 [ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_uk8r7"]
 [ext_resource type="SpriteFrames" uid="uid://byjpb8rxwl8gl" path="res://Assets/AnimationFrames/Pets/Stage2/Nuh_Buh.tres" id="5_3uldx"]
@@ -14,6 +15,7 @@ script = ExtResource("1_culyx")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
+evolvesTo = Array[PackedScene]([ExtResource("2_8e336")])
 iconSprite = ExtResource("5_p6mxo")
 
 [node name="Type" type="Node" parent="."]

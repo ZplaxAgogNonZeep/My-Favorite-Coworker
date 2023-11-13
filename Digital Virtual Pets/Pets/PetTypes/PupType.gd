@@ -28,9 +28,11 @@ func onEatFood():
 	pass
 
 func getEvolvePet():
-	if get_parent().abilityStats[Enums.AbilityStat.END] > 5:# or tempEvolveCondition:
+	if tempEvolveCondition:
 		return get_parent().evolvesTo[0]
-	elif (get_parent().traumaCount >= 1 and get_parent().abilityStats[Enums.AbilityStat.SPD] > 5):
+	if get_parent().abilityStats[Enums.AbilityStat.END] > 2 or get_parent().abilityStats[Enums.AbilityStat.SPD] > 2:
+		return get_parent().evolvesTo[0]
+	elif (get_parent().traumaCount >= 1):
 		return get_parent().evolvesTo[1]
 	else:
 		return null

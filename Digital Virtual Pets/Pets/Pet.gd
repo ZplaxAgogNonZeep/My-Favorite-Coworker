@@ -100,7 +100,7 @@ func eatFood(foodObject):
 func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease):
 	joyValue += joyIncrement
 	
-	if joyIncrement > MAX_JOY:
+	if joyValue > MAX_JOY:
 		joyValue = MAX_JOY
 	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)

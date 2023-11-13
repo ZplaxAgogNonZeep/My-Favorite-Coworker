@@ -40,6 +40,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
+	$PseudoPet.sprite.offset = pet.sprite.offset
 	$PseudoPet.setDirection(true)
 	$PseudoPet.sprite.animation = "Idle"
 	

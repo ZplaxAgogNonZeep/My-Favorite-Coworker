@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxqir2rb1dcdk"]
+
+[ext_resource type="Script" path="res://Games/Hit/hit_game.gd" id="1_kx0il"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_tf5tu"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_dirk5"]
+[ext_resource type="Script" path="res://Games/MashMeter.gd" id="5_exb7e"]
+[ext_resource type="Texture2D" uid="uid://by76t7gi1ihj7" path="res://Assets/Art/Aesprite/MiniGameAssets/MashMeterBack.png" id="5_im0sb"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="6_1up7u"]
+[ext_resource type="Texture2D" uid="uid://p6npijrg8ff1" path="res://Assets/Art/Aesprite/MiniGameAssets/MeterIndicator.png" id="6_asw5k"]
+[ext_resource type="Texture2D" uid="uid://bxmgkjt7hrwo4" path="res://Assets/Art/Aesprite/MiniGameAssets/StretchBox.png" id="8_453mk"]
+
+[node name="HitGame" type="Control" node_paths=PackedStringArray("mashMeter")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("1_kx0il")
+gameDuration = 5.0
+mashGoal = 25
+mashMax = 35
+decreaseFrequency = 0.5
+decreaseAmount = 2
+mashMeter = NodePath("MashMeter")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MashDecrease" type="Timer" parent="."]
+
+[node name="BlankMenuSprite2" type="Sprite2D" parent="."]
+position = Vector2(112, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("2_tf5tu")
+metadata/_edit_lock_ = true
+
+[node name="PseudoPet" parent="." instance=ExtResource("3_dirk5")]
+position = Vector2(144, 120)
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 34.0
+theme = ExtResource("6_1up7u")
+text = "Test your strength!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 216.0
+offset_bottom = 169.0
+theme = ExtResource("6_1up7u")
+theme_override_font_sizes/font_size = 30
+text = "KEEP HITTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MashMeter" type="Node2D" parent="."]
+position = Vector2(48, 87)
+script = ExtResource("5_exb7e")
+metadata/_edit_group_ = true
+
+[node name="MashMeterBack" type="Sprite2D" parent="MashMeter"]
+scale = Vector2(3, 3)
+texture = ExtResource("5_im0sb")
+
+[node name="MeterIndicator" type="Sprite2D" parent="MashMeter"]
+position = Vector2(0, 28.5)
+scale = Vector2(3, 3)
+texture = ExtResource("6_asw5k")
+
+[node name="Max" type="Marker2D" parent="MashMeter"]
+position = Vector2(0, -28.5)
+
+[node name="Min" type="Marker2D" parent="MashMeter"]
+position = Vector2(0, 28.5)
+
+[node name="Goal" type="Marker2D" parent="MashMeter"]
+position = Vector2(0, -16)
+
+[node name="GoalIndicator" type="Node2D" parent="MashMeter"]
+
+[node name="LeftIndicator" type="Sprite2D" parent="MashMeter/GoalIndicator"]
+position = Vector2(-13, -33)
+scale = Vector2(3, 3)
+texture = ExtResource("8_453mk")
+offset = Vector2(0, 0.5)
+
+[node name="RightIndicator" type="Sprite2D" parent="MashMeter/GoalIndicator"]
+position = Vector2(13, -33)
+scale = Vector2(3, 3)
+texture = ExtResource("8_453mk")
+offset = Vector2(0, 0.5)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MashDecrease" to="." method="tickMashDecrease"]

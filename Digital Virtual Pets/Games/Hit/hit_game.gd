@@ -22,8 +22,8 @@ var gameIteration : int = 3
 var mashMode := false
 
 func _process(delta):
-	if gameRunning and mashMode and mashAmount > 0 and not $MashDecrease.is_stopped():
-		pass
+	if gameRunning and mashMode and mashAmount > 0 and $MashDecrease.is_stopped():
+		$MashDecrease.start(decreaseFrequency)
 
 func startGame(pet : Node2D, playMenu : Panel):
 	connectedPet = pet
@@ -59,7 +59,7 @@ func updateGameText(text : String):
 	$Status.text = text
 
 func updateMashBar(value : int, maxAmount : int):
-	mashMeter.updateBar(mashAmount, mashMax)
+	mashMeter.updateMeter(value, maxAmount)
 
 func takeInput(input : Enums.InputType):
 	if gameRunning and mashMode:
@@ -75,7 +75,8 @@ func _on_timer_timeout():
 		updateGameText(str(gameIteration))
 		$Timer.start(1)
 	elif gameIteration == 0:
-		updateGameText("START HITTING!!")
+		gameIteration -= 1
+		updateGameText("HIT!!")
 		$Timer.start(gameDuration)
 		mashMode = true
 	else:
@@ -87,7 +88,7 @@ func _on_timer_timeout():
 func tickMashDecrease():
 	if mashAmount > 0:
 		mashAmount -= decreaseAmount
-		
+
 	if mashAmount < 0:
 		mashAmount = 0
 	updateMashBar(mashAmount, mashMax)

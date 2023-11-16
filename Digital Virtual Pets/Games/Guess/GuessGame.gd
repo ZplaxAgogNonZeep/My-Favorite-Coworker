@@ -46,7 +46,7 @@ func intervalMet():
 		$PseudoPet.stopIndicatingDirection()
 		updateGameText(str(intervalCount))
 	
-	if intervalCount == 0:
+	if intervalCount < 0:
 		gameRunning = false
 		$PseudoPet.setDirection(correctDirIsRight)
 		if (guessDirIsRight == correctDirIsRight):

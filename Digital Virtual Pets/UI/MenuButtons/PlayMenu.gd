@@ -15,6 +15,7 @@ func _ready():
 	$GameMenu/Guess.ButtonSelected.connect(onGuessSelected)
 	$GameMenu/Fish.ButtonSelected.connect(onFishSelected)
 	$GameMenu/Run.ButtonSelected.connect(onRunSelected)
+	$GameMenu/Hit.ButtonSelected.connect(onHitSelected)
 	
 
 func initializeMenu():
@@ -78,6 +79,15 @@ func onFishSelected():
 func onRunSelected():
 	if getPet():
 		game = miniGameList[2].instantiate()
+		$MiniGameContainer.add_child(game)
+		game.startGame(getPet(), self)
+		state = PlayState.GAME
+	else:
+		print("COULD NOT FIND PET")
+
+func onHitSelected():
+	if getPet():
+		game = miniGameList[3].instantiate()
 		$MiniGameContainer.add_child(game)
 		game.startGame(getPet(), self)
 		state = PlayState.GAME

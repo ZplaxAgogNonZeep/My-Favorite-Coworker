@@ -59,11 +59,6 @@ anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 224.0
 script = ExtResource("1_iowcp")
-joyIncrement = 50
-statToIncrease = 3
-statIncrement = 1
-gameTimerRange = Vector2(3, 7)
-catchWindowDuration = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 

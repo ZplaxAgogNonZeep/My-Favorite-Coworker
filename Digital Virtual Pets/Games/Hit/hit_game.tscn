@@ -1,13 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxqir2rb1dcdk"]
+[gd_scene load_steps=10 format=3 uid="uid://cxqir2rb1dcdk"]
 
 [ext_resource type="Script" path="res://Games/Hit/hit_game.gd" id="1_kx0il"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_tf5tu"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_dirk5"]
-[ext_resource type="Script" path="res://Games/MashMeter.gd" id="5_exb7e"]
-[ext_resource type="Texture2D" uid="uid://by76t7gi1ihj7" path="res://Assets/Art/Aesprite/MiniGameAssets/MashMeterBack.png" id="5_im0sb"]
+[ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://Games/mash_meter.tscn" id="5_tpsef"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="6_1up7u"]
-[ext_resource type="Texture2D" uid="uid://p6npijrg8ff1" path="res://Assets/Art/Aesprite/MiniGameAssets/MeterIndicator.png" id="6_asw5k"]
-[ext_resource type="Texture2D" uid="uid://bxmgkjt7hrwo4" path="res://Assets/Art/Aesprite/MiniGameAssets/StretchBox.png" id="8_453mk"]
+[ext_resource type="Texture2D" uid="uid://cdcl22usg34t5" path="res://Assets/Art/Aesprite/MiniGameAssets/Hammer-Sheet.png" id="6_arsfp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqlpl"]
+atlas = ExtResource("6_arsfp")
+region = Rect2(22, 0, 22, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3iqv"]
+atlas = ExtResource("6_arsfp")
+region = Rect2(0, 0, 22, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qxchq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kqlpl")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3iqv")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
 
 [node name="HitGame" type="Control" node_paths=PackedStringArray("mashMeter")]
 layout_mode = 3
@@ -19,7 +44,7 @@ gameDuration = 5.0
 mashGoal = 25
 mashMax = 35
 decreaseFrequency = 0.5
-decreaseAmount = 2
+decreaseAmount = 1
 mashMeter = NodePath("MashMeter")
 
 [node name="Timer" type="Timer" parent="."]
@@ -33,7 +58,7 @@ texture = ExtResource("2_tf5tu")
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_dirk5")]
-position = Vector2(144, 120)
+position = Vector2(176, 120)
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 0
@@ -58,42 +83,14 @@ text = "KEEP HITTING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MashMeter" type="Node2D" parent="."]
-position = Vector2(48, 87)
-script = ExtResource("5_exb7e")
-metadata/_edit_group_ = true
+[node name="MashMeter" parent="." instance=ExtResource("5_tpsef")]
+position = Vector2(43, 87)
 
-[node name="MashMeterBack" type="Sprite2D" parent="MashMeter"]
+[node name="Hammer" type="AnimatedSprite2D" parent="."]
+position = Vector2(104, 96)
 scale = Vector2(3, 3)
-texture = ExtResource("5_im0sb")
-
-[node name="MeterIndicator" type="Sprite2D" parent="MashMeter"]
-position = Vector2(0, 28.5)
-scale = Vector2(3, 3)
-texture = ExtResource("6_asw5k")
-
-[node name="Max" type="Marker2D" parent="MashMeter"]
-position = Vector2(0, -28.5)
-
-[node name="Min" type="Marker2D" parent="MashMeter"]
-position = Vector2(0, 28.5)
-
-[node name="Goal" type="Marker2D" parent="MashMeter"]
-position = Vector2(0, -16)
-
-[node name="GoalIndicator" type="Node2D" parent="MashMeter"]
-
-[node name="LeftIndicator" type="Sprite2D" parent="MashMeter/GoalIndicator"]
-position = Vector2(-13, -33)
-scale = Vector2(3, 3)
-texture = ExtResource("8_453mk")
-offset = Vector2(0, 0.5)
-
-[node name="RightIndicator" type="Sprite2D" parent="MashMeter/GoalIndicator"]
-position = Vector2(13, -33)
-scale = Vector2(3, 3)
-texture = ExtResource("8_453mk")
-offset = Vector2(0, 0.5)
+sprite_frames = SubResource("SpriteFrames_qxchq")
+animation = &"Up"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="MashDecrease" to="." method="tickMashDecrease"]

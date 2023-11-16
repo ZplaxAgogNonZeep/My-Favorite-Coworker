@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqe77tkk23q1s"]
+
+[ext_resource type="Script" path="res://Games/Endure/endure_game.gd" id="1_vscop"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_fefqy"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_mquew"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_ikg0c"]
+[ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://Games/mash_meter.tscn" id="5_mjufo"]
+
+[node name="EndureGame" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 224.0
+offset_bottom = 224.0
+script = ExtResource("1_vscop")
+mashMax = 40
+mashGoalMin = 15
+mashGoalMax = 25
+
+[node name="BlankMenuSprite2" type="Sprite2D" parent="."]
+position = Vector2(112, 112)
+scale = Vector2(4, 4)
+texture = ExtResource("2_fefqy")
+metadata/_edit_lock_ = true
+
+[node name="PseudoPet" parent="." instance=ExtResource("3_mquew")]
+position = Vector2(112, 120)
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 216.0
+offset_bottom = 34.0
+theme = ExtResource("4_ikg0c")
+text = "Endure the Heat!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 136.0
+offset_right = 216.0
+offset_bottom = 169.0
+theme = ExtResource("4_ikg0c")
+theme_override_font_sizes/font_size = 30
+text = "ENDURE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MashMeter" parent="." instance=ExtResource("5_mjufo")]
+position = Vector2(40, 88)

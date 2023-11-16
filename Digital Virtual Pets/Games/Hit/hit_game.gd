@@ -41,18 +41,30 @@ func endGame():
 	queue_free()
 
 func onWin():
-	updateGameText("WIN!")
 	gameRunning = false
-	print("You Win!")
-	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
+	updateGameText("NOW!")
+	$PseudoPet.hop()
+	$Hammer.set_animation("Down")
 	await get_tree().create_timer(1).timeout
+	$Hammer.set_animation("Up")
+	updateGameText("WIN!")
+	print("You Win!")
+	$PseudoPet.hop(2)
+	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
+	await get_tree().create_timer(2).timeout
 	endGame()
 
 func onLose():
-	updateGameText("LOSE!")
 	gameRunning = false
+	updateGameText("NOW!")
+	$PseudoPet.hop()
+	$Hammer.set_animation("Down")
+	await get_tree().create_timer(.5).timeout
+	$Hammer.set_animation("Up")
+	await get_tree().create_timer(.5).timeout
+	updateGameText("LOSE!")
 	print("You Lose!")
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	endGame()
 
 func updateGameText(text : String):
@@ -76,7 +88,7 @@ func _on_timer_timeout():
 		$Timer.start(1)
 	elif gameIteration == 0:
 		gameIteration -= 1
-		updateGameText("HIT!!")
+		updateGameText("PREPARE!")
 		$Timer.start(gameDuration)
 		mashMode = true
 	else:
@@ -86,9 +98,10 @@ func _on_timer_timeout():
 			onLose()
 
 func tickMashDecrease():
-	if mashAmount > 0:
-		mashAmount -= decreaseAmount
+	if gameRunning and mashMode:
+		if mashAmount > 0:
+			mashAmount -= decreaseAmount
 
-	if mashAmount < 0:
-		mashAmount = 0
-	updateMashBar(mashAmount, mashMax)
+		if mashAmount < 0:
+			mashAmount = 0
+		updateMashBar(mashAmount, mashMax)

@@ -40,6 +40,8 @@ anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 224.0
 script = ExtResource("1_kx0il")
+joyIncrement = 50
+statIncrement = 2
 gameDuration = 5.0
 mashGoal = 25
 mashMax = 35
@@ -58,7 +60,7 @@ texture = ExtResource("2_tf5tu")
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_dirk5")]
-position = Vector2(176, 120)
+position = Vector2(168, 120)
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 0

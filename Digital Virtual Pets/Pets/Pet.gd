@@ -131,10 +131,14 @@ func feedPet():
 			targetPosn = get_tree().get_nodes_in_group("Food")[0].position
 	else:
 		petState = Enums.PetState.ROAMING
+		GameEvents.ShakeDeviceOnce.emit()
 
 
 func tickHunger():
 	if (hungerValue > 0):
+		
+		if (hungerValue < 25):
+			GameEvents.HopDeviceOnce.emit()
 		type.onTickHunger()
 		randomize()
 		hungerValue -= randi_range(1, 5)
@@ -149,6 +153,8 @@ func tickHunger():
 
 func tickJoy():
 	if (joyValue > 0):
+		if joyValue < 10:
+			GameEvents.ShakeDeviceOnce.emit()
 		type.onTickJoy()
 		randomize()
 		joyValue -= randi_range(0, 5)

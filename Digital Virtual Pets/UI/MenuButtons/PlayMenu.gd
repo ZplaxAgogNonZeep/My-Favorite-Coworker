@@ -30,6 +30,8 @@ func exitMenu():
 	visible = false
 	game = null
 	buttonController.setActive(false)
+	GameEvents.HopDeviceOnce.emit()
+	GameEvents.HopDeviceOnce.emit()
 	GameEvents.UnpauseGame.emit()
 
 func closeMenu():

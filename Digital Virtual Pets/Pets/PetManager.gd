@@ -34,6 +34,9 @@ func spawnNewPet():
 
 func evolvePet(evolveTarget: PackedScene):
 	GameEvents.ResetAllTimers
+	GameEvents.ShakeDeviceOnce.emit()
+	GameEvents.ShakeDeviceOnce.emit()
+	await get_tree().create_timer(2).timeout
 	var transferVar = [activePet.hungerValue, 
 						activePet.joyValue, 
 						activePet.traumaCount, 

@@ -12,9 +12,20 @@ anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 224.0
 script = ExtResource("1_vscop")
+joyIncrement = 50
+statIncrement = 2
+statToIncrease = 1
+incrementFrequency = 1.0
+gameDuration = 5
 mashMax = 40
 mashGoalMin = 15
 mashGoalMax = 25
+decreaseFrequency = 0.25
+decreaseAmount = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MashDecrease" type="Timer" parent="."]
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]
 position = Vector2(112, 112)
@@ -50,3 +61,6 @@ vertical_alignment = 1
 
 [node name="MashMeter" parent="." instance=ExtResource("5_mjufo")]
 position = Vector2(40, 88)
+
+[connection signal="timeout" from="Timer" to="." method="incrementGame"]
+[connection signal="timeout" from="MashDecrease" to="." method="decreaseMash"]

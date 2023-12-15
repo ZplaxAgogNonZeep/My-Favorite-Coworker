@@ -18,7 +18,7 @@ var isContinuousShake := false
 var isContinuousHop := false
 var actionQueue : Array[DeviceAction] = []
 
-
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.ShakeDeviceOnce.connect(shake)
 	GameEvents.HopDeviceOnce.connect(hop)

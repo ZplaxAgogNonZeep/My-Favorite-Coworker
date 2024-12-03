@@ -24,11 +24,16 @@ GameEvents="*res://GlobalScripts/game_events.gd"
 [display]
 
 window/size/viewport_width=576
+window/size/initial_position_type=2
 window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gift/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [importer_defaults]
 
@@ -68,3 +73,4 @@ RightButton={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/transparent_background=true

@@ -26,7 +26,6 @@ GameEvents="*res://GlobalScripts/game_events.gd"
 window/size/viewport_width=576
 window/size/initial_position_type=2
 window/size/resizable=false
-window/size/borderless=true
 window/size/always_on_top=true
 window/size/transparent=true
 window/per_pixel_transparency/allowed=true
@@ -73,4 +72,5 @@ RightButton={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
 viewport/transparent_background=true

@@ -105,7 +105,6 @@ position = Vector2(304, 640)
 script = ExtResource("1_ptlsy")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
-shakeDuration = 0.5
 hopDuration = 0.25
 chatSpeed = 0.1
 

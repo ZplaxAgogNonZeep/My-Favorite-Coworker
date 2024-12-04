@@ -24,7 +24,6 @@ GameEvents="*res://GlobalScripts/game_events.gd"
 [display]
 
 window/size/viewport_width=576
-window/size/initial_position_type=2
 window/size/resizable=false
 window/size/always_on_top=true
 window/size/transparent=true

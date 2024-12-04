@@ -8,7 +8,6 @@ enum DeviceAction {HOP, SHAKE}
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
-@export var shakeDuration : float
 @export var hopDuration : float
 @export_category("Modifiers")
 @export var chatSpeed : float
@@ -26,116 +25,137 @@ func _ready():
 	GameEvents.EndShakeDevice.connect(endShake)
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
-	
 
-# Events ===========================================================================================
+
+func checkQueue():
+	if actionQueue.size() > 0:
+		if actionQueue[actionQueue.size() - 1] == DeviceAction.SHAKE:
+			actionQueue.remove_at(actionQueue.size() - 1)
+			_shakeOnce()
+		elif actionQueue[actionQueue.size() - 1] == DeviceAction.HOP:
+			actionQueue.remove_at(actionQueue.size() - 1)
+			_hopOnce()
+		return false
+	else:
+		return true
+
+#region Events
 
 func hop():
 	if not activeTween:
 		isContinuousHop = false
-		hopUp()
+		_hopOnce()
 	else:
 		actionQueue += [DeviceAction.HOP]
 
 func shake():
 	if not activeTween:
 		isContinuousShake = false
-		shakeLeft()
+		_shakeOnce()
+		#shakeLeft()
 	else:
 		actionQueue += [DeviceAction.SHAKE]
 
 func startShake():
 	if not activeTween:
 		isContinuousShake = true
-		shakeLeft()
+		_shakeOnce()
 
 func startHop():
 	if not activeTween:
 		isContinuousHop = true
-		hopUp()
+		_hopOnce()
 
 func endShake():
 	pass
 
 func endHop():
 	pass
+#endregion
 
-# Tween Controls ===================================================================================
+#region Tween Controls 
 
-func checkQueue():
-	if actionQueue.size() > 0:
-		if actionQueue[actionQueue.size() - 1] == DeviceAction.SHAKE:
-			actionQueue.remove_at(actionQueue.size() - 1)
-			shakeLeft()
-		elif actionQueue[actionQueue.size() - 1] == DeviceAction.HOP:
-			actionQueue.remove_at(actionQueue.size() - 1)
-			hopUp()
-		return false
-	else:
-		return true
-
-func shakeLeft(isStart : bool = true):
+func _shakeOnce(isStart : bool = true):
 	if isStart:
 		activeTween = get_tree().create_tween()
-		activeTween.set_ease(Tween.EASE_IN_OUT)
+		activeTween.set_ease(Tween.EASE_IN)
+		activeTween.set_trans(Tween.TRANS_BACK)
 		activeTween.tween_property(self, 
 									"rotation_degrees", 
 									shakeDegreeMax * -1, 
-									shakeDuration * .5).connect("finished", shakeRight)
+									.5)
 	else:
 		activeTween = get_tree().create_tween()
 		activeTween.set_ease(Tween.EASE_IN_OUT)
+		activeTween.set_trans(Tween.TRANS_LINEAR)
 		activeTween.tween_property(self, 
 									"rotation_degrees", 
 									shakeDegreeMax * -1, 
-									shakeDuration).connect("finished", shakeRight)
-
-func shakeRight():
+									.25)
+	await activeTween.finished
+	
 	activeTween = get_tree().create_tween()
+	activeTween.set_ease(Tween.EASE_IN_OUT)
+	activeTween.set_trans(Tween.TRANS_LINEAR)
 	activeTween.tween_property(self, 
 								"rotation_degrees", 
 								shakeDegreeMax, 
-								shakeDuration).connect("finished", completeOneShake)
-
-func completeOneShake():
-	if isContinuousShake:
-		shakeLeft(false)
-	else:
+								.25)
+	await activeTween.finished
+	
+	if (!isContinuousShake):
 		activeTween = get_tree().create_tween()
-		activeTween.set_ease(Tween.EASE_IN_OUT)
+		activeTween.set_ease(Tween.EASE_OUT)
+		activeTween.set_trans(Tween.TRANS_BACK)
 		activeTween.tween_property(self, 
 									"rotation_degrees", 
 									0, 
-									shakeDuration * .5).connect("finished", finishedShaking)
+									.5)
+		await activeTween.finished
+	
+	completeOneShake()
 
-func finishedShaking():
+
+func _hopOnce():
+	activeTween = get_tree().create_tween()
+	activeTween.set_ease(Tween.EASE_OUT)
+	activeTween.set_trans(Tween.TRANS_LINEAR)
+	activeTween.tween_property(self, "position", position + hopHeight, 
+								hopDuration * .5)
+	await activeTween.finished
+	
+	activeTween = get_tree().create_tween()
+	activeTween.set_ease(Tween.EASE_IN)
+	activeTween.set_trans(Tween.TRANS_LINEAR)
+	activeTween.tween_property(self, "position", originalPosn, 
+								hopDuration * .5)
+	await  activeTween.finished
+	
+	completedOneHop()
+
+
+func completeOneShake():
+	if isContinuousShake:
+		_shakeOnce(false)
+	else:
+		_finishedShaking()
+
+
+func _finishedShaking():
 	if (checkQueue()):
 		activeTween = null
 		GameEvents.FinishedShakeDevice.emit()
 
-func hopUp():
-	activeTween = get_tree().create_tween()
-	activeTween.set_ease(Tween.EASE_IN_OUT)
-	activeTween.tween_property(self, "position", position + hopHeight, 
-								hopDuration * .5).connect("finished", hopDown)
-
-func hopDown():
-	activeTween = get_tree().create_tween()
-	activeTween.set_ease(Tween.EASE_IN_OUT)
-	activeTween.tween_property(self, "position", originalPosn, 
-								hopDuration * .5).connect("finished", completedOneHop)
 
 func completedOneHop():
 	if isContinuousHop:
-		hopUp()
+		_hopOnce()
 	else:
-		if (checkQueue()):
-			finishedHopping()
+		_finishedHopping()
 
-func finishedHopping():
-	activeTween = null
-	GameEvents.FinishedHopDevice.emit()
+func _finishedHopping():
+	if (checkQueue()):
+		activeTween = null
+		GameEvents.FinishedHopDevice.emit()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#endregion

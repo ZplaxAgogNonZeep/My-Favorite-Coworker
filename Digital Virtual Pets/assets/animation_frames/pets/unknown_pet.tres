@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://kkt8ifrpyylt"]
+
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/pets/unknown_pet.png" id="1_8bvg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6u4ea"]
+atlas = ExtResource("1_8bvg4")
+region = Rect2(0, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6u4ea")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]

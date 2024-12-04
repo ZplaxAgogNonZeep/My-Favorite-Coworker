@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Interface="*res://GlobalScripts/interface.gd"
-Enums="*res://GlobalScripts/enums.gd"
-GameEvents="*res://GlobalScripts/game_events.gd"
+Interface="*res://singletons/interface.gd"
+Enums="*res://singletons/enums.gd"
+GameEvents="*res://singletons/game_events.gd"
 
 [display]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://3ch885s2wx46"
-path="res://.godot/imported/joy_icon.png-a1de534ae8ca08810494ca864df676d4.ctex"
+path="res://.godot/imported/joy_icon.png-5e71b4f471c67dbc8cda5f8bb135366a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/ui/icons/joy_icon.png"
-dest_files=["res://.godot/imported/joy_icon.png-a1de534ae8ca08810494ca864df676d4.ctex"]
+source_file="res://assets/art/Aesprite/ui/icons/joy_icon.png"
+dest_files=["res://.godot/imported/joy_icon.png-5e71b4f471c67dbc8cda5f8bb135366a.ctex"]
 
 [params]
 

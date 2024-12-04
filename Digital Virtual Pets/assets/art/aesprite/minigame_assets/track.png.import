@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://crfc1t2exl138"
-path="res://.godot/imported/track.png-f8c607b4adedea324c4b301afb2b631d.ctex"
+path="res://.godot/imported/track.png-0da9c8c4d019899007b5943977ffc0d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/minigame_assets/track.png"
-dest_files=["res://.godot/imported/track.png-f8c607b4adedea324c4b301afb2b631d.ctex"]
+source_file="res://assets/art/Aesprite/minigame_assets/track.png"
+dest_files=["res://.godot/imported/track.png-0da9c8c4d019899007b5943977ffc0d4.ctex"]
 
 [params]
 

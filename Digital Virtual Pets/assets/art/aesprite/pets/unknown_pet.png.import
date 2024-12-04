@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxr5yokgonqa"
-path="res://.godot/imported/unknown_pet.png-9a2e3d412e10375f71e0205f779a139e.ctex"
+path="res://.godot/imported/unknown_pet.png-d88ff57e4cdbcd358ba0be43637a5cf2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/pets/unknown_pet.png"
-dest_files=["res://.godot/imported/unknown_pet.png-9a2e3d412e10375f71e0205f779a139e.ctex"]
+source_file="res://assets/art/Aesprite/pets/unknown_pet.png"
+dest_files=["res://.godot/imported/unknown_pet.png-d88ff57e4cdbcd358ba0be43637a5cf2.ctex"]
 
 [params]
 

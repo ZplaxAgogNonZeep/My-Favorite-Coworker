@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://by76t7gi1ihj7"
-path="res://.godot/imported/mash_meter_back.png-42565149b225fe547580c2a8af1a162f.ctex"
+path="res://.godot/imported/mash_meter_back.png-fc58a272776595cbef8b43a91bb315b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/minigame_assets/mash_meter_back.png"
-dest_files=["res://.godot/imported/mash_meter_back.png-42565149b225fe547580c2a8af1a162f.ctex"]
+source_file="res://assets/art/Aesprite/minigame_assets/mash_meter_back.png"
+dest_files=["res://.godot/imported/mash_meter_back.png-fc58a272776595cbef8b43a91bb315b6.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p6npijrg8ff1"
-path="res://.godot/imported/meter_indicator.png-9be5393242c21369250784aaacc31967.ctex"
+path="res://.godot/imported/meter_indicator.png-b11ae9fc9bf4e2fb2569e21bdf509487.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/minigame_assets/meter_indicator.png"
-dest_files=["res://.godot/imported/meter_indicator.png-9be5393242c21369250784aaacc31967.ctex"]
+source_file="res://assets/art/Aesprite/minigame_assets/meter_indicator.png"
+dest_files=["res://.godot/imported/meter_indicator.png-b11ae9fc9bf4e2fb2569e21bdf509487.ctex"]
 
 [params]
 

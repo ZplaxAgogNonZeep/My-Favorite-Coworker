@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c2cgc6tuvqigb"
-path="res://.godot/imported/buh_buh_big.png-9633787e2a4b8f1c835958a2ebd7710d.ctex"
+path="res://.godot/imported/buh_buh_big.png-49e933abdd251ff06f9f329c7c99a23f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/pets/stage2/buh_buh_big.png"
-dest_files=["res://.godot/imported/buh_buh_big.png-9633787e2a4b8f1c835958a2ebd7710d.ctex"]
+source_file="res://assets/art/Aesprite/pets/stage2/buh_buh_big.png"
+dest_files=["res://.godot/imported/buh_buh_big.png-49e933abdd251ff06f9f329c7c99a23f.ctex"]
 
 [params]
 

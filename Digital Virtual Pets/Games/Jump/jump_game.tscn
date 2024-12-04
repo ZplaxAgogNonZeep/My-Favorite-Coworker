@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=3 uid="uid://yp44rtci20n4"]
 
-[ext_resource type="Script" path="res://Games/Jump/jump_game.gd" id="1_5ul8j"]
-[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_qff5g"]
-[ext_resource type="Script" path="res://Games/ScrollingBackground.gd" id="3_c8eis"]
-[ext_resource type="Texture2D" uid="uid://crfc1t2exl138" path="res://Assets/Art/Aesprite/MiniGameAssets/Track.png" id="3_it4c0"]
-[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_w4bgg"]
-[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_nxl2w"]
-[ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://Assets/Art/Aesprite/MiniGameAssets/Hurdle.png" id="6_4pyyq"]
+[ext_resource type="Script" path="res://games/jump/jump_game.gd" id="1_5ul8j"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_qff5g"]
+[ext_resource type="Script" path="res://games/scrolling_background.gd" id="3_c8eis"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_w4bgg"]
+[ext_resource type="Texture2D" uid="uid://crfc1t2exl138" path="res://assets/art/aesprite/minigame_assets/track.png" id="4_45xc6"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_nxl2w"]
+[ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://assets/art/aesprite/minigame_assets/hurdle.png" id="7_k7wla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dan0o"]
 size = Vector2(1.33333, 3.33334)
@@ -41,25 +41,25 @@ metadata/_edit_lock_ = true
 [node name="Track0" type="Sprite2D" parent="BlankMenuSprite2"]
 position = Vector2(-48, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_it4c0")
+texture = ExtResource("4_45xc6")
 offset = Vector2(0, 3)
 
 [node name="Track1" type="Sprite2D" parent="BlankMenuSprite2"]
 position = Vector2(-12, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_it4c0")
+texture = ExtResource("4_45xc6")
 offset = Vector2(0, 3)
 
 [node name="Track2" type="Sprite2D" parent="BlankMenuSprite2"]
 position = Vector2(24, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_it4c0")
+texture = ExtResource("4_45xc6")
 offset = Vector2(0, 3)
 
 [node name="Track3" type="Sprite2D" parent="BlankMenuSprite2"]
 position = Vector2(60, 0)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_it4c0")
+texture = ExtResource("4_45xc6")
 offset = Vector2(0, 3)
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_w4bgg")]
@@ -91,7 +91,7 @@ vertical_alignment = 1
 [node name="Hurdle" type="Sprite2D" parent="."]
 position = Vector2(192, 88)
 scale = Vector2(3, 3)
-texture = ExtResource("6_4pyyq")
+texture = ExtResource("7_k7wla")
 
 [node name="Area2D" type="Area2D" parent="Hurdle"]
 collision_layer = 2

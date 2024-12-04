@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://2bbe7a4a3a8k"]
 
-[ext_resource type="Script" path="res://Games/PseudoPet.gd" id="1_o5scy"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://Assets/AnimationFrames/Pets/Unknown_Pet.tres" id="2_4uxxp"]
+[ext_resource type="Script" path="res://games/pseudo_pet.gd" id="1_o5scy"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="2_l6cgb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysjiw"]
 radius = 16.0
@@ -12,7 +12,7 @@ script = ExtResource("1_o5scy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("2_4uxxp")
+sprite_frames = ExtResource("2_l6cgb")
 animation = &"Idle"
 offset = Vector2(0, -8)
 

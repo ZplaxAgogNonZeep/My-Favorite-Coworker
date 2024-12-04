@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://car1sni0ana1y"
-path="res://.godot/imported/Buh.png-7fd3cca9eb4d93fb9e9d95ec73eef877.ctex"
+uid="uid://cmo5v4dknvnnk"
+path="res://.godot/imported/BuhBuh.png-7a6fe7fa64fb48341c6663e3748ba487.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Aesprite/Pets/Stage1/Buh.png"
-dest_files=["res://.godot/imported/Buh.png-7fd3cca9eb4d93fb9e9d95ec73eef877.ctex"]
+source_file="res://Assets/Art/Aesprite/Pets/Stage2/BuhBuh.png"
+dest_files=["res://.godot/imported/BuhBuh.png-7a6fe7fa64fb48341c6663e3748ba487.ctex"]
 
 [params]
 

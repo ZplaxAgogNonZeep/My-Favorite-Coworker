@@ -1,0 +1,85 @@
+[gd_scene load_steps=10 format=3 uid="uid://dxy5xt7vqdggx"]
+
+[ext_resource type="Script" path="res://Pets/Pet.gd" id="1_vafg1"]
+[ext_resource type="Script" path="res://Pets/PetTypes/PupType.gd" id="2_tbv1f"]
+[ext_resource type="Script" path="res://script_templates/Timer/solo_timer.gd" id="4_gw0ij"]
+[ext_resource type="Texture2D" uid="uid://ojee7m82c32h" path="res://Assets/Art/PlaceHolders/AgumonSprite.png" id="5_42l7p"]
+[ext_resource type="Texture2D" uid="uid://dpombnh0mxxsg" path="res://icon.svg" id="5_87hd4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjrme"]
+atlas = ExtResource("5_42l7p")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5m22"]
+atlas = ExtResource("5_87hd4")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prxbw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjrme")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5m22")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
+size = Vector2(16, 16)
+
+[node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite") groups=["Pet"]]
+position = Vector2(0, 32)
+script = ExtResource("1_vafg1")
+sprite = NodePath("Sprite")
+personality = 3
+
+[node name="Type" type="Node" parent="."]
+script = ExtResource("2_tbv1f")
+TEST = "THIS IS THE TEST ONE"
+
+[node name="MoveTimer" type="Timer" parent="Type"]
+script = ExtResource("4_gw0ij")
+
+[node name="NeglectTimer" type="Timer" parent="Type"]
+script = ExtResource("4_gw0ij")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_prxbw")
+animation = &"new_animation"
+offset = Vector2(0, -15)
+
+[node name="LeftObjectColl" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
+position = Vector2(-16, -8)
+shape = SubResource("RectangleShape2D_jamv8")
+
+[node name="RightObjectColl" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
+position = Vector2(16, -8)
+shape = SubResource("RectangleShape2D_jamv8")
+
+[connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]
+[connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
+[connection signal="area_entered" from="LeftObjectColl" to="." method="_on_left_object_coll_area_entered"]
+[connection signal="area_exited" from="LeftObjectColl" to="." method="_on_left_object_coll_area_exited"]
+[connection signal="area_entered" from="RightObjectColl" to="." method="_on_right_object_coll_area_entered"]
+[connection signal="area_exited" from="RightObjectColl" to="." method="_on_right_object_coll_area_exited"]

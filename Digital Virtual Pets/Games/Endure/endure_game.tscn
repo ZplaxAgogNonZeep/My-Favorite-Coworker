@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cqe77tkk23q1s"]
 
-[ext_resource type="Script" path="res://games/endure/endure_game.gd" id="1_vscop"]
-[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_fefqy"]
-[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_mquew"]
-[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_ikg0c"]
-[ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://games/mash_meter.tscn" id="5_mjufo"]
+[ext_resource type="Script" path="res://Games/Endure/endure_game.gd" id="1_vscop"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_fefqy"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_mquew"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_ikg0c"]
+[ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://Games/mash_meter.tscn" id="5_mjufo"]
 
 [node name="EndureGame" type="Control"]
 layout_mode = 3

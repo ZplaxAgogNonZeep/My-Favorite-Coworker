@@ -1,36 +1,36 @@
 [gd_scene load_steps=12 format=3 uid="uid://do4loav2wlxtb"]
 
-[ext_resource type="Script" path="res://games/fish/fishing_game.gd" id="1_iowcp"]
-[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_8mkhn"]
-[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_aqlkw"]
-[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_376qc"]
-[ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://assets/art/aesprite/minigame_assets/fishing_rod.png" id="4_dgh67"]
-[ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="5_xuurv"]
+[ext_resource type="Script" path="res://Games/Fish/fishing_game.gd" id="1_iowcp"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_8mkhn"]
+[ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://Assets/Art/Aesprite/MiniGameAssets/FishingRod-Sheet.png" id="3_17o4p"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_aqlkw"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_376qc"]
+[ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://Assets/Art/Aesprite/UI/Icons/MeatIcon.png" id="5_xuurv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nenon"]
-atlas = ExtResource("4_dgh67")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhc78"]
+atlas = ExtResource("3_17o4p")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xro7c"]
-atlas = ExtResource("4_dgh67")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nceid"]
+atlas = ExtResource("3_17o4p")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_glh2m"]
-atlas = ExtResource("4_dgh67")
+[sub_resource type="AtlasTexture" id="AtlasTexture_sknfp"]
+atlas = ExtResource("3_17o4p")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6sstb"]
-atlas = ExtResource("4_dgh67")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eo81"]
+atlas = ExtResource("3_17o4p")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7mwa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nenon")
+"texture": SubResource("AtlasTexture_mhc78")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xro7c")
+"texture": SubResource("AtlasTexture_nceid")
 }],
 "loop": true,
 "name": &"Active",
@@ -38,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_glh2m")
+"texture": SubResource("AtlasTexture_sknfp")
 }],
 "loop": true,
 "name": &"Inactive",
@@ -46,7 +46,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6sstb")
+"texture": SubResource("AtlasTexture_6eo81")
 }],
 "loop": true,
 "name": &"ReeledIn",
@@ -77,7 +77,8 @@ position = Vector2(144, 120)
 position = Vector2(88, 96)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_u7mwa")
-animation = &"Active"
+animation = &"ReeledIn"
+frame_progress = 0.567868
 
 [node name="Catch" type="Sprite2D" parent="."]
 visible = false

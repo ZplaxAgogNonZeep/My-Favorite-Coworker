@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxps8l5sseo8p"]
 
-[ext_resource type="Script" path="res://games/guess/guess_game.gd" id="1_qfueg"]
-[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_6p1v6"]
-[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_emhdi"]
-[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_glm3m"]
-[ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://assets/art/aesprite/minigame_assets/arrow.png" id="5_cq21n"]
+[ext_resource type="Script" path="res://Games/Guess/GuessGame.gd" id="1_qfueg"]
+[ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://Assets/Art/Aesprite/UI/Menu/BlankMenu.png" id="2_6p1v6"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://Games/pseudo_pet.tscn" id="3_emhdi"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://UI/Fonts/MenuTheme.tres" id="4_glm3m"]
+[ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://Assets/Art/Aesprite/MiniGameAssets/Arrow.png" id="5_rul4p"]
 
 [node name="GuessGame" type="Control" node_paths=PackedStringArray("status")]
 layout_mode = 3
@@ -52,10 +52,10 @@ vertical_alignment = 1
 [node name="LeftArrow" type="Sprite2D" parent="."]
 position = Vector2(32, 96)
 scale = Vector2(3, 3)
-texture = ExtResource("5_cq21n")
+texture = ExtResource("5_rul4p")
 
 [node name="RightArrow" type="Sprite2D" parent="."]
 position = Vector2(192, 96)
 scale = Vector2(3, 3)
-texture = ExtResource("5_cq21n")
+texture = ExtResource("5_rul4p")
 flip_h = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://car1sni0ana1y"
-path="res://.godot/imported/Buh.png-7fd3cca9eb4d93fb9e9d95ec73eef877.ctex"
+uid="uid://eqxnvlkx8x7a"
+path="res://.godot/imported/JoyIcon-Sheet.png-b1f72dc2bb3436e5c175eda9c878a376.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Aesprite/Pets/Stage1/Buh.png"
-dest_files=["res://.godot/imported/Buh.png-7fd3cca9eb4d93fb9e9d95ec73eef877.ctex"]
+source_file="res://Assets/Art/Aesprite/UI/Icons/JoyIcon-Sheet.png"
+dest_files=["res://.godot/imported/JoyIcon-Sheet.png-b1f72dc2bb3436e5c175eda9c878a376.ctex"]
 
 [params]
 

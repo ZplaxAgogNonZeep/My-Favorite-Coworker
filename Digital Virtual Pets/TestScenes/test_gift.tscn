@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://rc5doc63ptyq"]
+
+[ext_resource type="Script" path="res://addons/gift/gift_node.gd" id="1_1q4vg"]
+[ext_resource type="Script" path="res://TestScenes/test_gift.gd" id="1_6o1r4"]
+
+[node name="TestGift" type="Node2D"]
+script = ExtResource("1_6o1r4")
+
+[node name="Gift" type="Node" parent="."]
+script = ExtResource("1_1q4vg")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cdcl22usg34t5"
-path="res://.godot/imported/hammer_sheet.png-dc457f43d87a122f47b2b00419f66f17.ctex"
+path="res://.godot/imported/hammer_sheet.png-91c365c7ec6b658f7edd92735713de83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/minigame_assets/hammer_sheet.png"
-dest_files=["res://.godot/imported/hammer_sheet.png-dc457f43d87a122f47b2b00419f66f17.ctex"]
+source_file="res://assets/art/Aesprite/minigame_assets/hammer_sheet.png"
+dest_files=["res://.godot/imported/hammer_sheet.png-91c365c7ec6b658f7edd92735713de83.ctex"]
 
 [params]
 

@@ -1,25 +1,25 @@
 extends Node
 
-class PetType:
-	var petName : String
-	
-	func roamBehavior():
-		pass
-	
-	func feedingBehavior():
-		pass
-	
-	func onTickHunger():
-		pass
-	
-	func onTickJoy():
-		pass
-	
-	func onEatFood():
-		pass
-	
-	func getEvolvePet():
-		return null
+#class PetType:
+	#var petName : String
+	#
+	#func roamBehavior():
+		#pass
+	#
+	#func feedingBehavior():
+		#pass
+	#
+	#func onTickHunger():
+		#pass
+	#
+	#func onTickJoy():
+		#pass
+	#
+	#func onEatFood():
+		#pass
+	#
+	#func getEvolvePet():
+		#return null
 
 class Food:
 	var feedAmount : int

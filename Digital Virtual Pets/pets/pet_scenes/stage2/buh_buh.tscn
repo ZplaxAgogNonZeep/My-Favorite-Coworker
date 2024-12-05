@@ -16,8 +16,11 @@ leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 evolvesTo = Array[PackedScene]([ExtResource("2_j7q2h")])
 
-[node name="Type" type="Node" parent="."]
+[node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("2_yv0mn")
+petName = "BuhBuh"
+moveTimer = NodePath("MoveTimer")
+neglectTimer = NodePath("NeglectTimer")
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_5kpun")
@@ -49,7 +52,6 @@ metadata/_edit_lock_ = true
 position = Vector2(24, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
-[connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
 [connection signal="area_entered" from="LeftObjectColl" to="." method="_on_left_object_coll_area_entered"]
 [connection signal="area_exited" from="LeftObjectColl" to="." method="_on_left_object_coll_area_exited"]

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Pet
+
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 

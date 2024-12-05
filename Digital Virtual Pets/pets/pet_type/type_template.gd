@@ -1,24 +1,38 @@
 extends Node
 
-var implements = [Interface.PetType]
+class_name PetType
 
-var petName := "blank"
-	
-func roamBehavior():
+@export var tempEvolveCondition = true
+@export var petName : String
+@export var moveTimer : Timer
+@export var neglectTimer : Timer
+@export var waitIntervalMax := 10.0
+@export var waitIntervalMin := 3.0
+
+@onready var pet = get_parent()
+
+func _ready() -> void:
+	moveTimer.connect("timeout", _onMoveTimerTimeout)
+
+func roamBehavior() -> void:
+	if not pet.isRoaming and moveTimer.is_stopped():
+		randomize()
+		moveTimer.start(randf_range(waitIntervalMin, waitIntervalMax))
+
+func feedingBehavior() -> void:
 	pass
 
-func feedingBehavior():
+func onTickHunger() -> void:
 	pass
 
-func onTickHunger():
+func onTickJoy() -> void:
 	pass
 
-func onTickJoy():
+func onEatFood() -> void:
 	pass
 
-func onEatFood():
-	pass
-
-func getEvolvePet():
+func getEvolvePet() -> Pet:
 	return null
 
+func _onMoveTimerTimeout() -> void:
+	pet.goToPosition(pet.getNextPosition())

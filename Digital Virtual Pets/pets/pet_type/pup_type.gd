@@ -1,41 +1,13 @@
-extends Node
+extends PetType
 
-var implements = [Interface.PetType]
-
-
-var waitIntervalMax := 10.0
-var waitIntervalMin := 3.0
-
-var petName := "Buh"
-
-@export var tempEvolveCondition = true
-
-func roamBehavior():
-	if not get_parent().isRoaming and $MoveTimer.is_stopped():
-		randomize()
-		$MoveTimer.start(randf_range(waitIntervalMin, waitIntervalMax))
-
-func feedingBehavior():
-	pass
-
-func onTickHunger():
-	pass
-
-func onTickJoy():
-	pass
-
-func onEatFood():
-	pass
-
-func getEvolvePet():
+func getEvolvePet() -> Pet:
 	if tempEvolveCondition:
-		return get_parent().evolvesTo[0]
-	if get_parent().abilityStats[Enums.AbilityStat.END] > 2 or get_parent().abilityStats[Enums.AbilityStat.SPD] > 2:
-		return get_parent().evolvesTo[0]
-	elif (get_parent().traumaCount >= 1):
-		return get_parent().evolvesTo[1]
+		return pet.evolvesTo[0]
+	if pet.abilityStats[Enums.AbilityStat.END] > 2 or pet.abilityStats[Enums.AbilityStat.SPD] > 2:
+		return pet.evolvesTo[0]
+	elif (pet.traumaCount >= 1):
+		return pet.evolvesTo[1]
 	else:
 		return null
 
-func _on_move_timer_timeout():
-	get_parent().goToPosition(get_parent().getNextPosition())
+

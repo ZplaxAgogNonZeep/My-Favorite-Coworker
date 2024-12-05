@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://clldflk42myex"]
 
 [ext_resource type="Script" path="res://pets/pet.gd" id="1_a0r6y"]
-[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/pets/stage3/HeRohBuh.png" id="2_k6g8p"]
+[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/Pets/Stage3/HeRohBuh.png" id="2_k6g8p"]
 [ext_resource type="Script" path="res://pets/pet_type/he_ro_buh_type.gd" id="3_ctpwi"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_qd7at"]
 [ext_resource type="SpriteFrames" uid="uid://bifauo7clkw3i" path="res://assets/animation_frames/pets/stage3/he_ro_buh_frames.tres" id="5_nmdxs"]
@@ -16,8 +16,11 @@ leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 iconSprite = ExtResource("2_k6g8p")
 
-[node name="Type" type="Node" parent="."]
+[node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("3_ctpwi")
+petName = "HeRoBuh"
+moveTimer = NodePath("MoveTimer")
+neglectTimer = NodePath("NeglectTimer")
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_qd7at")
@@ -49,7 +52,6 @@ metadata/_edit_lock_ = true
 position = Vector2(32, -8)
 shape = SubResource("RectangleShape2D_jamv8")
 
-[connection signal="timeout" from="Type/MoveTimer" to="Type" method="_on_move_timer_timeout"]
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
 [connection signal="area_entered" from="LeftObjectColl" to="." method="_on_left_object_coll_area_entered"]
 [connection signal="area_exited" from="LeftObjectColl" to="." method="_on_left_object_coll_area_exited"]

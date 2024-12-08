@@ -2,14 +2,17 @@ extends Node
 
 class_name PetType
 
+@onready var pet = get_parent()
+
 @export var tempEvolveCondition = true
-@export var petName : String
+@export_category("Object References")
 @export var moveTimer : Timer
 @export var neglectTimer : Timer
+@export_category("Variables")
+@export var petName : String
 @export var waitIntervalMax := 10.0
 @export var waitIntervalMin := 3.0
 
-@onready var pet = get_parent()
 
 func _ready() -> void:
 	moveTimer.connect("timeout", _onMoveTimerTimeout)

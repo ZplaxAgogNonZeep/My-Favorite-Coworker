@@ -18,9 +18,9 @@ iconSprite = ExtResource("2_k6g8p")
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("3_ctpwi")
-petName = "HeRoBuh"
 moveTimer = NodePath("MoveTimer")
 neglectTimer = NodePath("NeglectTimer")
+petName = "HeRoBuh"
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_qd7at")

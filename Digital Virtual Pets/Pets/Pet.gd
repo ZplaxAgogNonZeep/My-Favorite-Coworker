@@ -99,7 +99,7 @@ func eatFood(foodObject):
 	
 	GameEvents.UnpauseTimers.emit()
 
-func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease):
+func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease : int):
 	joyValue += joyIncrement
 	
 	if joyValue > MAX_JOY:

@@ -1,6 +1,6 @@
 extends PetType
 
-func getEvolvePet() -> Pet:
+func getEvolvePet():
 	if tempEvolveCondition:
 		return pet.evolvesTo[0]
 	if pet.abilityStats[Enums.AbilityStat.END] > 2 or pet.abilityStats[Enums.AbilityStat.SPD] > 2:

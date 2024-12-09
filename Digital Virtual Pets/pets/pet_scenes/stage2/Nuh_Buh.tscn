@@ -18,9 +18,9 @@ evolvesTo = Array[PackedScene]([ExtResource("2_8e336")])
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("3_y3y4t")
-petName = "NuhBuh"
 moveTimer = NodePath("MoveTimer")
 neglectTimer = NodePath("NeglectTimer")
+petName = "NuhBuh"
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_uk8r7")

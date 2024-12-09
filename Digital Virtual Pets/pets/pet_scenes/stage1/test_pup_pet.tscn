@@ -40,11 +40,9 @@ size = Vector2(16, 16)
 position = Vector2(0, 32)
 script = ExtResource("1_vafg1")
 sprite = NodePath("Sprite")
-personality = 3
 
 [node name="Type" type="Node" parent="."]
 script = ExtResource("2_tbv1f")
-TEST = "THIS IS THE TEST ONE"
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("4_gw0ij")

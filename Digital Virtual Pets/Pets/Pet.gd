@@ -15,7 +15,7 @@ const personalityModifiers : Dictionary = {
 	}# Order of Stats follow order in enum: [POW, END, SPD, BAL]
 
 @onready var petManager = get_parent()
-@onready var type := get_node_or_null("Type")
+@onready var type : PetType = get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position
 @onready var previousPosn := position
 @onready var defaultPosition := position
@@ -63,6 +63,14 @@ func _ready():
 
 func _process(delta):
 	if petState == Enums.PetState.ROAMING:
+		if (isRoaming):
+			if (sprite.animation != "Walk"):
+				sprite.play("Walk")
+		else:
+			if (sprite.animation != "Idle"):
+				sprite.play("Idle")
+		
+		
 		if (targetPosn):
 			alineToBoundry()
 			
@@ -79,7 +87,11 @@ func _process(delta):
 		previousPosn = position
 		
 	elif petState == Enums.PetState.FEEDING:
+		if (sprite.animation != "Quirk"):
+			sprite.play("Quirk")
 		type.feedingBehavior()
+	elif petState == Enums.PetState.EVOLVING:
+		pass
 
 
 func eatFood(foodObject):
@@ -178,6 +190,8 @@ func neglectTimeout():
 func evolvePet():
 	print("Evolve singal received")
 	if (type.getEvolvePet() != null):
+		petState = Enums.PetState.EVOLVING
+		sprite.play("Quirk")
 		petManager.evolvePet(type.getEvolvePet())
 
 # Utility Functions ================================================================================

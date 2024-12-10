@@ -36,7 +36,7 @@ script = ExtResource("3_74jdq")
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("7_icpn1")
 animation = &"Walk"
-frame_progress = 0.824425
+frame_progress = 0.905029
 offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]

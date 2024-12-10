@@ -31,7 +31,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
 	$PseudoPet.sprite.offset = pet.sprite.offset
-	$PseudoPet.sprite.animation = "Idle"
+	$PseudoPet.sprite.play("Quirk")
 	$MashMeter.initializeMeter(mashMax, mashGoalMin, mashGoalMax)
 	updateGameText("GET READY")
 	$Timer.start(incrementFrequency)
@@ -58,7 +58,7 @@ func takeInput(input : Enums.InputType):
 func onWin():
 	gameRunning = false
 	updateGameText("WIN!")
-	print("You Win!")
+	$PseudoPet.sprite.play("Quirk")
 	$PseudoPet.hop(2)
 	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
 	await get_tree().create_timer(2).timeout
@@ -67,7 +67,7 @@ func onWin():
 func onLose():
 	gameRunning = false
 	updateGameText("LOSE!")
-	print("You Win!")
+	$PseudoPet.sprite.play("Quirk")
 	await get_tree().create_timer(2).timeout
 	endGame()
 
@@ -79,6 +79,7 @@ func incrementGame():
 		$Timer.start(incrementFrequency)
 	elif increment == 0:
 		updateGameText("ENDURE!!")
+		$PseudoPet.sprite.play("Idle")
 		increment -= 1
 		mashMode = true
 		$Timer.start(gameDuration)

@@ -1,8 +1,16 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://kkt8ifrpyylt"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://kkt8ifrpyylt"]
 
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/Pets/unknown_pet.png" id="1_8bvg4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u4ea"]
+atlas = ExtResource("1_8bvg4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji34l"]
+atlas = ExtResource("1_8bvg4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11udm"]
 atlas = ExtResource("1_8bvg4")
 region = Rect2(0, 0, 16, 16)
 
@@ -14,5 +22,21 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji34l")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11udm")
+}],
+"loop": true,
+"name": &"Walk",
 "speed": 5.0
 }]

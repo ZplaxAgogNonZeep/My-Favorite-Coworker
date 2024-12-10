@@ -19,7 +19,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
 	$PseudoPet.sprite.offset = pet.sprite.offset
-	$PseudoPet.sprite.animation = "Idle"
+	$PseudoPet.sprite.play("Idle")
 	$FishingRod.play("Inactive")
 	
 	updateGameText("WAIT")
@@ -37,6 +37,7 @@ func onWin():
 	$FishingRod.play("ReeledIn")
 	$Catch.visible = true
 	updateGameText("WIN!")
+	$PseudoPet.sprite.play("Quirk")
 	$PseudoPet.hop(2)
 	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
 	await get_tree().create_timer(1).timeout
@@ -45,6 +46,7 @@ func onWin():
 func onLose():
 	$FishingRod.play("ReeledIn")
 	updateGameText("LOSE")
+	$PseudoPet.sprite.play("Quirk")
 	await get_tree().create_timer(1).timeout
 	endGame()
 
@@ -54,6 +56,7 @@ func endGame():
 
 func takeInput(input : Enums.InputType):
 	if gameRunning:
+		gameRunning = false
 		if input == Enums.InputType.MIDDLEBUTTON:
 			$Timer.stop()
 			$CatchWindow.stop()

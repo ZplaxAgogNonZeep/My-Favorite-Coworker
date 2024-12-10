@@ -59,6 +59,7 @@ anchors_preset = 0
 offset_right = 224.0
 offset_bottom = 224.0
 script = ExtResource("1_iowcp")
+gameTimerRange = Vector2(1, 5)
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -77,12 +78,12 @@ position = Vector2(144, 120)
 position = Vector2(88, 96)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_u7mwa")
-animation = &"Active"
+animation = &"Inactive"
 
 [node name="Catch" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(80, 96)
-scale = Vector2(0.5, 0.5)
+position = Vector2(78, 100)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("5_xuurv")
 
 [node name="GameName" type="Label" parent="."]

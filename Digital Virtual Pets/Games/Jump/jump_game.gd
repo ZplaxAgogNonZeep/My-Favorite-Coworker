@@ -42,7 +42,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
 	$PseudoPet.sprite.offset = pet.sprite.offset
 	$PseudoPet.setDirection(true)
-	$PseudoPet.sprite.animation = "Idle"
+	$PseudoPet.sprite.play("Walk")
 	
 	background.speed = speed
 	
@@ -76,6 +76,7 @@ func onWin():
 	gameRunning = false
 	background.speed = 0
 	print("You Win!")
+	$PseudoPet.sprite.play("Quirk")
 	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
 	await get_tree().create_timer(1).timeout
 	endGame()
@@ -85,6 +86,7 @@ func onLose():
 	gameRunning = false
 	background.speed = 0
 	print("You Lose!")
+	$PseudoPet.sprite.play("Quirk")
 	await get_tree().create_timer(1).timeout
 	endGame()
 

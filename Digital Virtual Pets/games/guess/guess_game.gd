@@ -22,7 +22,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
 	$PseudoPet.sprite.offset = pet.sprite.offset
-	$PseudoPet.sprite.animation = "Idle"
+	$PseudoPet.sprite.play("Idle")
 	
 	randomize()
 	if randi_range(0, 1):
@@ -51,10 +51,12 @@ func intervalMet():
 		$PseudoPet.setDirection(correctDirIsRight)
 		if (guessDirIsRight == correctDirIsRight):
 			updateGameText("WIN!")
+			$PseudoPet.sprite.play("Quirk")
 			$PseudoPet.hop(2)
 			onWin()
 		else:
 			updateGameText("LOSE!")
+			$PseudoPet.sprite.play("Quirk")
 			onLose()
 	else:
 		get_tree().create_timer(intervalTime).connect("timeout", intervalMet)

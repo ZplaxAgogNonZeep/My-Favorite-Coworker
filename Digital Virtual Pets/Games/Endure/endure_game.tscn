@@ -1,10 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqe77tkk23q1s"]
+[gd_scene load_steps=10 format=3 uid="uid://cqe77tkk23q1s"]
 
 [ext_resource type="Script" path="res://games/endure/endure_game.gd" id="1_vscop"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_fefqy"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_mquew"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_ikg0c"]
 [ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://games/mash_meter.tscn" id="5_mjufo"]
+[ext_resource type="Texture2D" uid="uid://duv117bxtsfny" path="res://assets/art/aesprite/minigame_assets/steam-Sheet.png" id="6_jq0r2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8v0d"]
+atlas = ExtResource("6_jq0r2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kescq"]
+atlas = ExtResource("6_jq0r2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mrwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8v0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kescq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
 
 [node name="EndureGame" type="Control"]
 layout_mode = 3
@@ -34,7 +57,7 @@ texture = ExtResource("2_fefqy")
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_mquew")]
-position = Vector2(112, 120)
+position = Vector2(128, 120)
 
 [node name="GameName" type="Label" parent="."]
 layout_mode = 0
@@ -61,6 +84,20 @@ vertical_alignment = 1
 
 [node name="MashMeter" parent="." instance=ExtResource("5_mjufo")]
 position = Vector2(40, 88)
+
+[node name="Steam" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 96)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4mrwo")
+animation = &"Idle"
+frame_progress = 0.424814
+
+[node name="Steam2" type="AnimatedSprite2D" parent="."]
+position = Vector2(176, 96)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4mrwo")
+animation = &"Idle"
+frame_progress = 0.513767
 
 [connection signal="timeout" from="Timer" to="." method="incrementGame"]
 [connection signal="timeout" from="MashDecrease" to="." method="decreaseMash"]

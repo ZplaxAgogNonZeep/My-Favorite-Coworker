@@ -31,7 +31,8 @@ script = ExtResource("4_5kpun")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("6_28x2x")
-animation = &"Idle"
+animation = &"Quirk"
+frame_progress = 0.335026
 offset = Vector2(0, -10)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]

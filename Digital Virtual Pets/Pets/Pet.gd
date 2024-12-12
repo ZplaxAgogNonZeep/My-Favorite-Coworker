@@ -168,7 +168,7 @@ func tickHunger():
 func tickJoy():
 	if (joyValue > 0):
 		if joyValue < 10:
-			GameEvents.ShakeDeviceOnce.emit()
+			GameEvents.HopDeviceOnce.emit()
 		type.onTickJoy()
 		randomize()
 		joyValue -= randi_range(0, 5)

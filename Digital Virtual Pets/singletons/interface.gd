@@ -1,28 +1,10 @@
 extends Node
 
-#class PetType:
-	#var petName : String
-	#
-	#func roamBehavior():
-		#pass
-	#
-	#func feedingBehavior():
-		#pass
-	#
-	#func onTickHunger():
-		#pass
-	#
-	#func onTickJoy():
-		#pass
-	#
-	#func onEatFood():
-		#pass
-	#
-	#func getEvolvePet():
-		#return null
+#region Interfaces
 
 class Food:
 	var feedAmount : int
+	var readyToEat : bool
 
 
 class HighlightButton:
@@ -65,7 +47,24 @@ class MiniGame:
 	func takeInput(input : Enums.InputType):
 		pass
 
-# General Function =================================================================================
+#endregion
+
+#region Quality of Life Functions
+
+# Checks if the given object inherits the given class
+# objectToCheck : Any node | interface : The class to check for
+# ex. Interface.hasInterface(Player, Interface.Damageable)
+func hasInterface(objectToCheck, interface) -> bool:
+	if "implements" in objectToCheck:
+		for objectInterface in objectToCheck.implements:
+			if objectInterface == interface:
+				return true
+	
+	return false
+
+#endregion
+
+#region General Function 
 
 func _ready():
 	var allLoadedNodes = getAllDecendants(get_tree().root)
@@ -99,3 +98,5 @@ func check_node(node):
 				if (property.name != "Built-in script"):
 					assert(property.name in node, "Interface error: " + node.name + 
 					" does not contain a function named " + property.name)
+
+#endregion

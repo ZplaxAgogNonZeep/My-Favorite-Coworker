@@ -7,7 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://byjpb8rxwl8gl" path="res://assets/animation_frames/pets/stage2/nuh_buh_frames.tres" id="6_yuscc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
-size = Vector2(16, 16)
+size = Vector2(16, 8)
 
 [node name="NuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
 script = ExtResource("1_culyx")
@@ -42,7 +42,7 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
-position = Vector2(-24, -8)
+position = Vector2(-24, -4)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
@@ -51,11 +51,13 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
-position = Vector2(24, -8)
+position = Vector2(24, -4)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
-[connection signal="area_entered" from="LeftObjectColl" to="." method="_on_left_object_coll_area_entered"]
-[connection signal="area_exited" from="LeftObjectColl" to="." method="_on_left_object_coll_area_exited"]
+[connection signal="area_entered" from="LeftObjectColl" to="." method="_objectAreaCollisionEnter"]
+[connection signal="area_exited" from="LeftObjectColl" to="." method="_objectAreaCollisionExit"]
+[connection signal="body_entered" from="LeftObjectColl" to="." method="_objectBodyCollisionEnter"]
+[connection signal="body_exited" from="LeftObjectColl" to="." method="_objectBodyCollisionExit"]
 [connection signal="area_entered" from="RightObjectColl" to="." method="_on_right_object_coll_area_entered"]
 [connection signal="area_exited" from="RightObjectColl" to="." method="_on_right_object_coll_area_exited"]

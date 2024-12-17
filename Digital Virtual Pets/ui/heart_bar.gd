@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name StatusBar
+
 var heartObjects : Array = []
 
 func _ready():

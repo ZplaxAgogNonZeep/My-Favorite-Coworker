@@ -3,20 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="1_epow7"]
 [ext_resource type="Script" path="res://objects/food.gd" id="2_6roqv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_knb58"]
-size = Vector2(26, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lvroj"]
+size = Vector2(16, 16)
 
-[node name="Meat" type="Sprite2D" groups=["Food", "Object"]]
+[node name="Meat" type="RigidBody2D" groups=["Food", "Object"]]
+collision_layer = 3
+collision_mask = 3
+gravity_scale = 0.0
+freeze_mode = 1
+script = ExtResource("2_6roqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_lvroj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_epow7")
-offset = Vector2(0, -18)
-script = ExtResource("2_6roqv")
-metadata/_edit_group_ = true
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -16)
-shape = SubResource("RectangleShape2D_knb58")

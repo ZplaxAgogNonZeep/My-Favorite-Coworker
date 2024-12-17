@@ -34,7 +34,7 @@ func onTickJoy() -> void:
 func onEatFood() -> void:
 	pass
 
-func getEvolvePet() -> Pet:
+func getEvolvePet():
 	return null
 
 func _onMoveTimerTimeout() -> void:

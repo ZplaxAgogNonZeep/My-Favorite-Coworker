@@ -113,17 +113,16 @@ position = Vector2(0, -256)
 texture = ExtResource("2_357pc")
 metadata/_edit_lock_ = true
 
-[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "petManager", "menuManager", "timers", "boundries", "ObjectSpawnLocations", "joyBar", "hungerBar")]
+[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "timers", "boundries", "ObjectSpawnLocations")]
 position = Vector2(0, -232)
 script = ExtResource("3_ymaw0")
 device = NodePath("..")
+objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
 timers = NodePath("GameTimers")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
-ObjectSpawnLocations = NodePath("PetManager/Markers/SpawnLocationA")
-joyBar = NodePath("MenuManager/StatusBars/JoyBar")
-hungerBar = NodePath("MenuManager/StatusBars/Hungerbar")
+ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), NodePath("PetManager/Markers/SpawnLocation3")]
 foodInstance = ExtResource("4_s2fvp")
 metadata/_edit_lock_ = true
 
@@ -586,8 +585,19 @@ gizmo_extents = 64.0
 position = Vector2(88, 32)
 gizmo_extents = 64.0
 
-[node name="SpawnLocationA" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+[node name="SpawnLocation0" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
 position = Vector2(-72, -48)
+
+[node name="SpawnLocation1" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(-32, -48)
+
+[node name="SpawnLocation2" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(32, -48)
+
+[node name="SpawnLocation3" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
+position = Vector2(72, -48)
+
+[node name="ObjectContainer" type="Node2D" parent="Device/GameArea"]
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]

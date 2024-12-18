@@ -90,14 +90,14 @@ position = Vector2(80, 96)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_4mrwo")
 animation = &"Idle"
-frame_progress = 0.424814
+frame_progress = 0.636657
 
 [node name="Steam2" type="AnimatedSprite2D" parent="."]
 position = Vector2(176, 96)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_4mrwo")
 animation = &"Idle"
-frame_progress = 0.513767
+frame_progress = 0.469399
 
 [connection signal="timeout" from="Timer" to="." method="incrementGame"]
 [connection signal="timeout" from="MashDecrease" to="." method="decreaseMash"]

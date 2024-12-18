@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=40 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
@@ -97,6 +97,9 @@ animations = [{
 "name": &"Unselected",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6jpmp"]
+radius = 8.0
 
 [node name="SceneManager" type="Node2D"]
 
@@ -597,11 +600,45 @@ position = Vector2(32, -48)
 [node name="SpawnLocation3" type="Marker2D" parent="Device/GameArea/PetManager/Markers"]
 position = Vector2(72, -48)
 
+[node name="FoodColliders" type="Node2D" parent="Device/GameArea/PetManager"]
+
+[node name="SpawnCollider0" type="Area2D" parent="Device/GameArea/PetManager/FoodColliders"]
+position = Vector2(-72, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PetManager/FoodColliders/SpawnCollider0"]
+shape = SubResource("CircleShape2D_6jpmp")
+
+[node name="SpawnCollider1" type="Area2D" parent="Device/GameArea/PetManager/FoodColliders"]
+position = Vector2(-32, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PetManager/FoodColliders/SpawnCollider1"]
+shape = SubResource("CircleShape2D_6jpmp")
+
+[node name="SpawnCollider2" type="Area2D" parent="Device/GameArea/PetManager/FoodColliders"]
+position = Vector2(32, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PetManager/FoodColliders/SpawnCollider2"]
+shape = SubResource("CircleShape2D_6jpmp")
+
+[node name="SpawnCollider3" type="Area2D" parent="Device/GameArea/PetManager/FoodColliders"]
+position = Vector2(72, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PetManager/FoodColliders/SpawnCollider3"]
+shape = SubResource("CircleShape2D_6jpmp")
+
 [node name="ObjectContainer" type="Node2D" parent="Device/GameArea"]
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/EvolveTimer" to="Device/GameArea" method="evolveCheck"]
+[connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider0" to="Device/GameArea" method="_foodColliderEntered" binds= [0]]
+[connection signal="body_exited" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider0" to="Device/GameArea" method="_foodColliderExited" binds= [0]]
+[connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider1" to="Device/GameArea" method="_foodColliderEntered" binds= [1]]
+[connection signal="body_exited" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider1" to="Device/GameArea" method="_foodColliderExited" binds= [1]]
+[connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider2" to="Device/GameArea" method="_foodColliderEntered" binds= [2]]
+[connection signal="body_exited" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider2" to="Device/GameArea" method="_foodColliderExited" binds= [2]]
+[connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider3" to="Device/GameArea" method="_foodColliderEntered" binds= [3]]
+[connection signal="body_exited" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider3" to="Device/GameArea" method="_foodColliderExited" binds= [3]]
 
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="Device/GameArea/MenuManager/Menu/MiniMenu/Stats"]

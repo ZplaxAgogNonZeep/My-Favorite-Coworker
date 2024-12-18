@@ -16,6 +16,8 @@ const TIMER_TIME := 5
 
 var evolveInterval = 15
 
+var _spawnpointStatus = [true, true, true, true]
+
 func _ready():
 	GameEvents.NewPetSpawned.connect(petSpawned)
 	GameEvents.FeedPet.connect(feed)
@@ -36,8 +38,15 @@ func _unhandled_input(event):
 func feed():
 	var food = foodInstance.instantiate()
 	food.stopFallingAt = boundries[0].position.y
-	randomize()
-	food.position = ObjectSpawnLocations[randi_range(0, 3)].position
+	if (not _spawnpointStatus.has(true)):
+		food.queue_free()
+		return
+	while true:
+		randomize()
+		var spawnNumber = randi_range(0, 3)
+		if (_spawnpointStatus[spawnNumber]):
+			food.position = ObjectSpawnLocations[spawnNumber].position
+			break
 	objectContainer.add_child(food)
 
 func petSpawned():
@@ -73,5 +82,15 @@ func evolveCheck():
 
 #endregion
 
+#region Signals
 
+func _foodColliderEntered(body, number = 0):
+	if (Interface.hasInterface(body, Interface.Food)):
+		_spawnpointStatus[number] = false
+
+func _foodColliderExited(body, number = 0):
+	if (Interface.hasInterface(body, Interface.Food)):
+		_spawnpointStatus[number] = true
+
+#endregion
 

@@ -17,7 +17,7 @@ var stage = 0
 func _ready():
 	GameEvents.SpawnPetOnStart.connect(spawnPetOnStart)
 	GameEvents.PetDied.connect(killPet)
-	
+
 
 func spawnPetOnStart():
 	if (not activePet):
@@ -40,6 +40,7 @@ func spawnNewPet():
 
 
 func evolvePet(evolveTarget: PackedScene):
+	stage += 1
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()

@@ -22,6 +22,7 @@ func _ready():
 	GameEvents.NewPetSpawned.connect(petSpawned)
 	GameEvents.FeedPet.connect(feed)
 	GameEvents.ClearObjects.connect(clearAllObjects)
+	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
 	GameEvents.SpawnPetOnStart.emit()
 
@@ -49,12 +50,18 @@ func feed():
 			break
 	objectContainer.add_child(food)
 
-func petSpawned():
+func petSpawned(isEgg := false):
+	if (!isEgg):
+		_startNeedsTimers()
+	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.stage])
+
+
+func _startNeedsTimers():
 	randomize()
 	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
 	randomize()
 	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
-	$GameTimers/EvolveTimer.start(evolveInterval)
+
 
 func clearAllObjects():
 	for x in range(objectContainer.get_child_count()):

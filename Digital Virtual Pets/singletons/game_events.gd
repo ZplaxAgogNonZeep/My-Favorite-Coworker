@@ -13,10 +13,11 @@ signal TickJoy
 
 #region Pet Events
 signal SpawnPetOnStart
-signal NewPetSpawned
+signal NewPetSpawned(isEgg : bool)
 signal EvolveCheck
 signal PetDied
 signal ClearObjects
+signal StartNeedsTimers
 
 signal FeedPet
 signal FoodPlaced(food)

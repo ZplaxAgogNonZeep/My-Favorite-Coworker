@@ -8,7 +8,8 @@ signal ReadyToEvolve(evolvedForm)
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 
-const TRAUMA_INTERVALS : Array[int] = [10, 10, 10, 10, 10] # [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
+const EVOLVE_INTERVALS : Array[int] = [60, 120, 210, 600]
 
 const personalityModifiers : Dictionary = {
 	Enums.Personality.MEAN : [1,1,0,-1],
@@ -66,7 +67,7 @@ func _ready():
 	GameEvents.UnpauseGame.connect(gameUnpaused)
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
-	sprite.sprite_frames
+	
 
 
 func _process(delta):
@@ -280,6 +281,10 @@ func goToPosition(posn : Vector2):
 		position = posn
 	elif petState == Enums.PetState.ROAMING:
 		targetPosn = posn
+
+
+func getSpriteIcon() -> Texture2D:
+	return sprite.sprite_frames.get_frame_texture("Idle", 0)
 
 #endregion
 

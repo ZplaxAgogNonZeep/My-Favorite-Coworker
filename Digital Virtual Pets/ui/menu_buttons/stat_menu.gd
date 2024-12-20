@@ -17,7 +17,7 @@ func initializeMenu():
 			$Spd/Value.text = str(pet.abilityStats[Enums.AbilityStat.SPD])
 			$Bal/Value.text = str(pet.abilityStats[Enums.AbilityStat.BAL])
 			
-			$"Display Sprite".texture = pet.iconSprite
+			$"Display Sprite".texture = pet.getSpriteIcon()
 			$"Display Sprite".offset = pet.sprite.offset
 			
 			var count = 0

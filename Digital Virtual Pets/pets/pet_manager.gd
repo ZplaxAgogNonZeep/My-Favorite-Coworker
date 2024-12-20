@@ -11,6 +11,8 @@ var implements = []
 @export var activePet : Pet
 @export var petSpawnPoint : Marker2D
 
+var stage = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.SpawnPetOnStart.connect(spawnPetOnStart)
@@ -33,7 +35,7 @@ func spawnNewPet():
 	activePet.boundries.append_array([leftBoundry.position, rightBoundry.position])
 	
 	call_deferred("add_child", activePet)
-	GameEvents.NewPetSpawned.emit()
+	GameEvents.NewPetSpawned.emit(true)
 	
 
 
@@ -48,7 +50,7 @@ func evolvePet(evolveTarget: PackedScene):
 						activePet.traumaCount, 
 						activePet.personality,
 						activePet.abilityStats,
-						activePet.evolvedFromIcons + [activePet.iconSprite],
+						activePet.evolvedFromIcons + [activePet.getSpriteIcon()],
 						activePet.boundries]
 	
 	# Probably need to find a way to transfer unique variables here
@@ -70,7 +72,7 @@ func evolvePet(evolveTarget: PackedScene):
 	activePet.connect("UpdateStatusBars", _updateStatus)
 	activePet.connect("ReadyToEvolve", evolvePet)
 	call_deferred("add_child", activePet)
-	GameEvents.NewPetSpawned
+	GameEvents.StartNeedsTimers.emit()
 
 func killPet():
 	print("Pet has Died!")

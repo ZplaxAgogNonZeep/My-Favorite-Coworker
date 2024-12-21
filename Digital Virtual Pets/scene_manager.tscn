@@ -29,8 +29,8 @@
 [ext_resource type="Script" path="res://pets/pet_manager.gd" id="26_a6kjk"]
 [ext_resource type="PackedScene" uid="uid://yp44rtci20n4" path="res://games/jump/jump_game.tscn" id="26_sfmlx"]
 [ext_resource type="PackedScene" uid="uid://cxqir2rb1dcdk" path="res://games/hit/hit_game.tscn" id="27_s5e41"]
-[ext_resource type="PackedScene" uid="uid://bpcwq03jqltcn" path="res://pets/pet_scenes/stage1/pup_pet.tscn" id="27_usxi4"]
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
+[ext_resource type="PackedScene" uid="uid://c6rbec0o5v5i0" path="res://pets/pet_scenes/eggs/buh_egg.tscn" id="31_fbx5p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -570,7 +570,7 @@ hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
 leftBoundry = NodePath("Markers/LeftBoundry")
 rightBoundry = NodePath("Markers/RightBoundry")
-respawnPet = ExtResource("27_usxi4")
+respawnPet = ExtResource("31_fbx5p")
 petSpawnPoint = NodePath("Markers/PetSpawnPoint")
 
 [node name="Markers" type="Node2D" parent="Device/GameArea/PetManager"]

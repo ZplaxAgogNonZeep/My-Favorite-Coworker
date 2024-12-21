@@ -2,7 +2,7 @@ extends Node
 
 class_name PetType
 
-@onready var pet = get_parent()
+@onready var pet : Pet = get_parent()
 
 @export var tempEvolveCondition = true
 @export_category("Object References")

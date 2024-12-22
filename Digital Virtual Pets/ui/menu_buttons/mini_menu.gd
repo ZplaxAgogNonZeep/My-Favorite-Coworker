@@ -10,6 +10,8 @@ func _ready():
 	$Feed.ButtonSelected.connect(onFeedSelected)
 	$Play.ButtonSelected.connect(onPlaySelected)
 	$Stats.ButtonSelected.connect(onStatsSelected)
+	GameEvents.NewPetSpawned.connect(_updateMenuButtons)
+	GameEvents.NewPetEvolved.connect(_updateMenuButtons)
 
 func initializeMenu():
 		pass
@@ -28,11 +30,13 @@ func takeInput(input : Enums.InputType):
 				buttonController.select()
 	else:
 		buttonController.setActive(true)
-	
 
+
+func _updateMenuButtons(isEgg : bool):
+	$Play.toggleDisable(!isEgg)
+	$Feed.toggleDisable(!isEgg)
 
 func onFeedSelected():
-	print("Feed Selected")
 	GameEvents.FeedPet.emit()
 
 

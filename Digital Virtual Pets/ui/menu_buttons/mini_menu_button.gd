@@ -9,10 +9,15 @@ signal ButtonSelected
 @onready var icon := $OptionIcon
 
 var isHighlighted := false
+var isEnabled := true
 
 func initializeButton():
 	toggleHighlight(false)
 
+
+func toggleDisable(isEnabled : bool):
+	self.isEnabled = isEnabled
+	visible = isEnabled
 
 func toggleHighlight(highlight : bool):
 	isHighlighted = highlight
@@ -28,4 +33,6 @@ func toggleHighlight(highlight : bool):
 
 
 func selectButton():
-	ButtonSelected.emit()
+	if (isEnabled):
+		ButtonSelected.emit()
+		

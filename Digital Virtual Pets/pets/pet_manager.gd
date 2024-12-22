@@ -74,6 +74,7 @@ func evolvePet(evolveTarget: PackedScene):
 	activePet.connect("ReadyToEvolve", evolvePet)
 	call_deferred("add_child", activePet)
 	GameEvents.StartNeedsTimers.emit()
+	GameEvents.NewPetEvolved.emit(false)
 
 func killPet():
 	print("Pet has Died!")

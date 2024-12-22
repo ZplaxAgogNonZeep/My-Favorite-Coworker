@@ -14,6 +14,7 @@ signal TickJoy
 #region Pet Events
 signal SpawnPetOnStart
 signal NewPetSpawned(isEgg : bool)
+signal NewPetEvolved(isEgg : bool)
 signal EvolveCheck
 signal PetDied
 signal ClearObjects

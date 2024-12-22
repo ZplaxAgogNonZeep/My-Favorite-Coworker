@@ -49,7 +49,7 @@ script = ExtResource("6_gdike")
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_ptntq")
 animation = &"Idle"
-frame_progress = 0.512486
+frame_progress = 0.755538
 offset = Vector2(0, -8)
 
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]

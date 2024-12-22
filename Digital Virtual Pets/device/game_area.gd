@@ -28,11 +28,7 @@ func _ready():
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
-		#GameEvents.HopDeviceOnce.emit()
-		#GameEvents.HopDeviceOnce.emit()
-		GameEvents.ShakeDeviceOnce.emit()
-		#GameEvents.HopDeviceOnce.emit()
-		#GameEvents.StartShakeDevice.emit()
+		_evolveCheck()
 
 #region Events 
 
@@ -83,7 +79,8 @@ func tickJoy():
 	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
 
 
-func evolveCheck():
+func _evolveCheck():
+	print("Check for Evolve!")
 	GameEvents.EvolveCheck.emit()
 	$GameTimers/EvolveTimer.start(evolveInterval)
 

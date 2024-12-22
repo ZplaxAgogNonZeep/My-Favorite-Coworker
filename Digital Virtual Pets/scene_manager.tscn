@@ -630,7 +630,7 @@ shape = SubResource("CircleShape2D_6jpmp")
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]
-[connection signal="timeout" from="Device/GameArea/GameTimers/EvolveTimer" to="Device/GameArea" method="evolveCheck"]
+[connection signal="timeout" from="Device/GameArea/GameTimers/EvolveTimer" to="Device/GameArea" method="_evolveCheck"]
 [connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider0" to="Device/GameArea" method="_foodColliderEntered" binds= [0]]
 [connection signal="body_exited" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider0" to="Device/GameArea" method="_foodColliderExited" binds= [0]]
 [connection signal="body_entered" from="Device/GameArea/PetManager/FoodColliders/SpawnCollider1" to="Device/GameArea" method="_foodColliderEntered" binds= [1]]

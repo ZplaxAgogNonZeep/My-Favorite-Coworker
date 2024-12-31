@@ -37,3 +37,8 @@ signal endHopDevice
 signal FinishedShakeDevice
 signal FinishedHopDevice
 #endregion
+
+#region VFX
+signal PlayGameVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRight : bool, lifespan : float)
+signal PlayDeviceVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRight : bool, lifespan : float)
+#endregion

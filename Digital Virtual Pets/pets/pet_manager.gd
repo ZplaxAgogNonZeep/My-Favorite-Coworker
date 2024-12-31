@@ -76,11 +76,13 @@ func evolvePet(evolveTarget: PackedScene):
 	GameEvents.StartNeedsTimers.emit()
 	GameEvents.NewPetEvolved.emit(false)
 
+
 func killPet():
 	print("Pet has Died!")
 	GameEvents.ResetAllTimers.emit()
 	activePet.queue_free()
 	spawnNewPet()
+
 
 func _updateStatus(hungerValue, joyValue):
 	hungerBar.updateBar(hungerValue, Pet.MAX_HUNGER)

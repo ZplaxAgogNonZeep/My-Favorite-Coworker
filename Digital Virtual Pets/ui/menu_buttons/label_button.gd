@@ -8,6 +8,7 @@ signal ButtonSelected
 @onready var label := $OptionName
 
 var isHighlighted := false
+var isEnabled := true
 
 func initializeButton():
 	toggleHighlight(true)

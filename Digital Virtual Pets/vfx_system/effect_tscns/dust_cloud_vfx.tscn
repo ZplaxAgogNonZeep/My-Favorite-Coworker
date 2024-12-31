@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbv2ueyv0kgaj"]
+
+[ext_resource type="Script" path="res://vfx_system/vfx_sprite.gd" id="1_6cxr3"]
+[ext_resource type="SpriteFrames" uid="uid://bkv0snxcdwahj" path="res://assets/animation_frames/vfx/dust_cloud_vfx.tres" id="2_5lmu8"]
+
+[node name="DustCloudVFX" type="Node2D" node_paths=PackedStringArray("sprite", "lifeTimer")]
+script = ExtResource("1_6cxr3")
+sprite = NodePath("AnimatedSprite2D")
+_behavior = 1
+_speed = 2.0
+_blinkRatio = 0.361
+_lifetime = 2.0
+lifeTimer = NodePath("LifeTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_5lmu8")
+animation = &"Active"
+offset = Vector2(0, -8)
+
+[node name="LifeTimer" type="Timer" parent="."]

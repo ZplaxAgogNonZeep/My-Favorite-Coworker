@@ -1,23 +1,27 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmm1qb4b40sv3"]
 
-[ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="1_epow7"]
 [ext_resource type="Script" path="res://objects/food.gd" id="2_6roqv"]
+[ext_resource type="Texture2D" uid="uid://dxw4d0ccnhyk3" path="res://assets/art/aesprite/minigame_assets/meat.png" id="2_fogop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvroj"]
-size = Vector2(16, 16)
+size = Vector2(27, 27)
 
 [node name="Meat" type="RigidBody2D" groups=["Food", "Object"]]
 collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 gravity_scale = 0.0
 freeze_mode = 1
+max_contacts_reported = 100
+contact_monitor = true
 script = ExtResource("2_6roqv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(-0.5, -13.5)
 shape = SubResource("RectangleShape2D_lvroj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -9)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_epow7")
+position = Vector2(0, -13.55)
+scale = Vector2(3, 3)
+texture = ExtResource("2_fogop")
+
+[connection signal="body_entered" from="." to="." method="_onBodyCollision"]

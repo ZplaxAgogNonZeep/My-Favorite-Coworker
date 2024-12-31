@@ -8,7 +8,7 @@ script = ExtResource("1_6cxr3")
 sprite = NodePath("AnimatedSprite2D")
 _behavior = 1
 _speed = 2.0
-_blinkRatio = 0.361
+_blinkRatio = 0.2
 _lifetime = 2.0
 lifeTimer = NodePath("LifeTimer")
 

@@ -16,8 +16,8 @@ func _ready() -> void:
 		GameEvents.PlayDeviceVFX.connect(_playVFX)
 
 
-func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, lifespan : float, 
-																isFacingRight : bool) -> VFXObject:
+func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRight : bool,
+																		lifespan : float) -> VFXObject:
 	var effectToSpawn : VFXObject = _effectArray[effect].instantiate()
 	print("Play VFX Called")
 	effectToSpawn.position = position
@@ -27,6 +27,7 @@ func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, lifespan : 
 	
 	call_deferred("add_child", effectToSpawn)
 	effectToSpawn.VFXObjectComplete.connect(_removeVFXObject)
+	print("Calling vfxready")
 	effectToSpawn.vfxReady()
 	
 	

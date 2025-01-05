@@ -43,4 +43,5 @@ func deviceNotMoving():
 func _onBodyCollision(body):
 	if Interface.hasInterface(body, Interface.Food):
 		if position.y < body.position.y:
-			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position, false, 2)
+			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position + Vector2(13, 0), true, 2)
+			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position - Vector2(13, 0), false, 2)

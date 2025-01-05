@@ -25,7 +25,7 @@ func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRig
 	if effectToSpawn is VFXSprite:
 		effectToSpawn.toggleDirection(isFacingRight)
 	
-	call_deferred("add_child", effectToSpawn)
+	await call_deferred("add_child", effectToSpawn)
 	effectToSpawn.VFXObjectComplete.connect(_removeVFXObject)
 	print("Calling vfxready")
 	effectToSpawn.vfxReady()

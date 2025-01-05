@@ -30,8 +30,9 @@ func _process(delta: float) -> void:
 			_customBehavior()
 
 func _startLifespanTimer():
-	print("VFX starting timer: " + str(_lifetime))
+	print("VFX starting timer: " + str(_lifetime * (1 - _blinkRatio)))
 	lifeTimer.timeout.connect(_startBlinking)
+	lifeTimer.autostart = true
 	lifeTimer.start(_lifetime * (1 - _blinkRatio))
 
 

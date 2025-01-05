@@ -35,5 +35,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"Blinking",
-"speed": 7.0
+"speed": 12.0
 }]

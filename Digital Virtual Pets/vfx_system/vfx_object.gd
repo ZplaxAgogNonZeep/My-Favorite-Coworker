@@ -18,6 +18,7 @@ func vfxReady() -> void:
 	print("vfxReady")
 	if lifeTimer != null:
 		_startLifespanTimer()
+	_active = true
 
 
 func _startLifespanTimer():

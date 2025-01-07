@@ -1,37 +1,79 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bkv0snxcdwahj"]
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bkv0snxcdwahj"]
 
 [ext_resource type="Texture2D" uid="uid://cw340pd7ug2oo" path="res://assets/art/aesprite/VFX/Dustcloud.png" id="1_u1pcd"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_elsyp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gy1fk"]
 atlas = ExtResource("1_u1pcd")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ixtro"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxpme"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v47qj"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7pp5"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ysyl"]
 atlas = ExtResource("1_u1pcd")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwhb5"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puyf7"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5tdh"]
+atlas = ExtResource("1_u1pcd")
+region = Rect2(48, 0, 16, 16)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_elsyp")
+"texture": SubResource("AtlasTexture_gy1fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxpme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v47qj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7pp5")
 }],
 "loop": true,
 "name": &"Active",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixtro")
+"texture": SubResource("AtlasTexture_6ysyl")
 }, {
 "duration": 1.0,
 "texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ixtro")
+"texture": SubResource("AtlasTexture_nwhb5")
 }, {
 "duration": 1.0,
 "texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puyf7")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5tdh")
 }],
 "loop": true,
 "name": &"Blinking",

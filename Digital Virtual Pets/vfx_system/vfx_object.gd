@@ -28,4 +28,4 @@ func _startLifespanTimer():
 
 func vfxComplete() -> void:
 	visible = false
-	VFXObjectComplete.emit()
+	VFXObjectComplete.emit(self)

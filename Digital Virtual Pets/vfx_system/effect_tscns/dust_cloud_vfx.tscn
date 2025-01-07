@@ -17,7 +17,8 @@ lifeTimer = NodePath("LifeTimer")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_5lmu8")
-animation = &"Blinking"
+animation = &"Active"
+frame_progress = 0.586072
 offset = Vector2(0, -8)
 
 [node name="LifeTimer" type="Timer" parent="."]

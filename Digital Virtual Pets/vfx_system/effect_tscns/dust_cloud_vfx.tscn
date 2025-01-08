@@ -18,7 +18,7 @@ lifeTimer = NodePath("LifeTimer")
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("2_5lmu8")
 animation = &"Active"
-frame_progress = 0.586072
+frame_progress = 0.35105
 offset = Vector2(0, -8)
 
 [node name="LifeTimer" type="Timer" parent="."]

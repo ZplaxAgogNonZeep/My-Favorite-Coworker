@@ -8,7 +8,6 @@ const TIMER_TIME := 5
 @export var objectContainer : Node2D
 @export var petManager : Node2D
 @export var menuManager : Node2D
-@export var timers : Node
 @export var boundries : Array[Marker2D] # 0 = Left | 1 = Right
 @export var ObjectSpawnLocations : Array[Marker2D]
 @export_category("Spawnable Objects")
@@ -25,6 +24,7 @@ func _ready():
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
 	GameEvents.SpawnPetOnStart.emit()
+	DisplayServer.window_set_current_screen(1)
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):

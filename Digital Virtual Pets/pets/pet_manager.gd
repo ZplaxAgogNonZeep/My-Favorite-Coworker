@@ -6,10 +6,14 @@ var implements = []
 @export var joyBar : StatusBar
 @export var leftBoundry : Marker2D
 @export var rightBoundry : Marker2D
+@export var animationManager : AnimationPlayer
 @export_category("Pet References")
 @export var respawnPet : PackedScene
 @export var activePet : Pet
 @export var petSpawnPoint : Marker2D
+@export_category("Pet Evolution Variables")
+@export var _evolvingPet : EvolvingPet
+@export var _evolveSequenceRate : float
 
 var stage = 0
 
@@ -36,6 +40,9 @@ func spawnNewPet():
 	
 	call_deferred("add_child", activePet)
 	GameEvents.NewPetSpawned.emit(true)
+	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, activePet.position + Vector2(13, 0), true, 2)
+	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, activePet.position - Vector2(13, 0), false, 2)
+	
 	
 
 
@@ -44,7 +51,7 @@ func evolvePet(evolveTarget: PackedScene):
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
 	GameEvents.ClearObjects.emit()
 	var transferVar = [activePet.hungerValue, 
 						activePet.joyValue, 
@@ -69,12 +76,25 @@ func evolvePet(evolveTarget: PackedScene):
 	evolvedPet.evolvedFromIcons = transferVar[5]
 	evolvedPet.boundries = transferVar[6]
 	
+	activePet.visible = false
+	
+	## Start Evolve Animation Sequence
+	_evolvingPet.startSequence(activePet.position, activePet.getSpriteIcon(), activePet.getSpriteOffset(), 
+								evolvedPet.getSpriteIcon(), evolvedPet.getSpriteOffset(), _evolveSequenceRate)
+	
+	await _evolvingPet.SequenceComplete
+	
 	activePet = evolvedPet
 	activePet.connect("UpdateStatusBars", _updateStatus)
 	activePet.connect("ReadyToEvolve", evolvePet)
-	call_deferred("add_child", activePet)
+	await call_deferred("add_child", activePet)
+	
 	GameEvents.StartNeedsTimers.emit()
 	GameEvents.NewPetEvolved.emit(false)
+	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
+								activePet.position + Vector2(39, 0), true, 1.3)
+	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
+								activePet.position - Vector2(39, 0), false, 1.3)
 
 
 func killPet():

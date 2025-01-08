@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=45 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cxqir2rb1dcdk" path="res://games/hit/hit_game.tscn" id="27_s5e41"]
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
 [ext_resource type="PackedScene" uid="uid://c6rbec0o5v5i0" path="res://pets/pet_scenes/eggs/buh_egg.tscn" id="31_fbx5p"]
+[ext_resource type="Script" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -103,6 +104,54 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jpmp"]
 radius = 8.0
 
+[sub_resource type="Animation" id="Animation_j742v"]
+resource_name = "evolve_sequence_anim"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EvolvingPet/PreviousEvolution:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EvolvingPet/NextEvolution:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EvolvingPet")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&""],
+"method": &"_incrementSequence"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmrrl"]
+_data = {
+"evolve_sequence_anim": SubResource("Animation_j742v")
+}
+
 [node name="SceneManager" type="Node2D"]
 
 [node name="Device" type="Node2D" parent="."]
@@ -119,14 +168,13 @@ position = Vector2(0, -256)
 texture = ExtResource("2_357pc")
 metadata/_edit_lock_ = true
 
-[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "timers", "boundries", "ObjectSpawnLocations")]
+[node name="GameArea" type="Node2D" parent="Device" node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "boundries", "ObjectSpawnLocations")]
 position = Vector2(0, -232)
 script = ExtResource("3_ymaw0")
 device = NodePath("..")
 objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
-timers = NodePath("GameTimers")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
 ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), NodePath("PetManager/Markers/SpawnLocation3")]
 foodInstance = ExtResource("4_s2fvp")
@@ -575,7 +623,7 @@ offset_right = 224.0
 offset_bottom = 224.0
 metadata/_edit_lock_ = true
 
-[node name="PetManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "petSpawnPoint")]
+[node name="PetManager" type="Node2D" parent="Device/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("26_a6kjk")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
@@ -583,6 +631,8 @@ leftBoundry = NodePath("Markers/LeftBoundry")
 rightBoundry = NodePath("Markers/RightBoundry")
 respawnPet = ExtResource("31_fbx5p")
 petSpawnPoint = NodePath("Markers/PetSpawnPoint")
+_evolvingPet = NodePath("EvolvingPet")
+_evolveSequenceRate = 1.05
 
 [node name="Markers" type="Node2D" parent="Device/GameArea/PetManager"]
 metadata/_edit_lock_ = true
@@ -636,6 +686,28 @@ position = Vector2(72, -48)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Device/GameArea/PetManager/FoodColliders/SpawnCollider3"]
 shape = SubResource("CircleShape2D_6jpmp")
+
+[node name="EvolvingPet" type="Node2D" parent="Device/GameArea/PetManager" node_paths=PackedStringArray("_previousEvo", "_nextEvo")]
+visible = false
+position = Vector2(-304, -408)
+script = ExtResource("34_s6yyg")
+_previousEvo = NodePath("PreviousEvolution")
+_nextEvo = NodePath("NextEvolution")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Device/GameArea/PetManager/EvolvingPet"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_fmrrl")
+}
+
+[node name="PreviousEvolution" type="Sprite2D" parent="Device/GameArea/PetManager/EvolvingPet"]
+visible = false
+scale = Vector2(3, 3)
+offset = Vector2(0, -8)
+
+[node name="NextEvolution" type="Sprite2D" parent="Device/GameArea/PetManager/EvolvingPet"]
+scale = Vector2(3, 3)
+offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="Device/GameArea"]
 

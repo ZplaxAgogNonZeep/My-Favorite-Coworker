@@ -286,6 +286,9 @@ func goToPosition(posn : Vector2):
 func getSpriteIcon() -> Texture2D:
 	return sprite.sprite_frames.get_frame_texture("Idle", 0)
 
+func getSpriteOffset() -> float:
+	return sprite.offset.y
+
 #endregion
 
 #region Collision Singals 

@@ -24,6 +24,8 @@ func _ready():
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
 	GameEvents.SpawnPetOnStart.emit()
+	
+	await get_tree().create_timer(5).timeout
 
 
 func _process(delta: float) -> void:
@@ -33,8 +35,9 @@ func _process(delta: float) -> void:
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()
+		#test()
 
-#region Proactivity Events
+#region Window Events
 
 func _proactivityBehavior():
 	if (!Settings.isUsingProactivity):
@@ -48,10 +51,15 @@ func _proactivityBehavior():
 		Settings.setProactivityMode(true)
 
 
-func test():
-	#void window_move_to_foreground(window_id: int = 0)
-	#void window_request_attention(window_id: int = 0)
-	pass
+func _requestPlayerAttention():
+	if (Settings.windowFocused or not Settings.isRequestAttentionAllowed):
+		return
+	
+	if (Settings.isSetWindowPinned):
+		DisplayServer.window_request_attention()
+	else:
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
 
 #endregion
 

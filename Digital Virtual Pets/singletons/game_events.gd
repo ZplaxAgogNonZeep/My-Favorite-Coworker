@@ -26,6 +26,10 @@ signal FoodPlaced(food)
 signal Cry
 #endregion
 
+#region Window Events
+signal GetPlayerAttention
+#endregion
+
 #region Device Events
 signal ShakeDeviceOnce
 signal HopDeviceOnce
@@ -34,7 +38,6 @@ signal StartShakeDevice
 signal EndShakeDevice
 signal StartHopDevice
 signal endHopDevice
-
 signal FinishedShakeDevice
 signal FinishedHopDevice
 #endregion

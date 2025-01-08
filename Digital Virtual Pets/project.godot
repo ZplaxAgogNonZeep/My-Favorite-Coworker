@@ -26,7 +26,6 @@ Settings="*res://singletons/settings.gd"
 
 window/size/viewport_width=576
 window/size/resizable=false
-window/size/always_on_top=true
 window/size/transparent=true
 window/stretch/aspect="ignore"
 window/per_pixel_transparency/allowed=true

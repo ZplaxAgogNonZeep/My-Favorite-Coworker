@@ -13,6 +13,8 @@ var proactiveMode : bool = false
 #region Settings Variables
 ##  Bools
 var isUsingProactivity := true
+var isSetWindowPinned := false
+var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
 #endregion

@@ -28,6 +28,7 @@ petName = "Buh"
 
 [node name="MoveTimer" type="Timer" parent="Type"]
 script = ExtResource("3_74jdq")
+_useProactivity = false
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
 script = ExtResource("3_74jdq")

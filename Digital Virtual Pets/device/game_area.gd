@@ -27,14 +27,12 @@ func _ready():
 
 
 func _process(delta: float) -> void:
-	#_proactivityBehavior()
-	pass
+	_proactivityBehavior()
 
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()
-		Engine.time_scale = .5
 
 #region Proactivity Events
 
@@ -44,12 +42,11 @@ func _proactivityBehavior():
 	
 	Settings.windowFocused = DisplayServer.window_is_focused()
 	
-	
-	
-	if (Settings.windowFocused and Engine.time_scale == 1):
-		pass
-	else:
-		pass
+	if (Settings.windowFocused and Settings.proactiveMode):
+		Settings.setProactivityMode(false)
+	elif (not Settings.windowFocused and not Settings.proactiveMode):
+		Settings.setProactivityMode(true)
+
 
 func test():
 	#void window_move_to_foreground(window_id: int = 0)
@@ -82,9 +79,9 @@ func petSpawned(isEgg := false):
 
 func _startNeedsTimers():
 	randomize()
-	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/HungerTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
 	randomize()
-	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/JoyTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
 
 
 func clearAllObjects():
@@ -98,19 +95,19 @@ func clearAllObjects():
 func tickHunger():
 	GameEvents.TickHunger.emit()
 	randomize()
-	$GameTimers/HungerTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/HungerTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
 
 
 func tickJoy():
 	GameEvents.TickJoy.emit()
 	randomize()
-	$GameTimers/JoyTimer.start((randf_range(3, 15)) * device.chatSpeed)
+	$GameTimers/JoyTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
 
 
 func _evolveCheck():
 	print("Check for Evolve!")
 	GameEvents.EvolveCheck.emit()
-	$GameTimers/EvolveTimer.start(evolveInterval)
+	$GameTimers/EvolveTimer.start(evolveInterval * Settings.getTimerMod())
 
 #endregion
 

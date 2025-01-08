@@ -9,6 +9,7 @@ signal UnpauseTimers
 signal ResetAllTimers
 signal TickHunger
 signal TickJoy
+signal ChangeProactivityMode(isProactiveMode : bool)
 #endregion
 
 #region Pet Events

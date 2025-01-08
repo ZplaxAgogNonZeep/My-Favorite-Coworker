@@ -7,9 +7,17 @@ signal ReadyToEvolve(evolvedForm)
 
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
-
 const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
-const EVOLVE_INTERVALS : Array[int] = [60, 120, 210, 600]
+const EVOLVE_INTERVALS : Array[int] = [90, 1800, 3600, 4000]
+## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
+## in a close to final state. Testing will probably need to be done to figure out what feels right
+## but the general thought process is as follows:
+## - Evolution checks will take longer the higher stage a pet is, starting at a couple minutes for
+## the eggs, half hour for the stage one, a full hour for stage two's and somewhere in the hour
+## two hour range for stage three's. Stat gain requirements will also need to match what you can 
+## make in that amount of time, plus some extra for the late stages
+## - Trauma checks should get faster the more you obtain, giving some leeway for first-time offenders
+## while quickly punishing players who let it go for too long.
 
 const personalityModifiers : Dictionary = {
 	Enums.Personality.MEAN : [1,1,0,-1],
@@ -104,12 +112,10 @@ func _process(delta):
 
 
 func eatFood(foodObject):
-	print("call eat food")
 	# Sets state to FEEDING to stop any roaming, faces the food, then waits while it eats.
 	petState = Enums.PetState.FEEDING
 	setSpriteDirection(foodObject.position.x < position.x)
 	await get_tree().create_timer(2).timeout
-	print("Finished eat yield")
 	
 	# Performs whatever unique thing the pet does when eating, then adds the hunger value
 	type.onEatFood()
@@ -156,7 +162,7 @@ func startNeglectTimer():
 	
 	if $Type/NeglectTimer.time_left == 0:
 		print("Neglect Timer called at trauma ", traumaCount)
-		$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount])
+		$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
 
 #region Events 
 
@@ -224,7 +230,7 @@ func neglectTimeout(skipValueCheck := false):
 		if traumaCount > 5:
 			GameEvents.PetDied.emit()
 		else:
-			$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1])
+			$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
 	print("Evolve singal received")

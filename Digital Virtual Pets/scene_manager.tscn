@@ -1,5 +1,6 @@
-[gd_scene load_steps=45 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=46 format=3 uid="uid://ugt6g6nd6ugp"]
 
+[ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
 [ext_resource type="Script" path="res://device/game_area.gd" id="3_ymaw0"]
@@ -153,6 +154,10 @@ _data = {
 }
 
 [node name="SceneManager" type="Node2D"]
+
+[node name="DebugNodes" type="Node" parent="."]
+
+[node name="SettingsDebug" parent="DebugNodes" groups=["Debug"] instance=ExtResource("1_p5ojq")]
 
 [node name="Device" type="Node2D" parent="."]
 position = Vector2(304, 640)

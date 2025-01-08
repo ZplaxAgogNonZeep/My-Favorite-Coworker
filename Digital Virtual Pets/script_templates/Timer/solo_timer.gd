@@ -1,19 +1,23 @@
 extends Timer
 
 func _ready() -> void:
-	GameEvents.PauseTimers.connect(pauseTimer)
-	GameEvents.UnpauseTimers.connect(unpauseTimer)
-	GameEvents.PauseGame.connect(pauseTimer)
-	GameEvents.UnpauseGame.connect(unpauseTimer)
-	GameEvents.ResetAllTimers.connect(stopTimer)
+	GameEvents.PauseTimers.connect(_pauseTimer)
+	GameEvents.UnpauseTimers.connect(_unpauseTimer)
+	GameEvents.PauseGame.connect(_pauseTimer)
+	GameEvents.UnpauseGame.connect(_unpauseTimer)
+	GameEvents.ResetAllTimers.connect(_stopTimer)
 
 
-func pauseTimer() -> void:
+
+
+
+func _pauseTimer() -> void:
 	paused = true
 
 
-func unpauseTimer() -> void:
+func _unpauseTimer() -> void:
 	paused = false
 
-func stopTimer() -> void:
+
+func _stopTimer() -> void:
 	stop()

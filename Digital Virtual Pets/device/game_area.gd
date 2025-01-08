@@ -24,11 +24,39 @@ func _ready():
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
 	GameEvents.SpawnPetOnStart.emit()
-	DisplayServer.window_set_current_screen(1)
+
+
+func _process(delta: float) -> void:
+	#_proactivityBehavior()
+	pass
+
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()
+		Engine.time_scale = .5
+
+#region Proactivity Events
+
+func _proactivityBehavior():
+	if (!Settings.isUsingProactivity):
+		return
+	
+	Settings.windowFocused = DisplayServer.window_is_focused()
+	
+	
+	
+	if (Settings.windowFocused and Engine.time_scale == 1):
+		pass
+	else:
+		pass
+
+func test():
+	#void window_move_to_foreground(window_id: int = 0)
+	#void window_request_attention(window_id: int = 0)
+	pass
+
+#endregion
 
 #region Events 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=50 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
 [ext_resource type="Script" path="res://device/game_area.gd" id="3_ymaw0"]
 [ext_resource type="Script" path="res://device/background.gd" id="4_48a5c"]
-[ext_resource type="Script" path="res://ui/menu_management/menu.gd" id="4_mhbnm"]
+[ext_resource type="PackedScene" uid="uid://cqs2mr65skd0q" path="res://ui/menu_management/menus/menu_icons.tscn" id="4_jlwpj"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_s2fvp"]
+[ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="6_2f3jj"]
 [ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="6_ciosv"]
 [ext_resource type="Script" path="res://vfx_manager.gd" id="6_dx6hx"]
@@ -38,55 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
 [ext_resource type="PackedScene" uid="uid://c6rbec0o5v5i0" path="res://pets/pet_scenes/eggs/buh_egg.tscn" id="31_fbx5p"]
 [ext_resource type="Script" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
-
-[sub_resource type="Animation" id="Animation_lky41"]
-resource_name = "Menu Icon Selection"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Options:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Options:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.6),
-"transitions": PackedFloat32Array(0.3, 0.5),
-"update": 0,
-"values": [Vector2(80, -72), Vector2(80, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_1wkji"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Options:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(80, -72)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qnae"]
-_data = {
-"Menu Icon Selection": SubResource("Animation_lky41"),
-"RESET": SubResource("Animation_1wkji")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -205,7 +157,7 @@ _data = {
 "evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
-[node name="SceneManager" type="Node2D"]
+[node name="GameManager" type="Node2D"]
 
 [node name="DebugNodes" type="Node" parent="."]
 
@@ -214,7 +166,7 @@ _data = {
 [node name="SystemUI" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="MenuManager" type="Control" parent="SystemUI"]
+[node name="MenuManager" type="Control" parent="SystemUI" node_paths=PackedStringArray("_menuList")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -223,51 +175,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("3_jvvvb")
+_menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu")]
 metadata/_edit_lock_ = true
 
-[node name="MenuSelectionDropdown" type="Control" parent="SystemUI/MenuManager"]
+[node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-script = ExtResource("4_mhbnm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SystemUI/MenuManager/MenuSelectionDropdown"]
-libraries = {
-"": SubResource("AnimationLibrary_6qnae")
-}
-
-[node name="Options" type="Button" parent="SystemUI/MenuManager/MenuSelectionDropdown"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = -72.0
-offset_right = 144.0
-offset_bottom = -8.0
-text = "Option"
-
-[node name="Window" type="Button" parent="SystemUI/MenuManager/MenuSelectionDropdown"]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 16.0
-offset_right = 224.0
-offset_bottom = 80.0
-text = "Win"
-
-[node name="Audio" type="Button" parent="SystemUI/MenuManager/MenuSelectionDropdown"]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 16.0
-offset_right = 304.0
-offset_bottom = 80.0
-text = "Aud"
-
-[node name="Pet" type="Button" parent="SystemUI/MenuManager/MenuSelectionDropdown"]
-layout_mode = 0
-offset_left = 320.0
-offset_top = 16.0
-offset_right = 384.0
-offset_bottom = 80.0
-text = "Pet"
+[node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
+visible = true
+layout_mode = 1
 
 [node name="Device" type="Node2D" parent="."]
 process_mode = 1

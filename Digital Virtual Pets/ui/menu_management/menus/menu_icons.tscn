@@ -1,0 +1,143 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqs2mr65skd0q"]
+
+[ext_resource type="Script" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
+
+[sub_resource type="Animation" id="Animation_1wkji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(80, -72)]
+}
+
+[sub_resource type="Animation" id="Animation_lky41"]
+resource_name = "Open"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(0.3, 0.5),
+"update": 0,
+"values": [Vector2(80, -72), Vector2(80, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Window:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.7),
+"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
+"update": 0,
+"values": [Vector2(160, -72), Vector2(160, -72), Vector2(160, 16)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.8),
+"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
+"update": 0,
+"values": [Vector2(240, -72), Vector2(240, -72), Vector2(240, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pet:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.9),
+"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
+"update": 0,
+"values": [Vector2(320, -72), Vector2(320, -72), Vector2(320, 16)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.025),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qnae"]
+_data = {
+"Open": SubResource("Animation_lky41"),
+"RESET": SubResource("Animation_1wkji")
+}
+
+[node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_clickTimer", "animator")]
+visible = false
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_x636n")
+_clickTimer = NodePath("ClickTimer")
+animator = NodePath("AnimationPlayer")
+
+[node name="ClickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6qnae")
+}
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -72.0
+offset_right = 144.0
+offset_bottom = -8.0
+text = "Option"
+
+[node name="Window" type="Button" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = -72.0
+offset_right = 224.0
+offset_bottom = -8.0
+text = "Win"
+
+[node name="Audio" type="Button" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = -72.0
+offset_right = 304.0
+offset_bottom = -8.0
+text = "Aud"
+
+[node name="Pet" type="Button" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = -72.0
+offset_right = 384.0
+offset_bottom = -8.0
+text = "Pet"
+
+[connection signal="pressed" from="Options" to="." method="_onOptionsButton"]
+[connection signal="pressed" from="Window" to="." method="_onWindowButton"]
+[connection signal="pressed" from="Audio" to="." method="_onAudioButton"]
+[connection signal="pressed" from="Pet" to="." method="_onPetButton"]

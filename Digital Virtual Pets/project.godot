@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Digital Virtual Pets"
+config/name="My Favorite Coworker"
 run/main_scene="res://scene_manager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

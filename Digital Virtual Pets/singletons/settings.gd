@@ -19,6 +19,16 @@ var isRequestAttentionAllowed := true
 var proactivityTimeModifier := 0.50
 #endregion
 
+func pauseGame(isPaused : bool):
+	if (get_tree().paused == isPaused):
+		return
+	
+	get_tree().paused = isPaused
+	
+	if (get_tree().paused):
+		GameEvents.PauseGame.emit()
+	else:
+		GameEvents.UnpauseGame.emit()
 
 #region Getter & Setter Functions
 

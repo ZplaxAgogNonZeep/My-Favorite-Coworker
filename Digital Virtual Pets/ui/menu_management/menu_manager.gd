@@ -6,20 +6,24 @@ class_name MenuManager
 ## new menus easier
 
 @export var _menuList : Array[Menu]
+@export var _defaultMenuIndex : int
 var _activeMenu : Menu
 
 func _ready() -> void:
 	for menu : Menu in _menuList:
 		menu.visible = false
-		menu.ChangeMenu.connect(changeMenu)
-	
-	changeMenu(0)
+		menu.ChangeMenu.connect(changeMenu) 
 
 
 func _process(delta: float) -> void:
 	if (_activeMenu):
 		_activeMenu.menuBehavior()
 
+func toggleMenu(isOpen: bool):
+	if (isOpen):
+		changeMenu(_defaultMenuIndex)
+	else:
+		changeMenu(-1)
 
 #region State Machine
 func changeMenu(menuIndex : int):
@@ -39,7 +43,12 @@ func changeMenu(menuIndex : int):
 	
 	await _activeMenu.openMenu()
 
+func getActiveMenu() -> Menu:
+	return _activeMenu
 
+
+func isMenuOpen() -> bool:
+	return _activeMenu != null
 #endregion
 
 

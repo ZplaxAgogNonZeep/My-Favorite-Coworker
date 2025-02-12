@@ -47,6 +47,9 @@ func getTimerMod() -> float:
 	else:
 		return proactivityTimeModifier
 
+func setBorderless(isBorderless : bool):
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
+
 #endregion
 
 #region Helper Functions

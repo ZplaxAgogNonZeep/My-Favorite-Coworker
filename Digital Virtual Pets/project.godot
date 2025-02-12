@@ -26,13 +26,19 @@ Settings="*res://singletons/settings.gd"
 
 window/size/viewport_width=576
 window/size/resizable=false
+window/size/borderless=true
 window/size/transparent=true
+window/size/no_focus=true
 window/stretch/aspect="ignore"
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gift/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+
+[gui]
+
+theme/default_font_subpixel_positioning=0
 
 [importer_defaults]
 

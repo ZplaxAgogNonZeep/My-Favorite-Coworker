@@ -14,6 +14,7 @@ func menuBehavior():
 
 
 func openMenu():
+	_loadMenuSettingsFromFile()
 	animator.play("Open")
 	await animator.animation_finished
 
@@ -25,6 +26,14 @@ func closeMenu():
 		animator.play("Close")
 	
 	await animator.animation_finished
+
+
+func _loadMenuSettingsFromFile():
+	pass
+
+
+func _saveMenuSettingsToFile():
+	pass
 
 #region Node Signals
 func _animationComplete(animation : StringName):

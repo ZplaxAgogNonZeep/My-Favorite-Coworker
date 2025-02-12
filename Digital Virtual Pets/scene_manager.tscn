@@ -1,7 +1,8 @@
-[gd_scene load_steps=50 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=51 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
+[ext_resource type="Script" path="res://game_manager.gd" id="1_yxx2a"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/system_menu_theme.tres" id="2_h2pgc"]
 [ext_resource type="Script" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
@@ -157,11 +158,38 @@ _data = {
 "evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
-[node name="GameManager" type="Node2D"]
+[node name="GameManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background")]
+script = ExtResource("1_yxx2a")
+_menuManager = NodePath("SystemUI/MenuManager")
+_iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
+_background = NodePath("BackgroundCanvas/SimpleBackground")
 
 [node name="DebugNodes" type="Node" parent="."]
 
 [node name="SettingsDebug" parent="DebugNodes" groups=["Debug"] instance=ExtResource("1_p5ojq")]
+
+[node name="BackgroundCanvas" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="SimpleBackground" type="Control" parent="BackgroundCanvas"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundCanvas/SimpleBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.905882, 0.909804, 1)
 
 [node name="SystemUI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -179,15 +207,18 @@ _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu")]
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
+visible = false
 layout_mode = 1
 
 [node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
-visible = true
+visible = false
 layout_mode = 1
+metadata/_edit_vertical_guides_ = [288.0]
+metadata/_edit_horizontal_guides_ = [256.0]
 
 [node name="Device" type="Node2D" parent="."]
 process_mode = 1
-position = Vector2(304, 640)
+position = Vector2(296, 576)
 script = ExtResource("1_ptlsy")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)

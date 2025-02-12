@@ -1,3 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://u8x81rh1cxqd"]
+
+[ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_ur1fe"]
 
 [resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_ur1fe")

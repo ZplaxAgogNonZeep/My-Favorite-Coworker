@@ -20,6 +20,7 @@ func openMenu():
 
 
 func closeMenu():
+	_saveMenuSettingsToFile()
 	if !animator.has_animation("Close"):
 		animator.play("Open", -1, -1, true)
 	else:

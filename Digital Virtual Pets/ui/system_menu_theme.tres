@@ -3,6 +3,17 @@
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_ur1fe"]
 
 [resource]
+CustomTestLabel/base_type = &"Label"
+CustomTestLabel/font_sizes/font_size = 5
+HeaderLarge/base_type = &"Label"
+HeaderLarge/font_sizes/font_size = 25
+HeaderMedium/base_type = &"Label"
+HeaderMedium/font_sizes/font_size = 18
+ItemList/font_sizes/font_size = 7
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_ur1fe")
+OptionButton/font_sizes/font_size = 14
+OptionButton/fonts/font = ExtResource("1_ur1fe")
+PopupMenu/font_sizes/font_size = 14
+PopupMenu/fonts/font = ExtResource("1_ur1fe")

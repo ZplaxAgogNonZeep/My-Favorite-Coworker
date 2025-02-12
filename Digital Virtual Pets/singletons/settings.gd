@@ -2,6 +2,8 @@ extends Node
 
 class_name settings
 
+enum WindowAttentionOptions {BRING_TO_FRONT, ALWAYS_ON_TOP, DO_NOT_CHANGE}
+
 func _ready() -> void:
 	get_tree().call_group("Debug", "debugReady")
 
@@ -30,25 +32,25 @@ func pauseGame(isPaused : bool):
 	else:
 		GameEvents.UnpauseGame.emit()
 
-#region Getter & Setter Functions
-
-## Variable Setters
-func setProactivityMode(isProactive : bool):
-	proactiveMode = isProactive
-	GameEvents.ChangeProactivityMode.emit(proactiveMode)
-
-## Options Setters
+#region User Settings Functions
 func setProactivitySetting(isTrue : bool):
 	isUsingProactivity = isTrue
 
+
+func setBorderless(isBorderless : bool):
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
+#endregion
+
+#region Getter & Setter Functions
 func getTimerMod() -> float:
 	if !proactiveMode:
 		return 1
 	else:
 		return proactivityTimeModifier
 
-func setBorderless(isBorderless : bool):
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
+func setProactivityMode(isProactive : bool):
+	proactiveMode = isProactive
+	GameEvents.ChangeProactivityMode.emit(proactiveMode)
 
 #endregion
 

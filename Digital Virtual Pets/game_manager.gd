@@ -15,4 +15,3 @@ func _input(event: InputEvent) -> void:
 			_menuManager.toggleMenu(true)
 			get_tree().create_tween().tween_property(_background, "modulate", Color(Color.WHITE, 1), .75)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-			

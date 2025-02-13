@@ -15,6 +15,7 @@ func menuBehavior():
 
 func openMenu():
 	_loadSavedMenuSettings()
+	visible = true
 	animator.play("Open")
 	await animator.animation_finished
 
@@ -27,6 +28,7 @@ func closeMenu():
 		animator.play("Close")
 	
 	await animator.animation_finished
+	visible = false
 
 
 func _onExit():

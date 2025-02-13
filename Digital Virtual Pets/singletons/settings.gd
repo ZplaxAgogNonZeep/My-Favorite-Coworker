@@ -19,6 +19,8 @@ var isSetWindowPinned := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
+## Enums
+var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_TO_FRONT
 #endregion
 
 func pauseGame(isPaused : bool):
@@ -34,7 +36,16 @@ func pauseGame(isPaused : bool):
 
 #region User Settings Functions
 func setProactivitySetting(isTrue : bool):
+	if (isUsingProactivity == isTrue):
+		return
+	
 	isUsingProactivity = isTrue
+	if (!isUsingProactivity):
+		GameEvents.ChangeProactivityMode.emit(true)
+
+
+func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
+	windowAttentionMode = windowAttention
 
 
 func setBorderless(isBorderless : bool):

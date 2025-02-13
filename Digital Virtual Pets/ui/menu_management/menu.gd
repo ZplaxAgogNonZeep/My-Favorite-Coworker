@@ -14,13 +14,13 @@ func menuBehavior():
 
 
 func openMenu():
-	_loadMenuSettingsFromFile()
+	_loadSavedMenuSettings()
 	animator.play("Open")
 	await animator.animation_finished
 
 
 func closeMenu():
-	_saveMenuSettingsToFile()
+	_saveMenuSettings()
 	if !animator.has_animation("Close"):
 		animator.play("Open", -1, -1, true)
 	else:
@@ -29,11 +29,15 @@ func closeMenu():
 	await animator.animation_finished
 
 
-func _loadMenuSettingsFromFile():
+func _onExit():
+	ChangeMenu.emit(0)
+
+
+func _loadSavedMenuSettings():
 	pass
 
 
-func _saveMenuSettingsToFile():
+func _saveMenuSettings():
 	pass
 
 #region Node Signals

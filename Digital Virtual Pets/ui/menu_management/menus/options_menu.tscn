@@ -36,7 +36,7 @@ _data = {
 "Open": SubResource("Animation_j60mn")
 }
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("animator")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,6 +45,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_kd0k7")
 script = ExtResource("1_ugwrh")
+_proactivityCheckbox = NodePath("ColorRect/Buttons/ProactivityCheckBox")
+_windowAttentionSelection = NodePath("ColorRect/Buttons/WindowFocusOptions")
 animator = NodePath("AnimationPlayer")
 metadata/_edit_lock_ = true
 
@@ -66,7 +68,8 @@ color = Color(1, 0.921569, 0.976471, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsName" type="Label" parent="ColorRect"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.115
 theme = ExtResource("1_kd0k7")
@@ -101,12 +104,16 @@ text = "Proactivity Mode"
 vertical_alignment = 1
 
 [node name="WindowFocusLabel" type="Label" parent="ColorRect/Labels"]
+editor_description = "
+"
 layout_mode = 0
 offset_left = 40.0
 offset_top = 112.0
 offset_right = 200.0
 offset_bottom = 136.0
-text = "Window Focus"
+tooltip_text = "Dooty Doot doot"
+mouse_filter = 0
+text = "Window Focus Mode"
 vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="ColorRect"]
@@ -117,6 +124,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="CloseButton" type="Button" parent="ColorRect/Buttons"]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 7.99997
+offset_right = 393.0
+offset_bottom = 39.0
+text = "Close"
 
 [node name="ProactivityCheckBox" type="CheckBox" parent="ColorRect/Buttons"]
 layout_mode = 0
@@ -139,3 +154,7 @@ popup/item_1/text = "Always on Top"
 popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"
 popup/item_2/id = 2
+
+[connection signal="pressed" from="ColorRect/Buttons/CloseButton" to="." method="_onExit"]
+[connection signal="toggled" from="ColorRect/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
+[connection signal="item_selected" from="ColorRect/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjw6oamscwe62"]
+
+[ext_resource type="Script" path="res://pets/pet.gd" id="1_sjpdi"]
+[ext_resource type="PackedScene" uid="uid://dtum6p3u11q7f" path="res://pets/pet_scenes/stage2/buh_buh.tscn" id="2_4bs2f"]
+[ext_resource type="PackedScene" uid="uid://c7p8e2mggcbhx" path="res://pets/pet_scenes/stage2/Nuh_Buh.tscn" id="3_t25ib"]
+[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/Pets/stage1/bug.png" id="4_oe8yx"]
+[ext_resource type="Script" path="res://pets/pet_type/pup_type.gd" id="5_t53h3"]
+[ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
+[ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://assets/animation_frames/pets/stage1/buh_frames.tres" id="7_tvxa6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
+size = Vector2(16, 8)
+
+[node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
+script = ExtResource("1_sjpdi")
+sprite = NodePath("Sprite")
+leftCollider = NodePath("LeftObjectColl")
+rightCollider = NodePath("RightObjectColl")
+evolvesTo = Array[PackedScene]([ExtResource("2_4bs2f"), ExtResource("3_t25ib")])
+iconSprite = ExtResource("4_oe8yx")
+
+[node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
+script = ExtResource("5_t53h3")
+tempEvolveCondition = false
+moveTimer = NodePath("MoveTimer")
+neglectTimer = NodePath("NeglectTimer")
+petName = "Buh"
+
+[node name="MoveTimer" type="Timer" parent="Type"]
+script = ExtResource("6_hy41n")
+_useProactivity = false
+
+[node name="NeglectTimer" type="Timer" parent="Type"]
+script = ExtResource("6_hy41n")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("7_tvxa6")
+animation = &"Walk"
+frame_progress = 0.905029
+offset = Vector2(0, -8)
+
+[node name="LeftObjectColl" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
+position = Vector2(-16, -4)
+shape = SubResource("RectangleShape2D_jamv8")
+
+[node name="RightObjectColl" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
+position = Vector2(16, -4)
+shape = SubResource("RectangleShape2D_jamv8")
+
+[connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
+[connection signal="area_entered" from="LeftObjectColl" to="." method="_objectAreaCollisionEnter"]
+[connection signal="area_exited" from="LeftObjectColl" to="." method="_objectAreaCollisionExit"]
+[connection signal="body_entered" from="LeftObjectColl" to="." method="_objectBodyCollisionEnter"]
+[connection signal="body_exited" from="LeftObjectColl" to="." method="_objectBodyCollisionExit"]
+[connection signal="area_entered" from="RightObjectColl" to="." method="_on_right_object_coll_area_entered"]
+[connection signal="area_exited" from="RightObjectColl" to="." method="_on_right_object_coll_area_exited"]
+[connection signal="body_entered" from="RightObjectColl" to="." method="_objectBodyCollisionEnter"]
+[connection signal="body_exited" from="RightObjectColl" to="." method="_objectBodyCollisionExit"]

@@ -13,6 +13,7 @@ class_name PetType
 @export var waitIntervalMax := 10.0
 @export var waitIntervalMin := 3.0
 
+var petResource : PetTypeData
 
 func _ready() -> void:
 	moveTimer.connect("timeout", _onMoveTimerTimeout)

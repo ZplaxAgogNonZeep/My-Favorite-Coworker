@@ -28,7 +28,7 @@ const personalityModifiers : Dictionary = {
 	}# Order of Stats follow order in enum: [POW, END, SPD, BAL]
 
 #@onready var petManager = get_parent()
-@onready var type : PetType = get_node_or_null("Type")
+#@onready var type : PetType = get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position
 @onready var previousPosn := position
 @onready var defaultPosition := position
@@ -37,6 +37,9 @@ const personalityModifiers : Dictionary = {
 @export var sprite : AnimatedSprite2D
 @export var leftCollider : Area2D
 @export var rightCollider : Area2D
+@export var _moveTimer : Timer
+@export var _neglectTimer : Timer
+
 @export_category("Pet Values")
 @export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
@@ -45,6 +48,9 @@ const personalityModifiers : Dictionary = {
 
 var evolvedFromIcons : Array # Transfered
 var boundries : Array[Vector2] # Transfered
+
+#TODO: Remove all instances of the old PetType Class
+var petResource : PetTypeData
 
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
@@ -60,7 +66,6 @@ var personality : Enums.Personality # Transfered
 var hungerValue : int = 100 # Transfered
 var joyValue : int = 100 # Transfered
 var traumaCount := 0 # Transfered
-
 var petState := Enums.PetState.ROAMING
 var stateOnUnpause : Enums.PetState
 var isRoaming := false
@@ -99,14 +104,18 @@ func _process(delta):
 			else:
 				isRoaming = false
 		
-		type.roamBehavior()
+		#type.roamBehavior()
+		if not isRoaming and _moveTimer.is_stopped():
+			randomize()
+			_moveTimer.start(randf_range(petResource.waitIntervals.x, petResource.waitIntervals.y))
+		
 		setSpriteDirection()
 		previousPosn = position
 		
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
 			sprite.play("Quirk")
-		type.feedingBehavior()
+		#type.feedingBehavior()
 	elif petState == Enums.PetState.EVOLVING:
 		pass
 
@@ -118,7 +127,7 @@ func eatFood(foodObject):
 	await get_tree().create_timer(2).timeout
 	
 	# Performs whatever unique thing the pet does when eating, then adds the hunger value
-	type.onEatFood()
+	#type.onEatFood()
 	hungerValue += foodObject.feedAmount
 	
 	if hungerValue > MAX_HUNGER:
@@ -160,9 +169,9 @@ func startNeglectTimer():
 	if traumaCount > 5:
 		traumaCount = 5
 	
-	if $Type/NeglectTimer.time_left == 0:
+	if _neglectTimer.time_left == 0:
 		print("Neglect Timer called at trauma ", traumaCount)
-		$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
+		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
 
 #region Events 
 
@@ -197,7 +206,7 @@ func tickHunger():
 		
 		if (hungerValue < 25):
 			GameEvents.HopDeviceOnce.emit()
-		type.onTickHunger()
+		#type.onTickHunger()
 		randomize()
 		hungerValue -= randi_range(1, 5)
 		
@@ -213,7 +222,7 @@ func tickJoy():
 	if (joyValue > 0):
 		if joyValue < 10:
 			GameEvents.HopDeviceOnce.emit()
-		type.onTickJoy()
+		#type.onTickJoy()
 		randomize()
 		joyValue -= randi_range(0, 5)
 		if joyValue <= 0:
@@ -230,14 +239,14 @@ func neglectTimeout(skipValueCheck := false):
 		if traumaCount > 5:
 			GameEvents.PetDied.emit()
 		else:
-			$Type/NeglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
+			_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
 	print("Evolve singal received")
-	if (type.getEvolvePet() != null):
+	if (petResource.getEvolvePet() != null):
 		petState = Enums.PetState.EVOLVING
 		sprite.play("Quirk")
-		ReadyToEvolve.emit(type.getEvolvePet())
+		ReadyToEvolve.emit(petResource.getEvolvePet())
 		#petManager.evolvePet(type.getEvolvePet())
 
 #endregion

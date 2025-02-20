@@ -40,7 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
 [ext_resource type="Script" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="39_r66v4"]
-[ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/buh_egg.tres" id="40_a6sa5"]
+[ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/buh_egg.tres" id="40_a6sa5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=2 format=3 uid="uid://dmh0m64wchvdu"]
+
+[ext_resource type="Script" path="res://data/pet_type_data.gd" id="1_jtjk5"]
+
+[resource]
+script = ExtResource("1_jtjk5")
+name = "BuhBuh"
+stage = 2
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+statConditionOr = true
+evolutionCondition = {
+"BAL": 2,
+"END": 2,
+"POW": -1,
+"Personality": -1,
+"SPD": -1,
+"TraumaEqual": 0,
+"TraumaGreater": -1,
+"TraumaLesser": -1
+}

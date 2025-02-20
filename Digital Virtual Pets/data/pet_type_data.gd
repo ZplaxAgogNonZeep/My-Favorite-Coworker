@@ -14,6 +14,7 @@ const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
 
 @export_category("Evolution Data")
 @export var evolutions : Array[Resource]
+@export var statConditionOr = false
 @export var evolutionCondition : Dictionary = { # Transfered
 												"POW": -1, 
 												"END": -1,
@@ -29,18 +30,35 @@ const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
 
 func getNextEvolution(pet : Pet) -> Resource:
 	for evolution : PetTypeData in evolutions:
+		var statConditionMet = false
 		if (evolutionCondition["POW"] > -1):
 			if (pet.abilityStats[Enums.AbilityStat.POW] < evolutionCondition["POW"]):
-				continue
+				if (!statConditionOr):
+					continue
+			else:
+				statConditionMet = true
 		if (evolutionCondition["END"] > -1):
 			if (pet.abilityStats[Enums.AbilityStat.END] < evolutionCondition["END"]):
-				continue
+				if (!statConditionOr):
+					continue
+			else:
+				statConditionMet = true
 		if (evolutionCondition["SPD"] > -1):
 			if (pet.abilityStats[Enums.AbilityStat.SPD] < evolutionCondition["SPD"]):
-				continue
+				if (!statConditionOr):
+					continue
+			else:
+				statConditionMet = true
 		if (evolutionCondition["BAL"] > -1):
 			if (pet.abilityStats[Enums.AbilityStat.BAL] < evolutionCondition["BAL"]):
-				continue
+				if (!statConditionOr):
+					continue
+			else:
+				statConditionMet = true
+		
+		if (!statConditionMet):
+			continue
+		
 		if (evolutionCondition["TraumaGreater"] > -1):
 			if (pet.traumaCount < evolutionCondition["TraumaGreater"]):
 				continue

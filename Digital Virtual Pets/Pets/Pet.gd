@@ -9,6 +9,7 @@ const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
 const EVOLVE_INTERVALS : Array[int] = [90, 1800, 3600, 4000]
+## A note on timer intervals and their intentions
 ## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
 ## in a close to final state. Testing will probably need to be done to figure out what feels right
 ## but the general thought process is as follows:

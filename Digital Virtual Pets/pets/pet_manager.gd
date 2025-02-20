@@ -35,9 +35,11 @@ func spawnNewPet():
 	newPet.petResource = petStartResource
 	
 	activePet = newPet
+	activePet.loadResourceData()
 	activePet.connect("UpdateStatusBars", _updateStatus)
 	activePet.connect("ReadyToEvolve", evolvePet)
 	activePet.boundries.append_array([leftBoundry.position, rightBoundry.position])
+	
 	
 	call_deferred("add_child", activePet)
 	GameEvents.NewPetSpawned.emit(true)

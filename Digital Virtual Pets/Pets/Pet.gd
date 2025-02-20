@@ -84,6 +84,9 @@ func _ready():
 
 
 func _process(delta):
+	if (petResource.stage == 0):
+		return
+	
 	if petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):
@@ -121,7 +124,9 @@ func _process(delta):
 
 
 func loadResourceData():
+	var lastAnim = sprite.animation
 	sprite.sprite_frames = petResource.spriteFrames
+	sprite.play(lastAnim)
 
 
 func eatFood(foodObject):
@@ -247,10 +252,10 @@ func neglectTimeout(skipValueCheck := false):
 
 func evolvePet():
 	print("Evolve singal received")
-	if (petResource.getEvolvePet() != null):
+	if (petResource.getNextEvolution(self) != null):
 		petState = Enums.PetState.EVOLVING
 		sprite.play("Quirk")
-		ReadyToEvolve.emit(petResource.getEvolvePet())
+		ReadyToEvolve.emit(petResource.getNextEvolution(self))
 		#petManager.evolvePet(type.getEvolvePet())
 
 #endregion

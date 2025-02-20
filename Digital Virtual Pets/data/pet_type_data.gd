@@ -2,6 +2,8 @@ extends Resource
 
 class_name PetTypeData
 
+const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
+
 @export_category("Pet Type Data")
 @export var name : String
 @export var spriteFrames : SpriteFrames
@@ -13,15 +15,17 @@ class_name PetTypeData
 @export_category("Evolution Data")
 @export var evolutions : Array[Resource]
 @export var evolutionCondition : Dictionary = { # Transfered
-	"POW": -1, 
-	"END": -1,
-	"SPD": -1,
-	"BAL": -1,
-	"TraumaGreater" : -1,
-	"TraumaLesser" : -1,
-	"TraumaEqual" : -1,
-	"Personality" : -1
-	}
+												"POW": -1, 
+												"END": -1,
+												"SPD": -1,
+												"BAL": -1,
+												"TraumaGreater" : -1,
+												"TraumaLesser" : -1,
+												"TraumaEqual" : -1,
+												"Personality" : -1
+												}
+
+
 
 func getNextEvolution(pet : Pet) -> Resource:
 	for evolution : PetTypeData in evolutions:
@@ -56,3 +60,7 @@ func getNextEvolution(pet : Pet) -> Resource:
 
 func getSpriteIcon() -> Texture2D:
 	return spriteFrames.get_frame_texture("Idle", 0)
+
+
+func getSpriteOffset() -> float:
+	return SPRITE_OFFSETS[stage]

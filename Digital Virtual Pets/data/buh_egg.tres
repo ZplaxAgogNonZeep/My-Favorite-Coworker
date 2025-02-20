@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=3 format=3 uid="uid://c5hcs487cgau8"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=4 format=3 uid="uid://c5hcs487cgau8"]
 
 [ext_resource type="Script" path="res://data/pet_type_data.gd" id="1_8c1qq"]
+[ext_resource type="Resource" uid="uid://c5mrxvhxbul13" path="res://data/buh.tres" id="1_s8doy"]
 [ext_resource type="SpriteFrames" uid="uid://noxh6ocgu6nu" path="res://assets/animation_frames/pets/stage0/buh_egg.tres" id="2_flmyc"]
 
 [resource]
@@ -9,7 +10,7 @@ name = "Egg?"
 spriteFrames = ExtResource("2_flmyc")
 stage = 0
 waitIntervals = Vector2(0, 0)
-evolutions = Array[Resource]([])
+evolutions = Array[Resource]([ExtResource("1_s8doy")])
 evolutionCondition = {
 "BAL": -1,
 "END": -1,

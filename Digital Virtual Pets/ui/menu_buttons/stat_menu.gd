@@ -11,7 +11,7 @@ func initializeMenu():
 		if (get_tree().get_nodes_in_group("Pet").size() > 0):
 			var pet = get_tree().get_nodes_in_group("Pet")[0]
 			$Personality.text = "Personality: " + Enums.Personality.keys()[pet.personality]
-			$Name.text = pet.type.petName
+			$Name.text = pet.petResource.name
 			$Pow/Value.text = str(pet.abilityStats[Enums.AbilityStat.POW])
 			$End/Value.text = str(pet.abilityStats[Enums.AbilityStat.END])
 			$Spd/Value.text = str(pet.abilityStats[Enums.AbilityStat.SPD])

@@ -9,7 +9,7 @@ name = "Buh"
 spriteFrames = ExtResource("2_28fvd")
 stage = 1
 waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([null])
+evolutions = Array[Resource]([])
 evolutionCondition = {
 "BAL": -1,
 "END": -1,

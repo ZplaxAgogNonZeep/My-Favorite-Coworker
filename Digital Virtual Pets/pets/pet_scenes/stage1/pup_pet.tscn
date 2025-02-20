@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bpcwq03jqltcn"]
+[gd_scene load_steps=8 format=3 uid="uid://bpcwq03jqltcn"]
 
 [ext_resource type="Script" path="res://pets/pet.gd" id="1_3faag"]
 [ext_resource type="Script" path="res://pets/pet_type/pup_type.gd" id="2_v4c75"]
-[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/Pets/stage1/bug.png" id="2_yvamj"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="3_74jdq"]
 [ext_resource type="PackedScene" uid="uid://dtum6p3u11q7f" path="res://pets/pet_scenes/stage2/buh_buh.tscn" id="3_qsflv"]
 [ext_resource type="PackedScene" uid="uid://c7p8e2mggcbhx" path="res://pets/pet_scenes/stage2/Nuh_Buh.tscn" id="3_xpkjh"]
@@ -17,7 +16,6 @@ sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 evolvesTo = Array[PackedScene]([ExtResource("3_qsflv"), ExtResource("3_xpkjh")])
-iconSprite = ExtResource("2_yvamj")
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("2_v4c75")

@@ -7,6 +7,7 @@ class_name PetTypeData
 @export var spriteFrames : SpriteFrames
 
 @export_category("Behavior Variables")
+@export var stage : int
 @export var waitIntervals : Vector2
 
 @export_category("Evolution Data")
@@ -52,3 +53,6 @@ func getNextEvolution(pet : Pet) -> Resource:
 		return evolution
 		
 	return null
+
+func getSpriteIcon() -> Texture2D:
+	return spriteFrames.get_frame_texture("Idle", 0)

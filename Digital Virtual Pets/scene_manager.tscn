@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=52 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
@@ -38,8 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://yp44rtci20n4" path="res://games/jump/jump_game.tscn" id="26_sfmlx"]
 [ext_resource type="PackedScene" uid="uid://cxqir2rb1dcdk" path="res://games/hit/hit_game.tscn" id="27_s5e41"]
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
-[ext_resource type="PackedScene" uid="uid://c6rbec0o5v5i0" path="res://pets/pet_scenes/eggs/buh_egg.tscn" id="31_fbx5p"]
 [ext_resource type="Script" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
+[ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="39_r66v4"]
+[ext_resource type="Resource" uid="uid://c5mrxvhxbul13" path="res://data/buh.tres" id="40_gkshl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -692,8 +693,9 @@ hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
 leftBoundry = NodePath("Markers/LeftBoundry")
 rightBoundry = NodePath("Markers/RightBoundry")
-respawnPet = ExtResource("31_fbx5p")
+respawnPet = ExtResource("39_r66v4")
 petSpawnPoint = NodePath("Markers/PetSpawnPoint")
+petStartResource = ExtResource("40_gkshl")
 _evolvingPet = NodePath("EvolvingPet")
 _evolveSequenceRate = 1.05
 
@@ -764,11 +766,11 @@ libraries = {
 }
 
 [node name="PreviousEvolution" type="Sprite2D" parent="Device/GameArea/PetManager/EvolvingPet"]
-visible = false
 scale = Vector2(3, 3)
 offset = Vector2(0, -8)
 
 [node name="NextEvolution" type="Sprite2D" parent="Device/GameArea/PetManager/EvolvingPet"]
+visible = false
 scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 

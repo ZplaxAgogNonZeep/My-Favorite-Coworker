@@ -43,8 +43,6 @@ const personalityModifiers : Dictionary = {
 @export_category("Pet Values")
 @export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
-@export_category("Misc References")
-@export var iconSprite : Texture2D
 
 var evolvedFromIcons : Array # Transfered
 var boundries : Array[Vector2] # Transfered
@@ -78,6 +76,8 @@ func _ready():
 	GameEvents.EvolveCheck.connect(evolvePet)
 	GameEvents.PauseGame.connect(gamePaused)
 	GameEvents.UnpauseGame.connect(gameUnpaused)
+	
+	_moveTimer.connect("timeout", _onMoveTimerTimeout)
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
 	
@@ -118,6 +118,10 @@ func _process(delta):
 		#type.feedingBehavior()
 	elif petState == Enums.PetState.EVOLVING:
 		pass
+
+
+func loadResourceData():
+	sprite.sprite_frames = petResource.spriteFrames
 
 
 func eatFood(foodObject):
@@ -306,7 +310,11 @@ func getSpriteOffset() -> float:
 
 #endregion
 
-#region Collision Singals 
+#region Node Signals 
+
+func _onMoveTimerTimeout() -> void:
+	goToPosition(getNextPosition())
+
 
 func _objectAreaCollisionEnter(area):
 	pass

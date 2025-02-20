@@ -10,10 +10,13 @@ func saveSettingsToFile(dataDict : Dictionary):
 		config.set_value("Settings", key, dataDict[key])
 	
 	config.save(SETTINGS_FILEPATH)
+	#config.save(SETTINGS_FILEPATH)
 
 
 func loadSettingsFromFile():
+	
 	var config = ConfigFile.new()
+	
 	var err = config.load(SETTINGS_FILEPATH)
 	
 	if err != OK:
@@ -30,5 +33,8 @@ func loadSettingsFromFile():
 #region Game Data Handling
 ## Figuring this one out later lol - AMWB
 func saveGameToFile():
+	#var password = OS.get_unique_id()
+	#config.load_encrypted_pass(SETTINGS_FILEPATH, password)
+	#config.save_encrypted_pass(SETTINGS_FILEPATH, password)
 	pass
 #endregion

@@ -34,6 +34,17 @@ func pauseGame(isPaused : bool):
 	else:
 		GameEvents.UnpauseGame.emit()
 
+## Update this function here when making save data!
+func saveSettings():
+	var settingsDict = {
+		"isUsingProactivity" : isUsingProactivity,
+		"isSetWindowPinned" : isSetWindowPinned,
+		"isRequestAttentionAllowed" : isRequestAttentionAllowed,
+		"windowAttentionMode" : windowAttentionMode
+	}
+	
+	SaveData.saveSettingsToFile(settingsDict)
+
 #region User Settings Functions
 func setProactivitySetting(isTrue : bool):
 	if (isUsingProactivity == isTrue):

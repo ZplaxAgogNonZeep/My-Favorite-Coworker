@@ -40,7 +40,7 @@ func _loadSavedMenuSettings():
 
 
 func _saveMenuSettings():
-	pass
+	Settings.saveSettings()
 
 #region Node Signals
 func _animationComplete(animation : StringName):

@@ -21,6 +21,7 @@ Interface="*res://singletons/interface.gd"
 Enums="*res://singletons/enums.gd"
 GameEvents="*res://singletons/game_events.gd"
 Settings="*res://singletons/settings.gd"
+SaveData="*res://singletons/save_data.gd"
 
 [display]
 

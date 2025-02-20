@@ -45,7 +45,6 @@ const personalityModifiers : Dictionary = {
 var evolvedFromIcons : Array # Transfered
 var boundries : Array[Vector2] # Transfered
 
-#TODO: Reset food on evolve
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
 var _overfed := false

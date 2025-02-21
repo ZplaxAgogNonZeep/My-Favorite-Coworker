@@ -10,6 +10,7 @@ var _speedRate : float
 
 signal SequenceComplete
 
+
 func startSequence(evolvePosn : Vector2, oldTexture : Texture2D, oldOffset : float, 
 					newTexture : Texture2D, newOffset : float, rate : float) -> void:
 	_previousEvo.texture = oldTexture

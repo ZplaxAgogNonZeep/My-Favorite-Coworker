@@ -7,7 +7,7 @@ signal ReadyToEvolve(evolvedForm)
 
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
-const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20] # [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
 const EVOLVE_INTERVALS : Array[int] = [90, 1800, 3600, 4000]
 ## A note on timer intervals and their intentions
 ## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
@@ -27,8 +27,6 @@ const personalityModifiers : Dictionary = {
 	Enums.Personality.AIRHEAD : [0,0,0,0]
 	}# Order of Stats follow order in enum: [POW, END, SPD, BAL]
 
-#@onready var petManager = get_parent()
-#@onready var type : PetType = get_node_or_null("Type")
 @onready var targetPosn : Vector2 = position
 @onready var previousPosn := position
 @onready var defaultPosition := position
@@ -44,30 +42,27 @@ const personalityModifiers : Dictionary = {
 @export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
 
-var evolvedFromIcons : Array # Transfered
-var boundries : Array[Vector2] # Transfered
-
-#TODO: Remove all instances of the old PetType Class
 var petResource : PetTypeData
-
-var _objectsInRange : Array = []
-var _foodQueue : Array = [] 
-var _overfed := false
-
+var personality : Enums.Personality # Transfered
+var hungerValue : int = 100 # Transfered
+var joyValue : int = 100 # Transfered
+var traumaCount := 0 # Transfered
+var petState := Enums.PetState.ROAMING
+var evolvedFromIcons : Array # Transfered
+var stateOnUnpause : Enums.PetState
+var isRoaming := false
+var isFoodReached := false
+var boundries : Array[Vector2] # Transfered
 var abilityStats : Dictionary = { # Transfered
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
 	Enums.AbilityStat.BAL: 0
 	}
-var personality : Enums.Personality # Transfered
-var hungerValue : int = 100 # Transfered
-var joyValue : int = 100 # Transfered
-var traumaCount := 0 # Transfered
-var petState := Enums.PetState.ROAMING
-var stateOnUnpause : Enums.PetState
-var isRoaming := false
-var isFoodReached := false
+
+var _objectsInRange : Array = []
+var _foodQueue : Array = [] 
+var _overfed := false
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -80,7 +75,6 @@ func _ready():
 	_moveTimer.connect("timeout", _onMoveTimerTimeout)
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
-	
 
 
 func _process(delta):
@@ -123,13 +117,6 @@ func _process(delta):
 		pass
 
 
-func loadResourceData():
-	var lastAnim = sprite.animation
-	sprite.sprite_frames = petResource.spriteFrames
-	sprite.offset.y = petResource.getSpriteOffset()
-	sprite.play(lastAnim)
-
-
 func eatFood(foodObject):
 	# Sets state to FEEDING to stop any roaming, faces the food, then waits while it eats.
 	petState = Enums.PetState.FEEDING
@@ -164,8 +151,7 @@ func eatFood(foodObject):
 		petState = Enums.PetState.ROAMING
 		
 		GameEvents.UnpauseTimers.emit()
-	
-	
+
 
 func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease : int):
 	joyValue += joyIncrement
@@ -174,6 +160,7 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 		joyValue = MAX_JOY
 	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
+
 
 func startNeglectTimer():
 	if traumaCount > 5:
@@ -184,6 +171,14 @@ func startNeglectTimer():
 		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
 
 #region Events 
+func gamePaused():
+	stateOnUnpause = petState
+	petState = Enums.PetState.MENU
+
+
+func gameUnpaused():
+	petState = stateOnUnpause
+
 
 func foodPlaced(food):
 	if (_foodQueue.has(food)):
@@ -201,14 +196,6 @@ func foodPlaced(food):
 		if (_foodQueue.size() > 3 and not _overfed):
 			_overfed = true
 			neglectTimeout(true)
-
-func gamePaused():
-	stateOnUnpause = petState
-	petState = Enums.PetState.MENU
-
-
-func gameUnpaused():
-	petState = stateOnUnpause
 
 
 func tickHunger():
@@ -262,9 +249,16 @@ func evolvePet():
 #endregion
 
 #region Utility Functions 
+func loadResourceData():
+	var lastAnim = sprite.animation
+	sprite.sprite_frames = petResource.spriteFrames
+	sprite.offset.y = petResource.getSpriteOffset()
+	sprite.play(lastAnim)
+
 
 func pauseAllTimers():
 	pass
+
 
 func alineToBoundry():
 	if (targetPosn.x > boundries[1].x):
@@ -324,14 +318,11 @@ func _onMoveTimerTimeout() -> void:
 
 func _objectAreaCollisionEnter(area):
 	pass
-	#if (Interface.hasInterface(area, Interface.Food)):
-		#isFoodReached = true
-		#eatFood(area)
+
 
 func _objectAreaCollisionExit(area):
 	pass
-	#if (Interface.hasInterface(area, Interface.Food)):
-		#isFoodReached = false
+
 
 func _objectBodyCollisionEnter(body):
 	if (Interface.hasInterface(body, Interface.Food) and petState != Enums.PetState.FEEDING):

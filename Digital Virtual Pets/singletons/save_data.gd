@@ -9,15 +9,17 @@ class Data:
 
 class DataSaver:
 	var obj : Node
-	var categoryName : String
 	
-	func DataSaver(_obj, _categoryName):
+	func getCategoryName() -> String:
+		return ""
+	
+	func _init(_obj: Node) -> void:
 		obj = _obj
-		categoryName = _categoryName
+
 	
 	func getDataToSave() -> Data:
 		var data = Data.new()
-		data.category = categoryName
+		data.category = getCategoryName()
 		for property : Dictionary in get_property_list():
 			if (property["name"] == "Built-in script" or property["name"] == "RefCounted" 
 				or property["name"] == "script" or property["name"] == "obj"
@@ -27,19 +29,28 @@ class DataSaver:
 		
 		return data
 	
-	func setDataToLoad():
-		pass
-	
+	func setDataToLoad(data : Data):
+		for property : Dictionary in get_property_list():
+			if data.properties.has(property["name"]):
+				obj.set(property["name"], data.properties[property["name"]])
+
 
 var _loadedSaveData : Array[Data]
-var _subscribedSaveObjects
+var _subscribedSaveObjects : Array[Node]
 
 func _ready() -> void:
-	# go through the game setting up everything for saving and loading
+	SaveData.loadSettingsFromFile()
+	SaveData.loadGameFromFile()
 	var allLoadedNodes = _getAllDecendants(get_tree().root)
 	
 	for node in allLoadedNodes:
-		_check_node(node)
+		if ("DataSaver" in node):
+			_subscribedSaveObjects += [node]
+			var dataSaver : DataSaver = node.DataSaver.new(node)
+			if (_loadedSaveData.size() > 0):
+				var data = retrieveGameData(dataSaver.getCategoryName())
+				if (data):
+					dataSaver.setDataToLoad(data)
 
 
 #region Settings Data Handling
@@ -76,7 +87,7 @@ func saveGameToFile():
 	var dataToSave = []
 	
 	for savingObject in _subscribedSaveObjects:
-		var dataSaver : DataSaver = savingObject.DataSaver.new()
+		var dataSaver : DataSaver = savingObject.DataSaver.new(savingObject)
 		var data = dataSaver.getDataToSave()
 		dataToSave.append(data)
 	
@@ -101,7 +112,7 @@ func loadGameFromFile():
 	var err = config.load_encrypted_pass(GAMEDATA_FILEPATH, password)
 	
 	if err != OK:
-		print("No Setting Save Data Found, using defaults")
+		print("No Game Save Data Found, assuming new game")
 		return
 	
 	var sections = config.get_sections()
@@ -113,6 +124,13 @@ func loadGameFromFile():
 			data.properties[propertyKey] = config.get_value(category, propertyKey)
 		
 		_loadedSaveData.append(data)
+
+func retrieveGameData(category : String) -> Data:
+	for data : Data in _loadedSaveData:
+		if (category == data.category):
+			return data
+	
+	return null
 
 #endregion
 

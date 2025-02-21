@@ -5,23 +5,16 @@ extends Node2D
 @export var _iconMenu : Menu
 @export var _background : Control
 
+var testvar := 2
+
 class DataSaver extends SaveData.DataSaver:
-	var test1
-	var test2
-	var test3
-	var test4
+	func getCategoryName():
+		return "Test"
+	var testvar
 
 func _ready() -> void:
-	var testDataSaver = DataSaver.new()
-	testDataSaver.get_property_list()
-	for property : Dictionary in testDataSaver.get_property_list():
-		if (property["name"] == "Built-in script" or property["name"] == "RefCounted" 
-			or property["name"] == "script" or property["name"] == "obj"
-			or property["name"] == "categoryName"):
-			continue
-		print(property["name"])
-
-	SaveData.loadSettingsFromFile()
+	print("TESTING SAVE DATA: ", testvar)
+	SaveData.saveGameToFile()
 
 
 func _input(event: InputEvent) -> void:

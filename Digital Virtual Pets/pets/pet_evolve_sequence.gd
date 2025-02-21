@@ -18,6 +18,7 @@ func startSequence(evolvePosn : Vector2, oldTexture : Texture2D, oldOffset : flo
 	_nextEvo.offset.y = newOffset
 	_speedRate = rate
 	position = evolvePosn
+	$AnimationPlayer.speed_scale = 1
 	
 	visible = true
 	$AnimationPlayer.play("evolve_sequence_anim")

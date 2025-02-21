@@ -84,8 +84,8 @@ func evolvePet(evolveTarget: PetTypeData):
 	#evolvedPet.boundries = transferVar[6]
 	#endregion
 	
+	activePet.evolvedFromIcons += [activePet.getSpriteIcon()]
 	activePet.visible = false
-	
 	# Start Evolve Animation Sequence
 	_evolvingPet.startSequence(activePet.position, 
 								activePet.getSpriteIcon(), activePet.getSpriteOffset(), 

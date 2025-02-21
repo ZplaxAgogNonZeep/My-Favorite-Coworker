@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjw6oamscwe62"]
+[gd_scene load_steps=7 format=3 uid="uid://cjw6oamscwe62"]
 
 [ext_resource type="Script" path="res://pets/pet.gd" id="1_sjpdi"]
 [ext_resource type="PackedScene" uid="uid://dtum6p3u11q7f" path="res://pets/pet_scenes/stage2/buh_buh.tscn" id="2_4bs2f"]
 [ext_resource type="PackedScene" uid="uid://c7p8e2mggcbhx" path="res://pets/pet_scenes/stage2/Nuh_Buh.tscn" id="3_t25ib"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
@@ -28,7 +29,8 @@ script = ExtResource("6_hy41n")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-animation = &"Walk"
+sprite_frames = ExtResource("5_ouj2v")
+animation = &"Idle"
 offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]

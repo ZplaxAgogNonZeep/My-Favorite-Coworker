@@ -30,6 +30,7 @@ const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
 
 func getNextEvolution(pet : Pet) -> Resource:
 	for evolution : PetTypeData in evolutions:
+		print("Checking ", evolution.name)
 		var statConditionMet = false
 		if (evolutionCondition["POW"] > -1):
 			if (pet.abilityStats[Enums.AbilityStat.POW] < evolutionCondition["POW"]):
@@ -56,7 +57,7 @@ func getNextEvolution(pet : Pet) -> Resource:
 			else:
 				statConditionMet = true
 		
-		if (!statConditionMet):
+		if (!statConditionMet && statConditionOr):
 			continue
 		
 		if (evolutionCondition["TraumaGreater"] > -1):

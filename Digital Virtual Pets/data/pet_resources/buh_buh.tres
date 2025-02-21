@@ -1,13 +1,16 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=2 format=3 uid="uid://dmh0m64wchvdu"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=4 format=3 uid="uid://dmh0m64wchvdu"]
 
 [ext_resource type="Script" path="res://data/pet_type_data.gd" id="1_jtjk5"]
+[ext_resource type="Resource" uid="uid://cxjugw70vu5vs" path="res://data/pet_resources/he_ro_buh.tres" id="1_mb2hx"]
+[ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://assets/animation_frames/pets/stage2/buh_buh_frames.tres" id="3_286bp"]
 
 [resource]
 script = ExtResource("1_jtjk5")
 name = "BuhBuh"
+spriteFrames = ExtResource("3_286bp")
 stage = 2
 waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([])
+evolutions = Array[Resource]([ExtResource("1_mb2hx")])
 statConditionOr = true
 evolutionCondition = {
 "BAL": 2,

@@ -126,6 +126,7 @@ func _process(delta):
 func loadResourceData():
 	var lastAnim = sprite.animation
 	sprite.sprite_frames = petResource.spriteFrames
+	sprite.offset.y = petResource.getSpriteOffset()
 	sprite.play(lastAnim)
 
 

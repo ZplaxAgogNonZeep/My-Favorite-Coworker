@@ -130,4 +130,3 @@ func _foodColliderExited(body, number = 0):
 		_spawnpointStatus[number] = true
 
 #endregion
-

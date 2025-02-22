@@ -82,7 +82,7 @@ func feed():
 func petSpawned(isEgg := false):
 	if (!isEgg):
 		_startNeedsTimers()
-	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.stage])
+	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.getPetStage()])
 
 
 func _startNeedsTimers():

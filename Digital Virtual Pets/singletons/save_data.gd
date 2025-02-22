@@ -15,7 +15,6 @@ class DataSaver:
 	
 	func _init(_obj: Node) -> void:
 		obj = _obj
-
 	
 	func getDataToSave() -> Data:
 		var data = Data.new()
@@ -39,18 +38,10 @@ var _loadedSaveData : Array[Data]
 var _subscribedSaveObjects : Array[Node]
 
 func _ready() -> void:
-	SaveData.loadSettingsFromFile()
-	SaveData.loadGameFromFile()
-	var allLoadedNodes = _getAllDecendants(get_tree().root)
+	loadSettingsFromFile()
+	loadGameFromFile()
 	
-	for node in allLoadedNodes:
-		if ("DataSaver" in node):
-			_subscribedSaveObjects += [node]
-			var dataSaver : DataSaver = node.DataSaver.new(node)
-			if (_loadedSaveData.size() > 0):
-				var data = retrieveGameData(dataSaver.getCategoryName())
-				if (data):
-					dataSaver.setDataToLoad(data)
+	findAllDataSaversInScene()
 
 
 #region Settings Data Handling
@@ -125,12 +116,29 @@ func loadGameFromFile():
 		
 		_loadedSaveData.append(data)
 
+
 func retrieveGameData(category : String) -> Data:
 	for data : Data in _loadedSaveData:
 		if (category == data.category):
 			return data
 	
 	return null
+
+
+func findAllDataSaversInScene():
+	if (_subscribedSaveObjects.size() > 0):
+		_subscribedSaveObjects.clear()
+	
+	var allLoadedNodes = _getAllDecendants(get_tree().root)
+	
+	for node in allLoadedNodes:
+		if ("DataSaver" in node):
+			_subscribedSaveObjects += [node]
+			var dataSaver : DataSaver = node.DataSaver.new(node)
+			if (_loadedSaveData.size() > 0):
+				var data = retrieveGameData(dataSaver.getCategoryName())
+				if (data):
+					dataSaver.setDataToLoad(data)
 
 #endregion
 

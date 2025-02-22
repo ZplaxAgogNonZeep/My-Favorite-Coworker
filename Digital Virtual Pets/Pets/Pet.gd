@@ -43,17 +43,17 @@ const personalityModifiers : Dictionary = {
 @export var roamSpeed := .5
 
 var petResource : PetTypeData
-var personality : Enums.Personality # Transfered
-var hungerValue : int = 100 # Transfered
-var joyValue : int = 100 # Transfered
-var traumaCount := 0 # Transfered
+var personality : Enums.Personality # Saved
+var hungerValue : int = 100 # Saved
+var joyValue : int = 100 # Saved
+var traumaCount := 0 # Saved
 var petState := Enums.PetState.ROAMING
-var evolvedFromIcons : Array # Transfered
+var evolvedFromIcons : Array # Saved
 var stateOnUnpause : Enums.PetState
 var isRoaming := false
 var isFoodReached := false
-var boundries : Array[Vector2] # Transfered
-var abilityStats : Dictionary = { # Transfered
+var boundries : Array[Vector2] # Unsure
+var abilityStats : Dictionary = { # Saved
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
@@ -108,7 +108,6 @@ func _process(delta):
 		
 		setSpriteDirection()
 		previousPosn = position
-		
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
 			sprite.play("Quirk")
@@ -117,6 +116,15 @@ func _process(delta):
 		pass
 
 
+func loadResourceData():
+	var lastAnim = sprite.animation
+	sprite.sprite_frames = petResource.spriteFrames
+	sprite.offset.y = petResource.getSpriteOffset()
+	leftCollider.position.x = petResource.getCollisionOffset() * -1
+	rightCollider.position.x = petResource.getCollisionOffset()
+	sprite.play(lastAnim)
+
+#region Behavior Functions
 func eatFood(foodObject):
 	# Sets state to FEEDING to stop any roaming, faces the food, then waits while it eats.
 	petState = Enums.PetState.FEEDING
@@ -160,15 +168,7 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 		joyValue = MAX_JOY
 	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
-
-
-func startNeglectTimer():
-	if traumaCount > 5:
-		traumaCount = 5
-	
-	if _neglectTimer.time_left == 0:
-		print("Neglect Timer called at trauma ", traumaCount)
-		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
+#endregion
 
 #region Events 
 func gamePaused():
@@ -249,13 +249,6 @@ func evolvePet():
 #endregion
 
 #region Utility Functions 
-func loadResourceData():
-	var lastAnim = sprite.animation
-	sprite.sprite_frames = petResource.spriteFrames
-	sprite.offset.y = petResource.getSpriteOffset()
-	sprite.play(lastAnim)
-
-
 func pauseAllTimers():
 	pass
 
@@ -302,11 +295,20 @@ func goToPosition(posn : Vector2):
 		targetPosn = posn
 
 
+func startNeglectTimer():
+	if traumaCount > 5:
+		traumaCount = 5
+	
+	if _neglectTimer.time_left == 0:
+		print("Neglect Timer called at trauma ", traumaCount)
+		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
+
+
 func getSpriteIcon() -> Texture2D:
-	return sprite.sprite_frames.get_frame_texture("Idle", 0)
+	return petResource.getSpriteIcon()
 
 func getSpriteOffset() -> float:
-	return sprite.offset.y
+	return petResource.getSpriteOffset()
 
 #endregion
 

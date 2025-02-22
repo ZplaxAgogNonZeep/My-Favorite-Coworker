@@ -3,6 +3,7 @@ extends Resource
 class_name PetTypeData
 
 const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
+const COLLISION_OFFSETS : Array[float] = [0, 24, 30, 36]
 
 @export_category("Pet Type Data")
 @export var name : String
@@ -83,3 +84,7 @@ func getSpriteIcon() -> Texture2D:
 
 func getSpriteOffset() -> float:
 	return SPRITE_OFFSETS[stage]
+
+
+func getCollisionOffset() -> float:
+	return COLLISION_OFFSETS[stage]

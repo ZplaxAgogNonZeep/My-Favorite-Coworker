@@ -16,7 +16,6 @@ var implements = []
 @export var _evolveSequenceRate : float
 
 var activePet : Pet
-var stage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,9 +23,12 @@ func _ready():
 	GameEvents.PetDied.connect(killPet)
 
 
+#region Pet Spawning & Evolving
+# TODO: Update Spawn Pet to be from game manager
 func spawnPetOnStart():
 	if (not activePet):
 		spawnNewPet()
+
 
 func spawnNewPet():
 	var newPet = respawnPet.instantiate()
@@ -54,7 +56,6 @@ func spawnNewPet():
 
 
 func evolvePet(evolveTarget: PetTypeData):
-	stage += 1
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
@@ -99,6 +100,8 @@ func evolvePet(evolveTarget: PetTypeData):
 	activePet.petResource = evolveTarget
 	activePet.loadResourceData()
 	
+	SaveData.saveGameToFile()
+	
 	GameEvents.StartNeedsTimers.emit()
 	GameEvents.NewPetEvolved.emit(false)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
@@ -113,7 +116,18 @@ func killPet():
 	activePet.queue_free()
 	spawnNewPet()
 
+#endregion
+
+#region Utility Functions 
+
+func getPetStage() -> int:
+	return activePet.petResource.stage
+
+#endregion
+
+#region Signal Functions
 
 func _updateStatus(hungerValue, joyValue):
 	hungerBar.updateBar(hungerValue, Pet.MAX_HUNGER)
 	joyBar.updateBar(joyValue, Pet.MAX_JOY)
+#endregion

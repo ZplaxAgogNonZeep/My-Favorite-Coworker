@@ -42,7 +42,7 @@ const personalityModifiers : Dictionary = {
 @export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
 
-var petResource : PetTypeData
+var petResource : PetTypeData #Saved
 var personality : Enums.Personality # Saved
 var hungerValue : int = 100 # Saved
 var joyValue : int = 100 # Saved

@@ -2,6 +2,7 @@ extends Node
 
 const SETTINGS_FILEPATH := "user://settings.ini"
 const GAMEDATA_FILEPATH := "user://gamedata.ini"
+const DEBUGDATA_FILEPATH := "user://debugdata.ini"
 
 class Data:
 	var category : String
@@ -94,6 +95,7 @@ func saveGameToFile():
 			config.set_value(data.category, propertyKey, data.properties[propertyKey])
 	
 	config.save_encrypted_pass(GAMEDATA_FILEPATH, password)
+	config.save(DEBUGDATA_FILEPATH)
 
 
 func loadGameFromFile():
@@ -112,6 +114,8 @@ func loadGameFromFile():
 		var data := Data.new()
 		data.category = category
 		for propertyKey in config.get_section_keys(category):
+			if config.get_value(category, propertyKey) is Object:
+				print(category,": ", config.get_value(category, propertyKey))
 			data.properties[propertyKey] = config.get_value(category, propertyKey)
 		
 		_loadedSaveData.append(data)

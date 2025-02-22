@@ -23,7 +23,8 @@ func _ready():
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
-	GameEvents.SpawnPetOnStart.emit()
+	#GameEvents.SpawnPetOnStart.emit()
+	petManager.spawnPet(0)
 	
 	await get_tree().create_timer(5).timeout
 

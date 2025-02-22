@@ -27,7 +27,7 @@ class DataSaver extends SaveData.DataSaver:
 @export var _evolveSequenceRate : float
 
 var activePet : Pet
-var _petSlots = [{},{},{}]
+var _petSlots = [{}]
 var _slotIndex : int
 
 # Called when the node enters the scene tree for the first time.
@@ -61,7 +61,7 @@ func spawnPet(index : int = -1):
 	
 	
 	call_deferred("add_child", activePet)
-	GameEvents.NewPetSpawned.emit(true)
+	GameEvents.NewPetSpawned.emit(activePet.petResource.stage == 0)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
 								activePet.position + Vector2(13, 0), 
 								true, 
@@ -70,9 +70,12 @@ func spawnPet(index : int = -1):
 								activePet.position - Vector2(13, 0), 
 								false, 
 								2)
+	
+	SaveData.saveGameToFile()
 
 
 func evolvePet(evolveTarget: PetTypeData):
+	# Stop everything and start shaking the device
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
@@ -86,16 +89,17 @@ func evolvePet(evolveTarget: PetTypeData):
 								activePet.getSpriteIcon(), activePet.getSpriteOffset(), 
 								evolveTarget.getSpriteIcon(), evolveTarget.getSpriteOffset(), 
 								_evolveSequenceRate)
-	
 	await _evolvingPet.SequenceComplete
-	
 	activePet.visible = true
 
+	# Set new resource and update visual information for it
 	activePet.petResource = evolveTarget
 	activePet.loadResourceData()
 	
+	# Save the game
 	SaveData.saveGameToFile()
 	
+	# Go about with the game
 	GameEvents.StartNeedsTimers.emit()
 	GameEvents.NewPetEvolved.emit(false)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 

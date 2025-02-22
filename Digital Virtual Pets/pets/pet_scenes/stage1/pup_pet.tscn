@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpcwq03jqltcn"]
+[gd_scene load_steps=6 format=3 uid="uid://bpcwq03jqltcn"]
 
 [ext_resource type="Script" path="res://pets/pet.gd" id="1_3faag"]
 [ext_resource type="Script" path="res://pets/pet_type/pup_type.gd" id="2_v4c75"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="3_74jdq"]
-[ext_resource type="PackedScene" uid="uid://dtum6p3u11q7f" path="res://pets/pet_scenes/stage2/buh_buh.tscn" id="3_qsflv"]
-[ext_resource type="PackedScene" uid="uid://c7p8e2mggcbhx" path="res://pets/pet_scenes/stage2/Nuh_Buh.tscn" id="3_xpkjh"]
 [ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://assets/animation_frames/pets/stage1/buh_frames.tres" id="7_icpn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
@@ -15,7 +13,6 @@ script = ExtResource("1_3faag")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
-evolvesTo = Array[PackedScene]([ExtResource("3_qsflv"), ExtResource("3_xpkjh")])
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("2_v4c75")
@@ -34,8 +31,7 @@ script = ExtResource("3_74jdq")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("7_icpn1")
-animation = &"Walk"
-frame_progress = 0.905029
+animation = &"Idle"
 offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]

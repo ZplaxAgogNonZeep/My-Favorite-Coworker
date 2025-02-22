@@ -31,21 +31,21 @@ animation = &"Idle"
 offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
+position = Vector2(-16, -4)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
-position = Vector2(-16, -4)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
+position = Vector2(16, -4)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
-position = Vector2(16, -4)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]

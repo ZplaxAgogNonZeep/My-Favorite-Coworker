@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtum6p3u11q7f"]
+[gd_scene load_steps=6 format=3 uid="uid://dtum6p3u11q7f"]
 
 [ext_resource type="Script" path="res://pets/pet.gd" id="1_o8h2t"]
-[ext_resource type="PackedScene" uid="uid://clldflk42myex" path="res://pets/pet_scenes/stage3/he_ro_buh.tscn" id="2_j7q2h"]
 [ext_resource type="Script" path="res://pets/pet_type/buh_buh_type.gd" id="2_yv0mn"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_5kpun"]
 [ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://assets/animation_frames/pets/stage2/buh_buh_frames.tres" id="6_28x2x"]
@@ -14,7 +13,6 @@ script = ExtResource("1_o8h2t")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
-evolvesTo = Array[PackedScene]([ExtResource("2_j7q2h")])
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
 script = ExtResource("2_yv0mn")
@@ -31,8 +29,7 @@ script = ExtResource("4_5kpun")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
 sprite_frames = ExtResource("6_28x2x")
-animation = &"Quirk"
-frame_progress = 0.335026
+animation = &"Idle"
 offset = Vector2(0, -10)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
@@ -47,7 +44,6 @@ shape = SubResource("RectangleShape2D_jamv8")
 [node name="RightObjectColl" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
 position = Vector2(30, -4)

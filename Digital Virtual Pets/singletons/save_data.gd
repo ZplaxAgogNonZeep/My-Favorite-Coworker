@@ -4,6 +4,19 @@ const SETTINGS_FILEPATH := "user://settings.ini"
 const GAMEDATA_FILEPATH := "user://gamedata.ini"
 const DEBUGDATA_FILEPATH := "user://debugdata.ini"
 
+class SavableClass:
+	## Godot 4.3 has a bug where you can't load instantiated classes despite it being
+	## able to save the data just fine, so when implementing a custom class to store
+	## save data, use this class to give it the ability to convert to a dict
+	func convertClassToDict() -> Dictionary:
+		var classDict : Dictionary
+		for property : Dictionary in get_property_list():
+			if (property["name"] == "Built-in script" or property["name"] == "RefCounted" 
+				or property["name"] == "script"):
+				continue
+			classDict[property["name"]] = get(property["name"])
+		return classDict
+
 class Data:
 	var category : String
 	var properties : Dictionary
@@ -25,13 +38,17 @@ class DataSaver:
 				or property["name"] == "script" or property["name"] == "obj"
 				or property["name"] == "categoryName"):
 				continue
+			
 			data.properties[property["name"]] = obj.get(property["name"])
 		
 		return data
 	
-	func setDataToLoad(data : Data):
+	func setDataToLoad(data : Data) -> void:
 		for property : Dictionary in get_property_list():
 			if data.properties.has(property["name"]):
+				#if (obj.get(property["name"]).has("SAVESYSTEM: DICT IS CONVERTED FROM CLASS")):
+					#for propertyKey in obj.get(property["name"]).keys():
+						#obj.set(property["name"][propertyKey], )
 				obj.set(property["name"], data.properties[property["name"]])
 
 

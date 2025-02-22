@@ -1,6 +1,17 @@
 extends Node2D
 
 var implements = []
+
+class DataSaver extends SaveData.DataSaver:
+	func getCategoryName():
+		return "PetManager"
+	var _petSlots
+	var _slotIndex
+	
+	func getDataToSave() -> Data:
+		obj.gatherDataFromActivePet()
+		return super()
+
 @export_category("Object References")
 @export var hungerBar : StatusBar
 @export var joyBar : StatusBar
@@ -16,6 +27,8 @@ var implements = []
 @export var _evolveSequenceRate : float
 
 var activePet : Pet
+var _petSlots = [{},{},{}]
+var _slotIndex : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,15 +39,19 @@ func _ready():
 #region Pet Spawning & Evolving
 # TODO: Update Spawn Pet to be from game manager
 func spawnPetOnStart():
-	if (not activePet):
-		spawnNewPet()
+	pass
 
 
-func spawnNewPet():
+func spawnPet(index : int = -1):
 	var newPet = respawnPet.instantiate()
 	newPet.position = petSpawnPoint.position
-	newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-	newPet.petResource = petStartResource
+	
+	# Load pet data from slots if applicable, otherwise use default / randomized
+	if (index >= 0 and index < _petSlots.size()):
+		newPet.setSavableData(loadPetDataFromSlot(index))
+	else:
+		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
+		newPet.petResource = petStartResource
 	
 	activePet = newPet
 	activePet.loadResourceData()
@@ -61,29 +78,6 @@ func evolvePet(evolveTarget: PetTypeData):
 	GameEvents.ShakeDeviceOnce.emit()
 	await get_tree().create_timer(1).timeout
 	GameEvents.ClearObjects.emit()
-	#region archived Code
-	#var transferVar = [activePet.hungerValue, 
-						#activePet.joyValue, 
-						#activePet.traumaCount, 
-						#activePet.personality,
-						#activePet.abilityStats,
-						#activePet.evolvedFromIcons + [activePet.getSpriteIcon()],
-						#activePet.boundries]
-	
-	
-	#activePet.queue_free()
-	#var evolvedPet = evolveTarget.instantiate()
-	
-	#evolvedPet.position = petSpawnPoint.position
-	#evolvedPet.hungerValue = transferVar[0]
-	#evolvedPet.joyValue = transferVar[1]
-	#evolvedPet.traumaCount = transferVar[2]
-	#evolvedPet.personality = transferVar[3]
-	#evolvedPet.abilityStats = transferVar[4]
-	#print(transferVar[5])
-	#evolvedPet.evolvedFromIcons = transferVar[5]
-	#evolvedPet.boundries = transferVar[6]
-	#endregion
 	
 	activePet.evolvedFromIcons += [activePet.getSpriteIcon()]
 	activePet.visible = false
@@ -114,7 +108,22 @@ func killPet():
 	print("Pet has Died!")
 	GameEvents.ResetAllTimers.emit()
 	activePet.queue_free()
-	spawnNewPet()
+	spawnPet()
+
+#endregion
+
+#region Pet Save & Load Management
+func gatherDataFromActivePet():
+	_petSlots[_slotIndex] = activePet.getSavableData().convertClassToDict()
+
+
+func loadPetDataFromSlot(index : int) -> Pet.PetSaveData:
+	var data : Pet.PetSaveData = Pet.PetSaveData.new()
+	
+	for propertyKey in _petSlots[index].keys():
+		data.set(propertyKey, _petSlots[index][propertyKey])
+	
+	return data
 
 #endregion
 

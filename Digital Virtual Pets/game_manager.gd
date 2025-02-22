@@ -5,25 +5,8 @@ extends Node2D
 @export var _iconMenu : Menu
 @export var _background : Control
 
-var testClass : TestINGBABY
 
-class TestINGBABY:
-	var testint : int = 5
-	var testbool : bool = true
-	var testDict : Dictionary = {"doot":1, "doot2":2}
-	var testArray : Array = [1,2,3,4,5,6]
-	var testResource : Resource
 
-class DataSaver extends SaveData.DataSaver:
-	func getCategoryName():
-		return "TestClass"
-	
-	var testClass: TestINGBABY
-
-func _ready() -> void:
-	SaveData.loadGameFromFile()
-	print(testClass)
-	#SaveData.saveGameToFile()
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):

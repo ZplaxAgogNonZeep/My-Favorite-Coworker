@@ -2,6 +2,15 @@ extends Node2D
 
 class_name Pet
 
+class PetSaveData extends SaveData.SavableClass:
+	var petResource
+	var personality
+	var hungerValue
+	var joyValue
+	var traumaCount
+	var evolvedFromIcons
+	var abilityStats
+
 signal UpdateStatusBars(hungerValue, joyValue)
 signal ReadyToEvolve(evolvedForm)
 
@@ -39,26 +48,27 @@ const personalityModifiers : Dictionary = {
 @export var _neglectTimer : Timer
 
 @export_category("Pet Values")
-@export var evolvesTo : Array[PackedScene]
 @export var roamSpeed := .5
 
+#region Saved Variables
 var petResource : PetTypeData #Saved
 var personality : Enums.Personality # Saved
 var hungerValue : int = 100 # Saved
 var joyValue : int = 100 # Saved
 var traumaCount := 0 # Saved
-var petState := Enums.PetState.ROAMING
 var evolvedFromIcons : Array # Saved
-var stateOnUnpause : Enums.PetState
-var isRoaming := false
-var isFoodReached := false
-var boundries : Array[Vector2] # Unsure
 var abilityStats : Dictionary = { # Saved
 	Enums.AbilityStat.POW: 0, 
 	Enums.AbilityStat.END: 0,
 	Enums.AbilityStat.SPD: 0,
 	Enums.AbilityStat.BAL: 0
 	}
+#endregion
+var petState := Enums.PetState.ROAMING
+var stateOnUnpause : Enums.PetState
+var isRoaming := false
+var isFoodReached := false
+var boundries : Array[Vector2] # Unsure
 
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
@@ -251,6 +261,25 @@ func evolvePet():
 #region Utility Functions 
 func pauseAllTimers():
 	pass
+
+
+func getSavableData() -> PetSaveData:
+	var data = PetSaveData.new()
+	for property : Dictionary in data.get_property_list():
+			if (property["name"] == "Built-in script" or property["name"] == "RefCounted" 
+				or property["name"] == "script"):
+				continue
+			data.set(property["name"], get(property["name"]))
+	
+	return data
+
+
+func setSavableData(data : PetSaveData) -> void:
+	for property : Dictionary in data.get_property_list():
+			if (property["name"] == "Built-in script" or property["name"] == "RefCounted" 
+				or property["name"] == "script"):
+				continue
+			set(property["name"], data.get(property["name"]))
 
 
 func alineToBoundry():

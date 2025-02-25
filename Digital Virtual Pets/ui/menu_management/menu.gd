@@ -9,6 +9,7 @@ signal ChangeMenu(menuIndex: int)
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
 
+
 func menuBehavior():
 	pass
 

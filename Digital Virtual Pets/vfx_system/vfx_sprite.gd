@@ -32,12 +32,13 @@ func _process(delta: float) -> void:
 func _startLifespanTimer():
 	sprite.play("Active")
 	lifeTimer.timeout.connect(_startBlinking)
-	lifeTimer.autostart = true
+	#lifeTimer.autostart = true
 	lifeTimer.start(_lifetime * (1 - _blinkRatio))
 
 
 func _startBlinking():
-	lifeTimer.timeout.connect(vfxComplete)
+	if not lifeTimer.timeout.is_connected(vfxComplete):
+		lifeTimer.timeout.connect(vfxComplete)
 	sprite.play("Blinking")
 	lifeTimer.start(_lifetime * _blinkRatio)
 

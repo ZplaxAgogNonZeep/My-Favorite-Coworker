@@ -22,3 +22,4 @@ frame_progress = 0.35105
 offset = Vector2(0, -8)
 
 [node name="LifeTimer" type="Timer" parent="."]
+autostart = true

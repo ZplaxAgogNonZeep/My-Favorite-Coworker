@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="6_2f3jj"]
 [ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="6_ciosv"]
-[ext_resource type="Script" path="res://vfx_manager.gd" id="6_dx6hx"]
+[ext_resource type="Script" path="res://vfx_system/vfx_manager.gd" id="6_dx6hx"]
 [ext_resource type="Script" path="res://ui/heart_bar.gd" id="6_rciw2"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_dtqxj"]
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://assets/art/aesprite/ui/icons/joy_icon.png" id="7_hboao"]

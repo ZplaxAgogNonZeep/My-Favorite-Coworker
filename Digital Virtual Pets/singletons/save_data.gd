@@ -4,6 +4,7 @@ const SETTINGS_FILEPATH := "user://settings.ini"
 const GAMEDATA_FILEPATH := "user://gamedata.ini"
 const DEBUGDATA_FILEPATH := "user://debugdata.ini"
 
+#region Data Saving Classes
 class SavableClass:
 	## Godot 4.3 has a bug where you can't load instantiated classes despite it being
 	## able to save the data just fine, so when implementing a custom class to store
@@ -51,6 +52,7 @@ class DataSaver:
 						#obj.set(property["name"][propertyKey], )
 				obj.set(property["name"], data.properties[property["name"]])
 
+#endregion
 
 var _loadedSaveData : Array[Data]
 var _subscribedSaveObjects : Array[Node]

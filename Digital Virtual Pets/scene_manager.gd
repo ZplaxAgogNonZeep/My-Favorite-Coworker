@@ -1,11 +1,21 @@
 extends Node2D
 
+class DataSaver extends SaveData.DataSaver:
+	func getCategoryName():
+		return "SceneManager"
+	var _firstTimeOpened
+	
+
 @export_category("Node References")
 @export var _menuManager : MenuManager
 @export var _iconMenu : Menu
 @export var _background : Control
 
+var _windowPosition : Vector2
+var _firstTimeOpened := true
 
+func _ready() -> void:
+	pass
 
 
 func _input(event: InputEvent) -> void:

@@ -6,7 +6,7 @@ const TIMER_TIME := 5
 @export var device : Node2D
 #@export var activePet : Node2D
 @export var objectContainer : Node2D
-@export var petManager : Node2D
+@export var petManager : PetManager
 @export var menuManager : Node2D
 @export var boundries : Array[Marker2D] # 0 = Left | 1 = Right
 @export var ObjectSpawnLocations : Array[Marker2D]
@@ -23,20 +23,28 @@ func _ready():
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
-	#GameEvents.SpawnPetOnStart.emit()
-	petManager.spawnPet(0)
-	
-	await get_tree().create_timer(5).timeout
+	startGame()
 
 
 func _process(delta: float) -> void:
 	_proactivityBehavior()
 
-
+#TODO: Debug Function
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()
-		#test()
+	if Input.is_key_pressed(KEY_0):
+		GameEvents.ChangePet.emit(0)
+	if Input.is_key_pressed(KEY_1):
+		GameEvents.ChangePet.emit(1)
+	if Input.is_key_pressed(KEY_2):
+		GameEvents.ChangePet.emit(2)
+
+
+func startGame():
+	#TODO: Play screen turning on animation & any loading animations
+	petManager.spawnPet()
+
 
 #region Window Events
 

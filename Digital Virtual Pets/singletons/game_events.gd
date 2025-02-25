@@ -14,6 +14,7 @@ signal ChangeProactivityMode(isProactiveMode : bool)
 
 #region Pet Events
 signal SpawnPetOnStart
+signal ChangePet(index : int)
 signal NewPetSpawned(isEgg : bool)
 signal NewPetEvolved(isEgg : bool)
 signal EvolveCheck

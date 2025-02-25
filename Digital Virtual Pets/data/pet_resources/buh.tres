@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PetTypeData" load_steps=5 format=3 uid="uid://c5mrxvhxbul13"]
 
-[ext_resource type="Script" path="res://data/pet_type_data.gd" id="1_33g1r"]
+[ext_resource type="Script" path="res://data/pet_resources/pet_type_data.gd" id="1_33g1r"]
 [ext_resource type="Resource" uid="uid://dmh0m64wchvdu" path="res://data/pet_resources/buh_buh.tres" id="1_ncs4e"]
 [ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://assets/animation_frames/pets/stage1/buh_frames.tres" id="2_28fvd"]
 [ext_resource type="Resource" uid="uid://b5kj7phmtebca" path="res://data/pet_resources/nuh_buh.tres" id="2_ddkxn"]

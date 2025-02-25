@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
-[ext_resource type="Script" path="res://game_manager.gd" id="1_yxx2a"]
+[ext_resource type="Script" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/system_menu_theme.tres" id="2_h2pgc"]
 [ext_resource type="Script" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
@@ -159,7 +159,7 @@ _data = {
 "evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
-[node name="GameManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background")]
+[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background")]
 script = ExtResource("1_yxx2a")
 _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")

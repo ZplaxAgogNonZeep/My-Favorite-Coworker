@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name PetManager
+
 var implements = []
 
 class DataSaver extends SaveData.DataSaver:
@@ -11,6 +13,8 @@ class DataSaver extends SaveData.DataSaver:
 	func getDataToSave() -> Data:
 		obj.gatherDataFromActivePet()
 		return super()
+
+const MAX_PET_SLOTS := 3
 
 @export_category("Object References")
 @export var hungerBar : StatusBar
@@ -27,31 +31,64 @@ class DataSaver extends SaveData.DataSaver:
 @export var _evolveSequenceRate : float
 
 var activePet : Pet
-var _petSlots = [{}]
+var _petSlots = []
 var _slotIndex : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GameEvents.SpawnPetOnStart.connect(spawnPetOnStart)
 	GameEvents.PetDied.connect(killPet)
+	GameEvents.ChangePet.connect(switchPet)
 
 
 #region Pet Spawning & Evolving
-# TODO: Update Spawn Pet to be from game manager
-func spawnPetOnStart():
-	pass
-
-
-func spawnPet(index : int = -1):
+func spawnPet(index := -1, isNewPet := false):
+	if (index >= MAX_PET_SLOTS):
+		return
+	
 	var newPet = respawnPet.instantiate()
 	newPet.position = petSpawnPoint.position
 	
-	# Load pet data from slots if applicable, otherwise use default / randomized
-	if (index >= 0 and index < _petSlots.size()):
-		newPet.setSavableData(loadPetDataFromSlot(index))
-	else:
+	# Load pet data from slots if applicable, otherwise use current slot, all else
+	# fails it will create a brand new one
+	if (_petSlots.size() <= 0):
+		_petSlots.append({})
+		_slotIndex = 0
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
 		newPet.petResource = petStartResource
+	elif (index < 0 and not isNewPet):
+		print("one")
+		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
+	elif (index < _petSlots.size() and index >= 0):
+		print("Two")
+		if (isNewPet):
+			_petSlots[index] = {}
+			_slotIndex = index
+			newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
+			newPet.petResource = petStartResource
+		else:
+			_slotIndex = index
+			newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
+	else:
+		print("three")
+		_petSlots.append({})
+		if (index > _petSlots.size() - 1):
+			_slotIndex = _petSlots.size() - 1
+		else:
+			_slotIndex = index
+		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
+		newPet.petResource = petStartResource
+	
+	#if (index >= 0 and index < _petSlots.size()):
+		#_slotIndex = index
+		#newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
+	#elif (!isNewPet):
+		#newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
+	#else:
+		#print("Could not find loaded pet at slot index ", index, ", creating new pet and saving to slot 0")
+		#_petSlots.append({})
+		#_slotIndex = 0
+		#newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
+		#newPet.petResource = petStartResource
 	
 	activePet = newPet
 	activePet.loadResourceData()
@@ -106,6 +143,18 @@ func evolvePet(evolveTarget: PetTypeData):
 								activePet.position + Vector2(39, 0), true, 1.3)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
 								activePet.position - Vector2(39, 0), false, 1.3)
+
+
+func switchPet(index : int):
+	if (index == _slotIndex or index < 0 or index >= MAX_PET_SLOTS):
+		return
+		
+	await SaveData.saveGameToFile()
+	
+	GameEvents.ResetAllTimers.emit()
+	activePet.queue_free()
+	spawnPet(index)
+
 
 #TODO: Update to be a whole death sequence
 func killPet():

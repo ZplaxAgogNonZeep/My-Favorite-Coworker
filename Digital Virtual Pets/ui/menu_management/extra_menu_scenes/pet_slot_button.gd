@@ -19,11 +19,11 @@ func newPetPressed():
 	NewPetSelected.emit()
 
 
-func petSlotToggled(toggle : bool):
+func petSlotToggled(toggle : bool, isByUser := false):
 	if (toggle):
 		PetSlotSelected.emit(index)
 	else:
-		print(name, " turned off")
+		set_pressed_no_signal(true)
 
 
 func deleteSaveSlot():

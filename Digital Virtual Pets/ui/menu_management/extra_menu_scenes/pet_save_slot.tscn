@@ -67,6 +67,6 @@ text = "-- Create New Pet --"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="toggled" from="." to="." method="petSlotToggled"]
+[connection signal="toggled" from="." to="." method="petSlotToggled" binds= [true]]
 [connection signal="pressed" from="Delete" to="." method="deleteSaveSlot"]
 [connection signal="pressed" from="NewPetSlot" to="." method="newPetPressed"]

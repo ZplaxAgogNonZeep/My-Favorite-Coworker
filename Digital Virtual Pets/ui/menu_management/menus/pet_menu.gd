@@ -52,11 +52,11 @@ func _fillPetSlots():
 func _setSelectedHighlight(turnOnSelected := true):
 	var count = 0
 	for slot in _slotContainer.get_children():
-		if (count == _currentSelectedSlot):
+		if (slot.index == _currentSelectedSlot):
 			if (turnOnSelected):
-				slot.button_pressed = true
+				slot.set_pressed_no_signal(true)
 		else:
-			slot.button_pressed = false
+			slot.set_pressed_no_signal(false)
 		count += 1
 
 
@@ -66,6 +66,7 @@ func _updateIndexes(skipIndex : int):
 	for slot in _slotContainer.get_children():
 		if (count == skipIndex):
 			count += 1
+			slot.index = -1
 			continue
 		slot.index = skipCount
 		count += 1
@@ -98,9 +99,13 @@ func _deleteSlot(index : int):
 		# Probably play some noise or throw out a warning
 	_petManager.deletePetSlot(index)
 	_updateIndexes(index)
-	_slotContainer.get_child(index).queue_free()
-	if (index >= _currentSelectedSlot):
+	if (_currentSelectedSlot >= index and _currentSelectedSlot != 0):
 		_currentSelectedSlot -= 1
+		print(_currentSelectedSlot)
+	else:
+		print(_currentSelectedSlot)
+	_setSelectedHighlight()
+	_slotContainer.get_child(index).queue_free()
 	
 	
 

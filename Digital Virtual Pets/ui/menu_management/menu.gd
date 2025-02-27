@@ -11,6 +11,7 @@ var menuManager : MenuManager
 
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
+	animator.animation_started.connect(_animationStarted)
 
 
 func menuBehavior():
@@ -20,8 +21,9 @@ func menuBehavior():
 func openMenu():
 	_loadSavedMenuSettings()
 	
-	visible = true
 	animator.play("Open")
+	await get_tree().process_frame
+	visible = true
 	await animator.animation_finished
 
 
@@ -50,4 +52,10 @@ func _saveMenuSettings():
 #region Node Signals
 func _animationComplete(animation : StringName):
 	pass
+
+
+func _animationStarted(animation : StringName):
+	pass
+	#visible = true
+
 #endregion

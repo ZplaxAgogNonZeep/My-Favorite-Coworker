@@ -25,10 +25,6 @@ func _loadSavedMenuSettings():
 		_currentSelectedSlot = _petManager.getSlotIndex()
 
 
-
-
-		
-
 #region Helper Functions
 
 func _fillPetSlots():
@@ -46,7 +42,7 @@ func _fillPetSlots():
 		_slotContainer.call_deferred("add_child", newSlot)
 		count += 1
 	
-	if (count < PetManager.MAX_PET_SLOTS - 1):
+	if (count < PetManager.MAX_PET_SLOTS):
 		var newSlot = _slotScene.instantiate()
 		newSlot.loadPetData(null, count)
 		newSlot.NewPetSelected.connect(_createNewPet)
@@ -63,6 +59,18 @@ func _setSelectedHighlight(turnOnSelected := true):
 			slot.button_pressed = false
 		count += 1
 
+
+func _updateIndexes(skipIndex : int):
+	var count = 0
+	var skipCount = 0
+	for slot in _slotContainer.get_children():
+		if (count == skipIndex):
+			count += 1
+			continue
+		slot.index = skipCount
+		count += 1
+		skipCount += 1
+
 #endregion
 
 #region Signal Functions
@@ -73,15 +81,27 @@ func _selectPet(index : int):
 
 
 func _createNewPet():
-	pass
+	GameEvents.ChangePet.emit(_petManager.getPetSlots().size())
+	ChangeMenu.emit(0)
 
 
 func _loadSelectedPet():
+	print(_currentSelectedSlot)
 	GameEvents.ChangePet.emit(_currentSelectedSlot)
 	ChangeMenu.emit(0)
 
 
 func _deleteSlot(index : int):
-	pass
+	print("Deleting save slot ", index)
+	if (_petManager.getPetSlots().size() == 1):
+		return
+		# Probably play some noise or throw out a warning
+	_petManager.deletePetSlot(index)
+	_updateIndexes(index)
+	_slotContainer.get_child(index).queue_free()
+	if (index >= _currentSelectedSlot):
+		_currentSelectedSlot -= 1
+	
+	
 
 #endregion

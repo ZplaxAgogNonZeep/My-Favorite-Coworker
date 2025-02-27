@@ -6,7 +6,7 @@ signal DeleteSaveSlot
 
 var index : int
 
-func loadPetData(petData : Dictionary, slotIndex : int):
+func loadPetData(petData, slotIndex : int):
 	if (petData == null):
 		$NewPetSlot.visible = true
 	else:

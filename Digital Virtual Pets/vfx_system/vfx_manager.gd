@@ -19,7 +19,6 @@ func _ready() -> void:
 func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRight : bool,
 																		lifespan : float) -> VFXObject:
 	var effectToSpawn : VFXObject = _effectArray[effect].instantiate()
-	print("Play VFX Called")
 	effectToSpawn.position = position
 	effectToSpawn._lifetime = lifespan
 	if effectToSpawn is VFXSprite:
@@ -27,7 +26,6 @@ func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRig
 	
 	await call_deferred("add_child", effectToSpawn)
 	effectToSpawn.VFXObjectComplete.connect(_removeVFXObject)
-	print("Calling vfxready")
 	effectToSpawn.vfxReady()
 	
 	

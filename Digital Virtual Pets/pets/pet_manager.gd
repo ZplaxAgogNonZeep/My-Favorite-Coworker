@@ -148,11 +148,12 @@ func evolvePet(evolveTarget: PetTypeData):
 								activePet.position - Vector2(39, 0), false, 1.3)
 
 
-func switchPet(index : int):
-	if (index == _slotIndex or index < 0 or index >= MAX_PET_SLOTS):
+func switchPet(index : int, previousPetDeleted := false):
+	if ((index == _slotIndex or index < 0 or index >= MAX_PET_SLOTS) and !previousPetDeleted):
 		return
-		
-	await SaveData.saveGameToFile()
+	
+	if (!previousPetDeleted):
+		await SaveData.saveGameToFile()
 	
 	GameEvents.ResetAllTimers.emit()
 	activePet.queue_free()
@@ -195,6 +196,20 @@ func getSlotIndex() -> int:
 
 func getPetSlots() -> Array:
 	return _petSlots
+
+
+func deletePetSlot(index : int) -> void:
+	if (_petSlots.size() == 1):
+		return
+	_petSlots.remove_at(index)
+	if (index == _slotIndex):
+		_slotIndex = _petSlots.size() - 1
+		GameEvents.ChangePet.emit(_slotIndex, true)
+	elif (index < _slotIndex):
+		_slotIndex -= 1
+	
+	
+	SaveData.saveGameToFile()
 
 #endregion
 

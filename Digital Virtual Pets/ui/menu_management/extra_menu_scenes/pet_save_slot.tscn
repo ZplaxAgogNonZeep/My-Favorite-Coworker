@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://bixuqptw12pi3"]
+
+[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/Pets/stage1/bug.png" id="1_8ivp1"]
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_dboo3"]
+[ext_resource type="Script" path="res://ui/menu_management/extra_menu_scenes/pet_slot_button.gd" id="2_c0giu"]
+
+[node name="PetSaveSlot" type="Button"]
+custom_minimum_size = Vector2(224, 48)
+offset_right = 400.0
+offset_bottom = 48.0
+theme = ExtResource("1_dboo3")
+theme_type_variation = &"PanelButton"
+toggle_mode = true
+script = ExtResource("2_c0giu")
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8ivp1")
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 8.0
+offset_right = 117.0
+offset_bottom = 26.0
+theme_type_variation = &"HeaderMedium"
+text = "Pet Name"
+
+[node name="Age" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 24.0
+offset_right = 145.0
+offset_bottom = 42.0
+theme_type_variation = &"HeaderSmall"
+text = "Age: 999 h 999 m"
+vertical_alignment = 1
+
+[node name="Delete" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 8.0
+offset_right = 392.0
+offset_bottom = 40.0
+
+[node name="NewPetSlot" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 48.0
+theme_type_variation = &"PanelButton"
+
+[node name="Label" type="Label" parent="NewPetSlot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderLarge"
+text = "-- Create New Pet --"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="toggled" from="." to="." method="petSlotToggled"]
+[connection signal="pressed" from="NewPetSlot" to="." method="newPetPressed"]

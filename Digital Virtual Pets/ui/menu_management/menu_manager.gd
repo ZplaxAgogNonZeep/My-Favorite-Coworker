@@ -5,6 +5,9 @@ class_name MenuManager
 ## This class is designed to manage a UI statemachine in a way that lets me just drop in
 ## new menus easier
 
+@export_category("Node References")
+@export var controller : Node2D # Usually the root of the scene, used to get information from non-singletons
+@export_category("State Machine")
 @export var _menuList : Array[Menu]
 @export var _defaultMenuIndex : int
 var _activeMenu : Menu
@@ -12,6 +15,7 @@ var _activeMenu : Menu
 func _ready() -> void:
 	for menu : Menu in _menuList:
 		menu.visible = false
+		menu.menuManager = self
 		menu.ChangeMenu.connect(changeMenu) 
 
 
@@ -50,7 +54,3 @@ func getActiveMenu() -> Menu:
 func isMenuOpen() -> bool:
 	return _activeMenu != null
 #endregion
-
-
-
-

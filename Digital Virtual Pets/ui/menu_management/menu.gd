@@ -5,6 +5,9 @@ class_name Menu
 signal ChangeMenu(menuIndex: int)
 
 @export var animator : AnimationPlayer
+@export var pauseGame : bool = true
+
+var menuManager : MenuManager
 
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
@@ -16,6 +19,7 @@ func menuBehavior():
 
 func openMenu():
 	_loadSavedMenuSettings()
+	
 	visible = true
 	animator.play("Open")
 	await animator.animation_finished

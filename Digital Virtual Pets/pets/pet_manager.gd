@@ -4,6 +4,8 @@ class_name PetManager
 
 var implements = []
 
+static var instance : PetManager = self
+
 class DataSaver extends SaveData.DataSaver:
 	func getCategoryName():
 		return "PetManager"
@@ -38,6 +40,7 @@ var _slotIndex : int
 func _ready():
 	GameEvents.PetDied.connect(killPet)
 	GameEvents.ChangePet.connect(switchPet)
+	PetManager.instance = self
 
 
 #region Pet Spawning & Evolving
@@ -184,6 +187,14 @@ func loadPetDataFromSlot(index : int) -> Pet.PetSaveData:
 
 func getPetStage() -> int:
 	return activePet.petResource.stage
+
+
+func getSlotIndex() -> int:
+	return _slotIndex
+
+
+func getPetSlots() -> Array:
+	return _petSlots
 
 #endregion
 

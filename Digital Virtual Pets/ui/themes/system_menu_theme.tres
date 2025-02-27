@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://u8x81rh1cxqd"]
+
+[ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_koht6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1dsn"]
+bg_color = Color(0.703808, 0.703808, 0.703808, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlvtb"]
+bg_color = Color(0.716296, 0.716296, 0.716296, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5nabr"]
+bg_color = Color(0.510459, 0.58036, 0.872378, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hmqd"]
+bg_color = Color(0.716296, 0.716296, 0.716296, 1)
+
+[resource]
+Button/font_sizes/font_size = 13
+Button/fonts/font = ExtResource("1_56pb5")
+CustomTestLabel/base_type = &"Label"
+CustomTestLabel/font_sizes/font_size = 5
+HeaderLarge/base_type = &"Label"
+HeaderLarge/font_sizes/font_size = 25
+HeaderMedium/base_type = &"Label"
+HeaderMedium/font_sizes/font_size = 18
+HeaderSmall/font_sizes/font_size = 14
+ItemList/font_sizes/font_size = 7
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("1_56pb5")
+OptionButton/font_sizes/font_size = 14
+OptionButton/fonts/font = ExtResource("1_56pb5")
+Panel/styles/panel = SubResource("StyleBoxFlat_koht6")
+PanelButton/base_type = &"Button"
+PanelButton/styles/hover = SubResource("StyleBoxFlat_k1dsn")
+PanelButton/styles/normal = SubResource("StyleBoxFlat_rlvtb")
+PanelButton/styles/pressed = SubResource("StyleBoxFlat_5nabr")
+PopupMenu/font_sizes/font_size = 14
+PopupMenu/fonts/font = ExtResource("1_56pb5")
+SubPanel/base_type = &"Panel"
+SubPanel/styles/panel = SubResource("StyleBoxFlat_6hmqd")

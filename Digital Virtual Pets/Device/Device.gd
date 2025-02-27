@@ -1,10 +1,13 @@
 extends Node2D
 
+class_name Device
+
 enum DeviceAction {HOP, SHAKE}
 
 @onready var originalPosn := position
 
-@export var activePet : Node2D
+@export_category("Node References")
+@export var _gameArea : GameArea
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
@@ -25,7 +28,16 @@ func _ready():
 	GameEvents.EndShakeDevice.connect(endShake)
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
+	
+	_gameArea.startGame()
+	
 
+
+func getPetManager() -> PetManager:
+	return _gameArea.petManager
+
+
+#region Device Animations
 
 func checkQueue():
 	if actionQueue.size() > 0:
@@ -157,5 +169,7 @@ func _finishedHopping():
 	if (checkQueue()):
 		activeTween = null
 		GameEvents.FinishedHopDevice.emit()
+
+#endregion
 
 #endregion

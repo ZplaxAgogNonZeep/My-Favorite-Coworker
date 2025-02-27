@@ -10,6 +10,7 @@ class DataSaver extends SaveData.DataSaver:
 @export var _menuManager : MenuManager
 @export var _iconMenu : Menu
 @export var _background : Control
+@export var device : Device
 
 var _windowPosition : Vector2
 var _firstTimeOpened := true

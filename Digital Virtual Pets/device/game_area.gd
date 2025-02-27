@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name GameArea
+
 const TIMER_TIME := 5
 
 @export_category("Object References")
@@ -23,7 +25,6 @@ func _ready():
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	
-	startGame()
 
 
 func _process(delta: float) -> void:
@@ -33,12 +34,6 @@ func _process(delta: float) -> void:
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()
-	if Input.is_key_pressed(KEY_0):
-		GameEvents.ChangePet.emit(0)
-	if Input.is_key_pressed(KEY_1):
-		GameEvents.ChangePet.emit(1)
-	if Input.is_key_pressed(KEY_2):
-		GameEvents.ChangePet.emit(2)
 
 
 func startGame():

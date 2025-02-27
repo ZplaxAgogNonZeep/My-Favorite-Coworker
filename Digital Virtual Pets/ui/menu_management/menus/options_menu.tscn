@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfh7qhfhtctv8"]
 
-[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/system_menu_theme.tres" id="1_kd0k7"]
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
 
 [sub_resource type="Animation" id="Animation_j60mn"]
@@ -51,7 +51,6 @@ anchor_top = 0.0864198
 anchor_right = 0.847222
 anchor_bottom = 0.703704
 grow_horizontal = 2
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(200, 200)
 color = Color(1, 0.921569, 0.976471, 1)
 metadata/_edit_use_anchors_ = true
@@ -135,10 +134,9 @@ offset_left = 207.0
 offset_top = 112.0
 offset_right = 336.0
 offset_bottom = 134.0
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Bring to Front"
-popup/item_0/id = 0
 popup/item_1/text = "Always on Top"
 popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"

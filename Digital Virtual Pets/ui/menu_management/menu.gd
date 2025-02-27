@@ -22,6 +22,8 @@ func openMenu():
 	_loadSavedMenuSettings()
 	
 	animator.play("Open")
+	#animator is bugged so we need to wait a frame or it'll display the menu BEFORE playing the 
+	# animation
 	await get_tree().process_frame
 	visible = true
 	await animator.animation_finished

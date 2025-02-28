@@ -8,10 +8,10 @@ signal ChangeMenu(menuIndex: int)
 @export var pauseGame : bool = true
 
 var menuManager : MenuManager
+var index : int
 
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
-	animator.animation_started.connect(_animationStarted)
 
 
 func menuBehavior():
@@ -19,6 +19,8 @@ func menuBehavior():
 
 
 func openMenu():
+	Settings.pauseGame(pauseGame)
+	
 	_loadSavedMenuSettings()
 	
 	animator.play("Open")
@@ -41,7 +43,10 @@ func closeMenu():
 
 
 func _onExit():
-	ChangeMenu.emit(0)
+	if (menuManager.getMenuMode() == MenuManager.MenuMode.SINGLE_MENU):
+		ChangeMenu.emit(0)
+	elif (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
+		ChangeMenu.emit(index)
 
 
 func _loadSavedMenuSettings():
@@ -55,9 +60,5 @@ func _saveMenuSettings():
 func _animationComplete(animation : StringName):
 	pass
 
-
-func _animationStarted(animation : StringName):
-	pass
-	#visible = true
 
 #endregion

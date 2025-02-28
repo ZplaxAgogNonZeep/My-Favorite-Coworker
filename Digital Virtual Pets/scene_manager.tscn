@@ -207,6 +207,7 @@ grow_vertical = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("3_jvvvb")
 controller = NodePath("../..")
+_menuMode = 1
 _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu")]
 metadata/_edit_lock_ = true
 

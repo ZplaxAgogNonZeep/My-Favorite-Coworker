@@ -1,7 +1,9 @@
 extends Menu
 
-@export var _clickTimer : Timer
+@export var _petMenuButton : Button
 
+func _loadSavedMenuSettings():
+	_petMenuButton.disabled = menuManager.controller.device == null
 
 #region Node Signals
 func _onOptionsButton():
@@ -18,4 +20,4 @@ func _onAudioButton():
 
 func _onPetButton():
 	ChangeMenu.emit(2)
-#enregion
+#endregion

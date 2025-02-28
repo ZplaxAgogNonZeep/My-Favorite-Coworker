@@ -1,38 +1,36 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpcwq03jqltcn"]
+[gd_scene load_steps=6 format=3 uid="uid://dtum6p3u11q7f"]
 
-[ext_resource type="Script" path="res://pets/pet.gd" id="1_3faag"]
-[ext_resource type="Script" path="res://pets/pet_type/pup_type.gd" id="2_v4c75"]
-[ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="3_74jdq"]
-[ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://assets/animation_frames/pets/stage1/buh_frames.tres" id="7_icpn1"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet.gd" id="1_o8h2t"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet_type/buh_buh_type.gd" id="2_yv0mn"]
+[ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_5kpun"]
+[ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://assets/animation_frames/pets/stage2/buh_buh_frames.tres" id="6_28x2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
-size = Vector2(16, 8)
+size = Vector2(16, 9)
 
-[node name="PupPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
-script = ExtResource("1_3faag")
+[node name="BuhBuhPet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider") groups=["Pet"]]
+script = ExtResource("1_o8h2t")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 
 [node name="Type" type="Node" parent="." node_paths=PackedStringArray("moveTimer", "neglectTimer")]
-script = ExtResource("2_v4c75")
-tempEvolveCondition = false
+script = ExtResource("2_yv0mn")
 moveTimer = NodePath("MoveTimer")
 neglectTimer = NodePath("NeglectTimer")
-petName = "Buh"
+petName = "BuhBuh"
 
 [node name="MoveTimer" type="Timer" parent="Type"]
-script = ExtResource("3_74jdq")
-_useProactivity = false
+script = ExtResource("4_5kpun")
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
-script = ExtResource("3_74jdq")
+script = ExtResource("4_5kpun")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
-sprite_frames = ExtResource("7_icpn1")
+sprite_frames = ExtResource("6_28x2x")
 animation = &"Idle"
-offset = Vector2(0, -8)
+offset = Vector2(0, -10)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
 collision_layer = 0
@@ -40,16 +38,15 @@ collision_mask = 2
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
-position = Vector2(-24, -4)
+position = Vector2(-30, -5)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
-position = Vector2(16, -4)
+position = Vector2(30, -4)
 shape = SubResource("RectangleShape2D_jamv8")
 
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
@@ -59,5 +56,3 @@ shape = SubResource("RectangleShape2D_jamv8")
 [connection signal="body_exited" from="LeftObjectColl" to="." method="_objectBodyCollisionExit"]
 [connection signal="area_entered" from="RightObjectColl" to="." method="_on_right_object_coll_area_entered"]
 [connection signal="area_exited" from="RightObjectColl" to="." method="_on_right_object_coll_area_exited"]
-[connection signal="body_entered" from="RightObjectColl" to="." method="_objectBodyCollisionEnter"]
-[connection signal="body_exited" from="RightObjectColl" to="." method="_objectBodyCollisionExit"]

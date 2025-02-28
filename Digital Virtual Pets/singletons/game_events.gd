@@ -3,6 +3,12 @@ extends Node
 signal PauseGame
 signal UnpauseGame
 
+#region System Events
+signal DisplayDialog()
+signal GetPlayerAttention
+
+#endregion
+
 #region Timer Events
 signal PauseTimers
 signal UnpauseTimers
@@ -25,10 +31,6 @@ signal StartNeedsTimers
 signal FeedPet
 signal FoodPlaced(food)
 signal Cry
-#endregion
-
-#region Window Events
-signal GetPlayerAttention
 #endregion
 
 #region Device Events

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjw6oamscwe62"]
 
-[ext_resource type="Script" path="res://pets/pet.gd" id="1_sjpdi"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet.gd" id="1_sjpdi"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
 

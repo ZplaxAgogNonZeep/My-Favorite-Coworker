@@ -63,13 +63,13 @@ _data = {
 "RESET": SubResource("Animation_1wkji")
 }
 
-[node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_clickTimer", "animator")]
+[node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 script = ExtResource("1_x636n")
-_clickTimer = NodePath("ClickTimer")
+_petMenuButton = NodePath("Pet")
 animator = NodePath("AnimationPlayer")
 pauseGame = false
 

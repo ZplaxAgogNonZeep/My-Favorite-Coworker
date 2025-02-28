@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dxy5xt7vqdggx"]
 
-[ext_resource type="Script" path="res://pets/pet.gd" id="1_vafg1"]
-[ext_resource type="Script" path="res://pets/pet_type/pup_type.gd" id="2_tbv1f"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet.gd" id="1_vafg1"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet_type/pup_type.gd" id="2_tbv1f"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_gw0ij"]
 [ext_resource type="Texture2D" uid="uid://ojee7m82c32h" path="res://do_not_build/placeholders/AgumonSprite.png" id="5_42l7p"]
 [ext_resource type="Texture2D" uid="uid://dpombnh0mxxsg" path="res://icon.svg" id="5_87hd4"]

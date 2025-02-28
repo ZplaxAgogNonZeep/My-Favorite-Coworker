@@ -28,14 +28,21 @@ func _ready():
 	GameEvents.EndShakeDevice.connect(endShake)
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
-	
-	_gameArea.startGame()
-	
 
+
+#region Device Controls
+
+func turnOnDevice():
+	_gameArea.startGame()
+
+#endregion
+
+#region Utility Functions
 
 func getPetManager() -> PetManager:
 	return _gameArea.petManager
 
+#endregion
 
 #region Device Animations
 

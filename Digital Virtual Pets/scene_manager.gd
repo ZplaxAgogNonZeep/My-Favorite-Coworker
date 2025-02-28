@@ -16,7 +16,13 @@ var _windowPosition : Vector2
 var _firstTimeOpened := true
 
 func _ready() -> void:
-	pass
+	# This is where the game officially starts, remember that it happens AFTER every ready function
+	if (_firstTimeOpened):
+		pass
+	else:
+		pass
+	
+	device.turnOnDevice()
 
 
 func _input(event: InputEvent) -> void:
@@ -29,3 +35,7 @@ func _input(event: InputEvent) -> void:
 			_menuManager.toggleMenu(true)
 			get_tree().create_tween().tween_property(_background, "modulate", Color(Color.WHITE, 1), .75)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+
+
+func createDevice():
+	pass

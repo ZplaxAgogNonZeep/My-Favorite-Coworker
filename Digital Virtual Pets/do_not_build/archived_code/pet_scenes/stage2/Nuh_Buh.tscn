@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7p8e2mggcbhx"]
 
-[ext_resource type="Script" path="res://pets/pet.gd" id="1_culyx"]
-[ext_resource type="PackedScene" uid="uid://clldflk42myex" path="res://pets/pet_scenes/stage3/he_ro_buh.tscn" id="2_8e336"]
-[ext_resource type="Script" path="res://pets/pet_type/nuh_buh_type.gd" id="3_y3y4t"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet.gd" id="1_culyx"]
+[ext_resource type="PackedScene" uid="uid://clldflk42myex" path="res://do_not_build/archived_code/pet_scenes/stage3/he_ro_buh.tscn" id="2_8e336"]
+[ext_resource type="Script" path="res://do_not_build/archived_code/pet_type/nuh_buh_type.gd" id="3_y3y4t"]
 [ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_uk8r7"]
 [ext_resource type="SpriteFrames" uid="uid://byjpb8rxwl8gl" path="res://assets/animation_frames/pets/stage2/nuh_buh_frames.tres" id="6_yuscc"]
 

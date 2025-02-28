@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=5 format=3 uid="uid://c5mrxvhxbul13"]
+
+[ext_resource type="Resource" uid="uid://dmh0m64wchvdu" path="res://data/pet_resources/stage_2/buh_buh.tres" id="1_f7slj"]
+[ext_resource type="Resource" uid="uid://b5kj7phmtebca" path="res://data/pet_resources/stage_2/nuh_buh.tres" id="2_x4i2w"]
+[ext_resource type="Script" path="res://data/scripts/pet_type_data.gd" id="3_y4khj"]
+[ext_resource type="SpriteFrames" uid="uid://v6jepmmeq4s7" path="res://assets/animation_frames/pets/stage1/buh_frames.tres" id="4_td4rf"]
+
+[resource]
+script = ExtResource("3_y4khj")
+name = "Buh"
+spriteFrames = ExtResource("4_td4rf")
+stage = 1
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("1_f7slj"), ExtResource("2_x4i2w")])
+statConditionOr = false
+evolutionCondition = {
+"BAL": -1,
+"END": -1,
+"POW": -1,
+"Personality": -1,
+"SPD": -1,
+"TraumaEqual": -1,
+"TraumaGreater": -1,
+"TraumaLesser": -1
+}

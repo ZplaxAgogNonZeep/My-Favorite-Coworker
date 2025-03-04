@@ -26,6 +26,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Debug2"):
+		GameEvents.DisplayDialog.emit()
+	
 	if (event is InputEventMouseButton):
 		if (event.double_click and _menuManager.isMenuOpen() and _iconMenu == _menuManager.getActiveMenu()):
 			_menuManager.toggleMenu(false)

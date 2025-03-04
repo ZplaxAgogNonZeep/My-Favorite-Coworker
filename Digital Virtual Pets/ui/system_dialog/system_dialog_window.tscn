@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtya6sb5p4rt8"]
+
+[ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="1_2a2c1"]
+
+[node name="SystemDialogWindow" type="Panel"]
+anchors_preset = -1
+offset_left = -128.0
+offset_top = -56.0
+offset_right = 128.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(128, 56.0002)
+script = ExtResource("1_2a2c1")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_type_variation = &"ParagraphText"
+horizontal_alignment = 1
+autowrap_mode = 3

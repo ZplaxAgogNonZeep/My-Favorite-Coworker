@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=55 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_ptlsy"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://cxp7kadfow6y7" path="res://assets/art/background.png" id="7_ksd81"]
 [ext_resource type="PackedScene" uid="uid://cw7xr6uluo8np" path="res://ui/menu_management/menus/pet_menu.tscn" id="7_l8mrh"]
 [ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
+[ext_resource type="PackedScene" uid="uid://dtya6sb5p4rt8" path="res://ui/system_dialog/system_dialog_window.tscn" id="9_k1t8d"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://assets/art/aesprite/ui/heart_sheet.png" id="10_7iaaw"]
 [ext_resource type="Script" uid="uid://mlrgiwxtdve8" path="res://ui/menu_buttons/mini_menu.gd" id="11_1yuup"]
 [ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://assets/art/aesprite/ui/menu/mini_menu.png" id="11_5anri"]
@@ -232,13 +233,13 @@ layer = 2
 
 [node name="DialogManager" type="Control" parent="SystemDialog"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 576.0
+offset_bottom = 648.0
 mouse_filter = 2
+theme = ExtResource("2_h2pgc")
 script = ExtResource("8_gowt0")
+_systemWindowScene = ExtResource("9_k1t8d")
 
 [node name="Device" type="Node2D" parent="." node_paths=PackedStringArray("_gameArea")]
 process_mode = 1
@@ -249,6 +250,8 @@ shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 hopDuration = 0.25
 chatSpeed = 0.1
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
 z_index = 10
@@ -296,6 +299,7 @@ script = ExtResource("4_48a5c")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
+metadata/_edit_lock_ = true
 
 [node name="StatusBars" type="Control" parent="Device/GameArea/MenuManager"]
 layout_mode = 3

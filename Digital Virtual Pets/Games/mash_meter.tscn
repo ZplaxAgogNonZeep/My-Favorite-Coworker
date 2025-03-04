@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://gmlb2t80keft"]
 
-[ext_resource type="Script" path="res://games/mash_meter.gd" id="1_ttltv"]
+[ext_resource type="Script" uid="uid://bq3o67gwit6b0" path="res://games/mash_meter.gd" id="1_ttltv"]
 [ext_resource type="Texture2D" uid="uid://by76t7gi1ihj7" path="res://assets/art/aesprite/minigame_assets/mash_meter_back.png" id="2_boinv"]
 [ext_resource type="Texture2D" uid="uid://p6npijrg8ff1" path="res://assets/art/aesprite/minigame_assets/meter_indicator.png" id="3_wrhpj"]
 [ext_resource type="Texture2D" uid="uid://bxmgkjt7hrwo4" path="res://assets/art/aesprite/minigame_assets/stretch_box.png" id="4_i6j57"]

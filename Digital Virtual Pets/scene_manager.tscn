@@ -1,46 +1,46 @@
 [gd_scene load_steps=54 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
-[ext_resource type="Script" path="res://device/device.gd" id="1_ptlsy"]
-[ext_resource type="Script" path="res://scene_manager.gd" id="1_yxx2a"]
+[ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_ptlsy"]
+[ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Texture2D" uid="uid://bpqm4ixvccqd3" path="res://assets/art/device_sprite.png" id="2_357pc"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
-[ext_resource type="Script" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
-[ext_resource type="Script" path="res://device/game_area.gd" id="3_ymaw0"]
-[ext_resource type="Script" path="res://device/background.gd" id="4_48a5c"]
+[ext_resource type="Script" uid="uid://b8kuvi7oo2jl8" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
+[ext_resource type="Script" uid="uid://cqbjnned5i21h" path="res://device/game_area.gd" id="3_ymaw0"]
+[ext_resource type="Script" uid="uid://dxkor68c3q6xw" path="res://device/background.gd" id="4_48a5c"]
 [ext_resource type="PackedScene" uid="uid://cqs2mr65skd0q" path="res://ui/menu_management/menus/menu_icons.tscn" id="4_jlwpj"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_s2fvp"]
 [ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="6_2f3jj"]
 [ext_resource type="Texture2D" uid="uid://dmy2vk3quf0sv" path="res://assets/art/aesprite/ui/icons/meat_icon.png" id="6_ciosv"]
-[ext_resource type="Script" path="res://vfx_system/vfx_manager.gd" id="6_dx6hx"]
-[ext_resource type="Script" path="res://ui/heart_bar.gd" id="6_rciw2"]
+[ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_dx6hx"]
+[ext_resource type="Script" uid="uid://bdgxms5h5rrmh" path="res://ui/heart_bar.gd" id="6_rciw2"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_dtqxj"]
 [ext_resource type="Texture2D" uid="uid://3ch885s2wx46" path="res://assets/art/aesprite/ui/icons/joy_icon.png" id="7_hboao"]
 [ext_resource type="Texture2D" uid="uid://cxp7kadfow6y7" path="res://assets/art/background.png" id="7_ksd81"]
 [ext_resource type="PackedScene" uid="uid://cw7xr6uluo8np" path="res://ui/menu_management/menus/pet_menu.tscn" id="7_l8mrh"]
-[ext_resource type="Script" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
+[ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://assets/art/aesprite/ui/heart_sheet.png" id="10_7iaaw"]
-[ext_resource type="Script" path="res://ui/menu_buttons/mini_menu.gd" id="11_1yuup"]
+[ext_resource type="Script" uid="uid://mlrgiwxtdve8" path="res://ui/menu_buttons/mini_menu.gd" id="11_1yuup"]
 [ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://assets/art/aesprite/ui/menu/mini_menu.png" id="11_5anri"]
-[ext_resource type="Script" path="res://ui/menu_buttons/button_container.gd" id="11_5bsub"]
+[ext_resource type="Script" uid="uid://p3okne6hp81h" path="res://ui/menu_buttons/button_container.gd" id="11_5bsub"]
 [ext_resource type="PackedScene" uid="uid://dlf22tttashco" path="res://ui/menu_buttons/instanced_scenes/icon_menu_button.tscn" id="12_b3g5n"]
 [ext_resource type="Theme" uid="uid://de6apglbak7x" path="res://ui/themes/menu_panel_theme.tres" id="13_d41y6"]
 [ext_resource type="SpriteFrames" uid="uid://dddluc0c1v18a" path="res://assets/animation_frames/icons/joy_icon_frames.tres" id="13_r2ubs"]
 [ext_resource type="Texture2D" uid="uid://b6yl5vxvjayev" path="res://assets/art/aesprite/ui/icons/stats_icon_sheet.png" id="14_52bgn"]
-[ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="20_5lfdq"]
-[ext_resource type="Script" path="res://ui/menu_buttons/stat_menu.gd" id="20_wktbo"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="20_5lfdq"]
+[ext_resource type="Script" uid="uid://ye7iwxpmjwk8" path="res://ui/menu_buttons/stat_menu.gd" id="20_wktbo"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="21_pqakk"]
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/Pets/unknown_pet.png" id="22_beqik"]
-[ext_resource type="Script" path="res://ui/menu_buttons/play_menu.gd" id="23_a34r3"]
+[ext_resource type="Script" uid="uid://df4iocisercox" path="res://ui/menu_buttons/play_menu.gd" id="23_a34r3"]
 [ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://ui/menu_buttons/instanced_scenes/label_button.tscn" id="24_1oupa"]
 [ext_resource type="PackedScene" uid="uid://cxps8l5sseo8p" path="res://games/guess/guess_game.tscn" id="25_54tcl"]
 [ext_resource type="PackedScene" uid="uid://do4loav2wlxtb" path="res://games/fish/fishing_game.tscn" id="25_e2ucx"]
-[ext_resource type="Script" path="res://pets/pet_manager.gd" id="26_a6kjk"]
+[ext_resource type="Script" uid="uid://dnnsmlvm8ay0a" path="res://pets/pet_manager.gd" id="26_a6kjk"]
 [ext_resource type="PackedScene" uid="uid://yp44rtci20n4" path="res://games/jump/jump_game.tscn" id="26_sfmlx"]
 [ext_resource type="PackedScene" uid="uid://cxqir2rb1dcdk" path="res://games/hit/hit_game.tscn" id="27_s5e41"]
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="28_mipu7"]
-[ext_resource type="Script" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
+[ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="39_r66v4"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="40_a6sa5"]
 
@@ -158,7 +158,7 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fmrrl"]
 _data = {
-"evolve_sequence_anim": SubResource("Animation_j742v")
+&"evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background", "device")]
@@ -167,6 +167,7 @@ _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
 _background = NodePath("BackgroundCanvas/SimpleBackground")
 device = NodePath("Device")
+metadata/_edit_lock_ = true
 
 [node name="DebugNodes" type="Node" parent="."]
 
@@ -785,7 +786,7 @@ _nextEvo = NodePath("NextEvolution")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Device/GameArea/PetManager/EvolvingPet"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_fmrrl")
+&"": SubResource("AnimationLibrary_fmrrl")
 }
 
 [node name="PreviousEvolution" type="Sprite2D" parent="Device/GameArea/PetManager/EvolvingPet"]

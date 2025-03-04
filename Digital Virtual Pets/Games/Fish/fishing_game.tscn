@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://do4loav2wlxtb"]
 
-[ext_resource type="Script" path="res://games/fish/fishing_game.gd" id="1_iowcp"]
+[ext_resource type="Script" uid="uid://bme8diw86n3rk" path="res://games/fish/fishing_game.gd" id="1_iowcp"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_8mkhn"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_aqlkw"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_376qc"]

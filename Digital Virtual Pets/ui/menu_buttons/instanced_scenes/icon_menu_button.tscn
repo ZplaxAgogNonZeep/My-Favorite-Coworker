@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlf22tttashco"]
 
-[ext_resource type="Script" path="res://ui/menu_buttons/mini_menu_button.gd" id="1_7ol67"]
+[ext_resource type="Script" uid="uid://clh4xgawk20cr" path="res://ui/menu_buttons/mini_menu_button.gd" id="1_7ol67"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="2_lc0w2"]
 [ext_resource type="SpriteFrames" uid="uid://b6u6tkw1fg2y1" path="res://assets/animation_frames/icons/food_icon_frames.tres" id="3_losng"]
 

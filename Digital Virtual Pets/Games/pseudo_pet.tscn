@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2bbe7a4a3a8k"]
 
-[ext_resource type="Script" path="res://games/pseudo_pet.gd" id="1_o5scy"]
+[ext_resource type="Script" uid="uid://bilqtq2vr8jdk" path="res://games/pseudo_pet.gd" id="1_o5scy"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="2_l6cgb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ysjiw"]

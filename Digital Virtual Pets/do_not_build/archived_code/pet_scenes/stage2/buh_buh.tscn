@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dtum6p3u11q7f"]
 
-[ext_resource type="Script" path="res://do_not_build/archived_code/pet.gd" id="1_o8h2t"]
-[ext_resource type="Script" path="res://do_not_build/archived_code/pet_type/buh_buh_type.gd" id="2_yv0mn"]
-[ext_resource type="Script" path="res://script_templates/timer/solo_timer.gd" id="4_5kpun"]
+[ext_resource type="Script" uid="uid://bwo71sqr5y8bs" path="res://do_not_build/archived_code/pet.gd" id="1_o8h2t"]
+[ext_resource type="Script" uid="uid://bi8l3mg0ndclv" path="res://do_not_build/archived_code/pet_type/buh_buh_type.gd" id="2_yv0mn"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="4_5kpun"]
 [ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://assets/animation_frames/pets/stage2/buh_buh_frames.tres" id="6_28x2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]

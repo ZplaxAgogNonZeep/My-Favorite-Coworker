@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvwfcurkdlx7v"]
 
-[ext_resource type="Script" path="res://ui/menu_buttons/label_button.gd" id="1_l38r5"]
+[ext_resource type="Script" uid="uid://dgrkrljvppqan" path="res://ui/menu_buttons/label_button.gd" id="1_l38r5"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="2_47wya"]
 
 [node name="LabelButton" type="Control"]

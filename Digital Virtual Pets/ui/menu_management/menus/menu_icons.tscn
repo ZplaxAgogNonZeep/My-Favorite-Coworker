@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cqs2mr65skd0q"]
 
-[ext_resource type="Script" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
+[ext_resource type="Script" uid="uid://ctmbnikaduj2l" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
 
 [sub_resource type="Animation" id="Animation_lky41"]
 resource_name = "Open"
@@ -59,8 +59,8 @@ length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6qnae"]
 _data = {
-"Open": SubResource("Animation_lky41"),
-"RESET": SubResource("Animation_1wkji")
+&"Open": SubResource("Animation_lky41"),
+&"RESET": SubResource("Animation_1wkji")
 }
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
@@ -78,7 +78,7 @@ wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_6qnae")
+&"": SubResource("AnimationLibrary_6qnae")
 }
 
 [node name="Options" type="Button" parent="."]

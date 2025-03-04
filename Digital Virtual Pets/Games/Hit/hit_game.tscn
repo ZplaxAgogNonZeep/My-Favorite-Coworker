@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cxqir2rb1dcdk"]
 
-[ext_resource type="Script" path="res://games/hit/hit_game.gd" id="1_kx0il"]
+[ext_resource type="Script" uid="uid://dhwlwvlvf0wd5" path="res://games/hit/hit_game.gd" id="1_kx0il"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_tf5tu"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_dirk5"]
 [ext_resource type="PackedScene" uid="uid://gmlb2t80keft" path="res://games/mash_meter.tscn" id="5_tpsef"]

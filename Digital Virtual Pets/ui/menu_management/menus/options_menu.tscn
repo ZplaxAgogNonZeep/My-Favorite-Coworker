@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
-[ext_resource type="Script" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
+[ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
 
 [sub_resource type="Animation" id="Animation_j60mn"]
 resource_name = "Open"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ic75g"]
 _data = {
-"Open": SubResource("Animation_j60mn")
+&"Open": SubResource("Animation_j60mn")
 }
 
 [node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "animator")]
@@ -41,7 +41,7 @@ metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ic75g")
+&"": SubResource("AnimationLibrary_ic75g")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -138,6 +138,7 @@ offset_bottom = 134.0
 selected = 0
 item_count = 3
 popup/item_0/text = "Bring to Front"
+popup/item_0/id = 0
 popup/item_1/text = "Always on Top"
 popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"

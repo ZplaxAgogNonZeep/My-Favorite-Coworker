@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmm1qb4b40sv3"]
 
-[ext_resource type="Script" path="res://objects/food.gd" id="2_6roqv"]
+[ext_resource type="Script" uid="uid://d2gbrv46hxmqw" path="res://objects/food.gd" id="2_6roqv"]
 [ext_resource type="Texture2D" uid="uid://dxw4d0ccnhyk3" path="res://assets/art/aesprite/minigame_assets/meat.png" id="2_fogop"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvroj"]

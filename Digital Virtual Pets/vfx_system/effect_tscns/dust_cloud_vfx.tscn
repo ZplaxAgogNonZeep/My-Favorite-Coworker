@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbv2ueyv0kgaj"]
 
-[ext_resource type="Script" path="res://vfx_system/vfx_sprite.gd" id="1_6cxr3"]
+[ext_resource type="Script" uid="uid://b2eg7e7abc2kb" path="res://vfx_system/vfx_sprite.gd" id="1_6cxr3"]
 [ext_resource type="SpriteFrames" uid="uid://bkv0snxcdwahj" path="res://assets/animation_frames/vfx/dust_cloud_vfx.tres" id="2_5lmu8"]
 
 [node name="DustCloudVFX" type="Node2D" node_paths=PackedStringArray("sprite", "lifeTimer")]

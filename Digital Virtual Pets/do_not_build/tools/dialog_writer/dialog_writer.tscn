@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpp313bs3m44"]
+
+[ext_resource type="Script" uid="uid://bdijmva3mn0k3" path="res://do_not_build/tools/dialog_writer/dialog_writer.gd" id="1_84y7q"]
+[ext_resource type="JSON" path="res://do_not_build/tools/dialog_writer/dialog.json" id="2_6smiw"]
+
+[node name="DialogWriter" type="Node"]
+script = ExtResource("1_84y7q")
+dialogText = ExtResource("2_6smiw")

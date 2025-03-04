@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CharacterDialog" load_steps=2 format=3 uid="uid://j87mk0lqceet"]
+
+[ext_resource type="Script" uid="uid://xbk0206hl6jv" path="res://data/scripts/dialog_data.gd" id="1_2dxun"]
+
+[resource]
+script = ExtResource("1_2dxun")
+doot = "meeple"

@@ -1,0 +1,69 @@
+{
+  "uuid": "A3F3EDF6-27B6-4196-A508-14328EC4455C",
+  "name": "My Favorite Coworker",
+  "creator": "Twine",
+  "creatorVersion": "2.10.0",
+  "schemaName": "Twine to JSON",
+  "schemaVersion": "0.0.6",
+  "createdAtMs": 1741122427704,
+  "passages": [
+	{
+	  "name": "New Game Dialog",
+	  "tags": "Conversation-Start my_favorite_coworker.exe",
+	  "id": "1",
+	  "text": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!\n\nPlease hold while we find an appropriate pet.\n\n[[NGD-2]]",
+	  "links": [
+		{
+		  "linkText": "NGD-2",
+		  "passageName": "NGD-2",
+		  "original": "[[NGD-2]]"
+		}
+	  ],
+	  "cleanText": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!\n\nPlease hold while we find an appropriate pet."
+	},
+	{
+	  "name": "NGD-2",
+	  "tags": "my_favorite_coworker.exe",
+	  "id": "2",
+	  "text": "{Loading}\n\n[[NGD-3]]",
+	  "links": [
+		{
+		  "linkText": "NGD-3",
+		  "passageName": "NGD-3",
+		  "original": "[[NGD-3]]"
+		}
+	  ],
+	  "cleanText": "{Loading}"
+	},
+	{
+	  "name": "NGD-3",
+	  "tags": "my_favorite_coworker.exe",
+	  "id": "3",
+	  "text": "Virtual Pet found!\n\nPreparing to establish connection...",
+	  "links": [],
+	  "cleanText": "Virtual Pet found!\n\nPreparing to establish connection..."
+	},
+	{
+	  "name": "Device Tutorial",
+	  "tags": "Conversation-Start my_favorite_coworker.exe",
+	  "id": "4",
+	  "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.\n\n[[Device Tutorial-2]]",
+	  "links": [
+		{
+		  "linkText": "Device Tutorial-2",
+		  "passageName": "Device Tutorial-2",
+		  "original": "[[Device Tutorial-2]]"
+		}
+	  ],
+	  "cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want."
+	},
+	{
+	  "name": "Device Tutorial-2",
+	  "tags": "my_favorite_coworker.exe",
+	  "id": "5",
+	  "text": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. \n\nDespite appearances, it is a living creature...",
+	  "links": [],
+	  "cleanText": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. \n\nDespite appearances, it is a living creature..."
+	}
+  ]
+}

@@ -1,5 +1,8 @@
 @tool
 extends Node
+
+const DIALOG_FILEPATH := "res://data/dialog/"
+
 #TODO: Document
 @export_tool_button("Generate Dialog Resources")
 var x: Callable = _generateDialog
@@ -25,7 +28,6 @@ func _generateDialog():
 		print("DIALOG WRITER ERROR: Unexpected Format, please re-export file and try again.")
 
 func _createDialogFiles(rawDialog : Array):
-	print("ARRAY")
 	_passageList = rawDialog.duplicate(true)
 	var characterList : Array[Array] = []
 	var characterConversations : Dictionary[String, Array]
@@ -37,27 +39,29 @@ func _createDialogFiles(rawDialog : Array):
 			var tags : Array = passage["tags"].split(" ", false)
 			
 			if (tags.size() > 1):
-				if (tags[0] == "Conversation-Start"):
+				if (tags[0].rstrip(" ") == "Conversation-Start"):
 					if (characterConversations.has(tags[1])):
 						characterConversations[tags[1]].append(passage)
 					else:
 						characterConversations[tags[1]] = [passage]
 	
 	for characterName in characterConversations.keys():
-		var characterDialog : CharacterDialog = CharacterDialog.new()
+		var characterDialog := CharacterDialog.new()
 		
 		characterDialog.characterName = characterName
 		characterDialog.conversations = characterConversations[characterName].duplicate(true)
-		# Holy SHIT this one was complicated. i HATE recursion
 		for conversation : Dictionary in characterDialog.conversations:
 			_getAllLinkedPassages(conversation, characterDialog.passages)
+		
+		ResourceSaver.save(characterDialog, DIALOG_FILEPATH + characterName.to_lower() + ".tres")
+	print("Wrote dialog to resources at " + DIALOG_FILEPATH)
 
 
 func _getAllLinkedPassages(passage : Dictionary, linkedPassages):
 	if (passage.has("links")):
 		for link : Dictionary in passage["links"]:
 			var linkedPassage = _getPassageByName(link["passageName"])
-			linkedPassages.append(linkedPassage)
+			linkedPassages[linkedPassage["name"]] = linkedPassage
 			_getAllLinkedPassages(linkedPassage, linkedPassages)
 
 

@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtya6sb5p4rt8"]
+[gd_scene load_steps=4 format=3 uid="uid://dtya6sb5p4rt8"]
 
 [ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="1_2a2c1"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_gp6kj"]
+[ext_resource type="PackedScene" uid="uid://ba4ut480kbygm" path="res://ui/system_dialog/dialog_choice_button.tscn" id="3_vdxs8"]
 
-[node name="SystemDialogWindow" type="Panel"]
+[node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer")]
+anchors_preset = -1
+anchor_bottom = 0.0447531
 offset_left = -128.0
 offset_top = -56.0
 offset_right = 128.0
 offset_bottom = 59.0
-grow_horizontal = 2
-grow_vertical = 2
 pivot_offset = Vector2(128, 56.0002)
 theme = ExtResource("1_gp6kj")
 script = ExtResource("1_2a2c1")
+_dialogLabel = NodePath("Dialog")
+_characterNameLabel = NodePath("CharacterName")
+_choiceContainer = NodePath("ChoiceContainer")
+_buttonScene = ExtResource("3_vdxs8")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="."]
+[node name="Dialog" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -25,6 +30,7 @@ offset_right = -8.0
 offset_bottom = 112.0
 grow_horizontal = 2
 theme_type_variation = &"ParagraphText"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum nunc nisl. Etiam nibh metus, volutpat id mauris porttitor, aliquam facilisis dui. In gravida efficitur velit, in"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -33,3 +39,25 @@ layout_mode = 0
 offset_left = 240.0
 offset_right = 256.0
 offset_bottom = 16.0
+
+[node name="CharacterName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 89.0
+offset_bottom = 18.0
+theme_type_variation = &"HeaderSmall"
+text = "Unknown User"
+vertical_alignment = 1
+
+[node name="ChoiceContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.944
+anchor_right = 0.969
+anchor_bottom = 0.944
+offset_left = 0.0639997
+offset_top = -15.936
+offset_right = -0.0640106
+offset_bottom = 0.0639954
+alignment = 1

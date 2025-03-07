@@ -54,18 +54,22 @@ func _createDialogFiles(rawDialog : Array):
 		
 		#characterDialog.conversations = characterConversations[characterName].duplicate(true)
 		for conversationName : String in characterDialog.conversations.keys():
-			_getAllLinkedPassages(characterDialog.conversations[conversationName], characterDialog.passages)
+			var linkedPassage = _getPassageByName(conversationName)
+			characterDialog.passages[linkedPassage["name"]] = linkedPassage
+			_getAllLinkedPassages(characterDialog.conversations[conversationName], characterDialog)
 		
 		ResourceSaver.save(characterDialog, DIALOG_FILEPATH + characterName.to_lower() + ".tres")
 	print("Wrote dialog to resources at " + DIALOG_FILEPATH)
 
 
-func _getAllLinkedPassages(passage : Dictionary, linkedPassages):
+func _getAllLinkedPassages(passage : Dictionary, resource : CharacterDialog):
 	if (passage.has("links")):
 		for link : Dictionary in passage["links"]:
 			var linkedPassage = _getPassageByName(link["passageName"])
-			linkedPassages[linkedPassage["name"]] = linkedPassage
-			_getAllLinkedPassages(linkedPassage, linkedPassages)
+			resource.passages[linkedPassage["name"]] = linkedPassage
+			_getAllLinkedPassages(linkedPassage, resource)
+		
+		
 
 
 func _getPassageByName(passageName : String) -> Dictionary:

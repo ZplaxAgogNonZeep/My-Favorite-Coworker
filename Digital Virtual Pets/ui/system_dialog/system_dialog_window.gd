@@ -1,6 +1,6 @@
 extends Panel
 
-signal DialogChoiceSelected(index : int)
+signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Control)
 
 @export_category("Node References")
 @export var _dialogLabel : Label
@@ -10,6 +10,7 @@ signal DialogChoiceSelected(index : int)
 
 var _baseLabelSize : float
 var _positionOffset : Vector2
+var _threadIndex : int
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -19,7 +20,8 @@ func _ready() -> void:
 		size.y += diff
 
 
-func loadWindow(pos : Vector2, text : String, speaker : String, links : Array[String]):
+func loadWindow(pos : Vector2, text : String, speaker : String, links : Array[String], threadIndex : int):
+	_threadIndex = threadIndex
 	_positionOffset = position
 	_baseLabelSize = _dialogLabel.size.y
 	position = pos + _positionOffset
@@ -35,4 +37,9 @@ func loadWindow(pos : Vector2, text : String, speaker : String, links : Array[St
 
 
 func _buttonSelected(index : int):
-	DialogChoiceSelected.emit(index)
+	print("emitting button selectedf")
+	DialogChoiceSelected.emit(index, _threadIndex, self)
+
+
+func closeWindow():
+	queue_free()

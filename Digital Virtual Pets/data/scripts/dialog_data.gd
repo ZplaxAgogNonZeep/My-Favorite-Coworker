@@ -5,7 +5,7 @@ class_name CharacterDialog
 @export var characterName : String
 @export var conversations : Dictionary
 
-var passages : Dictionary
+@export var passages : Dictionary
 
 func getPassageByName(passageName : String) -> Dictionary:
 	return passages[passageName]

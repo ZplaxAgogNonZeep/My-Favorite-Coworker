@@ -56,7 +56,7 @@ func _displayDevice(skipAnimation := false):
 
 #region Dialog Control Functions
 func firstOpenReturned(threadHistory : Array):
-	_firstTimeOpened = true
+	_firstTimeOpened = false
 	SaveData.saveGameToFile()
 	_displayDevice()
 

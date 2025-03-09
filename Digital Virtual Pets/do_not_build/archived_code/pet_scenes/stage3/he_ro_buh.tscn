@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bwo71sqr5y8bs" path="res://do_not_build/archived_code/pet.gd" id="1_a0r6y"]
 [ext_resource type="Script" uid="uid://c3syvotipvnt8" path="res://do_not_build/archived_code/pet_type/he_ro_buh_type.gd" id="3_ctpwi"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="4_qd7at"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="4_qd7at"]
 [ext_resource type="SpriteFrames" uid="uid://bifauo7clkw3i" path="res://assets/animation_frames/pets/stage3/he_ro_buh_frames.tres" id="5_nmdxs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]

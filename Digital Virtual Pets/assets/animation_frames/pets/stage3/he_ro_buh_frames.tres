@@ -1,9 +1,9 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bifauo7clkw3i"]
 
-[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/Pets/Stage3/HeRohBuh.png" id="1_u3t3g"]
+[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/pets/stage3/HeRohBuh.png" id="1_jd0vt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6lbki"]
-atlas = ExtResource("1_u3t3g")
+atlas = ExtResource("1_jd0vt")
 region = Rect2(0, 0, 24, 24)
 
 [resource]

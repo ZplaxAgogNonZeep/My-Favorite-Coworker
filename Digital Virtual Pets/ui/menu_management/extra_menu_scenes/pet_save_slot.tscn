@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bixuqptw12pi3"]
 
-[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/Pets/stage1/bug.png" id="1_8ivp1"]
+[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/pets/stage1/bug.png" id="1_8ivp1"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_dboo3"]
 [ext_resource type="Script" uid="uid://g2136u4ru8i" path="res://ui/menu_management/extra_menu_scenes/pet_slot_button.gd" id="2_c0giu"]
 

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ctwt7rrdeyxos" path="res://do_not_build/archived_code/pet_type/egg_type.gd" id="2_pbqmq"]
 [ext_resource type="PackedScene" uid="uid://bpcwq03jqltcn" path="res://do_not_build/archived_code/pet_scenes/stage1/pup_pet.tscn" id="2_yfsmg"]
 [ext_resource type="SpriteFrames" uid="uid://noxh6ocgu6nu" path="res://assets/animation_frames/pets/stage0/buh_egg.tres" id="5_i3rfl"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="6_gdike"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="6_gdike"]
 
 [node name="BuhEgg" type="Node2D" node_paths=PackedStringArray("sprite") groups=["Pet"]]
 script = ExtResource("1_v6yx8")

@@ -30,7 +30,7 @@ func _ready():
 func _process(delta: float) -> void:
 	_proactivityBehavior()
 
-#TODO: Debug Function
+#TODO: Remove Debug Function
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
 		_evolveCheck()

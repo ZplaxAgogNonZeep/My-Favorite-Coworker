@@ -115,7 +115,6 @@ func _closeWindow(threadIndex : int, closeWindow : Control):
 
 
 func _closeThread(threadIndex : int):
-	#TODO: NEED something that updates all the thread indexes in the windows and in the threads
 	var closedThread : DialogThread = _threads[threadIndex]
 	for window in _windows[threadIndex]:
 		window.closeWindow()

@@ -18,24 +18,19 @@ var _firstTimeOpened := true
 
 func _ready() -> void:
 	# This is where the game officially starts, remember that it happens AFTER every ready function
+	device.visible = false
 	if (_firstTimeOpened):
-		pass
+		GameEvents.DisplayDialog.emit(Vector2(300, 250), _test, 
+						"New Game Dialog", Callable(self, "firstOpenReturned"))
 	else:
-		pass
+		_displayDevice(true)
 	
-	device.turnOnDevice()
+	#device.turnOnDevice()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
-		GameEvents.DisplayDialog.emit(Vector2(300, 250), _test, 
-						"Device Tutorial", Callable(self, "testReturnFunction"))
-						
-		GameEvents.DisplayDialog.emit(Vector2(150, 100), _test, 
-						"New Game Dialog", Callable(self, "testReturnFunction"))
-		
-		GameEvents.DisplayDialog.emit(Vector2(350, 500), _test, 
-						"New Game Dialog", Callable(self, "testReturnFunction"))
+		pass
 	
 	if (event is InputEventMouseButton):
 		if (event.double_click and _menuManager.isMenuOpen() and _iconMenu == _menuManager.getActiveMenu()):
@@ -48,9 +43,21 @@ func _input(event: InputEvent) -> void:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 
 
-func testReturnFunction(threadHistory : Array):
-	print("Return Function works!")
+func _displayDevice(skipAnimation := false):
+	if (skipAnimation):
+		device.visible = true
+		device.turnOnDevice()
+		return
 	
+	device.spawnDevice()
+	await get_tree().process_frame
+	device.visible = true
 
-func createDevice():
-	pass
+
+#region Dialog Control Functions
+func firstOpenReturned(threadHistory : Array):
+	_firstTimeOpened = true
+	SaveData.saveGameToFile()
+	_displayDevice()
+
+#endregion

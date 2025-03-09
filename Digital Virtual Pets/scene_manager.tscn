@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=59 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_ptlsy"]
@@ -45,6 +45,43 @@
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="39_r66v4"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="40_a6sa5"]
+
+[sub_resource type="Animation" id="Animation_2ni51"]
+resource_name = "SpawnDevice"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Device:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.24167, 1.46667, 1.73333, 1.75833, 2.03333, 2.33333),
+"transitions": PackedFloat32Array(1.36604, 6.49802, 0.353553, 1, 1, 0.353553, 1, 1),
+"update": 0,
+"values": [Vector2(296, -28.885), Vector2(296, 648), Vector2(296, 648), Vector2(296, 628.36), Vector2(296, 648), Vector2(296, 648), Vector2(296, 641.875), Vector2(296, 648)]
+}
+
+[sub_resource type="Animation" id="Animation_xm6xn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Device:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(296, 648)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwd8q"]
+_data = {
+&"RESET": SubResource("Animation_xm6xn"),
+&"SpawnDevice": SubResource("Animation_2ni51")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxubh"]
 atlas = ExtResource("10_7iaaw")
@@ -244,17 +281,23 @@ script = ExtResource("8_gowt0")
 _systemWindowScene = ExtResource("9_k1t8d")
 _windowPosnVariance = Vector2(64, 64)
 
-[node name="Device" type="Node2D" parent="." node_paths=PackedStringArray("_gameArea")]
+[node name="Device" type="Node2D" parent="." node_paths=PackedStringArray("_gameArea", "_animator")]
 process_mode = 1
-position = Vector2(296, 576)
+position = Vector2(296, 648)
 script = ExtResource("1_ptlsy")
 _gameArea = NodePath("GameArea")
+_animator = NodePath("AnimationPlayer")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 hopDuration = 0.25
 chatSpeed = 0.1
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Device"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_lwd8q")
+}
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
 z_index = 10

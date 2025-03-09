@@ -8,6 +8,7 @@ enum DeviceAction {HOP, SHAKE}
 
 @export_category("Node References")
 @export var _gameArea : GameArea
+@export var _animator : AnimationPlayer
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
@@ -59,6 +60,13 @@ func checkQueue():
 		return true
 
 #region Events
+
+func spawnDevice():
+	_animator.play("SpawnDevice")
+	
+	# dialog here
+	turnOnDevice()
+
 
 func hop():
 	if not activeTween:

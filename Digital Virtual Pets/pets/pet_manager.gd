@@ -171,6 +171,7 @@ func killPet():
 
 #region Pet Save & Load Management
 func gatherDataFromActivePet():
+	#TODO: Handle Saving data when no pet is spawned
 	_petSlots[_slotIndex] = activePet.getSavableData().convertClassToDict()
 
 

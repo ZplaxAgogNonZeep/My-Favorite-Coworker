@@ -29,7 +29,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		GameEvents.DisplayDialog.emit(Vector2(300, 250), _test, 
-						"New Game Dialog", Callable(self, "testReturnFunction"))
+						"Device Tutorial", Callable(self, "testReturnFunction"))
 						
 		GameEvents.DisplayDialog.emit(Vector2(150, 100), _test, 
 						"New Game Dialog", Callable(self, "testReturnFunction"))

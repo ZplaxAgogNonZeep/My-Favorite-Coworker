@@ -43,6 +43,10 @@ func _buttonSelected(index : int):
 	DialogChoiceSelected.emit(index, _threadIndex, self)
 
 
+func changeThreadIndex(index : int):
+	_threadIndex = index
+
+
 func closeWindow():
 	_animator.play("Close")
 	await _animator.animation_finished

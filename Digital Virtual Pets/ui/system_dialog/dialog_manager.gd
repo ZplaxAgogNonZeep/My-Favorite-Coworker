@@ -76,12 +76,12 @@ func _callSystemDialog(pos : Vector2, dialogResource : CharacterDialog,
 
 
 func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
-	_threads[threadIndex].continueDialog(linkIndex)
-	_closeWindow(threadIndex, window)
-	
 	if (linkIndex < 0):
 		_closeThread(threadIndex)
 		return
+	
+	_threads[threadIndex].continueDialog(linkIndex)
+	_closeWindow(threadIndex, window)
 	
 	if (_threads[threadIndex].activePassage.keys().size() > 0):
 		# we have a correct passage
@@ -118,7 +118,6 @@ func _closeThread(threadIndex : int):
 	var closedThread : DialogThread = _threads[threadIndex]
 	for window in _windows[threadIndex]:
 		window.closeWindow()
-	
 	_threads.remove_at(threadIndex)
 	_windows.remove_at(threadIndex)
 	
@@ -126,7 +125,9 @@ func _closeThread(threadIndex : int):
 	for thread : DialogThread in _threads:
 		thread.threadIndex = count
 		for window in _windows[count]:
-			window._threadIndex = count
+			window.changeThreadIndex(count)
+		
+		count += 1
 	
 	closedThread.completeThread()
 

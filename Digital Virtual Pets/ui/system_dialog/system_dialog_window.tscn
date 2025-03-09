@@ -158,3 +158,5 @@ offset_top = -15.936
 offset_right = -0.0640106
 offset_bottom = 0.0639954
 alignment = 1
+
+[connection signal="pressed" from="ExitButton" to="." method="_buttonSelected" binds= [-1]]

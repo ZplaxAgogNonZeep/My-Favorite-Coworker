@@ -31,6 +31,10 @@ class DialogThread:
 			activePassage = {}
 	
 	
+	func completeThread():
+		returnFunction.call(thread)
+	
+	
 	#region Getter Functions
 	func getLinks() -> Array[String]:
 		var links : Array[String] = []
@@ -75,6 +79,10 @@ func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
 	_threads[threadIndex].continueDialog(linkIndex)
 	_closeWindow(threadIndex, window)
 	
+	if (linkIndex < 0):
+		_closeThread(threadIndex)
+		return
+	
 	if (_threads[threadIndex].activePassage.keys().size() > 0):
 		# we have a correct passage
 		var posn : Vector2 = Vector2(_threads[threadIndex].rootPosn.x + randf_range(_windowPosnVariance.x * -1, 
@@ -84,8 +92,8 @@ func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
 		_createDialogWindow(posn, _threads[threadIndex])
 	else:
 		# empty dict, no more links, end dialog
-		_threads[threadIndex].returnFunction.call(_threads[threadIndex].thread)
-		_closeThread()
+		#_threads[threadIndex].returnFunction.call(_threads[threadIndex].thread)
+		_closeThread(threadIndex)
 
 
 #region Utility Functions
@@ -105,9 +113,22 @@ func _closeWindow(threadIndex : int, closeWindow : Control):
 	closeWindow.closeWindow()
 
 
-func _closeThread():
+func _closeThread(threadIndex : int):
 	#TODO: NEED something that updates all the thread indexes in the windows and in the threads
-	pass
+	var closedThread : DialogThread = _threads[threadIndex]
+	for window in _windows[threadIndex]:
+		window.closeWindow()
+	
+	_threads.remove_at(threadIndex)
+	_windows.remove_at(threadIndex)
+	
+	var count = 0
+	for thread : DialogThread in _threads:
+		thread.threadIndex = count
+		for window in _windows[count]:
+			window._threadIndex = count
+	
+	closedThread.completeThread()
 
 
 func _clearDialog():

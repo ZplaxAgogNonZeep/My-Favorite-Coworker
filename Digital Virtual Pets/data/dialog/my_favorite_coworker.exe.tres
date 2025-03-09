@@ -10,15 +10,15 @@ conversations = {
 "cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.",
 "id": "4",
 "links": [{
-"linkText": "Device Tutorial-2",
-"original": "[[Device Tutorial-2]]",
+"linkText": "Okay",
+"original": "[[Okay->Device Tutorial-2]]",
 "passageName": "Device Tutorial-2"
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
 "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.
 
-[[Device Tutorial-2]]"
+[[Okay->Device Tutorial-2]]"
 },
 "New Game Dialog": {
 "cleanText": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!
@@ -26,8 +26,8 @@ conversations = {
 Please hold while we find an appropriate pet.",
 "id": "1",
 "links": [{
-"linkText": "NGD-2",
-"original": "[[NGD-2]]",
+"linkText": "Okay",
+"original": "[[Okay ->NGD-2]]",
 "passageName": "NGD-2"
 }],
 "name": "New Game Dialog",
@@ -36,7 +36,7 @@ Please hold while we find an appropriate pet.",
 
 Please hold while we find an appropriate pet.
 
-[[NGD-2]]"
+[[Okay ->NGD-2]]"
 }
 }
 passages = {
@@ -44,15 +44,15 @@ passages = {
 "cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.",
 "id": "4",
 "links": [{
-"linkText": "Device Tutorial-2",
-"original": "[[Device Tutorial-2]]",
+"linkText": "Okay",
+"original": "[[Okay->Device Tutorial-2]]",
 "passageName": "Device Tutorial-2"
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
 "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.
 
-[[Device Tutorial-2]]"
+[[Okay->Device Tutorial-2]]"
 },
 "Device Tutorial-2": {
 "cleanText": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. 
@@ -70,15 +70,15 @@ Despite appearances, it is a living creature..."
 "cleanText": "{Loading}",
 "id": "2",
 "links": [{
-"linkText": "NGD-3",
-"original": "[[NGD-3]]",
+"linkText": "Finish",
+"original": "[[Finish->NGD-3]]",
 "passageName": "NGD-3"
 }],
 "name": "NGD-2",
 "tags": "my_favorite_coworker.exe",
 "text": "{Loading}
 
-[[NGD-3]]"
+[[Finish->NGD-3]]"
 },
 "NGD-3": {
 "cleanText": "Virtual Pet found!
@@ -98,8 +98,8 @@ Preparing to establish connection..."
 Please hold while we find an appropriate pet.",
 "id": "1",
 "links": [{
-"linkText": "NGD-2",
-"original": "[[NGD-2]]",
+"linkText": "Okay",
+"original": "[[Okay ->NGD-2]]",
 "passageName": "NGD-2"
 }],
 "name": "New Game Dialog",
@@ -108,6 +108,6 @@ Please hold while we find an appropriate pet.",
 
 Please hold while we find an appropriate pet.
 
-[[NGD-2]]"
+[[Okay ->NGD-2]]"
 }
 }

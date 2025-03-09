@@ -5,18 +5,18 @@
   "creatorVersion": "2.10.0",
   "schemaName": "Twine to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1741122427704,
+  "createdAtMs": 1741448210639,
   "passages": [
 	{
 	  "name": "New Game Dialog",
 	  "tags": "Conversation-Start my_favorite_coworker.exe",
 	  "id": "1",
-	  "text": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!\n\nPlease hold while we find an appropriate pet.\n\n[[NGD-2]]",
+	  "text": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!\n\nPlease hold while we find an appropriate pet.\n\n[[Okay ->NGD-2]]",
 	  "links": [
 		{
-		  "linkText": "NGD-2",
+		  "linkText": "Okay",
 		  "passageName": "NGD-2",
-		  "original": "[[NGD-2]]"
+		  "original": "[[Okay ->NGD-2]]"
 		}
 	  ],
 	  "cleanText": "Thank you for signing up for the My Favorite Coworker network! Our system shows that you haven't been paired with a virtual compainion yet!\n\nPlease hold while we find an appropriate pet."
@@ -25,12 +25,12 @@
 	  "name": "NGD-2",
 	  "tags": "my_favorite_coworker.exe",
 	  "id": "2",
-	  "text": "{Loading}\n\n[[NGD-3]]",
+	  "text": "{Loading}\n\n[[Finish->NGD-3]]",
 	  "links": [
 		{
-		  "linkText": "NGD-3",
+		  "linkText": "Finish",
 		  "passageName": "NGD-3",
-		  "original": "[[NGD-3]]"
+		  "original": "[[Finish->NGD-3]]"
 		}
 	  ],
 	  "cleanText": "{Loading}"
@@ -47,12 +47,12 @@
 	  "name": "Device Tutorial",
 	  "tags": "Conversation-Start my_favorite_coworker.exe",
 	  "id": "4",
-	  "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.\n\n[[Device Tutorial-2]]",
+	  "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.\n\n[[Okay->Device Tutorial-2]]",
 	  "links": [
 		{
-		  "linkText": "Device Tutorial-2",
+		  "linkText": "Okay",
 		  "passageName": "Device Tutorial-2",
-		  "original": "[[Device Tutorial-2]]"
+		  "original": "[[Okay->Device Tutorial-2]]"
 		}
 	  ],
 	  "cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want."

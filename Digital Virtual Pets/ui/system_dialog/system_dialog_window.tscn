@@ -1,10 +1,100 @@
-[gd_scene load_steps=4 format=3 uid="uid://dtya6sb5p4rt8"]
+[gd_scene load_steps=8 format=3 uid="uid://dtya6sb5p4rt8"]
 
 [ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="1_2a2c1"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_gp6kj"]
 [ext_resource type="PackedScene" uid="uid://ba4ut480kbygm" path="res://ui/system_dialog/dialog_choice_button.tscn" id="3_vdxs8"]
 
-[node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer")]
+[sub_resource type="Animation" id="Animation_4kmke"]
+resource_name = "Close"
+length = 0.172
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.766772, 0.766772), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667, 0.166667),
+"transitions": PackedFloat32Array(4, 0.233258),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vdxs8"]
+resource_name = "Open"
+length = 0.1055
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.49012e-08, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.49012e-08, 0.1),
+"transitions": PackedFloat32Array(1, 2.63901),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_804br"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4kmke"]
+_data = {
+&"Close": SubResource("Animation_4kmke"),
+&"Open": SubResource("Animation_vdxs8"),
+&"RESET": SubResource("Animation_804br")
+}
+
+[node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator")]
 anchors_preset = -1
 anchor_bottom = 0.0447531
 offset_left = -128.0
@@ -17,8 +107,14 @@ script = ExtResource("1_2a2c1")
 _dialogLabel = NodePath("Dialog")
 _characterNameLabel = NodePath("CharacterName")
 _choiceContainer = NodePath("ChoiceContainer")
+_animator = NodePath("AnimationPlayer")
 _buttonScene = ExtResource("3_vdxs8")
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4kmke")
+}
 
 [node name="Dialog" type="Label" parent="."]
 layout_mode = 1
@@ -39,6 +135,7 @@ layout_mode = 0
 offset_left = 240.0
 offset_right = 256.0
 offset_bottom = 16.0
+focus_mode = 0
 
 [node name="CharacterName" type="Label" parent="."]
 layout_mode = 0

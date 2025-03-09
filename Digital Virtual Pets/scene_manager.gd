@@ -29,7 +29,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		GameEvents.DisplayDialog.emit(Vector2(300, 250), _test, 
-						"Device Tutorial", Callable(self, "testReturnFunction"))
+						"New Game Dialog", Callable(self, "testReturnFunction"))
 	
 	if (event is InputEventMouseButton):
 		if (event.double_click and _menuManager.isMenuOpen() and _iconMenu == _menuManager.getActiveMenu()):

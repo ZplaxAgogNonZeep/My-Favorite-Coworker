@@ -242,6 +242,7 @@ mouse_filter = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("8_gowt0")
 _systemWindowScene = ExtResource("9_k1t8d")
+_windowPosnVariance = Vector2(64, 64)
 
 [node name="Device" type="Node2D" parent="." node_paths=PackedStringArray("_gameArea")]
 process_mode = 1

@@ -30,6 +30,7 @@ class DialogThread:
 		else:
 			activePassage = {}
 	
+	
 	#region Getter Functions
 	func getLinks() -> Array[String]:
 		var links : Array[String] = []
@@ -54,6 +55,7 @@ class DialogThread:
 
 
 @export var _systemWindowScene : PackedScene
+@export var _windowPosnVariance : Vector2
 var _threads : Array[DialogThread] = []
 var _windows : Array[Array]
 
@@ -75,13 +77,15 @@ func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
 	
 	if (_threads[threadIndex].activePassage.keys().size() > 0):
 		# we have a correct passage
-		print("continueing dialog")
-		_createDialogWindow(_threads[threadIndex].rootPosn, _threads[threadIndex])
+		var posn : Vector2 = Vector2(_threads[threadIndex].rootPosn.x + randf_range(_windowPosnVariance.x * -1, 
+																					_windowPosnVariance.x),
+									_threads[threadIndex].rootPosn.y + randf_range(_windowPosnVariance.y * -1, 
+																					_windowPosnVariance.y))
+		_createDialogWindow(posn, _threads[threadIndex])
 	else:
-		print("No more dialog")
 		# empty dict, no more links, end dialog
 		_threads[threadIndex].returnFunction.call(_threads[threadIndex].thread)
-		_removeThread()
+		_closeThread()
 
 
 #region Utility Functions
@@ -98,10 +102,10 @@ func _createDialogWindow(pos : Vector2, thread : DialogThread):
 
 func _closeWindow(threadIndex : int, closeWindow : Control):
 	_windows[threadIndex].erase(closeWindow)
-	closeWindow.queue_free()
+	closeWindow.closeWindow()
 
 
-func _removeThread():
+func _closeThread():
 	#TODO: NEED something that updates all the thread indexes in the windows and in the threads
 	pass
 

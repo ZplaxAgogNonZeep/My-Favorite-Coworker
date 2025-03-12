@@ -1,49 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://brxcyqp7dfd3g"]
+[gd_scene load_steps=2 format=3 uid="uid://brxcyqp7dfd3g"]
 
-[ext_resource type="Texture2D" uid="uid://dp0552ox0be7h" path="res://do_not_build/aseprite/LinkDeviceSprite.png" id="1_cpo7u"]
-[ext_resource type="Script" uid="uid://3av1qygj3goe" path="res://do_not_build/sprite_size_test.gd" id="1_phmoe"]
-[ext_resource type="Texture2D" uid="uid://cl368h4uk6vkj" path="res://do_not_build/aseprite/LinkDeviceSprite-Sheet.png" id="2_88svn"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phmoe"]
-atlas = ExtResource("2_88svn")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_diiim"]
-atlas = ExtResource("2_88svn")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ooxxu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phmoe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_diiim")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="1_cpo7u"]
 
 [node name="Node2D" type="Node2D"]
-script = ExtResource("1_phmoe")
 
-[node name="LinkDeviceSprite" type="Sprite2D" parent="."]
+[node name="LinkDeviceSprite" parent="." instance=ExtResource("1_cpo7u")]
 position = Vector2(288, 648)
-scale = Vector2(2, 2)
-texture = ExtResource("1_cpo7u")
-offset = Vector2(0, -64)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LinkDeviceSprite"]
-sprite_frames = SubResource("SpriteFrames_ooxxu")
-offset = Vector2(0, -64)
-
-[node name="Area2D" type="Area2D" parent="LinkDeviceSprite/AnimatedSprite2D"]
-position = Vector2(0, -21)
-metadata/_edit_group_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LinkDeviceSprite/AnimatedSprite2D/Area2D"]
-polygon = PackedVector2Array(-21, -7, 21, -7, 21, -3.5, 11, 7, -11, 7, -21, -3)
-
-[connection signal="mouse_entered" from="LinkDeviceSprite/AnimatedSprite2D/Area2D" to="." method="test"]

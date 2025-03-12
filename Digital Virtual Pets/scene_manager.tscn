@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=60 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_ptlsy"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="34_s6yyg"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="39_r66v4"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="40_a6sa5"]
+[ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="46_xm6xn"]
 
 [sub_resource type="Animation" id="Animation_xm6xn"]
 length = 0.001
@@ -284,6 +285,7 @@ _windowPosnVariance = Vector2(64, 64)
 [node name="Device" type="Node2D" parent="." node_paths=PackedStringArray("_gameArea", "_animator")]
 process_mode = 1
 position = Vector2(296, 648)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ptlsy")
 _gameArea = NodePath("GameArea")
 _animator = NodePath("AnimationPlayer")
@@ -300,6 +302,7 @@ libraries = {
 }
 
 [node name="EggBase" type="Sprite2D" parent="Device"]
+visible = false
 z_index = 10
 position = Vector2(0, -256)
 texture = ExtResource("2_357pc")
@@ -849,6 +852,9 @@ scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="Device/GameArea"]
+
+[node name="LinkDeviceSprite" parent="Device" instance=ExtResource("46_xm6xn")]
+scale = Vector2(4, 4)
 
 [connection signal="timeout" from="Device/GameArea/GameTimers/HungerTimer" to="Device/GameArea" method="tickHunger"]
 [connection signal="timeout" from="Device/GameArea/GameTimers/JoyTimer" to="Device/GameArea" method="tickJoy"]

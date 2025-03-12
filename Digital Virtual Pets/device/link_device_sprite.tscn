@@ -1,0 +1,305 @@
+[gd_scene load_steps=25 format=3 uid="uid://bxgg1k0vh82t6"]
+
+[ext_resource type="Texture2D" uid="uid://dp0552ox0be7h" path="res://do_not_build/aseprite/LinkDeviceSprite.png" id="1_w7yhk"]
+[ext_resource type="Texture2D" uid="uid://2l5xccro1gcr" path="res://assets/art/aesprite/device/audio_button_sheet.png" id="2_ex2ea"]
+[ext_resource type="Texture2D" uid="uid://dlun3cap2g1bj" path="res://assets/art/aesprite/device/center_button_sheet.png" id="3_7pd7f"]
+[ext_resource type="Texture2D" uid="uid://d13q43b0wpj8t" path="res://assets/art/aesprite/device/left_button_sheet.png" id="4_2t7hj"]
+[ext_resource type="Texture2D" uid="uid://btcrksoaem5g8" path="res://assets/art/aesprite/device/options_button_sheet.png" id="5_gfx1a"]
+[ext_resource type="Texture2D" uid="uid://bvyegbhhtqubi" path="res://assets/art/aesprite/device/pet_button_sheet.png" id="6_s3t2l"]
+[ext_resource type="Texture2D" uid="uid://cbsfvo3e76li8" path="res://assets/art/aesprite/device/power_button_sheet.png" id="7_pblih"]
+[ext_resource type="Texture2D" uid="uid://cwydhgx4hqgxt" path="res://assets/art/aesprite/device/right_button_sheet.png" id="8_xk3an"]
+[ext_resource type="Script" uid="uid://3av1qygj3goe" path="res://do_not_build/device_button.gd" id="9_oq8df"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7baa"]
+atlas = ExtResource("2_ex2ea")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7gpv"]
+atlas = ExtResource("2_ex2ea")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diiim"]
+atlas = ExtResource("3_7pd7f")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooxxu"]
+atlas = ExtResource("3_7pd7f")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unxg0"]
+atlas = ExtResource("4_2t7hj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qo8mr"]
+atlas = ExtResource("4_2t7hj")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qlau"]
+atlas = ExtResource("5_gfx1a")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nhls"]
+atlas = ExtResource("5_gfx1a")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p75ih"]
+atlas = ExtResource("6_s3t2l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5st6d"]
+atlas = ExtResource("6_s3t2l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnmd6"]
+atlas = ExtResource("7_pblih")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uo45"]
+atlas = ExtResource("7_pblih")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq5yi"]
+atlas = ExtResource("8_xk3an")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jmax"]
+atlas = ExtResource("8_xk3an")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ooxxu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7baa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7gpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7gpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7baa")
+}],
+"loop": false,
+"name": &"AudioButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diiim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooxxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooxxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diiim")
+}],
+"loop": false,
+"name": &"CenterButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unxg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo8mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qo8mr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unxg0")
+}],
+"loop": false,
+"name": &"LeftButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qlau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nhls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nhls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qlau")
+}],
+"loop": false,
+"name": &"OptionsButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p75ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5st6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5st6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p75ih")
+}],
+"loop": false,
+"name": &"PetButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnmd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uo45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uo45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnmd6")
+}],
+"loop": false,
+"name": &"PowerButton",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq5yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jmax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jmax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq5yi")
+}],
+"loop": false,
+"name": &"RightButton",
+"speed": 15.0
+}]
+
+[node name="LinkDeviceSprite" type="Sprite2D"]
+texture = ExtResource("1_w7yhk")
+offset = Vector2(0, -64)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="ControlButtons" type="Node2D" parent="."]
+
+[node name="Center" type="AnimatedSprite2D" parent="ControlButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"CenterButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="ControlButtons/Center"]
+position = Vector2(0, -21)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ControlButtons/Center/Area2D"]
+polygon = PackedVector2Array(-21, -7, 21, -7, 21, -3.5, 11, 7, -11, 7, -21, -3)
+
+[node name="Left" type="AnimatedSprite2D" parent="ControlButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"LeftButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="ControlButtons/Left"]
+position = Vector2(-36, -60)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ControlButtons/Left/Area2D"]
+polygon = PackedVector2Array(-3, -13, 3, -19, 5, -19, 5, 25, 3, 25, -3, 19)
+
+[node name="Right" type="AnimatedSprite2D" parent="ControlButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"RightButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="ControlButtons/Right"]
+position = Vector2(33.5, -60)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ControlButtons/Right/Area2D"]
+polygon = PackedVector2Array(-2.5, -19, -0.5, -19, 5.5, -13, 5.5, 19, -0.5, 25, -2.5, 25)
+
+[node name="MenuButtons" type="Node2D" parent="."]
+
+[node name="Power" type="AnimatedSprite2D" parent="MenuButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"PowerButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="MenuButtons/Power"]
+position = Vector2(20, -92)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuButtons/Power/Area2D"]
+polygon = PackedVector2Array(4, -5, 8, -2, 8, 1, 1.5, 1, -5, 1, -5, -5)
+
+[node name="Options" type="AnimatedSprite2D" parent="MenuButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"OptionsButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="MenuButtons/Options"]
+position = Vector2(6, -92)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuButtons/Options/Area2D"]
+polygon = PackedVector2Array(7, -5, 7, -2, 7, 1, 1.5, 1, -5, 1, -5, -5)
+
+[node name="Pet" type="AnimatedSprite2D" parent="MenuButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"PetButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="MenuButtons/Pet"]
+position = Vector2(-8, -92)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuButtons/Pet/Area2D"]
+polygon = PackedVector2Array(7, -5, 7, -2, 7, 1, 1.5, 1, -5, 1, -5, -5)
+
+[node name="Audio" type="AnimatedSprite2D" parent="MenuButtons"]
+sprite_frames = SubResource("SpriteFrames_ooxxu")
+animation = &"AudioButton"
+offset = Vector2(0, -64)
+script = ExtResource("9_oq8df")
+
+[node name="Area2D" type="Area2D" parent="MenuButtons/Audio"]
+position = Vector2(-22, -92)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuButtons/Audio/Area2D"]
+polygon = PackedVector2Array(7, -5, 7, -2, 7, 1, -6, 1, -6, -2, -2, -5)
+
+[connection signal="mouse_entered" from="ControlButtons/Center/Area2D" to="ControlButtons/Center" method="_mouseEntered"]
+[connection signal="mouse_exited" from="ControlButtons/Center/Area2D" to="ControlButtons/Center" method="_mouseExited"]
+[connection signal="mouse_entered" from="ControlButtons/Left/Area2D" to="ControlButtons/Left" method="_mouseEntered"]
+[connection signal="mouse_exited" from="ControlButtons/Left/Area2D" to="ControlButtons/Left" method="_mouseExited"]
+[connection signal="mouse_entered" from="ControlButtons/Right/Area2D" to="ControlButtons/Right" method="_mouseEntered"]
+[connection signal="mouse_exited" from="ControlButtons/Right/Area2D" to="ControlButtons/Right" method="_mouseExited"]
+[connection signal="mouse_entered" from="MenuButtons/Power/Area2D" to="MenuButtons/Power" method="_mouseEntered"]
+[connection signal="mouse_exited" from="MenuButtons/Power/Area2D" to="MenuButtons/Power" method="_mouseExited"]
+[connection signal="mouse_entered" from="MenuButtons/Options/Area2D" to="MenuButtons/Options" method="_mouseEntered"]
+[connection signal="mouse_exited" from="MenuButtons/Options/Area2D" to="MenuButtons/Options" method="_mouseExited"]
+[connection signal="mouse_entered" from="MenuButtons/Pet/Area2D" to="MenuButtons/Pet" method="_mouseEntered"]
+[connection signal="mouse_exited" from="MenuButtons/Pet/Area2D" to="MenuButtons/Pet" method="_mouseExited"]
+[connection signal="mouse_entered" from="MenuButtons/Audio/Area2D" to="MenuButtons/Audio" method="_mouseEntered"]
+[connection signal="mouse_exited" from="MenuButtons/Audio/Area2D" to="MenuButtons/Audio" method="_mouseExited"]

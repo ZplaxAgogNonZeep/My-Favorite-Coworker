@@ -37,34 +37,10 @@
 
 [sub_resource type="Animation" id="Animation_xm6xn"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Device:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(296, 648)]
-}
 
 [sub_resource type="Animation" id="Animation_2ni51"]
 resource_name = "SpawnDevice"
 length = 2.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Device:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2, 1.24167, 1.46667, 1.73333, 1.75833, 2.03333, 2.33333),
-"transitions": PackedFloat32Array(1.36604, 6.49802, 0.353553, 1, 1, 0.353553, 1, 1),
-"update": 0,
-"values": [Vector2(296, -28.885), Vector2(296, 648), Vector2(296, 648), Vector2(296, 628.36), Vector2(296, 648), Vector2(296, 648), Vector2(296, 641.875), Vector2(296, 648)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwd8q"]
 _data = {
@@ -191,7 +167,6 @@ _data = {
 
 [node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator")]
 process_mode = 1
-position = Vector2(-19, 1)
 script = ExtResource("1_5u0yl")
 _gameArea = NodePath("GameArea")
 _animator = NodePath("AnimationPlayer")
@@ -200,7 +175,6 @@ hopHeight = Vector2(0, -30)
 hopDuration = 0.25
 chatSpeed = 0.1
 metadata/_edit_group_ = true
-metadata/_edit_vertical_guides_ = [-19.0]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -322,28 +296,6 @@ position = Vector2(17, 153)
 sprite_frames = ExtResource("20_r0hmh")
 animation = &"Unselected"
 offset = Vector2(4.5, 4.5)
-
-[node name="HungerLabel" type="Label" parent="GameArea/MenuManager/StatusBars"]
-offset_left = -80.0
-offset_top = -104.0
-offset_right = 16.0
-offset_bottom = -86.0
-theme = ExtResource("14_veqju")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Hunger"
-vertical_alignment = 1
-
-[node name="JoyLabel" type="Label" parent="GameArea/MenuManager/StatusBars"]
-offset_left = 32.0
-offset_top = -104.0
-offset_right = 128.0
-offset_bottom = -86.0
-theme = ExtResource("14_veqju")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
-text = "Joy"
-vertical_alignment = 1
 
 [node name="Menu" type="Node2D" parent="GameArea/MenuManager"]
 

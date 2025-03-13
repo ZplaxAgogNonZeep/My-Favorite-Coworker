@@ -52,6 +52,7 @@ anchor_top = 0.0864198
 anchor_right = 0.847222
 anchor_bottom = 0.703704
 grow_horizontal = 2
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(200, 200)
 color = Color(1, 0.921569, 0.976471, 1)
 metadata/_edit_use_anchors_ = true

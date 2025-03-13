@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background", "device")]
+position = Vector2(300, 394.125)
 script = ExtResource("1_yxx2a")
 _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
@@ -58,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("3_jvvvb")
 controller = NodePath("../..")
@@ -85,8 +87,10 @@ layer = 2
 [node name="DialogManager" type="Control" parent="SystemDialog"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 576.0
-offset_bottom = 648.0
+offset_left = -640.0
+offset_top = 112.0
+offset_right = -64.0
+offset_bottom = 760.0
 mouse_filter = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("8_gowt0")
@@ -94,5 +98,3 @@ _systemWindowScene = ExtResource("9_k1t8d")
 _windowPosnVariance = Vector2(64, 64)
 
 [node name="Device" parent="." instance=ExtResource("11_7o31v")]
-
-[node name="Camera2D" type="Camera2D" parent="Device"]

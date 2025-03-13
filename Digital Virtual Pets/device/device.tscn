@@ -182,6 +182,8 @@ libraries = {
 &"": SubResource("AnimationLibrary_lwd8q")
 }
 
+[node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
+
 [node name="GameArea" type="Node2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "boundries", "ObjectSpawnLocations")]
 position = Vector2(0, -232)
 script = ExtResource("3_04b0e")
@@ -594,15 +596,14 @@ _evolveSequenceRate = 1.05
 metadata/_edit_lock_ = true
 
 [node name="PetSpawnPoint" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(0, 32)
-metadata/_edit_lock_ = true
+position = Vector2(0, 187)
 
 [node name="LeftBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-88, 32)
-gizmo_extents = 64.0
+position = Vector2(-27, 173)
+gizmo_extents = 54.0
 
 [node name="RightBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(88, 32)
+position = Vector2(27, 173)
 gizmo_extents = 64.0
 
 [node name="SpawnLocation0" type="Marker2D" parent="GameArea/PetManager/Markers"]
@@ -666,8 +667,6 @@ scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]
-
-[node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]

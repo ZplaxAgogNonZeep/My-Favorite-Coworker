@@ -191,7 +191,7 @@ _data = {
 
 [node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator")]
 process_mode = 1
-position = Vector2(-19, 1)
+position = Vector2(296, 648)
 script = ExtResource("1_5u0yl")
 _gameArea = NodePath("GameArea")
 _animator = NodePath("AnimationPlayer")

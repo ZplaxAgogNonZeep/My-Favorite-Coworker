@@ -1,4 +1,4 @@
-extends Panel
+extends Node2D
 
 var implements = [Interface.MenuState]
 

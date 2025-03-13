@@ -2,19 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://eqxnvlkx8x7a" path="res://assets/art/aesprite/ui/icons/joy_icon_sheet.png" id="1_sjxw8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apb50"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy6mk"]
 atlas = ExtResource("1_sjxw8")
-region = Rect2(9, 0, 9, 9)
+region = Rect2(10, 0, 10, 9)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ac1nd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqdr2"]
 atlas = ExtResource("1_sjxw8")
-region = Rect2(0, 0, 9, 9)
+region = Rect2(0, 0, 10, 9)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_apb50")
+"texture": SubResource("AtlasTexture_hy6mk")
 }],
 "loop": true,
 "name": &"Selected",
@@ -22,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ac1nd")
+"texture": SubResource("AtlasTexture_gqdr2")
 }],
 "loop": true,
 "name": &"Unselected",

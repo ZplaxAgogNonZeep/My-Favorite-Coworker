@@ -1,6 +1,6 @@
 extends Node
 
-@export var buttonArray : Array[Control] = []
+@export var buttonArray : Array[Node]
 
 var index := 0
 var active := false

@@ -3,12 +3,12 @@ extends Node2D
 enum MenuState {MINIMIZED, PLAY, STATS}
 
 @export_category("Object References")
-@export var miniMenu : Panel
+@export var miniMenu : Node2D
 @export var statMenu : Panel
 @export var playMenu : Panel
 
 var currentState : MenuState
-var stateReference : Panel
+var stateReference : Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

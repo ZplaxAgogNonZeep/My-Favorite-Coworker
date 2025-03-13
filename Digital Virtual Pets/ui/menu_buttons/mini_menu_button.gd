@@ -1,12 +1,11 @@
-extends Control
+extends Node2D
 
 var implements = [Interface.HighlightButton]
 
 signal ButtonSelected
 
-@onready var rect := $SelectionRect
-@onready var label := $OptionName
-@onready var icon := $OptionIcon
+@export var highlightSprite : Sprite2D
+@export var icon : AnimatedSprite2D
 
 var isHighlighted := false
 var isEnabled := true
@@ -23,16 +22,13 @@ func toggleHighlight(highlight : bool):
 	isHighlighted = highlight
 	
 	if (highlight):
-		rect.color = Color(0,0,0)
-		label.add_theme_color_override("font_color", Color("d5ded5"))
+		highlightSprite.visible = true
 		icon.animation = "Selected"
 	else:
-		rect.color = Color("d5ded5")
-		label.add_theme_color_override("font_color", Color(0, 0, 0))
+		highlightSprite.visible = false
 		icon.animation = "Unselected"
 
 
 func selectButton():
 	if (isEnabled):
 		ButtonSelected.emit()
-		

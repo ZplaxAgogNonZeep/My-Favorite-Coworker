@@ -182,8 +182,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_lwd8q")
 }
 
-[node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
-
 [node name="GameArea" type="Node2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "boundries", "ObjectSpawnLocations")]
 position = Vector2(0, -232)
 script = ExtResource("3_04b0e")
@@ -668,6 +666,8 @@ scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]
+
+[node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]

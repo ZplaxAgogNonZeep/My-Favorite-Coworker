@@ -71,13 +71,13 @@ func _requestPlayerAttention():
 
 func feed():
 	var food = foodInstance.instantiate()
-	food.stopFallingAt = boundries[0].position.y
+	food.stopFallingAt = boundries[1].position.y
 	if (not _spawnpointStatus.has(true)):
 		food.queue_free()
 		return
 	while true:
 		randomize()
-		var spawnNumber = randi_range(0, 3)
+		var spawnNumber = randi_range(0, 2)
 		if (_spawnpointStatus[spawnNumber]):
 			food.position = ObjectSpawnLocations[spawnNumber].position
 			break

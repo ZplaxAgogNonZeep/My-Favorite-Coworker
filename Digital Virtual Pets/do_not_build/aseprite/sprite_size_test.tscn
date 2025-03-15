@@ -1,8 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://brxcyqp7dfd3g"]
+[gd_scene load_steps=6 format=3 uid="uid://brxcyqp7dfd3g"]
 
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="1_cpo7u"]
+[ext_resource type="Texture2D" uid="uid://brgrdagmdmyok" path="res://do_not_build/aseprite/Device/GameBackground.png" id="2_88svn"]
+[ext_resource type="SpriteFrames" uid="uid://noxh6ocgu6nu" path="res://assets/animation_frames/pets/stage0/buh_egg.tres" id="3_phmoe"]
+[ext_resource type="Script" uid="uid://drjqpe1hypino" path="res://do_not_build/aseprite/animated_sprite_2d.gd" id="4_diiim"]
+[ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="5_ooxxu"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(-81, -281)
+scale = Vector2(4, 4)
 
 [node name="LinkDeviceSprite" parent="." instance=ExtResource("1_cpo7u")]
-position = Vector2(288, 648)
+position = Vector2(88, 210)
+
+[node name="Sprite2D" type="Sprite2D" parent="LinkDeviceSprite"]
+position = Vector2(0, -58)
+texture = ExtResource("2_88svn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LinkDeviceSprite"]
+position = Vector2(0, -40.3333)
+sprite_frames = ExtResource("3_phmoe")
+animation = &"Idle"
+script = ExtResource("4_diiim")
+
+[node name="Label" type="Label" parent="LinkDeviceSprite"]
+offset_left = -27.0
+offset_top = -81.75
+offset_right = 376.0
+offset_bottom = 223.25
+scale = Vector2(0.13, 0.13)
+theme = ExtResource("5_ooxxu")
+theme_override_font_sizes/font_size = 22
+text = "My Favorite Coworker!
+
+A Desktop Idle game about raising your own virtual pet
+
+Teaser trailer haching next week..."
+horizontal_alignment = 1
+autowrap_mode = 3

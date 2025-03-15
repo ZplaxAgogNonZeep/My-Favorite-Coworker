@@ -35,13 +35,29 @@ const MAX_PET_SLOTS := 3
 var activePet : Pet
 var _petSlots = []
 var _slotIndex : int
+var _boundryDistance : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameEvents.PetDied.connect(killPet)
 	GameEvents.ChangePet.connect(switchPet)
 	PetManager.instance = self
+	_boundryDistance = Vector2(rightBoundry.position.x - leftBoundry.position.x, 
+								rightBoundry.position.y - leftBoundry.position.y)
 
+# Used to convert percentage positions to local positions
+func percentToPosn(percentPosn : Vector2) -> Vector2:
+	return Vector2(lerpf(leftBoundry.position.x, rightBoundry.position.x, percentPosn.x), 
+			lerpf(leftBoundry.position.y, rightBoundry.position.y, percentPosn.y))
+
+# converts a local position to a percentage position
+func posnToPercent(posn : Vector2) -> Vector2:
+	var posnDistance = Vector2(posn.x - leftBoundry.position.x, posn.y - leftBoundry.position.y)
+	return Vector2(posnDistance.x / _boundryDistance.x, posnDistance.y / _boundryDistance.y)
+
+# take a position and increment it by the percent given
+func addPercentToPosn(posn : Vector2, percentPosn : Vector2) -> Vector2:
+	return percentToPosn(posnToPercent(posn) + percentPosn)
 
 #region Pet Spawning & Evolving
 func spawnPet(index := -1, isNewPet := false):

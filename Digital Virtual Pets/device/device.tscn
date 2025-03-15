@@ -115,7 +115,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jpmp"]
-radius = 8.0
+radius = 2.0
 
 [sub_resource type="Animation" id="Animation_j742v"]
 resource_name = "evolve_sequence_anim"
@@ -192,7 +192,7 @@ objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
-ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), NodePath("PetManager/Markers/SpawnLocation3")]
+ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), NodePath("")]
 foodInstance = ExtResource("4_qk4hv")
 metadata/_edit_lock_ = true
 
@@ -266,24 +266,28 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
+flip_h = true
 
 [node name="Heart2" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-6, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
+flip_h = true
 
 [node name="Heart3" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-12, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
+flip_h = true
 
 [node name="Heart4" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-18, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
+flip_h = true
 
 [node name="HungerIcon" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars"]
 position = Vector2(-26, 153)
@@ -580,12 +584,13 @@ offset_right = 224.0
 offset_bottom = 224.0
 metadata/_edit_lock_ = true
 
-[node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "petSpawnPoint", "_evolvingPet")]
+[node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("32_kagdc")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
 leftBoundry = NodePath("Markers/LeftBoundry")
 rightBoundry = NodePath("Markers/RightBoundry")
+animationManager = NodePath("EvolvingPet/AnimationPlayer")
 respawnPet = ExtResource("33_lyjso")
 petSpawnPoint = NodePath("Markers/PetSpawnPoint")
 petStartResource = ExtResource("34_cijat")
@@ -597,51 +602,43 @@ metadata/_edit_lock_ = true
 
 [node name="PetSpawnPoint" type="Marker2D" parent="GameArea/PetManager/Markers"]
 position = Vector2(0, 187)
+gizmo_extents = 2.5
 
 [node name="LeftBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-27, 173)
+position = Vector2(-27, 147)
 gizmo_extents = 54.0
 
 [node name="RightBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(27, 173)
-gizmo_extents = 64.0
+position = Vector2(27, 201)
+gizmo_extents = 54.0
 
 [node name="SpawnLocation0" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-72, -48)
+position = Vector2(-17, 165)
 
 [node name="SpawnLocation1" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-32, -48)
+position = Vector2(0, 165)
 
 [node name="SpawnLocation2" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(32, -48)
-
-[node name="SpawnLocation3" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(72, -48)
+position = Vector2(17, 165)
 
 [node name="FoodColliders" type="Node2D" parent="GameArea/PetManager"]
 
 [node name="SpawnCollider0" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(-72, -48)
+position = Vector2(-17, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider0"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="SpawnCollider1" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(-32, -48)
+position = Vector2(0, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider1"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="SpawnCollider2" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(32, -48)
+position = Vector2(17, 165)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider2"]
-shape = SubResource("CircleShape2D_6jpmp")
-
-[node name="SpawnCollider3" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(72, -48)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider3"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="EvolvingPet" type="Node2D" parent="GameArea/PetManager" node_paths=PackedStringArray("_previousEvo", "_nextEvo")]
@@ -677,8 +674,6 @@ offset = Vector2(0, -10)
 [connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderExited" binds= [1]]
 [connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderEntered" binds= [2]]
 [connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderExited" binds= [2]]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider3" to="GameArea" method="_foodColliderEntered" binds= [3]]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider3" to="GameArea" method="_foodColliderExited" binds= [3]]
 
 [editable path="GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="GameArea/MenuManager/Menu/MiniMenu/Stats"]

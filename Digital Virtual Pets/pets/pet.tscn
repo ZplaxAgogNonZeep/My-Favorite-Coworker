@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
-size = Vector2(16, 8)
+size = Vector2(8, 5)
 
 [node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer") groups=["Pet"]]
 script = ExtResource("1_sjpdi")
@@ -14,6 +14,8 @@ leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 _moveTimer = NodePath("Type/MoveTimer")
 _neglectTimer = NodePath("Type/NeglectTimer")
+roamSpeed = 0.1
+roamPercentage = 0.25
 
 [node name="Type" type="Node" parent="."]
 
@@ -30,19 +32,18 @@ animation = &"Idle"
 offset = Vector2(0, -8)
 
 [node name="LeftObjectColl" type="Area2D" parent="."]
-position = Vector2(-16, -4)
+position = Vector2(-4, -2.5)
 collision_layer = 0
 collision_mask = 2
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
 shape = SubResource("RectangleShape2D_jamv8")
 
 [node name="RightObjectColl" type="Area2D" parent="."]
-position = Vector2(16, -4)
+position = Vector2(4, -2.5)
 collision_layer = 0
 collision_mask = 2
-metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
 shape = SubResource("RectangleShape2D_jamv8")

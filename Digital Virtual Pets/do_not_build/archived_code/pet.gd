@@ -49,6 +49,7 @@ const personalityModifiers : Dictionary = {
 
 @export_category("Pet Values")
 @export var roamSpeed := .5
+@export_range(0, 1.0) var roamPercentage : float
 
 #region Saved Variables
 var petResource : PetTypeData #Saved
@@ -101,13 +102,18 @@ func _process(delta):
 		
 		
 		if (targetPosn):
-			#alineToBoundry()
+			targetPosn = alineToBoundry(targetPosn)
 			
 			if (position.x != targetPosn.x):
 				if not isRoaming:
 					isRoaming = true
-				
+				var lastPosn = position
 				position -= (position - targetPosn).normalized() * roamSpeed
+				if ((lastPosn.x < targetPosn.x and position.x > targetPosn.x) 
+						or 
+					(lastPosn.x > targetPosn.x and position.x < targetPosn.x)):
+					
+					position = targetPosn
 			else:
 				isRoaming = false
 		
@@ -281,13 +287,19 @@ func setSavableData(data : PetSaveData) -> void:
 				continue
 			set(property["name"], data.get(property["name"]))
 
-
-func alineToBoundry():
-	if (targetPosn.x > boundries[1].x):
-		targetPosn.x = boundries[1].x
-	if (targetPosn.x < boundries[0].x):
-		targetPosn.x = boundries[0].x
-
+# Adjusts a given position's x value to fit within the game's boundry
+func alineToBoundry(posn : Vector2) -> Vector2:
+	var xBoundries = Vector2(PetManager.instance.percentToPosn(Vector2.ZERO).x, 
+							PetManager.instance.percentToPosn(Vector2.ONE).x)
+	var returnPosn := posn
+	
+	if (posn.x > xBoundries.y):
+		returnPosn.x = xBoundries.y
+	if (posn.x < xBoundries.x):
+		returnPosn.x = xBoundries.x
+	
+	return returnPosn
+	
 
 func setSpriteDirection(overrideDirection := false, direction := false):
 	if (overrideDirection):
@@ -306,15 +318,17 @@ func personalityMod(statToIncrease : Enums.AbilityStat, value):
 
 
 func getNextPosition():
-	var RightMostPosn = position.x + 48
-	var LeftMostPosn = position.x - 48
+	print("Starting at position ", position)
+	var RightMostPosn = PetManager.instance.addPercentToPosn(position, Vector2(roamPercentage, 0)).x
+	var LeftMostPosn = PetManager.instance.addPercentToPosn(position, Vector2(-1 * roamPercentage, 0)).x
 	
-	if (RightMostPosn > boundries[1].x):
-		RightMostPosn = boundries[1].x
-	if (LeftMostPosn < boundries[0].x):
-		LeftMostPosn = boundries[0].x
+	RightMostPosn = alineToBoundry(Vector2(RightMostPosn, position.y)).x
+	LeftMostPosn = alineToBoundry(Vector2(LeftMostPosn, position.y)).x
+
 	randomize()
-	return Vector2(randi_range(RightMostPosn, LeftMostPosn), position.y)
+	var posn = randf_range(LeftMostPosn, RightMostPosn)
+	print(posn, " out of ", LeftMostPosn, " / ", RightMostPosn)
+	return Vector2(posn, position.y)
 
 
 func goToPosition(posn : Vector2):

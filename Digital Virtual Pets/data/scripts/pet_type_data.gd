@@ -3,7 +3,7 @@ extends Resource
 class_name PetTypeData
 
 const SPRITE_OFFSETS : Array[float] = [-8, -8, -10, -12]
-const COLLISION_OFFSETS : Array[float] = [0, 16, 30, 36]
+const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 
 @export_category("Pet Type Data")
 @export var name : String

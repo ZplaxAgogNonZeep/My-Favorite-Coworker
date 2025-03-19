@@ -8,13 +8,13 @@ var implements = [Interface.MiniGame]
 @export var gameTimerRange : Vector2
 @export var catchWindowDuration : float
 
-var playMenu : Panel
+var playMenu : Node2D
 var connectedPet : Node2D
 var gameRunning : bool
 var isCatchWindow : bool
 var catchWindowTimer : SceneTreeTimer
 
-func startGame(pet : Node2D, playMenu : Panel):
+func startGame(pet : Node2D, playMenu : Node2D):
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)

@@ -7,7 +7,7 @@ var implements = [Interface.MiniGame]
 @export var joyIncrement : int
 @export var statIncrement : int
 
-var playMenu : Panel
+var playMenu : Node2D
 var connectedPet : Node2D
 var gameRunning := false
 var intervalCount := 6
@@ -17,7 +17,7 @@ var guessDirIsRight : bool
 var isGuessMade := false
 
 
-func startGame(pet : Node2D, playMenu : Panel):
+func startGame(pet : Node2D, playMenu : Node2D):
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)

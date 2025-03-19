@@ -328,36 +328,27 @@ position = Vector2(9, -5)
 [node name="OptionIcon" parent="GameArea/MenuManager/Menu/MiniMenu/Stats" index="1"]
 sprite_frames = SubResource("SpriteFrames_qk4hv")
 
-[node name="StatMenu" type="Panel" parent="GameArea/MenuManager/Menu"]
+[node name="StatMenu" type="Node2D" parent="GameArea/MenuManager/Menu"]
 visible = false
 z_index = 1
-offset_left = -112.0
-offset_top = -112.0
-offset_right = 112.0
-offset_bottom = 112.0
-theme = ExtResource("15_ul75l")
 script = ExtResource("22_k7vqq")
 
 [node name="BlankMenuSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu"]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
+position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
-metadata/_edit_lock_ = true
 
 [node name="Name" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 144.0
-offset_right = 208.0
-offset_bottom = 176.0
+offset_top = -52.0
+offset_right = 104.0
+offset_bottom = -20.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
-text = "Name"
+text = "Pet Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Display Sprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu"]
-position = Vector2(152, 144)
-scale = Vector2(4, 4)
+position = Vector2(12, -54)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
@@ -386,21 +377,22 @@ texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
 [node name="Personality" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 172.0
-offset_bottom = 31.0
+offset_left = -26.0
+offset_top = -84.0
+offset_right = 138.0
+offset_bottom = -57.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
-text = "Personality: ??????"
+text = "Personality: 
+??????"
 vertical_alignment = 1
 
 [node name="Pow" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 40.0
-offset_right = 46.0
-offset_bottom = 64.0
+offset_left = -26.0
+offset_top = -68.0
+offset_right = 12.0
+offset_bottom = -44.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
 text = "POW:"
 vertical_alignment = 1
@@ -416,11 +408,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="End" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 72.0
-offset_right = 48.0
-offset_bottom = 96.0
+offset_left = -26.0
+offset_top = -63.0
+offset_right = 14.0
+offset_bottom = -39.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
 text = "END:"
 vertical_alignment = 1
@@ -436,11 +428,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Spd" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 104.0
-offset_right = 48.0
-offset_bottom = 128.0
+offset_left = -26.0
+offset_top = -58.0
+offset_right = 14.0
+offset_bottom = -34.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
 text = "SPD:"
 vertical_alignment = 1
@@ -456,11 +448,11 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Bal" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
-offset_right = 48.0
-offset_bottom = 160.0
+offset_left = -26.0
+offset_top = -53.0
+offset_right = 14.0
+offset_bottom = -29.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("14_veqju")
 text = "BAL:"
 vertical_alignment = 1
@@ -475,29 +467,24 @@ text = "00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayMenu" type="Panel" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+[node name="PlayMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 visible = false
 z_index = 1
-offset_left = -112.0
-offset_top = -112.0
-offset_right = 112.0
-offset_bottom = 112.0
-theme = ExtResource("15_ul75l")
 script = ExtResource("25_0gch6")
 buttonController = NodePath("GameMenu/ButtonController")
 miniGameList = Array[PackedScene]([ExtResource("26_5qrur"), ExtResource("27_fqxdl"), ExtResource("28_b7mkj"), ExtResource("29_1gro0"), ExtResource("30_g6ycs")])
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="GameArea/MenuManager/Menu/PlayMenu"]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
+position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
-metadata/_edit_lock_ = true
 
 [node name="GameMenu" type="Panel" parent="GameArea/MenuManager/Menu/PlayMenu"]
-layout_mode = 0
-offset_right = 224.0
-offset_bottom = 224.0
-metadata/_edit_lock_ = true
+offset_left = -27.0
+offset_top = -85.0
+offset_right = 197.0
+offset_bottom = 139.0
+scale = Vector2(0.24, 0.24)
+theme = ExtResource("15_ul75l")
 
 [node name="MenuLabel" type="Label" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
 layout_mode = 0
@@ -575,10 +562,12 @@ metadata/_edit_group_ = true
 text = "Endure!"
 
 [node name="MiniGameContainer" type="Panel" parent="GameArea/MenuManager/Menu/PlayMenu"]
-layout_mode = 0
-offset_right = 224.0
-offset_bottom = 224.0
-metadata/_edit_lock_ = true
+offset_left = -27.0
+offset_top = -85.0
+offset_right = 197.0
+offset_bottom = 139.0
+scale = Vector2(0.24, 0.24)
+theme = ExtResource("15_ul75l")
 
 [node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("32_kagdc")

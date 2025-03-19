@@ -4,8 +4,8 @@ enum MenuState {MINIMIZED, PLAY, STATS}
 
 @export_category("Object References")
 @export var miniMenu : Node2D
-@export var statMenu : Panel
-@export var playMenu : Panel
+@export var statMenu : Node2D
+@export var playMenu : Node2D
 
 var currentState : MenuState
 var stateReference : Node

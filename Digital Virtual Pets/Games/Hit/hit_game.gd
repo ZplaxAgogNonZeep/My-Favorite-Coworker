@@ -14,7 +14,7 @@ var implements = [Interface.MiniGame]
 @export var decreaseAmount : int
 @export var mashMeter : Node2D
 
-var playMenu : Panel
+var playMenu : Node2D
 var connectedPet : Node2D
 var gameRunning : bool
 var mashAmount : int = 0
@@ -25,7 +25,7 @@ func _process(delta):
 	if gameRunning and mashMode and mashAmount > 0 and $MashDecrease.is_stopped():
 		$MashDecrease.start(decreaseFrequency)
 
-func startGame(pet : Node2D, playMenu : Panel):
+func startGame(pet : Node2D, playMenu : Node2D):
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)

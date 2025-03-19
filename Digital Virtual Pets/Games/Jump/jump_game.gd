@@ -15,7 +15,7 @@ var implements = [Interface.MiniGame]
 @export var jumpDuration : float
 @export var repetitionRange : Vector2
 
-var playMenu : Panel
+var playMenu : Node2D
 var connectedPet : Node2D
 var gameRunning : bool
 var reptetitions : int
@@ -34,7 +34,7 @@ func _process(delta):
 				onWin()
 		
 
-func startGame(pet : Node2D, playMenu : Panel):
+func startGame(pet : Node2D, playMenu : Node2D):
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
 	connectedPet = pet

@@ -37,15 +37,15 @@ func exitMenu():
 func closeMenu():
 	stateMachine.setState(stateMachine.MenuState.MINIMIZED)
 
-func takeInput(input : Enums.InputType):
+func takeInput(input : Enums.DeviceButton):
 	match state:
 		PlayState.MENU:
 			match input:
-				Enums.InputType.MIDDLEBUTTON:
+				Enums.DeviceButton.CENTER_BUTTON:
 					buttonController.select()
-				Enums.InputType.LEFTBUTTON:
+				Enums.DeviceButton.LEFT_BUTTON:
 					buttonController.cycle(-1)
-				Enums.InputType.RIGHTBUTTON:
+				Enums.DeviceButton.RIGHT_BUTTON:
 					buttonController.cycle(1)
 		PlayState.GAME:
 			if game:

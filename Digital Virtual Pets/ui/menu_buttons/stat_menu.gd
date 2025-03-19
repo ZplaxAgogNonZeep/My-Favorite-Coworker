@@ -43,8 +43,8 @@ func exitMenu():
 	GameEvents.UnpauseGame.emit()
 
 
-func takeInput(input : Enums.InputType):
-	if (input == Enums.InputType.MIDDLEBUTTON):
+func takeInput(input : Enums.DeviceButton):
+	if (input == Enums.DeviceButton.CENTER_BUTTON):
 		closeMenu()
 
 

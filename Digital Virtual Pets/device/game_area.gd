@@ -68,6 +68,24 @@ func _requestPlayerAttention():
 
 #region Events 
 
+func _handleButtonInput(button : Enums.DeviceButton):
+	match button:
+		Enums.DeviceButton.CENTER_BUTTON:
+			menuManager.handleInput(button)
+		Enums.DeviceButton.LEFT_BUTTON:
+			menuManager.handleInput(button)
+		Enums.DeviceButton.RIGHT_BUTTON:
+			menuManager.handleInput(button)
+		Enums.DeviceButton.POWER_BUTTON:
+			pass
+		Enums.DeviceButton.OPTIONS_BUTTON:
+			pass
+		Enums.DeviceButton.PET_BUTTON:
+			pass
+		Enums.DeviceButton.AUDIO_BUTTON:
+			pass
+
+
 func feed():
 	var food = foodInstance.instantiate()
 	food.stopFallingAt = petManager.petSpawnPoint.position.y

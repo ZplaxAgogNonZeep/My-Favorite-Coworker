@@ -55,7 +55,7 @@ func startGame(pet : Node2D, playMenu : Panel):
 
 func takeInput(input : Enums.InputType):
 	if gameRunning:
-		if input == Enums.InputType.MIDDLEBUTTON and not isJump:
+		if input == Enums.DeviceButton.CENTER_BUTTON and not isJump:
 			$PseudoPet.tweenToLocation($JumpHeight.position, jumpDuration * .5)
 			isRaise = true
 			isJump = true
@@ -96,4 +96,3 @@ func endGame():
 
 func updateGameText(text : String):
 	$Status.text = text
-

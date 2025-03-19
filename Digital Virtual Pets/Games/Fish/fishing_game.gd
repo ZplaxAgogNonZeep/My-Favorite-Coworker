@@ -54,10 +54,10 @@ func endGame():
 	playMenu.closeMenu()
 	queue_free()
 
-func takeInput(input : Enums.InputType):
+func takeInput(input : Enums.DeviceButton):
 	if gameRunning:
 		gameRunning = false
-		if input == Enums.InputType.MIDDLEBUTTON:
+		if input == Enums.DeviceButton.CENTER_BUTTON:
 			$Timer.stop()
 			$CatchWindow.stop()
 			if isCatchWindow:

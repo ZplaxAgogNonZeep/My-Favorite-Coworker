@@ -82,12 +82,12 @@ func endGame():
 	playMenu.closeMenu()
 	queue_free()
 
-func takeInput(input : Enums.InputType):
+func takeInput(input : Enums.DeviceButton):
 		if gameRunning:
 			match input:
-				Enums.InputType.LEFTBUTTON:
+				Enums.DeviceButton.LEFT_BUTTON:
 					guessDirIsRight = false
 					isGuessMade = true
-				Enums.InputType.RIGHTBUTTON:
+				Enums.DeviceButton.RIGHT_BUTTON:
 					guessDirIsRight = true
 					isGuessMade = true

@@ -22,11 +22,11 @@ func exitMenu():
 func takeInput(input : Enums.InputType):
 	if (buttonController.active):
 		match input:
-			Enums.InputType.LEFTBUTTON:
+			Enums.DeviceButton.LEFT_BUTTON:
 				buttonController.cycle(-1)
-			Enums.InputType.RIGHTBUTTON:
+			Enums.DeviceButton.RIGHT_BUTTON:
 				buttonController.cycle(1)
-			Enums.InputType.MIDDLEBUTTON:
+			Enums.DeviceButton.CENTER_BUTTON:
 				buttonController.select()
 	else:
 		buttonController.setActive(true)

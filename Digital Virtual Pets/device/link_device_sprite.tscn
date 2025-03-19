@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bxgg1k0vh82t6"]
+[gd_scene load_steps=26 format=3 uid="uid://bxgg1k0vh82t6"]
 
 [ext_resource type="Texture2D" uid="uid://dp0552ox0be7h" path="res://do_not_build/aseprite/LinkDeviceSprite.png" id="1_w7yhk"]
+[ext_resource type="Script" uid="uid://cjnlwgkuswi6j" path="res://device/link_device_button_manager.gd" id="2_7pd7f"]
 [ext_resource type="Texture2D" uid="uid://2l5xccro1gcr" path="res://assets/art/aesprite/device/audio_button_sheet.png" id="2_ex2ea"]
 [ext_resource type="Texture2D" uid="uid://dlun3cap2g1bj" path="res://assets/art/aesprite/device/center_button_sheet.png" id="3_7pd7f"]
 [ext_resource type="Texture2D" uid="uid://d13q43b0wpj8t" path="res://assets/art/aesprite/device/left_button_sheet.png" id="4_2t7hj"]
@@ -191,6 +192,7 @@ animations = [{
 [node name="LinkDeviceSprite" type="Sprite2D"]
 texture = ExtResource("1_w7yhk")
 offset = Vector2(0, -64)
+script = ExtResource("2_7pd7f")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -214,6 +216,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"LeftButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 1
 
 [node name="Area2D" type="Area2D" parent="ControlButtons/Left"]
 position = Vector2(-36, -60)
@@ -227,6 +230,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"RightButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 2
 
 [node name="Area2D" type="Area2D" parent="ControlButtons/Right"]
 position = Vector2(33.5, -60)
@@ -242,6 +246,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"PowerButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 6
 
 [node name="Area2D" type="Area2D" parent="MenuButtons/Power"]
 position = Vector2(20, -92)
@@ -255,6 +260,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"OptionsButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 5
 
 [node name="Area2D" type="Area2D" parent="MenuButtons/Options"]
 position = Vector2(6, -92)
@@ -268,6 +274,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"PetButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 4
 
 [node name="Area2D" type="Area2D" parent="MenuButtons/Pet"]
 position = Vector2(-8, -92)
@@ -281,6 +288,7 @@ sprite_frames = SubResource("SpriteFrames_ooxxu")
 animation = &"AudioButton"
 offset = Vector2(0, -64)
 script = ExtResource("9_oq8df")
+_assignedButton = 3
 
 [node name="Area2D" type="Area2D" parent="MenuButtons/Audio"]
 position = Vector2(-22, -92)
@@ -289,17 +297,24 @@ metadata/_edit_group_ = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MenuButtons/Audio/Area2D"]
 polygon = PackedVector2Array(7, -5, 7, -2, 7, 1, -6, 1, -6, -2, -2, -5)
 
+[connection signal="DeviceButtonPressed" from="ControlButtons/Center" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="ControlButtons/Center/Area2D" to="ControlButtons/Center" method="_mouseEntered"]
 [connection signal="mouse_exited" from="ControlButtons/Center/Area2D" to="ControlButtons/Center" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="ControlButtons/Left" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="ControlButtons/Left/Area2D" to="ControlButtons/Left" method="_mouseEntered"]
 [connection signal="mouse_exited" from="ControlButtons/Left/Area2D" to="ControlButtons/Left" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="ControlButtons/Right" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="ControlButtons/Right/Area2D" to="ControlButtons/Right" method="_mouseEntered"]
 [connection signal="mouse_exited" from="ControlButtons/Right/Area2D" to="ControlButtons/Right" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="MenuButtons/Power" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="MenuButtons/Power/Area2D" to="MenuButtons/Power" method="_mouseEntered"]
 [connection signal="mouse_exited" from="MenuButtons/Power/Area2D" to="MenuButtons/Power" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="MenuButtons/Options" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="MenuButtons/Options/Area2D" to="MenuButtons/Options" method="_mouseEntered"]
 [connection signal="mouse_exited" from="MenuButtons/Options/Area2D" to="MenuButtons/Options" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="MenuButtons/Pet" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="MenuButtons/Pet/Area2D" to="MenuButtons/Pet" method="_mouseEntered"]
 [connection signal="mouse_exited" from="MenuButtons/Pet/Area2D" to="MenuButtons/Pet" method="_mouseExited"]
+[connection signal="DeviceButtonPressed" from="MenuButtons/Audio" to="." method="_deviceButtonPressed"]
 [connection signal="mouse_entered" from="MenuButtons/Audio/Area2D" to="MenuButtons/Audio" method="_mouseEntered"]
 [connection signal="mouse_exited" from="MenuButtons/Audio/Area2D" to="MenuButtons/Audio" method="_mouseExited"]

@@ -660,9 +660,7 @@ offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]
 
-[node name="Meat" parent="GameArea/ObjectContainer" instance=ExtResource("4_qk4hv")]
-position = Vector2(-6, -62)
-
+[connection signal="ButtonPressed" from="LinkDeviceSprite" to="GameArea" method="_handleButtonInput"]
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]
 [connection signal="timeout" from="GameArea/GameTimers/EvolveTimer" to="GameArea" method="_evolveCheck"]

@@ -36,13 +36,15 @@ func _process(delta):
 	pass
 
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("LeftButton"):
-		sendInput(Enums.InputType.LEFTBUTTON)
-	elif Input.is_action_just_pressed("MiddleButton"):
-		sendInput(Enums.InputType.MIDDLEBUTTON)
-	elif Input.is_action_just_pressed("RightButton"):
-		sendInput(Enums.InputType.RIGHTBUTTON)
+func handleInput(event : Enums.DeviceButton):
+	sendInput(event)
+#func _unhandled_input(event):
+	#if Input.is_action_just_pressed("LeftButton"):
+		#sendInput(Enums.InputType.LEFTBUTTON)
+	#elif Input.is_action_just_pressed("MiddleButton"):
+		#sendInput(Enums.InputType.MIDDLEBUTTON)
+	#elif Input.is_action_just_pressed("RightButton"):
+		#sendInput(Enums.InputType.RIGHTBUTTON)
 
 func setState(state: MenuState):
 	if (stateReference):
@@ -59,7 +61,7 @@ func setState(state: MenuState):
 	
 	stateReference.initializeMenu()
 
-func sendInput(input : Enums.InputType):
+func sendInput(input : Enums.DeviceButton):
 	match currentState:
 		MenuState.MINIMIZED:
 			if miniMenu.implements.has(Interface.MenuState):

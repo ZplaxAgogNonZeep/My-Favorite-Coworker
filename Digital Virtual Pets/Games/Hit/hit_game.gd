@@ -74,10 +74,10 @@ func updateGameText(text : String):
 func updateMashBar(value : int, maxAmount : int):
 	mashMeter.updateMeter(value, maxAmount)
 
-func takeInput(input : Enums.InputType):
+func takeInput(input : Enums.DeviceButton):
 	if gameRunning and mashMode:
 			match input:
-				Enums.InputType.MIDDLEBUTTON:
+				Enums.DeviceButton.CENTER_BUTTON:
 					mashAmount += 1
 					updateMashBar(mashAmount, mashMax)
 

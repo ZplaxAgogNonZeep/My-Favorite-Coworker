@@ -15,6 +15,18 @@ func _ready() -> void:
 	GameEvents.StartHopDevice.connect(deviceMoving)
 	GameEvents.FinishedShakeDevice.connect(deviceNotMoving)
 	GameEvents.FinishedHopDevice.connect(deviceNotMoving)
+	
+	# I don't know why I have to do this but when spawning in a kinematic body, it will always try to
+	# adjust itself to be 1x scale based on the parent
+	
+	await get_tree().process_frame
+	await get_tree().process_frame
+	
+	$CollisionShape2D.scale = Vector2.ONE * Settings.gameScale
+	$Sprite2D.scale = Vector2.ONE * Settings.gameScale
+	
+	$CollisionShape2D.position.y *= Settings.gameScale
+	$Sprite2D.position.y *= Settings.gameScale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,7 +40,7 @@ func _process(delta):
 			freeze = true
 			readyToEat = true
 			GameEvents.FoodPlaced.emit(self)
-			
+
 
 func deviceMoving():
 	if (not readyToEat):

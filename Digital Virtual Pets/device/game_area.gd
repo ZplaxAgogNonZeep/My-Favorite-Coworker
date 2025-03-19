@@ -58,7 +58,6 @@ func _proactivityBehavior():
 func _requestPlayerAttention():
 	if (Settings.windowFocused or not Settings.isRequestAttentionAllowed):
 		return
-	
 	if (Settings.isSetWindowPinned):
 		DisplayServer.window_request_attention()
 	else:
@@ -71,7 +70,7 @@ func _requestPlayerAttention():
 
 func feed():
 	var food = foodInstance.instantiate()
-	food.stopFallingAt = boundries[1].position.y
+	food.stopFallingAt = petManager.petSpawnPoint.position.y
 	if (not _spawnpointStatus.has(true)):
 		food.queue_free()
 		return

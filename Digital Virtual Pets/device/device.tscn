@@ -185,16 +185,14 @@ libraries = {
 [node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
 [node name="GameArea" type="Node2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "boundries", "ObjectSpawnLocations")]
-position = Vector2(0, -232)
 script = ExtResource("3_04b0e")
 device = NodePath("..")
 objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
-ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), NodePath("")]
+ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), null]
 foodInstance = ExtResource("4_qk4hv")
-metadata/_edit_lock_ = true
 
 [node name="GameTimers" type="Node" parent="GameArea"]
 
@@ -216,21 +214,19 @@ _isForGameArea = true
 [node name="BackdropSprite" type="Sprite2D" parent="GameArea"]
 z_index = -10
 z_as_relative = false
-position = Vector2(0, 174)
+position = Vector2(0, -58)
 texture = ExtResource("8_5u0yl")
-metadata/_edit_lock_ = true
 
 [node name="MenuManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu")]
 script = ExtResource("9_5xc8b")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
-metadata/_edit_lock_ = true
 
 [node name="StatusBars" type="Node2D" parent="GameArea/MenuManager"]
 
 [node name="Hungerbar" type="Node2D" parent="GameArea/MenuManager/StatusBars"]
-position = Vector2(-27, 147)
+position = Vector2(-27, -85.5)
 script = ExtResource("10_g2vwl")
 metadata/_edit_group_ = true
 
@@ -258,7 +254,7 @@ animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 
 [node name="JoyBar" type="Node2D" parent="GameArea/MenuManager/StatusBars"]
-position = Vector2(20, 147)
+position = Vector2(19.5, -85.5)
 script = ExtResource("10_g2vwl")
 metadata/_edit_group_ = true
 
@@ -290,13 +286,13 @@ offset = Vector2(3.5, 3.5)
 flip_h = true
 
 [node name="HungerIcon" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars"]
-position = Vector2(-26, 153)
+position = Vector2(-26, -79.5)
 sprite_frames = ExtResource("12_lwr14")
 animation = &"Unselected"
 offset = Vector2(4.5, 4.5)
 
 [node name="JoyIcon" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars"]
-position = Vector2(17, 153)
+position = Vector2(16.5, -79.5)
 sprite_frames = ExtResource("20_r0hmh")
 animation = &"Unselected"
 offset = Vector2(4.5, 4.5)
@@ -305,7 +301,7 @@ offset = Vector2(4.5, 4.5)
 
 [node name="MiniMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 z_index = 1
-position = Vector2(0, 195)
+position = Vector2(0, -37)
 script = ExtResource("16_v38ai")
 buttonController = NodePath("ButtonController")
 
@@ -598,52 +594,51 @@ _evolvingPet = NodePath("EvolvingPet")
 _evolveSequenceRate = 1.05
 
 [node name="Markers" type="Node2D" parent="GameArea/PetManager"]
-metadata/_edit_lock_ = true
 
 [node name="PetSpawnPoint" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(0, 187)
+position = Vector2(0, -45)
 gizmo_extents = 2.5
 
 [node name="LeftBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-27, 147)
+position = Vector2(-27, -85)
 gizmo_extents = 54.0
 
 [node name="RightBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(27, 201)
+position = Vector2(27, -31)
 gizmo_extents = 54.0
 
 [node name="SpawnLocation0" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(-17, 165)
+position = Vector2(-17, -67)
 
 [node name="SpawnLocation1" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(0, 165)
+position = Vector2(0, -67)
 
 [node name="SpawnLocation2" type="Marker2D" parent="GameArea/PetManager/Markers"]
-position = Vector2(17, 165)
+position = Vector2(17, -67)
 
 [node name="FoodColliders" type="Node2D" parent="GameArea/PetManager"]
 
 [node name="SpawnCollider0" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(-17, 165)
+position = Vector2(-17, -67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider0"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="SpawnCollider1" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(0, 165)
+position = Vector2(0, -67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider1"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="SpawnCollider2" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
-position = Vector2(17, 165)
+position = Vector2(17, -67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider2"]
 shape = SubResource("CircleShape2D_6jpmp")
 
 [node name="EvolvingPet" type="Node2D" parent="GameArea/PetManager" node_paths=PackedStringArray("_previousEvo", "_nextEvo")]
 visible = false
-position = Vector2(-304, -408)
+position = Vector2(0, -45)
 script = ExtResource("35_071hk")
 _previousEvo = NodePath("PreviousEvolution")
 _nextEvo = NodePath("NextEvolution")
@@ -664,6 +659,9 @@ scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]
+
+[node name="Meat" parent="GameArea/ObjectContainer" instance=ExtResource("4_qk4hv")]
+position = Vector2(-6, -62)
 
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]

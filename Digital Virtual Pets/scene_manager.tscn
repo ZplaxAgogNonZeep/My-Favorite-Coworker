@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background", "device")]
-position = Vector2(300, 394.125)
 script = ExtResource("1_yxx2a")
 _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
@@ -100,5 +99,5 @@ _systemWindowScene = ExtResource("9_k1t8d")
 _windowPosnVariance = Vector2(64, 64)
 
 [node name="Device" parent="." instance=ExtResource("11_7o31v")]
-position = Vector2(-4, 221.875)
+position = Vector2(288, 648)
 scale = Vector2(2, 2)

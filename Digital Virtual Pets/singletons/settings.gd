@@ -19,6 +19,9 @@ var isSetWindowPinned := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
+## Ints
+#TODO: Make sure this is implemented and the definitive way to check game scale
+var gameScale := 2
 ## Enums
 var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_TO_FRONT
 #endregion

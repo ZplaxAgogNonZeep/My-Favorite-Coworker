@@ -175,6 +175,7 @@ hopHeight = Vector2(0, -30)
 hopDuration = 0.25
 chatSpeed = 0.1
 metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -328,142 +329,152 @@ position = Vector2(9, -5)
 [node name="OptionIcon" parent="GameArea/MenuManager/Menu/MiniMenu/Stats" index="1"]
 sprite_frames = SubResource("SpriteFrames_qk4hv")
 
-[node name="StatMenu" type="Node2D" parent="GameArea/MenuManager/Menu"]
+[node name="StatMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("_panelList")]
 visible = false
 z_index = 1
 script = ExtResource("22_k7vqq")
+_panelList = [NodePath("DisplayPanel"), NodePath("StatPanel")]
 
 [node name="BlankMenuSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu"]
 position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
-[node name="Name" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
-offset_top = -52.0
-offset_right = 104.0
-offset_bottom = -20.0
-scale = Vector2(0.25, 0.25)
+[node name="DisplayPanel" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu"]
+
+[node name="Name" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+offset_left = -27.0
+offset_top = -53.0
+offset_right = 81.0
+offset_bottom = -33.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "Pet Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Display Sprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu"]
-position = Vector2(12, -54)
+[node name="Display Sprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+position = Vector2(0, -55)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist0" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+[node name="EvoHist0" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(-12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist1" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+[node name="EvoHist1" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(-4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist2" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+[node name="EvoHist2" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist3" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/Display Sprite"]
+[node name="EvoHist3" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="Personality" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="Node2D" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+
+[node name="StatPanel" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu"]
+visible = false
+
+[node name="Personality" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -84.0
-offset_right = 138.0
+offset_right = 84.0
 offset_bottom = -57.0
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "Personality: 
-??????"
+Airhead"
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pow" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="Pow" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -68.0
 offset_right = 12.0
-offset_bottom = -44.0
-scale = Vector2(0.25, 0.25)
+offset_bottom = -56.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "POW:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/Pow"]
+[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Pow"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 72.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_right = 58.0
+offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "00"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="End" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="End" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
-offset_top = -63.0
+offset_top = -62.0
 offset_right = 14.0
-offset_bottom = -39.0
-scale = Vector2(0.25, 0.25)
+offset_bottom = -50.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "END:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/End"]
+[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/End"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 72.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_right = 58.0
+offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "00"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="Spd" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
-offset_top = -58.0
+offset_top = -56.0
 offset_right = 14.0
-offset_bottom = -34.0
-scale = Vector2(0.25, 0.25)
+offset_bottom = -44.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "SPD:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/Spd"]
+[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Spd"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 72.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_right = 58.0
+offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "00"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bal" type="Label" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="Bal" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
-offset_top = -53.0
+offset_top = -50.0
 offset_right = 14.0
-offset_bottom = -29.0
-scale = Vector2(0.25, 0.25)
+offset_bottom = -38.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
 text = "BAL:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/Bal"]
+[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Bal"]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 72.0
-offset_bottom = 24.0
+offset_left = 38.0
+offset_right = 58.0
+offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "00"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -488,10 +499,11 @@ theme = ExtResource("15_ul75l")
 
 [node name="MenuLabel" type="Label" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 31.0
+offset_left = -95.8333
+offset_top = -4.16667
+offset_right = 112.167
+offset_bottom = 18.8333
+scale = Vector2(2.08, 2.08)
 theme = ExtResource("14_veqju")
 text = "Pick a game!"
 horizontal_alignment = 1
@@ -506,6 +518,7 @@ offset_left = 72.0
 offset_top = 144.0
 offset_right = 152.0
 offset_bottom = 168.0
+scale = Vector2(1.425, 1.425)
 metadata/_edit_group_ = true
 
 [node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit" index="1"]

@@ -32,8 +32,8 @@ animations = [{
 [node name="EndureGame" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_right = 54.0
+offset_bottom = 54.0
 script = ExtResource("1_vscop")
 joyIncrement = 50
 statIncrement = 2
@@ -51,53 +51,33 @@ decreaseAmount = 1
 [node name="MashDecrease" type="Timer" parent="."]
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
 texture = ExtResource("2_fefqy")
+offset = Vector2(27, 27)
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_mquew")]
-position = Vector2(128, 120)
-
-[node name="GameName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 34.0
-theme = ExtResource("4_ikg0c")
-text = "Endure the Heat!"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(25, 27)
 
 [node name="Status" type="Label" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
+offset_top = 34.0
 offset_right = 216.0
-offset_bottom = 169.0
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("4_ikg0c")
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"MiniGameLabel"
 text = "ENDURE!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MashMeter" parent="." instance=ExtResource("5_mjufo")]
-position = Vector2(40, 88)
+position = Vector2(6, 16)
 
 [node name="Steam" type="AnimatedSprite2D" parent="."]
-position = Vector2(80, 96)
-scale = Vector2(3, 3)
+position = Vector2(44, 18)
 sprite_frames = SubResource("SpriteFrames_4mrwo")
 animation = &"Idle"
-frame_progress = 0.636657
-
-[node name="Steam2" type="AnimatedSprite2D" parent="."]
-position = Vector2(176, 96)
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_4mrwo")
-animation = &"Idle"
-frame_progress = 0.469399
+frame_progress = 0.218165
 
 [connection signal="timeout" from="Timer" to="." method="incrementGame"]
 [connection signal="timeout" from="MashDecrease" to="." method="decreaseMash"]

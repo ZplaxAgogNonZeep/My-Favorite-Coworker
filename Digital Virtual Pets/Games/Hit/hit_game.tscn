@@ -37,8 +37,8 @@ animations = [{
 [node name="HitGame" type="Control" node_paths=PackedStringArray("mashMeter")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_right = 54.0
+offset_bottom = 54.0
 script = ExtResource("1_kx0il")
 joyIncrement = 50
 statIncrement = 2
@@ -48,49 +48,38 @@ mashMax = 35
 decreaseFrequency = 0.5
 decreaseAmount = 1
 mashMeter = NodePath("MashMeter")
+metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="MashDecrease" type="Timer" parent="."]
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
+position = Vector2(27, 27)
 texture = ExtResource("2_tf5tu")
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_dirk5")]
-position = Vector2(168, 120)
-
-[node name="GameName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 34.0
-theme = ExtResource("6_1up7u")
-text = "Test your strength!"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(43, 28)
 
 [node name="Status" type="Label" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
+offset_top = 34.0
 offset_right = 216.0
-offset_bottom = 169.0
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("6_1up7u")
+theme_type_variation = &"MiniGameLabel"
 theme_override_font_sizes/font_size = 30
 text = "KEEP HITTING"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MashMeter" parent="." instance=ExtResource("5_tpsef")]
-position = Vector2(43, 87)
+position = Vector2(7, 19)
 
 [node name="Hammer" type="AnimatedSprite2D" parent="."]
-position = Vector2(104, 96)
-scale = Vector2(3, 3)
+position = Vector2(24, 19)
 sprite_frames = SubResource("SpriteFrames_qxchq")
 animation = &"Up"
 

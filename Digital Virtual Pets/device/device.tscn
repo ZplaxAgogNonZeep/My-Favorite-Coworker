@@ -514,10 +514,10 @@ script = ExtResource("17_ck7l0")
 buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Run"), NodePath("../Hit"), NodePath("../Endure"), NodePath("../Exit")]
 
 [node name="Exit" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 72.0
-offset_top = 144.0
-offset_right = 152.0
-offset_bottom = 168.0
+offset_left = 54.1667
+offset_top = 133.333
+offset_right = 134.167
+offset_bottom = 157.333
 scale = Vector2(1.425, 1.425)
 metadata/_edit_group_ = true
 
@@ -577,9 +577,8 @@ text = "Endure!"
 [node name="MiniGameContainer" type="Panel" parent="GameArea/MenuManager/Menu/PlayMenu"]
 offset_left = -27.0
 offset_top = -85.0
-offset_right = 197.0
-offset_bottom = 139.0
-scale = Vector2(0.24, 0.24)
+offset_right = 27.0
+offset_bottom = -31.0
 theme = ExtResource("15_ul75l")
 
 [node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]

@@ -24,17 +24,18 @@ var isRaise : bool
 
 func _process(delta):
 	if gameRunning:
-		if hurdle.position.x > $HurdleWrapEnd.position.x:
+		if hurdle.position.x > $BlankMenuSprite2/HurdleWrapEnd.position.x:
 			hurdle.position.x -= (speed * 3) * delta
 		else:
 			if reptetitions > 0:
-				hurdle.position.x = $HurdleWrapStart.position.x
+				hurdle.position.x = $BlankMenuSprite2/HurdleWrapStart.position.x
 				reptetitions -= 1
 			else:
 				onWin()
 		
 
 func startGame(pet : Node2D, playMenu : Node2D):
+	speed *= Settings.gameScale
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
 	connectedPet = pet

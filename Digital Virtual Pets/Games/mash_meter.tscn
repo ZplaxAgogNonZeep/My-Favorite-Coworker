@@ -9,33 +9,31 @@
 script = ExtResource("1_ttltv")
 
 [node name="MashMeterBack" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
 texture = ExtResource("2_boinv")
 
 [node name="MeterIndicator" type="Sprite2D" parent="."]
-position = Vector2(0, 28.5)
-scale = Vector2(3, 3)
+position = Vector2(0, 9.5)
 texture = ExtResource("3_wrhpj")
 
 [node name="Max" type="Marker2D" parent="."]
-position = Vector2(0, -28.5)
+position = Vector2(0, -9.5)
+gizmo_extents = 2.0
 
 [node name="Min" type="Marker2D" parent="."]
-position = Vector2(0, 28.5)
+position = Vector2(0, 9.5)
+gizmo_extents = 2.0
 
 [node name="Goal" type="Marker2D" parent="."]
-position = Vector2(0, -16)
+gizmo_extents = 2.0
 
 [node name="GoalIndicator" type="Node2D" parent="."]
 
 [node name="LeftIndicator" type="Sprite2D" parent="GoalIndicator"]
-position = Vector2(-13, -33)
-scale = Vector2(3, 3)
+position = Vector2(-4.5, -11)
 texture = ExtResource("4_i6j57")
 offset = Vector2(0, 0.5)
 
 [node name="RightIndicator" type="Sprite2D" parent="GoalIndicator"]
-position = Vector2(13, -33)
-scale = Vector2(3, 3)
+position = Vector2(4.5, -11)
 texture = ExtResource("4_i6j57")
 offset = Vector2(0, 0.5)

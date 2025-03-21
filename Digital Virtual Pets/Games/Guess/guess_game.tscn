@@ -9,53 +9,41 @@
 [node name="GuessGame" type="Control" node_paths=PackedStringArray("status")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_right = 54.0
+offset_bottom = 54.0
 script = ExtResource("1_qfueg")
 status = NodePath("Status")
 intervalTime = 1.0
 joyIncrement = 50
 statIncrement = 2
+metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
 texture = ExtResource("2_6p1v6")
+offset = Vector2(27, 27)
 metadata/_edit_lock_ = true
 
 [node name="PseudoPet" parent="." instance=ExtResource("3_emhdi")]
-position = Vector2(112, 120)
-
-[node name="GameName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 34.0
-theme = ExtResource("4_glm3m")
-text = "Guess the Direction!"
-horizontal_alignment = 1
-vertical_alignment = 1
+position = Vector2(26, 28)
 
 [node name="Status" type="Label" parent="."]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
+offset_top = 34.0
 offset_right = 216.0
-offset_bottom = 169.0
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
 theme = ExtResource("4_glm3m")
+theme_type_variation = &"MiniGameLabel"
 theme_override_font_sizes/font_size = 30
 text = "GUESS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LeftArrow" type="Sprite2D" parent="."]
-position = Vector2(32, 96)
-scale = Vector2(3, 3)
+position = Vector2(8, 19)
 texture = ExtResource("5_cq21n")
 
 [node name="RightArrow" type="Sprite2D" parent="."]
-position = Vector2(192, 96)
-scale = Vector2(3, 3)
+position = Vector2(46, 19)
 texture = ExtResource("5_cq21n")
 flip_h = true

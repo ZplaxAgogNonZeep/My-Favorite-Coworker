@@ -35,7 +35,7 @@ func updateGameText(text : String):
 
 func onWin():
 	$FishingRod.play("ReeledIn")
-	$Catch.visible = true
+	$FishingRod/Catch.visible = true
 	updateGameText("WIN!")
 	$PseudoPet.sprite.play("Quirk")
 	$PseudoPet.hop(2)
@@ -65,7 +65,7 @@ func takeInput(input : Enums.DeviceButton):
 			else:
 				onLose()
 
-# Signals ==========================================================================================
+#region Signals
 
 func _on_timer_timeout():
 	if gameRunning:
@@ -73,3 +73,5 @@ func _on_timer_timeout():
 		updateGameText("FISH")
 		$FishingRod.play("Active")
 		$CatchWindow.start(catchWindowDuration)
+
+#endregion

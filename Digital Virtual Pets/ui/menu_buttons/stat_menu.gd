@@ -35,7 +35,7 @@ func exitMenu():
 	print("Exit Menu called")
 	visible = false
 	
-	$StatPanel/Personality.text = "Personality: ??????"
+	$StatPanel/Personality.text = "Personality:\n??????"
 	
 	$StatPanel/Pow/Value.text = "0"
 	$StatPanel/End/Value.text = "0"

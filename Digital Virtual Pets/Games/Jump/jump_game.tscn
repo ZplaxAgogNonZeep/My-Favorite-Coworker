@@ -14,23 +14,22 @@ size = Vector2(1.33333, 3.33334)
 [node name="JumpGame" type="Control" node_paths=PackedStringArray("background", "hurdle")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 224.0
-offset_bottom = 224.0
+offset_right = 54.0
+offset_bottom = 54.0
 script = ExtResource("1_5ul8j")
 background = NodePath("BlankMenuSprite2")
-hurdle = NodePath("Hurdle")
+hurdle = NodePath("BlankMenuSprite2/Hurdle")
 joyIncrement = 50
 statIncrement = 2
 statToIncrease = 2
-speed = 20
+speed = 5
 jumpDuration = 1.0
 repetitionRange = Vector2(2, 4)
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="." node_paths=PackedStringArray("scrollElements")]
 clip_children = 2
-position = Vector2(112, 112)
-scale = Vector2(4, 4)
+position = Vector2(27, 27)
 texture = ExtResource("2_qff5g")
 script = ExtResource("3_c8eis")
 scrollElements = [NodePath("Track0"), NodePath("Track1"), NodePath("Track2"), NodePath("Track3")]
@@ -62,51 +61,39 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_45xc6")
 offset = Vector2(0, 3)
 
-[node name="PseudoPet" parent="." instance=ExtResource("3_w4bgg")]
-position = Vector2(112, 112)
-
-[node name="GameName" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 216.0
-offset_bottom = 34.0
-theme = ExtResource("4_nxl2w")
-text = "Jump over Hurdles!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Status" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 136.0
-offset_right = 216.0
-offset_bottom = 169.0
-theme = ExtResource("4_nxl2w")
-theme_override_font_sizes/font_size = 30
-text = "JUMP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Hurdle" type="Sprite2D" parent="."]
-position = Vector2(192, 88)
-scale = Vector2(3, 3)
+[node name="Hurdle" type="Sprite2D" parent="BlankMenuSprite2"]
+position = Vector2(37, -8)
 texture = ExtResource("7_k7wla")
 
-[node name="Area2D" type="Area2D" parent="Hurdle"]
+[node name="Area2D" type="Area2D" parent="BlankMenuSprite2/Hurdle"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurdle/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlankMenuSprite2/Hurdle/Area2D"]
 position = Vector2(-0.333332, 6.33334)
 shape = SubResource("RectangleShape2D_dan0o")
 debug_color = Color(0, 0.588235, 0.764706, 0.419608)
 
-[node name="HurdleWrapStart" type="Marker2D" parent="."]
-position = Vector2(208, 104)
+[node name="HurdleWrapStart" type="Marker2D" parent="BlankMenuSprite2"]
+position = Vector2(37, -8)
 
-[node name="HurdleWrapEnd" type="Marker2D" parent="."]
-position = Vector2(16, 104)
+[node name="HurdleWrapEnd" type="Marker2D" parent="BlankMenuSprite2"]
+position = Vector2(-36, -8)
+
+[node name="PseudoPet" parent="." instance=ExtResource("3_w4bgg")]
+position = Vector2(27, 27)
+
+[node name="Status" type="Label" parent="."]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 216.0
+offset_bottom = 64.0
+scale = Vector2(0.25, 0.25)
+theme = ExtResource("4_nxl2w")
+theme_type_variation = &"MiniGameLabel"
+text = "JUMP"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="JumpHeight" type="Marker2D" parent="."]
-position = Vector2(112, 88)
+position = Vector2(27, 18)

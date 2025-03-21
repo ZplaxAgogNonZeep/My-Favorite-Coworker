@@ -80,7 +80,6 @@ func incrementGame():
 	elif increment == 0:
 		updateGameText("ENDURE!!")
 		$Steam.play()
-		$Steam2.play()
 		$PseudoPet.sprite.play("Idle")
 		increment -= 1
 		mashMode = true

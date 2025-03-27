@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=35 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -50,6 +50,15 @@ axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jw1am"]
 texture = ExtResource("3_3h4r1")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ev6l4"]
+texture = ExtResource("2_fngaf")
 texture_margin_left = 4.0
 texture_margin_top = 4.0
 texture_margin_right = 4.0
@@ -113,12 +122,15 @@ Button/font_sizes/font_size = 13
 Button/fonts/font = ExtResource("1_56pb5")
 Button/styles/disabled = SubResource("StyleBoxTexture_g42wa")
 Button/styles/hover = SubResource("StyleBoxTexture_fjlsi")
+Button/styles/hover_pressed = SubResource("StyleBoxTexture_fjlsi")
 Button/styles/normal = SubResource("StyleBoxTexture_6fdv2")
 Button/styles/pressed = SubResource("StyleBoxTexture_jw1am")
+CheckBox/colors/font_pressed_color = Color(0, 0, 0, 1)
 CheckBox/icons/checked = ExtResource("5_wxsat")
 CheckBox/icons/checked_disabled = ExtResource("6_ev6l4")
 CheckBox/icons/unchecked = ExtResource("6_jmwy2")
 CheckBox/icons/unchecked_disabled = ExtResource("8_cby0i")
+CheckBox/styles/pressed = SubResource("StyleBoxTexture_ev6l4")
 CloseButton/base_type = &"Button"
 CloseButton/styles/disabled = SubResource("StyleBoxTexture_1qsni")
 CloseButton/styles/hover = SubResource("StyleBoxTexture_o4pp3")

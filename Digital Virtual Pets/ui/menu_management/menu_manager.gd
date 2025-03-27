@@ -73,6 +73,7 @@ func changeMenu(menuIndex : int):
 func _closeAllMenus():
 	for menu in _activeMenus:
 		menu.closeMenu()
+		
 
 
 #endregion

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=38 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dgcd5kpdcrlo1" path="res://assets/art/aesprite/ui/menu/system_menu/close_button.png" id="9_1qsni"]
 [ext_resource type="Texture2D" uid="uid://b5ofy1t4ca7wd" path="res://assets/art/aesprite/ui/menu/system_menu/window_9_slice.png" id="9_ev6l4"]
 [ext_resource type="Texture2D" uid="uid://3y0g6k26k2ju" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected.png" id="10_cby0i"]
+[ext_resource type="Texture2D" uid="uid://d31jcs268by2o" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_panel.png" id="10_xv7ca"]
 [ext_resource type="Texture2D" uid="uid://dpao4egnntnfr" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected_disabled.png" id="11_xv7ca"]
 [ext_resource type="Texture2D" uid="uid://80gesgnigwmp" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox.png" id="12_5dsuw"]
 [ext_resource type="Texture2D" uid="uid://4x422n235xfh" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_disabled.png" id="13_sp1lb"]
@@ -80,6 +81,15 @@ texture = ExtResource("9_1qsni")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmwy2"]
 texture = ExtResource("9_1qsni")
 modulate_color = Color(0.400698, 0.400698, 0.400698, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dsuw"]
+texture = ExtResource("10_xv7ca")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fc23x"]
 texture = ExtResource("9_ev6l4")
@@ -147,6 +157,8 @@ ItemList/font_sizes/font_size = 7
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_56pb5")
+MenuIcon/base_type = &"Button"
+MenuIcon/styles/normal = SubResource("StyleBoxTexture_5dsuw")
 OptionButton/font_sizes/font_size = 14
 OptionButton/fonts/font = ExtResource("1_56pb5")
 Panel/styles/panel = SubResource("StyleBoxTexture_fc23x")

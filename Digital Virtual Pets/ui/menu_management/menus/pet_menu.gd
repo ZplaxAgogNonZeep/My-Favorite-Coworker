@@ -83,13 +83,19 @@ func _selectPet(index : int):
 
 func _createNewPet():
 	GameEvents.ChangePet.emit(_petManager.getPetSlots().size())
-	ChangeMenu.emit(0)
+	if (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
+		ChangeMenu.emit(index)
+	else:
+		ChangeMenu.emit(0)
 
 
 func _loadSelectedPet():
 	print(_currentSelectedSlot)
 	GameEvents.ChangePet.emit(_currentSelectedSlot)
-	ChangeMenu.emit(0)
+	if (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
+		ChangeMenu.emit(index)
+	else:
+		ChangeMenu.emit(0)
 
 
 func _deleteSlot(index : int):

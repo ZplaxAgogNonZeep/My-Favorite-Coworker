@@ -6,10 +6,6 @@
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
 layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -576.0
-offset_bottom = -648.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_pegra")
@@ -50,6 +46,7 @@ offset_right = -76.0
 offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
+theme_type_variation = &"MenuIcon"
 text = "Option"
 
 [node name="Window" type="Button" parent="MenuWindow"]
@@ -63,6 +60,7 @@ offset_right = -4.0
 offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
+theme_type_variation = &"MenuIcon"
 disabled = true
 text = "Win"
 
@@ -77,6 +75,7 @@ offset_right = 68.0
 offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
+theme_type_variation = &"MenuIcon"
 disabled = true
 text = "Aud"
 
@@ -91,6 +90,7 @@ offset_right = 140.0
 offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
+theme_type_variation = &"MenuIcon"
 text = "Pet"
 icon_alignment = 1
 
@@ -109,7 +109,7 @@ offset_top = 2.0
 offset_right = 216.0
 offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
-text = "my_favorite_coworker.helper"
+text = "coworker_menu_manager.exe"
 
 [connection signal="pressed" from="MenuWindow/Options" to="." method="_onOptionsButton"]
 [connection signal="pressed" from="MenuWindow/Window" to="." method="_onWindowButton"]

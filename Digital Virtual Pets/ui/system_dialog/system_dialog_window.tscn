@@ -146,6 +146,7 @@ offset_right = 254.0
 offset_bottom = 15.0
 focus_mode = 0
 theme_type_variation = &"CloseButton"
+disabled = true
 
 [node name="CharacterName" type="Label" parent="."]
 layout_mode = 0

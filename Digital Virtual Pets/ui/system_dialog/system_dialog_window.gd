@@ -1,4 +1,4 @@
-extends Panel
+extends NinePatchRect
 
 signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Control)
 

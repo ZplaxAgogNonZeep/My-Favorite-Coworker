@@ -44,7 +44,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_ic75g")
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.152778
@@ -52,16 +52,15 @@ anchor_top = 0.0864198
 anchor_right = 0.847222
 anchor_bottom = 0.703704
 grow_horizontal = 2
-scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(200, 200)
-color = Color(1, 0.921569, 0.976471, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsName" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 0.0599999
 anchor_right = 1.0
-anchor_bottom = 0.115
+anchor_bottom = 0.1275
 theme = ExtResource("1_kd0k7")
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 28
@@ -117,11 +116,11 @@ metadata/_edit_lock_ = true
 
 [node name="CloseButton" type="Button" parent="ColorRect/Buttons"]
 layout_mode = 0
-offset_left = 344.0
-offset_top = 7.99997
-offset_right = 393.0
-offset_bottom = 39.0
-text = "Close"
+offset_left = 385.0
+offset_top = 2.0
+offset_right = 398.0
+offset_bottom = 15.0
+theme_type_variation = &"CloseButton"
 
 [node name="ProactivityCheckBox" type="CheckBox" parent="ColorRect/Buttons"]
 layout_mode = 0

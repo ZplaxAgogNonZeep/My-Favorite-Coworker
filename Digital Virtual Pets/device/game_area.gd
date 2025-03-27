@@ -79,7 +79,7 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.POWER_BUTTON:
 			pass
 		Enums.DeviceButton.OPTIONS_BUTTON:
-			pass
+			GameEvents.OpenOptionsMenu.emit()
 		Enums.DeviceButton.PET_BUTTON:
 			pass
 		Enums.DeviceButton.AUDIO_BUTTON:

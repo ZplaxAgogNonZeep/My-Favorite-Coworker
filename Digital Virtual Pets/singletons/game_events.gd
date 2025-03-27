@@ -7,6 +7,7 @@ signal UnpauseGame
 signal DisplayDialog(pos : Vector2, dialogResource : CharacterDialog, 
 						conversationName : String, returnFunction : Callable)
 signal GetPlayerAttention
+signal OpenOptionsMenu
 
 #endregion
 

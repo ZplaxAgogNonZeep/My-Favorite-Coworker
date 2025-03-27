@@ -1,142 +1,118 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqs2mr65skd0q"]
+[gd_scene load_steps=4 format=3 uid="uid://cqs2mr65skd0q"]
 
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_pegra"]
 [ext_resource type="Script" uid="uid://ctmbnikaduj2l" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
-
-[sub_resource type="Animation" id="Animation_lky41"]
-resource_name = "Open"
-length = 0.9
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Options:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.3, 0.5),
-"update": 0,
-"values": [Vector2(80, -72), Vector2(80, 16)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Window:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6),
-"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
-"update": 0,
-"values": [Vector2(160, -72), Vector2(160, -72), Vector2(160, 16)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.7),
-"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
-"update": 0,
-"values": [Vector2(240, -72), Vector2(240, -72), Vector2(240, 16)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Pet:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(0.3, 0.3, 0.5),
-"update": 0,
-"values": [Vector2(320, -72), Vector2(320, -72), Vector2(320, 16)]
-}
-
-[sub_resource type="Animation" id="Animation_1wkji"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qnae"]
-_data = {
-&"Open": SubResource("Animation_lky41"),
-&"RESET": SubResource("Animation_1wkji")
-}
+[ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="3_ws25m"]
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
 layout_mode = 3
-anchors_preset = 10
 anchor_right = 1.0
-grow_horizontal = 2
+anchor_bottom = 1.0
+offset_right = -576.0
+offset_bottom = -648.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("1_pegra")
 script = ExtResource("1_x636n")
-_petMenuButton = NodePath("Pet")
+_petMenuButton = NodePath("MenuWindow/Pet")
 animator = NodePath("AnimationPlayer")
 pauseGame = false
+metadata/_edit_use_anchors_ = true
 
 [node name="ClickTimer" type="Timer" parent="."]
 wait_time = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_6qnae")
+&"generic_menu_animation": ExtResource("3_ws25m")
 }
 
-[node name="Options" type="Button" parent="."]
+[node name="MenuWindow" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -148.0
+offset_top = -80.0
+offset_right = 148.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(149, 53)
+metadata/_edit_group_ = true
+
+[node name="Options" type="Button" parent="MenuWindow"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -208.0
-offset_top = -72.0
-offset_right = -144.0
-offset_bottom = -8.0
+offset_left = -140.0
+offset_top = 24.0
+offset_right = -76.0
+offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
 text = "Option"
 
-[node name="Window" type="Button" parent="."]
+[node name="Window" type="Button" parent="MenuWindow"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -128.0
-offset_top = -72.0
-offset_right = -64.0
-offset_bottom = -8.0
+offset_left = -68.0
+offset_top = 24.0
+offset_right = -4.0
+offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
 disabled = true
 text = "Win"
 
-[node name="Audio" type="Button" parent="."]
+[node name="Audio" type="Button" parent="MenuWindow"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -48.0
-offset_top = -72.0
-offset_right = 16.0
-offset_bottom = -8.0
+offset_left = 4.0
+offset_top = 24.0
+offset_right = 68.0
+offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
 disabled = true
 text = "Aud"
 
-[node name="Pet" type="Button" parent="."]
+[node name="Pet" type="Button" parent="MenuWindow"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 32.0
-offset_top = -72.0
-offset_right = 96.0
-offset_bottom = -8.0
+offset_left = 76.0
+offset_top = 24.0
+offset_right = 140.0
+offset_bottom = 88.0
 grow_horizontal = 2
 focus_mode = 0
 text = "Pet"
 icon_alignment = 1
 
-[connection signal="pressed" from="Options" to="." method="_onOptionsButton"]
-[connection signal="pressed" from="Window" to="." method="_onWindowButton"]
-[connection signal="pressed" from="Audio" to="." method="_onAudioButton"]
-[connection signal="pressed" from="Pet" to="." method="_onPetButton"]
+[node name="Close" type="Button" parent="MenuWindow"]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 2.0
+offset_right = 294.0
+offset_bottom = 15.0
+theme_type_variation = &"CloseButton"
+
+[node name="Label" type="Label" parent="MenuWindow"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 2.0
+offset_right = 216.0
+offset_bottom = 16.0
+theme_type_variation = &"HeaderSmall"
+text = "my_favorite_coworker.helper"
+
+[connection signal="pressed" from="MenuWindow/Options" to="." method="_onOptionsButton"]
+[connection signal="pressed" from="MenuWindow/Window" to="." method="_onWindowButton"]
+[connection signal="pressed" from="MenuWindow/Audio" to="." method="_onAudioButton"]
+[connection signal="pressed" from="MenuWindow/Pet" to="." method="_onPetButton"]
+[connection signal="pressed" from="MenuWindow/Close" to="." method="_onCloseButton"]

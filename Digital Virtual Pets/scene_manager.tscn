@@ -69,8 +69,14 @@ _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
-visible = false
 layout_mode = 1
+anchor_left = 0.458333
+anchor_top = 0.641975
+anchor_right = 1.45833
+anchor_bottom = 1.64198
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
 visible = false

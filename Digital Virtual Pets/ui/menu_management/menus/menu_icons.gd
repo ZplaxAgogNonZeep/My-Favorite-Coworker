@@ -20,4 +20,8 @@ func _onAudioButton():
 
 func _onPetButton():
 	ChangeMenu.emit(2)
+
+
+func _onCloseButton():
+	ChangeMenu.emit(-1)
 #endregion

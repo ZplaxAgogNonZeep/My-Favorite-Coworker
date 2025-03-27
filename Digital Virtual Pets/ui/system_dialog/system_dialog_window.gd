@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends Panel
 
 signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Control)
 
@@ -7,6 +7,7 @@ signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Contr
 @export var _characterNameLabel : Label
 @export var _choiceContainer : HBoxContainer
 @export var _animator : AnimationPlayer
+@export var _closeButton : Button
 @export var _buttonScene : PackedScene
 
 var _baseLabelSize : float
@@ -32,11 +33,15 @@ func loadWindow(pos : Vector2, text : String, speaker : String, links : Array[St
 	_characterNameLabel.text = speaker
 	_dialogLabel.text = text
 	
-	for link in links:
-		var button = _buttonScene.instantiate()
-		button.text = link
-		button.ChoiceButtonPressed.connect(_buttonSelected)
-		_choiceContainer.call_deferred("add_child", button)
+	if (links.size() <= 0):
+		_closeButton.disabled = false
+	else:
+		_closeButton.disabled = true
+		for link in links:
+			var button = _buttonScene.instantiate()
+			button.text = link
+			button.ChoiceButtonPressed.connect(_buttonSelected)
+			_choiceContainer.call_deferred("add_child", button)
 
 
 func _buttonSelected(index : int):

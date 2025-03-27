@@ -17,6 +17,8 @@ var _windowPosition : Vector2
 var _firstTimeOpened := true
 
 func _ready() -> void:
+	GameEvents.OpenOptionsMenu.connect(_openMenu)
+	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
 	if (_firstTimeOpened):
@@ -52,6 +54,9 @@ func _displayDevice(skipAnimation := false):
 	device.spawnDevice()
 	await get_tree().process_frame
 	device.visible = true
+
+func _openMenu():
+	_menuManager.toggleMenu(true)
 
 
 #region Dialog Control Functions

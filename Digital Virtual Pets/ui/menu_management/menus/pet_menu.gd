@@ -9,6 +9,8 @@ var _petManager : PetManager
 
 func openMenu():
 	super()
+	if (PetManager.instance):
+		PetManager.instance.gatherDataFromActivePet()
 	_fillPetSlots()
 
 func closeMenu():

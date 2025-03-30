@@ -38,7 +38,7 @@ offset_top = 24.0
 offset_right = 145.0
 offset_bottom = 42.0
 theme_type_variation = &"HeaderSmall"
-text = "Age: 99d 999 h 999 m"
+text = "Age: 99d 99 h 99 m"
 vertical_alignment = 1
 
 [node name="Delete" type="Button" parent="."]

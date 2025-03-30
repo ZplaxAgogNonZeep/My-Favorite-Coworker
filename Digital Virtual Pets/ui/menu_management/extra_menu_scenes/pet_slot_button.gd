@@ -13,6 +13,8 @@ func loadPetData(petData, slotIndex : int):
 		index = slotIndex
 		$Name.text = petData["petResource"].name
 		$Icon.texture = petData["petResource"].getSpriteIcon()
+		var array = 
+		$Age.text = "Age: " + 
 
 
 func newPetPressed():

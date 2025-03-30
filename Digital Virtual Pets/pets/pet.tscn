@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjw6oamscwe62"]
+[gd_scene load_steps=6 format=3 uid="uid://cjw6oamscwe62"]
 
 [ext_resource type="Script" uid="uid://bwo71sqr5y8bs" path="res://do_not_build/archived_code/pet.gd" id="1_sjpdi"]
+[ext_resource type="Script" uid="uid://q50o7srs3m1o" path="res://pets/lifespan.gd" id="3_texxe"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(8, 5)
 
-[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer") groups=["Pet"]]
+[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_lifespanTracker") groups=["Pet"]]
 script = ExtResource("1_sjpdi")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 _moveTimer = NodePath("Type/MoveTimer")
 _neglectTimer = NodePath("Type/NeglectTimer")
+_lifespanTracker = NodePath("Type/Lifespan")
 roamSpeed = 0.1
 roamPercentage = 0.25
 
@@ -25,6 +27,10 @@ _useProactivity = false
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
 script = ExtResource("6_hy41n")
+
+[node name="Lifespan" type="Node" parent="Type"]
+process_mode = 3
+script = ExtResource("3_texxe")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("5_ouj2v")

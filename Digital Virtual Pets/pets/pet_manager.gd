@@ -197,6 +197,7 @@ func gatherDataFromActivePet():
 func loadPetDataFromSlot(index : int) -> Pet.PetSaveData:
 	var data : Pet.PetSaveData = Pet.PetSaveData.new()
 	
+	#TODO: Figure out a way of handling old save data that's missing things
 	for propertyKey in _petSlots[index].keys():
 		data.set(propertyKey, _petSlots[index][propertyKey])
 	

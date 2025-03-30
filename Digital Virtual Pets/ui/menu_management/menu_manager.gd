@@ -30,11 +30,13 @@ func _process(delta: float) -> void:
 	for menu in _activeMenus:
 		menu.menuBehavior()
 
+
 func toggleMenu(isOpen: bool):
 	if (isOpen):
 		changeMenu(_defaultMenuIndex)
 	else:
 		changeMenu(-1)
+
 
 #region State Machine
 func changeMenu(menuIndex : int):
@@ -73,7 +75,6 @@ func changeMenu(menuIndex : int):
 func _closeAllMenus():
 	for menu in _activeMenus:
 		menu.closeMenu()
-		
 
 
 #endregion

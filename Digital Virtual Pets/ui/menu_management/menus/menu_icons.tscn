@@ -6,6 +6,7 @@
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
 layout_mode = 3
+anchors_preset = 0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("1_pegra")

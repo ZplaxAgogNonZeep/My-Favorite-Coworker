@@ -7,6 +7,10 @@ extends Menu
 var _currentSelectedSlot : int
 var _petManager : PetManager
 
+func _notification(what: int) -> void:
+	if (what == NOTIFICATION_WM_CLOSE_REQUEST):
+		SaveData.saveGameToFile()
+
 func openMenu():
 	super()
 	if (PetManager.instance):

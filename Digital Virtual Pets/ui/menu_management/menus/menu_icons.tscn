@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqs2mr65skd0q"]
+[gd_scene load_steps=6 format=3 uid="uid://cqs2mr65skd0q"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_pegra"]
 [ext_resource type="Script" uid="uid://ctmbnikaduj2l" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
 [ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="3_ws25m"]
+[ext_resource type="Texture2D" uid="uid://cbu1cx7y8yhjp" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_gear.png" id="4_drrht"]
+[ext_resource type="Texture2D" uid="uid://kwo0yao3dmsu" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_egg.png" id="5_xwarh"]
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "animator")]
 layout_mode = 3
@@ -27,30 +29,46 @@ libraries = {
 [node name="MenuWindow" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = -148.0
-offset_top = -80.0
-offset_right = 148.0
-offset_bottom = 16.0
+offset_left = -75.0
+offset_top = -61.0
+offset_right = 75.0
+offset_bottom = 45.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 pivot_offset = Vector2(149, 53)
 metadata/_edit_group_ = true
 
 [node name="Options" type="Button" parent="MenuWindow"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -140.0
-offset_top = 24.0
-offset_right = -76.0
-offset_bottom = 88.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 23.0
+offset_right = -77.0
+offset_bottom = 100.0
+grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"MenuIcon"
-text = "Option"
+icon = ExtResource("4_drrht")
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="MenuWindow/Options"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Options"
+horizontal_alignment = 1
 
 [node name="Window" type="Button" parent="MenuWindow"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -66,6 +84,7 @@ disabled = true
 text = "Win"
 
 [node name="Audio" type="Button" parent="MenuWindow"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -82,25 +101,44 @@ text = "Aud"
 
 [node name="Pet" type="Button" parent="MenuWindow"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 76.0
-offset_top = 24.0
-offset_right = 140.0
-offset_bottom = 88.0
-grow_horizontal = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -73.0
+offset_top = 23.0
+offset_right = -9.0
+offset_bottom = 100.0
+grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"MenuIcon"
-text = "Pet"
+icon = ExtResource("5_xwarh")
 icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="MenuWindow/Pet"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Pet Data"
+horizontal_alignment = 1
 
 [node name="Close" type="Button" parent="MenuWindow"]
-layout_mode = 0
-offset_left = 281.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
 offset_top = 2.0
-offset_right = 294.0
+offset_right = -2.0
 offset_bottom = 15.0
+grow_horizontal = 0
 theme_type_variation = &"CloseButton"
 
 [node name="Label" type="Label" parent="MenuWindow"]
@@ -110,7 +148,7 @@ offset_top = 2.0
 offset_right = 216.0
 offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
-text = "coworker_menu_manager.exe"
+text = "menu_manager.exe"
 
 [connection signal="pressed" from="MenuWindow/Options" to="." method="_onOptionsButton"]
 [connection signal="pressed" from="MenuWindow/Window" to="." method="_onWindowButton"]

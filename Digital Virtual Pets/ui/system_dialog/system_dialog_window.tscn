@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtya6sb5p4rt8"]
+[gd_scene load_steps=9 format=3 uid="uid://dtya6sb5p4rt8"]
 
 [ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="1_2a2c1"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_gp6kj"]
 [ext_resource type="PackedScene" uid="uid://ba4ut480kbygm" path="res://ui/system_dialog/dialog_choice_button.tscn" id="3_vdxs8"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_804br"]
 
 [sub_resource type="Animation" id="Animation_4kmke"]
 resource_name = "Close"
@@ -132,14 +133,20 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ExitButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 241.0
-offset_top = 2.0
-offset_right = 254.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 1.0
+offset_right = -2.0
 offset_bottom = 15.0
+grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"CloseButton"
 disabled = true
+icon = ExtResource("4_804br")
+icon_alignment = 1
 
 [node name="CharacterName" type="Label" parent="."]
 layout_mode = 0

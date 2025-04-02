@@ -651,12 +651,10 @@ libraries = {
 }
 
 [node name="PreviousEvolution" type="Sprite2D" parent="GameArea/PetManager/EvolvingPet"]
-scale = Vector2(3, 3)
 offset = Vector2(0, -8)
 
 [node name="NextEvolution" type="Sprite2D" parent="GameArea/PetManager/EvolvingPet"]
 visible = false
-scale = Vector2(3, 3)
 offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]

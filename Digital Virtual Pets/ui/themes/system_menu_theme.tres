@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=38 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=39 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -29,6 +29,8 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cby0i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjlsi"]
 texture = ExtResource("2_fngaf")
@@ -73,13 +75,25 @@ modulate_color = Color(0.5, 0.5, 0.5, 0.643137)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o4pp3"]
 texture = ExtResource("9_1qsni")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 modulate_color = Color(0.783523, 0.783523, 0.783523, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wxsat"]
 texture = ExtResource("9_1qsni")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmwy2"]
 texture = ExtResource("9_1qsni")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 modulate_color = Color(0.400698, 0.400698, 0.400698, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dsuw"]
@@ -132,6 +146,7 @@ Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 13
 Button/fonts/font = ExtResource("1_56pb5")
 Button/styles/disabled = SubResource("StyleBoxTexture_g42wa")
+Button/styles/focus = SubResource("StyleBoxEmpty_cby0i")
 Button/styles/hover = SubResource("StyleBoxTexture_fjlsi")
 Button/styles/hover_pressed = SubResource("StyleBoxTexture_fjlsi")
 Button/styles/normal = SubResource("StyleBoxTexture_6fdv2")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfh7qhfhtctv8"]
+[gd_scene load_steps=5 format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
 [ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="3_tqakc"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_6eh78"]
 
 [node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "animator")]
 layout_mode = 3
@@ -30,6 +31,19 @@ offset_right = 200.0
 offset_bottom = 43.0001
 grow_horizontal = 2
 pivot_offset = Vector2(200, 200)
+metadata/_edit_use_anchors_ = true
+
+[node name="Dropshadow" type="ColorRect" parent="ColorRect"]
+z_index = -1
+layout_mode = 0
+anchor_left = -0.0025
+anchor_top = -0.00411522
+anchor_right = 1.0025
+anchor_bottom = 1.00411
+offset_right = -3.05176e-05
+mouse_filter = 2
+color = Color(0, 0, 0, 0.313726)
+metadata/_edit_lock_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsName" type="Label" parent="ColorRect"]
@@ -92,12 +106,18 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 
 [node name="CloseButton" type="Button" parent="ColorRect/Buttons"]
-layout_mode = 0
-offset_left = 385.0
-offset_top = 2.0
-offset_right = 398.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 1.0
+offset_right = -2.0
 offset_bottom = 15.0
+grow_horizontal = 0
 theme_type_variation = &"CloseButton"
+icon = ExtResource("4_6eh78")
+icon_alignment = 1
 
 [node name="ProactivityCheckBox" type="CheckBox" parent="ColorRect/Buttons"]
 layout_mode = 0

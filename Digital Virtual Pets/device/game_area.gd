@@ -77,11 +77,13 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.RIGHT_BUTTON:
 			menuManager.handleInput(button)
 		Enums.DeviceButton.POWER_BUTTON:
-			pass
+			#TODO: Proper closing animation
+			await  get_tree().create_timer(.5).timeout
+			get_tree().quit()
 		Enums.DeviceButton.OPTIONS_BUTTON:
 			GameEvents.OpenOptionsMenu.emit()
-		Enums.DeviceButton.PET_BUTTON:
-			pass
+		Enums.DeviceButton.BORDER_BUTTON:
+			GameEvents.ToggleBorderlessMode.emit(!Settings.borderless)
 		Enums.DeviceButton.AUDIO_BUTTON:
 			pass
 

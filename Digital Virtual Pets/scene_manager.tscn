@@ -69,6 +69,7 @@ _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.208333
@@ -79,6 +80,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
+visible = false
 layout_mode = 1
 offset_left = 216.0
 offset_top = 328.0
@@ -88,6 +90,7 @@ metadata/_edit_vertical_guides_ = [288.0]
 metadata/_edit_horizontal_guides_ = [256.0]
 
 [node name="PetMenu" parent="SystemUI/MenuManager" instance=ExtResource("7_l8mrh")]
+visible = false
 layout_mode = 1
 offset_left = 336.0
 offset_top = 312.0

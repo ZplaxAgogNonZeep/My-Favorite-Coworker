@@ -10,6 +10,7 @@ func _ready() -> void:
 #region Global Variables
 var windowFocused : bool = true
 var proactiveMode : bool = false
+var borderless : bool = true
 #endregion
 
 #region Settings Variables

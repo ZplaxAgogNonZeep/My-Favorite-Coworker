@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cw7xr6uluo8np"]
+[gd_scene load_steps=6 format=3 uid="uid://cw7xr6uluo8np"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_8s5lr"]
 [ext_resource type="Script" uid="uid://brweecnyow1tk" path="res://ui/menu_management/menus/pet_menu.gd" id="2_44k7u"]
 [ext_resource type="PackedScene" uid="uid://bixuqptw12pi3" path="res://ui/menu_management/extra_menu_scenes/pet_save_slot.tscn" id="3_npbw2"]
 [ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="4_wqilq"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_kpd25"]
 
 [node name="PetMenu" type="Control" node_paths=PackedStringArray("_slotContainer", "animator")]
 layout_mode = 3
@@ -35,11 +36,24 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(224, 128)
 
+[node name="Dropshadow" type="ColorRect" parent="MenuPanel"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.999995
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.313726)
+
 [node name="MenuName" type="Label" parent="MenuPanel"]
 layout_mode = 0
-offset_left = 10.0
+offset_left = 7.0
 offset_top = 2.0
-offset_right = 155.0
+offset_right = 152.0
 offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
 text = "pet_data_manager.exe"
@@ -56,12 +70,18 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Exit" type="Button" parent="MenuPanel"]
-layout_mode = 0
-offset_left = 433.0
-offset_top = 2.0
-offset_right = 446.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 1.0
+offset_right = -2.0
 offset_bottom = 15.0
+grow_horizontal = 0
 theme_type_variation = &"CloseButton"
+icon = ExtResource("5_kpd25")
+icon_alignment = 1
 
 [node name="LoadPet" type="Button" parent="MenuPanel"]
 layout_mode = 0

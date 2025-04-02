@@ -18,6 +18,7 @@ var _firstTimeOpened := true
 
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
+	GameEvents.ToggleBorderlessMode.connect(_toggleBorderless)
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
@@ -57,6 +58,11 @@ func _displayDevice(skipAnimation := false):
 
 func _openMenu():
 	_menuManager.toggleMenu(true)
+
+
+func _toggleBorderless(isBorderless : bool):
+	Settings.borderless = isBorderless
+	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
 
 
 #region Dialog Control Functions

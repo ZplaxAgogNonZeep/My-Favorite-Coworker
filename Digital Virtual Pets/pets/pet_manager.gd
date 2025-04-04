@@ -180,6 +180,7 @@ func switchPet(index : int, previousPetDeleted := false):
 func killPet():
 	print("Pet has Died!")
 	GameEvents.ResetAllTimers.emit()
+	
 	activePet.queue_free()
 	spawnPet()
 

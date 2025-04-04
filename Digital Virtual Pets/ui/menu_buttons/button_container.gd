@@ -7,12 +7,15 @@ var active := false
 
 func setActive(isActive : bool):
 	active = isActive
+	var isReady = false
 	
 	for x in range(buttonArray.size()):
 		if (Interface.hasInterface(buttonArray[x], Interface.HighlightButton) and buttonArray[x].isEnabled):
-			index = x
-			break
-		
+			if (!isReady):
+				isReady = true
+				index = x
+			buttonArray[x].toggleHighlight(false)
+	
 	buttonArray[index].toggleHighlight(isActive)
 
 

@@ -1,18 +1,63 @@
-[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bifauo7clkw3i"]
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://bifauo7clkw3i"]
 
-[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/Pets/Stage3/HeRohBuh.png" id="1_jd0vt"]
+[ext_resource type="Texture2D" uid="uid://cdvlhexs3dfo4" path="res://assets/art/aesprite/Pets/Stage3/herobuh_sheett.png" id="1_jd0vt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6lbki"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8hla"]
 atlas = ExtResource("1_jd0vt")
 region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xppym"]
+atlas = ExtResource("1_jd0vt")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c83mq"]
+atlas = ExtResource("1_jd0vt")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m6pw"]
+atlas = ExtResource("1_jd0vt")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vxa4"]
+atlas = ExtResource("1_jd0vt")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1yx8"]
+atlas = ExtResource("1_jd0vt")
+region = Rect2(24, 48, 24, 24)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6lbki")
+"texture": SubResource("AtlasTexture_a8hla")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xppym")
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 5.0
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c83mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m6pw")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vxa4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1yx8")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
 }]

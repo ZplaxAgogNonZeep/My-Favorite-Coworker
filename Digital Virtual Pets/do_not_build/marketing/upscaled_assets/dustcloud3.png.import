@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7dwoqi7fyqkl"
-path="res://.godot/imported/windowsIcon64.png-a06f2d17bd4a88417d69c15b5216fdd4.ctex"
+uid="uid://df6f52ki3jf26"
+path="res://.godot/imported/dustcloud3.png-ff173f16686fbef8b9ef29416d704452.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://windowsIcon64.png"
-dest_files=["res://.godot/imported/windowsIcon64.png-a06f2d17bd4a88417d69c15b5216fdd4.ctex"]
+source_file="res://do_not_build/marketing/upscaled_assets/dustcloud3.png"
+dest_files=["res://.godot/imported/dustcloud3.png-ff173f16686fbef8b9ef29416d704452.ctex"]
 
 [params]
 

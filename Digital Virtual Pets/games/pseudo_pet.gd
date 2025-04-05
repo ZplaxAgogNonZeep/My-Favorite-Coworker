@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name PseudoPet
+
 var implements = []
 
 signal AreaEntered

@@ -9,6 +9,7 @@ signal DisplayDialog(pos : Vector2, dialogResource : CharacterDialog,
 signal GetPlayerAttention
 signal OpenOptionsMenu
 signal ToggleBorderlessMode(isBorderless : bool)
+signal OpenDirectMenu(index : int)
 
 #endregion
 

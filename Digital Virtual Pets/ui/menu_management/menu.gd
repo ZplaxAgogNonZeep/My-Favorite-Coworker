@@ -9,6 +9,7 @@ signal ChangeMenu(menuIndex: int)
 
 var menuManager : MenuManager
 var index : int
+var _openedDirectly := false
 
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
@@ -18,7 +19,8 @@ func menuBehavior():
 	pass
 
 
-func openMenu():
+func openMenu(direct := false):
+	_openedDirectly = direct
 	Settings.pauseGame(pauseGame)
 	
 	_loadSavedMenuSettings()
@@ -46,6 +48,9 @@ func closeMenu():
 
 
 func _onExit():
+	if (_openedDirectly):
+		ChangeMenu.emit(-1)
+		return
 	if (menuManager.getMenuMode() == MenuManager.MenuMode.SINGLE_MENU):
 		ChangeMenu.emit(0)
 	elif (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):

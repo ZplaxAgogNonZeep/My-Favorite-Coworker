@@ -10,6 +10,8 @@ const TIMER_TIME := 5
 @export var objectContainer : Node2D
 @export var petManager : PetManager
 @export var menuManager : Node2D
+@export var _screenAnimator : AnimatedSprite2D
+@export var _killScreen : Node2D
 @export var boundries : Array[Marker2D] # 0 = Left | 1 = Right
 @export var ObjectSpawnLocations : Array[Marker2D]
 @export_category("Spawnable Objects")
@@ -24,6 +26,9 @@ func _ready():
 	GameEvents.FeedPet.connect(feed)
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
+	petManager.CallPetDeathScreen.connect(_petDied)
+	_screenAnimator.play("Screen Off")
+	_killScreen.visible = false
 	
 
 
@@ -37,7 +42,9 @@ func _unhandled_input(event):
 
 
 func startGame():
-	#TODO: Play screen turning on animation & any loading animations
+	_screenAnimator.play("Boot")
+	await _screenAnimator.animation_finished
+	_screenAnimator.play("Screen On")
 	petManager.spawnPet()
 
 
@@ -77,8 +84,9 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.RIGHT_BUTTON:
 			menuManager.handleInput(button)
 		Enums.DeviceButton.POWER_BUTTON:
-			#TODO: Proper closing animation
-			await  get_tree().create_timer(.5).timeout
+			#TODO: change this to be something else probably
+			_screenAnimator.play("Shutdown")
+			await  get_tree().create_timer(1).timeout
 			get_tree().quit()
 		Enums.DeviceButton.OPTIONS_BUTTON:
 			GameEvents.OpenOptionsMenu.emit()
@@ -86,6 +94,10 @@ func _handleButtonInput(button : Enums.DeviceButton):
 			GameEvents.ToggleBorderlessMode.emit(!Settings.borderless)
 		Enums.DeviceButton.AUDIO_BUTTON:
 			pass
+
+
+func _petDied(petData : Pet.PetSaveData):
+	menuManager.setState(menuManager.MenuState.DEATH, petData)
 
 
 func feed():

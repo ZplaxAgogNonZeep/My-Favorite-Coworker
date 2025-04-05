@@ -13,10 +13,13 @@ class DataSaver extends SaveData.DataSaver:
 	var _slotIndex
 	
 	func getDataToSave() -> Data:
+		print("dataSaver")
 		obj.gatherDataFromActivePet()
 		return super()
 
 const MAX_PET_SLOTS := 3
+
+signal CallPetDeathScreen(petData : Dictionary)
 
 @export_category("Object References")
 @export var hungerBar : StatusBar
@@ -165,31 +168,35 @@ func evolvePet(evolveTarget: PetTypeData):
 
 
 func switchPet(index : int, previousPetDeleted := false):
-	if ((index == _slotIndex or index < 0 or index >= MAX_PET_SLOTS) and !previousPetDeleted):
+	if ((index < 0 or index >= MAX_PET_SLOTS) and !previousPetDeleted):
 		return
 	
 	if (!previousPetDeleted):
 		await SaveData.saveGameToFile()
 	
 	GameEvents.ResetAllTimers.emit()
-	activePet.queue_free()
+	if (activePet):
+		activePet.queue_free()
 	spawnPet(index)
 
 
-#TODO: Update to be a whole death sequence
 func killPet():
 	print("Pet has Died!")
 	GameEvents.ResetAllTimers.emit()
-	
+	GameEvents.PauseGame.emit()
+	var petData = activePet.getSavableData()
 	activePet.queue_free()
-	spawnPet()
+	activePet = null
+	deletePetSlot(_slotIndex, true)
+	
+	CallPetDeathScreen.emit(petData)
 
 #endregion
 
 #region Pet Save & Load Management
 func gatherDataFromActivePet():
 	#TODO: Handle Saving data when no pet is spawned
-	if (activePet == null):
+	if (activePet == null or _petSlots.size() <= 0):
 		pass
 	else:
 		_petSlots[_slotIndex] = activePet.getSavableData().convertClassToDict()
@@ -220,16 +227,22 @@ func getPetSlots() -> Array:
 	return _petSlots
 
 
-func deletePetSlot(index : int) -> void:
-	if (_petSlots.size() == 1):
+func deletePetSlot(index : int, death := false) -> void:
+	print("deleting pet slot ", index, " of ", _petSlots[index])
+	if (_petSlots.size() == 1 and !death):
 		return
 	_petSlots.remove_at(index)
 	if (index == _slotIndex):
 		_slotIndex = _petSlots.size() - 1
-		GameEvents.ChangePet.emit(_slotIndex, true)
+		if (!death):
+			GameEvents.ChangePet.emit(_slotIndex, true)
 	elif (index < _slotIndex):
 		_slotIndex -= 1
 	
+	if (_petSlots.size() == 0 or _petSlots.size() == 1):
+		_slotIndex = 0
+	
+	print("=======CORRECT PET SLOTS=============\n", _petSlots)
 	
 	SaveData.saveGameToFile()
 

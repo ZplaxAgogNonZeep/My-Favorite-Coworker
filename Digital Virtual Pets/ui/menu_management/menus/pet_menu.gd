@@ -11,8 +11,8 @@ func _notification(what: int) -> void:
 	if (what == NOTIFICATION_WM_CLOSE_REQUEST):
 		SaveData.saveGameToFile()
 
-func openMenu():
-	super()
+func openMenu(direct := false):
+	super(direct)
 	if (PetManager.instance):
 		PetManager.instance.gatherDataFromActivePet()
 	_fillPetSlots()
@@ -35,7 +35,13 @@ func _loadSavedMenuSettings():
 
 func _fillPetSlots():
 	var petSlots = _petManager.getPetSlots()
-	
+	print(petSlots)
+	if (petSlots.size() == 0):
+		var newSlot = _slotScene.instantiate()
+		newSlot.loadPetData(null, 0)
+		newSlot.NewPetSelected.connect(_createNewPet)
+		_slotContainer.call_deferred("add_child", newSlot)
+		return
 	var count = 0
 	for petData in petSlots:
 		var newSlot = _slotScene.instantiate()
@@ -89,6 +95,9 @@ func _selectPet(index : int):
 
 func _createNewPet():
 	GameEvents.ChangePet.emit(_petManager.getPetSlots().size())
+	if (_openedDirectly):
+		ChangeMenu.emit(-1)
+		return
 	if (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
 		ChangeMenu.emit(index)
 	else:
@@ -96,8 +105,10 @@ func _createNewPet():
 
 
 func _loadSelectedPet():
-	print(_currentSelectedSlot)
 	GameEvents.ChangePet.emit(_currentSelectedSlot)
+	if (_openedDirectly):
+		ChangeMenu.emit(-1)
+		return
 	if (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
 		ChangeMenu.emit(index)
 	else:

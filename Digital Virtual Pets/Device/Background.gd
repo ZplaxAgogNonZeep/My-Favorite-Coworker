@@ -1,11 +1,12 @@
 extends Node2D
 
-enum MenuState {MINIMIZED, PLAY, STATS}
+enum MenuState {MINIMIZED, PLAY, STATS, DEATH}
 
 @export_category("Object References")
 @export var miniMenu : Node2D
 @export var statMenu : Node2D
 @export var playMenu : Node2D
+@export var deathMenu : Node2D
 
 var currentState : MenuState
 var stateReference : Node
@@ -29,6 +30,11 @@ func _ready():
 		playMenu.stateMachine = self
 	else:
 		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
+	
+	if deathMenu.implements.has(Interface.MenuState):
+		deathMenu.stateMachine = self
+	else:
+		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,7 +52,7 @@ func handleInput(event : Enums.DeviceButton):
 	#elif Input.is_action_just_pressed("RightButton"):
 		#sendInput(Enums.InputType.RIGHTBUTTON)
 
-func setState(state: MenuState):
+func setState(state: MenuState, variable = null):
 	if (stateReference):
 		stateReference.exitMenu()
 	currentState = state
@@ -58,10 +64,16 @@ func setState(state: MenuState):
 			stateReference = statMenu
 		MenuState.PLAY:
 			stateReference = playMenu
+		MenuState.DEATH:
+			stateReference = deathMenu
 	
-	stateReference.initializeMenu()
+	if (variable == null):
+		stateReference.initializeMenu()
+	else:
+		stateReference.initializeMenu(variable)
 
 func sendInput(input : Enums.DeviceButton):
+	print("Sending input to ", currentState)
 	match currentState:
 		MenuState.MINIMIZED:
 			if miniMenu.implements.has(Interface.MenuState):
@@ -72,3 +84,6 @@ func sendInput(input : Enums.DeviceButton):
 		MenuState.STATS:
 			if statMenu.implements.has(Interface.MenuState):
 				statMenu.takeInput(input)
+		MenuState.DEATH:
+			if deathMenu.implements.has(Interface.MenuState):
+				deathMenu.takeInput(input)

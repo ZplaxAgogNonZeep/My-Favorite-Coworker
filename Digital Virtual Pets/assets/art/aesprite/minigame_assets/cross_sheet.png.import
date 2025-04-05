@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhitpcjgwm0yw"
-path="res://.godot/imported/windowsIcon48.png-472339c3cda7bd19aeeeaf9b32384730.ctex"
+uid="uid://bq128floujtr"
+path="res://.godot/imported/cross_sheet.png-8a7adaefeabca3f4ddd7e8d7790c359f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://windowsIcon48.png"
-dest_files=["res://.godot/imported/windowsIcon48.png-472339c3cda7bd19aeeeaf9b32384730.ctex"]
+source_file="res://assets/art/aesprite/minigame_assets/cross_sheet.png"
+dest_files=["res://.godot/imported/cross_sheet.png-8a7adaefeabca3f4ddd7e8d7790c359f.ctex"]
 
 [params]
 

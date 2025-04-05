@@ -32,4 +32,3 @@ func _incrementSequence(anim_name: StringName) -> void:
 		$AnimationPlayer.stop(true)
 		visible = false
 		SequenceComplete.emit()
-

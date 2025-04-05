@@ -16,6 +16,7 @@ enum MenuMode {SINGLE_MENU, MULTI_MENU}
 var _activeMenus : Array[Menu]
 
 func _ready() -> void:
+	GameEvents.OpenDirectMenu.connect(_openDirectMenu)
 	var count = 0
 	for menu : Menu in _menuList:
 		menu.visible = false
@@ -39,7 +40,8 @@ func toggleMenu(isOpen: bool):
 
 
 #region State Machine
-func changeMenu(menuIndex : int):
+func changeMenu(menuIndex : int, direct := false):
+	print("Change menu called")
 	if (menuIndex >= _menuList.size()):
 		print("Menu System Error: Failed to find menu at index ", menuIndex)
 		return
@@ -76,6 +78,10 @@ func _closeAllMenus():
 	for menu in _activeMenus:
 		menu.closeMenu()
 
+
+func _openDirectMenu(index : int):
+	print("receive direct menu call")
+	changeMenu(index, true)
 
 #endregion
 

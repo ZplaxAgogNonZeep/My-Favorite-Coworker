@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=56 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -8,10 +8,15 @@
 [ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_7tnq8"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_6uw0p"]
 [ext_resource type="Texture2D" uid="uid://cxfiu12hvqate" path="res://assets/art/aesprite/device/game_background.png" id="8_5u0yl"]
+[ext_resource type="SpriteFrames" uid="uid://dmdqjiqs0oxha" path="res://assets/animation_frames/device/screen_frames.tres" id="9_5u0yl"]
 [ext_resource type="Script" uid="uid://dxkor68c3q6xw" path="res://device/background.gd" id="9_5xc8b"]
+[ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="10_04b0e"]
 [ext_resource type="Script" uid="uid://bdgxms5h5rrmh" path="res://ui/heart_bar.gd" id="10_g2vwl"]
+[ext_resource type="Script" uid="uid://gg0fu6pmjra1" path="res://device/kill_screen.gd" id="10_qk4hv"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://assets/art/aesprite/ui/heart_sheet.png" id="11_ofcv6"]
+[ext_resource type="Texture2D" uid="uid://bq128floujtr" path="res://assets/art/aesprite/minigame_assets/cross_sheet.png" id="11_qk4hv"]
 [ext_resource type="SpriteFrames" uid="uid://b6u6tkw1fg2y1" path="res://assets/animation_frames/icons/food_icon_frames.tres" id="12_lwr14"]
+[ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="13_0s1ah"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="14_veqju"]
 [ext_resource type="Theme" uid="uid://de6apglbak7x" path="res://ui/themes/menu_panel_theme.tres" id="15_ul75l"]
 [ext_resource type="Script" uid="uid://mlrgiwxtdve8" path="res://ui/menu_buttons/mini_menu.gd" id="16_v38ai"]
@@ -114,6 +119,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s1ah"]
+atlas = ExtResource("11_qk4hv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tnq8"]
+atlas = ExtResource("11_qk4hv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6uw0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s1ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tnq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jpmp"]
 radius = 2.0
 
@@ -167,6 +194,7 @@ _data = {
 
 [node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator")]
 process_mode = 1
+clip_children = 1
 script = ExtResource("1_5u0yl")
 _gameArea = NodePath("GameArea")
 _animator = NodePath("AnimationPlayer")
@@ -185,15 +213,21 @@ libraries = {
 
 [node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
-[node name="GameArea" type="Node2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "boundries", "ObjectSpawnLocations")]
+[node name="GameArea" type="Sprite2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "_screenAnimator", "_killScreen", "boundries", "ObjectSpawnLocations")]
+clip_children = 1
+texture = ExtResource("8_5u0yl")
+offset = Vector2(0, -58)
 script = ExtResource("3_04b0e")
 device = NodePath("..")
 objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
+_screenAnimator = NodePath("DisplayScreen")
+_killScreen = NodePath("MenuManager/Menu/DeathMenu")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
 ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), null]
 foodInstance = ExtResource("4_qk4hv")
+metadata/_edit_lock_ = true
 
 [node name="GameTimers" type="Node" parent="GameArea"]
 
@@ -211,18 +245,29 @@ z_index = 1
 script = ExtResource("6_7tnq8")
 _effectArray = Array[PackedScene]([ExtResource("7_6uw0p")])
 _isForGameArea = true
+metadata/_edit_lock_ = true
 
 [node name="BackdropSprite" type="Sprite2D" parent="GameArea"]
 z_index = -10
 z_as_relative = false
 position = Vector2(0, -58)
 texture = ExtResource("8_5u0yl")
+metadata/_edit_lock_ = true
 
-[node name="MenuManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu")]
+[node name="DisplayScreen" type="AnimatedSprite2D" parent="GameArea"]
+z_index = 9
+z_as_relative = false
+position = Vector2(0, -58)
+sprite_frames = ExtResource("9_5u0yl")
+animation = &"Screen On"
+metadata/_edit_lock_ = true
+
+[node name="MenuManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
 script = ExtResource("9_5xc8b")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
+deathMenu = NodePath("Menu/DeathMenu")
 
 [node name="StatusBars" type="Node2D" parent="GameArea/MenuManager"]
 
@@ -581,6 +626,44 @@ offset_right = 27.0
 offset_bottom = -31.0
 theme = ExtResource("15_ul75l")
 
+[node name="DeathMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
+position = Vector2(0, -58)
+script = ExtResource("10_qk4hv")
+_pseudoPet = NodePath("PseudoPet")
+_crossSprite = NodePath("CrossSprite")
+_ageLabel = NodePath("Age")
+
+[node name="BackdropSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/DeathMenu"]
+z_index = 9
+z_as_relative = false
+texture = ExtResource("8_5u0yl")
+
+[node name="PseudoPet" parent="GameArea/MenuManager/Menu/DeathMenu" instance=ExtResource("10_04b0e")]
+z_index = 9
+z_as_relative = false
+position = Vector2(-11, 3)
+
+[node name="CrossSprite" type="AnimatedSprite2D" parent="GameArea/MenuManager/Menu/DeathMenu"]
+z_index = 9
+z_as_relative = false
+position = Vector2(11, -5)
+sprite_frames = SubResource("SpriteFrames_6uw0p")
+frame_progress = 0.937658
+
+[node name="Age" type="Label" parent="GameArea/MenuManager/Menu/DeathMenu"]
+z_index = 9
+z_as_relative = false
+offset_left = -27.0
+offset_top = 7.0
+offset_right = 82.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("13_0s1ah")
+text = "Age:
+0d 0h 0m"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("32_kagdc")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
@@ -663,12 +746,12 @@ offset = Vector2(0, -10)
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]
 [connection signal="timeout" from="GameArea/GameTimers/EvolveTimer" to="GameArea" method="_evolveCheck"]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderEntered" binds= [0]]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderExited" binds= [0]]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderEntered" binds= [1]]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderExited" binds= [1]]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderEntered" binds= [2]]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderExited" binds= [2]]
+[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderExited"]
+[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderExited"]
+[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderExited"]
 
 [editable path="GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="GameArea/MenuManager/Menu/MiniMenu/Stats"]

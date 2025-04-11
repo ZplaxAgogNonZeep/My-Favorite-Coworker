@@ -21,6 +21,8 @@ var activeTween : Tween
 var isContinuousShake := false
 var isContinuousHop := false
 var actionQueue : Array[DeviceAction] = []
+var _minimized := false
+var _minHovered := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,6 +33,10 @@ func _ready():
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
 
+func _input(event: InputEvent) -> void:
+	if (event is InputEventMouseButton and _minHovered):
+		if (event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()):
+			toggleDeviceMinimize(false)
 
 #region Device Controls
 
@@ -38,8 +44,16 @@ func turnOnDevice():
 	_gameArea.startGame()
 
 
-func toggleDeviceMinimize():
-	pass
+func toggleDeviceMinimize(isMinimized : bool):
+	if (_minimized == isMinimized):
+		return
+	
+	_minimized = isMinimized
+	
+	if (_minimized):
+		_animator.play("minimize_device")
+	else:
+		_animator.play("maximize_device")
 
 #endregion
 
@@ -191,5 +205,16 @@ func _finishedHopping():
 		GameEvents.FinishedHopDevice.emit()
 
 #endregion
+
+#endregion
+
+#region Node Signals
+
+func _minDeviceMouseEntered() -> void:
+	_minHovered = true
+
+
+func _minDeviceMouseExited() -> void:
+	_minHovered = false
 
 #endregion

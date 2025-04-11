@@ -92,8 +92,8 @@ func _handleButtonInput(button : Enums.DeviceButton):
 			GameEvents.OpenOptionsMenu.emit()
 		Enums.DeviceButton.BORDER_BUTTON:
 			GameEvents.ToggleBorderlessMode.emit(!Settings.borderless)
-		Enums.DeviceButton.AUDIO_BUTTON:
-			pass
+		Enums.DeviceButton.MINIMIZE_BUTTON:
+			device.toggleDeviceMinimize(true)
 
 
 func _petDied(petData : Pet.PetSaveData):

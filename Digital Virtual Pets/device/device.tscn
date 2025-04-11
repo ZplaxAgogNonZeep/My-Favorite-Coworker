@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=72 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -122,7 +122,7 @@ length = 2.6
 
 [sub_resource type="Animation" id="Animation_6uw0p"]
 resource_name = "minimize_device"
-length = 0.4
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -130,7 +130,7 @@ tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.265517, 0.265517)]
@@ -142,7 +142,7 @@ tracks/1/path = NodePath("Device/GameArea:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.233333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.265517, 0.265517)]
@@ -154,10 +154,10 @@ tracks/2/path = NodePath("Device/MinimizedSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.133333, 0.233333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.67, 1.67), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(2.48, 2.48), Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -166,7 +166,7 @@ tracks/3/path = NodePath("Device/GameArea:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -178,7 +178,7 @@ tracks/4/path = NodePath("Device/LinkDeviceSprite:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -190,16 +190,93 @@ tracks/5/path = NodePath("Device/MinimizedSprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.133333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_7tnq8"]
+resource_name = "maximize_device"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Device/GameArea:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Device/MinimizedSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.67, 1.67), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Device/GameArea:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Device/LinkDeviceSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Device/MinimizedSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwd8q"]
 _data = {
 &"RESET": SubResource("Animation_xm6xn"),
 &"SpawnDevice": SubResource("Animation_2ni51"),
+&"maximize_device": SubResource("Animation_7tnq8"),
 &"minimize_device": SubResource("Animation_6uw0p")
 }
 
@@ -297,6 +374,9 @@ animations = [{
 "name": &"ScreenOn",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7tnq8"]
+radius = 12.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csey4"]
 atlas = ExtResource("11_ofcv6")
@@ -459,8 +539,16 @@ libraries = {
 [node name="MinimizedSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_8u400")
 animation = &"ScreenOn"
-frame_progress = 0.959578
+frame_progress = 0.293407
 offset = Vector2(0, -16)
+
+[node name="MouseCollider" type="Area2D" parent="MinimizedSprite"]
+position = Vector2(0, -15)
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MinimizedSprite/MouseCollider"]
+shape = SubResource("CapsuleShape2D_7tnq8")
 
 [node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
@@ -994,6 +1082,8 @@ offset = Vector2(0, -10)
 
 [node name="ObjectContainer" type="Node2D" parent="GameArea"]
 
+[connection signal="mouse_entered" from="MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseEntered"]
+[connection signal="mouse_exited" from="MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseExited"]
 [connection signal="ButtonPressed" from="LinkDeviceSprite" to="GameArea" method="_handleButtonInput"]
 [connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
 [connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]

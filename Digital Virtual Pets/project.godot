@@ -86,6 +86,7 @@ Debug3={
 
 2d_physics/layer_1="Pet"
 2d_physics/layer_2="Object"
+2d_physics/layer_32="Mouse"
 
 [rendering]
 

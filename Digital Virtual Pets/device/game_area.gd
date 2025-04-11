@@ -93,6 +93,7 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.BORDER_BUTTON:
 			GameEvents.ToggleBorderlessMode.emit(!Settings.borderless)
 		Enums.DeviceButton.MINIMIZE_BUTTON:
+			await  get_tree().create_timer(.1).timeout
 			device.toggleDeviceMinimize(true)
 
 

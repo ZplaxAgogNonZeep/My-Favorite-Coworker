@@ -28,6 +28,7 @@ func _ready() -> void:
 	else:
 		_displayDevice(true)
 	
+	
 	#device.turnOnDevice()
 
 

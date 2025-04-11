@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=13 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
 [ext_resource type="PackedScene" uid="uid://dtya6sb5p4rt8" path="res://ui/system_dialog/system_dialog_window.tscn" id="9_k1t8d"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
+[ext_resource type="Texture2D" uid="uid://tib0aevsur6o" path="res://assets/art/aesprite/device/min_device.png" id="12_o58kc"]
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background", "device")]
 script = ExtResource("1_yxx2a")
@@ -117,3 +118,8 @@ metadata/_edit_lock_ = true
 [node name="Device" parent="." instance=ExtResource("11_7o31v")]
 position = Vector2(288, 648)
 scale = Vector2(2, 2)
+
+[node name="TestSprite" type="Sprite2D" parent="."]
+position = Vector2(504, 608)
+scale = Vector2(2, 2)
+texture = ExtResource("12_o58kc")

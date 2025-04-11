@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://bxgg1k0vh82t6"]
 
-[ext_resource type="Texture2D" uid="uid://dp0552ox0be7h" path="res://do_not_build/aseprite/LinkDeviceSprite.png" id="1_w7yhk"]
+[ext_resource type="Texture2D" uid="uid://lrhkprge1nn8" path="res://assets/art/aesprite/device/link_device_base.png" id="1_ex2ea"]
 [ext_resource type="Script" uid="uid://cjnlwgkuswi6j" path="res://device/link_device_button_manager.gd" id="2_7pd7f"]
 [ext_resource type="Texture2D" uid="uid://2l5xccro1gcr" path="res://assets/art/aesprite/device/audio_button_sheet.png" id="2_ex2ea"]
 [ext_resource type="Texture2D" uid="uid://dlun3cap2g1bj" path="res://assets/art/aesprite/device/center_button_sheet.png" id="3_7pd7f"]
@@ -190,7 +190,7 @@ animations = [{
 }]
 
 [node name="LinkDeviceSprite" type="Sprite2D"]
-texture = ExtResource("1_w7yhk")
+texture = ExtResource("1_ex2ea")
 offset = Vector2(0, -64)
 script = ExtResource("2_7pd7f")
 metadata/_edit_group_ = true

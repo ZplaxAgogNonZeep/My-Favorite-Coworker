@@ -1,7 +1,8 @@
-[gd_scene load_steps=56 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=70 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
+[ext_resource type="Texture2D" uid="uid://2rexj2570ui" path="res://assets/art/aesprite/device/min_device_sheet.png" id="2_7tnq8"]
 [ext_resource type="Script" uid="uid://cqbjnned5i21h" path="res://device/game_area.gd" id="3_04b0e"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_qk4hv"]
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="5_0s1ah"]
@@ -42,16 +43,260 @@
 
 [sub_resource type="Animation" id="Animation_xm6xn"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Device/GameArea:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Device/MinimizedSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Device/LinkDeviceSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Device/GameArea:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Device/MinimizedSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2ni51"]
 resource_name = "SpawnDevice"
 length = 2.6
 
+[sub_resource type="Animation" id="Animation_6uw0p"]
+resource_name = "minimize_device"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.265517, 0.265517)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Device/GameArea:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.265517, 0.265517)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Device/MinimizedSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.67, 1.67), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Device/GameArea:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Device/LinkDeviceSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Device/MinimizedSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwd8q"]
 _data = {
 &"RESET": SubResource("Animation_xm6xn"),
-&"SpawnDevice": SubResource("Animation_2ni51")
+&"SpawnDevice": SubResource("Animation_2ni51"),
+&"minimize_device": SubResource("Animation_6uw0p")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkux3"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xc8b"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2vwl"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofcv6"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myr8s"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w57es"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_veqju"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ul75l"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v38ai"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck7l0"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxf5w"]
+atlas = ExtResource("2_7tnq8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8u400"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkux3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xc8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2vwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofcv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myr8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w57es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_veqju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ul75l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v38ai")
+}],
+"loop": true,
+"name": &"NeedAttention",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ck7l0")
+}],
+"loop": true,
+"name": &"ScreenOff",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxf5w")
+}],
+"loop": true,
+"name": &"ScreenOn",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csey4"]
 atlas = ExtResource("11_ofcv6")
@@ -211,6 +456,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_lwd8q")
 }
 
+[node name="MinimizedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8u400")
+animation = &"ScreenOn"
+frame_progress = 0.959578
+offset = Vector2(0, -16)
+
 [node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
 
 [node name="GameArea" type="Sprite2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "_screenAnimator", "_killScreen", "boundries", "ObjectSpawnLocations")]
@@ -259,7 +510,7 @@ z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
 sprite_frames = ExtResource("9_5u0yl")
-animation = &"Screen On"
+animation = &"Screen Off"
 metadata/_edit_lock_ = true
 
 [node name="MenuManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
@@ -627,6 +878,7 @@ offset_bottom = -31.0
 theme = ExtResource("15_ul75l")
 
 [node name="DeathMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
+visible = false
 position = Vector2(0, -58)
 script = ExtResource("10_qk4hv")
 _pseudoPet = NodePath("PseudoPet")

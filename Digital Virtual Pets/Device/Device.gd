@@ -16,6 +16,7 @@ enum DeviceAction {HOP, SHAKE}
 @export_category("Modifiers")
 @export var chatSpeed : float
 
+
 var activeTween : Tween
 var isContinuousShake := false
 var isContinuousHop := false
@@ -35,6 +36,10 @@ func _ready():
 
 func turnOnDevice():
 	_gameArea.startGame()
+
+
+func toggleDeviceMinimize():
+	pass
 
 #endregion
 

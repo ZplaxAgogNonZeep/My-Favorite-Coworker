@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp0552ox0be7h"
-path="res://.godot/imported/LinkDeviceSprite.png-8dd0b543c846c038dca5c1beae01ccd4.ctex"
+uid="uid://cru8kcdo8hju4"
+path="res://.godot/imported/min_device_sheet.png-d11ce18fcf486ff485a985ab142263e2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://do_not_build/aseprite/LinkDeviceSprite.png"
-dest_files=["res://.godot/imported/LinkDeviceSprite.png-8dd0b543c846c038dca5c1beae01ccd4.ctex"]
+source_file="res://do_not_build/aseprite/Device/min_device_sheet.png"
+dest_files=["res://.godot/imported/min_device_sheet.png-d11ce18fcf486ff485a985ab142263e2.ctex"]
 
 [params]
 

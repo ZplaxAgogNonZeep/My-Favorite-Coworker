@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=71 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -41,120 +41,85 @@
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="34_cijat"]
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="35_071hk"]
 
-[sub_resource type="Animation" id="Animation_xm6xn"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_2ni51"]
+resource_name = "SpawnDevice"
+length = 2.6
+
+[sub_resource type="Animation" id="Animation_7tnq8"]
+resource_name = "maximize_device"
+length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
+tracks/0/path = NodePath("Device/PositionGroup/LinkDeviceSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Device/GameArea:scale")
+tracks/1/path = NodePath("Device/PositionGroup/GameArea:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Device/MinimizedSprite:scale")
+tracks/2/path = NodePath("Device/PositionGroup/MinimizedSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(2.4, 2.4), Vector2(1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Device/LinkDeviceSprite:visible")
+tracks/3/path = NodePath("Device/PositionGroup/GameArea:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Device/GameArea:visible")
+tracks/4/path = NodePath("Device/PositionGroup/LinkDeviceSprite:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Device/MinimizedSprite:visible")
+tracks/5/path = NodePath("Device/PositionGroup/MinimizedSprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Device/LinkDeviceSprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Device/MinimizedSprite:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(27, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Device/GameArea:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2ni51"]
-resource_name = "SpawnDevice"
-length = 2.6
 
 [sub_resource type="Animation" id="Animation_6uw0p"]
 resource_name = "minimize_device"
@@ -162,7 +127,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
+tracks/0/path = NodePath("Device/PositionGroup/LinkDeviceSprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -174,7 +139,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Device/GameArea:scale")
+tracks/1/path = NodePath("Device/PositionGroup/GameArea:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -186,7 +151,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Device/MinimizedSprite:scale")
+tracks/2/path = NodePath("Device/PositionGroup/MinimizedSprite:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -198,7 +163,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Device/GameArea:visible")
+tracks/3/path = NodePath("Device/PositionGroup/GameArea:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -210,7 +175,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Device/LinkDeviceSprite:visible")
+tracks/4/path = NodePath("Device/PositionGroup/LinkDeviceSprite:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -222,7 +187,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Device/MinimizedSprite:visible")
+tracks/5/path = NodePath("Device/PositionGroup/MinimizedSprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -230,159 +195,10 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Device/LinkDeviceSprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(27, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Device/MinimizedSprite:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(27, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Device/GameArea:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(27, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7tnq8"]
-resource_name = "maximize_device"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Device/LinkDeviceSprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Device/GameArea:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.265517, 0.265517), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Device/MinimizedSprite:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(2.775, 2.775), Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Device/GameArea:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Device/LinkDeviceSprite:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Device/MinimizedSprite:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Device/LinkDeviceSprite:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(27, 0), Vector2(0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Device/GameArea:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(27, 0), Vector2(0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Device/MinimizedSprite:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(27, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwd8q"]
 _data = {
-&"RESET": SubResource("Animation_xm6xn"),
 &"SpawnDevice": SubResource("Animation_2ni51"),
 &"maximize_device": SubResource("Animation_7tnq8"),
 &"minimize_device": SubResource("Animation_6uw0p")
@@ -625,15 +441,17 @@ _data = {
 &"evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
-[node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator")]
+[node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator", "_movementGroup")]
 process_mode = 1
 clip_children = 1
 script = ExtResource("1_5u0yl")
-_gameArea = NodePath("GameArea")
+_gameArea = NodePath("PositionGroup/GameArea")
 _animator = NodePath("AnimationPlayer")
+_movementGroup = NodePath("PositionGroup")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 hopDuration = 0.25
+_minimizeShiftDistance = 16.0
 chatSpeed = 0.1
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -644,29 +462,31 @@ libraries = {
 &"": SubResource("AnimationLibrary_lwd8q")
 }
 
-[node name="MinimizedSprite" type="AnimatedSprite2D" parent="."]
+[node name="PositionGroup" type="Node2D" parent="."]
+
+[node name="MinimizedSprite" type="AnimatedSprite2D" parent="PositionGroup"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_8u400")
 animation = &"ScreenOn"
 frame_progress = 0.293407
 offset = Vector2(0, -16)
 
-[node name="MouseCollider" type="Area2D" parent="MinimizedSprite"]
+[node name="MouseCollider" type="Area2D" parent="PositionGroup/MinimizedSprite"]
 position = Vector2(0, -15)
 collision_layer = 2147483648
 collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MinimizedSprite/MouseCollider"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionGroup/MinimizedSprite/MouseCollider"]
 shape = SubResource("CapsuleShape2D_7tnq8")
 
-[node name="LinkDeviceSprite" parent="." instance=ExtResource("2_2w885")]
+[node name="LinkDeviceSprite" parent="PositionGroup" instance=ExtResource("2_2w885")]
 
-[node name="GameArea" type="Sprite2D" parent="." node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "_screenAnimator", "_killScreen", "boundries", "ObjectSpawnLocations")]
+[node name="GameArea" type="Sprite2D" parent="PositionGroup" node_paths=PackedStringArray("device", "objectContainer", "petManager", "menuManager", "_screenAnimator", "_killScreen", "boundries", "ObjectSpawnLocations")]
 clip_children = 1
 texture = ExtResource("8_5u0yl")
 offset = Vector2(0, -58)
 script = ExtResource("3_04b0e")
-device = NodePath("..")
+device = NodePath("../..")
 objectContainer = NodePath("ObjectContainer")
 petManager = NodePath("PetManager")
 menuManager = NodePath("MenuManager")
@@ -677,32 +497,32 @@ ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath(
 foodInstance = ExtResource("4_qk4hv")
 metadata/_edit_lock_ = true
 
-[node name="GameTimers" type="Node" parent="GameArea"]
+[node name="GameTimers" type="Node" parent="PositionGroup/GameArea"]
 
-[node name="HungerTimer" type="Timer" parent="GameArea/GameTimers"]
+[node name="HungerTimer" type="Timer" parent="PositionGroup/GameArea/GameTimers"]
 script = ExtResource("5_0s1ah")
 
-[node name="JoyTimer" type="Timer" parent="GameArea/GameTimers"]
+[node name="JoyTimer" type="Timer" parent="PositionGroup/GameArea/GameTimers"]
 script = ExtResource("5_0s1ah")
 
-[node name="EvolveTimer" type="Timer" parent="GameArea/GameTimers"]
+[node name="EvolveTimer" type="Timer" parent="PositionGroup/GameArea/GameTimers"]
 script = ExtResource("5_0s1ah")
 
-[node name="GameVFX" type="Node2D" parent="GameArea"]
+[node name="GameVFX" type="Node2D" parent="PositionGroup/GameArea"]
 z_index = 1
 script = ExtResource("6_7tnq8")
 _effectArray = Array[PackedScene]([ExtResource("7_6uw0p")])
 _isForGameArea = true
 metadata/_edit_lock_ = true
 
-[node name="BackdropSprite" type="Sprite2D" parent="GameArea"]
+[node name="BackdropSprite" type="Sprite2D" parent="PositionGroup/GameArea"]
 z_index = -10
 z_as_relative = false
 position = Vector2(0, -58)
 texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
-[node name="DisplayScreen" type="AnimatedSprite2D" parent="GameArea"]
+[node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
@@ -710,131 +530,131 @@ sprite_frames = ExtResource("9_5u0yl")
 animation = &"Screen Off"
 metadata/_edit_lock_ = true
 
-[node name="MenuManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
+[node name="MenuManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
 script = ExtResource("9_5xc8b")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
 deathMenu = NodePath("Menu/DeathMenu")
 
-[node name="StatusBars" type="Node2D" parent="GameArea/MenuManager"]
+[node name="StatusBars" type="Node2D" parent="PositionGroup/GameArea/MenuManager"]
 
-[node name="Hungerbar" type="Node2D" parent="GameArea/MenuManager/StatusBars"]
+[node name="Hungerbar" type="Node2D" parent="PositionGroup/GameArea/MenuManager/StatusBars"]
 position = Vector2(-27, -85.5)
 script = ExtResource("10_g2vwl")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/Hungerbar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/Hungerbar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 
-[node name="Heart2" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/Hungerbar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/Hungerbar"]
 position = Vector2(6, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 
-[node name="Heart3" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/Hungerbar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/Hungerbar"]
 position = Vector2(12, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 
-[node name="Heart4" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/Hungerbar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/Hungerbar"]
 position = Vector2(18, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 
-[node name="JoyBar" type="Node2D" parent="GameArea/MenuManager/StatusBars"]
+[node name="JoyBar" type="Node2D" parent="PositionGroup/GameArea/MenuManager/StatusBars"]
 position = Vector2(19.5, -85.5)
 script = ExtResource("10_g2vwl")
 metadata/_edit_group_ = true
 
-[node name="Heart1" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
+[node name="Heart1" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/JoyBar"]
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 flip_h = true
 
-[node name="Heart2" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
+[node name="Heart2" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-6, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 flip_h = true
 
-[node name="Heart3" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
+[node name="Heart3" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-12, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 flip_h = true
 
-[node name="Heart4" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars/JoyBar"]
+[node name="Heart4" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars/JoyBar"]
 position = Vector2(-18, 0)
 sprite_frames = SubResource("SpriteFrames_kvm0p")
 animation = &"Empty"
 offset = Vector2(3.5, 3.5)
 flip_h = true
 
-[node name="HungerIcon" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars"]
+[node name="HungerIcon" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars"]
 position = Vector2(-26, -79.5)
 sprite_frames = ExtResource("12_lwr14")
 animation = &"Unselected"
 offset = Vector2(4.5, 4.5)
 
-[node name="JoyIcon" type="AnimatedSprite2D" parent="GameArea/MenuManager/StatusBars"]
+[node name="JoyIcon" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/StatusBars"]
 position = Vector2(16.5, -79.5)
 sprite_frames = ExtResource("20_r0hmh")
 animation = &"Unselected"
 offset = Vector2(4.5, 4.5)
 
-[node name="Menu" type="Node2D" parent="GameArea/MenuManager"]
+[node name="Menu" type="Node2D" parent="PositionGroup/GameArea/MenuManager"]
 
-[node name="MiniMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+[node name="MiniMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 z_index = 1
 position = Vector2(0, -37)
 script = ExtResource("16_v38ai")
 buttonController = NodePath("ButtonController")
 
-[node name="ButtonController" type="Node" parent="GameArea/MenuManager/Menu/MiniMenu" node_paths=PackedStringArray("buttonArray")]
+[node name="ButtonController" type="Node" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("17_ck7l0")
 buttonArray = [NodePath("../Feed"), NodePath("../Play"), NodePath("../Stats")]
 
-[node name="MiniMenuSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/MiniMenu"]
+[node name="MiniMenuSprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu"]
 texture = ExtResource("18_wxf5w")
 
-[node name="Feed" parent="GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
+[node name="Feed" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
 position = Vector2(-27, -5)
 
-[node name="Play" parent="GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
+[node name="Play" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
 position = Vector2(-9, -5)
 
-[node name="OptionIcon" parent="GameArea/MenuManager/Menu/MiniMenu/Play" index="1"]
+[node name="OptionIcon" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Play" index="1"]
 sprite_frames = ExtResource("20_r0hmh")
 offset = Vector2(0, 0)
 
-[node name="Stats" parent="GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
+[node name="Stats" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu" instance=ExtResource("19_8u400")]
 position = Vector2(9, -5)
 
-[node name="OptionIcon" parent="GameArea/MenuManager/Menu/MiniMenu/Stats" index="1"]
+[node name="OptionIcon" parent="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Stats" index="1"]
 sprite_frames = SubResource("SpriteFrames_qk4hv")
 
-[node name="StatMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("_panelList")]
+[node name="StatMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_panelList")]
 visible = false
 z_index = 1
 script = ExtResource("22_k7vqq")
 _panelList = [NodePath("DisplayPanel"), NodePath("StatPanel")]
 
-[node name="BlankMenuSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="BlankMenuSprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
 position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
-[node name="DisplayPanel" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="DisplayPanel" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
 
-[node name="Name" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
 offset_left = -27.0
 offset_top = -53.0
 offset_right = 81.0
@@ -845,41 +665,41 @@ text = "Pet Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Display Sprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Display Sprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
 position = Vector2(0, -55)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist0" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist0" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(-12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist1" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist1" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(-4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist2" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist3" type="Sprite2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist3" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
 position = Vector2(12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="Node2D" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Node2D" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
 
-[node name="StatPanel" type="Node2D" parent="GameArea/MenuManager/Menu/StatMenu"]
+[node name="StatPanel" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
 visible = false
 
-[node name="Personality" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Personality" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -84.0
 offset_right = 84.0
@@ -891,7 +711,7 @@ Airhead"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pow" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Pow" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -68.0
 offset_right = 12.0
@@ -901,7 +721,7 @@ theme = ExtResource("14_veqju")
 text = "POW:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Pow"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Pow"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
@@ -911,7 +731,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="End" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="End" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -62.0
 offset_right = 14.0
@@ -921,7 +741,7 @@ theme = ExtResource("14_veqju")
 text = "END:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/End"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/End"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
@@ -931,7 +751,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Spd" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -56.0
 offset_right = 14.0
@@ -941,7 +761,7 @@ theme = ExtResource("14_veqju")
 text = "SPD:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Spd"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Spd"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
@@ -951,7 +771,7 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bal" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Bal" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
 offset_left = -26.0
 offset_top = -50.0
 offset_right = 14.0
@@ -961,7 +781,7 @@ theme = ExtResource("14_veqju")
 text = "BAL:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="GameArea/MenuManager/Menu/StatMenu/StatPanel/Bal"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Bal"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
@@ -971,18 +791,18 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
+[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
 visible = false
 z_index = 1
 script = ExtResource("25_0gch6")
 buttonController = NodePath("GameMenu/ButtonController")
 miniGameList = Array[PackedScene]([ExtResource("26_5qrur"), ExtResource("27_fqxdl"), ExtResource("28_b7mkj"), ExtResource("29_1gro0"), ExtResource("30_g6ycs")])
 
-[node name="BlankMenuSprite2" type="Sprite2D" parent="GameArea/MenuManager/Menu/PlayMenu"]
+[node name="BlankMenuSprite2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
-[node name="GameMenu" type="Panel" parent="GameArea/MenuManager/Menu/PlayMenu"]
+[node name="GameMenu" type="Panel" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 offset_left = -27.0
 offset_top = -85.0
 offset_right = 197.0
@@ -990,7 +810,7 @@ offset_bottom = 139.0
 scale = Vector2(0.24, 0.24)
 theme = ExtResource("15_ul75l")
 
-[node name="MenuLabel" type="Label" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+[node name="MenuLabel" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
 layout_mode = 0
 offset_left = -95.8333
 offset_top = -4.16667
@@ -1002,11 +822,11 @@ text = "Pick a game!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonController" type="Node" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
+[node name="ButtonController" type="Node" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
 script = ExtResource("17_ck7l0")
 buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Run"), NodePath("../Hit"), NodePath("../Endure"), NodePath("../Exit")]
 
-[node name="Exit" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Exit" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 54.1667
 offset_top = 133.333
 offset_right = 134.167
@@ -1014,67 +834,67 @@ offset_bottom = 157.333
 scale = Vector2(1.425, 1.425)
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit" index="1"]
 text = "Exit"
 
-[node name="Guess" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Guess" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 16.0
 offset_top = 32.0
 offset_right = 88.0
 offset_bottom = 56.0
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess" index="1"]
 text = "Guess!"
 
-[node name="Fish" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Fish" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 136.0
 offset_top = 32.0
 offset_right = 208.0
 offset_bottom = 56.0
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish" index="1"]
 text = "Fish!"
 
-[node name="Run" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Run" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 16.0
 offset_top = 64.0
 offset_right = 88.0
 offset_bottom = 88.0
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run" index="1"]
 text = "Run!"
 
-[node name="Hit" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Hit" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 136.0
 offset_top = 64.0
 offset_right = 208.0
 offset_bottom = 88.0
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit" index="1"]
 text = "Hit!"
 
-[node name="Endure" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
+[node name="Endure" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
 offset_left = 16.0
 offset_top = 96.0
 offset_right = 88.0
 offset_bottom = 120.0
 metadata/_edit_group_ = true
 
-[node name="OptionName" parent="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure" index="1"]
+[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure" index="1"]
 text = "Endure!"
 
-[node name="MiniGameContainer" type="Panel" parent="GameArea/MenuManager/Menu/PlayMenu"]
+[node name="MiniGameContainer" type="Panel" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 offset_left = -27.0
 offset_top = -85.0
 offset_right = 27.0
 offset_bottom = -31.0
 theme = ExtResource("15_ul75l")
 
-[node name="DeathMenu" type="Node2D" parent="GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
+[node name="DeathMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
 visible = false
 position = Vector2(0, -58)
 script = ExtResource("10_qk4hv")
@@ -1082,24 +902,24 @@ _pseudoPet = NodePath("PseudoPet")
 _crossSprite = NodePath("CrossSprite")
 _ageLabel = NodePath("Age")
 
-[node name="BackdropSprite" type="Sprite2D" parent="GameArea/MenuManager/Menu/DeathMenu"]
+[node name="BackdropSprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu"]
 z_index = 9
 z_as_relative = false
 texture = ExtResource("8_5u0yl")
 
-[node name="PseudoPet" parent="GameArea/MenuManager/Menu/DeathMenu" instance=ExtResource("10_04b0e")]
+[node name="PseudoPet" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu" instance=ExtResource("10_04b0e")]
 z_index = 9
 z_as_relative = false
 position = Vector2(-11, 3)
 
-[node name="CrossSprite" type="AnimatedSprite2D" parent="GameArea/MenuManager/Menu/DeathMenu"]
+[node name="CrossSprite" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu"]
 z_index = 9
 z_as_relative = false
 position = Vector2(11, -5)
 sprite_frames = SubResource("SpriteFrames_6uw0p")
 frame_progress = 0.937658
 
-[node name="Age" type="Label" parent="GameArea/MenuManager/Menu/DeathMenu"]
+[node name="Age" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu"]
 z_index = 9
 z_as_relative = false
 offset_left = -27.0
@@ -1113,7 +933,7 @@ text = "Age:
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PetManager" type="Node2D" parent="GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
+[node name="PetManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("32_kagdc")
 hungerBar = NodePath("../MenuManager/StatusBars/Hungerbar")
 joyBar = NodePath("../MenuManager/StatusBars/JoyBar")
@@ -1126,89 +946,89 @@ petStartResource = ExtResource("34_cijat")
 _evolvingPet = NodePath("EvolvingPet")
 _evolveSequenceRate = 1.05
 
-[node name="Markers" type="Node2D" parent="GameArea/PetManager"]
+[node name="Markers" type="Node2D" parent="PositionGroup/GameArea/PetManager"]
 
-[node name="PetSpawnPoint" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="PetSpawnPoint" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(0, -45)
 gizmo_extents = 2.5
 
-[node name="LeftBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="LeftBoundry" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(-27, -85)
 gizmo_extents = 54.0
 
-[node name="RightBoundry" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="RightBoundry" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(27, -31)
 gizmo_extents = 54.0
 
-[node name="SpawnLocation0" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="SpawnLocation0" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(-17, -67)
 
-[node name="SpawnLocation1" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="SpawnLocation1" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(0, -67)
 
-[node name="SpawnLocation2" type="Marker2D" parent="GameArea/PetManager/Markers"]
+[node name="SpawnLocation2" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(17, -67)
 
-[node name="FoodColliders" type="Node2D" parent="GameArea/PetManager"]
+[node name="FoodColliders" type="Node2D" parent="PositionGroup/GameArea/PetManager"]
 
-[node name="SpawnCollider0" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
+[node name="SpawnCollider0" type="Area2D" parent="PositionGroup/GameArea/PetManager/FoodColliders"]
 position = Vector2(-17, -67)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider0"]
 shape = SubResource("CircleShape2D_6jpmp")
 
-[node name="SpawnCollider1" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
+[node name="SpawnCollider1" type="Area2D" parent="PositionGroup/GameArea/PetManager/FoodColliders"]
 position = Vector2(0, -67)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider1"]
 shape = SubResource("CircleShape2D_6jpmp")
 
-[node name="SpawnCollider2" type="Area2D" parent="GameArea/PetManager/FoodColliders"]
+[node name="SpawnCollider2" type="Area2D" parent="PositionGroup/GameArea/PetManager/FoodColliders"]
 position = Vector2(17, -67)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameArea/PetManager/FoodColliders/SpawnCollider2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider2"]
 shape = SubResource("CircleShape2D_6jpmp")
 
-[node name="EvolvingPet" type="Node2D" parent="GameArea/PetManager" node_paths=PackedStringArray("_previousEvo", "_nextEvo")]
+[node name="EvolvingPet" type="Node2D" parent="PositionGroup/GameArea/PetManager" node_paths=PackedStringArray("_previousEvo", "_nextEvo")]
 visible = false
 position = Vector2(0, -45)
 script = ExtResource("35_071hk")
 _previousEvo = NodePath("PreviousEvolution")
 _nextEvo = NodePath("NextEvolution")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GameArea/PetManager/EvolvingPet"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PositionGroup/GameArea/PetManager/EvolvingPet"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_fmrrl")
 }
 
-[node name="PreviousEvolution" type="Sprite2D" parent="GameArea/PetManager/EvolvingPet"]
+[node name="PreviousEvolution" type="Sprite2D" parent="PositionGroup/GameArea/PetManager/EvolvingPet"]
 offset = Vector2(0, -8)
 
-[node name="NextEvolution" type="Sprite2D" parent="GameArea/PetManager/EvolvingPet"]
+[node name="NextEvolution" type="Sprite2D" parent="PositionGroup/GameArea/PetManager/EvolvingPet"]
 visible = false
 offset = Vector2(0, -10)
 
-[node name="ObjectContainer" type="Node2D" parent="GameArea"]
+[node name="ObjectContainer" type="Node2D" parent="PositionGroup/GameArea"]
 
-[connection signal="mouse_entered" from="MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseEntered"]
-[connection signal="mouse_exited" from="MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseExited"]
-[connection signal="ButtonPressed" from="LinkDeviceSprite" to="GameArea" method="_handleButtonInput"]
-[connection signal="timeout" from="GameArea/GameTimers/HungerTimer" to="GameArea" method="tickHunger"]
-[connection signal="timeout" from="GameArea/GameTimers/JoyTimer" to="GameArea" method="tickJoy"]
-[connection signal="timeout" from="GameArea/GameTimers/EvolveTimer" to="GameArea" method="_evolveCheck"]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderEntered"]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider0" to="GameArea" method="_foodColliderExited"]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderEntered"]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider1" to="GameArea" method="_foodColliderExited"]
-[connection signal="body_entered" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderEntered"]
-[connection signal="body_exited" from="GameArea/PetManager/FoodColliders/SpawnCollider2" to="GameArea" method="_foodColliderExited"]
+[connection signal="mouse_entered" from="PositionGroup/MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseEntered"]
+[connection signal="mouse_exited" from="PositionGroup/MinimizedSprite/MouseCollider" to="." method="_minDeviceMouseExited"]
+[connection signal="ButtonPressed" from="PositionGroup/LinkDeviceSprite" to="PositionGroup/GameArea" method="_handleButtonInput"]
+[connection signal="timeout" from="PositionGroup/GameArea/GameTimers/HungerTimer" to="PositionGroup/GameArea" method="tickHunger"]
+[connection signal="timeout" from="PositionGroup/GameArea/GameTimers/JoyTimer" to="PositionGroup/GameArea" method="tickJoy"]
+[connection signal="timeout" from="PositionGroup/GameArea/GameTimers/EvolveTimer" to="PositionGroup/GameArea" method="_evolveCheck"]
+[connection signal="body_entered" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider0" to="PositionGroup/GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider0" to="PositionGroup/GameArea" method="_foodColliderExited"]
+[connection signal="body_entered" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider1" to="PositionGroup/GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider1" to="PositionGroup/GameArea" method="_foodColliderExited"]
+[connection signal="body_entered" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider2" to="PositionGroup/GameArea" method="_foodColliderEntered"]
+[connection signal="body_exited" from="PositionGroup/GameArea/PetManager/FoodColliders/SpawnCollider2" to="PositionGroup/GameArea" method="_foodColliderExited"]
 
-[editable path="GameArea/MenuManager/Menu/MiniMenu/Play"]
-[editable path="GameArea/MenuManager/Menu/MiniMenu/Stats"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit"]
-[editable path="GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Play"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Stats"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit"]
+[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure"]

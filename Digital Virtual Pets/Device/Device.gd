@@ -9,13 +9,14 @@ enum DeviceAction {HOP, SHAKE}
 @export_category("Node References")
 @export var _gameArea : GameArea
 @export var _animator : AnimationPlayer
+@export var _movementGroup : Node2D
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
 @export var hopDuration : float
+@export var _minimizeShiftDistance : float
 @export_category("Modifiers")
 @export var chatSpeed : float
-
 
 var activeTween : Tween
 var isContinuousShake := false
@@ -32,6 +33,7 @@ func _ready():
 	GameEvents.EndShakeDevice.connect(endShake)
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
+
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton and _minHovered):
@@ -54,6 +56,8 @@ func toggleDeviceMinimize(isMinimized : bool):
 		_animator.play("minimize_device")
 	else:
 		_animator.play("maximize_device")
+	
+	_shiftDeviceOver()
 
 #endregion
 
@@ -120,6 +124,19 @@ func endHop():
 #endregion
 
 #region Tween Controls 
+
+func _shiftDeviceOver():
+	var tween = create_tween()
+	#TODO: Update Settings to include a direction
+	var direction = 1
+	if (!_minimized):
+		direction *= -1
+	var target = Vector2(_movementGroup.position.x + ((_minimizeShiftDistance * Settings.gameScale) * direction), 
+						_movementGroup.position.y)
+	tween.tween_property(_movementGroup, "position", 
+						target, 
+						_animator.current_animation_length).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+
 
 func _shakeOnce(isStart : bool = true):
 	if isStart:

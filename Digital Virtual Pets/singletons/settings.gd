@@ -86,7 +86,7 @@ func setBorderless(isBorderless : bool):
 func toggleMinimizedWindow(isMinimized : bool):
 	if (isMinimized):
 		get_viewport().get_window().size /= 3
-		GameEvents.ChangeCameraZoom.emit(3, (_defaultWindowSize / 3) * 2 )
+		GameEvents.ChangeCameraZoom.emit(3, floor((_defaultWindowSize / 3)) * 2)
 		setWindowPosition()
 	else:
 		get_viewport().get_window().size = _defaultWindowSize
@@ -99,9 +99,9 @@ func setWindowPosition():
 	if (windowOrientation == WindowOrientationOptions.CUSTOM):
 		newPosn = _lastWindowPosn
 	
-	var screenSize = DisplayServer.screen_get_usable_rect().size
+	#TODO: NEED to have a setting for active monitor
+	var screenSize = DisplayServer.screen_get_usable_rect(1).size
 	var gameWindowSize = get_viewport().get_window().size
-	
 	match windowOrientation:
 		WindowOrientationOptions.BOT_RIGHT_CORNER:
 			newPosn = Vector2i(screenSize.x - gameWindowSize.x, screenSize.y - gameWindowSize.y)

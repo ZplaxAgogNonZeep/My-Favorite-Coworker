@@ -28,9 +28,9 @@ metadata/_edit_lock_ = true
 
 [node name="BackgroundCanvas" type="CanvasLayer" parent="."]
 layer = -2
+visible = false
 
 [node name="SimpleBackground" type="Control" parent="BackgroundCanvas"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

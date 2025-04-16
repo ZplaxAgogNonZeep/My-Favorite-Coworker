@@ -15,7 +15,6 @@ var attachedObject : Node2D = null
 var _active := false
 
 func vfxReady() -> void:
-	print("vfxReady")
 	if lifeTimer != null:
 		_startLifespanTimer()
 	_active = true

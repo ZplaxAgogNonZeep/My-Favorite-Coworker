@@ -26,7 +26,6 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	
 	randomize()
 	var timerDuration = randi_range(gameTimerRange.x, gameTimerRange.y)
-	print(timerDuration)
 	$Timer.start(timerDuration)
 	gameRunning = true
 

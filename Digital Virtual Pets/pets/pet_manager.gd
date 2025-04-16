@@ -13,7 +13,6 @@ class DataSaver extends SaveData.DataSaver:
 	var _slotIndex
 	
 	func getDataToSave() -> Data:
-		print("dataSaver")
 		obj.gatherDataFromActivePet()
 		return super()
 
@@ -78,7 +77,6 @@ func spawnPet(index := -1, isNewPet := false):
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
 		newPet.petResource = petStartResource
 	elif (index < 0 and not isNewPet):
-		print("one")
 		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
 	elif (index < _petSlots.size() and index >= 0):
 		print("Two")

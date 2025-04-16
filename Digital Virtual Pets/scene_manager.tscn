@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://dtya6sb5p4rt8" path="res://ui/system_dialog/system_dialog_window.tscn" id="9_k1t8d"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 
-[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_menuManager", "_iconMenu", "_background", "device")]
+[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device")]
 script = ExtResource("1_yxx2a")
+_camera = NodePath("Camera2D")
 _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
 _background = NodePath("BackgroundCanvas/SimpleBackground")
@@ -76,6 +77,10 @@ anchor_left = 0.208333
 anchor_top = 0.82716
 anchor_right = 0.208333
 anchor_bottom = 0.82716
+offset_left = -44.9998
+offset_top = -474.415
+offset_right = -44.9998
+offset_bottom = -474.415
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -115,5 +120,8 @@ _windowPosnVariance = Vector2(64, 64)
 metadata/_edit_lock_ = true
 
 [node name="Device" parent="." instance=ExtResource("11_7o31v")]
-position = Vector2(128, 296)
+position = Vector2(128, 320)
 scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

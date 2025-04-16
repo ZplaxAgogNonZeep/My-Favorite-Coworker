@@ -135,7 +135,8 @@ func _shiftDeviceOver():
 						_movementGroup.position.y)
 	tween.tween_property(_movementGroup, "position", 
 						target, 
-						_animator.current_animation_length).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+						_animator.current_animation_length).set_ease(
+							Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 
 
 func _shakeOnce(isStart : bool = true):

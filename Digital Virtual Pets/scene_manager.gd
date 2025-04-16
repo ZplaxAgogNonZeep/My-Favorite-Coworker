@@ -7,6 +7,7 @@ class DataSaver extends SaveData.DataSaver:
 	
 
 @export_category("Node References")
+@export var _camera : Camera2D
 @export var _menuManager : MenuManager
 @export var _iconMenu : Menu
 @export var _background : Control
@@ -19,6 +20,8 @@ var _firstTimeOpened := true
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
 	GameEvents.ToggleBorderlessMode.connect(_toggleBorderless)
+	
+	
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false

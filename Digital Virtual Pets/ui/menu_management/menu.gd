@@ -4,8 +4,12 @@ class_name Menu
 
 signal ChangeMenu(menuIndex: int)
 
-@export var animator : AnimationPlayer
+@export_category("Menu System Variables")
 @export var pauseGame : bool = true
+@export var _window : Window
+@export_category("Animation Variables")
+@export var animator : AnimationPlayer
+@export var _animationLibrary : String
 
 var menuManager : MenuManager
 var index : int
@@ -13,6 +17,8 @@ var _openedDirectly := false
 
 func _ready() -> void:
 	animator.animation_finished.connect(_animationComplete)
+	if _window:
+		_window.visible = false
 
 
 func menuBehavior():
@@ -25,11 +31,13 @@ func openMenu(direct := false):
 	
 	_loadSavedMenuSettings()
 	
-	animator.play("generic_menu_animation/Open")
+	animator.play(_animationLibrary + "/open")
 	#animator is bugged so we need to wait a frame or it'll display the menu BEFORE playing the 
 	# animation
 	await get_tree().process_frame
 	visible = true
+	if (_window != null):
+		_window.visible = true
 	await animator.animation_finished
 
 
@@ -38,13 +46,15 @@ func closeMenu():
 	_saveMenuSettings()
 	if (pauseGame):
 		Settings.pauseGame(false)
-	if !animator.has_animation("generic_menu_animation/Close"):
-		animator.play("Open", -1, -1, true)
+	if !animator.has_animation(_animationLibrary +"/close"):
+		animator.play("open", -1, -1, true)
 	else:
-		animator.play("generic_menu_animation/Close")
+		animator.play(_animationLibrary +"/close")
 	
 	await animator.animation_finished
 	visible = false
+	if (_window):
+		_window.visible = false
 
 
 func _onExit():

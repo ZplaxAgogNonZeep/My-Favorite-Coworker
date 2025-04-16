@@ -1,5 +1,6 @@
 extends Menu
 
+@export_category("Menu Selection Icon Variables")
 @export var _petMenuButton : Button
 
 func _loadSavedMenuSettings():

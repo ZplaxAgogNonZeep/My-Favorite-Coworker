@@ -10,9 +10,11 @@ enum MenuMode {SINGLE_MENU, MULTI_MENU}
 @export_category("Node References")
 @export var controller : Node2D # Usually the root of the scene, used to get information from non-singletons
 @export_category("State Machine")
-@export var _menuMode = MenuMode.SINGLE_MENU
-@export var _menuList : Array[Menu]
+@export var _menuMode := MenuMode.SINGLE_MENU
+@export var _useOSWindows : bool = false
 @export var _defaultMenuIndex : int
+@export var _menuList : Array[Menu]
+
 var _activeMenus : Array[Menu]
 
 func _ready() -> void:

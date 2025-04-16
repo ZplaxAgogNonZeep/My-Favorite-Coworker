@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfh7qhfhtctv8"]
+[gd_scene load_steps=7 format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
 [ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="3_tqakc"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_6eh78"]
+[ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
+[ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "animator")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
@@ -13,40 +15,33 @@ offset_bottom = 648.0
 mouse_filter = 2
 theme = ExtResource("1_kd0k7")
 script = ExtResource("1_ugwrh")
-_proactivityCheckbox = NodePath("ColorRect/Buttons/ProactivityCheckBox")
-_windowAttentionSelection = NodePath("ColorRect/Buttons/WindowFocusOptions")
+_proactivityCheckbox = NodePath("Window/MenuWindow/Buttons/ProactivityCheckBox")
+_windowAttentionSelection = NodePath("Window/MenuWindow/Buttons/WindowFocusOptions")
+_window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
+_animationLibrary = "pop_up_window_animations"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"generic_menu_animation": ExtResource("3_tqakc")
+&"generic_menu_animation": ExtResource("3_tqakc"),
+&"pop_up_window_animations": ExtResource("4_lbu1b")
 }
 
-[node name="ColorRect" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 43.0001
-grow_horizontal = 2
-pivot_offset = Vector2(200, 200)
+[node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
+transparent_bg = true
+size = Vector2i(1430, 1370)
+borderless = true
+transparent = true
+script = ExtResource("4_ikuxl")
+_canvas = NodePath("MenuWindow")
+
+[node name="MenuWindow" type="Panel" parent="Window"]
+offset_right = 400.0
+offset_bottom = 243.0
+pivot_offset = Vector2(200, 121)
 metadata/_edit_use_anchors_ = true
 
-[node name="Dropshadow" type="ColorRect" parent="ColorRect"]
-z_index = -1
-layout_mode = 0
-anchor_left = -0.0025
-anchor_top = -0.00411522
-anchor_right = 1.0025
-anchor_bottom = 1.00411
-offset_bottom = 1.52588e-05
-mouse_filter = 2
-color = Color(0, 0, 0, 0.313726)
-metadata/_edit_lock_ = true
-metadata/_edit_use_anchors_ = true
-
-[node name="OptionsName" type="Label" parent="ColorRect"]
+[node name="OptionsName" type="Label" parent="Window/MenuWindow"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.0846913
@@ -60,7 +55,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Labels" type="Control" parent="ColorRect"]
+[node name="Labels" type="Control" parent="Window/MenuWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="ProactivityLabel" type="Label" parent="ColorRect/Labels"]
+[node name="ProactivityLabel" type="Label" parent="Window/MenuWindow/Labels"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,7 +78,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Proactivity Mode"
 vertical_alignment = 1
 
-[node name="WindowFocusLabel" type="Label" parent="ColorRect/Labels"]
+[node name="WindowFocusLabel" type="Label" parent="Window/MenuWindow/Labels"]
 editor_description = "
 "
 layout_mode = 0
@@ -96,7 +91,7 @@ mouse_filter = 0
 text = "Window Focus Mode"
 vertical_alignment = 1
 
-[node name="Buttons" type="Control" parent="ColorRect"]
+[node name="Buttons" type="Control" parent="Window/MenuWindow"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="CloseButton" type="Button" parent="ColorRect/Buttons"]
+[node name="CloseButton" type="Button" parent="Window/MenuWindow/Buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -119,14 +114,14 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("4_6eh78")
 icon_alignment = 1
 
-[node name="ProactivityCheckBox" type="CheckBox" parent="ColorRect/Buttons"]
+[node name="ProactivityCheckBox" type="CheckBox" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 306.0
 offset_top = 74.0
 offset_right = 336.0
 offset_bottom = 104.0
 
-[node name="WindowFocusOptions" type="OptionButton" parent="ColorRect/Buttons"]
+[node name="WindowFocusOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 207.0
 offset_top = 112.0
@@ -141,6 +136,8 @@ popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"
 popup/item_2/id = 2
 
-[connection signal="pressed" from="ColorRect/Buttons/CloseButton" to="." method="_onExit"]
-[connection signal="toggled" from="ColorRect/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
-[connection signal="item_selected" from="ColorRect/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]
+[connection signal="close_requested" from="Window" to="." method="_onExit"]
+[connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
+[connection signal="pressed" from="Window/MenuWindow/Buttons/CloseButton" to="." method="_onExit"]
+[connection signal="toggled" from="Window/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
+[connection signal="item_selected" from="Window/MenuWindow/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]

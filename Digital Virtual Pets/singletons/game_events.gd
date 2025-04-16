@@ -10,7 +10,7 @@ signal GetPlayerAttention
 signal OpenOptionsMenu
 signal ToggleBorderlessMode(isBorderless : bool)
 signal OpenDirectMenu(index : int)
-
+signal ChangeCameraZoom(scale : float)
 #endregion
 
 #region Timer Events

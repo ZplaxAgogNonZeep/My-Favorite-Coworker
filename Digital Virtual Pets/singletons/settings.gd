@@ -26,6 +26,7 @@ var proactivityTimeModifier := 0.50
 var gameScale := 2
 ## Vectors
 var _lastWindowPosn := Vector2i.ZERO
+var _defaultWindowSize : Vector2i
 ## Enums
 var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_TO_FRONT
 var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_RIGHT_CORNER
@@ -34,6 +35,7 @@ var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_
 func _ready() -> void:
 	get_tree().call_group("Debug", "debugReady")
 	setWindowPosition()
+	_defaultWindowSize = get_viewport().get_window().size
 
 
 func pauseGame(isPaused : bool):
@@ -72,14 +74,28 @@ func setProactivitySetting(isTrue : bool):
 func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 	windowAttentionMode = windowAttention
 
+#endregion
+
+#region Window Functions
 
 func setBorderless(isBorderless : bool):
+	borderless = isBorderless
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
+
+
+func toggleMinimizedWindow(isMinimized : bool):
+	if (isMinimized):
+		get_viewport().get_window().size /= 3
+		GameEvents.ChangeCameraZoom.emit(3, (_defaultWindowSize / 3) * 2 )
+		setWindowPosition()
+	else:
+		get_viewport().get_window().size = _defaultWindowSize
+		GameEvents.ChangeCameraZoom.emit(1, Vector2.ZERO)
+		setWindowPosition()
 
 
 func setWindowPosition():
 	var newPosn = Vector2i.ZERO
-	
 	if (windowOrientation == WindowOrientationOptions.CUSTOM):
 		newPosn = _lastWindowPosn
 	
@@ -95,7 +111,6 @@ func setWindowPosition():
 			newPosn = Vector2i(screenSize.x - gameWindowSize.x, 0)
 		WindowOrientationOptions.BOT_LEFT_CORNER:
 			newPosn = Vector2i(0, screenSize.y - gameWindowSize.y)
-	
 	
 	get_viewport().get_window().position = newPosn
 
@@ -116,5 +131,18 @@ func setProactivityMode(isProactive : bool):
 
 #region Helper Functions
 
-
+func determineDeviceGrowDir() -> int:
+	match windowOrientation:
+		WindowOrientationOptions.CUSTOM:
+			return 0
+		WindowOrientationOptions.TOP_LEFT_CORNER:
+			return -1
+		WindowOrientationOptions.BOT_LEFT_CORNER:
+			return -1
+		WindowOrientationOptions.TOP_RIGHT_CORNER:
+			return 1
+		WindowOrientationOptions.BOT_RIGHT_CORNER:
+			return 1
+		_:
+			return 0
 #endregion

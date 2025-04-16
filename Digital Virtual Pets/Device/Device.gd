@@ -127,16 +127,25 @@ func endHop():
 
 func _shiftDeviceOver():
 	var tween = create_tween()
-	#TODO: Update Settings to include a direction
-	var direction = 1
+	
+	var direction = Settings.determineDeviceGrowDir()
+	print(direction)
 	if (!_minimized):
 		direction *= -1
-	var target = Vector2(_movementGroup.position.x + ((_minimizeShiftDistance * Settings.gameScale) * direction), 
+	var target = Vector2(_movementGroup.position.x + (
+							(_minimizeShiftDistance * Settings.gameScale) * direction), 
 						_movementGroup.position.y)
 	tween.tween_property(_movementGroup, "position", 
 						target, 
 						_animator.current_animation_length).set_ease(
 							Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	
+	if (!_minimized):
+		Settings.toggleMinimizedWindow(_minimized)
+	
+	await tween.finished
+	if (_minimized):
+		Settings.toggleMinimizedWindow(_minimized)
 
 
 func _shakeOnce(isStart : bool = true):

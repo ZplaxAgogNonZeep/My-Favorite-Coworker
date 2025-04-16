@@ -30,6 +30,7 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 size = Vector2i(1430, 1370)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")

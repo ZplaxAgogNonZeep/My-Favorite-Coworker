@@ -19,9 +19,7 @@ var _firstTimeOpened := true
 
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
-	GameEvents.ToggleBorderlessMode.connect(_toggleBorderless)
-	
-	
+	GameEvents.ChangeCameraZoom.connect(_changeCameraZoom)
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
@@ -37,17 +35,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
-		pass
-	
-	#if (event is InputEventMouseButton):
-		#if (event.double_click and _menuManager.isMenuOpen() and _iconMenu == _menuManager.getActiveMenu()):
-			#_menuManager.toggleMenu(false)
-			#get_tree().create_tween().tween_property(_background, "modulate", Color(Color.WHITE, 0.0), .75)
-			#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-		#elif (event.double_click and not _menuManager.isMenuOpen()):
-			#_menuManager.toggleMenu(true)
-			#get_tree().create_tween().tween_property(_background, "modulate", Color(Color.WHITE, 1), .75)
-			#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+		Settings.toggleMinimizedWindow(true)
 
 
 func _displayDevice(skipAnimation := false):
@@ -60,13 +48,15 @@ func _displayDevice(skipAnimation := false):
 	await get_tree().process_frame
 	device.visible = true
 
+
 func _openMenu():
 	_menuManager.toggleMenu(true)
 
 
-func _toggleBorderless(isBorderless : bool):
-	Settings.borderless = isBorderless
-	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, isBorderless)
+
+func _changeCameraZoom(_scale : float, _position : Vector2):
+	_camera.zoom = Vector2(_scale, _scale)
+	_camera.position = _position
 
 
 #region Dialog Control Functions

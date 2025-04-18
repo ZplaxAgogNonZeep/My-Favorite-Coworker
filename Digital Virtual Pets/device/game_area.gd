@@ -84,7 +84,7 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.RIGHT_BUTTON:
 			menuManager.handleInput(button)
 		Enums.DeviceButton.POWER_BUTTON:
-			#TODO: change this to be something else probably
+			#TODO: Update Power Button close game sequence
 			_screenAnimator.play("Shutdown")
 			await  get_tree().create_timer(1).timeout
 			get_tree().quit()

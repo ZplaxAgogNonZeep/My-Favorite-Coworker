@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_window", "animator")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
@@ -17,9 +17,13 @@ theme = ExtResource("1_kd0k7")
 script = ExtResource("1_ugwrh")
 _proactivityCheckbox = NodePath("Window/MenuWindow/Buttons/ProactivityCheckBox")
 _windowAttentionSelection = NodePath("Window/MenuWindow/Buttons/WindowFocusOptions")
+_windowOrientationOptions = NodePath("Window/MenuWindow/Buttons/WindowOrientationOptions")
+_monitorOptions = NodePath("Window/MenuWindow/Buttons/MonitorOptions")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
+metadata/_edit_vertical_guides_ = [37.0, 363.0]
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -30,78 +34,33 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 size = Vector2i(1430, 1370)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
 _canvas = NodePath("MenuWindow")
 
 [node name="MenuWindow" type="Panel" parent="Window"]
+anchors_preset = -1
+anchor_bottom = -0.0708029
 offset_right = 400.0
 offset_bottom = 243.0
 pivot_offset = Vector2(200, 121)
+theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true
 
 [node name="OptionsName" type="Label" parent="Window/MenuWindow"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.0846913
-anchor_right = 0.999999
-anchor_bottom = 0.195803
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 110.0
+offset_bottom = 16.0
 theme = ExtResource("1_kd0k7")
-theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 28
-text = "Options:"
-horizontal_alignment = 1
+theme_type_variation = &"HeaderSmall"
+text = "device_config.exe"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Labels" type="Control" parent="Window/MenuWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="ProactivityLabel" type="Label" parent="Window/MenuWindow/Labels"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -160.0
-offset_top = 80.0
-offset_right = 80.0
-offset_bottom = 104.0
-grow_horizontal = 2
-theme_type_variation = &"HeaderMedium"
-text = "Proactivity Mode"
-vertical_alignment = 1
-
-[node name="WindowFocusLabel" type="Label" parent="Window/MenuWindow/Labels"]
-editor_description = "
-"
-layout_mode = 0
-offset_left = 40.0
-offset_top = 112.0
-offset_right = 200.0
-offset_bottom = 136.0
-tooltip_text = "Dooty Doot doot"
-mouse_filter = 0
-text = "Window Focus Mode"
-vertical_alignment = 1
-
-[node name="Buttons" type="Control" parent="Window/MenuWindow"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="CloseButton" type="Button" parent="Window/MenuWindow/Buttons"]
+[node name="CloseButton" type="Button" parent="Window/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -115,19 +74,98 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("4_6eh78")
 icon_alignment = 1
 
-[node name="ProactivityCheckBox" type="CheckBox" parent="Window/MenuWindow/Buttons"]
+[node name="Labels" type="Control" parent="Window/MenuWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ProactivityLabel" type="Label" parent="Window/MenuWindow/Labels"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 35.0
+offset_right = 277.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
+text = "Proactivity Mode"
+vertical_alignment = 1
+
+[node name="WindowFocusLabel" type="Label" parent="Window/MenuWindow/Labels"]
+editor_description = "
+"
 layout_mode = 0
-offset_left = 306.0
-offset_top = 74.0
-offset_right = 336.0
-offset_bottom = 104.0
+offset_left = 37.0
+offset_top = 61.0
+offset_right = 197.0
+offset_bottom = 82.0
+tooltip_text = "Dooty Doot doot"
+mouse_filter = 0
+text = "Window Focus Mode"
+vertical_alignment = 1
+
+[node name="WindowOrientationLabel" type="Label" parent="Window/MenuWindow/Labels"]
+editor_description = "
+"
+layout_mode = 0
+offset_left = 37.0
+offset_top = 88.0
+offset_right = 204.0
+offset_bottom = 109.0
+tooltip_text = "Dooty Doot doot"
+mouse_filter = 0
+text = "Window Position"
+vertical_alignment = 1
+
+[node name="MonitorLabel" type="Label" parent="Window/MenuWindow/Labels"]
+editor_description = "
+"
+layout_mode = 0
+offset_left = 38.0
+offset_top = 114.0
+offset_right = 292.0
+offset_bottom = 135.0
+tooltip_text = "Dooty Doot doot"
+mouse_filter = 0
+text = "Active Monitor"
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="Window/MenuWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ProactivityCheckBox" type="CheckBox" parent="Window/MenuWindow/Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -63.0
+offset_top = 31.0
+offset_right = -33.0
+offset_bottom = 61.0
+grow_horizontal = 0
+flat = true
+icon_alignment = 1
 
 [node name="WindowFocusOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
-layout_mode = 0
-offset_left = 207.0
-offset_top = 112.0
-offset_right = 336.0
-offset_bottom = 134.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_top = 61.0
+offset_right = -37.0
+offset_bottom = 83.0
+grow_horizontal = 0
 selected = 0
 item_count = 3
 popup/item_0/text = "Bring to Front"
@@ -137,8 +175,48 @@ popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"
 popup/item_2/id = 2
 
+[node name="WindowOrientationOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_top = 87.0
+offset_right = -37.0
+offset_bottom = 109.0
+grow_horizontal = 0
+selected = 3
+item_count = 5
+popup/item_0/text = "Top Left Corner"
+popup/item_0/id = 0
+popup/item_1/text = "Top Right Corner"
+popup/item_1/id = 1
+popup/item_2/text = "Bottom Left Corner"
+popup/item_2/id = 2
+popup/item_3/text = "Bottom Right Corner"
+popup/item_3/id = 3
+popup/item_4/text = "Custom"
+popup/item_4/id = 4
+
+[node name="MonitorOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.0
+offset_top = 113.0
+offset_right = -37.0
+offset_bottom = 135.0
+grow_horizontal = 0
+selected = 0
+item_count = 1
+popup/item_0/text = "Display 1"
+popup/item_0/id = 0
+
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
-[connection signal="pressed" from="Window/MenuWindow/Buttons/CloseButton" to="." method="_onExit"]
+[connection signal="pressed" from="Window/MenuWindow/CloseButton" to="." method="_onExit"]
 [connection signal="toggled" from="Window/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
 [connection signal="item_selected" from="Window/MenuWindow/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]
+[connection signal="item_selected" from="Window/MenuWindow/Buttons/WindowOrientationOptions" to="." method="_onWindowOrientationOptions"]
+[connection signal="item_selected" from="Window/MenuWindow/Buttons/MonitorOptions" to="." method="_onMonitorOptions"]

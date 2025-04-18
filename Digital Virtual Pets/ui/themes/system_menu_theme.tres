@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=39 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=42 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -14,12 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://cx008p62ogymc" path="res://assets/art/aesprite/ui/menu/system_menu/unchecked_checkbox_disabled_subpanel.png" id="8_jmwy2"]
 [ext_resource type="Texture2D" uid="uid://dgcd5kpdcrlo1" path="res://assets/art/aesprite/ui/menu/system_menu/close_button.png" id="9_1qsni"]
 [ext_resource type="Texture2D" uid="uid://b5ofy1t4ca7wd" path="res://assets/art/aesprite/ui/menu/system_menu/window_9_slice.png" id="9_ev6l4"]
+[ext_resource type="Texture2D" uid="uid://bilpohvelfpl2" path="res://assets/art/aesprite/ui/menu/system_menu/window_closed_9_slice.png" id="10_5dsuw"]
 [ext_resource type="Texture2D" uid="uid://3y0g6k26k2ju" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected.png" id="10_cby0i"]
 [ext_resource type="Texture2D" uid="uid://d31jcs268by2o" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_panel.png" id="10_xv7ca"]
 [ext_resource type="Texture2D" uid="uid://dpao4egnntnfr" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected_disabled.png" id="11_xv7ca"]
 [ext_resource type="Texture2D" uid="uid://80gesgnigwmp" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox.png" id="12_5dsuw"]
 [ext_resource type="Texture2D" uid="uid://4x422n235xfh" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_disabled.png" id="13_sp1lb"]
 [ext_resource type="Texture2D" uid="uid://mjugxofv237p" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_9slice.png" id="14_4cels"]
+[ext_resource type="Texture2D" uid="uid://baqq6qc5fqnqw" path="res://assets/art/aesprite/ui/menu/system_menu/subwindow_9_slice.png" id="22_5dsuw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g42wa"]
 texture = ExtResource("2_ovrau")
@@ -102,6 +104,13 @@ texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 modulate_color = Color(0.400698, 0.400698, 0.400698, 1)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sp1lb"]
+texture = ExtResource("10_5dsuw")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dsuw"]
 texture = ExtResource("10_xv7ca")
 texture_margin_left = 4.0
@@ -139,8 +148,12 @@ texture_margin_bottom = 4.0
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hmqd"]
-bg_color = Color(0.716296, 0.716296, 0.716296, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4cels"]
+texture = ExtResource("22_5dsuw")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -167,6 +180,8 @@ CloseButton/styles/disabled = SubResource("StyleBoxTexture_1qsni")
 CloseButton/styles/hover = SubResource("StyleBoxTexture_o4pp3")
 CloseButton/styles/normal = SubResource("StyleBoxTexture_wxsat")
 CloseButton/styles/pressed = SubResource("StyleBoxTexture_jmwy2")
+ClosedPanel/base_type = &"Panel"
+ClosedPanel/styles/panel = SubResource("StyleBoxTexture_sp1lb")
 CustomTestLabel/base_type = &"Label"
 CustomTestLabel/font_sizes/font_size = 5
 HeaderLarge/base_type = &"Label"
@@ -205,4 +220,4 @@ PopupMenu/icons/unchecked_disabled = ExtResource("8_jmwy2")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_cbi2n")
 PopupMenu/styles/panel = SubResource("StyleBoxTexture_2dav4")
 SubPanel/base_type = &"Panel"
-SubPanel/styles/panel = SubResource("StyleBoxFlat_6hmqd")
+SubPanel/styles/panel = SubResource("StyleBoxTexture_4cels")

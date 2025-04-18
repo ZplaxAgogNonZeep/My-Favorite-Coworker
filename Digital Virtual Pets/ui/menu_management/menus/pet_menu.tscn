@@ -39,6 +39,7 @@ borderless = true
 transparent = true
 script = ExtResource("5_4b6c8")
 _canvas = NodePath("MenuWindow")
+_windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 offset_right = 448.0

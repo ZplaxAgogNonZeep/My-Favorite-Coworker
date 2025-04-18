@@ -4,8 +4,8 @@ class_name settings
 
 enum WindowOrientationOptions {TOP_LEFT_CORNER, TOP_RIGHT_CORNER, BOT_LEFT_CORNER, BOT_RIGHT_CORNER, CUSTOM}
 enum WindowAttentionOptions {BRING_TO_FRONT, ALWAYS_ON_TOP, DO_NOT_CHANGE}
+enum SubWindowPositionType {MANAGER_WINDOW, MANAGED_WINDOW}
 
-	
 
 #region Observation Variables
 # These variables are meant to make it easy to track certain OS states
@@ -101,6 +101,7 @@ func changeActiveMonitor(monitorIndex : int) -> void:
 	setWindowPosition()
 
 
+## Makes the window smaller to account for a minimized device
 func toggleMinimizedWindow(isMinimized : bool):
 	if (isMinimized):
 		get_viewport().get_window().size /= 3
@@ -112,7 +113,9 @@ func toggleMinimizedWindow(isMinimized : bool):
 		setWindowPosition()
 
 
-func setWindowPosition():
+## Updates the main game window's position to either match the anchor of the monitor it's on
+## or to be in the porportional same position if set to custom.
+func setWindowPosition() -> void:
 	var newPosn = Vector2i.ZERO
 	if (windowOrientation == WindowOrientationOptions.CUSTOM):
 		newPosn = _customWindowPosn
@@ -133,6 +136,74 @@ func setWindowPosition():
 			newPosn = Vector2i(0, screenSize.y - gameWindowSize.y)
 	
 	get_viewport().get_window().position = DisplayServer.screen_get_position(activeMonitor) + newPosn
+
+
+## Takes [param windowPositionType] and a [param windowSize] to find a valid screen position 
+## to place a new window in. Default position scaling direction should be up and to the left.
+func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowSize : Vector2i):
+	var buildDir = Vector2i.ZERO
+	var gameWindowSize = get_viewport().get_window().size
+	var gameWindowPosition = get_viewport().get_window().position
+	var resolution = DisplayServer.screen_get_usable_rect(activeMonitor).size
+	var offset : Vector2i = (gameWindowSize * .5) - (windowSize * .5)
+	var finalWindowPosition = Vector2i.ZERO
+	
+	match windowOrientation:
+		WindowOrientationOptions.TOP_LEFT_CORNER:
+			buildDir = Vector2i(1, 1)
+		WindowOrientationOptions.TOP_RIGHT_CORNER:
+			buildDir = Vector2i(-1, 1)
+		WindowOrientationOptions.BOT_LEFT_CORNER:
+			buildDir = Vector2i(1, -1)
+		WindowOrientationOptions.BOT_RIGHT_CORNER:
+			buildDir = Vector2i(-1, -1)
+		WindowOrientationOptions.CUSTOM:
+			# Check for the quadrant the window is in
+			pass
+	
+	var managerPosn = Vector2i(int((windowSize.x * .5) * buildDir.x), 0)
+	
+	if (windowPositionType == SubWindowPositionType.MANAGER_WINDOW):
+		# The manager window should appear just to the side of the device
+		finalWindowPosition = managerPosn + offset
+	elif (windowPositionType == SubWindowPositionType.MANAGED_WINDOW):
+		# The managed windows should appear in a random space past the manager window
+		# bounds are vectors where x is the origin point and y is extended out from there
+		# Bounds will be used to determine a minimum and maximum range for RNG selection
+		var xBounds : Vector2i
+		xBounds.x = 0
+		xBounds.y = (windowSize.x * 1) * buildDir.x
+		if (!_checkWhithinRange(((xBounds.x + offset.x) + gameWindowPosition.x) + (windowSize.x * buildDir.x * -1), 
+								Vector2i(0, resolution.x))):
+			xBounds.x += (windowSize.x * .5) * buildDir.x
+		
+		var yBounds : Vector2i
+		yBounds.x = (windowSize.y) * buildDir.y
+		yBounds.y = (windowSize.y) * buildDir.y
+		
+		if (!_checkWhithinRange(((yBounds.x + offset.y) + gameWindowPosition.y) + 
+								(windowSize.y * buildDir.y * -1), 
+									Vector2i(0, resolution.y))):
+			yBounds.x += (windowSize.y * .5) * buildDir.y
+		
+		var min : Vector2i
+		var max : Vector2i
+		if xBounds.x > xBounds.y:
+			min.x = xBounds.y
+			max.x = xBounds.x
+		else:
+			max.x = xBounds.y
+			min.x = xBounds.x
+		
+		if yBounds.x > yBounds.y:
+			min.y = yBounds.y
+			max.y = yBounds.x
+		else:
+			max.y = yBounds.y
+			min.y = yBounds.x
+		
+		finalWindowPosition = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y)) + offset
+	return gameWindowPosition + finalWindowPosition
 
 #endregion
 
@@ -193,6 +264,9 @@ func _convertPositionBetweenResolutions(screenPosn : Vector2i,
 					lerp(0, resolutionTo.y, screenPosn.y / resolutionFrom.y))
 
 
-
+## Takes a [param point] within a single axis and returns if it falls inside that range.
+func _checkWhithinRange(point : float, resolution : Vector2) -> bool:
+	print("point: ", point, " Resolution: ", resolution)
+	return point >= resolution.x and point <= resolution.y
 
 #endregion

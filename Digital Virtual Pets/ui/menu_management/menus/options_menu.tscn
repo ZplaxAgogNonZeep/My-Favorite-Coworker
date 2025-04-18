@@ -38,12 +38,12 @@ borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
 _canvas = NodePath("MenuWindow")
+_windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 anchors_preset = -1
-anchor_bottom = -0.0708029
 offset_right = 400.0
-offset_bottom = 243.0
+offset_bottom = 146.0
 pivot_offset = Vector2(200, 121)
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true

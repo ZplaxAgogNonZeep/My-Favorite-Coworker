@@ -14,6 +14,7 @@ var windowFocused : bool = true
 var proactiveMode : bool = false
 var borderless : bool = true
 var activeMonitor : int = 0
+var _activeWindows : Array[Window]
 #endregion
 
 #region Settings Variables
@@ -96,6 +97,16 @@ func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
 		WindowAttentionOptions.DO_NOT_CHANGE:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
+	
+	for window in _activeWindows:
+		match windowAttentionMode:
+			WindowAttentionOptions.ALWAYS_ON_TOP:
+				window.always_on_top = true
+			WindowAttentionOptions.BRING_TO_FRONT:
+				window.always_on_top = false
+			WindowAttentionOptions.DO_NOT_CHANGE:
+				window.always_on_top = false
+		window.resetWindow()
 
 #endregion
 
@@ -225,6 +236,13 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 		finalWindowPosition = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y)) + offset
 	return gameWindowPosition + finalWindowPosition
 
+func addToActiveWindows(window : Window):
+	if (!_activeWindows.has(window)):
+		_activeWindows.append(window)
+
+func removeFromActiveWindows(window : Window):
+	_activeWindows.erase(window)
+
 #endregion
 
 #region Getter & Setter Functions
@@ -256,6 +274,8 @@ func setBorderless(isBorderless : bool) -> void:
 func setWindowOrientation(option : WindowOrientationOptions) -> void:
 	windowOrientation = option
 	setWindowPosition()
+	for window in _activeWindows:
+		window.resetWindow()
 
 #endregion
 
@@ -286,7 +306,6 @@ func _convertPositionBetweenResolutions(screenPosn : Vector2i,
 
 ## Takes a [param point] within a single axis and returns if it falls inside that range.
 func _checkWhithinRange(point : float, resolution : Vector2) -> bool:
-	print("point: ", point, " Resolution: ", resolution)
 	return point >= resolution.x and point <= resolution.y
 
 #endregion

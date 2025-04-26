@@ -29,6 +29,7 @@ func _onWindowOrientationOptions(index : int):
 
 
 func _onMonitorOptions(index : int):
+	Settings.monitorSetTo = index
 	Settings.changeActiveMonitor(index)
 #endregion
 

@@ -76,9 +76,7 @@ func saveSettingsToFile(dataDict : Dictionary):
 
 func loadSettingsFromFile():
 	var config = ConfigFile.new()
-	
 	var err = config.load(SETTINGS_FILEPATH)
-	
 	if err != OK:
 		print("No Setting Save Data Found, using defaults")
 		return

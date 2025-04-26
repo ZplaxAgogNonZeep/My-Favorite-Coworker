@@ -7,12 +7,13 @@ enum WindowAttentionOptions {BRING_TO_FRONT, ALWAYS_ON_TOP, DO_NOT_CHANGE}
 enum SubWindowPositionType {MANAGER_WINDOW, MANAGED_WINDOW}
 
 
+
 #region Observation Variables
 # These variables are meant to make it easy to track certain OS states
 var windowFocused : bool = true
 var proactiveMode : bool = false
 var borderless : bool = true
-var activeMonitor : int = 1
+var activeMonitor : int = 0
 #endregion
 
 #region Settings Variables
@@ -27,6 +28,7 @@ var proactivityTimeModifier := 0.50
 #TODO: Frame Rate Limit
 #TODO: Make sure this is implemented and the definitive way to check game scale
 var gameScale := 2
+var monitorSetTo := 0
 ## Vectors
 var _customWindowPosn := Vector2i.ZERO
 var _defaultWindowSize : Vector2i
@@ -36,10 +38,17 @@ var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_
 #endregion
 
 func _ready() -> void:
-	get_tree().call_group("Debug", "debugReady")
+	# This is the last ready function to be called before the all the normal scene nodes call it
+	# so anything that needs to be changed to match settings like window position needs to be done 
+	# here
 	activeMonitor = DisplayServer.window_get_current_screen()
+	if (monitorSetTo != activeMonitor):
+		changeActiveMonitor(monitorSetTo)
 	setWindowPosition()
+	setWindowAttentionMode(windowAttentionMode)
+	
 	_defaultWindowSize = get_viewport().get_window().size
+	get_tree().call_group("Debug", "debugReady")
 
 
 func pauseGame(isPaused : bool):
@@ -60,7 +69,9 @@ func saveSettings():
 		"isUsingProactivity" : isUsingProactivity,
 		"isSetWindowPinned" : isSetWindowPinned,
 		"isRequestAttentionAllowed" : isRequestAttentionAllowed,
-		"windowAttentionMode" : windowAttentionMode
+		"windowAttentionMode" : windowAttentionMode,
+		"windowOrientation" : windowOrientation,
+		"monitorSetTo" : monitorSetTo
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)
@@ -77,6 +88,14 @@ func setProactivitySetting(isTrue : bool):
 
 func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 	windowAttentionMode = windowAttention
+	
+	match windowAttentionMode:
+		WindowAttentionOptions.ALWAYS_ON_TOP:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+		WindowAttentionOptions.BRING_TO_FRONT:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
+		WindowAttentionOptions.DO_NOT_CHANGE:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
 
 #endregion
 

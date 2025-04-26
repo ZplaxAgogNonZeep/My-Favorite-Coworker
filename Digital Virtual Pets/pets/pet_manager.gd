@@ -79,7 +79,6 @@ func spawnPet(index := -1, isNewPet := false):
 	elif (index < 0 and not isNewPet):
 		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
 	elif (index < _petSlots.size() and index >= 0):
-		print("Two")
 		if (isNewPet):
 			_petSlots[index] = {}
 			_slotIndex = index
@@ -89,7 +88,6 @@ func spawnPet(index := -1, isNewPet := false):
 			_slotIndex = index
 			newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
 	else:
-		print("three")
 		_petSlots.append({})
 		if (index > _petSlots.size() - 1):
 			_slotIndex = _petSlots.size() - 1
@@ -179,7 +177,6 @@ func switchPet(index : int, previousPetDeleted := false):
 
 
 func killPet():
-	print("Pet has Died!")
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.PauseGame.emit()
 	var petData = activePet.getSavableData()
@@ -226,7 +223,6 @@ func getPetSlots() -> Array:
 
 
 func deletePetSlot(index : int, death := false) -> void:
-	print("deleting pet slot ", index, " of ", _petSlots[index])
 	if (_petSlots.size() == 1 and !death):
 		return
 	_petSlots.remove_at(index)
@@ -240,7 +236,6 @@ func deletePetSlot(index : int, death := false) -> void:
 	if (_petSlots.size() == 0 or _petSlots.size() == 1):
 		_slotIndex = 0
 	
-	print("=======CORRECT PET SLOTS=============\n", _petSlots)
 	
 	SaveData.saveGameToFile()
 

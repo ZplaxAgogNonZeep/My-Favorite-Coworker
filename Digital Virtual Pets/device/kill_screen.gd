@@ -20,6 +20,5 @@ func exitMenu():
 	visible = false
 
 func takeInput(input : Enums.InputType):
-	print("receiving input")
 	GameEvents.OpenDirectMenu.emit(2)
 	stateMachine.setState(stateMachine.MenuState.MINIMIZED)

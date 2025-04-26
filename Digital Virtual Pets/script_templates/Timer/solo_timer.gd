@@ -23,7 +23,6 @@ func _changeProactivity(isProactive: bool):
 	else:
 		start(lerpf(0, (wait_time / (Settings.proactivityTimeModifier * 100)) * 100, progress))
 	
-	#print(name, " has changed time to ", time_left, " | ", isProactive)
 
 
 func _pauseTimer() -> void:

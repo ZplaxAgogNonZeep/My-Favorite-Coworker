@@ -129,7 +129,7 @@ func _shiftDeviceOver():
 	var tween = create_tween()
 	
 	var direction = Settings.determineDeviceGrowDir()
-	print(direction)
+
 	if (!_minimized):
 		direction *= -1
 	var target = Vector2(_movementGroup.position.x + (

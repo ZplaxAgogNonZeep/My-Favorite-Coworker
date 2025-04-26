@@ -32,7 +32,6 @@ func initializeMenu():
 
 
 func exitMenu():
-	print("Exit Menu called")
 	visible = false
 	
 	$StatPanel/Personality.text = "Personality:\n??????"

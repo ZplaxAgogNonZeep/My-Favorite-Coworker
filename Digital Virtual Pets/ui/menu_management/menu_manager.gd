@@ -43,7 +43,6 @@ func toggleMenu(isOpen: bool):
 
 #region State Machine
 func changeMenu(menuIndex : int, direct := false):
-	print("Change menu called")
 	if (menuIndex >= _menuList.size()):
 		print("Menu System Error: Failed to find menu at index ", menuIndex)
 		return
@@ -82,7 +81,6 @@ func _closeAllMenus():
 
 
 func _openDirectMenu(index : int):
-	print("receive direct menu call")
 	changeMenu(index, true)
 
 #endregion

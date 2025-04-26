@@ -35,7 +35,6 @@ func _loadSavedMenuSettings():
 
 func _fillPetSlots():
 	var petSlots = _petManager.getPetSlots()
-	print(petSlots)
 	if (petSlots.size() == 0):
 		var newSlot = _slotScene.instantiate()
 		newSlot.loadPetData(null, 0)
@@ -116,7 +115,6 @@ func _loadSelectedPet():
 
 
 func _deleteSlot(index : int):
-	print("Deleting save slot ", index)
 	if (_petManager.getPetSlots().size() == 1):
 		return
 		# Probably play some noise or throw out a warning

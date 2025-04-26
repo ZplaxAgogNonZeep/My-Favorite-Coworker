@@ -89,10 +89,8 @@ func check_node(node):
 			var instance = interface.new()
 			
 			for method in instance.get_script().get_script_method_list():
-				#print(method)
 				assert(method.name in node, "Interface error: " + node.name + 
 				" does not contain a function named " + method.name)
-				#print(method.args)
 			
 			for property in instance.get_script().get_script_property_list():
 				if (property.name != "Built-in script"):

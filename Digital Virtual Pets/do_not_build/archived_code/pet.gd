@@ -259,7 +259,6 @@ func neglectTimeout(skipValueCheck := false):
 			_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
-	print("Evolve singal received")
 	if (petResource.getNextEvolution(self) != null):
 		petState = Enums.PetState.EVOLVING
 		sprite.play("Quirk")
@@ -334,7 +333,6 @@ func personalityMod(statToIncrease : Enums.AbilityStat, value):
 
 
 func getNextPosition():
-	print("Starting at position ", position)
 	var RightMostPosn = PetManager.instance.addPercentToPosn(position, Vector2(roamPercentage, 0)).x
 	var LeftMostPosn = PetManager.instance.addPercentToPosn(position, Vector2(-1 * roamPercentage, 0)).x
 	
@@ -343,7 +341,6 @@ func getNextPosition():
 
 	randomize()
 	var posn = randf_range(LeftMostPosn, RightMostPosn)
-	print(posn, " out of ", LeftMostPosn, " / ", RightMostPosn)
 	return Vector2(posn, position.y)
 
 

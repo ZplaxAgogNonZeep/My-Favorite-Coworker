@@ -127,7 +127,6 @@ func changeActiveMonitor(monitorIndex : int) -> void:
 										DisplayServer.screen_get_usable_rect(oldWindowIndex).position,
 										DisplayServer.screen_get_usable_rect(monitorIndex).position)
 	
-	#print(DisplayServer.window_get_position())
 	setWindowPosition()
 
 

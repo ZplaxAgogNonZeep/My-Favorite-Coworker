@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw7xr6uluo8np"]
+[gd_scene load_steps=7 format=3 uid="uid://cw7xr6uluo8np"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_8s5lr"]
 [ext_resource type="Script" uid="uid://brweecnyow1tk" path="res://ui/menu_management/menus/pet_menu.gd" id="2_44k7u"]
 [ext_resource type="PackedScene" uid="uid://bixuqptw12pi3" path="res://ui/menu_management/extra_menu_scenes/pet_save_slot.tscn" id="3_npbw2"]
-[ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="4_wqilq"]
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="5_4b6c8"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="5_fne88"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_kpd25"]
@@ -26,7 +25,6 @@ _animationLibrary = "pop_up_window_animations"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"generic_menu_animation": ExtResource("4_wqilq"),
 &"pop_up_window_animations": ExtResource("5_fne88")
 }
 

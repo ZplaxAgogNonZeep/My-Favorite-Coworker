@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfh7qhfhtctv8"]
+[gd_scene load_steps=6 format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
-[ext_resource type="AnimationLibrary" uid="uid://cs44jhoqvvv0u" path="res://ui/menu_management/generic_menu_animation.res" id="3_tqakc"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_6eh78"]
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
@@ -27,13 +26,13 @@ metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"generic_menu_animation": ExtResource("3_tqakc"),
 &"pop_up_window_animations": ExtResource("4_lbu1b")
 }
 
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 size = Vector2i(1430, 1370)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
@@ -41,7 +40,6 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-anchors_preset = -1
 offset_right = 400.0
 offset_bottom = 146.0
 pivot_offset = Vector2(200, 121)
@@ -81,7 +79,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
+mouse_filter = 2
 
 [node name="ProactivityLabel" type="Label" parent="Window/MenuWindow/Labels"]
 layout_mode = 1
@@ -141,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="ProactivityCheckBox" type="CheckBox" parent="Window/MenuWindow/Buttons"]

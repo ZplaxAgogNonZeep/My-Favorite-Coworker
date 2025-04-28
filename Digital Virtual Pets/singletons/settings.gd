@@ -98,7 +98,8 @@ func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 		WindowAttentionOptions.DO_NOT_CHANGE:
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
 	
-	for window in _activeWindows:
+	var dupeArray = _activeWindows.duplicate(true)
+	for window in dupeArray:
 		match windowAttentionMode:
 			WindowAttentionOptions.ALWAYS_ON_TOP:
 				window.always_on_top = true
@@ -273,7 +274,8 @@ func setBorderless(isBorderless : bool) -> void:
 func setWindowOrientation(option : WindowOrientationOptions) -> void:
 	windowOrientation = option
 	setWindowPosition()
-	for window in _activeWindows:
+	var dupeArray = _activeWindows.duplicate(true)
+	for window in dupeArray:
 		window.resetWindow()
 
 #endregion

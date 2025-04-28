@@ -246,6 +246,7 @@ metadata/_edit_group_ = true
 polygon = PackedVector2Array(-2.5, -19, -0.5, -19, 5.5, -13, 5.5, 19, -0.5, 25, -2.5, 25)
 
 [node name="MenuButtons" type="Node2D" parent="."]
+process_mode = 3
 
 [node name="Power" type="AnimatedSprite2D" parent="MenuButtons"]
 sprite_frames = SubResource("SpriteFrames_ooxxu")

@@ -4,7 +4,6 @@ class DataSaver extends SaveData.DataSaver:
 	func getCategoryName():
 		return "SceneManager"
 	var _firstTimeOpened
-	
 
 @export_category("Node References")
 @export var _camera : Camera2D

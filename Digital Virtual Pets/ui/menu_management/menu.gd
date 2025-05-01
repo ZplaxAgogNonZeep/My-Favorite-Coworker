@@ -35,6 +35,7 @@ func openMenu(direct := false):
 	#animator is bugged so we need to wait a frame or it'll display the menu BEFORE playing the 
 	# animation
 	await get_tree().process_frame
+	await get_tree().process_frame
 	visible = true
 	if (_window != null):
 		_window.visible = true

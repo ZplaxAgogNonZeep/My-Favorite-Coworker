@@ -26,10 +26,10 @@ var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
 ## Ints
-#TODO: Frame Rate Limit
 #TODO: Make sure this is implemented and the definitive way to check game scale
 var gameScale := 2
 var monitorSetTo := 0
+var frameCapSetTo := 60
 ## Vectors
 var _customWindowPosn := Vector2i.ZERO
 var _defaultWindowSize : Vector2i
@@ -47,6 +47,7 @@ func _ready() -> void:
 		changeActiveMonitor(monitorSetTo)
 	setWindowPosition()
 	setWindowAttentionMode(windowAttentionMode)
+	setFrameCap(frameCapSetTo)
 	
 	_defaultWindowSize = get_viewport().get_window().size
 	get_tree().call_group("Debug", "debugReady")
@@ -72,7 +73,8 @@ func saveSettings():
 		"isRequestAttentionAllowed" : isRequestAttentionAllowed,
 		"windowAttentionMode" : windowAttentionMode,
 		"windowOrientation" : windowOrientation,
-		"monitorSetTo" : monitorSetTo
+		"monitorSetTo" : monitorSetTo,
+		"frameCapSetTo" : frameCapSetTo
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)
@@ -108,6 +110,11 @@ func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 			WindowAttentionOptions.DO_NOT_CHANGE:
 				window.always_on_top = false
 		window.resetWindow()
+
+
+func setFrameCap(frameCap : int):
+	Engine.max_fps = frameCap
+	frameCapSetTo = frameCap
 
 #endregion
 

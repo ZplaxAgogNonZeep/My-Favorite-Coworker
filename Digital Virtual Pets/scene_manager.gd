@@ -19,6 +19,7 @@ var _firstTimeOpened := true
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
 	GameEvents.ChangeCameraZoom.connect(_changeCameraZoom)
+	Engine.max_fps = 60
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false

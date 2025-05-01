@@ -5,6 +5,7 @@ extends Menu
 @export var _windowAttentionSelection : OptionButton
 @export var _windowOrientationOptions : OptionButton
 @export var _monitorOptions : OptionButton
+@export var _frameOptions : OptionButton
 
 func _loadSavedMenuSettings():
 	_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
@@ -13,6 +14,12 @@ func _loadSavedMenuSettings():
 	_monitorOptions.clear()
 	_fillMonitorOptions(_monitorOptions, Settings.getMonitorCount())
 	_monitorOptions.selected = Settings.activeMonitor
+	if (Settings.frameCapSetTo >= 60):
+		_frameOptions.selected = 1
+	elif (Settings.frameCapSetTo >= 30):
+		_frameOptions.selected = 0
+	else:
+		_frameOptions.selected = 2
 
 
 #region Signal Functions
@@ -31,6 +38,16 @@ func _onWindowOrientationOptions(index : int):
 func _onMonitorOptions(index : int):
 	Settings.monitorSetTo = index
 	Settings.changeActiveMonitor(index)
+
+
+func _onFrameOptions(index : int):
+	match index:
+		0:
+			Settings.setFrameCap(30)
+		1:
+			Settings.setFrameCap(60)
+		2:
+			Settings.setFrameCap(0)
 #endregion
 
 #region Helper Functions

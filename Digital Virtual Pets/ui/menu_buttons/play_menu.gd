@@ -11,13 +11,14 @@ var game : Control
 var state = PlayState.MENU
 
 func _ready():
-	$GameMenu/Exit.ButtonSelected.connect(onExitSelected)
-	$GameMenu/Guess.ButtonSelected.connect(onGuessSelected)
-	$GameMenu/Fish.ButtonSelected.connect(onFishSelected)
-	$GameMenu/Run.ButtonSelected.connect(onRunSelected)
-	$GameMenu/Hit.ButtonSelected.connect(onHitSelected)
-	$GameMenu/Endure.ButtonSelected.connect(onEndureSelected)
-	
+	pass
+	#$GameMenu/Exit.ButtonSelected.connect(onExitSelected)
+	#$GameMenu/Guess.ButtonSelected.connect(onGuessSelected)
+	#$GameMenu/Fish.ButtonSelected.connect(onFishSelected)
+	#$GameMenu/Run.ButtonSelected.connect(onRunSelected)
+	#$GameMenu/Hit.ButtonSelected.connect(onHitSelected)
+	#$GameMenu/Endure.ButtonSelected.connect(onEndureSelected)
+
 
 func initializeMenu():
 	state = PlayState.MENU

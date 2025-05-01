@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=72 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -19,7 +19,6 @@
 [ext_resource type="SpriteFrames" uid="uid://b6u6tkw1fg2y1" path="res://assets/animation_frames/icons/food_icon_frames.tres" id="12_lwr14"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="13_0s1ah"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="14_veqju"]
-[ext_resource type="Theme" uid="uid://de6apglbak7x" path="res://ui/themes/menu_panel_theme.tres" id="15_ul75l"]
 [ext_resource type="Script" uid="uid://mlrgiwxtdve8" path="res://ui/menu_buttons/mini_menu.gd" id="16_v38ai"]
 [ext_resource type="Script" uid="uid://p3okne6hp81h" path="res://ui/menu_buttons/button_container.gd" id="17_ck7l0"]
 [ext_resource type="Texture2D" uid="uid://c3xvls1ve8hes" path="res://assets/art/aesprite/ui/menu/mini_menu.png" id="18_wxf5w"]
@@ -35,8 +34,10 @@
 [ext_resource type="PackedScene" uid="uid://yp44rtci20n4" path="res://games/jump/jump_game.tscn" id="28_b7mkj"]
 [ext_resource type="PackedScene" uid="uid://cxqir2rb1dcdk" path="res://games/hit/hit_game.tscn" id="29_1gro0"]
 [ext_resource type="PackedScene" uid="uid://cqe77tkk23q1s" path="res://games/endure/endure_game.tscn" id="30_g6ycs"]
-[ext_resource type="PackedScene" uid="uid://bvwfcurkdlx7v" path="res://ui/menu_buttons/instanced_scenes/label_button.tscn" id="31_45ni2"]
+[ext_resource type="Texture2D" uid="uid://br51wsva3looo" path="res://assets/art/aesprite/minigame_assets/menu_progress_icon.png" id="31_6uw0p"]
 [ext_resource type="Script" uid="uid://dnnsmlvm8ay0a" path="res://pets/pet_manager.gd" id="32_kagdc"]
+[ext_resource type="Texture2D" uid="uid://cuilt6sx6tajo" path="res://assets/art/aesprite/minigame_assets/menu_arrow.png" id="32_qkux3"]
+[ext_resource type="Texture2D" uid="uid://cdcl22usg34t5" path="res://assets/art/aesprite/minigame_assets/hammer_sheet.png" id="33_5xc8b"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="33_lyjso"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="34_cijat"]
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="35_071hk"]
@@ -451,7 +452,7 @@ _movementGroup = NodePath("PositionGroup")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 hopDuration = 0.25
-_minimizeShiftDistance = 16.0
+_minimizeShiftDistance = 17.0
 chatSpeed = 0.1
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -523,6 +524,7 @@ texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
+visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
@@ -791,108 +793,90 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("buttonController")]
-visible = false
+[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu"]
 z_index = 1
 script = ExtResource("25_0gch6")
-buttonController = NodePath("GameMenu/ButtonController")
 miniGameList = Array[PackedScene]([ExtResource("26_5qrur"), ExtResource("27_fqxdl"), ExtResource("28_b7mkj"), ExtResource("29_1gro0"), ExtResource("30_g6ycs")])
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
-[node name="GameMenu" type="Panel" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
-offset_left = -27.0
-offset_top = -85.0
-offset_right = 197.0
-offset_bottom = 139.0
-scale = Vector2(0.24, 0.24)
-theme = ExtResource("15_ul75l")
+[node name="MenuIndexes" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+position = Vector2(-0.5, -76)
+metadata/_edit_group_ = true
 
-[node name="MenuLabel" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
-layout_mode = 0
-offset_left = -95.8333
-offset_top = -4.16667
-offset_right = 112.167
-offset_bottom = 18.8333
-scale = Vector2(2.08, 2.08)
+[node name="Index0" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(-9.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="Index1" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(-5.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="Index2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(-1.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="Index3" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(2.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="Index4" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(6.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="Index5" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/MenuIndexes"]
+position = Vector2(10.5, -0.5)
+texture = ExtResource("31_6uw0p")
+hframes = 2
+
+[node name="RightArrow" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+position = Vector2(24, -64)
+texture = ExtResource("32_qkux3")
+
+[node name="LeftArrow" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+position = Vector2(-24, -64)
+texture = ExtResource("32_qkux3")
+flip_h = true
+
+[node name="GameMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+offset_left = -27.0
+offset_top = -84.0
+offset_right = 85.0
+offset_bottom = -72.0
+scale = Vector2(0.5, 0.5)
 theme = ExtResource("14_veqju")
-text = "Pick a game!"
+text = "Pick a Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ButtonController" type="Node" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" node_paths=PackedStringArray("buttonArray")]
-script = ExtResource("17_ck7l0")
-buttonArray = [NodePath("../Guess"), NodePath("../Fish"), NodePath("../Run"), NodePath("../Hit"), NodePath("../Endure"), NodePath("../Exit")]
+[node name="PowGame" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
 
-[node name="Exit" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 54.1667
-offset_top = 133.333
-offset_right = 134.167
-offset_bottom = 157.333
-scale = Vector2(1.425, 1.425)
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit" index="1"]
-text = "Exit"
-
-[node name="Guess" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 16.0
-offset_top = 32.0
-offset_right = 88.0
-offset_bottom = 56.0
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess" index="1"]
-text = "Guess!"
-
-[node name="Fish" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 136.0
-offset_top = 32.0
-offset_right = 208.0
-offset_bottom = 56.0
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish" index="1"]
-text = "Fish!"
-
-[node name="Run" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 16.0
-offset_top = 64.0
-offset_right = 88.0
-offset_bottom = 88.0
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run" index="1"]
-text = "Run!"
-
-[node name="Hit" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 136.0
-offset_top = 64.0
-offset_right = 208.0
-offset_bottom = 88.0
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit" index="1"]
-text = "Hit!"
-
-[node name="Endure" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu" instance=ExtResource("31_45ni2")]
-offset_left = 16.0
-offset_top = 96.0
-offset_right = 88.0
-offset_bottom = 120.0
-metadata/_edit_group_ = true
-
-[node name="OptionName" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure" index="1"]
-text = "Endure!"
-
-[node name="MiniGameContainer" type="Panel" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowGame"]
 offset_left = -27.0
-offset_top = -85.0
-offset_right = 27.0
-offset_bottom = -31.0
-theme = ExtResource("15_ul75l")
+offset_top = -49.0
+offset_right = 85.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Improve POW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowGame"]
+position = Vector2(0, -64)
+texture = ExtResource("33_5xc8b")
+hframes = 2
+
+[node name="MiniGameContainer" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 
 [node name="DeathMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
 visible = false
@@ -1026,9 +1010,3 @@ offset = Vector2(0, -10)
 
 [editable path="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Play"]
 [editable path="PositionGroup/GameArea/MenuManager/Menu/MiniMenu/Stats"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Exit"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Guess"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Fish"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Run"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Hit"]
-[editable path="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/Endure"]

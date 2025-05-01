@@ -35,6 +35,7 @@ window/size/borderless=true
 window/size/transparent=true
 window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
 window/per_pixel_transparency/allowed=true
 
 [editor_plugins]

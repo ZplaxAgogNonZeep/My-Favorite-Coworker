@@ -73,7 +73,7 @@ func setState(state: MenuState, variable = null):
 		stateReference.initializeMenu(variable)
 
 func sendInput(input : Enums.DeviceButton):
-	print("Sending input to ", currentState)
+	#print("Sending input to ", currentState)
 	match currentState:
 		MenuState.MINIMIZED:
 			if miniMenu.implements.has(Interface.MenuState):

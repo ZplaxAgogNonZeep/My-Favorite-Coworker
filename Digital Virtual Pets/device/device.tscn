@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=75 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -40,7 +40,10 @@
 [ext_resource type="Texture2D" uid="uid://cdcl22usg34t5" path="res://assets/art/aesprite/minigame_assets/hammer_sheet.png" id="33_5xc8b"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="33_lyjso"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="34_cijat"]
+[ext_resource type="Texture2D" uid="uid://duv117bxtsfny" path="res://assets/art/aesprite/minigame_assets/steam-Sheet.png" id="34_g2vwl"]
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="35_071hk"]
+[ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://assets/art/aesprite/minigame_assets/hurdle.png" id="35_ofcv6"]
+[ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://assets/art/aesprite/minigame_assets/fishing_rod.png" id="36_myr8s"]
 
 [sub_resource type="Animation" id="Animation_2ni51"]
 resource_name = "SpawnDevice"
@@ -793,10 +796,13 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu"]
+[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_menuIndexContainer", "_gamePageList")]
+visible = false
 z_index = 1
 script = ExtResource("25_0gch6")
-miniGameList = Array[PackedScene]([ExtResource("26_5qrur"), ExtResource("27_fqxdl"), ExtResource("28_b7mkj"), ExtResource("29_1gro0"), ExtResource("30_g6ycs")])
+_menuIndexContainer = NodePath("MenuIndexes")
+_gamePageList = [NodePath("GameMenu/PowPage"), NodePath("GameMenu/EndPage"), NodePath("GameMenu/SpdPage"), NodePath("GameMenu/BalPage"), NodePath("GameMenu/RandomPage"), NodePath("GameMenu/ExitPage")]
+miniGameList = Array[PackedScene]([ExtResource("29_1gro0"), ExtResource("30_g6ycs"), ExtResource("28_b7mkj"), ExtResource("27_fqxdl"), ExtResource("26_5qrur")])
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 position = Vector2(0, -58)
@@ -858,9 +864,10 @@ text = "Pick a Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowGame" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+[node name="PowPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
 
-[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowGame"]
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowPage"]
 offset_left = -27.0
 offset_top = -49.0
 offset_right = 85.0
@@ -871,10 +878,107 @@ text = "Improve POW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowGame"]
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/PowPage"]
 position = Vector2(0, -64)
 texture = ExtResource("33_5xc8b")
 hframes = 2
+
+[node name="EndPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/EndPage"]
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 85.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Improve END"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/EndPage"]
+position = Vector2(0, -64)
+texture = ExtResource("34_g2vwl")
+hframes = 2
+
+[node name="SpdPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/SpdPage"]
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 85.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Improve SPD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/SpdPage"]
+position = Vector2(0, -64)
+texture = ExtResource("35_ofcv6")
+
+[node name="BalPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/BalPage"]
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 85.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Improve BAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/BalPage"]
+position = Vector2(0, -64)
+texture = ExtResource("36_myr8s")
+hframes = 2
+vframes = 2
+
+[node name="RandomPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/RandomPage"]
+offset_left = -27.5
+offset_top = -49.0
+offset_right = 84.5
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Random Stat"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/RandomPage"]
+position = Vector2(0, -64)
+texture = ExtResource("24_dg2vs")
+
+[node name="ExitPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu"]
+visible = false
+
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/ExitPage"]
+offset_left = -27.0
+offset_top = -49.0
+offset_right = 85.0
+offset_bottom = -37.0
+scale = Vector2(0.5, 0.5)
+theme = ExtResource("14_veqju")
+text = "Exit
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu/GameMenu/ExitPage"]
+visible = false
+position = Vector2(0, -64)
+texture = ExtResource("36_myr8s")
+hframes = 2
+vframes = 2
 
 [node name="MiniGameContainer" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
 

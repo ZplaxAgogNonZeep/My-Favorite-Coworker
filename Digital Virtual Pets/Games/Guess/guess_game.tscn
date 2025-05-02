@@ -6,11 +6,7 @@
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_glm3m"]
 [ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://assets/art/aesprite/minigame_assets/arrow.png" id="5_cq21n"]
 
-[node name="GuessGame" type="Control" node_paths=PackedStringArray("status")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 54.0
-offset_bottom = 54.0
+[node name="GuessGame" type="Node2D" node_paths=PackedStringArray("status")]
 script = ExtResource("1_qfueg")
 status = NodePath("Status")
 intervalTime = 1.0
@@ -27,7 +23,6 @@ metadata/_edit_lock_ = true
 position = Vector2(26, 28)
 
 [node name="Status" type="Label" parent="."]
-layout_mode = 0
 offset_top = 34.0
 offset_right = 216.0
 offset_bottom = 64.0

@@ -34,11 +34,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="HitGame" type="Control" node_paths=PackedStringArray("mashMeter")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 54.0
-offset_bottom = 54.0
+[node name="HitGame" type="Node2D" node_paths=PackedStringArray("mashMeter")]
 script = ExtResource("1_kx0il")
 joyIncrement = 50
 statIncrement = 2
@@ -63,7 +59,6 @@ metadata/_edit_lock_ = true
 position = Vector2(43, 28)
 
 [node name="Status" type="Label" parent="."]
-layout_mode = 0
 offset_top = 34.0
 offset_right = 216.0
 offset_bottom = 64.0

@@ -527,7 +527,6 @@ texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
-visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
@@ -796,11 +795,12 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_menuIndexContainer", "_gamePageList")]
+[node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_menuIndexContainer", "_miniGameContainer", "_gamePageList")]
 visible = false
 z_index = 1
 script = ExtResource("25_0gch6")
 _menuIndexContainer = NodePath("MenuIndexes")
+_miniGameContainer = NodePath("MiniGameContainer")
 _gamePageList = [NodePath("GameMenu/PowPage"), NodePath("GameMenu/EndPage"), NodePath("GameMenu/SpdPage"), NodePath("GameMenu/BalPage"), NodePath("GameMenu/RandomPage"), NodePath("GameMenu/ExitPage")]
 miniGameList = Array[PackedScene]([ExtResource("29_1gro0"), ExtResource("30_g6ycs"), ExtResource("28_b7mkj"), ExtResource("27_fqxdl"), ExtResource("26_5qrur")])
 
@@ -981,6 +981,7 @@ hframes = 2
 vframes = 2
 
 [node name="MiniGameContainer" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/PlayMenu"]
+position = Vector2(-27, -85)
 
 [node name="DeathMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
 visible = false

@@ -53,11 +53,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FishGame" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 54.0
-offset_bottom = 54.0
+[node name="FishGame" type="Node2D"]
 script = ExtResource("1_iowcp")
 joyIncrement = 50
 statToIncrease = 3
@@ -90,7 +86,6 @@ sprite_frames = ExtResource("5_dg0lf")
 animation = &"Unselected"
 
 [node name="Status" type="Label" parent="."]
-layout_mode = 0
 offset_top = 34.0
 offset_right = 216.0
 offset_bottom = 64.0

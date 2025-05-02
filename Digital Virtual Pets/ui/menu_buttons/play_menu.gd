@@ -4,11 +4,12 @@ var implements = [Interface.MenuState]
 enum PlayState {MENU, GAME}
 
 @export var _menuIndexContainer : Node2D
+@export var _miniGameContainer : Node2D
 @export var _gamePageList : Array[Node2D]
 @export var miniGameList : Array[PackedScene]
 
 var stateMachine : Node2D
-var game : Control
+var game : Node2D
 var state = PlayState.MENU
 var _menuIndex := 0
 
@@ -88,7 +89,7 @@ func _select(index : int):
 	
 	if getPet():
 		game = miniGameList[_menuIndex].instantiate()
-		$MiniGameContainer.add_child(game)
+		_miniGameContainer.add_child(game)
 		game.startGame(getPet(), self)
 		state = PlayState.GAME
 	else:

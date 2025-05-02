@@ -11,11 +11,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dan0o"]
 size = Vector2(1.33333, 3.33334)
 
-[node name="JumpGame" type="Control" node_paths=PackedStringArray("background", "hurdle")]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 54.0
-offset_bottom = 54.0
+[node name="JumpGame" type="Node2D" node_paths=PackedStringArray("background", "hurdle")]
 script = ExtResource("1_5ul8j")
 background = NodePath("BlankMenuSprite2")
 hurdle = NodePath("BlankMenuSprite2/Hurdle")
@@ -84,7 +80,6 @@ position = Vector2(-36, -8)
 position = Vector2(27, 27)
 
 [node name="Status" type="Label" parent="."]
-layout_mode = 0
 offset_top = 34.0
 offset_right = 216.0
 offset_bottom = 64.0

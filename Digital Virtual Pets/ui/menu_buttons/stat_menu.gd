@@ -12,15 +12,22 @@ func initializeMenu():
 		
 		if (get_tree().get_nodes_in_group("Pet").size() > 0):
 			var pet = PetManager.instance.activePet
-			$StatPanel/Personality.text = "Personality:\n" + Enums.Personality.keys()[pet.personality]
-			$DisplayPanel/Name.text = pet.petResource.name
-			$StatPanel/Pow/Value.text = str(pet.abilityStats[Enums.AbilityStat.POW])
-			$StatPanel/End/Value.text = str(pet.abilityStats[Enums.AbilityStat.END])
-			$StatPanel/Spd/Value.text = str(pet.abilityStats[Enums.AbilityStat.SPD])
-			$StatPanel/Bal/Value.text = str(pet.abilityStats[Enums.AbilityStat.BAL])
+			# Bio
+			$StatPage/Personality.text = "Personality:\n" + Enums.Personality.keys()[pet.personality]
+			$BioPage/Name.text = pet.petResource.name
+			$"BioPage/Display Sprite".texture = pet.getSpriteIcon()
+			$"BioPage/Display Sprite".offset = pet.sprite.offset
 			
-			$"DisplayPanel/Display Sprite".texture = pet.getSpriteIcon()
-			$"DisplayPanel/Display Sprite".offset = pet.sprite.offset
+			# Stats
+			$StatPage/Pow/Value.text = str(pet.abilityStats[Enums.AbilityStat.POW])
+			$StatPage/StatGraphs/POWMeter.setValue(pet.abilityStats[Enums.AbilityStat.POW], Pet.STAT_MAX)
+			$StatPage/End/Value.text = str(pet.abilityStats[Enums.AbilityStat.END])
+			$StatPage/StatGraphs/ENDMeter.setValue(pet.abilityStats[Enums.AbilityStat.END], Pet.STAT_MAX)
+			$StatPage/Spd/Value.text = str(pet.abilityStats[Enums.AbilityStat.SPD])
+			$StatPage/StatGraphs/SPDMeter.setValue(pet.abilityStats[Enums.AbilityStat.SPD], Pet.STAT_MAX)
+			$StatPage/Bal/Value.text = str(pet.abilityStats[Enums.AbilityStat.BAL])
+			$StatPage/StatGraphs/BALMeter.setValue(pet.abilityStats[Enums.AbilityStat.BAL], Pet.STAT_MAX)
+			
 			
 			var count = 0
 			for i in pet.evolvedFromIcons:
@@ -34,12 +41,12 @@ func initializeMenu():
 func exitMenu():
 	visible = false
 	
-	$StatPanel/Personality.text = "Personality:\n??????"
+	$StatPage/Personality.text = "Personality:\n??????"
 	
-	$StatPanel/Pow/Value.text = "0"
-	$StatPanel/End/Value.text = "0"
-	$StatPanel/Spd/Value.text = "0"
-	$StatPanel/Bal/Value.text = "0"
+	$StatPage/Pow/Value.text = "0"
+	$StatPage/End/Value.text = "0"
+	$StatPage/Spd/Value.text = "0"
+	$StatPage/Bal/Value.text = "0"
 	_index = 0
 	
 	GameEvents.UnpauseGame.emit()

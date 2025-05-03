@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjehxhivudbxr"]
+
+[ext_resource type="Script" uid="uid://dmocn1056xpyk" path="res://ui/bar_meter.gd" id="1_31mny"]
+[ext_resource type="Texture2D" uid="uid://bxmgkjt7hrwo4" path="res://assets/art/aesprite/minigame_assets/stretch_box.png" id="2_xuxq1"]
+
+[node name="Meter" type="Node2D" node_paths=PackedStringArray("_stretchBar", "_endMarker")]
+script = ExtResource("1_31mny")
+_stretchBar = NodePath("StretchBar")
+_endMarker = NodePath("EndPoint")
+
+[node name="StretchBar" type="Sprite2D" parent="."]
+scale = Vector2(21, 4.00001)
+texture = ExtResource("2_xuxq1")
+offset = Vector2(0.5, 0)
+
+[node name="EndPoint" type="Marker2D" parent="."]
+position = Vector2(21, 0)
+gizmo_extents = 2.0

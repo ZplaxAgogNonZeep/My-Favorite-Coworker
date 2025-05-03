@@ -27,6 +27,7 @@ func _ready():
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	petManager.CallPetDeathScreen.connect(_petDied)
+	_screenAnimator.visible = true
 	_screenAnimator.play("Screen Off")
 	_killScreen.visible = false
 	
@@ -106,7 +107,7 @@ func feed():
 	food.stopFallingAt = petManager.petSpawnPoint.position.y
 	if (not _spawnpointStatus.has(true)):
 		food.queue_free()
-		return
+		return 
 	while true:
 		randomize()
 		var spawnNumber = randi_range(0, 2)

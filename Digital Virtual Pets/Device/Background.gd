@@ -16,6 +16,7 @@ func _ready():
 	currentState = MenuState.MINIMIZED
 	stateReference = miniMenu
 	
+	
 	if miniMenu.implements.has(Interface.MenuState):
 		miniMenu.stateMachine = self
 	else:

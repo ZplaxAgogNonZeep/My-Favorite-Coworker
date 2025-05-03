@@ -15,6 +15,7 @@ class PetSaveData extends SaveData.SavableClass:
 signal UpdateStatusBars(hungerValue, joyValue)
 signal ReadyToEvolve(evolvedForm)
 
+const STAT_MAX : int = 99
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]

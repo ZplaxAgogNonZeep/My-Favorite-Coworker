@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=76 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="23_t3ton"]
 [ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/Pets/unknown_pet.png" id="24_dg2vs"]
 [ext_resource type="Script" uid="uid://df4iocisercox" path="res://ui/menu_buttons/play_menu.gd" id="25_0gch6"]
+[ext_resource type="PackedScene" uid="uid://cjehxhivudbxr" path="res://ui/meter.tscn" id="25_ofcv6"]
 [ext_resource type="PackedScene" uid="uid://cxps8l5sseo8p" path="res://games/guess/guess_game.tscn" id="26_5qrur"]
 [ext_resource type="PackedScene" uid="uid://do4loav2wlxtb" path="res://games/fish/fishing_game.tscn" id="27_fqxdl"]
 [ext_resource type="PackedScene" uid="uid://yp44rtci20n4" path="res://games/jump/jump_game.tscn" id="28_b7mkj"]
@@ -527,6 +528,7 @@ texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
+visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
@@ -650,15 +652,16 @@ sprite_frames = SubResource("SpriteFrames_qk4hv")
 visible = false
 z_index = 1
 script = ExtResource("22_k7vqq")
-_panelList = [NodePath("DisplayPanel"), NodePath("StatPanel")]
+_panelList = [NodePath("BioPage"), NodePath("StatPage")]
 
 [node name="BlankMenuSprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
 position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
-[node name="DisplayPanel" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
+[node name="BioPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
+visible = false
 
-[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage"]
 offset_left = -27.0
 offset_top = -53.0
 offset_right = 81.0
@@ -669,41 +672,40 @@ text = "Pet Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Display Sprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Display Sprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage"]
 position = Vector2(0, -55)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist0" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist0" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage/Display Sprite"]
 position = Vector2(-12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist1" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist1" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage/Display Sprite"]
 position = Vector2(-4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist2" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage/Display Sprite"]
 position = Vector2(4, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="EvoHist3" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel/Display Sprite"]
+[node name="EvoHist3" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage/Display Sprite"]
 position = Vector2(12, -20)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("24_dg2vs")
 offset = Vector2(0, -8)
 
-[node name="Node2D" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/DisplayPanel"]
+[node name="Node2D" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage"]
 
-[node name="StatPanel" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
-visible = false
+[node name="StatPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
 
-[node name="Personality" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Personality" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0
 offset_top = -84.0
 offset_right = 84.0
@@ -715,7 +717,7 @@ Airhead"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Pow" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Pow" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0
 offset_top = -68.0
 offset_right = 12.0
@@ -725,17 +727,17 @@ theme = ExtResource("14_veqju")
 text = "POW:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Pow"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/Pow"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
 offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "0"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="End" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="End" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0
 offset_top = -62.0
 offset_right = 14.0
@@ -745,17 +747,17 @@ theme = ExtResource("14_veqju")
 text = "END:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/End"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/End"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
 offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "0"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spd" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Spd" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0
 offset_top = -56.0
 offset_right = 14.0
@@ -765,17 +767,17 @@ theme = ExtResource("14_veqju")
 text = "SPD:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Spd"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/Spd"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
 offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "0"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bal" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel"]
+[node name="Bal" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0
 offset_top = -50.0
 offset_right = 14.0
@@ -785,15 +787,29 @@ theme = ExtResource("14_veqju")
 text = "BAL:"
 vertical_alignment = 1
 
-[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPanel/Bal"]
+[node name="Value" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/Bal"]
 layout_mode = 0
 offset_left = 38.0
 offset_right = 58.0
 offset_bottom = 12.0
 theme = ExtResource("14_veqju")
-text = "0"
+text = "99"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatGraphs" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
+
+[node name="POWMeter" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/StatGraphs" instance=ExtResource("25_ofcv6")]
+position = Vector2(4, -66)
+
+[node name="ENDMeter" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/StatGraphs" instance=ExtResource("25_ofcv6")]
+position = Vector2(4, -60)
+
+[node name="SPDMeter" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/StatGraphs" instance=ExtResource("25_ofcv6")]
+position = Vector2(4, -54)
+
+[node name="BALMeter" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage/StatGraphs" instance=ExtResource("25_ofcv6")]
+position = Vector2(4, -48)
 
 [node name="PlayMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_menuIndexContainer", "_miniGameContainer", "_gamePageList")]
 visible = false

@@ -528,7 +528,6 @@ texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
-visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)

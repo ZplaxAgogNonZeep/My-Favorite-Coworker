@@ -23,7 +23,7 @@ var mashAmount : int= 0
 var increment := 3
 
 func _process(delta):
-	if gameRunning and mashMode and mashAmount > 0 and $MashDecrease.is_stopped():
+	if gameRunning and mashMode and $MashDecrease.is_stopped():
 		$MashDecrease.start(decreaseFrequency)
 
 func startGame(pet : Node2D, playMenu : Node2D):
@@ -32,7 +32,7 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
 	$PseudoPet.sprite.offset = pet.sprite.offset
 	$PseudoPet.sprite.play("Quirk")
-	$MashMeter.initializeMeter(mashMax, mashGoalMin, mashGoalMax)
+	$MashMeter.initializeMeter(mashMax, mashGoalMin, mashGoalMax, 5)
 	updateGameText("GET READY")
 	$Timer.start(incrementFrequency)
 	gameRunning = true
@@ -44,16 +44,13 @@ func endGame():
 func updateGameText(text : String):
 	$Status.text = text
 
-func updateMashBar(value : int, maxAmount : int):
-	$MashMeter.updateMeter(value, maxAmount)
-
 func takeInput(input : Enums.DeviceButton):
 	if gameRunning and mashMode:
 			match input:
 				Enums.DeviceButton.CENTER_BUTTON:
-					mashAmount += 1
-					updateMashBar(mashAmount, mashMax)
-#					$PseudoPet.hop()
+					$MashMeter.addToValue(1)
+					#$PseudoPet.hop()
+					#updateMashBar(mashAmount, mashMax)
 
 func onWin():
 	gameRunning = false
@@ -86,15 +83,11 @@ func incrementGame():
 		$Timer.start(gameDuration)
 	else:
 		mashMode = false
-		if mashAmount >= mashGoalMin and mashAmount <= mashGoalMax:
+		if $MashMeter.isWithinGoal():
 			onWin()
 		else:
 			onLose()
 
 func decreaseMash():
 	if gameRunning and mashMode:
-		if mashAmount > 0:
-			mashAmount -= decreaseAmount
-		if mashAmount < 0:
-			mashAmount = 0
-		updateMashBar(mashAmount, mashMax)
+		$MashMeter.addToValue(-1)

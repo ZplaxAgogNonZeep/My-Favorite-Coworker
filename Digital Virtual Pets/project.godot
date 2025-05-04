@@ -15,7 +15,7 @@ config/version="0.1"
 run/main_scene="res://scene_manager.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
-config/icon="uid://tib0aevsur6o"
+config/icon="uid://wo8b330mq0ls"
 config/windows_native_icon="res://windowsIcon.ico"
 
 [autoload]
@@ -40,7 +40,7 @@ window/per_pixel_transparency/allowed=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/gift/plugin.cfg", "res://addons/script-ide/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/script-ide/plugin.cfg")
 
 [gui]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rkm6ge1nohu1"
-path="res://.godot/imported/icon.png-b5cf707f4ba91fefa5df60a746e02900.ctex"
+uid="uid://7hcmftqa8oqe"
+path="res://.godot/imported/Logo Mark.png-acf91d0f327ea342b256e187ba273934.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/gift/icon.png"
-dest_files=["res://.godot/imported/icon.png-b5cf707f4ba91fefa5df60a746e02900.ctex"]
+source_file="res://Logo Mark.png"
+dest_files=["res://.godot/imported/Logo Mark.png-acf91d0f327ea342b256e187ba273934.ctex"]
 
 [params]
 

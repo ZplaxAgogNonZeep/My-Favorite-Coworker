@@ -66,6 +66,7 @@ func setAtLocation(posn : Vector2):
 func hop(numberOfTimes : int = 1):
 	if activeTween:
 		activeTween.stop()
+		position = startPosn
 	self.speed = .1
 	originalPosn = position
 	repetitions = numberOfTimes

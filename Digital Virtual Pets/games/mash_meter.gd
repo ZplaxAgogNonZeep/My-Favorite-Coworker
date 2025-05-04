@@ -36,12 +36,15 @@ func setGoal(goal : int, goalMax : int = 0):
 func addToValue(incrementAmount : int):
 	_value += incrementAmount
 	
-	if (_value + _valueSectionSize > _maxValue):
+	if (_value + _valueSectionSize >= _maxValue):
 		_value = _maxValue - _valueSectionSize
 	if (_value < 0):
 		_value = 0
 	_indicatorMeter.setSectionValue(_value, _value + _valueSectionSize, _maxValue)
-	
+
+
+func setValue(_value : int):
+	_value = _value
 
 
 ## Returns a bool representing whether or not the the sections value is within the goal
@@ -49,6 +52,13 @@ func isWithinGoal() -> bool:
 	return ((_value >= _goalValue or _value + _valueSectionSize >= _goalValue) 
 		and (_value <= _goalMaxValue or _value + _valueSectionSize <= _goalMaxValue))
 
+
+func isValueMaxed():
+	return _value + _valueSectionSize >= _maxValue
+
+
+func isValueZero():
+	return _value == 0
 
 #func updateMeter(value : int, max : int):
 	#self.value = value

@@ -9,6 +9,7 @@ var implements = [Interface.MiniGame]
 @export_category("Game Values")
 @export var gameDuration : float
 @export var mashGoal : int
+@export var mashGoalMax : int
 @export var mashMax : int
 @export var decreaseFrequency : float
 @export var decreaseAmount : int
@@ -20,9 +21,15 @@ var gameRunning : bool
 var mashAmount : int = 0
 var gameIteration : int = 3
 var mashMode := false
+var _dir := 1
 
 func _process(delta):
-	if gameRunning and mashMode and mashAmount > 0 and $MashDecrease.is_stopped():
+	if gameRunning and mashMode and $MashDecrease.is_stopped():
+		if (mashMeter.isValueMaxed()):
+			_dir = -1
+		if (mashMeter.isValueZero()):
+			_dir = 1
+		mashMeter.addToValue(decreaseAmount * _dir)
 		$MashDecrease.start(decreaseFrequency)
 
 func startGame(pet : Node2D, playMenu : Node2D):
@@ -32,7 +39,7 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	$PseudoPet.sprite.offset = pet.sprite.offset
 	$PseudoPet.sprite.play("Quirk")
 	updateGameText("3")
-	mashMeter.initializeMeter(mashMax, mashGoal)
+	mashMeter.initializeMeter(mashMax, mashGoal, mashGoalMax, 5)
 	$Timer.start(1)
 	gameRunning = true
 
@@ -56,14 +63,7 @@ func onWin():
 
 func onLose():
 	gameRunning = false
-	updateGameText("NOW!")
-	$PseudoPet.hop()
-	$Hammer.set_animation("Down")
-	await get_tree().create_timer(.5).timeout
-	$Hammer.set_animation("Up")
-	await get_tree().create_timer(.5).timeout
 	updateGameText("LOSE!")
-	print("You Lose!")
 	$PseudoPet.sprite.play("Quirk")
 	await get_tree().create_timer(2).timeout
 	endGame()
@@ -71,15 +71,21 @@ func onLose():
 func updateGameText(text : String):
 	$Status.text = text
 
+
 func updateMashBar(value : int, maxAmount : int):
-	mashMeter.updateMeter(value, maxAmount)
+	mashMeter.setValue(value)
+
 
 func takeInput(input : Enums.DeviceButton):
 	if gameRunning and mashMode:
 			match input:
 				Enums.DeviceButton.CENTER_BUTTON:
-					mashAmount += 1
-					updateMashBar(mashAmount, mashMax)
+					gameRunning = false
+					mashMode = false
+					if (mashMeter.isWithinGoal()):
+						onWin()
+					else:
+						onLose()
 
 
 func _on_timer_timeout():
@@ -94,16 +100,16 @@ func _on_timer_timeout():
 		$Timer.start(gameDuration)
 		mashMode = true
 	else:
-		if mashAmount >= mashGoal:
-			onWin()
-		else:
-			onLose()
+		onLose()
+		#if mashAmount >= mashGoal:
+			#onWin()
+		#else:
+			#onLose()
 
 func tickMashDecrease():
 	if gameRunning and mashMode:
-		if mashAmount > 0:
-			mashAmount -= decreaseAmount
-
-		if mashAmount < 0:
-			mashAmount = 0
-		updateMashBar(mashAmount, mashMax)
+		if (mashMeter.isValueMaxed()):
+			_dir = -1
+		if (mashMeter.isValueZero()):
+			_dir = 1
+		mashMeter.addToValue(decreaseAmount * _dir)

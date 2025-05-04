@@ -39,10 +39,11 @@ script = ExtResource("1_kx0il")
 joyIncrement = 50
 statIncrement = 2
 gameDuration = 5.0
-mashGoal = 25
+mashGoal = 17
+mashGoalMax = 25
 mashMax = 35
-decreaseFrequency = 0.5
-decreaseAmount = 1
+decreaseFrequency = 0.1
+decreaseAmount = 2
 mashMeter = NodePath("MashMeter")
 metadata/_edit_lock_ = true
 

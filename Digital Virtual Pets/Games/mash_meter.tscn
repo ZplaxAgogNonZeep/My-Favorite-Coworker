@@ -18,7 +18,7 @@ scale = Vector2(6, 1)
 offset = Vector2(0, -0.5)
 
 [node name="EndPoint" parent="Meter" index="2"]
-position = Vector2(0, -22)
+position = Vector2(0, -21)
 
 [node name="MashMeterBack" type="Sprite2D" parent="."]
 texture = ExtResource("2_boinv")
@@ -31,7 +31,7 @@ _orientation = 1
 offset = Vector2(0, -0.5)
 
 [node name="EndPoint" parent="RightMeter" index="2"]
-position = Vector2(0, -22)
+position = Vector2(0, -21)
 
 [editable path="Meter"]
 [editable path="RightMeter"]

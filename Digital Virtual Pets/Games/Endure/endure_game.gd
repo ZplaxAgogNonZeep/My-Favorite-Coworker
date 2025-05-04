@@ -49,7 +49,7 @@ func takeInput(input : Enums.DeviceButton):
 			match input:
 				Enums.DeviceButton.CENTER_BUTTON:
 					$MashMeter.addToValue(1)
-					#$PseudoPet.hop()
+					$PseudoPet.hop()
 					#updateMashBar(mashAmount, mashMax)
 
 func onWin():

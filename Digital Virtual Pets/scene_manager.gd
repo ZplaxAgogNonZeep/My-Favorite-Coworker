@@ -36,8 +36,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		pass
-		GameEvents.DisplayDialog.emit(Vector2i(0, 0), _test, 
-						"New Game Dialog", Callable(self, "firstOpenReturned"))
+		GameEvents.DisplayDialog.emit(Vector2i(-999, -999), _test, 
+						"Device Tutorial", Callable(self, "firstOpenReturned"))
 
 
 func _displayDevice(skipAnimation := false):

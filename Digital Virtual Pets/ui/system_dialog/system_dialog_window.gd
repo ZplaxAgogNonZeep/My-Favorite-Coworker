@@ -14,6 +14,7 @@ signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Contr
 var _baseLabelSize : float
 var _positionOffset : Vector2
 var _threadIndex : int
+var _givenPosition
 
 func _ready() -> void:
 	get_parent()
@@ -32,10 +33,11 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 	_baseLabelSize = _dialogLabel.size.y
 	# Set the Window Position, if the position is set to specifically (-1, -1), it will default to
 	# the center of the primary monitor
-	if (pos == Vector2i(-1, -1)):
+	if (pos == Vector2i(-999, -999)):
 		_windowContainer.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN
 	else:
-		Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, _windowContainer.size) + pos
+		_windowContainer.position = Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, 
+																	_windowContainer.size, pos)
 	_windowContainer.title = speaker
 	_characterNameLabel.text = speaker
 	_dialogLabel.text = text

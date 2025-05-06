@@ -67,7 +67,7 @@ func _ready() -> void:
 	GameEvents.DisplayDialog.connect(_callSystemDialog)
 
 
-func _callSystemDialog(pos : Vector2, dialogResource : CharacterDialog, 
+func _callSystemDialog(pos : Vector2i, dialogResource : CharacterDialog, 
 						conversationName : String, returnFunction : Callable):
 	GameEvents.PauseGame.emit()
 	var newThread = DialogThread.new(dialogResource, conversationName, pos, _threads.size(), returnFunction)
@@ -86,11 +86,11 @@ func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
 	
 	if (_threads[threadIndex].activePassage.keys().size() > 0):
 		# we have a correct passage
-		var posn : Vector2 = Vector2(_threads[threadIndex].rootPosn.x + randf_range(_windowPosnVariance.x * -1, 
-																					_windowPosnVariance.x),
-									_threads[threadIndex].rootPosn.y + randf_range(_windowPosnVariance.y * -1, 
-																					_windowPosnVariance.y))
-		_createDialogWindow(posn, _threads[threadIndex])
+		#var posn : Vector2 = Vector2(_threads[threadIndex].rootPosn.x + randf_range(_windowPosnVariance.x * -1, 
+																					#_windowPosnVariance.x),
+									#_threads[threadIndex].rootPosn.y + randf_range(_windowPosnVariance.y * -1, 
+																					#_windowPosnVariance.y))
+		_createDialogWindow(_threads[threadIndex].rootPosn, _threads[threadIndex])
 	else:
 		# empty dict, no more links, end dialog
 		#_threads[threadIndex].returnFunction.call(_threads[threadIndex].thread)

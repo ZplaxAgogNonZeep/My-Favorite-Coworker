@@ -4,7 +4,7 @@ signal PauseGame
 signal UnpauseGame
 
 #region System Events
-signal DisplayDialog(pos : Vector2, dialogResource : CharacterDialog, 
+signal DisplayDialog(pos : Vector2i, dialogResource : CharacterDialog, 
 						conversationName : String, returnFunction : Callable)
 signal GetPlayerAttention
 signal OpenOptionsMenu

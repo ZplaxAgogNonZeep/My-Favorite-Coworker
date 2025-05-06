@@ -177,7 +177,8 @@ func setWindowPosition() -> void:
 
 ## Takes [param windowPositionType] and a [param windowSize] to find a valid screen position 
 ## to place a new window in. Default position scaling direction should be up and to the left.
-func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowSize : Vector2i):
+func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowSize : Vector2i, 
+							originPosn := Vector2i.ZERO) -> Vector2i:
 	var buildDir = Vector2i.ZERO
 	var gameWindowSize = get_viewport().get_window().size
 	var gameWindowPosition = get_viewport().get_window().position
@@ -204,8 +205,41 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 		# The manager window should appear just to the side of the device
 		finalWindowPosition = managerPosn + offset
 	elif (windowPositionType == SubWindowPositionType.DIALOG):
-		# Dialog windows are a special case where I want to specifically specify where the window
-		# is, so we only need to return the window's position
+		# Dialog windows are a special case where we want to designate a spot ahead of time, then
+		# figure out a variance for it. originPosn should be an offsetted position relative to the
+		# center of the device
+		var windowOrigin = originPosn + offset
+		var xBounds : Vector2i
+		xBounds.y = (windowSize.x * .5) * buildDir.x
+		if (_checkWhithinRange((windowOrigin.x + gameWindowPosition.x) + 
+													((windowSize.x * .5) * buildDir.x * -1), 
+								Vector2i(0, resolution.x))):
+			xBounds.x = windowOrigin.x
+		
+		var yBounds : Vector2i
+		yBounds.x = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * 2)
+		yBounds.y = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * .5)
+		
+		var min : Vector2i
+		var max : Vector2i
+		
+		if xBounds.x > xBounds.y:
+			min.x = xBounds.y
+			max.x = xBounds.x
+		else:
+			max.x = xBounds.y
+			min.x = xBounds.x
+		
+		if yBounds.x > yBounds.y:
+			min.y = yBounds.y
+			max.y = yBounds.x
+		else:
+			max.y = yBounds.y
+			min.y = yBounds.x
+		
+		var randomPosn = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y))
+		#var randomPosn = Vector2i(max.x, max.y)
+		finalWindowPosition = randomPosn + offset
 		pass
 	elif (windowPositionType == SubWindowPositionType.MANAGED_WINDOW):
 		# The managed windows should appear in a random space past the manager window

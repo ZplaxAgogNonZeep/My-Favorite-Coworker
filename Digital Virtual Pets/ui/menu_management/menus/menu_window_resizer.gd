@@ -11,6 +11,7 @@ func _ready() -> void:
 			always_on_top = false
 		Settings.WindowAttentionOptions.DO_NOT_CHANGE:
 			always_on_top = false
+	resetWindow()
 
 
 ## Turns the window off and on again. Bypasses an unfixed bug in Godot where the window will crash
@@ -20,11 +21,23 @@ func resetWindow():
 	visible = true
 
 
+## Sets the size of the [
+func setWindowToCanvasSize():
+	size = _canvas.size
+
+
+func getCanvas():
+	return _canvas
+
+
 func _visibilityChanged():
 	if (visible):
-		size = _canvas.size
+		setWindowToCanvasSize()
 		Settings.addToActiveWindows(self)
-		position = Settings.findValidWindowPosition(_windowType, size)
+		if (_windowType != Settings.SubWindowPositionType.DIALOG):
+			position = Settings.findValidWindowPosition(_windowType, size)
+		else:
+			_canvas.setWindowPosition()
 	else:
 		Settings.removeFromActiveWindows(self)
 	

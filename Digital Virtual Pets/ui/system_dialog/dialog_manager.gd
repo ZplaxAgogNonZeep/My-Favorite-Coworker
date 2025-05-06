@@ -99,14 +99,15 @@ func _continueDialog(linkIndex : int, threadIndex : int, window : Control):
 
 #region Utility Functions
 func _createDialogWindow(pos : Vector2, thread : DialogThread):
-	var newDialog = _systemWindowScene.instantiate()
+	var windowNode = _systemWindowScene.instantiate()
+	var newDialog = windowNode.getCanvas()
 	newDialog.loadWindow(pos, thread.getPassageText(), 
 								thread.getSpeaker(), 
 								thread.getLinks(), 
 								thread.threadIndex)
 	newDialog.DialogChoiceSelected.connect(_continueDialog)
 	_windows[thread.threadIndex].append(newDialog)
-	call_deferred("add_child", newDialog)
+	call_deferred("add_child", windowNode)
 
 
 func _closeWindow(threadIndex : int, closeWindow : Control):

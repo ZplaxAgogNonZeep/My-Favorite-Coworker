@@ -4,7 +4,7 @@ class_name settings
 
 enum WindowOrientationOptions {TOP_LEFT_CORNER, TOP_RIGHT_CORNER, BOT_LEFT_CORNER, BOT_RIGHT_CORNER, CUSTOM}
 enum WindowAttentionOptions {BRING_TO_FRONT, ALWAYS_ON_TOP, DO_NOT_CHANGE}
-enum SubWindowPositionType {MANAGER_WINDOW, MANAGED_WINDOW}
+enum SubWindowPositionType {MANAGER_WINDOW, MANAGED_WINDOW, DIALOG}
 
 
 
@@ -203,6 +203,10 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 	if (windowPositionType == SubWindowPositionType.MANAGER_WINDOW):
 		# The manager window should appear just to the side of the device
 		finalWindowPosition = managerPosn + offset
+	elif (windowPositionType == SubWindowPositionType.DIALOG):
+		# Dialog windows are a special case where I want to specifically specify where the window
+		# is, so we only need to return the window's position
+		pass
 	elif (windowPositionType == SubWindowPositionType.MANAGED_WINDOW):
 		# The managed windows should appear in a random space past the manager window
 		# bounds are vectors where x is the origin point and y is extended out from there

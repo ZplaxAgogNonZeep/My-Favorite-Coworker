@@ -97,12 +97,8 @@ _data = {
 
 [node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
 anchors_preset = -1
-anchor_bottom = 0.0493827
-offset_left = -128.0
-offset_top = -56.0
-offset_right = 128.0
-offset_bottom = 59.0
-pivot_offset = Vector2(128, 56.0002)
+anchor_right = 1.0
+offset_bottom = 130.0
 theme = ExtResource("1_gp6kj")
 script = ExtResource("1_2a2c1")
 _dialogLabel = NodePath("Dialog")

@@ -24,7 +24,7 @@ func _ready() -> void:
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
 	if (_firstTimeOpened):
-		GameEvents.DisplayDialog.emit(Vector2(300, 250), _test, 
+		GameEvents.DisplayDialog.emit(Vector2(-1, -1), _test, 
 						"New Game Dialog", Callable(self, "firstOpenReturned"))
 	else:
 		_displayDevice(true)
@@ -36,7 +36,9 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		pass
-		Settings.changeActiveMonitor(0)
+		print("Calling dialog")
+		GameEvents.DisplayDialog.emit(Vector2(-1, -1), _test, 
+						"New Game Dialog", Callable(self, "firstOpenReturned"))
 
 
 func _displayDevice(skipAnimation := false):

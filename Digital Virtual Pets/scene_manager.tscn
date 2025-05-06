@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
 [ext_resource type="PackedScene" uid="uid://cw7xr6uluo8np" path="res://ui/menu_management/menus/pet_menu.tscn" id="7_l8mrh"]
 [ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
-[ext_resource type="PackedScene" uid="uid://dtya6sb5p4rt8" path="res://ui/system_dialog/system_dialog_window.tscn" id="9_k1t8d"]
+[ext_resource type="PackedScene" uid="uid://2qk3ms7yua0r" path="res://ui/system_dialog/dialog_window.tscn" id="10_7o31v"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 
 [node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device")]
@@ -115,7 +115,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("8_gowt0")
-_systemWindowScene = ExtResource("9_k1t8d")
+_systemWindowScene = ExtResource("10_7o31v")
 _windowPosnVariance = Vector2(64, 64)
 metadata/_edit_lock_ = true
 

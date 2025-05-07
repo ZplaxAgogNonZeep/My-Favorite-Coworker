@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=77 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_qk4hv"]
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="5_0s1ah"]
 [ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_7tnq8"]
+[ext_resource type="Resource" uid="uid://bqs54n475n2yw" path="res://data/sound_grouping/device_beep.tres" id="6_myr8s"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_6uw0p"]
 [ext_resource type="Texture2D" uid="uid://cxfiu12hvqate" path="res://assets/art/aesprite/device/game_background.png" id="8_5u0yl"]
 [ext_resource type="SpriteFrames" uid="uid://dmdqjiqs0oxha" path="res://assets/animation_frames/device/screen_frames.tres" id="9_5u0yl"]
@@ -499,6 +500,7 @@ _screenAnimator = NodePath("DisplayScreen")
 _killScreen = NodePath("MenuManager/Menu/DeathMenu")
 boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Markers/RightBoundry")]
 ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), null]
+_beepSound = ExtResource("6_myr8s")
 foodInstance = ExtResource("4_qk4hv")
 metadata/_edit_lock_ = true
 
@@ -541,6 +543,7 @@ miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
 deathMenu = NodePath("Menu/DeathMenu")
+_beepSound = ExtResource("6_myr8s")
 
 [node name="StatusBars" type="Node2D" parent="PositionGroup/GameArea/MenuManager"]
 

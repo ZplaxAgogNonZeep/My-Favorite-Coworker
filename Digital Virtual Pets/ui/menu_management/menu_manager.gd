@@ -9,6 +9,8 @@ enum MenuMode {SINGLE_MENU, MULTI_MENU}
 
 @export_category("Node References")
 @export var controller : Node2D # Usually the root of the scene, used to get information from non-singletons
+@export var _mouseDownSFX : SoundGroup
+@export var _mouseUpSFX : SoundGroup
 @export_category("State Machine")
 @export var _menuMode := MenuMode.SINGLE_MENU
 @export var _useOSWindows : bool = false
@@ -21,6 +23,7 @@ func _ready() -> void:
 	GameEvents.OpenDirectMenu.connect(_openDirectMenu)
 	var count = 0
 	for menu : Menu in _menuList:
+		menu.PlayMouseSFX.connect(_playMouseSFX)
 		menu.visible = false
 		menu.menuManager = self
 		menu.index = count
@@ -98,5 +101,12 @@ func isMenuOpen() -> bool:
 
 func getMenuMode():
 	return _menuMode
+
+
+func _playMouseSFX(index : int):
+	if (index == 0):
+		SfxManager.playSoundEffect(_mouseDownSFX)
+	else:
+		SfxManager.playSoundEffect(_mouseUpSFX)
 
 #endregion

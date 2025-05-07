@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=15 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Resource" uid="uid://ck2xto1wtvikr" path="res://data/dialog/my_favorite_coworkerexe.tres" id="2_2ni51"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
 [ext_resource type="Script" uid="uid://b8kuvi7oo2jl8" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
+[ext_resource type="Resource" uid="uid://bqs54n475n2yw" path="res://data/sound_grouping/device_beep.tres" id="3_o58kc"]
 [ext_resource type="PackedScene" uid="uid://cqs2mr65skd0q" path="res://ui/menu_management/menus/menu_icons.tscn" id="4_jlwpj"]
 [ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
 [ext_resource type="PackedScene" uid="uid://cw7xr6uluo8np" path="res://ui/menu_management/menus/pet_menu.tscn" id="7_l8mrh"]
+[ext_resource type="Resource" uid="uid://ommo1wutrgn3" path="res://data/sound_grouping/mouse_down.tres" id="7_takr5"]
 [ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
+[ext_resource type="Resource" uid="uid://ch3ydi5db33sh" path="res://data/sound_grouping/mouse_up.tres" id="8_vxl1k"]
 [ext_resource type="PackedScene" uid="uid://2qk3ms7yua0r" path="res://ui/system_dialog/dialog_window.tscn" id="10_7o31v"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 
@@ -20,6 +23,7 @@ _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
 _background = NodePath("BackgroundCanvas/SimpleBackground")
 device = NodePath("Device")
 _test = ExtResource("2_2ni51")
+_testSound = ExtResource("3_o58kc")
 metadata/_edit_lock_ = true
 
 [node name="DebugNodes" type="Node" parent="."]
@@ -65,6 +69,8 @@ mouse_filter = 2
 theme = ExtResource("2_h2pgc")
 script = ExtResource("3_jvvvb")
 controller = NodePath("../..")
+_mouseDownSFX = ExtResource("7_takr5")
+_mouseUpSFX = ExtResource("8_vxl1k")
 _menuMode = 1
 _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu")]
 metadata/_edit_lock_ = true

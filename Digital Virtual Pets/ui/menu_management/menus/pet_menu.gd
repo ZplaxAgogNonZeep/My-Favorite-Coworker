@@ -39,6 +39,8 @@ func _fillPetSlots():
 		var newSlot = _slotScene.instantiate()
 		newSlot.loadPetData(null, 0)
 		newSlot.NewPetSelected.connect(_createNewPet)
+		newSlot.button_down.connect(_mouseDown)
+		newSlot.button_up.connect(_mouseUp)
 		_slotContainer.call_deferred("add_child", newSlot)
 		return
 	var count = 0
@@ -49,7 +51,8 @@ func _fillPetSlots():
 		newSlot.loadPetData(petData, count)
 		newSlot.PetSlotSelected.connect(_selectPet)
 		newSlot.DeleteSaveSlot.connect(_deleteSlot)
-		
+		newSlot.button_down.connect(_mouseDown)
+		newSlot.button_up.connect(_mouseUp)
 		_slotContainer.call_deferred("add_child", newSlot)
 		count += 1
 	
@@ -57,6 +60,8 @@ func _fillPetSlots():
 		var newSlot = _slotScene.instantiate()
 		newSlot.loadPetData(null, count)
 		newSlot.NewPetSelected.connect(_createNewPet)
+		newSlot.button_down.connect(_mouseDown)
+		newSlot.button_up.connect(_mouseUp)
 		_slotContainer.call_deferred("add_child", newSlot)
 
 

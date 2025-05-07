@@ -101,5 +101,9 @@ text = "Load"
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
+[connection signal="button_down" from="Window/MenuWindow/Exit" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Exit" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/Exit" to="." method="_onExit"]
+[connection signal="button_down" from="Window/MenuWindow/LoadPet" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/LoadPet" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/LoadPet" to="." method="_loadSelectedPet"]

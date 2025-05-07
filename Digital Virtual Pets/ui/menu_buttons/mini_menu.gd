@@ -20,6 +20,7 @@ func exitMenu():
 		pass
 
 func takeInput(input : Enums.InputType):
+	stateMachine.playBeep()
 	if (buttonController.active):
 		match input:
 			Enums.DeviceButton.LEFT_BUTTON:

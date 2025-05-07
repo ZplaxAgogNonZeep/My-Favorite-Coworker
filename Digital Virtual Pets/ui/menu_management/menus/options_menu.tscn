@@ -41,7 +41,6 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-anchors_preset = -1
 offset_right = 400.0
 offset_bottom = 192.0
 pivot_offset = Vector2(200, 121)
@@ -244,8 +243,20 @@ popup/item_2/id = 2
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
+[connection signal="button_down" from="Window/MenuWindow/CloseButton" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/CloseButton" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/CloseButton" to="." method="_onExit"]
+[connection signal="button_down" from="Window/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_mouseUp"]
 [connection signal="toggled" from="Window/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
+[connection signal="button_down" from="Window/MenuWindow/Buttons/WindowFocusOptions" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Buttons/WindowFocusOptions" to="." method="_mouseUp"]
 [connection signal="item_selected" from="Window/MenuWindow/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]
+[connection signal="button_down" from="Window/MenuWindow/Buttons/WindowOrientationOptions" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Buttons/WindowOrientationOptions" to="." method="_mouseUp"]
 [connection signal="item_selected" from="Window/MenuWindow/Buttons/WindowOrientationOptions" to="." method="_onWindowOrientationOptions"]
+[connection signal="button_down" from="Window/MenuWindow/Buttons/MonitorOptions" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Buttons/MonitorOptions" to="." method="_mouseUp"]
 [connection signal="item_selected" from="Window/MenuWindow/Buttons/MonitorOptions" to="." method="_onMonitorOptions"]
+[connection signal="button_down" from="Window/MenuWindow/Buttons/FrameCapOptions" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Buttons/FrameCapOptions" to="." method="_mouseUp"]

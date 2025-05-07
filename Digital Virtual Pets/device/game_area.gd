@@ -14,6 +14,7 @@ const TIMER_TIME := 5
 @export var _killScreen : Node2D
 @export var boundries : Array[Marker2D] # 0 = Left | 1 = Right
 @export var ObjectSpawnLocations : Array[Marker2D]
+@export var _beepSound : SoundGroup
 @export_category("Spawnable Objects")
 @export var foodInstance : PackedScene
 

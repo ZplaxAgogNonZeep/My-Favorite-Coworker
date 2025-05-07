@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=5 format=3 uid="uid://d3gy505efe464"]
+
+[ext_resource type="AudioStream" uid="uid://dsdbokonnsy0h" path="res://assets/sound_effects/button_up_0.wav" id="1_1bmmg"]
+[ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_lp3a4"]
+[ext_resource type="AudioStream" uid="uid://cwhgslk7xngta" path="res://assets/sound_effects/button_up_1.wav" id="2_vgix0"]
+[ext_resource type="AudioStream" uid="uid://bkgrj7wc0n053" path="res://assets/sound_effects/button_up_2.wav" id="3_k5aro"]
+
+[resource]
+script = ExtResource("1_lp3a4")
+_audioStreams = Array[AudioStream]([ExtResource("1_1bmmg"), ExtResource("2_vgix0"), ExtResource("3_k5aro")])
+bus = 1
+metadata/_custom_type_script = "uid://dn74yoyxw6eax"

@@ -6,6 +6,9 @@ signal DeviceButtonPressed(button : Enums.DeviceButton)
 
 var _hovered = false
 
+func _ready() -> void:
+	animation_finished.connect(_playSoundEffect)
+
 func _mouseEntered():
 	_hovered = true
 
@@ -19,3 +22,8 @@ func _input(event: InputEvent) -> void:
 			set_frame_and_progress(0, 0)
 			play()
 			DeviceButtonPressed.emit(_assignedButton)
+
+
+func _playSoundEffect():
+	pass
+	#SfxManager.playSoundEffect(get_parent().get_parent()._buttonUpSound)

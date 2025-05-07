@@ -18,6 +18,10 @@ run/max_fps=60
 config/icon="uid://wo8b330mq0ls"
 config/windows_native_icon="res://windowsIcon.ico"
 
+[audio]
+
+buses/default_bus_layout="res://sfx/default_bus_layout.tres"
+
 [autoload]
 
 Interface="*res://singletons/interface.gd"
@@ -25,6 +29,7 @@ SaveData="*res://singletons/save_data.gd"
 Enums="*res://singletons/enums.gd"
 GameEvents="*res://singletons/game_events.gd"
 Settings="*res://singletons/settings.gd"
+SfxManager="*res://sfx/sfx_manager.gd"
 
 [display]
 

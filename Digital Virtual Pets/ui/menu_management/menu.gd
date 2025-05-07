@@ -3,6 +3,7 @@ extends Control
 class_name Menu
 
 signal ChangeMenu(menuIndex: int)
+signal PlayMouseSFX(index : int)
 
 @export_category("Menu System Variables")
 @export var pauseGame : bool = true
@@ -79,5 +80,11 @@ func _saveMenuSettings():
 func _animationComplete(animation : StringName):
 	pass
 
+func _mouseDown():
+	PlayMouseSFX.emit(0)
+
+
+func _mouseUp():
+	PlayMouseSFX.emit(1)
 
 #endregion

@@ -45,6 +45,7 @@ func closeMenu():
 func takeInput(input : Enums.DeviceButton):
 	match state:
 		PlayState.MENU:
+			stateMachine.playBeep()
 			match input:
 				Enums.DeviceButton.CENTER_BUTTON:
 					_select(_menuIndex)

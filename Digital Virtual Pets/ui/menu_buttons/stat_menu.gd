@@ -53,6 +53,7 @@ func exitMenu():
 
 
 func takeInput(input : Enums.DeviceButton):
+	stateMachine.playBeep()
 	if (input == Enums.DeviceButton.RIGHT_BUTTON):
 		_panelList[_index].visible = false
 		_index += 1

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://ommo1wutrgn3"]
+
+[ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_n0oa6"]
+[ext_resource type="AudioStream" uid="uid://cnnd7dh1te8se" path="res://assets/sound_effects/mouse_down_0.wav" id="1_wuf7j"]
+
+[resource]
+script = ExtResource("1_n0oa6")
+_audioStreams = Array[AudioStream]([ExtResource("1_wuf7j")])
+bus = 1
+metadata/_custom_type_script = "uid://dn74yoyxw6eax"

@@ -7,6 +7,7 @@ enum MenuState {MINIMIZED, PLAY, STATS, DEATH}
 @export var statMenu : Node2D
 @export var playMenu : Node2D
 @export var deathMenu : Node2D
+@export var _beepSound : SoundGroup
 
 var currentState : MenuState
 var stateReference : Node
@@ -88,3 +89,7 @@ func sendInput(input : Enums.DeviceButton):
 		MenuState.DEATH:
 			if deathMenu.implements.has(Interface.MenuState):
 				deathMenu.takeInput(input)
+
+
+func playBeep():
+	SfxManager.playSoundEffect(_beepSound)

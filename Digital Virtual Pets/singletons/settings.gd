@@ -25,6 +25,9 @@ var isSetWindowPinned := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
+var masterVolume := 1.0
+var deviceVolume := 1.0
+var gameVolume := 1.0
 ## Ints
 #TODO: Make sure this is implemented and the definitive way to check game scale
 var gameScale := 2
@@ -38,6 +41,7 @@ var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_
 var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_RIGHT_CORNER
 #endregion
 
+
 func _ready() -> void:
 	# This is the last ready function to be called before the all the normal scene nodes call it
 	# so anything that needs to be changed to match settings like window position needs to be done 
@@ -48,6 +52,9 @@ func _ready() -> void:
 	setWindowPosition()
 	setWindowAttentionMode(windowAttentionMode)
 	setFrameCap(frameCapSetTo)
+	setVolume(SfxManager.BusType.MASTER, masterVolume)
+	setVolume(SfxManager.BusType.GAME, gameVolume)
+	setVolume(SfxManager.BusType.DEVICE, deviceVolume)
 	
 	_defaultWindowSize = get_viewport().get_window().size
 	get_tree().call_group("Debug", "debugReady")
@@ -74,7 +81,10 @@ func saveSettings():
 		"windowAttentionMode" : windowAttentionMode,
 		"windowOrientation" : windowOrientation,
 		"monitorSetTo" : monitorSetTo,
-		"frameCapSetTo" : frameCapSetTo
+		"frameCapSetTo" : frameCapSetTo,
+		"masterVolume" : masterVolume,
+		"deviceVolume" : deviceVolume,
+		"gameVolume" : gameVolume
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)
@@ -110,6 +120,10 @@ func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 			WindowAttentionOptions.DO_NOT_CHANGE:
 				window.always_on_top = false
 		window.resetWindow()
+
+
+func setVolume(bus : SfxManager.BusType, value : float):
+	AudioServer.set_bus_volume_db(bus, lerp(-60, 0, value))
 
 
 func setFrameCap(frameCap : int):

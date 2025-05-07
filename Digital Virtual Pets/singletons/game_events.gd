@@ -3,6 +3,10 @@ extends Node
 signal PauseGame
 signal UnpauseGame
 
+#region Sound Events
+signal PlaySoundEffect()
+#endregion
+
 #region System Events
 signal DisplayDialog(pos : Vector2i, dialogResource : CharacterDialog, 
 						conversationName : String, returnFunction : Callable)

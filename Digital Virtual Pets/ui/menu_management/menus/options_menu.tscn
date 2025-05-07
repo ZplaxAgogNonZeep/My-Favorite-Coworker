@@ -36,6 +36,7 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 size = Vector2i(1430, 1370)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
@@ -256,7 +257,7 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -108.0
+offset_left = -121.0
 offset_top = 170.0
 offset_right = -37.0
 offset_bottom = 192.0
@@ -268,7 +269,7 @@ popup/item_0/id = 0
 
 [node name="FrameCapOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
-offset_left = 289.0
+offset_left = 279.0
 offset_top = 196.0
 offset_right = 363.0
 offset_bottom = 218.0

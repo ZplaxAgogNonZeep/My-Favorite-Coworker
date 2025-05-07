@@ -33,7 +33,6 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 size = Vector2i(1430, 1370)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
@@ -41,6 +40,8 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
+anchors_preset = -1
+anchor_bottom = 0.0569343
 offset_right = 400.0
 offset_bottom = 192.0
 pivot_offset = Vector2(200, 121)
@@ -86,12 +87,24 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 35.0
+offset_top = 122.0
 offset_right = 277.0
-offset_bottom = 56.0
+offset_bottom = 143.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Proactivity Mode"
+vertical_alignment = 1
+
+[node name="MasterVolumeLabel" type="Label" parent="Window/MenuWindow/Labels"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 25.0
+offset_right = 277.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
+text = "Master Volume"
 vertical_alignment = 1
 
 [node name="WindowFocusLabel" type="Label" parent="Window/MenuWindow/Labels"]
@@ -99,9 +112,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 61.0
+offset_top = 148.0
 offset_right = 197.0
-offset_bottom = 82.0
+offset_bottom = 169.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Focus Mode"
@@ -112,9 +125,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 88.0
+offset_top = 175.0
 offset_right = 204.0
-offset_bottom = 109.0
+offset_bottom = 196.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Position"
@@ -125,9 +138,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 38.0
-offset_top = 114.0
+offset_top = 201.0
 offset_right = 292.0
-offset_bottom = 135.0
+offset_bottom = 222.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Active Monitor"
@@ -138,9 +151,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 139.0
+offset_top = 226.0
 offset_right = 291.0
-offset_bottom = 160.0
+offset_bottom = 247.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Frame Cap"
@@ -162,9 +175,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -63.0
-offset_top = 31.0
+offset_top = 118.0
 offset_right = -33.0
-offset_bottom = 61.0
+offset_bottom = 148.0
 grow_horizontal = 0
 flat = true
 icon_alignment = 1
@@ -175,9 +188,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 61.0
+offset_top = 147.0
 offset_right = -37.0
-offset_bottom = 83.0
+offset_bottom = 169.0
 grow_horizontal = 0
 selected = 0
 item_count = 3
@@ -194,9 +207,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 87.0
+offset_top = 174.0
 offset_right = -37.0
-offset_bottom = 109.0
+offset_bottom = 196.0
 grow_horizontal = 0
 selected = 3
 item_count = 5
@@ -217,9 +230,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -108.0
-offset_top = 113.0
+offset_top = 200.0
 offset_right = -37.0
-offset_bottom = 135.0
+offset_bottom = 222.0
 grow_horizontal = 0
 selected = 0
 item_count = 1
@@ -229,9 +242,9 @@ popup/item_0/id = 0
 [node name="FrameCapOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 289.0
-offset_top = 139.0
+offset_top = 226.0
 offset_right = 363.0
-offset_bottom = 161.0
+offset_bottom = 248.0
 selected = 1
 item_count = 3
 popup/item_0/text = "30 fps"
@@ -240,6 +253,13 @@ popup/item_1/text = "60 fps"
 popup/item_1/id = 1
 popup/item_2/text = "Unlimited"
 popup/item_2/id = 2
+
+[node name="HSlider" type="HSlider" parent="Window/MenuWindow/Buttons"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 27.0
+offset_right = 363.0
+offset_bottom = 43.0
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]

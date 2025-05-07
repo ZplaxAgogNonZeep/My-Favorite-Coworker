@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bqxkfc3yle3"
-path="res://.godot/imported/nuh_buh.png-13f884aabb11f83495f6cfd4ab101839.ctex"
+uid="uid://yuepbbu1epc0"
+path="res://.godot/imported/nuhbuh-Sheet.png-57328c9639d05288ecc1ccefdf063784.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/Pets/stage2/nuh_buh.png"
-dest_files=["res://.godot/imported/nuh_buh.png-13f884aabb11f83495f6cfd4ab101839.ctex"]
+source_file="res://assets/art/aesprite/_pets/stage2/nuhbuh-Sheet.png"
+dest_files=["res://.godot/imported/nuhbuh-Sheet.png-57328c9639d05288ecc1ccefdf063784.ctex"]
 
 [params]
 

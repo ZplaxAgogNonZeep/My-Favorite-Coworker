@@ -1,17 +1,17 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://kkt8ifrpyylt"]
 
-[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/Pets/unknown_pet.png" id="1_8bvg4"]
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/_pets/unknown_pet.png" id="1_4n0ci"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6u4ea"]
-atlas = ExtResource("1_8bvg4")
+atlas = ExtResource("1_4n0ci")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ji34l"]
-atlas = ExtResource("1_8bvg4")
+atlas = ExtResource("1_4n0ci")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11udm"]
-atlas = ExtResource("1_8bvg4")
+atlas = ExtResource("1_4n0ci")
 region = Rect2(0, 0, 16, 16)
 
 [resource]

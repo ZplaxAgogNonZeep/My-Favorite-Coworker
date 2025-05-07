@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvw77eslx4ym7"
-path="res://.godot/imported/HeRohBuh.png-7589b5a69b37ff2deb355abcabafd760.ctex"
+uid="uid://cdvlhexs3dfo4"
+path="res://.godot/imported/herobuh_sheett.png-d0e2685911a47fc61117688b2a39e3a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/Pets/Stage3/HeRohBuh.png"
-dest_files=["res://.godot/imported/HeRohBuh.png-7589b5a69b37ff2deb355abcabafd760.ctex"]
+source_file="res://assets/art/aesprite/_pets/stage3/herobuh_sheett.png"
+dest_files=["res://.godot/imported/herobuh_sheett.png-d0e2685911a47fc61117688b2a39e3a4.ctex"]
 
 [params]
 

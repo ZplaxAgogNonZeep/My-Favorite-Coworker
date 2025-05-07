@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgfuuepoo5hh3"
-path="res://.godot/imported/BuhBuh-Sheet.png-c59a17324b61bb258752ad8b5657a11f.ctex"
+path="res://.godot/imported/BuhBuh-Sheet.png-3dc667f4ddf465b14d676d4b27449461.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/Pets/stage2/BuhBuh-Sheet.png"
-dest_files=["res://.godot/imported/BuhBuh-Sheet.png-c59a17324b61bb258752ad8b5657a11f.ctex"]
+source_file="res://assets/art/aesprite/_pets/stage2/BuhBuh-Sheet.png"
+dest_files=["res://.godot/imported/BuhBuh-Sheet.png-3dc667f4ddf465b14d676d4b27449461.ctex"]
 
 [params]
 

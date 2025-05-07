@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnb5d4nfnx03p"
-path="res://.godot/imported/pup_egg-sheet.png-b38406356eed0c48346903e9643ed0b7.ctex"
+uid="uid://wo8b330mq0ls"
+path="res://.godot/imported/buh_big.png-2579e579c8b20b5b46ad3f6468bfa5f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/aesprite/Pets/egg/pup_egg-sheet.png"
-dest_files=["res://.godot/imported/pup_egg-sheet.png-b38406356eed0c48346903e9643ed0b7.ctex"]
+source_file="res://assets/art/aesprite/_pets/stage1/buh_big.png"
+dest_files=["res://.godot/imported/buh_big.png-2579e579c8b20b5b46ad3f6468bfa5f0.ctex"]
 
 [params]
 

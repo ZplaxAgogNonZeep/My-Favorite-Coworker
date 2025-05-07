@@ -1,29 +1,29 @@
 [gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dqv4v2ycxf6g5"]
 
-[ext_resource type="Texture2D" uid="uid://cgfuuepoo5hh3" path="res://assets/art/aesprite/Pets/stage2/BuhBuh-Sheet.png" id="1_18d1r"]
+[ext_resource type="Texture2D" uid="uid://cgfuuepoo5hh3" path="res://assets/art/aesprite/_pets/stage2/BuhBuh-Sheet.png" id="1_h31j1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8rkcg"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(0, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j1cor"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(20, 0, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pmray"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(0, 20, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnaqw"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(20, 20, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdxp7"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(0, 40, 20, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t06qi"]
-atlas = ExtResource("1_18d1r")
+atlas = ExtResource("1_h31j1")
 region = Rect2(20, 40, 20, 20)
 
 [resource]

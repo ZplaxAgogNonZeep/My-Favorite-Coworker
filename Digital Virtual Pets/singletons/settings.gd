@@ -25,9 +25,9 @@ var isSetWindowPinned := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
-var masterVolume := 1.0
-var deviceVolume := 1.0
-var gameVolume := 1.0
+var masterVolume : float = .5
+var deviceVolume : float = 1.0
+var gameVolume : float = 1.0
 ## Ints
 #TODO: Make sure this is implemented and the definitive way to check game scale
 var gameScale := 2
@@ -123,6 +123,13 @@ func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
 
 
 func setVolume(bus : SfxManager.BusType, value : float):
+	match bus:
+		SfxManager.BusType.MASTER:
+			masterVolume = value
+		SfxManager.BusType.DEVICE:
+			deviceVolume = value
+		SfxManager.BusType.GAME:
+			gameVolume = value
 	AudioServer.set_bus_volume_db(bus, lerp(-60, 0, value))
 
 

@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_window", "animator")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_masterVolumeBar", "_gameVolumeBar", "_deviceVolumeBar", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
@@ -19,6 +19,9 @@ _windowAttentionSelection = NodePath("Window/MenuWindow/Buttons/WindowFocusOptio
 _windowOrientationOptions = NodePath("Window/MenuWindow/Buttons/WindowOrientationOptions")
 _monitorOptions = NodePath("Window/MenuWindow/Buttons/MonitorOptions")
 _frameOptions = NodePath("Window/MenuWindow/Buttons/FrameCapOptions")
+_masterVolumeBar = NodePath("Window/MenuWindow/Buttons/MasterVolume")
+_gameVolumeBar = NodePath("Window/MenuWindow/Buttons/GameVolume")
+_deviceVolumeBar = NodePath("Window/MenuWindow/Buttons/DeviceVolume")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
@@ -41,7 +44,7 @@ _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 anchors_preset = -1
-anchor_bottom = 0.0569343
+anchor_bottom = 0.0270073
 offset_right = 400.0
 offset_bottom = 192.0
 pivot_offset = Vector2(200, 121)
@@ -87,9 +90,9 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 122.0
+offset_top = 92.0
 offset_right = 277.0
-offset_bottom = 143.0
+offset_bottom = 113.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Proactivity Mode"
@@ -107,14 +110,38 @@ theme_type_variation = &"HeaderMedium"
 text = "Master Volume"
 vertical_alignment = 1
 
+[node name="DeviceVolumeLabel2" type="Label" parent="Window/MenuWindow/Labels"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 47.0
+offset_right = 277.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
+text = "Device Volume"
+vertical_alignment = 1
+
+[node name="GameVolumeLabel3" type="Label" parent="Window/MenuWindow/Labels"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 69.0
+offset_right = 277.0
+offset_bottom = 90.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
+text = "Game Volume"
+vertical_alignment = 1
+
 [node name="WindowFocusLabel" type="Label" parent="Window/MenuWindow/Labels"]
 editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 148.0
+offset_top = 118.0
 offset_right = 197.0
-offset_bottom = 169.0
+offset_bottom = 139.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Focus Mode"
@@ -125,9 +152,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 175.0
+offset_top = 145.0
 offset_right = 204.0
-offset_bottom = 196.0
+offset_bottom = 166.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Position"
@@ -138,9 +165,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 38.0
-offset_top = 201.0
+offset_top = 171.0
 offset_right = 292.0
-offset_bottom = 222.0
+offset_bottom = 192.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Active Monitor"
@@ -151,9 +178,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 226.0
+offset_top = 196.0
 offset_right = 291.0
-offset_bottom = 247.0
+offset_bottom = 217.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Frame Cap"
@@ -175,9 +202,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -63.0
-offset_top = 118.0
+offset_top = 88.0
 offset_right = -33.0
-offset_bottom = 148.0
+offset_bottom = 118.0
 grow_horizontal = 0
 flat = true
 icon_alignment = 1
@@ -188,9 +215,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 147.0
+offset_top = 117.0
 offset_right = -37.0
-offset_bottom = 169.0
+offset_bottom = 139.0
 grow_horizontal = 0
 selected = 0
 item_count = 3
@@ -207,9 +234,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 174.0
+offset_top = 144.0
 offset_right = -37.0
-offset_bottom = 196.0
+offset_bottom = 166.0
 grow_horizontal = 0
 selected = 3
 item_count = 5
@@ -230,9 +257,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -108.0
-offset_top = 200.0
+offset_top = 170.0
 offset_right = -37.0
-offset_bottom = 222.0
+offset_bottom = 192.0
 grow_horizontal = 0
 selected = 0
 item_count = 1
@@ -242,9 +269,9 @@ popup/item_0/id = 0
 [node name="FrameCapOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 289.0
-offset_top = 226.0
+offset_top = 196.0
 offset_right = 363.0
-offset_bottom = 248.0
+offset_bottom = 218.0
 selected = 1
 item_count = 3
 popup/item_0/text = "30 fps"
@@ -254,7 +281,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Unlimited"
 popup/item_2/id = 2
 
-[node name="HSlider" type="HSlider" parent="Window/MenuWindow/Buttons"]
+[node name="MasterVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 28.0
@@ -263,7 +290,25 @@ offset_bottom = 44.0
 value = 70.0
 scrollable = false
 
-[connection signal="close_requested" from="Window" to="." method="_onExit"]
+[node name="DeviceVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 50.0
+offset_right = 363.0
+offset_bottom = 66.0
+value = 70.0
+scrollable = false
+
+[node name="GameVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 72.0
+offset_right = 363.0
+offset_bottom = 88.0
+value = 70.0
+scrollable = false
+
+[connection signal="close_requested" from="Window" to="." method="closeMenu"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
 [connection signal="button_down" from="Window/MenuWindow/CloseButton" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/MenuWindow/CloseButton" to="." method="_mouseUp"]
@@ -282,3 +327,6 @@ scrollable = false
 [connection signal="item_selected" from="Window/MenuWindow/Buttons/MonitorOptions" to="." method="_onMonitorOptions"]
 [connection signal="button_down" from="Window/MenuWindow/Buttons/FrameCapOptions" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/MenuWindow/Buttons/FrameCapOptions" to="." method="_mouseUp"]
+[connection signal="value_changed" from="Window/MenuWindow/Buttons/MasterVolume" to="." method="_onMasterVolume"]
+[connection signal="value_changed" from="Window/MenuWindow/Buttons/DeviceVolume" to="." method="_onDeviceVolume"]
+[connection signal="value_changed" from="Window/MenuWindow/Buttons/GameVolume" to="." method="_onGameVolume"]

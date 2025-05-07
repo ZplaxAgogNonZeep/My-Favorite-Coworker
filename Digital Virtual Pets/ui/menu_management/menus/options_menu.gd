@@ -6,6 +6,9 @@ extends Menu
 @export var _windowOrientationOptions : OptionButton
 @export var _monitorOptions : OptionButton
 @export var _frameOptions : OptionButton
+@export var _masterVolumeBar : HSlider
+@export var _gameVolumeBar : HSlider
+@export var _deviceVolumeBar : HSlider
 
 func _loadSavedMenuSettings():
 	_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
@@ -20,6 +23,13 @@ func _loadSavedMenuSettings():
 		_frameOptions.selected = 0
 	else:
 		_frameOptions.selected = 2
+	print(Settings.masterVolume)
+	_masterVolumeBar.value = lerp(_masterVolumeBar.min_value, _masterVolumeBar.max_value, 
+									Settings.masterVolume) 
+	_deviceVolumeBar.value = lerp(_deviceVolumeBar.min_value, _deviceVolumeBar.max_value, 
+									Settings.deviceVolume)
+	_gameVolumeBar.value = lerp(_gameVolumeBar.min_value, _gameVolumeBar.max_value, 
+									Settings.gameVolume)
 
 
 #region Signal Functions
@@ -48,6 +58,19 @@ func _onFrameOptions(index : int):
 			Settings.setFrameCap(60)
 		2:
 			Settings.setFrameCap(0)
+
+func _onMasterVolume(value : float):
+	print(value / _masterVolumeBar.max_value)
+	Settings.setVolume(SfxManager.BusType.MASTER, value / _masterVolumeBar.max_value)
+
+
+func _onDeviceVolume(value : float):
+	Settings.setVolume(SfxManager.BusType.DEVICE, value / _deviceVolumeBar.max_value)
+
+
+func _onGameVolume(value : float):
+	Settings.setVolume(SfxManager.BusType.GAME, value / _gameVolumeBar.max_value)
+
 #endregion
 
 #region Helper Functions

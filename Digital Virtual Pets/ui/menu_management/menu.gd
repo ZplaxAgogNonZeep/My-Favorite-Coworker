@@ -74,6 +74,7 @@ func _loadSavedMenuSettings():
 
 
 func _saveMenuSettings():
+	print("Saving menu settings")
 	Settings.saveSettings()
 
 #region Node Signals

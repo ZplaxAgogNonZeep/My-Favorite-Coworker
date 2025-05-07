@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=42 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=50 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -17,10 +17,14 @@
 [ext_resource type="Texture2D" uid="uid://bilpohvelfpl2" path="res://assets/art/aesprite/ui/menu/system_menu/window_closed_9_slice.png" id="10_5dsuw"]
 [ext_resource type="Texture2D" uid="uid://3y0g6k26k2ju" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected.png" id="10_cby0i"]
 [ext_resource type="Texture2D" uid="uid://d31jcs268by2o" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_panel.png" id="10_xv7ca"]
+[ext_resource type="Texture2D" uid="uid://c67tigrs4bmeo" path="res://assets/art/aesprite/ui/menu/system_menu/slider_grabber.png" id="11_fjlsi"]
 [ext_resource type="Texture2D" uid="uid://dpao4egnntnfr" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_selected_disabled.png" id="11_xv7ca"]
 [ext_resource type="Texture2D" uid="uid://80gesgnigwmp" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox.png" id="12_5dsuw"]
+[ext_resource type="Texture2D" uid="uid://bixc3udvikada" path="res://assets/art/aesprite/ui/menu/system_menu/slider_grabber_disabled2.png" id="12_cbi2n"]
+[ext_resource type="Texture2D" uid="uid://dswxaia5l6j45" path="res://assets/art/aesprite/ui/menu/system_menu/sliderbar_filled_9slice.png" id="13_2dav4"]
 [ext_resource type="Texture2D" uid="uid://4x422n235xfh" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_checkbox_disabled.png" id="13_sp1lb"]
 [ext_resource type="Texture2D" uid="uid://mjugxofv237p" path="res://assets/art/aesprite/ui/menu/system_menu/sub_panel_9slice.png" id="14_4cels"]
+[ext_resource type="Texture2D" uid="uid://d1uq23hspeqql" path="res://assets/art/aesprite/ui/menu/system_menu/slider_bar_9slice.png" id="14_rcpby"]
 [ext_resource type="Texture2D" uid="uid://baqq6qc5fqnqw" path="res://assets/art/aesprite/ui/menu/system_menu/subwindow_9_slice.png" id="22_5dsuw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g42wa"]
@@ -111,6 +115,34 @@ texture_margin_top = 32.0
 texture_margin_right = 32.0
 texture_margin_bottom = 32.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7oxme"]
+load_path = "res://.godot/imported/slider_grabber.png-0c89cb13af32b04568d5c983c473b6de.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ysmta"]
+texture = ExtResource("13_2dav4")
+texture_margin_left = 3.0
+texture_margin_top = 8.0
+texture_margin_right = 3.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u1oel"]
+texture = ExtResource("13_2dav4")
+texture_margin_left = 3.0
+texture_margin_top = 8.0
+texture_margin_right = 3.0
+texture_margin_bottom = 8.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bvqos"]
+texture = ExtResource("14_rcpby")
+texture_margin_left = 16.0
+texture_margin_top = 8.0
+texture_margin_right = 16.0
+texture_margin_bottom = 8.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dsuw"]
 texture = ExtResource("10_xv7ca")
 texture_margin_left = 4.0
@@ -184,6 +216,12 @@ ClosedPanel/base_type = &"Panel"
 ClosedPanel/styles/panel = SubResource("StyleBoxTexture_sp1lb")
 CustomTestLabel/base_type = &"Label"
 CustomTestLabel/font_sizes/font_size = 5
+HSlider/icons/grabber = ExtResource("11_fjlsi")
+HSlider/icons/grabber_disabled = ExtResource("12_cbi2n")
+HSlider/icons/grabber_highlight = SubResource("CompressedTexture2D_7oxme")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_ysmta")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_u1oel")
+HSlider/styles/slider = SubResource("StyleBoxTexture_bvqos")
 HeaderLarge/base_type = &"Label"
 HeaderLarge/font_sizes/font_size = 25
 HeaderMedium/base_type = &"Label"

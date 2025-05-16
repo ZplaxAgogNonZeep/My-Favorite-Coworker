@@ -1,0 +1,84 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=10 format=3 uid="uid://bn7hde2gbjbfd"]
+
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_2cjim"]
+[ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="2_28228"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke3x7"]
+atlas = ExtResource("2_28228")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m0d0"]
+atlas = ExtResource("2_28228")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufs8l"]
+atlas = ExtResource("2_28228")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jdl8"]
+atlas = ExtResource("2_28228")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7mmk"]
+atlas = ExtResource("2_28228")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiws3"]
+atlas = ExtResource("2_28228")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3d4h7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke3x7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m0d0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufs8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jdl8")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7mmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiws3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_2cjim")
+name = "BanchoBuh"
+spriteFrames = SubResource("SpriteFrames_3d4h7")
+stage = 3
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+statConditionOr = false
+evolutionCondition = {
+"BAL": -1,
+"END": -1,
+"POW": -1,
+"Personality": -1,
+"SPD": -1,
+"TraumaEqual": -1,
+"TraumaGreater": -1,
+"TraumaLesser": -1
+}
+metadata/_custom_type_script = "uid://ox62hdqejbbf"

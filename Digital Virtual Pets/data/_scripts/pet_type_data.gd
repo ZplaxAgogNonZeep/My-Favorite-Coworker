@@ -11,7 +11,7 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 
 @export_category("Behavior Variables")
 @export var stage : int
-@export var waitIntervals : Vector2
+@export var waitIntervals : Vector2 = Vector2(3, 10)
 
 @export_category("Evolution Data")
 @export var evolutions : Array[Resource]

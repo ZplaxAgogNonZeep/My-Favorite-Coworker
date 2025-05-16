@@ -44,10 +44,10 @@ func _unhandled_input(event):
 
 
 func startGame():
+	petManager.spawnPet()
 	_screenAnimator.play("Boot")
 	await _screenAnimator.animation_finished
 	_screenAnimator.play("Screen On")
-	petManager.spawnPet()
 
 
 #region Window Events

@@ -68,7 +68,9 @@ func _ready() -> void:
 
 
 func _callSystemDialog(pos : Vector2i, dialogResource : CharacterDialog, 
-						conversationName : String, returnFunction : Callable):
+						conversationName : String, returnFunction : Callable) -> void:
+	if (dialogResource == null):
+		return
 	GameEvents.PauseGame.emit()
 	var newThread = DialogThread.new(dialogResource, conversationName, pos, _threads.size(), returnFunction)
 	_threads.append(newThread)

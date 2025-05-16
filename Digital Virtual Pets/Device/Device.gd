@@ -85,8 +85,6 @@ func checkQueue():
 #region Events
 
 func spawnDevice():
-	_animator.play("SpawnDevice")
-	
 	# dialog here
 	turnOnDevice()
 

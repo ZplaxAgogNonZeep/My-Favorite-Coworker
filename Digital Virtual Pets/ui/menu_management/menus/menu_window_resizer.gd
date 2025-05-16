@@ -17,13 +17,13 @@ func _ready() -> void:
 ## Turns the window off and on again. Bypasses an unfixed bug in Godot where the window will crash
 ## if always_on_top is set while the window is open
 func resetWindow():
-	visible = false
-	visible = true
+	visible = !visible
+	visible = !visible
 
 
 ## Sets the size of the [
 func setWindowToCanvasSize():
-	size = _canvas.size
+	size = ceil(_canvas.size)
 
 
 func getCanvas():

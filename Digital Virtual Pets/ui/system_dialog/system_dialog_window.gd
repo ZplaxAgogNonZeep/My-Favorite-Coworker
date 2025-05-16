@@ -18,9 +18,10 @@ var _givenPosition
 
 func _ready() -> void:
 	get_parent()
+	visible = false
 	_animator.play("Open")
 	await get_tree().process_frame
-	
+	visible = true
 	if (_baseLabelSize < _dialogLabel.size.y):
 		var diff = _dialogLabel.size.y - _baseLabelSize
 		size.y += diff

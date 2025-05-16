@@ -11,8 +11,9 @@ class DataSaver extends SaveData.DataSaver:
 @export var _iconMenu : Menu
 @export var _background : Control
 @export var device : Device
-@export var _test : CharacterDialog
-@export var _testSound : SoundGroup
+@export var _shadow : Sprite2D
+@export var _tutorialDialog : CharacterDialog
+@export var _cutsceneAnimationPlayer : AnimationPlayer
 
 var _windowPosition : Vector2
 var _firstTimeOpened := true
@@ -24,9 +25,11 @@ func _ready() -> void:
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
+	_shadow.visible = false
 	if (_firstTimeOpened):
-		GameEvents.DisplayDialog.emit(Vector2i(1,1), _test, 
-						"New Game Dialog", Callable(self, "firstOpenReturned"))
+		await get_tree().create_timer(1).timeout
+		GameEvents.DisplayDialog.emit(Vector2i(-999,-999), _tutorialDialog, 
+						"New Game Dialog", Callable(self, "_newGameCutsceneFinished"))
 	else:
 		_displayDevice(true)
 	
@@ -37,7 +40,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		pass
-		SfxManager.playSoundEffect(_testSound)
 		#GameEvents.DisplayDialog.emit(Vector2i(-999, -999), _test, 
 						#"Device Tutorial", Callable(self, "firstOpenReturned"))
 
@@ -45,12 +47,17 @@ func _input(event: InputEvent) -> void:
 func _displayDevice(skipAnimation := false):
 	if (skipAnimation):
 		device.visible = true
+		_shadow.visible = true
 		device.turnOnDevice()
 		return
 	
-	device.spawnDevice()
+	_cutsceneAnimationPlayer.play("device_spawn")
 	await get_tree().process_frame
 	device.visible = true
+	_shadow.visible = true
+	
+	await _cutsceneAnimationPlayer.animation_finished
+	device.turnOnDevice()
 
 
 func _openMenu():
@@ -63,8 +70,8 @@ func _changeCameraZoom(_scale : float, _position : Vector2):
 	_camera.position = _position
 
 
-#region Dialog Control Functions
-func firstOpenReturned(threadHistory : Array):
+#region Cutscene Routines
+func _newGameCutsceneFinished(threadHistory : Array):
 	_firstTimeOpened = false
 	SaveData.saveGameToFile()
 	_displayDevice()

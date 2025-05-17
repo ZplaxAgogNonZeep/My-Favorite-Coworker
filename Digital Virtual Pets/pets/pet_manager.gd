@@ -159,9 +159,13 @@ func evolvePet(evolveTarget: PetTypeData):
 	GameEvents.StartNeedsTimers.emit()
 	GameEvents.NewPetEvolved.emit(false)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
-								activePet.position + Vector2(39, 0), true, 1.3)
+								activePet.position + Vector2(13, 0), 
+								true, 
+								2)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
-								activePet.position - Vector2(39, 0), false, 1.3)
+								activePet.position - Vector2(13, 0), 
+								false, 
+								2)
 
 
 func switchPet(index : int, previousPetDeleted := false):

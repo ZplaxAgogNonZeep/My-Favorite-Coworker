@@ -36,10 +36,6 @@ func _ready():
 	_killScreen.visible = false
 	
 
-
-func _process(delta: float) -> void:
-	_proactivityBehavior()
-
 #TODO: Remove Debug Function
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Debug"):
@@ -53,30 +49,6 @@ func startGame():
 	_screenAnimator.play("Screen On")
 
 
-#region Window Events
-
-func _proactivityBehavior():
-	if (!Settings.isUsingProactivity):
-		return
-	
-	Settings.windowFocused = DisplayServer.window_is_focused()
-	
-	if (Settings.windowFocused and Settings.proactiveMode):
-		Settings.setProactivityMode(false)
-	elif (not Settings.windowFocused and not Settings.proactiveMode):
-		Settings.setProactivityMode(true)
-
-
-func _requestPlayerAttention():
-	if (Settings.windowFocused or not Settings.isRequestAttentionAllowed):
-		return
-	if (Settings.isSetWindowPinned):
-		DisplayServer.window_request_attention()
-	else:
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
-
-#endregion
 
 #region Events 
 

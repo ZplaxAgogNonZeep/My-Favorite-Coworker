@@ -10,7 +10,6 @@ signal PlaySoundEffect()
 #region System Events
 signal DisplayDialog(pos : Vector2i, dialogResource : CharacterDialog, 
 						conversationName : String, returnFunction : Callable)
-signal GetPlayerAttention
 signal OpenOptionsMenu
 signal ToggleBorderlessMode(isBorderless : bool)
 signal OpenDirectMenu(index : int)
@@ -42,6 +41,8 @@ signal Cry
 #endregion
 
 #region Device Events
+signal DeviceRequestAttention
+signal DeviceAttentionReceived
 signal ShakeDeviceOnce
 signal HopDeviceOnce
 

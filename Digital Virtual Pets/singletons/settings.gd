@@ -15,13 +15,13 @@ var proactiveMode : bool = false
 var borderless : bool = true
 var activeMonitor : int = 0
 var _activeWindows : Array[Window]
+var minimized : bool
 #endregion
 
 #region Settings Variables
 # These variables represent the player's preferences of variables
 ##  Bools
 var isUsingProactivity := true
-var isSetWindowPinned := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
@@ -76,7 +76,6 @@ func pauseGame(isPaused : bool):
 func saveSettings():
 	var settingsDict = {
 		"isUsingProactivity" : isUsingProactivity,
-		"isSetWindowPinned" : isSetWindowPinned,
 		"isRequestAttentionAllowed" : isRequestAttentionAllowed,
 		"windowAttentionMode" : windowAttentionMode,
 		"windowOrientation" : windowOrientation,
@@ -169,6 +168,32 @@ func toggleMinimizedWindow(isMinimized : bool):
 		get_viewport().get_window().size = _defaultWindowSize
 		GameEvents.ChangeCameraZoom.emit(1, Vector2.ZERO)
 		setWindowPosition()
+
+
+## Takes a game request for attention and decide what to do based on the settings.
+func requestPlayerAttention():
+	if (not Settings.isRequestAttentionAllowed):
+		return
+	match windowAttentionMode:
+		WindowAttentionOptions.BRING_TO_FRONT:
+			DisplayServer.window_request_attention()
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
+		WindowAttentionOptions.ALWAYS_ON_TOP:
+			DisplayServer.window_request_attention()
+		WindowAttentionOptions.DO_NOT_CHANGE:
+			DisplayServer.window_request_attention()
+	
+	if (minimized):
+		GameEvents.DeviceRequestAttention.emit()
+		await GameEvents.DeviceAttentionReceived
+	
+	return
+	#if (Settings.isSetWindowPinned):
+		#DisplayServer.window_request_attention()
+	#else:
+		#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, true)
+		#DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
 
 
 ## Updates the main game window's position to either match the anchor of the monitor it's on

@@ -442,13 +442,14 @@ _data = {
 &"evolve_sequence_anim": SubResource("Animation_j742v")
 }
 
-[node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator", "_movementGroup")]
+[node name="Device" type="Node2D" node_paths=PackedStringArray("_gameArea", "_animator", "_movementGroup", "_miniDevice")]
 process_mode = 1
 clip_children = 1
 script = ExtResource("1_5u0yl")
 _gameArea = NodePath("PositionGroup/GameArea")
 _animator = NodePath("AnimationPlayer")
 _movementGroup = NodePath("PositionGroup")
+_miniDevice = NodePath("PositionGroup/MinimizedSprite")
 shakeDegreeMax = 11.0
 hopHeight = Vector2(0, -30)
 hopDuration = 0.25
@@ -468,8 +469,9 @@ libraries = {
 [node name="MinimizedSprite" type="AnimatedSprite2D" parent="PositionGroup"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_8u400")
-animation = &"ScreenOn"
-frame_progress = 0.293407
+animation = &"NeedAttention"
+frame = 8
+frame_progress = 0.175042
 offset = Vector2(0, -16)
 
 [node name="MouseCollider" type="Area2D" parent="PositionGroup/MinimizedSprite"]

@@ -96,7 +96,6 @@ func _process(delta):
 		GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
-	print(petState)
 	if petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):

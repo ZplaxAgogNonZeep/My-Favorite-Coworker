@@ -32,16 +32,15 @@ func _ready() -> void:
 						"New Game Dialog", Callable(self, "_newGameCutsceneFinished"))
 	else:
 		_displayDevice(true)
-	
-	
-	#device.turnOnDevice()
+
+
+func _process(delta: float) -> void:
+	_proactivityBehavior()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
 		pass
-		#GameEvents.DisplayDialog.emit(Vector2i(-999, -999), _test, 
-						#"Device Tutorial", Callable(self, "firstOpenReturned"))
 
 
 func _displayDevice(skipAnimation := false):
@@ -64,10 +63,27 @@ func _openMenu():
 	_menuManager.toggleMenu(true)
 
 
+#region Window Events
+
+func _proactivityBehavior():
+	if (!Settings.isUsingProactivity):
+		return
+	
+	Settings.windowFocused = DisplayServer.window_is_focused()
+	
+	if (Settings.windowFocused and Settings.proactiveMode):
+		Settings.setProactivityMode(false)
+	elif (not Settings.windowFocused and not Settings.proactiveMode):
+		Settings.setProactivityMode(true)
+
+
+
 
 func _changeCameraZoom(_scale : float, _position : Vector2):
 	_camera.zoom = Vector2(_scale, _scale)
 	_camera.position = _position
+#endregion
+
 
 
 #region Cutscene Routines

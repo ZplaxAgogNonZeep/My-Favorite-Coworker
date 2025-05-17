@@ -61,6 +61,7 @@ func posnToPercent(posn : Vector2) -> Vector2:
 func addPercentToPosn(posn : Vector2, percentPosn : Vector2) -> Vector2:
 	return percentToPosn(posnToPercent(posn) + percentPosn)
 
+
 #region Pet Spawning & Evolving
 func spawnPet(index := -1, isNewPet := false):
 	if (index >= MAX_PET_SLOTS):
@@ -96,24 +97,11 @@ func spawnPet(index := -1, isNewPet := false):
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
 		newPet.petResource = petStartResource
 	
-	#if (index >= 0 and index < _petSlots.size()):
-		#_slotIndex = index
-		#newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
-	#elif (!isNewPet):
-		#newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
-	#else:
-		#print("Could not find loaded pet at slot index ", index, ", creating new pet and saving to slot 0")
-		#_petSlots.append({})
-		#_slotIndex = 0
-		#newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		#newPet.petResource = petStartResource
-	
 	activePet = newPet
 	activePet.loadResourceData()
 	activePet.connect("UpdateStatusBars", _updateStatus)
 	activePet.connect("ReadyToEvolve", evolvePet)
 	activePet.boundries.append_array([leftBoundry.position, rightBoundry.position])
-	
 	
 	call_deferred("add_child", activePet)
 	GameEvents.NewPetSpawned.emit(activePet.petResource.stage == 0)
@@ -131,6 +119,8 @@ func spawnPet(index := -1, isNewPet := false):
 
 func evolvePet(evolveTarget: PetTypeData):
 	# Stop everything and start shaking the device
+	await Settings.requestPlayerAttention()
+	
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()

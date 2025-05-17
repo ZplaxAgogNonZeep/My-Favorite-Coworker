@@ -10,6 +10,7 @@ enum DeviceAction {HOP, SHAKE}
 @export var _gameArea : GameArea
 @export var _animator : AnimationPlayer
 @export var _movementGroup : Node2D
+@export var _miniDevice : AnimatedSprite2D
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
@@ -22,8 +23,8 @@ var activeTween : Tween
 var isContinuousShake := false
 var isContinuousHop := false
 var actionQueue : Array[DeviceAction] = []
-var _minimized := false
 var _minHovered := false
+var _waitingForMaximize := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +34,7 @@ func _ready():
 	GameEvents.EndShakeDevice.connect(endShake)
 	GameEvents.StartHopDevice.connect(startHop)
 	GameEvents.endHopDevice.connect(endShake)
+	GameEvents.DeviceRequestAttention.connect(_requestAttentionMode)
 
 
 func _input(event: InputEvent) -> void:
@@ -46,16 +48,28 @@ func turnOnDevice():
 	_gameArea.startGame()
 
 
+func _requestAttentionMode():
+	if (Settings.minimized):
+		_waitingForMaximize = true
+		_miniDevice.play("NeedAttention")
+	else:
+		GameEvents.DeviceAttentionReceived.emit()
+
+
 func toggleDeviceMinimize(isMinimized : bool):
-	if (_minimized == isMinimized):
+	if (Settings.minimized == isMinimized):
 		return
 	
-	_minimized = isMinimized
+	Settings.minimized = isMinimized
 	
-	if (_minimized):
+	if (Settings.minimized):
 		_animator.play("minimize_device")
+		_miniDevice.play("ScreenOn")
 	else:
 		_animator.play("maximize_device")
+		_miniDevice.play("ScreenOn")
+		if (_waitingForMaximize):
+			GameEvents.DeviceAttentionReceived.emit()
 	
 	_shiftDeviceOver()
 
@@ -128,7 +142,7 @@ func _shiftDeviceOver():
 	
 	var direction = Settings.determineDeviceGrowDir()
 
-	if (!_minimized):
+	if (!Settings.minimized):
 		direction *= -1
 	var target = Vector2(_movementGroup.position.x + (
 							(_minimizeShiftDistance * Settings.gameScale) * direction), 
@@ -138,12 +152,12 @@ func _shiftDeviceOver():
 						_animator.current_animation_length).set_ease(
 							Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 	
-	if (!_minimized):
-		Settings.toggleMinimizedWindow(_minimized)
+	if (!Settings.minimized):
+		Settings.toggleMinimizedWindow(Settings.minimized)
 	
 	await tween.finished
-	if (_minimized):
-		Settings.toggleMinimizedWindow(_minimized)
+	if (Settings.minimized):
+		Settings.toggleMinimizedWindow(Settings.minimized)
 
 
 func _shakeOnce(isStart : bool = true):

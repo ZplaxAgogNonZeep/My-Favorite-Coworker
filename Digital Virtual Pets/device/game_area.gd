@@ -2,7 +2,7 @@ extends Node2D
 
 class_name GameArea
 
-const TIMER_TIME := 5
+#const TIMER_TIME := 5
 
 @export_category("Object References")
 @export var device : Node2D
@@ -17,6 +17,9 @@ const TIMER_TIME := 5
 @export var _beepSound : SoundGroup
 @export_category("Spawnable Objects")
 @export var foodInstance : PackedScene
+@export_category("Game Stats")
+@export var _needsTickRange : Vector2
+@export var _needsDecrementRange : Vector2i
 
 var evolveInterval = 15
 
@@ -120,14 +123,14 @@ func feed():
 func petSpawned(isEgg := false):
 	if (!isEgg):
 		_startNeedsTimers()
-	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.getPetStage()])
+	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.getPetStage()] * Settings.getTimerMod())
 
 
 func _startNeedsTimers():
 	randomize()
-	$GameTimers/HungerTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
+	$GameTimers/HungerTimer.start((randf_range(_needsTickRange.x, _needsTickRange.y)) * Settings.getTimerMod())
 	randomize()
-	$GameTimers/JoyTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
+	$GameTimers/JoyTimer.start((randf_range(_needsTickRange.x, _needsTickRange.y)) * Settings.getTimerMod())
 
 
 func clearAllObjects():
@@ -141,19 +144,19 @@ func clearAllObjects():
 func tickHunger():
 	GameEvents.TickHunger.emit()
 	randomize()
-	$GameTimers/HungerTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
+	$GameTimers/HungerTimer.start((randf_range(_needsTickRange.x, _needsTickRange.y)) * Settings.getTimerMod())
 
 
 func tickJoy():
 	GameEvents.TickJoy.emit()
 	randomize()
-	$GameTimers/JoyTimer.start((randf_range(3, 15)) * Settings.getTimerMod())
+	$GameTimers/JoyTimer.start((randf_range(_needsTickRange.x, _needsTickRange.y)) * Settings.getTimerMod())
 
 
 func _evolveCheck():
 	print("Check for Evolve!")
 	GameEvents.EvolveCheck.emit()
-	$GameTimers/EvolveTimer.start(evolveInterval * Settings.getTimerMod())
+	$GameTimers/EvolveTimer.start(Pet.EVOLVE_INTERVALS[petManager.getPetStage()] * Settings.getTimerMod())
 
 #endregion
 

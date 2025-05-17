@@ -497,6 +497,8 @@ boundries = [NodePath("PetManager/Markers/LeftBoundry"), NodePath("PetManager/Ma
 ObjectSpawnLocations = [NodePath("PetManager/Markers/SpawnLocation0"), NodePath("PetManager/Markers/SpawnLocation1"), NodePath("PetManager/Markers/SpawnLocation2"), null]
 _beepSound = ExtResource("6_myr8s")
 foodInstance = ExtResource("4_qk4hv")
+_needsTickRange = Vector2(6, 20)
+_needsDecrementRange = Vector2i(1, 3)
 metadata/_edit_lock_ = true
 
 [node name="GameTimers" type="Node" parent="PositionGroup/GameArea"]

@@ -150,6 +150,7 @@ func evolvePet(evolveTarget: PetTypeData):
 	# Set new resource and update visual information for it
 	activePet.petResource = evolveTarget
 	activePet.loadResourceData()
+	activePet.petState = Enums.PetState.ROAMING
 	
 	# Save the game
 	SaveData.saveGameToFile()

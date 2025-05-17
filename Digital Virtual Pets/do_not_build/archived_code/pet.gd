@@ -19,7 +19,7 @@ const STAT_MAX : int = 99
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
 const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
-const EVOLVE_INTERVALS : Array[int] = [90, 1800, 3600, 4000]
+const EVOLVE_INTERVALS : Array[int] = [90, 1800, 3600, 8000]
 ## A note on timer intervals and their intentions
 ## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
 ## in a close to final state. Testing will probably need to be done to figure out what feels right
@@ -96,7 +96,7 @@ func _process(delta):
 		GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
-	
+	print(petState)
 	if petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):
@@ -242,7 +242,7 @@ func tickJoy():
 			GameEvents.HopDeviceOnce.emit()
 		#type.onTickJoy()
 		randomize()
-		joyValue -= randi_range(0, 5)
+		joyValue -= randi_range(1, 3)
 		if joyValue <= 0:
 			joyValue = 0
 			traumaCount += 1

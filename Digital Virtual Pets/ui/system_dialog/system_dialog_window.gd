@@ -45,6 +45,10 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 	
 	if (links.size() <= 0):
 		_closeButton.disabled = false
+		var button = _buttonScene.instantiate()
+		button.text = "Finish"
+		button.ChoiceButtonPressed.connect(_buttonSelected)
+		_choiceContainer.call_deferred("add_child", button)
 	else:
 		_closeButton.disabled = true
 		for link in links:

@@ -25,7 +25,9 @@ class DialogThread:
 	func continueDialog(linkIndex : int):
 		thread.append(activePassage)
 		
-		if (linkIndex >= 0):
+		if (activePassage["links"].size() == 0):
+			activePassage = {}
+		elif (linkIndex >= 0):
 			activePassage = dialogResource.getPassageByName(activePassage["links"][linkIndex]["passageName"])
 		else:
 			activePassage = {}

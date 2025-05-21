@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dqbwxbmlrrxe3" path="res://do_not_build/settings_debug.tscn" id="1_p5ojq"]
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
-[ext_resource type="Resource" uid="uid://ck2xto1wtvikr" path="res://data/dialog/my_favorite_coworkerexe.tres" id="2_2ni51"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
+[ext_resource type="Resource" uid="uid://b5w6rlqqkvdbj" path="res://data/dialog/my_favorite_coworker.exe.tres" id="2_takr5"]
 [ext_resource type="Script" uid="uid://b8kuvi7oo2jl8" path="res://ui/menu_management/menu_manager.gd" id="3_jvvvb"]
 [ext_resource type="PackedScene" uid="uid://cqs2mr65skd0q" path="res://ui/menu_management/menus/menu_icons.tscn" id="4_jlwpj"]
 [ext_resource type="PackedScene" uid="uid://bfh7qhfhtctv8" path="res://ui/menu_management/menus/options_menu.tscn" id="5_tpjnu"]
@@ -84,7 +84,7 @@ _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
 _background = NodePath("BackgroundCanvas/SimpleBackground")
 device = NodePath("Device")
 _shadow = NodePath("DeviceShadow")
-_tutorialDialog = ExtResource("2_2ni51")
+_tutorialDialog = ExtResource("2_takr5")
 _cutsceneAnimationPlayer = NodePath("CutscenePlayer")
 metadata/_edit_lock_ = true
 

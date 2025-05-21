@@ -5,7 +5,7 @@
   "creatorVersion": "2.10.0",
   "schemaName": "Twine to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1741448210639,
+  "createdAtMs": 1747870769599,
   "passages": [
 	{
 	  "name": "New Game Dialog",
@@ -25,20 +25,6 @@
 	  "name": "NGD-2",
 	  "tags": "my_favorite_coworker.exe",
 	  "id": "2",
-	  "text": "{Loading}\n\n[[Finish->NGD-3]]",
-	  "links": [
-		{
-		  "linkText": "Finish",
-		  "passageName": "NGD-3",
-		  "original": "[[Finish->NGD-3]]"
-		}
-	  ],
-	  "cleanText": "{Loading}"
-	},
-	{
-	  "name": "NGD-3",
-	  "tags": "my_favorite_coworker.exe",
-	  "id": "3",
 	  "text": "Virtual Pet found!\n\nPreparing to establish connection...",
 	  "links": [],
 	  "cleanText": "Virtual Pet found!\n\nPreparing to establish connection..."
@@ -46,8 +32,8 @@
 	{
 	  "name": "Device Tutorial",
 	  "tags": "Conversation-Start my_favorite_coworker.exe",
-	  "id": "4",
-	  "text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.\n\n[[Okay->Device Tutorial-2]]",
+	  "id": "3",
+	  "text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!\n\n[[Okay->Device Tutorial-2]]",
 	  "links": [
 		{
 		  "linkText": "Okay",
@@ -55,15 +41,29 @@
 		  "original": "[[Okay->Device Tutorial-2]]"
 		}
 	  ],
-	  "cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want."
+	  "cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!"
 	},
 	{
 	  "name": "Device Tutorial-2",
 	  "tags": "my_favorite_coworker.exe",
+	  "id": "4",
+	  "text": "Once your pet hatches, you'll need to feed and play with it. But be careful, your pets need space too! It may be best for you to do other things in between playing with it.\n\n[[Okay->Device Tutorial-3]]",
+	  "links": [
+		{
+		  "linkText": "Okay",
+		  "passageName": "Device Tutorial-3",
+		  "original": "[[Okay->Device Tutorial-3]]"
+		}
+	  ],
+	  "cleanText": "Once your pet hatches, you'll need to feed and play with it. But be careful, your pets need space too! It may be best for you to do other things in between playing with it."
+	},
+	{
+	  "name": "Device Tutorial-3",
+	  "tags": "my_favorite_coworker.exe",
 	  "id": "5",
-	  "text": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. \n\nDespite appearances, it is a living creature...",
+	  "text": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!\n\nBe careful though, The right-most button will shut down the device!",
 	  "links": [],
-	  "cleanText": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. \n\nDespite appearances, it is a living creature..."
+	  "cleanText": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!\n\nBe careful though, The right-most button will shut down the device!"
 	}
   ]
 }

@@ -4,7 +4,7 @@ signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Contr
 
 @export_category("Node References")
 @export var _windowContainer : Window
-@export var _dialogLabel : Label
+@export var _dialogLabel : RichTextLabel
 @export var _characterNameLabel : Label
 @export var _choiceContainer : HBoxContainer
 @export var _animator : AnimationPlayer

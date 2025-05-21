@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterDialog" load_steps=2 format=3 uid="uid://ck2xto1wtvikr"]
+[gd_resource type="Resource" script_class="CharacterDialog" load_steps=2 format=3 uid="uid://b5w6rlqqkvdbj"]
 
 [ext_resource type="Script" uid="uid://xbk0206hl6jv" path="res://data/_scripts/dialog_data.gd" id="1_6lh11"]
 
@@ -7,8 +7,8 @@ script = ExtResource("1_6lh11")
 characterName = "my_favorite_coworker.exe"
 conversations = {
 "Device Tutorial": {
-"cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.",
-"id": "4",
+"cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
+"id": "3",
 "links": [{
 "linkText": "Okay",
 "original": "[[Okay->Device Tutorial-2]]",
@@ -16,7 +16,7 @@ conversations = {
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
-"text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.
+"text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
 
 [[Okay->Device Tutorial-2]]"
 },
@@ -41,8 +41,8 @@ Please hold while we find an appropriate pet.
 }
 passages = {
 "Device Tutorial": {
-"cleanText": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.",
-"id": "4",
+"cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
+"id": "3",
 "links": [{
 "linkText": "Okay",
 "original": "[[Okay->Device Tutorial-2]]",
@@ -50,43 +50,43 @@ passages = {
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
-"text": "This is your [color=#97d6ff]Link Device[/color]. It will be the bridge between you and your digital companion. Double clicking the device will open a variety of menus and allow you to move the device wherever you want.
+"text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
 
 [[Okay->Device Tutorial-2]]"
 },
 "Device Tutorial-2": {
-"cleanText": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. 
-
-Despite appearances, it is a living creature...",
-"id": "5",
-"links": [],
+"cleanText": "Once your pet hatches, you'll need to feed and play with it. But be careful, your pets need space too! It may be best for you to do other things in between playing with it.",
+"id": "4",
+"links": [{
+"linkText": "Okay",
+"original": "[[Okay->Device Tutorial-3]]",
+"passageName": "Device Tutorial-3"
+}],
 "name": "Device Tutorial-2",
 "tags": "my_favorite_coworker.exe",
-"text": "The egg you see on the screen is your new companion! Soon it'll hatch and your virtual pet will be born. Please ensure that you keep track of your pet's needs by feeding and interacting with it. 
+"text": "Once your pet hatches, you'll need to feed and play with it. But be careful, your pets need space too! It may be best for you to do other things in between playing with it.
 
-Despite appearances, it is a living creature..."
+[[Okay->Device Tutorial-3]]"
+},
+"Device Tutorial-3": {
+"cleanText": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!
+
+Be careful though, The right-most button will shut down the device!",
+"id": "5",
+"links": [],
+"name": "Device Tutorial-3",
+"tags": "my_favorite_coworker.exe",
+"text": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!
+
+Be careful though, The right-most button will shut down the device!"
 },
 "NGD-2": {
-"cleanText": "{Loading}",
-"id": "2",
-"links": [{
-"linkText": "Finish",
-"original": "[[Finish->NGD-3]]",
-"passageName": "NGD-3"
-}],
-"name": "NGD-2",
-"tags": "my_favorite_coworker.exe",
-"text": "{Loading}
-
-[[Finish->NGD-3]]"
-},
-"NGD-3": {
 "cleanText": "Virtual Pet found!
 
 Preparing to establish connection...",
-"id": "3",
+"id": "2",
 "links": [],
-"name": "NGD-3",
+"name": "NGD-2",
 "tags": "my_favorite_coworker.exe",
 "text": "Virtual Pet found!
 

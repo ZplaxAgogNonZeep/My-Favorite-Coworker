@@ -136,19 +136,21 @@ libraries = {
 &"": SubResource("AnimationLibrary_4kmke")
 }
 
-[node name="Dialog" type="Label" parent="Control/SystemDialogWindow"]
+[node name="Dialog" type="RichTextLabel" parent="Control/SystemDialogWindow"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
 offset_top = 32.0
 offset_right = -8.0
-offset_bottom = 112.0
+offset_bottom = 114.0
 grow_horizontal = 2
 theme_type_variation = &"ParagraphText"
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum nunc nisl. Etiam nibh metus, volutpat id mauris porttitor, aliquam facilisis dui. In gravida efficitur velit, in"
+bbcode_enabled = true
+text = "dsdfffffffffff [color=#97d6ff]Link Device[/color]dsffsdfsdfsdfsdf"
+fit_content = true
+scroll_active = false
 horizontal_alignment = 1
-autowrap_mode = 3
 
 [node name="ExitButton" type="Button" parent="Control/SystemDialogWindow"]
 layout_mode = 1

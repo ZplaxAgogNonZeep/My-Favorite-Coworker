@@ -57,6 +57,10 @@ func _displayDevice(skipAnimation := false):
 	
 	await _cutsceneAnimationPlayer.animation_finished
 	device.turnOnDevice()
+	
+	await get_tree().create_timer(1)
+	GameEvents.DisplayDialog.emit(Vector2i(0,0), _tutorialDialog, 
+					"Device Tutorial", Callable(self, "_deviceTutorialFinished"))
 
 
 func _openMenu():
@@ -91,5 +95,9 @@ func _newGameCutsceneFinished(threadHistory : Array):
 	_firstTimeOpened = false
 	SaveData.saveGameToFile()
 	_displayDevice()
+
+
+func _deviceTutorialFinished(threadHistory : Array):
+	pass
 
 #endregion

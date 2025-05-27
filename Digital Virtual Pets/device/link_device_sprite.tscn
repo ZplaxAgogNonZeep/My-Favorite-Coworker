@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bvyegbhhtqubi" path="res://assets/art/aesprite/device/pet_button_sheet.png" id="6_s3t2l"]
 [ext_resource type="Texture2D" uid="uid://cbsfvo3e76li8" path="res://assets/art/aesprite/device/power_button_sheet.png" id="7_pblih"]
 [ext_resource type="Texture2D" uid="uid://cwydhgx4hqgxt" path="res://assets/art/aesprite/device/right_button_sheet.png" id="8_xk3an"]
-[ext_resource type="Script" uid="uid://3av1qygj3goe" path="res://do_not_build/device_button.gd" id="9_oq8df"]
+[ext_resource type="Script" uid="uid://3av1qygj3goe" path="res://device/device_button.gd" id="9_oq8df"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7baa"]
 atlas = ExtResource("2_ex2ea")

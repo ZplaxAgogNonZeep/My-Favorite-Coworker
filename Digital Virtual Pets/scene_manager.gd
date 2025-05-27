@@ -14,6 +14,7 @@ class DataSaver extends SaveData.DataSaver:
 @export var _shadow : Sprite2D
 @export var _tutorialDialog : CharacterDialog
 @export var _cutsceneAnimationPlayer : AnimationPlayer
+@export var _testSound : SoundGroup
 
 var _windowPosition : Vector2
 var _firstTimeOpened := true
@@ -40,7 +41,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Debug2"):
-		pass
+		SfxManager.playSoundEffect(_testSound)
 
 
 func _displayDevice(skipAnimation := false):

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://b2wbw7jts8lf2"]
+
+[ext_resource type="AudioStream" uid="uid://bvvilmk5levin" path="res://assets/sound_effects/pet_bark_0.wav" id="1_7ti6b"]
+[ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_h8iyh"]
+
+[resource]
+script = ExtResource("1_h8iyh")
+_audioStreams = Array[AudioStream]([ExtResource("1_7ti6b")])
+bus = 2
+metadata/_custom_type_script = "uid://dn74yoyxw6eax"

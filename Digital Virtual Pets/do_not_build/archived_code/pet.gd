@@ -179,6 +179,8 @@ func eatFood(foodObject):
 		petState = Enums.PetState.ROAMING
 		
 		GameEvents.UnpauseTimers.emit()
+	
+	SfxManager.playSoundEffect(petResource.yap)
 
 
 func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statIncrease : int):
@@ -188,6 +190,7 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 		joyValue = MAX_JOY
 	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
+	SfxManager.playSoundEffect(petResource.yap)
 #endregion
 
 #region Events 
@@ -251,6 +254,7 @@ func tickJoy():
 
 func neglectTimeout(skipValueCheck := false):
 	print("Neglect timedout with trauma at ", traumaCount)
+	SfxManager.playSoundEffect(petResource.yap)
 	if hungerValue <= 0 or joyValue <= 0 or skipValueCheck:
 		traumaCount += 1
 		if traumaCount > 5:
@@ -260,6 +264,7 @@ func neglectTimeout(skipValueCheck := false):
 
 func evolvePet():
 	if (petResource.getNextEvolution(self) != null):
+		SfxManager.playSoundEffect(petResource.yap)
 		petState = Enums.PetState.EVOLVING
 		sprite.play("Quirk")
 		ReadyToEvolve.emit(petResource.getNextEvolution(self))

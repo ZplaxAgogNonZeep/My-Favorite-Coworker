@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=3 format=3 uid="uid://cxjugw70vu5vs"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=4 format=3 uid="uid://cxjugw70vu5vs"]
 
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_lvwpk"]
 [ext_resource type="SpriteFrames" uid="uid://bifauo7clkw3i" path="res://assets/animation_frames/pets/stage3/he_ro_buh_frames.tres" id="2_av6hh"]
+[ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_f5tyu"]
 
 [resource]
 script = ExtResource("1_lvwpk")
 name = "HeroBuh"
 spriteFrames = ExtResource("2_av6hh")
+yap = ExtResource("3_f5tyu")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])

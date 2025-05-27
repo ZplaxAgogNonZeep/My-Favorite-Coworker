@@ -9,6 +9,9 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 @export var name : String
 @export var spriteFrames : SpriteFrames
 
+@export_category("Sound Effects")
+@export var yap : SoundGroup
+
 @export_category("Behavior Variables")
 @export var stage : int
 @export var waitIntervals : Vector2 = Vector2(3, 10)

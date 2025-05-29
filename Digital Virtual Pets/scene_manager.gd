@@ -17,16 +17,19 @@ class DataSaver extends SaveData.DataSaver:
 @export var _testSound : SoundGroup
 
 var _windowPosition : Vector2
-var _firstTimeOpened := true
+var _firstTimeOpened := false
+
+var _recordingMode := true
 
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
 	GameEvents.ChangeCameraZoom.connect(_changeCameraZoom)
-	Engine.max_fps = 60
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
 	_shadow.visible = false
+	if (_recordingMode):
+		return
 	if (_firstTimeOpened):
 		await get_tree().create_timer(1).timeout
 		GameEvents.DisplayDialog.emit(Vector2i(-999,-999), _tutorialDialog, 
@@ -40,8 +43,10 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Debug"):
+		_displayDevice()
 	if event.is_action_pressed("Debug2"):
-		SfxManager.playSoundEffect(_testSound)
+		Settings.setBorderless(!Settings.borderless)
 
 
 func _displayDevice(skipAnimation := false):
@@ -59,6 +64,8 @@ func _displayDevice(skipAnimation := false):
 	await _cutsceneAnimationPlayer.animation_finished
 	device.turnOnDevice()
 	
+	if (_recordingMode):
+		return
 	await get_tree().create_timer(1)
 	GameEvents.DisplayDialog.emit(Vector2i(0,0), _tutorialDialog, 
 					"Device Tutorial", Callable(self, "_deviceTutorialFinished"))

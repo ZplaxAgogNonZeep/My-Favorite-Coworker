@@ -34,12 +34,12 @@ func _ready():
 	_screenAnimator.visible = true
 	_screenAnimator.play("Screen Off")
 	_killScreen.visible = false
-	
+
 
 #TODO: Remove Debug Function
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("Debug"):
-		_evolveCheck()
+#func _unhandled_input(event):
+	#if Input.is_action_just_pressed("Debug"):
+		#_evolveCheck()
 
 
 func startGame():

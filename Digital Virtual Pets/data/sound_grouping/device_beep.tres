@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="SoundGroup" load_steps=5 format=3 uid="uid://bqs54n475n2yw"]
 
 [ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_aabu6"]
-[ext_resource type="AudioStream" uid="uid://c50m7jxb370k1" path="res://assets/sound_effects/device_beep_normalized.wav" id="1_cy0ot"]
-[ext_resource type="AudioStream" uid="uid://drc2dvmxthq6o" path="res://assets/sound_effects/device_beep1_normalized.wav" id="2_qm68s"]
-[ext_resource type="AudioStream" uid="uid://lupyy5arp16r" path="res://assets/sound_effects/device_beep2_normalized.wav" id="3_kp33l"]
+[ext_resource type="AudioStream" uid="uid://c50m7jxb370k1" path="res://assets/audio/device_beep_normalized.wav" id="1_cy0ot"]
+[ext_resource type="AudioStream" uid="uid://drc2dvmxthq6o" path="res://assets/audio/device_beep1_normalized.wav" id="2_qm68s"]
+[ext_resource type="AudioStream" uid="uid://lupyy5arp16r" path="res://assets/audio/device_beep2_normalized.wav" id="3_kp33l"]
 
 [resource]
 script = ExtResource("1_aabu6")

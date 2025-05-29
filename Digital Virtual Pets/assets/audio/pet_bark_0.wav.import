@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bvvilmk5levin"
-path="res://.godot/imported/pet_bark_0.wav-f44650a9bd7fc060ce8224d3d2927bc6.sample"
+path="res://.godot/imported/pet_bark_0.wav-2955bb6210848f600956829054a66b5b.sample"
 
 [deps]
 
-source_file="res://assets/sound_effects/pet_bark_0.wav"
-dest_files=["res://.godot/imported/pet_bark_0.wav-f44650a9bd7fc060ce8224d3d2927bc6.sample"]
+source_file="res://assets/audio/pet_bark_0.wav"
+dest_files=["res://.godot/imported/pet_bark_0.wav-2955bb6210848f600956829054a66b5b.sample"]
 
 [params]
 

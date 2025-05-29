@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SoundGroup" load_steps=5 format=3 uid="uid://dtapvx24yxox1"]
 
-[ext_resource type="AudioStream" uid="uid://q1bk5obglfka" path="res://assets/sound_effects/button_down_0.wav" id="1_ln4fi"]
-[ext_resource type="AudioStream" uid="uid://bg2t404d7awtq" path="res://assets/sound_effects/button_down_1.wav" id="2_da80c"]
-[ext_resource type="AudioStream" uid="uid://buqdvmjw2lpda" path="res://assets/sound_effects/button_down_2.wav" id="3_qg17c"]
+[ext_resource type="AudioStream" uid="uid://q1bk5obglfka" path="res://assets/audio/button_down_0.wav" id="1_ln4fi"]
+[ext_resource type="AudioStream" uid="uid://bg2t404d7awtq" path="res://assets/audio/button_down_1.wav" id="2_da80c"]
+[ext_resource type="AudioStream" uid="uid://buqdvmjw2lpda" path="res://assets/audio/button_down_2.wav" id="3_qg17c"]
 [ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="4_bgrs8"]
 
 [resource]

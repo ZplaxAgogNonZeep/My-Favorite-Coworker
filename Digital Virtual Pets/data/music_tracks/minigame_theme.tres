@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="MusicTrack" load_steps=5 format=3 uid="uid://bp8ypd8jtkily"]
+
+[ext_resource type="Script" uid="uid://bv7r6i2bx0y7x" path="res://data/_scripts/music_track.gd" id="1_bdoo7"]
+[ext_resource type="AudioStream" uid="uid://phq0ohqt77eg" path="res://assets/audio/minigame_loop_compressed.wav" id="2_plkb8"]
+[ext_resource type="AudioStream" uid="uid://bfbvhkmssqan7" path="res://assets/audio/minigame_lose_compressed.wav" id="3_8ty5i"]
+[ext_resource type="AudioStream" uid="uid://cle0s30auv661" path="res://assets/audio/minigame_win_compressed.wav" id="4_edmo4"]
+
+[resource]
+script = ExtResource("1_bdoo7")
+name = "Minigame Theme"
+trackIntro = Array[AudioStream]([])
+trackBody = Array[AudioStream]([ExtResource("2_plkb8")])
+trackOutro = Array[AudioStream]([ExtResource("3_8ty5i"), ExtResource("4_edmo4")])
+introProgression = 0
+introChange = 0
+bodyProgression = 0
+PartChange = 1
+keepTimestamp = false
+outroProgression = 2
+conclusion = 0
+metadata/_custom_type_script = "uid://bv7r6i2bx0y7x"

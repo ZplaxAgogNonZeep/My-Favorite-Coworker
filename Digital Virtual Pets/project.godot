@@ -29,7 +29,7 @@ SaveData="*res://singletons/save_data.gd"
 Enums="*res://singletons/enums.gd"
 GameEvents="*res://singletons/game_events.gd"
 Settings="*res://singletons/settings.gd"
-SfxManager="*res://sfx/sfx_manager.gd"
+SfxManager="*res://singletons/sfx_manager.gd"
 
 [display]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cnnd7dh1te8se"
-path="res://.godot/imported/mouse_down_0.wav-df509ed28c4b978df9199e47fe95b3b1.sample"
+path="res://.godot/imported/mouse_down_0.wav-a3c1d2f6efeca1ffd5e18f5e093b29c4.sample"
 
 [deps]
 
-source_file="res://assets/sound_effects/mouse_down_0.wav"
-dest_files=["res://.godot/imported/mouse_down_0.wav-df509ed28c4b978df9199e47fe95b3b1.sample"]
+source_file="res://assets/audio/mouse_down_0.wav"
+dest_files=["res://.godot/imported/mouse_down_0.wav-a3c1d2f6efeca1ffd5e18f5e093b29c4.sample"]
 
 [params]
 

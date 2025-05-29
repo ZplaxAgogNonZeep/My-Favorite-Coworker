@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eua56uo2iowc"
-path="res://.godot/imported/windowsIcon32.png-2356270e1c1ff5818f903b8880efacd1.ctex"
+uid="uid://dskipttxudgwf"
+path="res://.godot/imported/windowsIcon16.png-b8ff8ddf52b303675cd0da41becdfc12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://os_icon_assets/windowsIcon32.png"
-dest_files=["res://.godot/imported/windowsIcon32.png-2356270e1c1ff5818f903b8880efacd1.ctex"]
+source_file="res://do_not_build/os_icon_assets/windowsIcon16.png"
+dest_files=["res://.godot/imported/windowsIcon16.png-b8ff8ddf52b303675cd0da41becdfc12.ctex"]
 
 [params]
 

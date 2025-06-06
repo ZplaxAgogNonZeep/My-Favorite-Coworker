@@ -11,6 +11,7 @@ enum DeviceAction {HOP, SHAKE}
 @export var _animator : AnimationPlayer
 @export var _movementGroup : Node2D
 @export var _miniDevice : AnimatedSprite2D
+@export var _shadow : Sprite2D
 @export_category("Movement Variables")
 @export_range(0, 360) var shakeDegreeMax = PI
 @export var hopHeight : Vector2
@@ -151,6 +152,23 @@ func _shiftDeviceOver():
 						target, 
 						_animator.current_animation_length).set_ease(
 							Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	
+	if (_shadow):
+		var tweem = create_tween()
+		tweem.tween_property(_shadow, "global_position", 
+							target * Settings.gameScale + global_position, 
+							_animator.current_animation_length).set_ease(
+								Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+		if (Settings.minimized):
+			var tweem2 = create_tween()
+			tweem2.tween_property(_shadow, "scale", Vector2(.5, .5), 
+									_animator.current_animation_length).set_ease(
+									Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+		else:
+			var tweem2 = create_tween()
+			tweem2.tween_property(_shadow, "scale", Vector2(Settings.gameScale, Settings.gameScale), 
+									_animator.current_animation_length).set_ease(
+									Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 	
 	if (!Settings.minimized):
 		Settings.toggleMinimizedWindow(Settings.minimized)

@@ -77,6 +77,7 @@ var boundries : Array[Vector2] # Unsure
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
 var _overfed := false
+var _nextAnimation : String
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -99,10 +100,13 @@ func _process(delta):
 	if petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):
-				sprite.play("Walk")
+				_setNextAnimation("Walk")
+				#sprite.play("Walk")
+				
 		else:
 			if (sprite.animation != "Idle"):
-				sprite.play("Idle")
+				_setNextAnimation("Idle")
+				#sprite.play("Idle")
 		
 		
 		if (targetPosn):
@@ -127,13 +131,15 @@ func _process(delta):
 			_moveTimer.start(randf_range(petResource.waitIntervals.x, petResource.waitIntervals.y))
 		
 		setSpriteDirection()
-		previousPosn = position
+		
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
 			sprite.play("Quirk")
 		#type.feedingBehavior()
 	elif petState == Enums.PetState.EVOLVING:
 		pass
+	
+	previousPosn = position
 
 
 func loadResourceData():
@@ -275,6 +281,15 @@ func evolvePet():
 #region Utility Functions 
 func pauseAllTimers():
 	pass
+
+
+func _setNextAnimation(animationName : String):
+	if (_nextAnimation == animationName):
+		return
+	_nextAnimation = animationName
+	await sprite.animation_looped
+	sprite.play(_nextAnimation)
+	_nextAnimation = ""
 
 
 func getRawAge() -> float:

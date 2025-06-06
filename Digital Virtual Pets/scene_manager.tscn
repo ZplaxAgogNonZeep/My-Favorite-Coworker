@@ -200,9 +200,10 @@ position = Vector2(128, 296)
 scale = Vector2(2, 2)
 texture = ExtResource("14_vxl1k")
 
-[node name="Device" parent="." instance=ExtResource("11_7o31v")]
+[node name="Device" parent="." node_paths=PackedStringArray("_shadow") instance=ExtResource("11_7o31v")]
 position = Vector2(128, 296)
 scale = Vector2(2, 2)
+_shadow = NodePath("../DeviceShadow")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

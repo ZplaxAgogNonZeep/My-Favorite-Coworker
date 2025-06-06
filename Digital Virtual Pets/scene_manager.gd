@@ -92,6 +92,7 @@ func _proactivityBehavior():
 
 
 func _changeCameraZoom(_scale : float, _position : Vector2):
+	#_shadow.visible = _scale == 1
 	_camera.zoom = Vector2(_scale, _scale)
 	_camera.position = _position
 #endregion

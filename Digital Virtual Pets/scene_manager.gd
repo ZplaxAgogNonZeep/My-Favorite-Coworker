@@ -19,7 +19,7 @@ class DataSaver extends SaveData.DataSaver:
 var _windowPosition : Vector2
 var _firstTimeOpened := false
 
-var _recordingMode := true
+var _recordingMode := false
 
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
@@ -47,6 +47,8 @@ func _input(event: InputEvent) -> void:
 		_displayDevice()
 	if event.is_action_pressed("Debug2"):
 		Settings.setBorderless(!Settings.borderless)
+	if (Input.is_action_just_pressed("Debug3")):
+		GameEvents.EvolveCheck.emit()
 
 
 func _displayDevice(skipAnimation := false):

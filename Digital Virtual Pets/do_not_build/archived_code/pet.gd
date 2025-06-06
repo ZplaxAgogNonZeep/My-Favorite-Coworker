@@ -93,8 +93,8 @@ func _ready():
 
 
 func _process(delta):
-	if (Input.is_action_just_pressed("Debug3")):
-		GameEvents.PetDied.emit()
+	#if (Input.is_action_just_pressed("Debug3")):
+		#GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
 	if petState == Enums.PetState.ROAMING:

@@ -6,6 +6,7 @@ var implements = [Interface.MiniGame]
 @export var intervalTime : float
 @export var joyIncrement : int
 @export var statIncrement : int
+@export var _minigameTheme : MusicTrack
 
 var playMenu : Node2D
 var connectedPet : Node2D
@@ -18,6 +19,7 @@ var isGuessMade := false
 
 
 func startGame(pet : Node2D, playMenu : Node2D):
+	SfxManager.playMusic(_minigameTheme)
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
@@ -66,6 +68,7 @@ func updateGameText(text : String):
 	status.text = text
 
 func onWin():
+	SfxManager.incrementMusic(1)
 	print("You Won!")
 	randomize()
 	var statToIncrease = randi_range(0,3)
@@ -74,6 +77,7 @@ func onWin():
 	endGame()
 
 func onLose():
+	SfxManager.incrementMusic(0)
 	print("You Lose!")
 	await get_tree().create_timer(1).timeout
 	endGame()

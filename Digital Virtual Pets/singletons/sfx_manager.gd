@@ -1,5 +1,5 @@
 extends Node
-
+#TODO: Document
 enum BusType {MASTER, DEVICE, GAME}
 
 class MusicInstance:
@@ -9,9 +9,12 @@ class MusicInstance:
 	var _nextStream : AudioStream
 	var _player : AudioStreamPlayer
 	
-	# FINISH THIS
-	func _init() -> void:
-		pass
+	func _init(track : MusicTrack, player : AudioStreamPlayer, 
+					startingIndex := -1) -> void:
+		_track = track
+		_player = player
+		_player.finished.connect(_streamComplete)
+		startMusic(startingIndex)
 	
 	
 	func startMusic(startingStreamIndex := -1):
@@ -57,6 +60,7 @@ class MusicInstance:
 	
 	
 	func incrementPart(streamIndex := -1, addToQueue := true):
+		print("Increment part at ", _partIndex)
 		if (_partIndex == 2):
 			stopMusic()
 			return
@@ -86,7 +90,11 @@ class MusicInstance:
 					_streamIndex = 0
 		
 		streamToPlay = part[_streamIndex]
-		_nextStream = streamToPlay
+		if (addToQueue):
+			_nextStream = streamToPlay
+		else:
+			_player.stream = streamToPlay
+			_player.play()
 	
 	
 	func changeStreamIndex(index : int):
@@ -94,13 +102,15 @@ class MusicInstance:
 	
 	
 	func stopMusic():
-		pass
+		_player.stop()
+		
 	
 	
-	func streamComplete():
+	func _streamComplete():
 		if (_nextStream != null):
 			_player.stream = _nextStream
 			_player.play()
+			_nextStream = null
 			return
 		
 		var partChange
@@ -125,6 +135,8 @@ class MusicInstance:
 				match progression:
 					MusicTrack.ProgressionType.INCREMENTAL:
 						_streamIndex += 1
+						if (_streamIndex >= _track.getPartByIndex(_partIndex).size()):
+							_streamIndex = 0
 					MusicTrack.ProgressionType.RANDOMIZE:
 						_streamIndex = randi_range(0, _track.getPartByIndex(_partIndex).size() - 1)
 		
@@ -132,13 +144,13 @@ class MusicInstance:
 		_player.play()
 
 var _musicPlayer : AudioStreamPlayer
-var _musicResource : MusicTrack
+var _musicInstance : MusicInstance
 
 func _ready() -> void:
-	var musicPlayer = AudioStreamPlayer.new()
-	musicPlayer.autoplay = false
-	musicPlayer.bus = "Game"
-	await get_tree().root.call_deferred("add_child", musicPlayer)
+	_musicPlayer = AudioStreamPlayer.new()
+	_musicPlayer.autoplay = false
+	_musicPlayer.bus = "Game"
+	await get_tree().root.call_deferred("add_child", _musicPlayer)
 
 
 func playSoundEffect(effectGroup : SoundGroup):
@@ -157,5 +169,10 @@ func playSoundEffect(effectGroup : SoundGroup):
 	await effectPlayer.finished
 	effectPlayer.queue_free()
 
-func playMusic():
-	pass
+
+func playMusic(track : MusicTrack):
+	_musicInstance = MusicInstance.new(track, _musicPlayer)
+
+
+func incrementMusic(streamIndex := -1):
+	_musicInstance.incrementPart(streamIndex)

@@ -14,6 +14,7 @@ var implements = [Interface.MiniGame]
 @export var mashGoalMax : int
 @export var decreaseFrequency : float
 @export var decreaseAmount : int
+@export var _minigameTheme : MusicTrack
 
 var playMenu : Node2D
 var connectedPet : Node2D
@@ -27,6 +28,7 @@ func _process(delta):
 		$MashDecrease.start(decreaseFrequency)
 
 func startGame(pet : Node2D, playMenu : Node2D):
+	SfxManager.playMusic(_minigameTheme)
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
@@ -53,6 +55,7 @@ func takeInput(input : Enums.DeviceButton):
 					#updateMashBar(mashAmount, mashMax)
 
 func onWin():
+	SfxManager.incrementMusic(1)
 	gameRunning = false
 	updateGameText("WIN!")
 	$PseudoPet.sprite.play("Quirk")
@@ -62,6 +65,7 @@ func onWin():
 	endGame()
 
 func onLose():
+	SfxManager.incrementMusic(0)
 	gameRunning = false
 	updateGameText("LOSE!")
 	$PseudoPet.sprite.play("Quirk")
@@ -75,6 +79,7 @@ func incrementGame():
 		increment -= 1
 		$Timer.start(incrementFrequency)
 	elif increment == 0:
+		
 		updateGameText("ENDURE!!")
 		$Steam.play()
 		$PseudoPet.sprite.play("Idle")

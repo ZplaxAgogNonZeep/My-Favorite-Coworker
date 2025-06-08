@@ -14,6 +14,7 @@ var implements = [Interface.MiniGame]
 @export var speed : int
 @export var jumpDuration : float
 @export var repetitionRange : Vector2
+@export var _minigameTheme : MusicTrack
 
 var playMenu : Node2D
 var connectedPet : Node2D
@@ -35,6 +36,7 @@ func _process(delta):
 		
 
 func startGame(pet : Node2D, playMenu : Node2D):
+	SfxManager.playMusic(_minigameTheme)
 	speed *= Settings.gameScale
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
@@ -73,6 +75,7 @@ func drop():
 
 
 func onWin():
+	SfxManager.incrementMusic(1)
 	updateGameText("WIN!")
 	gameRunning = false
 	background.speed = 0
@@ -83,6 +86,7 @@ func onWin():
 	endGame()
 
 func onLose():
+	SfxManager.incrementMusic(0)
 	updateGameText("LOSE!")
 	gameRunning = false
 	background.speed = 0

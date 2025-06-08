@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxps8l5sseo8p"]
+[gd_scene load_steps=7 format=3 uid="uid://cxps8l5sseo8p"]
 
 [ext_resource type="Script" uid="uid://bsce8oekh6f0p" path="res://games/guess/guess_game.gd" id="1_qfueg"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_6p1v6"]
+[ext_resource type="Resource" uid="uid://bp8ypd8jtkily" path="res://data/music_tracks/minigame_theme.tres" id="2_oi8gq"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_emhdi"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_glm3m"]
 [ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://assets/art/aesprite/minigame_assets/arrow.png" id="5_cq21n"]
@@ -12,6 +13,7 @@ status = NodePath("Status")
 intervalTime = 1.0
 joyIncrement = 50
 statIncrement = 2
+_minigameTheme = ExtResource("2_oi8gq")
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]

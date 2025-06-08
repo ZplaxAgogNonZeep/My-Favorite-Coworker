@@ -7,6 +7,7 @@ var implements = [Interface.MiniGame]
 @export var statIncrement : int
 @export var gameTimerRange : Vector2
 @export var catchWindowDuration : float
+@export var _minigameTheme : MusicTrack
 
 var playMenu : Node2D
 var connectedPet : Node2D
@@ -15,6 +16,7 @@ var isCatchWindow : bool
 var catchWindowTimer : SceneTreeTimer
 
 func startGame(pet : Node2D, playMenu : Node2D):
+	SfxManager.playMusic(_minigameTheme)
 	connectedPet = pet
 	self.playMenu = playMenu
 	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
@@ -33,6 +35,7 @@ func updateGameText(text : String):
 	$Status.text = text
 
 func onWin():
+	SfxManager.incrementMusic(1)
 	$FishingRod.play("ReeledIn")
 	$FishingRod/Catch.visible = true
 	updateGameText("WIN!")
@@ -43,6 +46,7 @@ func onWin():
 	endGame()
 
 func onLose():
+	SfxManager.incrementMusic(0)
 	$FishingRod.play("ReeledIn")
 	updateGameText("LOSE")
 	$PseudoPet.sprite.play("Quirk")

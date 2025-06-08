@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://yp44rtci20n4"]
+[gd_scene load_steps=10 format=3 uid="uid://yp44rtci20n4"]
 
 [ext_resource type="Script" uid="uid://cfvhi4nw8qqcq" path="res://games/jump/jump_game.gd" id="1_5ul8j"]
 [ext_resource type="Texture2D" uid="uid://xd8t0vofxvf2" path="res://assets/art/aesprite/ui/menu/blank_menu.png" id="2_qff5g"]
+[ext_resource type="Resource" uid="uid://bp8ypd8jtkily" path="res://data/music_tracks/minigame_theme.tres" id="2_v1qcy"]
 [ext_resource type="Script" uid="uid://cqau5gyb27cx4" path="res://games/scrolling_background.gd" id="3_c8eis"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="3_w4bgg"]
 [ext_resource type="Texture2D" uid="uid://crfc1t2exl138" path="res://assets/art/aesprite/minigame_assets/track.png" id="4_45xc6"]
@@ -21,6 +22,7 @@ statToIncrease = 2
 speed = 5
 jumpDuration = 1.0
 repetitionRange = Vector2(2, 4)
+_minigameTheme = ExtResource("2_v1qcy")
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="." node_paths=PackedStringArray("scrollElements")]

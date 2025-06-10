@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dtya6sb5p4rt8"]
 
-[ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="1_2a2c1"]
-[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_gp6kj"]
-[ext_resource type="PackedScene" uid="uid://ba4ut480kbygm" path="res://ui/system_dialog/dialog_choice_button.tscn" id="3_vdxs8"]
-[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_804br"]
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_t6pyl"]
+[ext_resource type="Script" uid="uid://brxyajh64sgs3" path="res://ui/system_dialog/system_dialog_window.gd" id="2_njc82"]
+[ext_resource type="PackedScene" uid="uid://ba4ut480kbygm" path="res://ui/system_dialog/dialog_choice_button.tscn" id="3_ja1ey"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_kjgsh"]
 
 [sub_resource type="Animation" id="Animation_4kmke"]
 resource_name = "Close"
@@ -96,17 +96,17 @@ _data = {
 }
 
 [node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
-anchors_preset = -1
+anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 130.0
-theme = ExtResource("1_gp6kj")
-script = ExtResource("1_2a2c1")
+theme = ExtResource("1_t6pyl")
+script = ExtResource("2_njc82")
 _dialogLabel = NodePath("Dialog")
 _characterNameLabel = NodePath("CharacterName")
 _choiceContainer = NodePath("ChoiceContainer")
 _animator = NodePath("AnimationPlayer")
 _closeButton = NodePath("ExitButton")
-_buttonScene = ExtResource("3_vdxs8")
+_buttonScene = ExtResource("3_ja1ey")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -141,7 +141,7 @@ grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"CloseButton"
 disabled = true
-icon = ExtResource("4_804br")
+icon = ExtResource("4_kjgsh")
 icon_alignment = 1
 
 [node name="CharacterName" type="Label" parent="."]

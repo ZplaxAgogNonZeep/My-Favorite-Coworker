@@ -17,7 +17,7 @@ class DataSaver extends SaveData.DataSaver:
 @export var _testSound : MusicTrack
 
 var _windowPosition : Vector2
-var _firstTimeOpened := false
+var _firstTimeOpened := true
 
 var _recordingMode := false
 

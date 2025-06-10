@@ -36,7 +36,7 @@ func _ready():
 	_killScreen.visible = false
 
 
-#TODO: Remove Debug Function
+#TODO: Remove Evolution Debug Function
 #func _unhandled_input(event):
 	#if Input.is_action_just_pressed("Debug"):
 		#_evolveCheck()
@@ -61,7 +61,6 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.RIGHT_BUTTON:
 			menuManager.handleInput(button)
 		Enums.DeviceButton.POWER_BUTTON:
-			#TODO: Update Power Button close game sequence
 			_screenAnimator.play("Shutdown")
 			await  get_tree().create_timer(1).timeout
 			get_tree().quit()

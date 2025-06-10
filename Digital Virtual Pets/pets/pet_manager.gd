@@ -185,7 +185,6 @@ func killPet():
 
 #region Pet Save & Load Management
 func gatherDataFromActivePet():
-	#TODO: Handle Saving data when no pet is spawned
 	if (activePet == null or _petSlots.size() <= 0):
 		pass
 	else:

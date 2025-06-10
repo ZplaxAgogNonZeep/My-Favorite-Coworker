@@ -11,7 +11,7 @@ func initializeMenu(petData):
 	GameEvents.PauseGame.emit()
 	_pseudoPet.sprite.sprite_frames = petData.petResource.spriteFrames
 	var age = Lifespan.convertLifespanToAge(petData.age)
-	_ageLabel.text = "Age:\n"  + str(age[0]) + "d " + str(age[1]) + "h " + str(age[2]) + "m"
+	_ageLabel.text = "Age:\n"  + str(int(age[0])) + "d " + str(int(age[1])) + "h " + str(int(age[2])) + "m"
 	_crossSprite.play()
 	
 	visible = true

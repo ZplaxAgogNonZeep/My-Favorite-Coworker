@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="My Favorite Coworker"
+config/description="A virtual pet device in the corner of your screen! Feed and play with your pet while you work or play for dopamine boosts that makes even mundane tasks a little more fun!
+"
 config/version="0.3.1"
 run/main_scene="res://scene_manager.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")

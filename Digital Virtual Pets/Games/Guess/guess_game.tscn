@@ -7,13 +7,15 @@
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="4_glm3m"]
 [ext_resource type="Texture2D" uid="uid://b54aqjarur4x7" path="res://assets/art/aesprite/minigame_assets/arrow.png" id="5_cq21n"]
 
-[node name="GuessGame" type="Node2D" node_paths=PackedStringArray("status")]
+[node name="GuessGame" type="Node2D" node_paths=PackedStringArray("_label")]
 script = ExtResource("1_qfueg")
-status = NodePath("Status")
 intervalTime = 1.0
-joyIncrement = 50
-statIncrement = 2
 _minigameTheme = ExtResource("2_oi8gq")
+joyIncrement = 50
+_connectedStat = 4
+statIncrement = 2
+_music = ExtResource("2_oi8gq")
+_label = NodePath("Status")
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="."]

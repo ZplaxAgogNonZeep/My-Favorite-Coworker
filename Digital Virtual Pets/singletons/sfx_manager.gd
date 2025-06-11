@@ -3,11 +3,14 @@ extends Node
 enum BusType {MASTER, DEVICE, GAME}
 
 class MusicInstance:
+	signal MusicStopped
+	
 	var _track : MusicTrack
 	var _partIndex : int
 	var _streamIndex : int
 	var _nextStream : AudioStream
 	var _player : AudioStreamPlayer
+	var isPlaying : bool
 	
 	func _init(track : MusicTrack, player : AudioStreamPlayer, 
 					startingIndex := -1) -> void:
@@ -15,6 +18,7 @@ class MusicInstance:
 		_player = player
 		_player.finished.connect(_streamComplete)
 		startMusic(startingIndex)
+		isPlaying = true
 	
 	
 	func startMusic(startingStreamIndex := -1):
@@ -102,8 +106,9 @@ class MusicInstance:
 	
 	
 	func stopMusic():
+		isPlaying = false
 		_player.stop()
-		
+		MusicStopped.emit()
 	
 	
 	func _streamComplete():
@@ -143,6 +148,10 @@ class MusicInstance:
 		_player.stream = _track.getPartByIndex(_partIndex)[_streamIndex]
 		_player.play()
 
+signal MusicStarted
+signal MusicFinished
+signal MusicPaused
+
 var _musicPlayer : AudioStreamPlayer
 var _musicInstance : MusicInstance
 
@@ -172,7 +181,18 @@ func playSoundEffect(effectGroup : SoundGroup):
 
 func playMusic(track : MusicTrack):
 	_musicInstance = MusicInstance.new(track, _musicPlayer)
+	_musicInstance.MusicStopped.connect(_musicStopped)
+	MusicStarted.emit()
 
 
 func incrementMusic(streamIndex := -1):
 	_musicInstance.incrementPart(streamIndex)
+
+
+func isPlayingMusic():
+	print("Is music playing: ", _musicInstance.isPlaying)
+	return _musicInstance.isPlaying
+
+
+func _musicStopped():
+	MusicFinished.emit()

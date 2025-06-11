@@ -14,7 +14,6 @@ class DataSaver extends SaveData.DataSaver:
 @export var _shadow : Sprite2D
 @export var _tutorialDialog : CharacterDialog
 @export var _cutsceneAnimationPlayer : AnimationPlayer
-@export var _testSound : MusicTrack
 
 var _windowPosition : Vector2
 var _firstTimeOpened := true
@@ -50,9 +49,10 @@ func _input(event: InputEvent) -> void:
 		_displayDevice()
 	if event.is_action_pressed("Debug2"):
 		#Settings.setBorderless(!Settings.borderless)
-		SfxManager.playMusic(_testSound)
-		await get_tree().create_timer(5).timeout
-		SfxManager.incrementMusic(1)
+		#SfxManager.playMusic(_testSound)
+		#await get_tree().create_timer(5).timeout
+		#SfxManager.incrementMusic(1)
+		pass
 	if (Input.is_action_just_pressed("Debug3")):
 		GameEvents.EvolveCheck.emit()
 

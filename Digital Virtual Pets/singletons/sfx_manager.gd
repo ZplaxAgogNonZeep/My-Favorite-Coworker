@@ -64,7 +64,6 @@ class MusicInstance:
 	
 	
 	func incrementPart(streamIndex := -1, addToQueue := true):
-		print("Increment part at ", _partIndex)
 		if (_partIndex == 2):
 			stopMusic()
 			return
@@ -190,7 +189,6 @@ func incrementMusic(streamIndex := -1):
 
 
 func isPlayingMusic():
-	print("Is music playing: ", _musicInstance.isPlaying)
 	return _musicInstance.isPlaying
 
 

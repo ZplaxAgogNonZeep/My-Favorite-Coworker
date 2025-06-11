@@ -93,8 +93,8 @@ func _ready():
 
 
 func _process(delta):
-	#if (Input.is_action_just_pressed("Debug3")):
-		#GameEvents.PetDied.emit()
+	if (Input.is_action_just_pressed("Debug3")):
+		GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
 	if petState == Enums.PetState.ROAMING:
@@ -272,7 +272,8 @@ func evolvePet():
 	if (petResource.getNextEvolution(self) != null):
 		SfxManager.playSoundEffect(petResource.yap)
 		petState = Enums.PetState.EVOLVING
-		sprite.play("Quirk")
+		if (petResource.stage != 0):
+			sprite.play("Quirk")
 		ReadyToEvolve.emit(petResource.getNextEvolution(self))
 		#petManager.evolvePet(type.getEvolvePet())
 

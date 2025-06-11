@@ -1,4 +1,4 @@
-extends Node2D
+extends Minigame
 
 var implements = [Interface.MiniGame]
 
@@ -8,17 +8,10 @@ var implements = [Interface.MiniGame]
 @export var background : Sprite2D
 @export var hurdle : Sprite2D
 @export_category("Game Values")
-@export var joyIncrement : int
-@export var statIncrement : int
-@export var statToIncrease : Enums.AbilityStat
 @export var speed : int
 @export var jumpDuration : float
 @export var repetitionRange : Vector2
-@export var _minigameTheme : MusicTrack
 
-var playMenu : Node2D
-var connectedPet : Node2D
-var gameRunning : bool
 var reptetitions : int
 var isJump : bool
 var isRaise : bool
@@ -36,14 +29,10 @@ func _process(delta):
 		
 
 func startGame(pet : Node2D, playMenu : Node2D):
-	SfxManager.playMusic(_minigameTheme)
-	speed *= Settings.gameScale
+	super(pet, playMenu)
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
-	connectedPet = pet
-	self.playMenu = playMenu
-	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
-	$PseudoPet.sprite.offset = pet.sprite.offset
+	speed *= Settings.gameScale
 	$PseudoPet.setDirection(true)
 	$PseudoPet.sprite.play("Walk")
 	
@@ -56,7 +45,7 @@ func startGame(pet : Node2D, playMenu : Node2D):
 
 	gameRunning = true
 
-func takeInput(input : Enums.InputType):
+func takeInput(input : Enums.DeviceButton):
 	if gameRunning:
 		if input == Enums.DeviceButton.CENTER_BUTTON and not isJump:
 			$PseudoPet.tweenToLocation($JumpHeight.position, jumpDuration * .5)
@@ -75,29 +64,12 @@ func drop():
 
 
 func onWin():
-	SfxManager.incrementMusic(1)
-	updateGameText("WIN!")
-	gameRunning = false
 	background.speed = 0
-	print("You Win!")
-	$PseudoPet.sprite.play("Quirk")
-	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
-	await get_tree().create_timer(1).timeout
-	endGame()
+	gameRunning = false
+	super()
+
 
 func onLose():
-	SfxManager.incrementMusic(0)
-	updateGameText("LOSE!")
-	gameRunning = false
 	background.speed = 0
-	print("You Lose!")
-	$PseudoPet.sprite.play("Quirk")
-	await get_tree().create_timer(1).timeout
-	endGame()
-
-func endGame():
-	playMenu.closeMenu()
-	queue_free()
-
-func updateGameText(text : String):
-	$Status.text = text
+	gameRunning = false
+	super()

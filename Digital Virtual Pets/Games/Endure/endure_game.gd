@@ -1,11 +1,7 @@
-extends Node2D
+extends Minigame
 
 var implements = [Interface.MiniGame]
 
-@export_category("Stat Values")
-@export var joyIncrement : int
-@export var statIncrement : int
-@export var statToIncrease : Enums.AbilityStat
 @export_category("Game Values")
 @export var incrementFrequency : float
 @export var gameDuration : int
@@ -14,11 +10,7 @@ var implements = [Interface.MiniGame]
 @export var mashGoalMax : int
 @export var decreaseFrequency : float
 @export var decreaseAmount : int
-@export var _minigameTheme : MusicTrack
 
-var playMenu : Node2D
-var connectedPet : Node2D
-var gameRunning := false
 var mashMode := false
 var mashAmount : int= 0
 var increment := 3
@@ -28,23 +20,13 @@ func _process(delta):
 		$MashDecrease.start(decreaseFrequency)
 
 func startGame(pet : Node2D, playMenu : Node2D):
-	SfxManager.playMusic(_minigameTheme)
-	connectedPet = pet
-	self.playMenu = playMenu
-	$PseudoPet.sprite.set_sprite_frames(pet.sprite.sprite_frames)
-	$PseudoPet.sprite.offset = pet.sprite.offset
+	super(pet, playMenu)
 	$PseudoPet.sprite.play("Quirk")
 	$MashMeter.initializeMeter(mashMax, mashGoalMin, mashGoalMax, 5)
 	updateGameText("GET READY")
 	$Timer.start(incrementFrequency)
 	gameRunning = true
 
-func endGame():
-	playMenu.closeMenu()
-	queue_free()
-
-func updateGameText(text : String):
-	$Status.text = text
 
 func takeInput(input : Enums.DeviceButton):
 	if gameRunning and mashMode:
@@ -53,24 +35,6 @@ func takeInput(input : Enums.DeviceButton):
 					$MashMeter.addToValue(1)
 					$PseudoPet.hop()
 					#updateMashBar(mashAmount, mashMax)
-
-func onWin():
-	SfxManager.incrementMusic(1)
-	gameRunning = false
-	updateGameText("WIN!")
-	$PseudoPet.sprite.play("Quirk")
-	$PseudoPet.hop(2)
-	connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
-	await get_tree().create_timer(2).timeout
-	endGame()
-
-func onLose():
-	SfxManager.incrementMusic(0)
-	gameRunning = false
-	updateGameText("LOSE!")
-	$PseudoPet.sprite.play("Quirk")
-	await get_tree().create_timer(2).timeout
-	endGame()
 
 
 func incrementGame():

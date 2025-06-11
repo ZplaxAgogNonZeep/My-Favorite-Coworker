@@ -533,9 +533,7 @@ z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
 sprite_frames = ExtResource("9_5u0yl")
-animation = &"Boot"
-frame = 14
-frame_progress = 1.0
+animation = &"Screen On"
 metadata/_edit_lock_ = true
 
 [node name="MenuManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
@@ -1004,6 +1002,7 @@ position = Vector2(-27, -85)
 
 [node name="DeathMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_pseudoPet", "_crossSprite", "_ageLabel")]
 visible = false
+z_index = 1
 position = Vector2(0, -58)
 script = ExtResource("10_qk4hv")
 _pseudoPet = NodePath("PseudoPet")
@@ -1011,17 +1010,17 @@ _crossSprite = NodePath("CrossSprite")
 _ageLabel = NodePath("Age")
 
 [node name="BackdropSprite" type="Sprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu"]
-z_index = 9
+z_index = 1
 z_as_relative = false
 texture = ExtResource("8_5u0yl")
 
 [node name="PseudoPet" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu" instance=ExtResource("10_04b0e")]
-z_index = 9
+z_index = 1
 z_as_relative = false
 position = Vector2(-11, 3)
 
 [node name="CrossSprite" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/DeathMenu"]
-z_index = 9
+z_index = 1
 z_as_relative = false
 position = Vector2(11, -5)
 sprite_frames = SubResource("SpriteFrames_6uw0p")

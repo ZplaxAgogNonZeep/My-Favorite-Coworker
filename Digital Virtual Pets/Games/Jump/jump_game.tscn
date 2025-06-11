@@ -12,17 +12,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dan0o"]
 size = Vector2(1.33333, 3.33334)
 
-[node name="JumpGame" type="Node2D" node_paths=PackedStringArray("background", "hurdle")]
+[node name="JumpGame" type="Node2D" node_paths=PackedStringArray("background", "hurdle", "_label")]
 script = ExtResource("1_5ul8j")
 background = NodePath("BlankMenuSprite2")
 hurdle = NodePath("BlankMenuSprite2/Hurdle")
-joyIncrement = 50
-statIncrement = 2
-statToIncrease = 2
 speed = 5
 jumpDuration = 1.0
 repetitionRange = Vector2(2, 4)
-_minigameTheme = ExtResource("2_v1qcy")
+joyIncrement = 50
+_connectedStat = 2
+statIncrement = 2
+_music = ExtResource("2_v1qcy")
+_label = NodePath("Status")
 metadata/_edit_lock_ = true
 
 [node name="BlankMenuSprite2" type="Sprite2D" parent="." node_paths=PackedStringArray("scrollElements")]

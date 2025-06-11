@@ -54,13 +54,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="FishGame" type="Node2D"]
+[node name="FishGame" type="Node2D" node_paths=PackedStringArray("_label")]
 script = ExtResource("1_iowcp")
-joyIncrement = 50
-statToIncrease = 3
-statIncrement = 2
 gameTimerRange = Vector2(1, 5)
-_minigameTheme = ExtResource("2_6v3fi")
+joyIncrement = 50
+_connectedStat = 3
+statIncrement = 2
+_music = ExtResource("2_6v3fi")
+_label = NodePath("Status")
 metadata/_edit_lock_ = true
 
 [node name="Timer" type="Timer" parent="."]

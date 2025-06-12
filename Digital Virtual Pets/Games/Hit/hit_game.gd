@@ -33,12 +33,12 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	super(pet, playMenu)
 	
 	randomize()
-	var goal = randi_range(_meterSizes[_difficulty], _mashMax-_mashGoalSizes[_difficulty])
+	var goal = randi_range(_meterSizes[_difficulty], _mashMax - floori(_mashGoalSizes[_difficulty] * 1.5))
 	mashMeter.initializeMeter(_mashMax, goal, goal + _mashGoalSizes[_difficulty], _meterSizes[_difficulty])
 	
 	$PseudoPet.sprite.play("Quirk")
 	updateGameText("3")
-	$Timer.start(1)
+	$Timer.start(.5)
 	gameRunning = true
 
 
@@ -71,7 +71,7 @@ func _on_timer_timeout():
 	if gameIteration > 0:
 		gameIteration -= 1
 		updateGameText(str(gameIteration))
-		$Timer.start(1)
+		$Timer.start(.5)
 	elif gameIteration == 0:
 		gameIteration -= 1
 		updateGameText("PREPARE!")

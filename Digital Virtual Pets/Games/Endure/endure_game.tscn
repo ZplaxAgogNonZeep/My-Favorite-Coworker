@@ -33,12 +33,11 @@ animations = [{
 [node name="EndureGame" type="Node2D" node_paths=PackedStringArray("_label")]
 script = ExtResource("1_vscop")
 incrementFrequency = 1.0
-gameDuration = 5
-mashMax = 40
-mashGoalMin = 15
-mashGoalMax = 25
-decreaseFrequency = 0.5
-decreaseAmount = 1
+gameDuration = 7
+_mashMax = 40
+_goalSizes = Array[int]([10, 9, 7, 4])
+decreaseFrequency = 0.1
+decreaseAmount = 2
 joyIncrement = 50
 _connectedStat = 1
 statIncrement = 2

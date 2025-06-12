@@ -5,9 +5,8 @@ var implements = [Interface.MiniGame]
 @export_category("Game Values")
 @export var incrementFrequency : float
 @export var gameDuration : int
-@export var mashMax : int
-@export var mashGoalMin : int
-@export var mashGoalMax : int
+@export var _mashMax : int
+@export var _goalSizes : Array[int]
 @export var decreaseFrequency : float
 @export var decreaseAmount : int
 
@@ -21,8 +20,12 @@ func _process(delta):
 
 func startGame(pet : Node2D, playMenu : Node2D):
 	super(pet, playMenu)
+	
+	randomize()
+	var goal = randi_range(5, _mashMax - (_goalSizes[_difficulty] * 2))
+	$MashMeter.initializeMeter(_mashMax, goal, goal + _goalSizes[_difficulty], 5)
+	
 	$PseudoPet.sprite.play("Quirk")
-	$MashMeter.initializeMeter(mashMax, mashGoalMin, mashGoalMax, 5)
 	updateGameText("GET READY")
 	$Timer.start(incrementFrequency)
 	gameRunning = true
@@ -32,7 +35,7 @@ func takeInput(input : Enums.DeviceButton):
 	if gameRunning and mashMode:
 			match input:
 				Enums.DeviceButton.CENTER_BUTTON:
-					$MashMeter.addToValue(1)
+					$MashMeter.addToValue(2)
 					$PseudoPet.hop()
 					#updateMashBar(mashAmount, mashMax)
 

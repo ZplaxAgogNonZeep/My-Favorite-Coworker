@@ -65,6 +65,12 @@ func onWin():
 func onLose():
 	print("LOSE")
 	SfxManager.incrementMusic(0)
+	if (_connectedStat == StatToIncrement.RANDOM):
+		randomize()
+		var statToIncrease = randi_range(0,3)
+		connectedPet.receivePlay(joyIncrement, statToIncrease, 1)
+	else:
+		connectedPet.receivePlay(joyIncrement, _connectedStat, 1)
 	if (SfxManager.isPlayingMusic()):
 		await SfxManager.MusicFinished
 	else:

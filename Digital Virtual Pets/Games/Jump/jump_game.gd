@@ -10,7 +10,7 @@ var implements = [Interface.MiniGame]
 @export_category("Game Values")
 @export var speed : int
 @export var jumpDuration : float
-@export var repetitionRange : Vector2
+@export var repetitionRanges : Array[Vector2i]
 
 var reptetitions : int
 var isJump : bool
@@ -30,6 +30,7 @@ func _process(delta):
 
 func startGame(pet : Node2D, playMenu : Node2D):
 	super(pet, playMenu)
+	
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
 	speed *= Settings.gameScale
@@ -39,7 +40,8 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	background.speed = speed
 	
 	randomize()
-	reptetitions = randi_range(repetitionRange.x, repetitionRange.y)
+	reptetitions = randi_range(repetitionRanges[_difficulty].x, repetitionRanges[_difficulty].y) - 1
+	print(reptetitions - 1)
 	
 	updateGameText("JUMP")
 

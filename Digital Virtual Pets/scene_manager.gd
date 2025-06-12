@@ -18,7 +18,7 @@ class DataSaver extends SaveData.DataSaver:
 var _windowPosition : Vector2
 var _firstTimeOpened := true
 
-var _recordingMode := false
+var _recordingMode := false ## DEBUG ONLY. Hard Coded variable that makes getting gameplay footage easier
 
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)

@@ -4,14 +4,15 @@ var implements = [Interface.MiniGame]
 
 
 @export_category("Game Values")
-@export var gameDuration : float
-@export var mashGoal : int
-@export var mashGoalMax : int
-@export var mashMax : int
+@export var _gameDuration : float
+#@export var mashGoal : int
+#@export var mashGoalMax : int
+@export var _mashMax : int
+@export var _mashGoalSizes : Array[int]
+@export var _meterSizes : Array[int]
 @export var decreaseFrequency : float
 @export var decreaseAmount : int
-@export var mashMeter : Node2D
-
+@export var mashMeter : MashMeter
 
 var mashAmount : int = 0
 var gameIteration : int = 3
@@ -27,11 +28,16 @@ func _process(delta):
 		mashMeter.addToValue(decreaseAmount * _dir)
 		$MashDecrease.start(decreaseFrequency)
 
+
 func startGame(pet : Node2D, playMenu : Node2D):
 	super(pet, playMenu)
+	
+	randomize()
+	var goal = randi_range(_meterSizes[_difficulty], _mashMax-_mashGoalSizes[_difficulty])
+	mashMeter.initializeMeter(_mashMax, goal, goal + _mashGoalSizes[_difficulty], _meterSizes[_difficulty])
+	
 	$PseudoPet.sprite.play("Quirk")
 	updateGameText("3")
-	mashMeter.initializeMeter(mashMax, mashGoal, mashGoalMax, 5)
 	$Timer.start(1)
 	gameRunning = true
 
@@ -70,10 +76,11 @@ func _on_timer_timeout():
 		gameIteration -= 1
 		updateGameText("PREPARE!")
 		$PseudoPet.sprite.play("Idle")
-		$Timer.start(gameDuration)
+		$Timer.start(_gameDuration)
 		mashMode = true
 	else:
 		if (gameRunning):
+			gameRunning = false
 			onLose()
 		#if mashAmount >= mashGoal:
 			#onWin()

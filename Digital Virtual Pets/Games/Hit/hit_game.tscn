@@ -37,10 +37,10 @@ animations = [{
 
 [node name="HitGame" type="Node2D" node_paths=PackedStringArray("mashMeter", "_label")]
 script = ExtResource("1_kx0il")
-gameDuration = 5.0
-mashGoal = 17
-mashGoalMax = 25
-mashMax = 35
+_gameDuration = 5.0
+_mashMax = 35
+_mashGoalSizes = Array[int]([8, 7, 6, 5])
+_meterSizes = Array[int]([7, 5, 3, 2])
 decreaseFrequency = 0.1
 decreaseAmount = 2
 mashMeter = NodePath("MashMeter")

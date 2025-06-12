@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name MashMeter
+
 var implements = []
 
 @export var _indicatorMeter : Meter

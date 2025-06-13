@@ -4,10 +4,9 @@ var implements = [Interface.MiniGame]
 
 
 @export var gameTimerRange : Vector2
-@export var catchWindowDuration : float
+@export var catchWindowDurations : Array[float]
 
 var isCatchWindow : bool
-var catchWindowTimer : SceneTreeTimer
 
 func startGame(pet : Node2D, playMenu : Node2D):
 	super(pet, playMenu)
@@ -47,9 +46,13 @@ func takeInput(input : Enums.DeviceButton):
 
 func _on_timer_timeout():
 	if gameRunning:
-		isCatchWindow = true
-		updateGameText("FISH")
-		$FishingRod.play("Active")
-		$CatchWindow.start(catchWindowDuration)
+		if (!isCatchWindow):
+			isCatchWindow = true
+			updateGameText("FISH")
+			$FishingRod.play("Active")
+			$Timer.start(catchWindowDurations[_difficulty])
+		else:
+			onLose()
+		
 
 #endregion

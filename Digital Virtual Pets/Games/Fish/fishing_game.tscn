@@ -59,7 +59,6 @@ script = ExtResource("1_iowcp")
 gameTimerRange = Vector2(1, 5)
 catchWindowDurations = Array[float]([4.0, 2.0, 1.0, 0.5])
 _overrideDifficulty = 3
-_useOverride = true
 joyIncrement = 50
 _connectedStat = 3
 statIncrement = 2

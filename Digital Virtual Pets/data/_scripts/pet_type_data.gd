@@ -83,6 +83,7 @@ func getNextEvolution(pet : Pet) -> Resource:
 
 func getSpriteIcon() -> Texture2D:
 	return spriteFrames.get_frame_texture("Idle", 0)
+	
 
 
 func getSpriteOffset() -> float:

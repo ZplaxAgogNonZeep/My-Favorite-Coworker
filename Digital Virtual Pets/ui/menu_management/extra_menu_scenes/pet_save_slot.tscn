@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bixuqptw12pi3"]
+[gd_scene load_steps=3 format=3 uid="uid://bixuqptw12pi3"]
 
-[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/_pets/stage1/bug.png" id="1_8ivp1"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_dboo3"]
 [ext_resource type="Script" uid="uid://g2136u4ru8i" path="res://ui/menu_management/extra_menu_scenes/pet_slot_button.gd" id="2_c0giu"]
 
@@ -19,7 +18,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_8ivp1")
+expand_mode = 3
 stretch_mode = 5
 
 [node name="Name" type="Label" parent="."]
@@ -42,18 +41,25 @@ text = "Age: 99d 99 h 99 m"
 vertical_alignment = 1
 
 [node name="Delete" type="Button" parent="."]
-layout_mode = 0
-offset_left = 360.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
 offset_top = 8.0
-offset_right = 392.0
+offset_right = -8.0
 offset_bottom = 40.0
+grow_horizontal = 0
 theme_type_variation = &"closeButton"
 
 [node name="NewPetSlot" type="Button" parent="."]
 visible = false
-layout_mode = 0
-offset_right = 400.0
-offset_bottom = 48.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_type_variation = &"MenuIcon"
 
 [node name="Label" type="Label" parent="NewPetSlot"]

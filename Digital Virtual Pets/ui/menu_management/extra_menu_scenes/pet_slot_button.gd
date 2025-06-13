@@ -12,7 +12,14 @@ func loadPetData(petData, slotIndex : int):
 	else:
 		index = slotIndex
 		$Name.text = petData["petResource"].name
-		$Icon.texture = petData["petResource"].getSpriteIcon()
+		var tex = CanvasTexture.new()
+		var tex2 = ImageTexture.new()
+		tex2.set_image(petData["petResource"].getSpriteIcon().get_image())
+		tex.diffuse_texture = tex2
+		tex.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+		
+		$Icon.texture = tex
+
 		var array = Lifespan.convertLifespanToAge(petData.age)
 		$Age.text = ("Age: " + str(int(array[0])) + "d " + 
 								str(int(array[1])) + "h " + 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=18 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://pgduvqcn5xmc" path="res://ui/system_dialog/dialog_manager.gd" id="8_gowt0"]
 [ext_resource type="Resource" uid="uid://ch3ydi5db33sh" path="res://data/sound_grouping/mouse_up.tres" id="8_vxl1k"]
 [ext_resource type="PackedScene" uid="uid://2qk3ms7yua0r" path="res://ui/system_dialog/dialog_window.tscn" id="10_7o31v"]
+[ext_resource type="PackedScene" uid="uid://ceixawk4uie76" path="res://ui/menu_management/menus/credits_menu.tscn" id="10_takr5"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 [ext_resource type="Texture2D" uid="uid://8weye87u08i2" path="res://assets/art/aesprite/device/device_shadow.png" id="14_vxl1k"]
 
@@ -129,7 +130,7 @@ controller = NodePath("../..")
 _mouseDownSFX = ExtResource("7_takr5")
 _mouseUpSFX = ExtResource("8_vxl1k")
 _menuMode = 1
-_menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu")]
+_menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu"), NodePath("Credits")]
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
@@ -164,6 +165,9 @@ offset_left = 336.0
 offset_top = 312.0
 offset_right = 336.0
 offset_bottom = 312.0
+
+[node name="Credits" parent="SystemUI/MenuManager" instance=ExtResource("10_takr5")]
+visible = false
 
 [node name="SystemDialog" type="CanvasLayer" parent="."]
 layer = 2

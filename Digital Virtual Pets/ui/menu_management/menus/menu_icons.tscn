@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqs2mr65skd0q"]
+[gd_scene load_steps=10 format=3 uid="uid://cqs2mr65skd0q"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_pegra"]
 [ext_resource type="Script" uid="uid://ctmbnikaduj2l" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_l7d3t"]
 [ext_resource type="Texture2D" uid="uid://kwo0yao3dmsu" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_egg.png" id="5_xwarh"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="6_xwarh"]
+[ext_resource type="Texture2D" uid="uid://4msb6gmdndxl" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_encyclopedia.png" id="7_g5diw"]
+[ext_resource type="Texture2D" uid="uid://cdgm6c6nifqce" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_credits.png" id="8_erflu"]
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "_window", "animator")]
 modulate = Color(1, 1, 1, -1.19209e-07)
@@ -40,23 +42,17 @@ script = ExtResource("4_l7d3t")
 _canvas = NodePath("MenuWindow")
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-offset_right = 173.0
+offset_right = 334.0
 offset_bottom = 120.0
-grow_horizontal = 2
-grow_vertical = 0
 pivot_offset = Vector2(86, 68)
 
 [node name="Options" type="Button" parent="Window/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -167.0
+offset_left = 6.0
 offset_top = 22.0
-offset_right = -88.0
+offset_right = 85.0
 offset_bottom = 114.0
-grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"MenuIcon"
 icon = ExtResource("4_drrht")
@@ -77,49 +73,13 @@ theme_type_variation = &"HeaderSmall"
 text = "Options"
 horizontal_alignment = 1
 
-[node name="Window" type="Button" parent="Window/MenuWindow"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -68.0
-offset_top = 24.0
-offset_right = -4.0
-offset_bottom = 88.0
-grow_horizontal = 2
-focus_mode = 0
-theme_type_variation = &"MenuIcon"
-disabled = true
-text = "Win"
-
-[node name="Audio" type="Button" parent="Window/MenuWindow"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 4.0
-offset_top = 24.0
-offset_right = 68.0
-offset_bottom = 88.0
-grow_horizontal = 2
-focus_mode = 0
-theme_type_variation = &"MenuIcon"
-disabled = true
-text = "Aud"
-
 [node name="Pet" type="Button" parent="Window/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -85.0
+offset_left = 87.0
 offset_top = 22.0
-offset_right = -6.0
+offset_right = 166.0
 offset_bottom = 114.0
-grow_horizontal = 0
 focus_mode = 0
 theme_type_variation = &"MenuIcon"
 icon = ExtResource("5_xwarh")
@@ -138,6 +98,65 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_type_variation = &"HeaderSmall"
 text = "Pet Data"
+horizontal_alignment = 1
+
+[node name="Encyclopedia" type="Button" parent="Window/MenuWindow"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 168.0
+offset_top = 22.0
+offset_right = 247.0
+offset_bottom = 114.0
+focus_mode = 0
+theme_type_variation = &"MenuIcon"
+disabled = true
+icon = ExtResource("7_g5diw")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Window/MenuWindow/Encyclopedia"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Encyclopedia"
+horizontal_alignment = 1
+
+[node name="Credits" type="Button" parent="Window/MenuWindow"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -85.0
+offset_top = 22.0
+offset_right = -6.0
+offset_bottom = 114.0
+grow_horizontal = 0
+focus_mode = 0
+theme_type_variation = &"MenuIcon"
+icon = ExtResource("8_erflu")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Window/MenuWindow/Credits"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Credits"
 horizontal_alignment = 1
 
 [node name="Close" type="Button" parent="Window/MenuWindow"]
@@ -168,15 +187,15 @@ text = "menu_manager.exe"
 [connection signal="button_down" from="Window/MenuWindow/Options" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/MenuWindow/Options" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/Options" to="." method="_onOptionsButton"]
-[connection signal="button_down" from="Window/MenuWindow/Window" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Window" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Window" to="." method="_onWindowButton"]
-[connection signal="button_down" from="Window/MenuWindow/Audio" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Audio" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Audio" to="." method="_onAudioButton"]
 [connection signal="button_down" from="Window/MenuWindow/Pet" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/MenuWindow/Pet" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/Pet" to="." method="_onPetButton"]
+[connection signal="button_down" from="Window/MenuWindow/Encyclopedia" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Encyclopedia" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/MenuWindow/Encyclopedia" to="." method="_onEncyclopediaButton"]
+[connection signal="button_down" from="Window/MenuWindow/Credits" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Credits" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/MenuWindow/Credits" to="." method="_onCreditsButton"]
 [connection signal="button_down" from="Window/MenuWindow/Close" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/MenuWindow/Close" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/MenuWindow/Close" to="." method="_onCloseButton"]

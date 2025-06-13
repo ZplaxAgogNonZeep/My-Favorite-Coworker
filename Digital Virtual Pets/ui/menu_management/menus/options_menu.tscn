@@ -35,6 +35,7 @@ libraries = {
 
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
+title = "config.exe"
 size = Vector2i(400, 231)
 visible = false
 borderless = true
@@ -44,10 +45,8 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-modulate = Color(1, 1, 1, 0)
 offset_right = 400.0
 offset_bottom = 230.9
-scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(200, 121)
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true

@@ -41,7 +41,6 @@ func openMenu(direct := false):
 	if (_window != null):
 		_window.visible = true
 	await animator.animation_finished
-	print("doot")
 
 
 func closeMenu():

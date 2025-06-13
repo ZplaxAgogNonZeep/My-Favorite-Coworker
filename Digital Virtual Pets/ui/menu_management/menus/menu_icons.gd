@@ -11,12 +11,12 @@ func _onOptionsButton():
 	ChangeMenu.emit(1)
 
 
-func _onWindowButton():
+func _onEncyclopediaButton():
 	pass
 
 
-func _onAudioButton():
-	pass
+func _onCreditsButton():
+	ChangeMenu.emit(3)
 
 
 func _onPetButton():

@@ -1,0 +1,374 @@
+[gd_scene load_steps=8 format=3 uid="uid://3v0b2cwbtgpq"]
+
+[ext_resource type="Script" uid="uid://dupp25t1joiah" path="res://ui/menu_management/menus/encyclopedia_menu.gd" id="1_sik5p"]
+[ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="2_hvdq5"]
+[ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="3_8o6ii"]
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="4_xa678"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_7gjff"]
+[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/_pets/stage1/bug.png" id="6_w4ghv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cqi4c"]
+diffuse_texture = ExtResource("6_w4ghv")
+texture_filter = 1
+
+[node name="EncyclopediaMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sik5p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"pop_up_window_animations": ExtResource("2_hvdq5")
+}
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+position = Vector2i(0, 36)
+size = Vector2i(590, 400)
+borderless = true
+transparent = true
+script = ExtResource("3_8o6ii")
+
+[node name="MenuWindow" type="Panel" parent="Window"]
+offset_right = 413.0
+offset_bottom = 295.0
+theme = ExtResource("4_xa678")
+theme_type_variation = &"ClosedPanel"
+
+[node name="Button" type="Button" parent="Window/MenuWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_type_variation = &"CloseButton"
+icon = ExtResource("5_7gjff")
+icon_alignment = 1
+
+[node name="WindowName" type="Label" parent="Window/MenuWindow"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 20.0
+theme_type_variation = &"HeaderSmall"
+text = "encylopedia.exe"
+
+[node name="EvolutionChart" type="Panel" parent="Window/MenuWindow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -219.0
+offset_top = 42.0
+offset_right = -3.0
+offset_bottom = 289.0
+grow_horizontal = 0
+theme_type_variation = &"SubPanel"
+
+[node name="VScrollBar" type="VScrollBar" parent="Window/MenuWindow/EvolutionChart"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.986
+anchor_top = 0.014
+anchor_right = 0.986
+anchor_bottom = 0.986
+offset_left = -16.018
+offset_top = -0.052
+offset_right = -0.0180054
+offset_bottom = 0.0799713
+pivot_offset = Vector2(16, 0.0139999)
+page = 100.0
+
+[node name="Title" type="Label" parent="Window/MenuWindow/EvolutionChart"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.009
+anchor_top = 0.005
+anchor_right = 0.991
+anchor_bottom = 0.005
+offset_left = 0.0559999
+offset_top = -26.09
+offset_right = -0.056015
+offset_bottom = -0.09
+theme_type_variation = &"HeaderLarge"
+text = "Known Evolutions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChartContent" type="Control" parent="Window/MenuWindow/EvolutionChart"]
+layout_mode = 1
+anchor_left = 0.014
+anchor_top = 0.012
+anchor_right = 0.903
+anchor_bottom = 0.988
+offset_left = -0.0240002
+offset_top = 0.036
+offset_right = -0.0480194
+offset_bottom = -0.0360107
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EggCat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+layout_mode = 1
+offset_right = 47.0
+offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderSmall"
+text = "Egg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 52.0
+offset_right = 36.0
+offset_bottom = 76.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Marker2D" type="Marker2D" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat/Button"]
+
+[node name="Stage1Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 47.0
+offset_right = 94.0
+offset_bottom = 22.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage1Cat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stage 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage1Cat"]
+offset_left = 11.5
+offset_top = 52.0
+offset_right = 35.5
+offset_bottom = 76.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Stage2Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 94.0
+offset_right = 141.0
+offset_bottom = 22.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stage 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
+offset_left = 11.5
+offset_top = 41.0
+offset_right = 35.5
+offset_bottom = 65.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
+offset_left = 11.5
+offset_top = 69.0
+offset_right = 35.5
+offset_bottom = 93.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Stage3Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 141.0
+offset_right = 188.0
+offset_bottom = 22.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderSmall"
+text = "Stage 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+offset_left = 11.5
+offset_top = 27.0
+offset_right = 35.5
+offset_bottom = 51.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+offset_left = 11.5
+offset_top = 55.0
+offset_right = 35.5
+offset_bottom = 79.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+offset_left = 11.5
+offset_top = 84.0
+offset_right = 35.5
+offset_bottom = 108.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(0, -1)
+points = PackedVector2Array(36, 65, 59, 65)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(47, 0)
+points = PackedVector2Array(36, 65, 59, 53)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D3" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(47, 0)
+points = PackedVector2Array(36, 65, 59, 81)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D4" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(94, -12)
+points = PackedVector2Array(36, 65, 59, 51)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D5" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(94, -12)
+points = PackedVector2Array(36, 65, 59, 78)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D6" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(94, 16)
+points = PackedVector2Array(36, 65, 59, 78)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D7" type="Line2D" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+position = Vector2(94, 16)
+points = PackedVector2Array(36, 65, 59, 51)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Bio" type="Control" parent="Window/MenuWindow"]
+layout_mode = 1
+anchor_right = 0.454
+offset_left = 2.0
+offset_top = 16.35
+offset_right = -0.146011
+offset_bottom = 259.35
+
+[node name="Picture" type="Panel" parent="Window/MenuWindow/Bio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_type_variation = &"SubPanel"
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Window/MenuWindow/Bio/Picture"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.041
+anchor_right = 0.962
+anchor_bottom = 0.96
+offset_left = 0.96
+offset_top = -2.116
+offset_right = -0.960007
+offset_bottom = -0.879005
+texture = SubResource("CanvasTexture_cqi4c")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Title" type="Label" parent="Window/MenuWindow/Bio"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_right = -0.362
+offset_bottom = 27.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Bio"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="Window/MenuWindow/Bio"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -8.5
+offset_right = -5.362
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeaderMedium"
+text = "Buh"
+horizontal_alignment = 1
+
+[node name="Entry" type="Label" parent="Window/MenuWindow/Bio"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_left = 14.0
+offset_top = 135.0
+offset_right = -10.362
+offset_bottom = 251.0
+theme_type_variation = &"ParagraphText"
+text = "When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence."
+autowrap_mode = 3
+
+[connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
+[connection signal="button_down" from="Window/MenuWindow/Button" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/MenuWindow/Button" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/MenuWindow/Button" to="." method="_onExit"]

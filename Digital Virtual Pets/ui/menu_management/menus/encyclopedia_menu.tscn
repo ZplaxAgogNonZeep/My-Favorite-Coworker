@@ -11,7 +11,7 @@
 diffuse_texture = ExtResource("6_w4ghv")
 texture_filter = 1
 
-[node name="EncyclopediaMenu" type="Control"]
+[node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_window", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,23 +19,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sik5p")
+_window = NodePath("Window")
+animator = NodePath("AnimationPlayer")
+_animationLibrary = "pop_up_window_animations"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"pop_up_window_animations": ExtResource("2_hvdq5")
 }
 
-[node name="Window" type="Window" parent="."]
+[node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
+title = "encyclopedia.exe"
 position = Vector2i(0, 36)
 size = Vector2i(590, 400)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_8o6ii")
+_canvas = NodePath("MenuWindow")
+_windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 offset_right = 413.0
 offset_bottom = 295.0
+pivot_offset = Vector2(204, 149)
 theme = ExtResource("4_xa678")
 theme_type_variation = &"ClosedPanel"
 
@@ -143,7 +151,13 @@ offset_bottom = 76.0
 icon = ExtResource("6_w4ghv")
 icon_alignment = 1
 
-[node name="Marker2D" type="Marker2D" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat/Button"]
+[node name="RightMarker" type="Marker2D" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat/Button"]
+position = Vector2(24, 12)
+gizmo_extents = 2.0
+
+[node name="LeftMarker" type="Marker2D" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat/Button"]
+position = Vector2(1, 12)
+gizmo_extents = 2.0
 
 [node name="Stage1Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
 anchors_preset = 0

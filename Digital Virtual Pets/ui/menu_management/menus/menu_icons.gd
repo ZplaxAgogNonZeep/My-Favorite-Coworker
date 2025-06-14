@@ -12,7 +12,7 @@ func _onOptionsButton():
 
 
 func _onEncyclopediaButton():
-	pass
+	ChangeMenu.emit(4)
 
 
 func _onCreditsButton():

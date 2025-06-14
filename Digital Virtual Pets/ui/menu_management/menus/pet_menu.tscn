@@ -32,6 +32,7 @@ libraries = {
 transparent_bg = true
 title = "pet_data_manager.exe"
 size = Vector2i(1260, 810)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("5_4b6c8")

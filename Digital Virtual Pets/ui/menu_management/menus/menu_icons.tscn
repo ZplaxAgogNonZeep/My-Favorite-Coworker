@@ -109,7 +109,6 @@ offset_right = 247.0
 offset_bottom = 114.0
 focus_mode = 0
 theme_type_variation = &"MenuIcon"
-disabled = true
 icon = ExtResource("7_g5diw")
 icon_alignment = 1
 vertical_icon_alignment = 0

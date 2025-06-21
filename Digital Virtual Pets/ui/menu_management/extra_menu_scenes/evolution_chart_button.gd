@@ -5,3 +5,6 @@ extends Button
 
 func getTrueSize() -> Vector2:
 	return size + Vector2(0,$Name.size)
+
+func setName(petName : String) -> void:
+	$Name.text = petName

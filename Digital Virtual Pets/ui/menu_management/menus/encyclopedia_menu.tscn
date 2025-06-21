@@ -203,67 +203,8 @@ _petIconScene = ExtResource("8_w4ghv")
 _nodeSpacing = Vector2(55, 10)
 _horizontalSpacer = 10.0
 
-[node name="Chart" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer"]
-custom_minimum_size = Vector2(192, 126.37)
-layout_mode = 2
-
-[node name="ChartButton" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 10.0
-offset_top = 43.0
-offset_right = 42.0
-offset_bottom = 75.0
-
-[node name="ChartButton3" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 65.0
-offset_top = 43.0
-offset_right = 97.0
-offset_bottom = 75.0
-
-[node name="ChartButton4" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 120.0
-offset_top = 69.0
-offset_right = 152.0
-offset_bottom = 101.0
-
-[node name="ChartButton6" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 120.0
-offset_top = 17.0
-offset_right = 152.0
-offset_bottom = 49.0
-
-[node name="ChartButton5" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 85.0
-offset_right = 207.0
-offset_bottom = 117.0
-
-[node name="ChartButton7" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 43.0
-offset_right = 207.0
-offset_bottom = 75.0
-
-[node name="ChartButton8" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 1.0
-offset_right = 207.0
-offset_bottom = 33.0
-
 [node name="ScrollContainer" type="ScrollContainer" parent="Window/MenuWindow/EvolutionChart"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -271,6 +212,66 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
+
+[node name="Chart" type="Control" parent="Window/MenuWindow/EvolutionChart/ScrollContainer"]
+custom_minimum_size = Vector2(0, 124)
+layout_mode = 2
+
+[node name="ChartButton" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 46.0
+offset_right = 42.0
+offset_bottom = 78.0
+
+[node name="ChartButton3" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 65.0
+offset_top = 43.0
+offset_right = 97.0
+offset_bottom = 75.0
+
+[node name="ChartButton4" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 69.0
+offset_right = 152.0
+offset_bottom = 101.0
+
+[node name="ChartButton6" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 120.0
+offset_top = 17.0
+offset_right = 152.0
+offset_bottom = 49.0
+
+[node name="ChartButton5" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 175.0
+offset_top = 85.0
+offset_right = 207.0
+offset_bottom = 117.0
+
+[node name="ChartButton7" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 175.0
+offset_top = 43.0
+offset_right = 207.0
+offset_bottom = 75.0
+
+[node name="ChartButton8" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 175.0
+offset_top = 1.0
+offset_right = 207.0
+offset_bottom = 33.0
 
 [node name="Bio" type="Control" parent="Window/MenuWindow"]
 layout_mode = 1

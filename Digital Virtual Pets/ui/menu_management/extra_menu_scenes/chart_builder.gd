@@ -32,12 +32,10 @@ func _generateTree(eggData : PetTypeData) -> void:
 	stages[0].append(eggData)
 	var currentPet := eggData
 	_r_generateTree(eggData, stages)
-	print(stages, "\n------------------------------")
 	
 	# Define the actual positions for each node in the tree
 	var stageCount = 0
 	for stage in stages:
-		print("stage ", stageCount)
 		# Make a nulled out list that will mirror the stage variable
 		for pet in stage:
 			nodePositions[stageCount].append(Vector2.ZERO)
@@ -55,19 +53,21 @@ func _generateTree(eggData : PetTypeData) -> void:
 		var currentIndex = startingIndex
 		var count = 0
 		while count < stage.size():
-			
+			# Loop through each pet in a stage and determine it's position
 			var newPosn = Vector2.ZERO
 			var distanceFromStart : int
 			var dir = 1
+			# Check which part of the list we're in and thus what direction the position goes in
+			# and how far we are from the origin point
 			if currentIndex >= startingIndex:
 				distanceFromStart = currentIndex - startingIndex
 				if (distanceFromStart == 0 and isEven):
 					distanceFromStart = 1
-				dir *= -1
 			else:
 				distanceFromStart = startingIndex - currentIndex
+				dir *= -1
 			
-			
+			# If the current index is whithin the array, we proceed, otherwise we set it to zero
 			if currentIndex < stage.size():
 				print(currentIndex)
 				newPosn.x = (_nodeSpacing.x * stage[currentIndex].stage) + _horizontalSpacer
@@ -85,6 +85,40 @@ func _generateTree(eggData : PetTypeData) -> void:
 		stageCount += 1
 	
 	print(nodePositions)
+	# Time to start creating nodes and building them
+	var container : Control = Control.new()
+	var height = nodePositions[0][0].y + _nodeSpacing.y + 32
+	
+	# first we need to establish a minimum y size by finding the highest column in the tree
+	for stage in nodePositions:
+		if stage.size() > 1:
+			var spacingTotal = _nodeSpacing.y * stage.size()
+			if (abs(stage[0].y) + abs(stage[stage.size() - 1].y) + _nodeSpacing.y > height):
+				height = abs(stage[0].y) + abs(stage[stage.size() - 1].y) + _nodeSpacing.y
+	
+	container.custom_minimum_size.y = height
+	
+	# Now we go through every pet, create a button for it, give it all the appropriate details
+	# and offset it accordingly
+	for stageIndex in range(stages.size()):
+		for petIndex in range(stages[stageIndex].size()):
+			var newNode = _petIconScene.instantiate()
+			# Set Icon
+			var tex = CanvasTexture.new()
+			var tex2 = ImageTexture.new()
+			tex2.set_image(stages[stageIndex][petIndex].getSpriteIcon().get_image())
+			tex.diffuse_texture = tex2
+			tex.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+			newNode.icon = tex
+			
+			newNode.setName(stages[stageIndex][petIndex].name)
+			
+			newNode.position = (Vector2(0, container.custom_minimum_size.y * .5) + 
+								nodePositions[stageIndex][petIndex])
+			
+			container.call_deferred("add_child", newNode)
+	
+	call_deferred("add_child", container)
 
 
 ## A Recursive function that takes [param petData] and a running array, [param stages], then uses

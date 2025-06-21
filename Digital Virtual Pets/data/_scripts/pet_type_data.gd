@@ -83,7 +83,6 @@ func getNextEvolution(pet : Pet) -> Resource:
 
 func getSpriteIcon() -> Texture2D:
 	return spriteFrames.get_frame_texture("Idle", 0)
-	
 
 
 func getSpriteOffset() -> float:
@@ -92,3 +91,6 @@ func getSpriteOffset() -> float:
 
 func getCollisionOffset() -> float:
 	return COLLISION_OFFSETS[stage]
+
+func _to_string() -> String:
+	return name

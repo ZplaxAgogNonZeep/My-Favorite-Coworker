@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3v0b2cwbtgpq"]
+[gd_scene load_steps=13 format=3 uid="uid://3v0b2cwbtgpq"]
 
 [ext_resource type="Script" uid="uid://dupp25t1joiah" path="res://ui/menu_management/menus/encyclopedia_menu.gd" id="1_sik5p"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="2_hvdq5"]
@@ -8,7 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/_pets/stage1/bug.png" id="6_w4ghv"]
 [ext_resource type="Script" uid="uid://do2eadn15gltm" path="res://ui/menu_management/extra_menu_scenes/chart_builder.gd" id="6_xa678"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="7_7gjff"]
+[ext_resource type="Texture2D" uid="uid://cmo5v4dknvnnk" path="res://assets/art/aesprite/_pets/stage2/buh_buh.png" id="8_7gjff"]
 [ext_resource type="PackedScene" uid="uid://dom65pjl6c41m" path="res://ui/menu_management/extra_menu_scenes/evolution_chart_button.tscn" id="8_w4ghv"]
+[ext_resource type="Texture2D" uid="uid://dvw77eslx4ym7" path="res://assets/art/aesprite/_pets/stage3/HeRohBuh.png" id="9_w4ghv"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cqi4c"]
 diffuse_texture = ExtResource("6_w4ghv")
@@ -43,7 +45,7 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-offset_right = 479.0
+offset_right = 413.0
 offset_bottom = 295.0
 pivot_offset = Vector2(204, 149)
 theme = ExtResource("4_xa678")
@@ -72,17 +74,20 @@ offset_bottom = 20.0
 theme_type_variation = &"HeaderSmall"
 text = "encylopedia.exe"
 
-[node name="EvolutionChart" type="Panel" parent="Window/MenuWindow"]
+[node name="EvolutionChart" type="Panel" parent="Window/MenuWindow" node_paths=PackedStringArray("_categories")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -248.0
+offset_left = -219.0
 offset_top = 42.0
 offset_right = -3.0
 offset_bottom = 289.0
 grow_horizontal = 0
 theme_type_variation = &"SubPanel"
+script = ExtResource("6_xa678")
+_testResource = ExtResource("7_7gjff")
+_categories = [NodePath("ChartContent/EggCat"), NodePath("ChartContent/Stage1Cat"), NodePath("ChartContent/Stage2Cat"), NodePath("ChartContent/Stage3Cat")]
 
 [node name="VScrollBar" type="VScrollBar" parent="Window/MenuWindow/EvolutionChart"]
 layout_mode = 1
@@ -127,19 +132,17 @@ offset_bottom = -0.0360107
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CategoryLabels" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+[node name="EggCat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
 layout_mode = 1
 anchors_preset = 0
 offset_right = 47.0
 offset_bottom = 22.0
 
-[node name="EggCat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HeaderSmall"
@@ -147,13 +150,25 @@ text = "Egg"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage1Cat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/EggCat" instance=ExtResource("8_w4ghv")]
+layout_mode = 0
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 59.0
+offset_right = 44.0
+offset_bottom = 91.0
+
+[node name="Stage1Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 47.0
+offset_right = 94.0
+offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage1Cat"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
-offset_right = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HeaderSmall"
@@ -161,13 +176,26 @@ text = "Stage 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage2Cat2" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage1Cat"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 60.0
+offset_right = 43.0
+offset_bottom = 92.0
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+
+[node name="Stage2Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 94.0
+offset_right = 141.0
+offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 111.0
-offset_right = 115.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HeaderSmall"
@@ -175,13 +203,36 @@ text = "Stage 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage3Cat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 4.618
-offset_left = 166.0
-offset_right = -0.0460052
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 41.0
+offset_right = 41.0
+offset_bottom = 73.0
+icon = ExtResource("8_7gjff")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage2Cat"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 79.0
+offset_right = 41.0
+offset_bottom = 111.0
+icon = ExtResource("8_7gjff")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="Stage3Cat" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+anchors_preset = 0
+offset_left = 141.0
+offset_right = 188.0
 offset_bottom = 22.0
+
+[node name="Label" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HeaderSmall"
@@ -189,79 +240,84 @@ text = "Stage 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+[node name="Button" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 21.0
+offset_right = 44.0
+offset_bottom = 53.0
+icon = ExtResource("9_w4ghv")
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 58.0
+offset_right = 44.0
+offset_bottom = 90.0
+icon = ExtResource("9_w4ghv")
+icon_alignment = 1
+
+[node name="Button3" type="Button" parent="Window/MenuWindow/EvolutionChart/ChartContent/Stage3Cat"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.018
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 0.298965
-offset_bottom = 240.0
-script = ExtResource("6_xa678")
-_testResource = ExtResource("7_7gjff")
-_petIconScene = ExtResource("8_w4ghv")
-_nodeSpacing = Vector2(55, 10)
-_horizontalSpacer = 10.0
+offset_left = 12.0
+offset_top = 91.85
+offset_right = 44.0
+offset_bottom = 123.85
+icon = ExtResource("6_w4ghv")
+icon_alignment = 1
+vertical_icon_alignment = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Chart" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer"]
-custom_minimum_size = Vector2(192, 126.37)
-layout_mode = 2
-
-[node name="ChartButton" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
+[node name="Lines" type="Control" parent="Window/MenuWindow/EvolutionChart"]
+visible = false
 anchors_preset = 0
-offset_left = 10.0
-offset_top = 43.0
-offset_right = 42.0
-offset_bottom = 75.0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
-[node name="ChartButton3" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 65.0
-offset_top = 43.0
-offset_right = 97.0
-offset_bottom = 75.0
+[node name="Line2D" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(3, 2)
+points = PackedVector2Array(43, 76, 59, 76)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="ChartButton4" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 120.0
-offset_top = 69.0
-offset_right = 152.0
-offset_bottom = 101.0
+[node name="Line2D2" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(50, 3)
+points = PackedVector2Array(36, 71, 59, 53)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="ChartButton6" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 120.0
-offset_top = 17.0
-offset_right = 152.0
-offset_bottom = 49.0
+[node name="Line2D3" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(50, 3)
+points = PackedVector2Array(36, 73, 59, 94)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="ChartButton5" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 85.0
-offset_right = 207.0
-offset_bottom = 117.0
+[node name="Line2D4" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(97, -9)
+points = PackedVector2Array(40, 66, 59, 51)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="ChartButton7" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 43.0
-offset_right = 207.0
-offset_bottom = 75.0
+[node name="Line2D5" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(97, -9)
+points = PackedVector2Array(40, 68, 59, 85)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
-[node name="ChartButton8" parent="Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-anchors_preset = 0
-offset_left = 175.0
-offset_top = 1.0
-offset_right = 207.0
-offset_bottom = 33.0
+[node name="Line2D6" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(97, 19)
+points = PackedVector2Array(40, 78, 59, 95)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D7" type="Line2D" parent="Window/MenuWindow/EvolutionChart/Lines"]
+position = Vector2(97, 19)
+points = PackedVector2Array(40, 76, 59, 57)
+width = 2.0
+default_color = Color(0, 0, 0, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Window/MenuWindow/EvolutionChart"]
 layout_mode = 1

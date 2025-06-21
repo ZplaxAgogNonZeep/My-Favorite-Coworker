@@ -11,6 +11,7 @@ class DataSaver extends SaveData.DataSaver:
 		return "PetManager"
 	var _petSlots
 	var _slotIndex
+	var _encounteredPets
 	
 	func getDataToSave() -> Data:
 		obj.gatherDataFromActivePet()
@@ -38,6 +39,8 @@ var activePet : Pet
 var _petSlots = []
 var _slotIndex : int
 var _boundryDistance : Vector2
+
+var _encounteredPets : Dictionary[String, PetTypeData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,11 +70,13 @@ func spawnPet(index := -1, isNewPet := false):
 	if (index >= MAX_PET_SLOTS):
 		return
 	
+	
 	var newPet = respawnPet.instantiate()
 	newPet.position = petSpawnPoint.position
 	
 	# Load pet data from slots if applicable, otherwise use current slot, all else
 	# fails it will create a brand new one
+	# TODO: Update this for egg selection
 	if (_petSlots.size() <= 0):
 		_petSlots.append({})
 		_slotIndex = 0
@@ -96,6 +101,9 @@ func spawnPet(index := -1, isNewPet := false):
 			_slotIndex = index
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
 		newPet.petResource = petStartResource
+	
+	if !_encounteredPets.has(newPet.petResource.name):
+		_encounterNewPet(newPet.petResource)
 	
 	activePet = newPet
 	activePet.loadResourceData()
@@ -139,6 +147,8 @@ func evolvePet(evolveTarget: PetTypeData):
 
 	# Set new resource and update visual information for it
 	activePet.petResource = evolveTarget
+	if !_encounteredPets.has(activePet.petResource.name):
+		_encounterNewPet(activePet.petResource)
 	activePet.loadResourceData()
 	activePet.petState = Enums.PetState.ROAMING
 	
@@ -232,6 +242,11 @@ func deletePetSlot(index : int, death := false) -> void:
 	
 	
 	SaveData.saveGameToFile()
+
+
+func _encounterNewPet(petData : PetTypeData):
+	#TODO: Probably track achievements or something
+	_encounteredPets[petData.name] = petData
 
 #endregion
 

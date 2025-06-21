@@ -103,6 +103,7 @@ func _generateTree(eggData : PetTypeData) -> void:
 	for stageIndex in range(stages.size()):
 		for petIndex in range(stages[stageIndex].size()):
 			var newNode = _petIconScene.instantiate()
+			newNode.petData = stages[stageIndex][petIndex]
 			# Set Icon
 			var tex = CanvasTexture.new()
 			var tex2 = ImageTexture.new()
@@ -119,8 +120,23 @@ func _generateTree(eggData : PetTypeData) -> void:
 			container.call_deferred("add_child", newNode)
 	
 	call_deferred("add_child", container)
+	
+	# Now to finish we just need to go through each icon and set up the connecting evolution
+	# lines
+	
+	await get_tree().process_frame
+	
+	var children = container.get_children().duplicate(true)
+	for child in children:
+		for evolution in child.petData.evolutions:
+			var newLine = Line2D.new()
+			newLine.default_color = Color.BLACK
+			newLine.width = 2
+			newLine.add_point(child.getLineMarker(true))
+			newLine.add_point(getNodeByResource(container, evolution).getLineMarker(false))
+			container.call_deferred("add_child", newLine)
 
-
+#region Utility Functions
 ## A Recursive function that takes [param petData] and a running array, [param stages], then uses
 ## the linked list within [param petData] and works through it to fill in [param stages].
 func _r_generateTree(petData : PetTypeData, stages : Array[Array]) -> void:
@@ -128,3 +144,14 @@ func _r_generateTree(petData : PetTypeData, stages : Array[Array]) -> void:
 		if (!stages[evolution.stage].has(evolution)):
 			stages[evolution.stage].append(evolution)
 			_r_generateTree(evolution, stages)
+
+
+func getNodeByResource(treeContainer : Control, petData : PetTypeData) -> Control:
+	var children = treeContainer.get_children()
+	
+	for child in children:
+		if child is Button:
+			if (child.petData == petData):
+				return child
+	
+	return null

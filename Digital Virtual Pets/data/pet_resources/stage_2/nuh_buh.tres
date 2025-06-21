@@ -1,6 +1,5 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=7 format=3 uid="uid://b5kj7phmtebca"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://b5kj7phmtebca"]
 
-[ext_resource type="Resource" uid="uid://cxjugw70vu5vs" path="res://data/pet_resources/stage_3/he_ro_buh.tres" id="1_beq67"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_4bqmy"]
 [ext_resource type="Resource" uid="uid://bn7hde2gbjbfd" path="res://data/pet_resources/stage_3/bancho_buh.tres" id="2_cvj57"]
 [ext_resource type="Resource" uid="uid://cvwdxdbov28or" path="res://data/pet_resources/stage_3/nuh_uh_buh.tres" id="2_mc7a4"]
@@ -14,7 +13,7 @@ spriteFrames = ExtResource("3_rstqr")
 yap = ExtResource("4_mphy6")
 stage = 2
 waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([ExtResource("1_beq67"), ExtResource("2_mc7a4"), ExtResource("2_cvj57")])
+evolutions = Array[Resource]([ExtResource("2_mc7a4"), ExtResource("2_cvj57")])
 statConditionOr = false
 evolutionCondition = {
 "BAL": -1,

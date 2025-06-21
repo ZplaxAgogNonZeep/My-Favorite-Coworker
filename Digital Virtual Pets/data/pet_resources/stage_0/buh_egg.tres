@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_8c1qq")
-name = "Egg?"
+name = "Pup Egg"
 spriteFrames = ExtResource("2_flmyc")
 stage = 0
 waitIntervals = Vector2(0, 0)

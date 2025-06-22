@@ -28,6 +28,15 @@ func openMenu(direct := false):
 	_bioParagraph.text = _defaultEntry
 
 
+func closeMenu():
+	super()
+	
+	var count = _evolutionChart.get_child_count() - 1
+	while (count >= 0):
+		_evolutionChart.get_child(count).queue_free()
+		count -= 1
+
+
 func _loadSavedMenuSettings():
 	if (PetManager.instance):
 		_petManager = PetManager.instance

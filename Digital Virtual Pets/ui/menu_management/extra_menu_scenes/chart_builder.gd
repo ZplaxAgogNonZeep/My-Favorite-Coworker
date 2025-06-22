@@ -90,8 +90,8 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 	for stage in nodePositions:
 		if stage.size() > 1:
 			var spacingTotal = _nodeSpacing.y * stage.size()
-			if (abs(stage[0].y) + abs(stage[stage.size() - 1].y) + _nodeSpacing.y > height):
-				height = abs(stage[0].y) + abs(stage[stage.size() - 1].y) + _nodeSpacing.y
+			if (abs(stage[0].y) + abs(stage[stage.size() - 1].y) + (_nodeSpacing.y * stage.size()) + 32 > height):
+				height = abs(stage[0].y) + abs(stage[stage.size() - 1].y) + (_nodeSpacing.y * stage.size()) + 32
 	
 	container.custom_minimum_size.y = height
 	
@@ -121,7 +121,7 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 				newNode.setName(stages[stageIndex][petIndex].name)
 			
 			newNode.position = (Vector2(0, container.custom_minimum_size.y * .5) + 
-								nodePositions[stageIndex][petIndex])
+								nodePositions[stageIndex][petIndex]) - Vector2(0, 16)
 			
 			container.call_deferred("add_child", newNode)
 	

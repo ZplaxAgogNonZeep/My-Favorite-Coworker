@@ -22,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sik5p")
-_evolutionChart = NodePath("Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer")
+_evolutionChart = NodePath("Window/MenuWindow/EvolutionChart/ChartContent/ScrollContainer/VBoxContainer")
 _bioName = NodePath("Window/MenuWindow/Bio/Name")
 _bioIcon = NodePath("Window/MenuWindow/Bio/Picture/TextureRect")
 _bioParagraph = NodePath("Window/MenuWindow/Bio/Entry")
@@ -43,7 +43,6 @@ transparent_bg = true
 title = "encyclopedia.exe"
 position = Vector2i(0, 36)
 size = Vector2i(590, 400)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_8o6ii")
@@ -91,20 +90,6 @@ offset_right = -3.0
 offset_bottom = 289.0
 grow_horizontal = 0
 theme_type_variation = &"SubPanel"
-
-[node name="VScrollBar" type="VScrollBar" parent="Window/MenuWindow/EvolutionChart"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.986
-anchor_top = 0.014
-anchor_right = 0.986
-anchor_bottom = 0.986
-offset_left = -15.976
-offset_top = -0.458
-offset_right = 0.0240021
-offset_bottom = -0.542007
-pivot_offset = Vector2(16, 0.0139999)
-page = 100.0
 
 [node name="Title" type="Label" parent="Window/MenuWindow/EvolutionChart"]
 layout_mode = 1
@@ -197,82 +182,24 @@ text = "Stage 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.018
-offset_left = 1.0
-offset_top = 20.0
-offset_right = 0.298965
-offset_bottom = 240.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 22.0
+offset_right = 20.219
+offset_bottom = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent/ScrollContainer"]
+layout_mode = 2
 script = ExtResource("6_xa678")
 _testResource = ExtResource("7_7gjff")
 _petIconScene = ExtResource("8_w4ghv")
 _nodeSpacing = Vector2(55, 10)
 _horizontalSpacer = 10.0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/MenuWindow/EvolutionChart"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="Chart" type="Control" parent="Window/MenuWindow/EvolutionChart/ScrollContainer"]
-custom_minimum_size = Vector2(0, 124)
-layout_mode = 2
-
-[node name="ChartButton" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 46.0
-offset_right = 42.0
-offset_bottom = 78.0
-
-[node name="ChartButton3" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 46.0
-offset_right = 97.0
-offset_bottom = 78.0
-
-[node name="ChartButton4" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 72.0
-offset_right = 152.0
-offset_bottom = 104.0
-
-[node name="ChartButton6" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 20.0
-offset_right = 152.0
-offset_bottom = 52.0
-
-[node name="ChartButton5" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 85.0
-offset_right = 207.0
-offset_bottom = 117.0
-
-[node name="ChartButton7" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 43.0
-offset_right = 207.0
-offset_bottom = 75.0
-
-[node name="ChartButton8" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
-layout_mode = 0
-offset_left = 175.0
-offset_top = 1.0
-offset_right = 207.0
-offset_bottom = 33.0
 
 [node name="Bio" type="Control" parent="Window/MenuWindow"]
 layout_mode = 1

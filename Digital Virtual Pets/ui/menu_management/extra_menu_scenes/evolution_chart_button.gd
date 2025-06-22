@@ -8,7 +8,8 @@ var petData : PetTypeData
 func _onToggled(toggled_on : bool):
 	if toggled_on:
 		TreeNodePressed.emit(petData)
-		
+	elif pressed:
+		set_pressed_no_signal(true)
 
 
 func setName(petName : String) -> void:

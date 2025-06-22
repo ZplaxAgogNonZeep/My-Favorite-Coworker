@@ -15,3 +15,9 @@ func getLineMarker(isRight : bool):
 		return _markers[1].position + position
 	else:
 		return _markers[0].position + position
+
+func setSilhouette(texture):
+	$SilhouetteIcon.icon = texture
+
+func toggleSilhouette(on : bool):
+	$SilhouetteIcon.visible = on

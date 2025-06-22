@@ -12,6 +12,7 @@ class DataSaver extends SaveData.DataSaver:
 	var _petSlots
 	var _slotIndex
 	var _encounteredPets
+	var _availableEggs
 	
 	func getDataToSave() -> Data:
 		obj.gatherDataFromActivePet()

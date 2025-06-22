@@ -107,12 +107,19 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			# Set Icon
 			var tex = CanvasTexture.new()
 			var tex2 = ImageTexture.new()
-			tex2.set_image(stages[stageIndex][petIndex].getSpriteIcon().get_image())
+			var image : Image = stages[stageIndex][petIndex].getSpriteIcon().get_image()
+			tex2.set_image(image)
+			
 			tex.diffuse_texture = tex2
 			tex.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 			newNode.icon = tex
+			newNode.setSilhouette(tex)
 			
-			newNode.setName(stages[stageIndex][petIndex].name)
+			if (!encounteredPets.has(stages[stageIndex][petIndex].name)):
+				newNode.toggleSilhouette(true)
+				newNode.setName("???")
+			else:
+				newNode.setName(stages[stageIndex][petIndex].name)
 			
 			newNode.position = (Vector2(0, container.custom_minimum_size.y * .5) + 
 								nodePositions[stageIndex][petIndex])

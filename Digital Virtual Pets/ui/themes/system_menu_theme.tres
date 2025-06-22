@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=67 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=77 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -187,6 +187,26 @@ texture_margin_top = 8.0
 texture_margin_right = 16.0
 texture_margin_bottom = 8.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dav4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcpby"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7oxme"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ysmta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u1oel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvqos"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mg1tt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fu7ul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g1y61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mamft"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dsuw"]
 texture = ExtResource("10_xv7ca")
 texture_margin_left = 4.0
@@ -363,6 +383,17 @@ HeaderMedium/base_type = &"Label"
 HeaderMedium/font_sizes/font_size = 18
 HeaderSmall/font_sizes/font_size = 14
 ItemList/font_sizes/font_size = 7
+JustIcon/base_type = &"Button"
+JustIcon/styles/disabled = SubResource("StyleBoxEmpty_2dav4")
+JustIcon/styles/disabled_mirrored = SubResource("StyleBoxEmpty_rcpby")
+JustIcon/styles/focus = SubResource("StyleBoxEmpty_7oxme")
+JustIcon/styles/hover = SubResource("StyleBoxEmpty_ysmta")
+JustIcon/styles/hover_mirrored = SubResource("StyleBoxEmpty_u1oel")
+JustIcon/styles/hover_pressed = SubResource("StyleBoxEmpty_bvqos")
+JustIcon/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_mg1tt")
+JustIcon/styles/normal_mirrored = SubResource("StyleBoxEmpty_fu7ul")
+JustIcon/styles/pressed = SubResource("StyleBoxEmpty_g1y61")
+JustIcon/styles/pressed_mirrored = SubResource("StyleBoxEmpty_mamft")
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_56pb5")

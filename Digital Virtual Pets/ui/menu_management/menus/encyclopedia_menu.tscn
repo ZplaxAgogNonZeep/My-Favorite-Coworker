@@ -5,16 +5,16 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="3_8o6ii"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="4_xa678"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_7gjff"]
-[ext_resource type="Texture2D" uid="uid://dd6mr8fb458na" path="res://assets/art/aesprite/_pets/stage1/bug.png" id="6_w4ghv"]
 [ext_resource type="Script" uid="uid://do2eadn15gltm" path="res://ui/menu_management/extra_menu_scenes/chart_builder.gd" id="6_xa678"]
 [ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="7_7gjff"]
 [ext_resource type="PackedScene" uid="uid://dom65pjl6c41m" path="res://ui/menu_management/extra_menu_scenes/evolution_chart_button.tscn" id="8_w4ghv"]
+[ext_resource type="Texture2D" uid="uid://bxr5yokgonqa" path="res://assets/art/aesprite/_pets/unknown_pet.png" id="9_xa678"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_cqi4c"]
-diffuse_texture = ExtResource("6_w4ghv")
+diffuse_texture = ExtResource("9_xa678")
 texture_filter = 1
 
-[node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_evolutionChart", "_window", "animator")]
+[node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_evolutionChart", "_bioName", "_bioIcon", "_bioParagraph", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sik5p")
 _evolutionChart = NodePath("Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer")
+_bioName = NodePath("Window/MenuWindow/Bio/Name")
+_bioIcon = NodePath("Window/MenuWindow/Bio/Picture/TextureRect")
+_bioParagraph = NodePath("Window/MenuWindow/Bio/Entry")
+_defaultIcon = ExtResource("9_xa678")
+_defaultName = "???"
+_defaultEntry = "Click on a pet to view it!"
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
@@ -37,6 +43,7 @@ transparent_bg = true
 title = "encyclopedia.exe"
 position = Vector2i(0, 36)
 size = Vector2i(590, 400)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_8o6ii")

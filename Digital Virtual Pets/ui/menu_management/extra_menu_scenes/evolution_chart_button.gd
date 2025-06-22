@@ -1,11 +1,15 @@
 extends Button
 
-@export var _markers : Array[Marker2D]
+signal TreeNodePressed(petData : PetTypeData)
 
+@export var _markers : Array[Marker2D]
 var petData : PetTypeData
 
-func getTrueSize() -> Vector2:
-	return size + Vector2(0,$Name.size)
+func _onToggled(toggled_on : bool):
+	if toggled_on:
+		TreeNodePressed.emit(petData)
+		
+
 
 func setName(petName : String) -> void:
 	$Name.text = petName

@@ -2,6 +2,8 @@ extends VBoxContainer
 
 class_name ChartBuilder
 
+signal FillBioData(petData : PetTypeData)
+
 @export var _testResource : PetTypeData
 @export_category("Node References")
 @export var _categories : Array[Control]
@@ -10,9 +12,6 @@ class_name ChartBuilder
 @export_category("Settings")
 @export var _nodeSpacing : Vector2
 @export var _horizontalSpacer : float
-
-#func _ready() -> void:
-	#_generateTree(_testResource)
 
 ## Takes [param eggData] and extrapolates a Linked List of evolutions from it.
 ## The linked list is then used to generate a horizontal tree graph. Each node in the tree should be
@@ -69,7 +68,6 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			
 			# If the current index is whithin the array, we proceed, otherwise we set it to zero
 			if currentIndex < stage.size():
-				print(currentIndex)
 				newPosn.x = (_nodeSpacing.x * stage[currentIndex].stage) + _horizontalSpacer
 				if isEven:
 					newPosn.y = ((((_nodeSpacing.y + 16) * (distanceFromStart)))) * dir
@@ -84,7 +82,6 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 		
 		stageCount += 1
 	
-	print(nodePositions)
 	# Time to start creating nodes and building them
 	var container : Control = Control.new()
 	var height = nodePositions[0][0].y + _nodeSpacing.y + 32
@@ -114,10 +111,12 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			tex.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 			newNode.icon = tex
 			newNode.setSilhouette(tex)
+			newNode.TreeNodePressed.connect(_updateAllToggleButtons)
 			
 			if (!encounteredPets.has(stages[stageIndex][petIndex].name)):
 				newNode.toggleSilhouette(true)
 				newNode.setName("???")
+				newNode.disabled = true
 			else:
 				newNode.setName(stages[stageIndex][petIndex].name)
 			
@@ -162,3 +161,14 @@ func getNodeByResource(treeContainer : Control, petData : PetTypeData) -> Contro
 				return child
 	
 	return null
+
+
+func _updateAllToggleButtons(petData : PetTypeData):
+	FillBioData.emit(petData)
+	for container in get_children():
+		if container is Control:
+			for node in container.get_children():
+				if (node is Button):
+					if node.petData != petData:
+						node.set_pressed_no_signal(false)
+#endregion

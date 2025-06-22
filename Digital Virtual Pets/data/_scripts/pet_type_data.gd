@@ -29,7 +29,8 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 												"TraumaEqual" : -1,
 												"Personality" : -1
 												}
-
+@export_category("Bio Info")
+@export var encyclopediaEntry : String
 
 
 func getNextEvolution(pet : Pet) -> Resource:

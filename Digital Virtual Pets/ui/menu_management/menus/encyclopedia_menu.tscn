@@ -14,7 +14,7 @@
 diffuse_texture = ExtResource("6_w4ghv")
 texture_filter = 1
 
-[node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_window", "animator")]
+[node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_evolutionChart", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sik5p")
+_evolutionChart = NodePath("Window/MenuWindow/EvolutionChart/ChartContent/VBoxContainer")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
@@ -219,7 +220,6 @@ layout_mode = 2
 
 [node name="ChartButton" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 10.0
 offset_top = 46.0
 offset_right = 42.0
@@ -227,7 +227,6 @@ offset_bottom = 78.0
 
 [node name="ChartButton3" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 65.0
 offset_top = 46.0
 offset_right = 97.0
@@ -235,7 +234,6 @@ offset_bottom = 78.0
 
 [node name="ChartButton4" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 120.0
 offset_top = 72.0
 offset_right = 152.0
@@ -243,7 +241,6 @@ offset_bottom = 104.0
 
 [node name="ChartButton6" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 120.0
 offset_top = 20.0
 offset_right = 152.0
@@ -251,7 +248,6 @@ offset_bottom = 52.0
 
 [node name="ChartButton5" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 175.0
 offset_top = 85.0
 offset_right = 207.0
@@ -259,7 +255,6 @@ offset_bottom = 117.0
 
 [node name="ChartButton7" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 175.0
 offset_top = 43.0
 offset_right = 207.0
@@ -267,7 +262,6 @@ offset_bottom = 75.0
 
 [node name="ChartButton8" parent="Window/MenuWindow/EvolutionChart/ScrollContainer/Chart" instance=ExtResource("8_w4ghv")]
 layout_mode = 0
-anchors_preset = 0
 offset_left = 175.0
 offset_top = 1.0
 offset_right = 207.0

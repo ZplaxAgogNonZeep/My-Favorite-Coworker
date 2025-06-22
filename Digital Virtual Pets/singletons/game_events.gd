@@ -26,6 +26,7 @@ signal ChangeProactivityMode(isProactiveMode : bool)
 #endregion
 
 #region Pet Events
+signal UnlockNewEgg(eggData : PetTypeData)
 signal SpawnPetOnStart
 signal ChangePet(index : int)
 signal NewPetSpawned(isEgg : bool)

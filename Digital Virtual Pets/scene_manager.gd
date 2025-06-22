@@ -110,6 +110,7 @@ func _changeCameraZoom(_scale : float, _position : Vector2):
 #region Cutscene Routines
 func _newGameCutsceneFinished(threadHistory : Array):
 	_firstTimeOpened = false
+	GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "buh_egg.tres"))
 	SaveData.saveGameToFile()
 	_displayDevice()
 

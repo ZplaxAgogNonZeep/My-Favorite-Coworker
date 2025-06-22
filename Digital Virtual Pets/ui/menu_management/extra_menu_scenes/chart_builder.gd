@@ -11,8 +11,8 @@ class_name ChartBuilder
 @export var _nodeSpacing : Vector2
 @export var _horizontalSpacer : float
 
-func _ready() -> void:
-	_generateTree(_testResource)
+#func _ready() -> void:
+	#_generateTree(_testResource)
 
 ## Takes [param eggData] and extrapolates a Linked List of evolutions from it.
 ## The linked list is then used to generate a horizontal tree graph. Each node in the tree should be
@@ -20,7 +20,7 @@ func _ready() -> void:
 ## all nodes should be aligned to predetermined column positions based on the pet's stage. All pets in
 ## a stage should be spaced vertically as such: Even is half of a point away from start, Odds should 
 ## Start at the same as origin and space from there, creating an alternating pattern in the grid.
-func _generateTree(eggData : PetTypeData) -> void:
+func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, PetTypeData]) -> void:
 	# Define a list of lists for all of the resources we need, as well as all of the node positions
 	var stages : Array[Array] # Array of arrays for resources
 	var nodePositions : Array[Array] # Array of arrays for each nodes positions relative to the origin

@@ -15,6 +15,7 @@ func _onToggled(toggled_on : bool):
 func setName(petName : String) -> void:
 	$Name.text = petName
 
+
 func getLineMarker(isRight : bool):
 	if isRight:
 		return _markers[1].position + position

@@ -83,4 +83,5 @@ evolutionCondition = {
 "TraumaGreater": -1,
 "TraumaLesser": -1
 }
+encyclopediaEntry = ""
 metadata/_custom_type_script = "uid://ox62hdqejbbf"

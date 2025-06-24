@@ -1,43 +1,75 @@
 extends Node
 
+class_name ToolTip
+
 @export_category("Node References")
-@export var _textLabel : Label
+@export var _singleLabel : Label
+@export var _overflowLabel : Label
 @export var _window : Window
+@export var _animator : AnimationPlayer
 @export_category("Tooltip Settings")
+@export var _animationLibrary : String
 @export var _defaultWindowSize : Vector2i
 @export var _textToDisplay : String
 @export var _marginSize : Vector2
 
 func _ready() -> void:
-	_updateToolTipText(_textToDisplay)
+	GameEvents.CallToolTip.connect(_callToolTip)
+	GameEvents.DismissToolTip.connect(_dismissToolTip)
+
+
+func _callToolTip(screenPosn : Vector2i, text : String):
+	if (_window.visible):
+		await _dismissToolTip()
+	
+	_window.position = screenPosn
+	_animator.play(_animationLibrary + "/open_noscale")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_window.visible = true
+	_updateToolTipText(text)
+
+
+
+func _dismissToolTip():
+	_animator.play(_animationLibrary + "/close_noscale")
+	await _animator.animation_finished
+	_window.visible = false
+
 
 func _updateToolTipText(text := ""):
-	_textLabel.text = text
-	await get_tree().process_frame
-	await get_tree().process_frame
-	print(_textLabel.text)
-	print(_textLabel.size)
-	if (_textLabel.size.x > _defaultWindowSize.x - (_marginSize.x * 2)):
-		_setLabelMode(false)
-		_window.size.y = _textLabel.size.y + (_marginSize.y * 2)
-		_window.size.x = _defaultWindowSize.x
-		
-		print(_textLabel.size.x)
+	var textToUse : String
+	if (text == ""):
+		textToUse = _textToDisplay
 	else:
-		_setLabelMode(true)
-		_window.size.y = _defaultWindowSize.y
-		_window.size.x = _textLabel.size.x + (_marginSize.x * 2)
+		textToUse = text
+	print(textToUse)
+	_singleLabel.text = textToUse
+	_overflowLabel.text = textToUse
 	
-	_textLabel.visible = false
-	_textLabel.visible = true
+	await get_tree().process_frame
+	
+	if (_singleLabel.size.x > _defaultWindowSize.x - (_marginSize.x * 2)):
+		# Text Overflows
+		_setLabelMode(false)
+		_window.size.y = _overflowLabel.size.y + (_marginSize.y * 2)
+	else:
+		# Single or Multi Line
+		_setLabelMode(true)
+		if (textToUse.contains("\n")):
+			_window.size.y = _singleLabel.size.y + (_marginSize.y * 2)
+		else:
+			_window.size.y = _defaultWindowSize.y
+		_window.size.x = _singleLabel.size.x + (_marginSize.x * 2)
+
 
 
 func _setLabelMode(isSmallMode : bool):
 	if (isSmallMode):
 		print("Single Line Mode")
-		_textLabel.size.x = 0
-		_textLabel.autowrap_mode = TextServer.AUTOWRAP_OFF
+		_singleLabel.visible = true
+		_overflowLabel.visible = false
 	else:
-		print("Multi Line Mode")
-		_textLabel.size.x = _defaultWindowSize.x - (_marginSize.x * 2)
-		_textLabel.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		print("Overflow Line Mode")
+		_singleLabel.visible = false
+		_overflowLabel.visible = true

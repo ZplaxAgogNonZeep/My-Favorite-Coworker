@@ -1,36 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://cla7ygemy8wqh"]
+[gd_scene load_steps=4 format=3 uid="uid://cla7ygemy8wqh"]
 
 [ext_resource type="Script" uid="uid://cfso2pdymj5m7" path="res://ui/tool_tip.gd" id="1_yyr8l"]
+[ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="2_gyfo4"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_i8126"]
 
-[node name="ToolTip" type="Node" node_paths=PackedStringArray("_textLabel", "_window")]
+[node name="ToolTip" type="Node" node_paths=PackedStringArray("_singleLabel", "_overflowLabel", "_window", "_animator")]
 script = ExtResource("1_yyr8l")
-_textLabel = NodePath("Window/Panel/Label")
+_singleLabel = NodePath("Window/MenuWindow/SingleLineLabel")
+_overflowLabel = NodePath("Window/MenuWindow/OverflowLineLabel")
 _window = NodePath("Window")
+_animator = NodePath("AnimationPlayer")
+_animationLibrary = "pop_up_window_animations"
 _defaultWindowSize = Vector2i(560, 24)
-_textToDisplay = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus dictum risus quis condimentum ornare. Aliquam a tortor nisl. Donec ultrices posuere convallis. Integer finibus faucibus lorem, sed laoreet leo volutpat nec. Donec tincidunt nibh at pretium molestie. Nulla facilisi. Sed venenatis tempor ipsum vitae blandit. "
+_textToDisplay = "Doot"
 _marginSize = Vector2(7, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"pop_up_window_animations": ExtResource("2_gyfo4")
+}
 
 [node name="Window" type="Window" parent="."]
 transparent_bg = true
-initial_position = 2
 size = Vector2i(560, 24)
+borderless = true
 always_on_top = true
 transparent = true
 
-[node name="Panel" type="Panel" parent="Window"]
+[node name="MenuWindow" type="Panel" parent="Window"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(274, 2)
 theme = ExtResource("2_i8126")
 theme_type_variation = &"TooltipPanel"
 
-[node name="Label" type="Label" parent="Window/Panel"]
+[node name="SingleLineLabel" type="Label" parent="Window/MenuWindow"]
 layout_mode = 1
 offset_left = 7.0
 offset_top = 5.0
 offset_right = 8.0
 offset_bottom = 19.0
 theme_type_variation = &"ParagraphText"
+
+[node name="OverflowLineLabel" type="Label" parent="Window/MenuWindow"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 553.0
+offset_bottom = 19.0
+theme_type_variation = &"ParagraphText"
+autowrap_mode = 3

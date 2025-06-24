@@ -14,6 +14,8 @@ signal OpenOptionsMenu
 signal ToggleBorderlessMode(isBorderless : bool)
 signal OpenDirectMenu(index : int)
 signal ChangeCameraZoom(scale : float)
+signal CallToolTip(position : Vector2i, text : String)
+signal DismissToolTip
 #endregion
 
 #region Timer Events

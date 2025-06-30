@@ -4,6 +4,8 @@ signal TreeNodePressed(petData : PetTypeData)
 
 @export var _markers : Array[Marker2D]
 var petData : PetTypeData
+@export var _hoverTimer : Timer
+var _hovered : bool = false
 
 func _onToggled(toggled_on : bool):
 	if toggled_on:
@@ -25,5 +27,26 @@ func getLineMarker(isRight : bool):
 func setSilhouette(texture):
 	$SilhouetteIcon.icon = texture
 
+
 func toggleSilhouette(on : bool):
 	$SilhouetteIcon.visible = on
+
+
+func _openTooltip():
+	if (!_hovered):
+		_hovered = true
+		_hoverTimer.start(.1)
+
+
+func _closeTooltip():
+	if (_hovered):
+		_hovered = false
+		if (!_hoverTimer.is_stopped()):
+			_hoverTimer.stop()
+		else:
+			GameEvents.DismissToolTip.emit()
+
+
+func _hoverTimerComplete():
+	GameEvents.CallToolTip.emit(DisplayServer.mouse_get_position() + Vector2i(5, 5), 
+								petData.getFormattedEvolutionConditions())

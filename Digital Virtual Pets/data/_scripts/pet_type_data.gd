@@ -95,3 +95,32 @@ func getCollisionOffset() -> float:
 
 func _to_string() -> String:
 	return name
+
+func getFormattedEvolutionConditions() -> String:
+	var returnString : String
+	if evolutionCondition["POW"] > -1:
+		returnString += "POW: " + str(evolutionCondition["POW"]) + "\n"
+		if (statConditionOr):
+			returnString += "or\n"
+	if evolutionCondition["END"] > -1:
+		returnString += "END: " + str(evolutionCondition["END"]) + "\n"
+		if (statConditionOr):
+			returnString += "or\n"
+	if evolutionCondition["SPD"] > -1:
+		returnString += "SPD: " + str(evolutionCondition["SPD"]) + "\n"
+		if (statConditionOr):
+			returnString += "or\n"
+	if evolutionCondition["BAL"] > -1:
+		returnString += "BAL: " + str(evolutionCondition["BAL"]) + "\n"
+	
+	if evolutionCondition["TraumaGreater"] > -1:
+		returnString += "Trauma greater than " + str(evolutionCondition["TraumaGreater"]) + "\n"
+	if evolutionCondition["TraumaLesser"] > -1:
+		returnString += "Trauma less than " + str(evolutionCondition["TraumaLesser"]) + "\n"
+	if evolutionCondition["TraumaEqual"] > -1:
+		returnString += "Trauma equal to " + str(evolutionCondition["TraumaEqual"]) + "\n"
+	
+	if (returnString == ""):
+		returnString = "No Evolution Conditions"
+	
+	return returnString

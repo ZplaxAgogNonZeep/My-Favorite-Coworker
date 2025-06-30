@@ -16,9 +16,11 @@ class_name ToolTip
 func _ready() -> void:
 	GameEvents.CallToolTip.connect(_callToolTip)
 	GameEvents.DismissToolTip.connect(_dismissToolTip)
+	_window.visible = false
 
 
 func _callToolTip(screenPosn : Vector2i, text : String):
+	print("Calling Tool Tip")
 	if (_window.visible):
 		await _dismissToolTip()
 	
@@ -32,6 +34,7 @@ func _callToolTip(screenPosn : Vector2i, text : String):
 
 
 func _dismissToolTip():
+	print("Dismissing Tool Tip")
 	_animator.play(_animationLibrary + "/close_noscale")
 	await _animator.animation_finished
 	_window.visible = false

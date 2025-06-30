@@ -301,6 +301,13 @@ func setRawAge(age : float) -> void:
 	_lifespanTracker.setLifespan(age)
 
 
+func getStatTotal() -> int:
+	var returnInt : int
+	for stat in abilityStats:
+		returnInt += stat
+	return returnInt
+
+
 func getSavableData() -> PetSaveData:
 	var data = PetSaveData.new()
 	data.age = getRawAge()

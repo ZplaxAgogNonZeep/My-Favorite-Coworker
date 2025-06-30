@@ -18,69 +18,41 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 
 @export_category("Evolution Data")
 @export var evolutions : Array[Resource]
-@export var statConditionOr = false
-@export var evolutionCondition : Dictionary = { # Transfered
-												"POW": -1, 
-												"END": -1,
-												"SPD": -1,
-												"BAL": -1,
-												"TraumaGreater" : -1,
-												"TraumaLesser" : -1,
-												"TraumaEqual" : -1,
-												"Personality" : -1
-												}
+@export var evolutionConditions : Array[EvolutionCondition]
 @export_category("Bio Info")
 @export var encyclopediaEntry : String
 
 
 func getNextEvolution(pet : Pet) -> Resource:
 	for evolution : PetTypeData in evolutions:
-		print("Checking ", evolution.name)
-		var statConditionMet = false
-		if (evolutionCondition["POW"] > -1):
-			if (pet.abilityStats[Enums.AbilityStat.POW] < evolutionCondition["POW"]):
-				if (!statConditionOr):
-					continue
-			else:
-				statConditionMet = true
-		if (evolutionCondition["END"] > -1):
-			if (pet.abilityStats[Enums.AbilityStat.END] < evolutionCondition["END"]):
-				if (!statConditionOr):
-					continue
-			else:
-				statConditionMet = true
-		if (evolutionCondition["SPD"] > -1):
-			if (pet.abilityStats[Enums.AbilityStat.SPD] < evolutionCondition["SPD"]):
-				if (!statConditionOr):
-					continue
-			else:
-				statConditionMet = true
-		if (evolutionCondition["BAL"] > -1):
-			if (pet.abilityStats[Enums.AbilityStat.BAL] < evolutionCondition["BAL"]):
-				if (!statConditionOr):
-					continue
-			else:
-				statConditionMet = true
-		
-		if (!statConditionMet && statConditionOr):
-			continue
-		
-		if (evolutionCondition["TraumaGreater"] > -1):
-			if (pet.traumaCount < evolutionCondition["TraumaGreater"]):
-				continue
-		if (evolutionCondition["TraumaLesser"] > -1):
-			if (pet.traumaCount > evolutionCondition["TraumaLesser"]):
-				continue
-		if (evolutionCondition["TraumaEqual"] > -1):
-			if (pet.traumaCount != evolutionCondition["TraumaEqual"]):
-				continue
-		if (evolutionCondition["Personality"] > -1):
-			if (pet.traumaCount != evolutionCondition["Personality"]):
-				continue
-		
-		return evolution
+		if (evolution.checkEvolutionConditions(pet)):
+			return evolution
 		
 	return null
+
+
+func checkEvolutionConditions(pet : Pet) -> bool:
+	var andConditionMet = true
+	var orConditionMet = true
+	var orResults = []
+	var andResults = []
+	for condition : EvolutionCondition in evolutionConditions:
+		match condition.conditionLogic:
+			EvolutionCondition.LogicalConditionals.AND:
+				orResults.append(condition.checkConditionMet(pet))
+			EvolutionCondition.LogicalConditionals.OR:
+				andResults.append(condition.checkConditionMet(pet))
+	
+	if (orResults.size() > 0):
+		if (!orResults.has(true)):
+			orConditionMet = false
+	
+	if (andResults.size() > 0):
+		if (andResults.has(false)):
+			andConditionMet = false
+	
+	return andConditionMet and orConditionMet
+
 
 func getSpriteIcon() -> Texture2D:
 	return spriteFrames.get_frame_texture("Idle", 0)
@@ -98,29 +70,18 @@ func _to_string() -> String:
 
 func getFormattedEvolutionConditions() -> String:
 	var returnString : String
-	if evolutionCondition["POW"] > -1:
-		returnString += "POW: " + str(evolutionCondition["POW"]) + "\n"
-		if (statConditionOr):
-			returnString += "or\n"
-	if evolutionCondition["END"] > -1:
-		returnString += "END: " + str(evolutionCondition["END"]) + "\n"
-		if (statConditionOr):
-			returnString += "or\n"
-	if evolutionCondition["SPD"] > -1:
-		returnString += "SPD: " + str(evolutionCondition["SPD"]) + "\n"
-		if (statConditionOr):
-			returnString += "or\n"
-	if evolutionCondition["BAL"] > -1:
-		returnString += "BAL: " + str(evolutionCondition["BAL"]) + "\n"
+	for condition : EvolutionCondition in evolutionConditions:
+			if returnString != "":
+				match condition.conditionLogic:
+					EvolutionCondition.LogicalConditionals.OR:
+						returnString += "Or\n"
+					EvolutionCondition.LogicalConditionals.AND:
+						returnString += "And\n"
+				
+			returnString += str(condition) + "\n"
 	
-	if evolutionCondition["TraumaGreater"] > -1:
-		returnString += "Trauma greater than " + str(evolutionCondition["TraumaGreater"]) + "\n"
-	if evolutionCondition["TraumaLesser"] > -1:
-		returnString += "Trauma less than " + str(evolutionCondition["TraumaLesser"]) + "\n"
-	if evolutionCondition["TraumaEqual"] > -1:
-		returnString += "Trauma equal to " + str(evolutionCondition["TraumaEqual"]) + "\n"
+	returnString = returnString.erase(returnString.rfind("\n"))
 	
-	if (returnString == ""):
+	if returnString == "":
 		returnString = "No Evolution Conditions"
-	
 	return returnString

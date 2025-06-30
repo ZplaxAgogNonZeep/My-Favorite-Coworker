@@ -1,8 +1,37 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=11 format=3 uid="uid://bn7hde2gbjbfd"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://bn7hde2gbjbfd"]
 
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1m0d0"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_2cjim"]
 [ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="2_28228"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_ke3x7"]
+
+[sub_resource type="Resource" id="Resource_ufs8l"]
+script = ExtResource("1_1m0d0")
+conditionLogic = 0
+POW = 33
+END = 22
+SPD = -1
+BAL = -1
+TraumaGreater = 1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+metadata/_custom_type_script = "uid://bsjn1ul82ivi0"
+
+[sub_resource type="Resource" id="Resource_1m0d0"]
+script = ExtResource("1_1m0d0")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = 5
+Personality = -1
+statTotal = -1
+metadata/_custom_type_script = "uid://bsjn1ul82ivi0"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ke3x7"]
 atlas = ExtResource("2_28228")
@@ -72,16 +101,6 @@ yap = ExtResource("3_ke3x7")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
-statConditionOr = false
-evolutionCondition = {
-"BAL": -1,
-"END": -1,
-"POW": -1,
-"Personality": -1,
-"SPD": -1,
-"TraumaEqual": -1,
-"TraumaGreater": -1,
-"TraumaLesser": -1
-}
+evolutionConditions = Array[ExtResource("1_1m0d0")]([SubResource("Resource_ufs8l"), SubResource("Resource_1m0d0")])
 encyclopediaEntry = ""
 metadata/_custom_type_script = "uid://ox62hdqejbbf"

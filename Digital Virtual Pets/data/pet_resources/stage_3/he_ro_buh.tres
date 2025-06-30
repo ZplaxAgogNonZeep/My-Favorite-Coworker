@@ -1,8 +1,23 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=4 format=3 uid="uid://cxjugw70vu5vs"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://cxjugw70vu5vs"]
 
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_7l4p1"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_lvwpk"]
 [ext_resource type="SpriteFrames" uid="uid://bifauo7clkw3i" path="res://assets/animation_frames/pets/stage3/he_ro_buh_frames.tres" id="2_av6hh"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_f5tyu"]
+
+[sub_resource type="Resource" id="Resource_fbtna"]
+script = ExtResource("1_7l4p1")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = 20
+BAL = 30
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = 0
+Personality = -1
+statTotal = -1
+metadata/_custom_type_script = "uid://bsjn1ul82ivi0"
 
 [resource]
 script = ExtResource("1_lvwpk")
@@ -12,15 +27,5 @@ yap = ExtResource("3_f5tyu")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
-statConditionOr = false
-evolutionCondition = {
-"BAL": 7,
-"END": -1,
-"POW": -1,
-"Personality": -1,
-"SPD": 2,
-"TraumaEqual": -1,
-"TraumaGreater": -1,
-"TraumaLesser": -1
-}
+evolutionConditions = Array[ExtResource("1_7l4p1")]([SubResource("Resource_fbtna")])
 encyclopediaEntry = ""

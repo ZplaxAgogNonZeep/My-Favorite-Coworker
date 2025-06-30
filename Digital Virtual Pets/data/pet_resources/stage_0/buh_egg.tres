@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=4 format=3 uid="uid://c5hcs487cgau8"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=5 format=3 uid="uid://c5hcs487cgau8"]
 
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_8c1qq"]
 [ext_resource type="Resource" uid="uid://c5mrxvhxbul13" path="res://data/pet_resources/stage_1/buh.tres" id="1_s8doy"]
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_vq3lx"]
 [ext_resource type="SpriteFrames" uid="uid://noxh6ocgu6nu" path="res://assets/animation_frames/pets/stage0/buh_egg.tres" id="2_flmyc"]
 
 [resource]
@@ -11,14 +12,5 @@ spriteFrames = ExtResource("2_flmyc")
 stage = 0
 waitIntervals = Vector2(0, 0)
 evolutions = Array[Resource]([ExtResource("1_s8doy")])
-statConditionOr = false
-evolutionCondition = {
-"BAL": -1,
-"END": -1,
-"POW": -1,
-"Personality": -1,
-"SPD": -1,
-"TraumaEqual": -1,
-"TraumaGreater": -1,
-"TraumaLesser": -1
-}
+evolutionConditions = Array[ExtResource("1_vq3lx")]([])
+encyclopediaEntry = ""

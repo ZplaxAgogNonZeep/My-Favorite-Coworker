@@ -8,7 +8,7 @@ var implements = [Interface.MenuState]
 var stateMachine : Node2D
 
 func initializeMenu(petData):
-	GameEvents.PauseGame.emit()
+	Settings.pauseGame(true)
 	_pseudoPet.sprite.sprite_frames = petData.petResource.spriteFrames
 	var age = Lifespan.convertLifespanToAge(petData.age)
 	_ageLabel.text = "Age:\n"  + str(int(age[0])) + "d " + str(int(age[1])) + "h " + str(int(age[2])) + "m"

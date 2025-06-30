@@ -189,7 +189,7 @@ func switchPet(index : int, previousPetDeleted := false):
 
 func killPet():
 	GameEvents.ResetAllTimers.emit()
-	GameEvents.PauseGame.emit()
+	Settings.pauseGame(true)
 	var petData = activePet.getSavableData()
 	activePet.queue_free()
 	activePet = null

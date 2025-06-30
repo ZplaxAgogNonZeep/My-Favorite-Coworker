@@ -73,7 +73,7 @@ func _callSystemDialog(pos : Vector2i, dialogResource : CharacterDialog,
 						conversationName : String, returnFunction : Callable) -> void:
 	if (dialogResource == null):
 		return
-	GameEvents.PauseGame.emit()
+	Settings.pauseGame(true)
 	var newThread = DialogThread.new(dialogResource, conversationName, pos, _threads.size(), returnFunction)
 	_threads.append(newThread)
 	_windows.append([])
@@ -135,7 +135,7 @@ func _closeThread(threadIndex : int):
 		count += 1
 	
 	if (_threads.size() == 0):
-		GameEvents.UnpauseGame.emit()
+		Settings.pauseGame(false)
 	
 	closedThread.completeThread()
 

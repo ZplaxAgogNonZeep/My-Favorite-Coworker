@@ -44,6 +44,15 @@ func toggleMenu(isOpen: bool):
 		changeMenu(-1)
 
 
+func _updatePauseState():
+	for menu in _activeMenus:
+		if menu.pauseGame:
+			Settings.pauseGame(true)
+			return
+	
+	Settings.pauseGame(false)
+
+
 #region State Machine
 func changeMenu(menuIndex : int, direct := false):
 	if (menuIndex >= _menuList.size()):
@@ -76,11 +85,13 @@ func changeMenu(menuIndex : int, direct := false):
 				_activeMenus.append(_menuList[menuIndex])
 				await _menuList[menuIndex].openMenu()
 			
-			
+	_updatePauseState()
 
 func _closeAllMenus():
 	for menu in _activeMenus:
 		menu.closeMenu()
+	
+	Settings.pauseGame(false)
 
 
 func _openDirectMenu(index : int):

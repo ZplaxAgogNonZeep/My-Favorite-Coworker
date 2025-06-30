@@ -28,7 +28,6 @@ func menuBehavior():
 
 func openMenu(direct := false):
 	_openedDirectly = direct
-	Settings.pauseGame(pauseGame)
 	
 	_loadSavedMenuSettings()
 	
@@ -46,8 +45,6 @@ func openMenu(direct := false):
 func closeMenu():
 	#TODO: Add a system for tracking what menus that are open want the game paused
 	_saveMenuSettings()
-	if (pauseGame):
-		Settings.pauseGame(false)
 	if !animator.has_animation(_animationLibrary +"/close"):
 		animator.play("open", -1, -1, true)
 	else:

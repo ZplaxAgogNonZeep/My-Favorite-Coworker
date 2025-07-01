@@ -96,9 +96,13 @@ _data = {
 }
 
 [node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
+process_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 130.0
+grow_horizontal = 2
+pivot_offset = Vector2(126, 78)
+mouse_force_pass_scroll_events = false
 theme = ExtResource("1_t6pyl")
 script = ExtResource("2_njc82")
 _dialogLabel = NodePath("Dialog")
@@ -110,6 +114,7 @@ _buttonScene = ExtResource("3_ja1ey")
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_4kmke")
 }
@@ -121,10 +126,10 @@ anchor_right = 1.0
 offset_left = 8.0
 offset_top = 32.0
 offset_right = -8.0
-offset_bottom = 112.0
+offset_bottom = 97.0
 grow_horizontal = 2
 theme_type_variation = &"ParagraphText"
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum nunc nisl. Etiam nibh metus, volutpat id mauris porttitor, aliquam facilisis dui. In gravida efficitur velit, in"
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum nunc nis"
 horizontal_alignment = 1
 autowrap_mode = 3
 

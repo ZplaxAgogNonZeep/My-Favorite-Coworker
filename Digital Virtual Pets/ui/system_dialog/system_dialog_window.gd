@@ -64,6 +64,7 @@ func setWindowPosition():
 
 func _buttonSelected(index : int):
 	DialogChoiceSelected.emit(index, _threadIndex, self)
+	print("Doot")
 
 
 func changeThreadIndex(index : int):

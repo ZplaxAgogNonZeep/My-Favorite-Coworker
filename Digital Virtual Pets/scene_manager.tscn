@@ -138,6 +138,7 @@ _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
+process_mode = 3
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -153,6 +154,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
+process_mode = 3
 visible = false
 layout_mode = 1
 offset_left = 216.0
@@ -163,6 +165,7 @@ metadata/_edit_vertical_guides_ = [288.0]
 metadata/_edit_horizontal_guides_ = [256.0]
 
 [node name="PetMenu" parent="SystemUI/MenuManager" instance=ExtResource("7_l8mrh")]
+process_mode = 3
 visible = false
 layout_mode = 1
 offset_left = 336.0
@@ -171,9 +174,11 @@ offset_right = 336.0
 offset_bottom = 312.0
 
 [node name="Credits" parent="SystemUI/MenuManager" instance=ExtResource("10_takr5")]
+process_mode = 3
 visible = false
 
 [node name="EncyclopediaMenu" parent="SystemUI/MenuManager" instance=ExtResource("11_vxl1k")]
+process_mode = 3
 visible = false
 layout_mode = 1
 
@@ -181,6 +186,7 @@ layout_mode = 1
 layer = 2
 
 [node name="DialogManager" type="Control" parent="SystemDialog"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://dmh0m64wchvdu"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=9 format=3 uid="uid://dmh0m64wchvdu"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1lxil"]
 [ext_resource type="Resource" uid="uid://cxjugw70vu5vs" path="res://data/pet_resources/stage_3/he_ro_buh.tres" id="1_lqf5w"]
@@ -7,26 +7,39 @@
 [ext_resource type="SpriteFrames" uid="uid://dqv4v2ycxf6g5" path="res://assets/animation_frames/pets/stage2/buh_buh_frames.tres" id="3_00qlt"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="4_yb00c"]
 
-[sub_resource type="Resource" id="Resource_g6sr0"]
+[sub_resource type="Resource" id="Resource_1lxil"]
 script = ExtResource("1_1lxil")
-conditionLogic = 0
+conditionLogic = 1
 POW = -1
 END = -1
 SPD = 8
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+
+[sub_resource type="Resource" id="Resource_g6sr0"]
+script = ExtResource("1_1lxil")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = -1
 BAL = 12
 TraumaGreater = -1
 TraumaLesser = -1
 TraumaEqual = -1
 Personality = -1
-metadata/_custom_type_script = "uid://bsjn1ul82ivi0"
+statTotal = -1
 
 [resource]
 script = ExtResource("2_j7l4c")
 name = "BuhBuh"
 spriteFrames = ExtResource("3_00qlt")
 yap = ExtResource("4_yb00c")
-stage = 2
+stage = 0
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("1_lqf5w"), ExtResource("2_7akr2")])
-evolutionConditions = Array[ExtResource("1_1lxil")]([SubResource("Resource_g6sr0")])
+evolutionConditions = Array[ExtResource("1_1lxil")]([SubResource("Resource_1lxil"), SubResource("Resource_g6sr0")])
 encyclopediaEntry = ""

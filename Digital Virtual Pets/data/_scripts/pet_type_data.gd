@@ -19,6 +19,7 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 @export_category("Evolution Data")
 @export var evolutions : Array[Resource]
 @export var evolutionConditions : Array[EvolutionCondition]
+
 @export_category("Bio Info")
 @export var encyclopediaEntry : String
 

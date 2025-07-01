@@ -4,4 +4,5 @@
 
 [node name="PetDataImporter" type="Node"]
 script = ExtResource("1_rf7al")
-_rootFilepath = "res://data/pet_resources/"
+_rootFilepath = "res://do_not_build/tools/pet_data_importer/pet_data_export.txt"
+_petDataFilePathRoot = "res://data/pet_resources/"

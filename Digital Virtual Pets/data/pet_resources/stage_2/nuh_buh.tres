@@ -9,25 +9,24 @@
 
 [sub_resource type="Resource" id="Resource_mc7a4"]
 script = ExtResource("1_mc7a4")
-conditionLogic = 0
+conditionLogic = 1
 POW = -1
 END = -1
 SPD = -1
 BAL = -1
-TraumaGreater = -1
+TraumaGreater = 0
 TraumaLesser = -1
 TraumaEqual = -1
 Personality = -1
 statTotal = 15
-metadata/_custom_type_script = "uid://bsjn1ul82ivi0"
 
 [resource]
 script = ExtResource("2_4bqmy")
 name = "NuhBuh"
 spriteFrames = ExtResource("3_rstqr")
 yap = ExtResource("4_mphy6")
-stage = 2
+stage = 0
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_mc7a4"), ExtResource("2_cvj57")])
 evolutionConditions = Array[ExtResource("1_mc7a4")]([SubResource("Resource_mc7a4")])
-encyclopediaEntry = ""
+encyclopediaEntry = "Oh you woeful creature…"

@@ -16,7 +16,7 @@ func _fillPetData():
 		if petData == null:
 			petData = PetTypeData.new()
 		petData.name = petDataList[0]
-		petData.stage = petDataList[1]
+		petData.stage = int(petDataList[1])
 		petData.encyclopediaEntry = petDataList[2]
 		petData.evolutionConditions.clear()
 		#TODO: 3 = Evolutions DO THIS LATER
@@ -99,7 +99,6 @@ func _fillPetData():
 			else:
 				petData.evolutionConditions.append(condition)
 		
-		print(andConditions)
 		for condition in andConditions:
 			petData.evolutionConditions.append(condition)
 	
@@ -110,8 +109,9 @@ func _fillPetData():
 		var petData = _getResourceFromName(petDataList[0], petDataList[1])
 		petData.evolutions.clear()
 		
-		for evolutionName in petDataList[3].split(","):
-			petData.evolutions.append(_getResourceFromName(evolutionName, str(petData.stage)))
+		if petDataList[3] != "":
+			for evolutionName in petDataList[3].split(","):
+				petData.evolutions.append(_getResourceFromName(evolutionName, str(petData.stage + 1)))
 	
 	print("Pet Data Import Complete")
 

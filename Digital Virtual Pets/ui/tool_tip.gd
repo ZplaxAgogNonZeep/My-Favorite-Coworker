@@ -20,7 +20,6 @@ func _ready() -> void:
 
 
 func _callToolTip(screenPosn : Vector2i, text : String):
-	print("Calling Tool Tip")
 	if (_window.visible):
 		await _dismissToolTip()
 	
@@ -34,7 +33,6 @@ func _callToolTip(screenPosn : Vector2i, text : String):
 
 
 func _dismissToolTip():
-	print("Dismissing Tool Tip")
 	_animator.play(_animationLibrary + "/close_noscale")
 	await _animator.animation_finished
 	_window.visible = false
@@ -46,7 +44,6 @@ func _updateToolTipText(text := ""):
 		textToUse = _textToDisplay
 	else:
 		textToUse = text
-	print(textToUse)
 	_singleLabel.text = textToUse
 	_overflowLabel.text = textToUse
 	
@@ -69,10 +66,8 @@ func _updateToolTipText(text := ""):
 
 func _setLabelMode(isSmallMode : bool):
 	if (isSmallMode):
-		print("Single Line Mode")
 		_singleLabel.visible = true
 		_overflowLabel.visible = false
 	else:
-		print("Overflow Line Mode")
 		_singleLabel.visible = false
 		_overflowLabel.visible = true

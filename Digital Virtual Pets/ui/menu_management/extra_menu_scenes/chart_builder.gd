@@ -146,10 +146,11 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 ## A Recursive function that takes [param petData] and a running array, [param stages], then uses
 ## the linked list within [param petData] and works through it to fill in [param stages].
 func _r_generateTree(petData : PetTypeData, stages : Array[Array]) -> void:
-	for evolution : PetTypeData in petData.evolutions:
-		if (!stages[evolution.stage].has(evolution)):
-			stages[evolution.stage].append(evolution)
-			_r_generateTree(evolution, stages)
+	if petData.evolutions.size() > 0:
+		for evolution : PetTypeData in petData.evolutions:
+			if (!stages[evolution.stage].has(evolution)):
+				stages[evolution.stage].append(evolution)
+				_r_generateTree(evolution, stages)
 
 
 func getNodeByResource(treeContainer : Control, petData : PetTypeData) -> Control:

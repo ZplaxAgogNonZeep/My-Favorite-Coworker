@@ -42,8 +42,8 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if !_recordingMode:
-		return
+	#if !_recordingMode:
+		#return
 	
 	if event.is_action_pressed("Debug"):
 		_displayDevice()

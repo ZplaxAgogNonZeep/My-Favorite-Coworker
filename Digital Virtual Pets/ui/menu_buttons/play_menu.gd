@@ -20,7 +20,7 @@ func _ready():
 func initializeMenu():
 	state = PlayState.MENU
 	visible = true
-	Settings.pauseGame(true)
+	#Settings.pauseGame(true)
 	#buttonController.setActive(true)
 	for page in _gamePageList:
 		page.visible = false
@@ -37,7 +37,7 @@ func exitMenu():
 	#buttonController.setActive(false)
 	GameEvents.HopDeviceOnce.emit()
 	GameEvents.HopDeviceOnce.emit()
-	Settings.pauseGame(false)
+	#Settings.pauseGame(false)
 
 func closeMenu():
 	stateMachine.setState(stateMachine.MenuState.MINIMIZED)

@@ -192,6 +192,7 @@ animations = [{
 }]
 
 [node name="LinkDeviceSprite" type="Sprite2D"]
+process_mode = 3
 texture = ExtResource("1_ex2ea")
 offset = Vector2(0, -64)
 script = ExtResource("2_7pd7f")

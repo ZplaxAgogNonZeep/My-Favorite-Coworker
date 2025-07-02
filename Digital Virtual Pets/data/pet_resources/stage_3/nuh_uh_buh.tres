@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_be3g0"]
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_vqig5"]
-[ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="2_vqig5"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_a00hv"]
+[ext_resource type="Texture2D" uid="uid://doe7kcgm5j50v" path="res://assets/art/aesprite/_pets/stage3/nuhuh_buh_sheet.png" id="3_vqig5"]
 
 [sub_resource type="Resource" id="Resource_vqig5"]
 script = ExtResource("1_vqig5")
@@ -18,38 +18,38 @@ TraumaEqual = -1
 Personality = -1
 statTotal = 45
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke3x7"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_a00hv"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1m0d0"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvs8c"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufs8l"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbd54"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(0, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jdl8"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cybmx"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(24, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7mmk"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yed2m"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(0, 48, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kiws3"]
-atlas = ExtResource("2_vqig5")
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5eu1"]
+atlas = ExtResource("3_vqig5")
 region = Rect2(24, 48, 24, 24)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_3d4h7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_pov2w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ke3x7")
+"texture": SubResource("AtlasTexture_a00hv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1m0d0")
+"texture": SubResource("AtlasTexture_tvs8c")
 }],
 "loop": true,
 "name": &"Idle",
@@ -57,10 +57,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ufs8l")
+"texture": SubResource("AtlasTexture_qbd54")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0jdl8")
+"texture": SubResource("AtlasTexture_cybmx")
 }],
 "loop": true,
 "name": &"Quirk",
@@ -68,10 +68,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j7mmk")
+"texture": SubResource("AtlasTexture_yed2m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kiws3")
+"texture": SubResource("AtlasTexture_w5eu1")
 }],
 "loop": true,
 "name": &"Walk",
@@ -81,7 +81,7 @@ animations = [{
 [resource]
 script = ExtResource("1_be3g0")
 name = "NuhUhBuh"
-spriteFrames = SubResource("SpriteFrames_3d4h7")
+spriteFrames = SubResource("SpriteFrames_pov2w")
 yap = ExtResource("3_a00hv")
 stage = 3
 waitIntervals = Vector2(3, 10)

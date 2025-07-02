@@ -63,6 +63,7 @@ func _handleButtonInput(button : Enums.DeviceButton):
 		Enums.DeviceButton.POWER_BUTTON:
 			_screenAnimator.play("Shutdown")
 			await  get_tree().create_timer(1).timeout
+			SaveData.saveGameToFile()
 			get_tree().quit()
 		Enums.DeviceButton.OPTIONS_BUTTON:
 			GameEvents.OpenOptionsMenu.emit()

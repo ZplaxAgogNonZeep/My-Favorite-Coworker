@@ -195,8 +195,12 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	if joyValue > MAX_JOY:
 		joyValue = MAX_JOY
 	
+	UpdateStatusBars.emit(hungerValue, joyValue)
+	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
+	
 	SfxManager.playSoundEffect(petResource.yap)
+	SaveData.saveGameToFile()
 #endregion
 
 #region Events 
@@ -269,6 +273,7 @@ func neglectTimeout(skipValueCheck := false):
 			_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
+	print("Evolve Check")
 	if (petResource.getNextEvolution(self) != null):
 		SfxManager.playSoundEffect(petResource.yap)
 		petState = Enums.PetState.EVOLVING

@@ -36,7 +36,6 @@ func takeInput(input : Enums.DeviceButton):
 		gameRunning = false
 		if input == Enums.DeviceButton.CENTER_BUTTON:
 			$Timer.stop()
-			$CatchWindow.stop()
 			if isCatchWindow:
 				onWin()
 			else:

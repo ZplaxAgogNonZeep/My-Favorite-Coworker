@@ -3,6 +3,7 @@ extends Node
 const SETTINGS_FILEPATH := "user://settings.ini"
 const GAMEDATA_FILEPATH := "user://gamedata.ini"
 const DEBUGDATA_FILEPATH := "user://debugdata.ini"
+const LAST_COMPATIBLE_VERSION := "0.3.2"
 
 #region Data Saving Classes
 class SavableClass:
@@ -82,7 +83,6 @@ func loadSettingsFromFile():
 		return
 	
 	var section = config.get_sections()[0]
-	
 	for key in config.get_section_keys(section):
 		Settings.set(key, config.get_value(section, key))
 	
@@ -107,6 +107,8 @@ func saveGameToFile():
 	
 	_loadedSaveData.append_array(dataToSave)
 	
+	config.set_value("Game Information", "version", ProjectSettings.get_setting("application/config/version"))
+	
 	for data in _loadedSaveData:
 		for propertyKey in data.properties.keys():
 			config.set_value(data.category, propertyKey, data.properties[propertyKey])
@@ -125,9 +127,12 @@ func loadGameFromFile():
 		print("No Game Save Data Found, assuming new game")
 		return
 	
+	
 	var sections = config.get_sections()
 	
 	for category in sections:
+		if category == "Game Information":
+			config.get_value("Game Information", "version")
 		var data := Data.new()
 		data.category = category
 		for propertyKey in config.get_section_keys(category):

@@ -33,7 +33,7 @@ func startGame(pet : Node2D, playMenu : Node2D):
 	
 	$PseudoPet.AreaEntered.connect(onLose)
 	$PseudoPet.TweenToFinished.connect(drop)
-	speed *= Settings.gameScale
+	speed *= 2
 	$PseudoPet.setDirection(true)
 	$PseudoPet.sprite.play("Walk")
 	

@@ -129,7 +129,7 @@ func setVolume(bus : SfxManager.BusType, value : float):
 			deviceVolume = value
 		SfxManager.BusType.GAME:
 			gameVolume = value
-	AudioServer.set_bus_volume_db(bus, lerp(-50, 6, value))
+	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
 
 
 func setFrameCap(frameCap : int):

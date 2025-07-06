@@ -27,7 +27,8 @@ func _ready() -> void:
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
-	_shadow.visible = false
+	if (_shadow):
+		_shadow.visible = false
 	if (_recordingMode):
 		return
 	if (_firstTimeOpened):
@@ -61,7 +62,8 @@ func _input(event: InputEvent) -> void:
 func _displayDevice(skipAnimation := false):
 	if (skipAnimation):
 		device.visible = true
-		_shadow.visible = true
+		if (_shadow):
+			_shadow.visible = true
 		device.turnOnDevice()
 		return
 	

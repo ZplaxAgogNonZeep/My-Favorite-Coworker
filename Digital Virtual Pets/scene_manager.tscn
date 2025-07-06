@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=19 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://ceixawk4uie76" path="res://ui/menu_management/menus/credits_menu.tscn" id="10_takr5"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 [ext_resource type="PackedScene" uid="uid://3v0b2cwbtgpq" path="res://ui/menu_management/menus/encyclopedia_menu.tscn" id="11_vxl1k"]
-[ext_resource type="Texture2D" uid="uid://8weye87u08i2" path="res://assets/art/aesprite/device/device_shadow.png" id="14_vxl1k"]
 
 [sub_resource type="Animation" id="Animation_o4c3o"]
 length = 0.001
@@ -30,18 +29,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(128, 296)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeviceShadow:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_p2vm5"]
@@ -59,18 +46,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(128, -12.79), Vector2(128, 296), Vector2(128, 280.47), Vector2(128, 296), Vector2(128, 287.575), Vector2(128, 296), Vector2(128, 294.42), Vector2(128, 296)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DeviceShadow:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.466667, 1.13333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0.425, 0.425), Vector2(2, 2)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_172hj"]
 _data = {
@@ -78,14 +53,13 @@ _data = {
 &"device_spawn": SubResource("Animation_p2vm5")
 }
 
-[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device", "_shadow", "_cutsceneAnimationPlayer")]
+[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device", "_cutsceneAnimationPlayer")]
 script = ExtResource("1_yxx2a")
 _camera = NodePath("Camera2D")
 _menuManager = NodePath("SystemUI/MenuManager")
 _iconMenu = NodePath("SystemUI/MenuManager/MenuSelectionIcons")
 _background = NodePath("BackgroundCanvas/SimpleBackground")
 device = NodePath("Device")
-_shadow = NodePath("DeviceShadow")
 _tutorialDialog = ExtResource("2_takr5")
 _cutsceneAnimationPlayer = NodePath("CutscenePlayer")
 metadata/_edit_lock_ = true
@@ -205,16 +179,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_172hj")
 }
 
-[node name="DeviceShadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.513726)
+[node name="Device" parent="." instance=ExtResource("11_7o31v")]
 position = Vector2(128, 296)
 scale = Vector2(2, 2)
-texture = ExtResource("14_vxl1k")
-
-[node name="Device" parent="." node_paths=PackedStringArray("_shadow") instance=ExtResource("11_7o31v")]
-position = Vector2(128, 296)
-scale = Vector2(2, 2)
-_shadow = NodePath("../DeviceShadow")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

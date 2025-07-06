@@ -22,11 +22,11 @@ func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	
-	$CollisionShape2D.scale = Vector2.ONE * Settings.gameScale
-	$Sprite2D.scale = Vector2.ONE * Settings.gameScale
+	$CollisionShape2D.scale = Vector2.ONE * 2
+	$Sprite2D.scale = Vector2.ONE * 2
 	
-	$CollisionShape2D.position.y *= Settings.gameScale
-	$Sprite2D.position.y *= Settings.gameScale
+	$CollisionShape2D.position.y *= 2
+	$Sprite2D.position.y *= 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

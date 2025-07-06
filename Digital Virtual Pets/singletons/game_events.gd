@@ -14,6 +14,7 @@ signal OpenOptionsMenu
 signal ToggleBorderlessMode(isBorderless : bool)
 signal OpenDirectMenu(index : int)
 signal ChangeCameraZoom(scale : float)
+signal ChangeGameScale(scale : int)
 signal CallToolTip(position : Vector2i, text : String)
 signal DismissToolTip
 #endregion

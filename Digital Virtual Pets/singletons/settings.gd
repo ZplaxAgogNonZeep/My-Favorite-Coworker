@@ -157,6 +157,10 @@ func changeActiveMonitor(monitorIndex : int) -> void:
 	
 	setWindowPosition()
 
+## Adjusts the variable for the overall scaling of the game. This has wide game ranging applications
+## so it's important that this is called instead of manually changing it.
+func changeGameScale(newScale : int):
+	gameScale = newScale
 
 ## Makes the window smaller to account for a minimized device
 func toggleMinimizedWindow(isMinimized : bool):

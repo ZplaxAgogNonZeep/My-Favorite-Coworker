@@ -23,6 +23,7 @@ var _recordingMode := false ## DEBUG ONLY. Hard Coded variable that makes gettin
 func _ready() -> void:
 	GameEvents.OpenOptionsMenu.connect(_openMenu)
 	GameEvents.ChangeCameraZoom.connect(_changeCameraZoom)
+	GameEvents.ChangeGameScale.connect(_onChangeGameScale)
 	
 	# This is where the game officially starts, remember that it happens AFTER every ready function
 	device.visible = false
@@ -97,6 +98,11 @@ func _proactivityBehavior():
 		Settings.setProactivityMode(true)
 
 
+func _onChangeGameScale(scale : int):
+	device.scale = Vector2(scale, scale)
+	print(get_viewport().get_window().size)
+	device.position.x = get_viewport().get_window().size.x * .5
+	device.position.y = get_viewport().get_window().size.y - (12 * Settings.gameScale)
 
 
 func _changeCameraZoom(_scale : float, _position : Vector2):

@@ -35,7 +35,7 @@ var monitorSetTo := 0
 var frameCapSetTo := 60
 ## Vectors
 var _customWindowPosn := Vector2i.ZERO
-var _defaultWindowSize : Vector2i
+var _defaultWindowSize : Vector2i = Vector2i(128, 160)
 ## Enums
 var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_TO_FRONT
 var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_RIGHT_CORNER
@@ -56,7 +56,7 @@ func _ready() -> void:
 	setVolume(SfxManager.BusType.GAME, gameVolume)
 	setVolume(SfxManager.BusType.DEVICE, deviceVolume)
 	
-	_defaultWindowSize = get_viewport().get_window().size
+	
 	get_tree().call_group("Debug", "debugReady")
 
 
@@ -161,15 +161,20 @@ func changeActiveMonitor(monitorIndex : int) -> void:
 ## so it's important that this is called instead of manually changing it.
 func changeGameScale(newScale : int):
 	gameScale = newScale
+	get_viewport().get_window().size = _defaultWindowSize * gameScale
+	#GameEvents.ChangeCameraZoom.emit(1 - (.25 * (gameScale - 2)), Vector2.ZERO)
+	#GameEvents.ChangeGameScale.emit(gameScale)
+	setWindowPosition()
 
 ## Makes the window smaller to account for a minimized device
 func toggleMinimizedWindow(isMinimized : bool):
 	if (isMinimized):
-		get_viewport().get_window().size /= 3
-		GameEvents.ChangeCameraZoom.emit(3, floor((_defaultWindowSize / 3)) * 2)
+		get_viewport().get_window().size = Vector2i((_defaultWindowSize * 2) / 3)
+		GameEvents.ChangeCameraZoom.emit(3, floor(((_defaultWindowSize * 2) / 3)) * 2)
 		setWindowPosition()
 	else:
-		get_viewport().get_window().size = _defaultWindowSize
+		await get_tree().process_frame
+		get_viewport().get_window().size = _defaultWindowSize * gameScale
 		GameEvents.ChangeCameraZoom.emit(1, Vector2.ZERO)
 		setWindowPosition()
 
@@ -202,16 +207,18 @@ func requestPlayerAttention():
 
 ## Updates the main game window's position to either match the anchor of the monitor it's on
 ## or to be in the porportional same position if set to custom.
-func setWindowPosition() -> void:
+func setWindowPosition(overrideWindowSize : Vector2i = Vector2i.ZERO) -> void:
 	var newPosn = Vector2i.ZERO
 	if (windowOrientation == WindowOrientationOptions.CUSTOM):
 		newPosn = _customWindowPosn
 	
 	#var monitorOffset
 	#if (activeMonitor != DisplayServer.get_primary_screen()):
-		
+	
 	var screenSize = DisplayServer.screen_get_usable_rect(activeMonitor).size
 	var gameWindowSize = get_viewport().get_window().size
+	if (overrideWindowSize != Vector2i.ZERO):
+		gameWindowSize = overrideWindowSize
 	match windowOrientation:
 		WindowOrientationOptions.BOT_RIGHT_CORNER:
 			newPosn = Vector2i(screenSize.x - gameWindowSize.x, screenSize.y - gameWindowSize.y)

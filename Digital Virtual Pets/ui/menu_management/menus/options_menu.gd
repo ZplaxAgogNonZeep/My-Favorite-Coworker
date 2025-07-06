@@ -6,6 +6,7 @@ extends Menu
 @export var _windowOrientationOptions : OptionButton
 @export var _monitorOptions : OptionButton
 @export var _frameOptions : OptionButton
+@export var _gameScaleOptions : OptionButton
 @export var _masterVolumeBar : HSlider
 @export var _gameVolumeBar : HSlider
 @export var _deviceVolumeBar : HSlider
@@ -23,6 +24,9 @@ func _loadSavedMenuSettings():
 		_frameOptions.selected = 0
 	else:
 		_frameOptions.selected = 2
+	
+	_gameScaleOptions.selected = Settings.gameScale - 2
+	
 	print(Settings.masterVolume)
 	_masterVolumeBar.value = lerp(_masterVolumeBar.min_value, _masterVolumeBar.max_value, 
 									Settings.masterVolume) 
@@ -58,6 +62,18 @@ func _onFrameOptions(index : int):
 			Settings.setFrameCap(60)
 		2:
 			Settings.setFrameCap(0)
+
+
+func _onGameScaleOptions(index):
+	match index:
+		0:
+			Settings.changeGameScale(2)
+		1:
+			Settings.changeGameScale(3)
+		2:
+			Settings.changeGameScale(4)
+		
+
 
 func _onMasterVolume(value : float):
 	print(value / _masterVolumeBar.max_value)

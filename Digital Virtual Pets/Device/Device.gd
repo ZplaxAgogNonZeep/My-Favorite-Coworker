@@ -146,7 +146,7 @@ func _shiftDeviceOver():
 	if (!Settings.minimized):
 		direction *= -1
 	var target = Vector2(_movementGroup.position.x + (
-							(_minimizeShiftDistance * Settings.gameScale) * direction), 
+							(_minimizeShiftDistance * 2) * direction), 
 						_movementGroup.position.y)
 	tween.tween_property(_movementGroup, "position", 
 						target, 
@@ -156,7 +156,7 @@ func _shiftDeviceOver():
 	if (_shadow):
 		var tweem = create_tween()
 		tweem.tween_property(_shadow, "global_position", 
-							target * Settings.gameScale + global_position, 
+							target, 
 							_animator.current_animation_length).set_ease(
 								Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 		if (Settings.minimized):

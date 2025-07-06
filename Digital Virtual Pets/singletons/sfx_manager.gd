@@ -168,6 +168,7 @@ func playSoundEffect(effectGroup : SoundGroup):
 	effectPlayer.pitch_scale = randf_range(.75, 1.25)
 	effectPlayer.autoplay = true
 	effectPlayer.stream = effectGroup.getStream()
+	effectPlayer.process_mode = Node.PROCESS_MODE_ALWAYS
 	match effectGroup.bus:
 		BusType.GAME:
 			effectPlayer.bus = "Game"

@@ -529,11 +529,13 @@ texture = ExtResource("8_5u0yl")
 metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
+process_mode = 3
+visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
 sprite_frames = ExtResource("9_5u0yl")
-animation = &"Screen On"
+animation = &"Screen Off"
 metadata/_edit_lock_ = true
 
 [node name="MenuManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
@@ -660,7 +662,6 @@ position = Vector2(0, -58)
 texture = ExtResource("23_t3ton")
 
 [node name="BioPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
-visible = false
 
 [node name="Name" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage"]
 offset_left = -27.0
@@ -705,6 +706,7 @@ offset = Vector2(0, -8)
 [node name="Node2D" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/BioPage"]
 
 [node name="StatPage" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu"]
+visible = false
 
 [node name="Personality" type="Label" parent="PositionGroup/GameArea/MenuManager/Menu/StatMenu/StatPage"]
 offset_left = -26.0

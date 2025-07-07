@@ -55,7 +55,7 @@ func _ready() -> void:
 	setVolume(SfxManager.BusType.MASTER, masterVolume)
 	setVolume(SfxManager.BusType.GAME, gameVolume)
 	setVolume(SfxManager.BusType.DEVICE, deviceVolume)
-	
+	changeGameScale(gameScale)
 	
 	get_tree().call_group("Debug", "debugReady")
 
@@ -83,7 +83,8 @@ func saveSettings():
 		"frameCapSetTo" : frameCapSetTo,
 		"masterVolume" : masterVolume,
 		"deviceVolume" : deviceVolume,
-		"gameVolume" : gameVolume
+		"gameVolume" : gameVolume,
+		"gameScale" : gameScale
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)

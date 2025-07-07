@@ -1059,7 +1059,7 @@ _evolveSequenceRate = 1.05
 
 [node name="PetSpawnPoint" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(0, -45)
-gizmo_extents = 2.5
+gizmo_extents = 30.0
 
 [node name="LeftBoundry" type="Marker2D" parent="PositionGroup/GameArea/PetManager/Markers"]
 position = Vector2(-27, -85)

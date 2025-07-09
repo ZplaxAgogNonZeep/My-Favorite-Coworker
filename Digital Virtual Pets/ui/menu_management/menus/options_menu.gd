@@ -72,6 +72,10 @@ func _onGameScaleOptions(index):
 			Settings.changeGameScale(3)
 		2:
 			Settings.changeGameScale(4)
+		3:
+			Settings.changeGameScale(5)
+		4:
+			Settings.changeGameScale(6)
 		
 
 

@@ -97,11 +97,11 @@ _data = {
 
 [node name="SystemDialogWindow" type="Panel" node_paths=PackedStringArray("_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
 process_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = -1
+anchor_right = 1.64453
 offset_bottom = 130.0
 grow_horizontal = 2
-pivot_offset = Vector2(126, 78)
+pivot_offset = Vector2(211, 78)
 mouse_force_pass_scroll_events = false
 theme = ExtResource("1_t6pyl")
 script = ExtResource("2_njc82")
@@ -126,7 +126,7 @@ anchor_right = 1.0
 offset_left = 8.0
 offset_top = 32.0
 offset_right = -8.0
-offset_bottom = 97.0
+offset_bottom = 102.0
 grow_horizontal = 2
 theme_type_variation = &"ParagraphText"
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum nunc nis"

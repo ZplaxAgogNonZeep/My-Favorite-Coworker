@@ -98,7 +98,7 @@ _data = {
 
 [node name="DialogWindow" type="Window" node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
-size = Vector2i(256, 200)
+size = Vector2i(421, 345)
 borderless = true
 transparent = true
 script = ExtResource("1_6ljhm")
@@ -109,16 +109,16 @@ _windowType = 2
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 130.0
+offset_bottom = 145.0
 grow_horizontal = 2
 
 [node name="SystemDialogWindow" type="Panel" parent="Control" node_paths=PackedStringArray("_windowContainer", "_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.169231
-offset_bottom = 130.0
+anchor_bottom = 1.05517
 grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(125, 73)
 theme = ExtResource("2_a3qp8")
 script = ExtResource("3_5mmiq")

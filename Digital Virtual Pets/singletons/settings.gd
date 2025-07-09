@@ -339,6 +339,7 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 		finalWindowPosition = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y)) + offset
 	return gameWindowPosition + finalWindowPosition
 
+
 func addToActiveWindows(window : Window):
 	if (!_activeWindows.has(window)):
 		_activeWindows.append(window)
@@ -354,6 +355,16 @@ func getTimerMod() -> float:
 		return 1
 	else:
 		return proactivityTimeModifier
+
+
+func getMonitorResolution(monitorIndex := -1) -> Rect2i:
+	var monitor
+	if (monitorIndex == -1):
+		monitor = DisplayServer.screen_get_usable_rect(activeMonitor)
+	else:
+		monitor = DisplayServer.screen_get_usable_rect(monitorIndex)
+	
+	return monitor
 
 
 func getMonitorCount() -> int:

@@ -12,22 +12,10 @@ length = 0.172
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.166667, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.766772, 0.766772), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.0666667, 0.166667),
 "transitions": PackedFloat32Array(4, 0.233258),
 "update": 0,
@@ -40,22 +28,10 @@ length = 0.1055
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.49012e-08, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.6, 0.6), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(1.49012e-08, 0.1),
 "transitions": PackedFloat32Array(1, 2.63901),
 "update": 0,
@@ -67,22 +43,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -98,7 +62,7 @@ _data = {
 
 [node name="DialogWindow" type="Window" node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
-size = Vector2i(421, 345)
+size = Vector2i(910, 465)
 borderless = true
 transparent = true
 script = ExtResource("1_6ljhm")
@@ -107,19 +71,17 @@ _windowType = 2
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
+anchors_preset = 0
+offset_right = 421.0
 offset_bottom = 145.0
-grow_horizontal = 2
 
 [node name="SystemDialogWindow" type="Panel" parent="Control" node_paths=PackedStringArray("_windowContainer", "_dialogLabel", "_characterNameLabel", "_choiceContainer", "_animator", "_closeButton")]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
+anchor_right = 0.781473
 anchor_bottom = 1.05517
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(125, 73)
 theme = ExtResource("2_a3qp8")
 script = ExtResource("3_5mmiq")
 _windowContainer = NodePath("../..")

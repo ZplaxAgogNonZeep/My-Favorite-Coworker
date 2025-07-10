@@ -26,7 +26,7 @@ func _ready() -> void:
 		var diff = _dialogLabel.size.y - _baseLabelSize
 		size.y += diff
 		await get_tree().process_frame
-		_windowContainer.setWindowToCanvasSize()
+	_windowContainer.setWindowToCanvasSize()
 
 
 func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[String], threadIndex : int):
@@ -34,8 +34,8 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 	_positionOffset = position
 	_baseLabelSize = _dialogLabel.size.y
 	
-	if (Settings.getMonitorResolution().size.x > 2000 or Settings.getMonitorResolution().size.y > 1200):
-		_dialogLabel.theme_type_variation = "BigParagraphText"
+	#if (Settings.getMonitorResolution().size.x > 2000 or Settings.getMonitorResolution().size.y > 1200):
+		#_dialogLabel.theme_type_variation = "BigParagraphText"
 	
 	# Set the Window Position, if the position is set to specifically (-1, -1), it will default to
 	# the center of the primary monitor

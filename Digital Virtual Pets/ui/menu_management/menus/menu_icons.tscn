@@ -34,7 +34,7 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 title = "menu_manager.exe"
-size = Vector2i(723, 120)
+size = Vector2i(334, 120)
 visible = false
 borderless = true
 transparent = true
@@ -44,7 +44,6 @@ _canvas = NodePath("MenuWindow")
 [node name="MenuWindow" type="Panel" parent="Window"]
 offset_right = 334.0
 offset_bottom = 120.0
-pivot_offset = Vector2(86, 68)
 
 [node name="Options" type="Button" parent="Window/MenuWindow"]
 texture_filter = 1

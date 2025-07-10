@@ -37,7 +37,8 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 title = "config.exe"
-size = Vector2i(955, 836)
+size = Vector2i(1560, 845)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
@@ -46,10 +47,8 @@ _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 anchors_preset = -1
-anchor_bottom = 0.078355
 offset_right = 400.0
-offset_bottom = 230.9
-pivot_offset = Vector2(200, 121)
+offset_bottom = 250.935
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true
 

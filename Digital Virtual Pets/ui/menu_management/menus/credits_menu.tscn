@@ -35,7 +35,6 @@ _windowType = 1
 [node name="MenuWindow" type="Panel" parent="Window"]
 offset_right = 346.0
 offset_bottom = 203.0
-pivot_offset = Vector2(174, 101)
 theme = ExtResource("3_x7vos")
 
 [node name="Close" type="Button" parent="Window/MenuWindow"]

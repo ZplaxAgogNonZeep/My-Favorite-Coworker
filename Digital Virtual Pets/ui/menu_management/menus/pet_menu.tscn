@@ -42,7 +42,6 @@ _windowType = 1
 [node name="MenuWindow" type="Panel" parent="Window"]
 offset_right = 448.0
 offset_bottom = 256.0
-pivot_offset = Vector2(224, 128)
 theme_type_variation = &"ClosedPanel"
 
 [node name="Dropshadow" type="ColorRect" parent="Window/MenuWindow"]

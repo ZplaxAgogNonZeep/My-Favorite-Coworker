@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_kpd25"]
 
 [node name="PetMenu" type="Control" node_paths=PackedStringArray("_slotContainer", "_window", "animator")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +41,7 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
+texture_filter = 1
 offset_right = 448.0
 offset_bottom = 256.0
 theme_type_variation = &"ClosedPanel"

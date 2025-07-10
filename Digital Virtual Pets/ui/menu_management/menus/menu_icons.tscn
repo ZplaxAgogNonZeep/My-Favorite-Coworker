@@ -12,6 +12,7 @@
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "_window", "animator")]
 modulate = Color(1, 1, 1, -1.19209e-07)
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(0.6, 0.6)
@@ -42,6 +43,7 @@ script = ExtResource("4_l7d3t")
 _canvas = NodePath("MenuWindow")
 
 [node name="MenuWindow" type="Panel" parent="Window"]
+texture_filter = 1
 offset_right = 334.0
 offset_bottom = 120.0
 

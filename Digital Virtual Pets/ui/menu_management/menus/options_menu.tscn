@@ -46,7 +46,7 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
-anchors_preset = -1
+texture_filter = 1
 offset_right = 400.0
 offset_bottom = 250.935
 theme_type_variation = &"ClosedPanel"

@@ -15,6 +15,7 @@ diffuse_texture = ExtResource("9_xa678")
 texture_filter = 1
 
 [node name="EncyclopediaMenu" type="Control" node_paths=PackedStringArray("_evolutionChart", "_bioName", "_bioIcon", "_bioParagraph", "_window", "animator")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,6 +52,7 @@ _canvas = NodePath("MenuWindow")
 _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
+texture_filter = 1
 offset_right = 479.0
 offset_bottom = 295.0
 theme = ExtResource("4_xa678")

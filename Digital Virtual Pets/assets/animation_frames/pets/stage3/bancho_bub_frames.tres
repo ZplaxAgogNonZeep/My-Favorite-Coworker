@@ -1,0 +1,63 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://domfvi45crybh"]
+
+[ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="1_t774f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke3x7"]
+atlas = ExtResource("1_t774f")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1m0d0"]
+atlas = ExtResource("1_t774f")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufs8l"]
+atlas = ExtResource("1_t774f")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jdl8"]
+atlas = ExtResource("1_t774f")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7mmk"]
+atlas = ExtResource("1_t774f")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiws3"]
+atlas = ExtResource("1_t774f")
+region = Rect2(24, 48, 24, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke3x7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1m0d0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ufs8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jdl8")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7mmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiws3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]

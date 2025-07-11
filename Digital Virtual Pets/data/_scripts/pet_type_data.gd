@@ -78,8 +78,11 @@ func getFormattedEvolutionConditions() -> String:
 						returnString += "Or\n"
 					EvolutionCondition.LogicalConditionals.AND:
 						returnString += "And\n"
-				
-			returnString += str(condition) + "\n"
+			
+			if (PetManager.instance != null):
+				returnString += condition.toFormattedString(PetManager.instance.getStatRecord(self)) + "\n"
+			else:
+				returnString += str(condition) + "\n"
 	
 	returnString = returnString.erase(returnString.rfind("\n"))
 	

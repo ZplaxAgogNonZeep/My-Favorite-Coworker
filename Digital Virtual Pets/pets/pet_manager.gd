@@ -13,6 +13,7 @@ class DataSaver extends SaveData.DataSaver:
 	var _slotIndex
 	var _encounteredPets
 	var _availableEggs
+	var _statRecords
 	
 	func getDataToSave() -> Data:
 		obj.gatherDataFromActivePet()
@@ -43,8 +44,8 @@ var _slotIndex : int
 var _boundryDistance : Vector2
 
 var _encounteredPets : Dictionary[String, PetTypeData]
+var _statRecords : Dictionary[PetTypeData, Array]
 var _availableEggs : Array[PetTypeData]
-#TODO: Track max stats obtained for each pet
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,7 +76,6 @@ func addPercentToPosn(posn : Vector2, percentPosn : Vector2) -> Vector2:
 func spawnPet(index := -1, isNewPet := false):
 	if (index >= MAX_PET_SLOTS):
 		return
-	
 	
 	var newPet = respawnPet.instantiate()
 	newPet.position = petSpawnPoint.position
@@ -114,9 +114,10 @@ func spawnPet(index := -1, isNewPet := false):
 	activePet = newPet
 	activePet.loadResourceData()
 	activePet.connect("UpdateStatusBars", _updateStatus)
+	activePet.connect("UpdateStatRecord", _updateStatRecord)
 	activePet.connect("ReadyToEvolve", evolvePet)
 	activePet.boundries.append_array([leftBoundry.position, rightBoundry.position])
-	
+	activePet._evoStatsUpdated()
 	call_deferred("add_child", activePet)
 	GameEvents.NewPetSpawned.emit(activePet.petResource.stage == 0)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
@@ -157,7 +158,7 @@ func evolvePet(evolveTarget: PetTypeData):
 		_encounterNewPet(activePet.petResource)
 	activePet.loadResourceData()
 	activePet.petState = Enums.PetState.ROAMING
-	
+	activePet._evoStatsUpdated()
 	# Save the game
 	SaveData.saveGameToFile()
 	
@@ -218,6 +219,31 @@ func loadPetDataFromSlot(index : int) -> Pet.PetSaveData:
 func _encounterNewPet(petData : PetTypeData) -> void:
 	#TODO: Probably track achievements or something
 	_encounteredPets[petData.name] = petData
+
+## Takes the stats from a pet and compares every element to the [param _statRecord] to see if it
+## has been surpassed.
+func _updateStatRecord(petData : PetTypeData, evoStats : Array):
+	for evolution : PetTypeData in petData.evolutions:
+		if (!_statRecords.has(evolution)):
+			_statRecords[evolution] = [0,0,0,0,0,0]
+		for x in range(evoStats.size()):
+			if (evoStats[x] > _statRecords[evolution][x]):
+				_statRecords[evolution][x] = evoStats[x]
+
+
+## Gets the stat record for the given pet type. Returns a list of stats in the 
+## following order:
+## 0 = POW
+## 1 = END
+## 2 = SPD
+## 3 = BAL
+## 4 = Trauma
+## 5 = Stat Total
+func getStatRecord(petData : PetTypeData) -> Array:
+	if (_statRecords.has(petData)):
+		return _statRecords[petData]
+	else:
+		return [0,0,0,0,0,0]
 
 
 func _unlockNewEgg(eggData : PetTypeData) -> void:

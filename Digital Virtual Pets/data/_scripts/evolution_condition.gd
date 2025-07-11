@@ -54,7 +54,6 @@ func checkConditionMet(pet : Pet) -> bool:
 	
 	return true
 
-
 func _to_string() -> String:
 	var returnString : String
 	if POW > -1:
@@ -75,6 +74,52 @@ func _to_string() -> String:
 		returnString += "Trauma less than " + str(TraumaLesser) + "\n"
 	if TraumaEqual > -1:
 		returnString += "Trauma equal to " + str(TraumaEqual) + "\n"
+	
+	returnString = returnString.erase(returnString.rfind("\n"))
+	
+	return returnString
+
+func toFormattedString(statRecord : Array) -> String:
+	var returnString : String
+	if POW > -1:
+		if (statRecord[0] < POW):
+			returnString += "???: ???\n"
+		else:
+			returnString += "POW: " + str(POW) + "\n"
+	if END > -1:
+		if (statRecord[1] < END):
+			returnString += "???: ???\n"
+		else:
+			returnString += "END: " + str(END) + "\n"
+	if SPD > -1:
+		if (statRecord[2] < SPD):
+			returnString += "???: ???\n"
+		else:
+			returnString += "SPD: " + str(SPD) + "\n"
+	if BAL > -1:
+		if (statRecord[3] < BAL):
+			returnString += "???: ???\n"
+		else:
+			returnString += "BAL: " + str(BAL) + "\n"
+	
+	if (statTotal > -1):
+		if (statRecord[5] < statTotal):
+			returnString += "???: ???\n"
+		else:
+			returnString += "Stat Total: " + str(statTotal) + "\n"
+	
+	if TraumaGreater > -1:
+		if (statRecord[4] < TraumaGreater):
+			returnString += "Trauma: ???\n"
+		else:
+			returnString += "Trauma greater than " + str(TraumaGreater) + "\n"
+	if TraumaLesser > -1:
+		returnString += "Trauma less than " + str(TraumaLesser) + "\n"
+	if TraumaEqual > -1:
+		if (statRecord[4] < TraumaEqual):
+			returnString += "Trauma: ???\n"
+		else:
+			returnString += "Trauma equal to " + str(TraumaEqual) + "\n"
 	
 	returnString = returnString.erase(returnString.rfind("\n"))
 	

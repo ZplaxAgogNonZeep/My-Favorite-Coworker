@@ -13,6 +13,7 @@ class PetSaveData extends SaveData.SavableClass:
 	var age
 
 signal UpdateStatusBars(hungerValue, joyValue)
+signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array)
 signal ReadyToEvolve(evolvedForm)
 
 const STAT_MAX : int = 99
@@ -198,6 +199,7 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	UpdateStatusBars.emit(hungerValue, joyValue)
 	
 	abilityStats[statToIncrease] += personalityMod(statToIncrease, statIncrease)
+	_evoStatsUpdated()
 	
 	SfxManager.playSoundEffect(petResource.yap)
 	SaveData.saveGameToFile()
@@ -296,6 +298,20 @@ func _setNextAnimation(animationName : String):
 	await sprite.animation_looped
 	sprite.play(_nextAnimation)
 	_nextAnimation = ""
+
+## Called when the pet updates any stats involved in evolution, including ability stats, 
+## trauma, and personality. ordered as such:
+## 0 = POW
+## 1 = END
+## 2 = SPD
+## 3 = BAL
+## 4 = Trauma
+## 5 = Stat Total
+func _evoStatsUpdated() -> void:
+	var evoStatArray : Array = [abilityStats[Enums.AbilityStat.POW], abilityStats[Enums.AbilityStat.END],
+								abilityStats[Enums.AbilityStat.SPD], abilityStats[Enums.AbilityStat.BAL],
+								traumaCount, getStatTotal()]
+	UpdateStatRecord.emit(petResource, evoStatArray)
 
 
 func getRawAge() -> float:

@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://bn7hde2gbjbfd"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://bn7hde2gbjbfd"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1m0d0"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_2cjim"]
-[ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="2_28228"]
+[ext_resource type="SpriteFrames" uid="uid://domfvi45crybh" path="res://assets/animation_frames/pets/stage3/bancho_bub_frames.tres" id="3_1m0d0"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_ke3x7"]
 
 [sub_resource type="Resource" id="Resource_1m0d0"]
@@ -18,70 +18,10 @@ TraumaEqual = -1
 Personality = -1
 statTotal = -1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ke3x7"]
-atlas = ExtResource("2_28228")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1m0d0"]
-atlas = ExtResource("2_28228")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufs8l"]
-atlas = ExtResource("2_28228")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0jdl8"]
-atlas = ExtResource("2_28228")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7mmk"]
-atlas = ExtResource("2_28228")
-region = Rect2(0, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kiws3"]
-atlas = ExtResource("2_28228")
-region = Rect2(24, 48, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3d4h7"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ke3x7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1m0d0")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ufs8l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0jdl8")
-}],
-"loop": true,
-"name": &"Quirk",
-"speed": 3.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7mmk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kiws3")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 3.0
-}]
-
 [resource]
 script = ExtResource("1_2cjim")
 name = "BanchoBub"
-spriteFrames = SubResource("SpriteFrames_3d4h7")
+spriteFrames = ExtResource("3_1m0d0")
 yap = ExtResource("3_ke3x7")
 stage = 3
 waitIntervals = Vector2(3, 10)

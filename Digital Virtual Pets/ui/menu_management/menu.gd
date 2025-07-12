@@ -31,7 +31,7 @@ func openMenu(direct := false):
 	
 	_loadSavedMenuSettings()
 	
-	animator.play(_animationLibrary + "/open_noscale")
+	animator.play(_animationLibrary + "/open")
 	#animator is bugged so we need to wait a frame or it'll display the menu BEFORE playing the 
 	# animation
 	await get_tree().process_frame
@@ -45,10 +45,10 @@ func openMenu(direct := false):
 func closeMenu():
 	#TODO: Add a system for tracking what menus that are open want the game paused
 	_saveMenuSettings()
-	if !animator.has_animation(_animationLibrary +"/close_noscale"):
+	if !animator.has_animation(_animationLibrary +"/close"):
 		animator.play("open", -1, -1, true)
 	else:
-		animator.play(_animationLibrary +"/close_noscale")
+		animator.play(_animationLibrary +"/close")
 	
 	await animator.animation_finished
 	visible = false

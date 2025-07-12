@@ -30,16 +30,23 @@ visible = false
 borderless = true
 transparent = true
 script = ExtResource("2_8bqty")
-_canvas = NodePath("MenuWindow")
+_canvas = NodePath("PanelControl/MenuWindow")
 _windowType = 1
 
-[node name="MenuWindow" type="Panel" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(167, 103)
+
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
 offset_right = 346.0
 offset_bottom = 203.0
 theme = ExtResource("3_x7vos")
 
-[node name="Close" type="Button" parent="Window/MenuWindow"]
+[node name="Close" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -53,7 +60,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("4_8bqty")
 icon_alignment = 1
 
-[node name="WindowName" type="Label" parent="Window/MenuWindow"]
+[node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
@@ -62,7 +69,7 @@ offset_bottom = 20.0
 theme_type_variation = &"HeaderSmall"
 text = "credits.txt"
 
-[node name="GG" type="Label" parent="Window/MenuWindow"]
+[node name="GG" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -75,7 +82,7 @@ text = "Guildmate Games"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DevNames" type="Label" parent="Window/MenuWindow/GG"]
+[node name="DevNames" type="Label" parent="Window/PanelControl/MenuWindow/GG"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
@@ -83,7 +90,7 @@ offset_right = 332.0
 offset_bottom = 68.0
 text = "Programming/Art/Sound - Aidan M.W. Barrett"
 
-[node name="Additional Help" type="Label" parent="Window/MenuWindow"]
+[node name="Additional Help" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -97,7 +104,7 @@ text = "Additional Help"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DevNames" type="Label" parent="Window/MenuWindow/Additional Help"]
+[node name="DevNames" type="Label" parent="Window/PanelControl/MenuWindow/Additional Help"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
@@ -105,7 +112,7 @@ offset_right = 332.0
 offset_bottom = 68.0
 text = "Marketing/Logo Design   - Kbelle Media"
 
-[node name="Resources" type="Label" parent="Window/MenuWindow"]
+[node name="Resources" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -122,7 +129,7 @@ text = "Resources Used"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="DevNames" type="Label" parent="Window/MenuWindow/Resources"]
+[node name="DevNames" type="Label" parent="Window/PanelControl/MenuWindow/Resources"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 26.0
@@ -132,6 +139,6 @@ text = "Font: W95FA                     - Alina Sava
 Font: Not Jam UI                 - Not Jam"
 
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
-[connection signal="button_down" from="Window/MenuWindow/Close" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Close" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Close" to="." method="_onExit"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Close" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Close" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Close" to="." method="_onExit"]

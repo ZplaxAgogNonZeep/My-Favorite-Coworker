@@ -23,10 +23,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sik5p")
-_evolutionChart = NodePath("Window/MenuWindow/EvolutionChart/ChartContent/ScrollContainer/VBoxContainer")
-_bioName = NodePath("Window/MenuWindow/Bio/Name")
-_bioIcon = NodePath("Window/MenuWindow/Bio/Picture/TextureRect")
-_bioParagraph = NodePath("Window/MenuWindow/Bio/Entry")
+_evolutionChart = NodePath("Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/ScrollContainer/VBoxContainer")
+_bioName = NodePath("Window/PanelControl/MenuWindow/Bio/Name")
+_bioIcon = NodePath("Window/PanelControl/MenuWindow/Bio/Picture/TextureRect")
+_bioParagraph = NodePath("Window/PanelControl/MenuWindow/Bio/Entry")
 _defaultIcon = ExtResource("9_xa678")
 _defaultName = "???"
 _defaultEntry = "Click on a pet to view it!"
@@ -48,17 +48,24 @@ visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_8o6ii")
-_canvas = NodePath("MenuWindow")
+_canvas = NodePath("PanelControl/MenuWindow")
 _windowType = 1
 
-[node name="MenuWindow" type="Panel" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(241, 160)
+
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
 offset_right = 479.0
 offset_bottom = 295.0
 theme = ExtResource("4_xa678")
 theme_type_variation = &"ClosedPanel"
 
-[node name="Button" type="Button" parent="Window/MenuWindow"]
+[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -72,7 +79,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("5_7gjff")
 icon_alignment = 1
 
-[node name="WindowName" type="Label" parent="Window/MenuWindow"]
+[node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
@@ -81,7 +88,7 @@ offset_bottom = 20.0
 theme_type_variation = &"HeaderSmall"
 text = "encylopedia.exe"
 
-[node name="EvolutionChart" type="Panel" parent="Window/MenuWindow"]
+[node name="EvolutionChart" type="Panel" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -93,7 +100,7 @@ offset_bottom = 289.0
 grow_horizontal = 0
 theme_type_variation = &"SubPanel"
 
-[node name="Title" type="Label" parent="Window/MenuWindow/EvolutionChart"]
+[node name="Title" type="Label" parent="Window/PanelControl/MenuWindow/EvolutionChart"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.009
@@ -109,7 +116,7 @@ text = "Known Evolutions"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ChartContent" type="Control" parent="Window/MenuWindow/EvolutionChart"]
+[node name="ChartContent" type="Control" parent="Window/PanelControl/MenuWindow/EvolutionChart"]
 layout_mode = 1
 anchor_left = 0.014
 anchor_top = 0.012
@@ -122,13 +129,13 @@ offset_bottom = -0.0360107
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CategoryLabels" type="Control" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+[node name="CategoryLabels" type="Control" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent"]
 layout_mode = 1
 anchors_preset = 0
 offset_right = 47.0
 offset_bottom = 22.0
 
-[node name="EggCat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="EggCat" type="Label" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,7 +149,7 @@ text = "Egg"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage1Cat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Stage1Cat" type="Label" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,7 +163,7 @@ text = "Stage 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage2Cat2" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Stage2Cat2" type="Label" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,7 +177,7 @@ text = "Stage 2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stage3Cat" type="Label" parent="Window/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
+[node name="Stage3Cat" type="Label" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/CategoryLabels"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 4.618
@@ -184,7 +191,7 @@ text = "Stage 3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -195,7 +202,7 @@ offset_bottom = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MenuWindow/EvolutionChart/ChartContent/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/EvolutionChart/ChartContent/ScrollContainer"]
 layout_mode = 2
 script = ExtResource("6_xa678")
 _testResource = ExtResource("7_7gjff")
@@ -203,7 +210,7 @@ _petIconScene = ExtResource("8_w4ghv")
 _nodeSpacing = Vector2(55, 10)
 _horizontalSpacer = 10.0
 
-[node name="Bio" type="Control" parent="Window/MenuWindow"]
+[node name="Bio" type="Control" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchor_right = 0.454
 offset_left = 2.0
@@ -211,7 +218,7 @@ offset_top = 16.35
 offset_right = -0.146011
 offset_bottom = 259.35
 
-[node name="Picture" type="Panel" parent="Window/MenuWindow/Bio"]
+[node name="Picture" type="Panel" parent="Window/PanelControl/MenuWindow/Bio"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -224,7 +231,7 @@ grow_horizontal = 2
 theme_type_variation = &"SubPanel"
 metadata/_edit_group_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Window/MenuWindow/Bio/Picture"]
+[node name="TextureRect" type="TextureRect" parent="Window/PanelControl/MenuWindow/Bio/Picture"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.038
@@ -239,7 +246,7 @@ texture = SubResource("CanvasTexture_cqi4c")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Title" type="Label" parent="Window/MenuWindow/Bio"]
+[node name="Title" type="Label" parent="Window/PanelControl/MenuWindow/Bio"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -252,7 +259,7 @@ text = "Bio"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Name" type="Label" parent="Window/MenuWindow/Bio"]
+[node name="Name" type="Label" parent="Window/PanelControl/MenuWindow/Bio"]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -267,7 +274,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Buh"
 horizontal_alignment = 1
 
-[node name="Entry" type="Label" parent="Window/MenuWindow/Bio"]
+[node name="Entry" type="Label" parent="Window/PanelControl/MenuWindow/Bio"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -280,6 +287,6 @@ text = "When the spirit is broken but the body is willing, a new form awakens. T
 autowrap_mode = 3
 
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
-[connection signal="button_down" from="Window/MenuWindow/Button" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Button" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Button" to="." method="_onExit"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Button" to="." method="_onExit"]

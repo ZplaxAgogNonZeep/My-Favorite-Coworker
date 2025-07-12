@@ -18,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_8s5lr")
 script = ExtResource("2_44k7u")
-_slotContainer = NodePath("Window/MenuWindow/SubPanel/VBoxContainer")
+_slotContainer = NodePath("Window/PanelControl/MenuWindow/SubPanel/VBoxContainer")
 _slotScene = ExtResource("3_npbw2")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
@@ -37,16 +37,25 @@ visible = false
 borderless = true
 transparent = true
 script = ExtResource("5_4b6c8")
-_canvas = NodePath("MenuWindow")
+_canvas = NodePath("PanelControl/MenuWindow")
 _windowType = 1
 
-[node name="MenuWindow" type="Panel" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(224, 131)
+
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 offset_right = 448.0
 offset_bottom = 256.0
 theme_type_variation = &"ClosedPanel"
 
-[node name="Dropshadow" type="ColorRect" parent="Window/MenuWindow"]
+[node name="Dropshadow" type="ColorRect" parent="Window/PanelControl/MenuWindow"]
 z_index = -1
 layout_mode = 1
 anchors_preset = -1
@@ -59,7 +68,7 @@ offset_bottom = 1.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.313726)
 
-[node name="MenuName" type="Label" parent="Window/MenuWindow"]
+[node name="MenuName" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
@@ -68,7 +77,7 @@ offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
 text = "pet_data_manager.exe"
 
-[node name="SubPanel" type="Panel" parent="Window/MenuWindow"]
+[node name="SubPanel" type="Panel" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 48.0
@@ -76,7 +85,7 @@ offset_right = 424.0
 offset_bottom = 208.0
 theme_type_variation = &"SubPanel"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/MenuWindow/SubPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/SubPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.01
@@ -87,7 +96,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Exit" type="Button" parent="Window/MenuWindow"]
+[node name="Exit" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -101,7 +110,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("5_kpd25")
 icon_alignment = 1
 
-[node name="LoadPet" type="Button" parent="Window/MenuWindow"]
+[node name="LoadPet" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 200.0
 offset_top = 216.0
@@ -111,9 +120,9 @@ text = "Load"
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
-[connection signal="button_down" from="Window/MenuWindow/Exit" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Exit" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Exit" to="." method="_onExit"]
-[connection signal="button_down" from="Window/MenuWindow/LoadPet" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/LoadPet" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/LoadPet" to="." method="_loadSelectedPet"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Exit" to="." method="_onExit"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_loadSelectedPet"]

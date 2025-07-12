@@ -18,7 +18,7 @@ anchors_preset = 0
 scale = Vector2(0.6, 0.6)
 theme = ExtResource("1_pegra")
 script = ExtResource("1_x636n")
-_petMenuButton = NodePath("Window/MenuWindow/Pet")
+_petMenuButton = NodePath("Window/PanelControl/MenuWindow/Pet")
 pauseGame = false
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
@@ -40,14 +40,21 @@ visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_l7d3t")
-_canvas = NodePath("MenuWindow")
+_canvas = NodePath("PanelControl/MenuWindow")
 
-[node name="MenuWindow" type="Panel" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(167, 69)
+
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
 offset_right = 334.0
 offset_bottom = 120.0
 
-[node name="Options" type="Button" parent="Window/MenuWindow"]
+[node name="Options" type="Button" parent="Window/PanelControl/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
 offset_left = 6.0
@@ -61,7 +68,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="Window/MenuWindow/Options"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Options"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -74,7 +81,7 @@ theme_type_variation = &"HeaderSmall"
 text = "Options"
 horizontal_alignment = 1
 
-[node name="Pet" type="Button" parent="Window/MenuWindow"]
+[node name="Pet" type="Button" parent="Window/PanelControl/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
 offset_left = 87.0
@@ -88,7 +95,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="Window/MenuWindow/Pet"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Pet"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -101,7 +108,7 @@ theme_type_variation = &"HeaderSmall"
 text = "Pet Data"
 horizontal_alignment = 1
 
-[node name="Encyclopedia" type="Button" parent="Window/MenuWindow"]
+[node name="Encyclopedia" type="Button" parent="Window/PanelControl/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
 offset_left = 168.0
@@ -115,7 +122,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="Window/MenuWindow/Encyclopedia"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Encyclopedia"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -128,7 +135,7 @@ theme_type_variation = &"HeaderSmall"
 text = "Encyclopedia"
 horizontal_alignment = 1
 
-[node name="Credits" type="Button" parent="Window/MenuWindow"]
+[node name="Credits" type="Button" parent="Window/PanelControl/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 1
@@ -146,7 +153,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="Window/MenuWindow/Credits"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Credits"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -159,7 +166,7 @@ theme_type_variation = &"HeaderSmall"
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="Close" type="Button" parent="Window/MenuWindow"]
+[node name="Close" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -173,7 +180,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("6_xwarh")
 icon_alignment = 1
 
-[node name="Label" type="Label" parent="Window/MenuWindow"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
@@ -184,18 +191,18 @@ text = "menu_manager.exe"
 
 [connection signal="close_requested" from="Window" to="." method="_onCloseButton"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
-[connection signal="button_down" from="Window/MenuWindow/Options" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Options" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Options" to="." method="_onOptionsButton"]
-[connection signal="button_down" from="Window/MenuWindow/Pet" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Pet" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Pet" to="." method="_onPetButton"]
-[connection signal="button_down" from="Window/MenuWindow/Encyclopedia" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Encyclopedia" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Encyclopedia" to="." method="_onEncyclopediaButton"]
-[connection signal="button_down" from="Window/MenuWindow/Credits" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Credits" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Credits" to="." method="_onCreditsButton"]
-[connection signal="button_down" from="Window/MenuWindow/Close" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/MenuWindow/Close" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/MenuWindow/Close" to="." method="_onCloseButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Options" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Options" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Options" to="." method="_onOptionsButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Pet" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Pet" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Pet" to="." method="_onPetButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_onEncyclopediaButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Credits" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Credits" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Credits" to="." method="_onCreditsButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Close" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Close" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Close" to="." method="_onCloseButton"]

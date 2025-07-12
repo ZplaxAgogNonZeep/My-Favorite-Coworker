@@ -55,6 +55,8 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 	#else:
 		#_windowContainer.position = Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, 
 																	#_windowContainer.size, pos)
+	if (_givenPosition == Vector2i(-999, -999)):
+		_windowContainer.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN
 	_windowContainer.title = speaker
 	_characterNameLabel.text = speaker
 	

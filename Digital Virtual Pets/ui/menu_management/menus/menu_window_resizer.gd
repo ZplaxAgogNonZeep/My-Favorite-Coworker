@@ -23,15 +23,10 @@ func resetWindow():
 
 ## Sets the size of the [
 func setWindowToCanvasSize():
-	print(Settings.gameScale)
 	if (Settings.gameScale >= 4):
-		if _windowType == Settings.SubWindowPositionType.DIALOG:
-			print("biggi mode")
 		size = ceil(_canvas.size) * 2
 		_canvas.scale = Vector2(2,2)
-	else:
-		if _windowType == Settings.SubWindowPositionType.DIALOG:
-			print("small mode")
+	else: 
 		_canvas.scale = Vector2(1,1)
 		size = ceil(_canvas.size)
 

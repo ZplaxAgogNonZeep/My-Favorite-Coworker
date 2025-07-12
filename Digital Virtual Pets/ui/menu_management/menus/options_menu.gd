@@ -13,7 +13,10 @@ extends Menu
 @export_category("Resources")
 @export var _dialogData : CharacterDialog
 
+var _savelessClose := false
+
 func _loadSavedMenuSettings():
+	_savelessClose = false
 	_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
 	_windowAttentionSelection.selected = Settings.windowAttentionMode
 	_windowOrientationOptions.selected = Settings.windowOrientation
@@ -29,13 +32,17 @@ func _loadSavedMenuSettings():
 	
 	_gameScaleOptions.selected = Settings.gameScale - 2
 	
-	print(Settings.masterVolume)
 	_masterVolumeBar.value = lerp(_masterVolumeBar.min_value, _masterVolumeBar.max_value, 
 									Settings.masterVolume) 
 	_deviceVolumeBar.value = lerp(_deviceVolumeBar.min_value, _deviceVolumeBar.max_value, 
 									Settings.deviceVolume)
 	_gameVolumeBar.value = lerp(_gameVolumeBar.min_value, _gameVolumeBar.max_value, 
 									Settings.gameVolume)
+
+
+func _saveMenuSettings():
+	if (!_savelessClose):
+		Settings.saveSettings()
 
 
 #region Signal Functions
@@ -82,7 +89,6 @@ func _onGameScaleOptions(index):
 
 
 func _onMasterVolume(value : float):
-	print(value / _masterVolumeBar.max_value)
 	Settings.setVolume(SfxManager.BusType.MASTER, value / _masterVolumeBar.max_value)
 
 
@@ -98,6 +104,10 @@ func _onDeleteSaveData():
 	GameEvents.DisplayDialog.emit(Vector2i(0,0), _dialogData, 
 					"Delete Save Data Warning", Callable(self, "_deleteSaveData"))
 
+
+func _onResetSettingsSaveData():
+	SaveData.deleteSettingsSaveData()
+
 #endregion
 
 #region Helper Functions
@@ -107,7 +117,11 @@ func _fillMonitorOptions(options : OptionButton, monitorCount : int) -> void:
 
 
 func _deleteSaveData(threadHistory : Array):
-	print("Deleting Save Data reached")
+	if (threadHistory[1]["name"] == "DSDW-Delete"):
+		print("deleting save data")
+		SaveData.deleteGameSaveData()
+	else:
+		print("Aborting")
 
 
 #endregion

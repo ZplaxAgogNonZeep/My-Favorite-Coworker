@@ -72,12 +72,12 @@ passages = {
 "text": "Save data deletion aborted."
 },
 "DSDW-Delete": {
-"cleanText": "Understood, deleting all saved data.",
+"cleanText": "Deleting Save Data. This process will close the game.",
 "id": "7",
 "links": [],
 "name": "DSDW-Delete",
 "tags": "",
-"text": "Understood, deleting all saved data."
+"text": "Deleting Save Data. This process will close the game."
 },
 "Delete Save Data Warning": {
 "cleanText": "WARNING! Are you sure you want to delete your save data? 

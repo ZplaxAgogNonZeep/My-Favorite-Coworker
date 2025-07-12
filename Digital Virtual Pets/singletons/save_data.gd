@@ -85,7 +85,13 @@ func loadSettingsFromFile():
 	var section = config.get_sections()[0]
 	for key in config.get_section_keys(section):
 		Settings.set(key, config.get_value(section, key))
-	
+
+
+func deleteSettingsSaveData():
+	DirAccess.remove_absolute(SETTINGS_FILEPATH)
+	saveGameToFile()
+	get_tree().quit()
+
 #endregion
 
 #region Game Data Handling
@@ -143,6 +149,11 @@ func loadGameFromFile():
 		_loadedSaveData.append(data)
 
 
+func deleteGameSaveData():
+	DirAccess.remove_absolute(GAMEDATA_FILEPATH)
+	get_tree().quit()
+
+
 func retrieveGameData(category : String) -> Data:
 	for data : Data in _loadedSaveData:
 		if (category == data.category):
@@ -169,6 +180,13 @@ func findAllDataSaversInScene():
 #endregion
 
 #region Utility Functions
+
+func isSaveDataExists(isSettings : bool) -> bool:
+	if (isSettings):
+		return DirAccess.dir_exists_absolute(SETTINGS_FILEPATH)
+	else:
+		return DirAccess.dir_exists_absolute(GAMEDATA_FILEPATH)
+
 func _checkForExistingCategory(data: Data) -> int:
 	var count = 0
 	for existingData : Data in _loadedSaveData:

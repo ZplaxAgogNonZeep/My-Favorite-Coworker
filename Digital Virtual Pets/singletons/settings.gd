@@ -55,6 +55,9 @@ func _ready() -> void:
 	setVolume(SfxManager.BusType.MASTER, masterVolume)
 	setVolume(SfxManager.BusType.GAME, gameVolume)
 	setVolume(SfxManager.BusType.DEVICE, deviceVolume)
+	if (!SaveData.isSaveDataExists(true)):
+		if (Settings.getMonitorResolution().size.x > 2000 and Settings.getMonitorResolution().size.y > 1200):
+			gameScale = 4
 	changeGameScale(gameScale)
 	
 	get_tree().call_group("Debug", "debugReady")
@@ -136,6 +139,7 @@ func setVolume(bus : SfxManager.BusType, value : float):
 func setFrameCap(frameCap : int):
 	Engine.max_fps = frameCap
 	frameCapSetTo = frameCap
+
 
 #endregion
 

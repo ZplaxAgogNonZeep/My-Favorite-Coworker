@@ -5,7 +5,7 @@
   "creatorVersion": "2.10.0",
   "schemaName": "Twine to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1752334583810,
+  "createdAtMs": 1752338411848,
   "passages": [
 	{
 	  "name": "New Game Dialog",
@@ -88,9 +88,9 @@
 	  "name": "DSDW-Delete",
 	  "tags": "",
 	  "id": "7",
-	  "text": "Understood, deleting all saved data.",
+	  "text": "Deleting Save Data. This process will close the game.",
 	  "links": [],
-	  "cleanText": "Understood, deleting all saved data."
+	  "cleanText": "Deleting Save Data. This process will close the game."
 	},
 	{
 	  "name": "DSDW-Cancel",

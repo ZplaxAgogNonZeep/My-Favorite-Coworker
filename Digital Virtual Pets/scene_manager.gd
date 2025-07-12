@@ -32,8 +32,8 @@ func _ready() -> void:
 	if (_recordingMode):
 		return
 	if (_firstTimeOpened):
-		if (Settings.getMonitorResolution().size.x > 2000 and Settings.getMonitorResolution().size.y > 1200):
-			Settings.changeGameScale(4)
+		#if (Settings.getMonitorResolution().size.x > 2000 and Settings.getMonitorResolution().size.y > 1200):
+			#Settings.changeGameScale(4)
 		await get_tree().create_timer(1).timeout
 		GameEvents.DisplayDialog.emit(Vector2i(-999,-999), _tutorialDialog, 
 						"New Game Dialog", Callable(self, "_newGameCutsceneFinished"))

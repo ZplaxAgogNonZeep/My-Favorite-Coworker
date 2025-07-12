@@ -10,6 +10,12 @@ signal DialogChoiceSelected(choiceIndex : int, threadIndex : int, window : Contr
 @export var _animator : AnimationPlayer
 @export var _closeButton : Button
 @export var _buttonScene : PackedScene
+@export var _colorKeywords : Dictionary[String, Color] = {"BLUE" : Color("#97D6FF"),
+															"CREAM" : Color("#EBE9D5"),
+															"GREEN" : Color("#D0E1A3"),
+															"YELLOW" : Color("#FFF0AD"),
+															"PURPLE" : Color("#D2B5E3"),
+															"RED" : Color("#FF0000")}
 
 var _baseLabelSize : float
 var _positionOffset : Vector2
@@ -27,25 +33,38 @@ func _ready() -> void:
 		size.y += diff
 		await get_tree().process_frame
 	_windowContainer.setWindowToCanvasSize()
+	if (_givenPosition == Vector2i(-999, -999)):
+		_windowContainer.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN
+	else:
+		_windowContainer.position = Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, 
+																	_windowContainer.size, _givenPosition)
 
 
 func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[String], threadIndex : int):
 	_threadIndex = threadIndex
 	_positionOffset = position
 	_baseLabelSize = _dialogLabel.size.y
-	
+	_givenPosition = pos
 	#if (Settings.getMonitorResolution().size.x > 2000 or Settings.getMonitorResolution().size.y > 1200):
 		#_dialogLabel.theme_type_variation = "BigParagraphText"
 	
 	# Set the Window Position, if the position is set to specifically (-1, -1), it will default to
 	# the center of the primary monitor
-	if (pos == Vector2i(-999, -999)):
-		_windowContainer.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN
-	else:
-		_windowContainer.position = Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, 
-																	_windowContainer.size, pos)
+	#if (pos == Vector2i(-999, -999)):
+		#_windowContainer.initial_position = Window.WINDOW_INITIAL_POSITION_CENTER_PRIMARY_SCREEN
+	#else:
+		#_windowContainer.position = Settings.findValidWindowPosition(Settings.SubWindowPositionType.DIALOG, 
+																	#_windowContainer.size, pos)
 	_windowContainer.title = speaker
 	_characterNameLabel.text = speaker
+	
+	# Filter for color keywords
+	
+	for keyword in _colorKeywords.keys():
+		if text.contains("#" + keyword):
+			text = text.replace("#" + keyword, "#" + _colorKeywords[keyword].to_html(false))
+			print("#" + _colorKeywords[keyword].to_html(false))
+	
 	_dialogLabel.text = text
 	
 	if (links.size() <= 0):

@@ -8,11 +8,6 @@ const DIALOG_FILEPATH := "res://data/dialog/"
 var x: Callable = _generateDialog
 @export var dialogText : JSON
 @export_category("Formatting Settings")
-@export var _colorKeywords : Dictionary[String, Color] = {"BLUE" : Color("#97D6FF"),
-															"CREAM" : Color("#EBE9D5"),
-															"GREEN" : Color("#D0E1A3"),
-															"YELLOW" : Color("#FFF0AD"),
-															"PURPLE" : Color("#D2B5E3")}
 
 var _passageList : Array
 

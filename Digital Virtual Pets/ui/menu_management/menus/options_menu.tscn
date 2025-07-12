@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfh7qhfhtctv8"]
+[gd_scene load_steps=7 format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
+[ext_resource type="Resource" uid="uid://b5w6rlqqkvdbj" path="res://data/dialog/my_favorite_coworker.exe.tres" id="3_lbu1b"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_6eh78"]
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
@@ -23,6 +24,7 @@ _gameScaleOptions = NodePath("Window/MenuWindow/Buttons/GameScaleOptions")
 _masterVolumeBar = NodePath("Window/MenuWindow/Buttons/MasterVolume")
 _gameVolumeBar = NodePath("Window/MenuWindow/Buttons/GameVolume")
 _deviceVolumeBar = NodePath("Window/MenuWindow/Buttons/DeviceVolume")
+_dialogData = ExtResource("3_lbu1b")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
@@ -38,7 +40,6 @@ libraries = {
 transparent_bg = true
 title = "config.exe"
 size = Vector2i(1560, 845)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
@@ -47,8 +48,9 @@ _windowType = 1
 
 [node name="MenuWindow" type="Panel" parent="Window"]
 texture_filter = 1
+anchors_preset = -1
 offset_right = 400.0
-offset_bottom = 250.935
+offset_bottom = 285.0
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true
 
@@ -91,9 +93,9 @@ mouse_filter = 2
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 92.0
+offset_top = 122.0
 offset_right = 277.0
-offset_bottom = 113.0
+offset_bottom = 143.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Proactivity Mode"
@@ -103,9 +105,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 25.0
+offset_top = 55.0
 offset_right = 277.0
-offset_bottom = 46.0
+offset_bottom = 76.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Master Volume"
@@ -115,9 +117,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 47.0
+offset_top = 77.0
 offset_right = 277.0
-offset_bottom = 68.0
+offset_bottom = 98.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Device Volume"
@@ -127,9 +129,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 69.0
+offset_top = 99.0
 offset_right = 277.0
-offset_bottom = 90.0
+offset_bottom = 120.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Game Volume"
@@ -140,9 +142,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 118.0
+offset_top = 148.0
 offset_right = 197.0
-offset_bottom = 139.0
+offset_bottom = 169.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Focus Mode"
@@ -153,9 +155,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 145.0
+offset_top = 175.0
 offset_right = 204.0
-offset_bottom = 166.0
+offset_bottom = 196.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Position"
@@ -166,9 +168,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 38.0
-offset_top = 171.0
+offset_top = 201.0
 offset_right = 292.0
-offset_bottom = 192.0
+offset_bottom = 222.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Active Monitor"
@@ -179,9 +181,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 196.0
+offset_top = 226.0
 offset_right = 291.0
-offset_bottom = 217.0
+offset_bottom = 247.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Frame Cap"
@@ -192,9 +194,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 222.0
+offset_top = 252.0
 offset_right = 291.0
-offset_bottom = 243.0
+offset_bottom = 273.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Game Scale"
@@ -216,9 +218,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -63.0
-offset_top = 88.0
+offset_top = 118.0
 offset_right = -33.0
-offset_bottom = 118.0
+offset_bottom = 148.0
 grow_horizontal = 0
 flat = true
 icon_alignment = 1
@@ -229,9 +231,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 117.0
+offset_top = 147.0
 offset_right = -37.0
-offset_bottom = 139.0
+offset_bottom = 169.0
 grow_horizontal = 0
 selected = 0
 item_count = 3
@@ -248,9 +250,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 144.0
+offset_top = 174.0
 offset_right = -37.0
-offset_bottom = 166.0
+offset_bottom = 196.0
 grow_horizontal = 0
 selected = 3
 item_count = 5
@@ -271,9 +273,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -121.0
-offset_top = 170.0
+offset_top = 200.0
 offset_right = -37.0
-offset_bottom = 192.0
+offset_bottom = 222.0
 grow_horizontal = 0
 selected = 0
 item_count = 1
@@ -283,9 +285,9 @@ popup/item_0/id = 0
 [node name="FrameCapOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 279.0
-offset_top = 196.0
+offset_top = 226.0
 offset_right = 363.0
-offset_bottom = 218.0
+offset_bottom = 248.0
 selected = 1
 item_count = 3
 popup/item_0/text = "30 fps"
@@ -298,9 +300,9 @@ popup/item_2/id = 2
 [node name="GameScaleOptions" type="OptionButton" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 321.0
-offset_top = 222.0
+offset_top = 252.0
 offset_right = 363.0
-offset_bottom = 244.0
+offset_bottom = 274.0
 selected = 0
 item_count = 5
 popup/item_0/text = "x2"
@@ -317,29 +319,46 @@ popup/item_4/id = 4
 [node name="MasterVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 28.0
+offset_top = 58.0
 offset_right = 363.0
-offset_bottom = 44.0
+offset_bottom = 74.0
 value = 70.0
 scrollable = false
 
 [node name="DeviceVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 50.0
+offset_top = 80.0
 offset_right = 363.0
-offset_bottom = 66.0
+offset_bottom = 96.0
 value = 70.0
 scrollable = false
 
 [node name="GameVolume" type="HSlider" parent="Window/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 72.0
+offset_top = 102.0
 offset_right = 363.0
-offset_bottom = 88.0
+offset_bottom = 118.0
 value = 70.0
 scrollable = false
+
+[node name="DeleteSaveButton" type="Button" parent="Window/MenuWindow"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 23.0
+offset_right = 195.0
+offset_bottom = 50.0
+theme_type_variation = &"CloseButton"
+text = "Delete Save Data"
+
+[node name="ResetSettingsButton" type="Button" parent="Window/MenuWindow"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 23.0
+offset_right = 363.0
+offset_bottom = 50.0
+text = "Restore Default Settings"
 
 [connection signal="close_requested" from="Window" to="." method="closeMenu"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
@@ -367,3 +386,4 @@ scrollable = false
 [connection signal="value_changed" from="Window/MenuWindow/Buttons/MasterVolume" to="." method="_onMasterVolume"]
 [connection signal="value_changed" from="Window/MenuWindow/Buttons/DeviceVolume" to="." method="_onDeviceVolume"]
 [connection signal="value_changed" from="Window/MenuWindow/Buttons/GameVolume" to="." method="_onGameVolume"]
+[connection signal="pressed" from="Window/MenuWindow/DeleteSaveButton" to="." method="_onDeleteSaveData"]

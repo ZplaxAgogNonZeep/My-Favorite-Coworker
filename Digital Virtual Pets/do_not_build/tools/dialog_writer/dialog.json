@@ -5,7 +5,7 @@
   "creatorVersion": "2.10.0",
   "schemaName": "Twine to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1747870769599,
+  "createdAtMs": 1752334583810,
   "passages": [
 	{
 	  "name": "New Game Dialog",
@@ -33,7 +33,7 @@
 	  "name": "Device Tutorial",
 	  "tags": "Conversation-Start my_favorite_coworker.exe",
 	  "id": "3",
-	  "text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!\n\n[[Okay->Device Tutorial-2]]",
+	  "text": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!\n\n[[Okay->Device Tutorial-2]]",
 	  "links": [
 		{
 		  "linkText": "Okay",
@@ -41,7 +41,7 @@
 		  "original": "[[Okay->Device Tutorial-2]]"
 		}
 	  ],
-	  "cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!"
+	  "cleanText": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!"
 	},
 	{
 	  "name": "Device Tutorial-2",
@@ -64,6 +64,41 @@
 	  "text": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!\n\nBe careful though, The right-most button will shut down the device!",
 	  "links": [],
 	  "cleanText": "While you wait for your pet to hatch, why don't you play around with the 4 buttons on the top of the device? They all perform handy actions like opening menus, minimizing the device, and adjusting it's position!\n\nBe careful though, The right-most button will shut down the device!"
+	},
+	{
+	  "name": "Delete Save Data Warning",
+	  "tags": "Conversation-Start my_favorite_coworker.exe",
+	  "id": "6",
+	  "text": "WARNING! Are you sure you want to delete your save data? \n\n[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]\n\n[[Delete My Data->DSDW-Delete]]\n[[Cancel->DSDW-Cancel]]",
+	  "links": [
+		{
+		  "linkText": "Delete My Data",
+		  "passageName": "DSDW-Delete",
+		  "original": "[[Delete My Data->DSDW-Delete]]"
+		},
+		{
+		  "linkText": "Cancel",
+		  "passageName": "DSDW-Cancel",
+		  "original": "[[Cancel->DSDW-Cancel]]"
+		}
+	  ],
+	  "cleanText": "WARNING! Are you sure you want to delete your save data? \n\n[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]"
+	},
+	{
+	  "name": "DSDW-Delete",
+	  "tags": "",
+	  "id": "7",
+	  "text": "Understood, deleting all saved data.",
+	  "links": [],
+	  "cleanText": "Understood, deleting all saved data."
+	},
+	{
+	  "name": "DSDW-Cancel",
+	  "tags": "",
+	  "id": "8",
+	  "text": "Save data deletion aborted.",
+	  "links": [],
+	  "cleanText": "Save data deletion aborted."
 	}
   ]
 }

@@ -62,7 +62,7 @@ _data = {
 
 [node name="DialogWindow" type="Window" node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
-size = Vector2i(910, 465)
+size = Vector2i(329, 152)
 borderless = true
 transparent = true
 script = ExtResource("1_6ljhm")
@@ -90,6 +90,14 @@ _choiceContainer = NodePath("ChoiceContainer")
 _animator = NodePath("AnimationPlayer")
 _closeButton = NodePath("ExitButton")
 _buttonScene = ExtResource("4_xcyah")
+_colorKeywords = Dictionary[String, Color]({
+"BLUE": Color(0.592157, 0.839216, 1, 1),
+"CREAM": Color(0.921569, 0.913725, 0.835294, 1),
+"GREEN": Color(0.815686, 0.882353, 0.639216, 1),
+"PURPLE": Color(0.823529, 0.709804, 0.890196, 1),
+"RED": Color(1, 0.27, 0.27, 1),
+"YELLOW": Color(1, 0.941176, 0.678431, 1)
+})
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/SystemDialogWindow"]
@@ -108,7 +116,7 @@ offset_bottom = 114.0
 grow_horizontal = 2
 theme_type_variation = &"ParagraphText"
 bbcode_enabled = true
-text = "dsdfffffffffff [color=#97d6ff]Link Device[/color]dsffsdfsdfsdfsdf"
+text = "dsdfffffffffff [color=#ff4545]Link Device[/color]dsffsdfsdfsdfsdf"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

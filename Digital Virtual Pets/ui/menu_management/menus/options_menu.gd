@@ -10,6 +10,8 @@ extends Menu
 @export var _masterVolumeBar : HSlider
 @export var _gameVolumeBar : HSlider
 @export var _deviceVolumeBar : HSlider
+@export_category("Resources")
+@export var _dialogData : CharacterDialog
 
 func _loadSavedMenuSettings():
 	_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
@@ -91,10 +93,21 @@ func _onDeviceVolume(value : float):
 func _onGameVolume(value : float):
 	Settings.setVolume(SfxManager.BusType.GAME, value / _gameVolumeBar.max_value)
 
+
+func _onDeleteSaveData():
+	GameEvents.DisplayDialog.emit(Vector2i(0,0), _dialogData, 
+					"Delete Save Data Warning", Callable(self, "_deleteSaveData"))
+
 #endregion
 
 #region Helper Functions
 func _fillMonitorOptions(options : OptionButton, monitorCount : int) -> void:
 	for x in range(monitorCount):
 		options.add_item("Display " + str(x))
+
+
+func _deleteSaveData(threadHistory : Array):
+	print("Deleting Save Data reached")
+
+
 #endregion

@@ -6,8 +6,31 @@
 script = ExtResource("1_6lh11")
 characterName = "my_favorite_coworker.exe"
 conversations = {
+"Delete Save Data Warning": {
+"cleanText": "WARNING! Are you sure you want to delete your save data? 
+
+[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]",
+"id": "6",
+"links": [{
+"linkText": "Delete My Data",
+"original": "[[Delete My Data->DSDW-Delete]]",
+"passageName": "DSDW-Delete"
+}, {
+"linkText": "Cancel",
+"original": "[[Cancel->DSDW-Cancel]]",
+"passageName": "DSDW-Cancel"
+}],
+"name": "Delete Save Data Warning",
+"tags": "Conversation-Start my_favorite_coworker.exe",
+"text": "WARNING! Are you sure you want to delete your save data? 
+
+[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]
+
+[[Delete My Data->DSDW-Delete]]
+[[Cancel->DSDW-Cancel]]"
+},
 "Device Tutorial": {
-"cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
+"cleanText": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
 "id": "3",
 "links": [{
 "linkText": "Okay",
@@ -16,7 +39,7 @@ conversations = {
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
-"text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
+"text": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
 
 [[Okay->Device Tutorial-2]]"
 },
@@ -40,8 +63,47 @@ Please hold while we find an appropriate pet.
 }
 }
 passages = {
+"DSDW-Cancel": {
+"cleanText": "Save data deletion aborted.",
+"id": "8",
+"links": [],
+"name": "DSDW-Cancel",
+"tags": "",
+"text": "Save data deletion aborted."
+},
+"DSDW-Delete": {
+"cleanText": "Understood, deleting all saved data.",
+"id": "7",
+"links": [],
+"name": "DSDW-Delete",
+"tags": "",
+"text": "Understood, deleting all saved data."
+},
+"Delete Save Data Warning": {
+"cleanText": "WARNING! Are you sure you want to delete your save data? 
+
+[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]",
+"id": "6",
+"links": [{
+"linkText": "Delete My Data",
+"original": "[[Delete My Data->DSDW-Delete]]",
+"passageName": "DSDW-Delete"
+}, {
+"linkText": "Cancel",
+"original": "[[Cancel->DSDW-Cancel]]",
+"passageName": "DSDW-Cancel"
+}],
+"name": "Delete Save Data Warning",
+"tags": "Conversation-Start my_favorite_coworker.exe",
+"text": "WARNING! Are you sure you want to delete your save data? 
+
+[color=#RED]You will lose ALL progress in the game, including saved pets and unlocked eggs![/color]
+
+[[Delete My Data->DSDW-Delete]]
+[[Cancel->DSDW-Cancel]]"
+},
 "Device Tutorial": {
-"cleanText": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
+"cleanText": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!",
 "id": "3",
 "links": [{
 "linkText": "Okay",
@@ -50,7 +112,7 @@ passages = {
 }],
 "name": "Device Tutorial",
 "tags": "Conversation-Start my_favorite_coworker.exe",
-"text": "This is your Linke Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
+"text": "This is your Link Device. It will be the bridge between you and your digital companion. Right now, it's just an egg but in a short while, it will hatch into a brand new life form!
 
 [[Okay->Device Tutorial-2]]"
 },

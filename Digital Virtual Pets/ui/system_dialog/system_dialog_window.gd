@@ -63,7 +63,6 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 	for keyword in _colorKeywords.keys():
 		if text.contains("#" + keyword):
 			text = text.replace("#" + keyword, "#" + _colorKeywords[keyword].to_html(false))
-			print("#" + _colorKeywords[keyword].to_html(false))
 	
 	_dialogLabel.text = text
 	
@@ -75,11 +74,14 @@ func loadWindow(pos : Vector2i, text : String, speaker : String, links : Array[S
 		_choiceContainer.call_deferred("add_child", button)
 	else:
 		_closeButton.disabled = true
+		var count = 0
 		for link in links:
 			var button = _buttonScene.instantiate()
 			button.text = link
 			button.ChoiceButtonPressed.connect(_buttonSelected)
+			button.index = count
 			_choiceContainer.call_deferred("add_child", button)
+			count += 1
 
 
 func setWindowPosition():
@@ -88,7 +90,7 @@ func setWindowPosition():
 
 func _buttonSelected(index : int):
 	DialogChoiceSelected.emit(index, _threadIndex, self)
-	print("Doot")
+	print(index)
 
 
 func changeThreadIndex(index : int):

@@ -51,6 +51,7 @@ pivot_offset = Vector2(224, 131)
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 modulate = Color(1, 1, 1, 0)
 texture_filter = 1
+layout_mode = 0
 offset_right = 448.0
 offset_bottom = 256.0
 theme_type_variation = &"ClosedPanel"

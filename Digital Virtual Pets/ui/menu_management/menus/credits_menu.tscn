@@ -42,6 +42,7 @@ pivot_offset = Vector2(167, 103)
 
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
+layout_mode = 0
 offset_right = 346.0
 offset_bottom = 203.0
 theme = ExtResource("3_x7vos")

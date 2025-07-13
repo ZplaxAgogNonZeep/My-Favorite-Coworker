@@ -51,6 +51,7 @@ pivot_offset = Vector2(167, 69)
 
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
+layout_mode = 0
 offset_right = 334.0
 offset_bottom = 120.0
 

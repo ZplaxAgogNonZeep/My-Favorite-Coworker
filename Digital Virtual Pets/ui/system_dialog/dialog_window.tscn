@@ -86,7 +86,7 @@ _data = {
 
 [node name="DialogWindow" type="Window" node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
-size = Vector2i(769, 362)
+size = Vector2i(329, 153)
 borderless = true
 transparent = true
 script = ExtResource("1_6ljhm")
@@ -169,9 +169,10 @@ layout_mode = 0
 offset_left = 8.0
 offset_top = 2.0
 offset_right = 89.0
-offset_bottom = 16.0
+offset_bottom = 15.4167
 theme_type_variation = &"HeaderSmall"
 text = "Unknown User"
+vertical_alignment = 1
 
 [node name="ChoiceContainer" type="HBoxContainer" parent="PanelControl/MenuPanel"]
 layout_mode = 1

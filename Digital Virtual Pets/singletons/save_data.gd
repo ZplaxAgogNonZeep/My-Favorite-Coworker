@@ -187,6 +187,7 @@ func isSaveDataExists(isSettings : bool) -> bool:
 	else:
 		return DirAccess.dir_exists_absolute(GAMEDATA_FILEPATH)
 
+
 func _checkForExistingCategory(data: Data) -> int:
 	var count = 0
 	for existingData : Data in _loadedSaveData:

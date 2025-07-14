@@ -21,7 +21,7 @@ var minimized : bool
 #region Settings Variables
 # These variables represent the player's preferences of variables
 ##  Bools
-var isUsingProactivity := true
+var isUsingProactivity := false
 var isRequestAttentionAllowed := true
 ## Floats
 var proactivityTimeModifier := 0.50
@@ -78,7 +78,7 @@ func pauseGame(isPaused : bool):
 ## Update this function here when making save data!
 func saveSettings():
 	var settingsDict = {
-		"isUsingProactivity" : isUsingProactivity,
+		#"isUsingProactivity" : isUsingProactivity,
 		"isRequestAttentionAllowed" : isRequestAttentionAllowed,
 		"windowAttentionMode" : windowAttentionMode,
 		"windowOrientation" : windowOrientation,

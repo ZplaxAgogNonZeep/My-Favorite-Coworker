@@ -55,10 +55,11 @@ pivot_offset = Vector2(116, 90)
 
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.05
 offset_right = 400.0
-offset_bottom = 298.0
-scale = Vector2(0.6, 0.6)
+offset_bottom = 368.0
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true
 
@@ -97,25 +98,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ProactivityLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 37.0
-offset_top = 140.0
-offset_right = 277.0
-offset_bottom = 161.0
-grow_horizontal = 2
-theme_type_variation = &"HeaderMedium"
-text = "Proactivity Mode"
-vertical_alignment = 1
-
 [node name="MasterVolumeLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 73.0
+offset_top = 94.0
 offset_right = 277.0
-offset_bottom = 94.0
+offset_bottom = 115.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Master Volume"
@@ -125,9 +114,9 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 95.0
+offset_top = 116.0
 offset_right = 277.0
-offset_bottom = 116.0
+offset_bottom = 137.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Device Volume"
@@ -137,12 +126,24 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 117.0
+offset_top = 138.0
 offset_right = 277.0
-offset_bottom = 138.0
+offset_bottom = 159.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
 text = "Game Volume"
+vertical_alignment = 1
+
+[node name="ProactivityLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 37.0
+offset_top = 342.0
+offset_right = 277.0
+offset_bottom = 363.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderMedium"
+text = "Proactivity Mode"
 vertical_alignment = 1
 
 [node name="WindowFocusLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
@@ -150,9 +151,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 166.0
+offset_top = 189.0
 offset_right = 197.0
-offset_bottom = 187.0
+offset_bottom = 210.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Focus Mode"
@@ -163,9 +164,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 193.0
+offset_top = 216.0
 offset_right = 204.0
-offset_bottom = 214.0
+offset_bottom = 237.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Window Position"
@@ -176,9 +177,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 38.0
-offset_top = 219.0
+offset_top = 242.0
 offset_right = 292.0
-offset_bottom = 240.0
+offset_bottom = 263.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Active Monitor"
@@ -189,9 +190,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 244.0
+offset_top = 316.0
 offset_right = 291.0
-offset_bottom = 265.0
+offset_bottom = 337.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Frame Cap"
@@ -202,12 +203,45 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 270.0
+offset_top = 267.0
 offset_right = 291.0
-offset_bottom = 291.0
+offset_bottom = 288.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Game Scale"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 71.0
+offset_right = 398.0
+offset_bottom = 94.9583
+theme_type_variation = &"HeaderLarge"
+text = "-Audio Settings-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 160.0
+offset_right = 398.0
+offset_bottom = 183.958
+theme_type_variation = &"HeaderLarge"
+text = "-Window Settings-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 291.0
+offset_right = 398.0
+offset_bottom = 314.958
+theme_type_variation = &"HeaderLarge"
+text = "-Game Settings-"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Buttons" type="Control" parent="Window/PanelControl/MenuWindow"]
@@ -226,9 +260,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -63.0
-offset_top = 136.0
+offset_top = 338.0
 offset_right = -33.0
-offset_bottom = 166.0
+offset_bottom = 368.0
 grow_horizontal = 0
 flat = true
 icon_alignment = 1
@@ -239,9 +273,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 165.0
+offset_top = 188.0
 offset_right = -37.0
-offset_bottom = 187.0
+offset_bottom = 210.0
 grow_horizontal = 0
 selected = 0
 item_count = 3
@@ -258,9 +292,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -196.0
-offset_top = 192.0
+offset_top = 215.0
 offset_right = -37.0
-offset_bottom = 214.0
+offset_bottom = 237.0
 grow_horizontal = 0
 selected = 3
 item_count = 5
@@ -281,9 +315,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -121.0
-offset_top = 218.0
+offset_top = 241.0
 offset_right = -37.0
-offset_bottom = 240.0
+offset_bottom = 263.0
 grow_horizontal = 0
 selected = 0
 item_count = 1
@@ -293,9 +327,9 @@ popup/item_0/id = 0
 [node name="FrameCapOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 279.0
-offset_top = 244.0
+offset_top = 316.0
 offset_right = 363.0
-offset_bottom = 266.0
+offset_bottom = 338.0
 selected = 1
 item_count = 3
 popup/item_0/text = "30 fps"
@@ -308,9 +342,9 @@ popup/item_2/id = 2
 [node name="GameScaleOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 321.0
-offset_top = 270.0
+offset_top = 266.0
 offset_right = 363.0
-offset_bottom = 292.0
+offset_bottom = 288.0
 selected = 0
 item_count = 5
 popup/item_0/text = "x2"
@@ -327,27 +361,27 @@ popup/item_4/id = 4
 [node name="MasterVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 76.0
+offset_top = 97.0
 offset_right = 363.0
-offset_bottom = 92.0
+offset_bottom = 113.0
 value = 70.0
 scrollable = false
 
 [node name="DeviceVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 98.0
+offset_top = 119.0
 offset_right = 363.0
-offset_bottom = 114.0
+offset_bottom = 135.0
 value = 70.0
 scrollable = false
 
 [node name="GameVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 204.0
-offset_top = 120.0
+offset_top = 141.0
 offset_right = 363.0
-offset_bottom = 136.0
+offset_bottom = 157.0
 value = 70.0
 scrollable = false
 

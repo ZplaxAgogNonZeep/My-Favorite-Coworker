@@ -10,6 +10,8 @@ extends Menu
 @export var _masterVolumeBar : HSlider
 @export var _gameVolumeBar : HSlider
 @export var _deviceVolumeBar : HSlider
+@export var _timerSpeedBar : HSlider
+@export var _timerSpeedLabel : Label
 @export_category("Resources")
 @export var _dialogData : CharacterDialog
 
@@ -17,12 +19,26 @@ var _savelessClose := false
 
 func _loadSavedMenuSettings():
 	_savelessClose = false
-	_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
+	#_proactivityCheckbox.button_pressed = Settings.isUsingProactivity
 	_windowAttentionSelection.selected = Settings.windowAttentionMode
 	_windowOrientationOptions.selected = Settings.windowOrientation
 	_monitorOptions.clear()
 	_fillMonitorOptions(_monitorOptions, Settings.getMonitorCount())
 	_monitorOptions.selected = Settings.activeMonitor
+	_timerSpeedBar.value = Settings.proactivityTimeModifier
+	match Settings.proactivityTimeModifier:
+		1:
+			_timerSpeedLabel.text = "Very Fast"
+		2:
+			_timerSpeedLabel.text = "Fast"
+		3:
+			_timerSpeedLabel.text = "Normal"
+		4:
+			_timerSpeedLabel.text = "Slow"
+		5:
+			_timerSpeedLabel.text = "Very Slow"
+		_:
+			_timerSpeedLabel.text = "Normal"
 	if (Settings.frameCapSetTo >= 60):
 		_frameOptions.selected = 1
 	elif (Settings.frameCapSetTo >= 30):
@@ -46,8 +62,25 @@ func _saveMenuSettings():
 
 
 #region Signal Functions
-func _onProactivityToggle(toggle: bool):
-	Settings.setProactivitySetting(toggle)
+#func _onProactivityToggle(toggle: bool):
+	#Settings.setProactivitySetting(toggle)
+
+func _onProactivitySlider(value : float):
+	Settings.setProactivitySetting(value)
+	match value:
+		1:
+			_timerSpeedLabel.text = "Very Fast"
+		2:
+			_timerSpeedLabel.text = "Fast"
+		3:
+			_timerSpeedLabel.text = "Normal"
+		4:
+			_timerSpeedLabel.text = "Slow"
+		5:
+			_timerSpeedLabel.text = "Very Slow"
+		_:
+			_timerSpeedLabel.text = "Normal"
+	
 
 
 func _onSetWindowAttention(index: int):

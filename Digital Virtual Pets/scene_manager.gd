@@ -92,15 +92,15 @@ func _openMenu():
 #region Window Events
 
 func _proactivityBehavior():
-	if (!Settings.isUsingProactivity):
-		return
+	#if (!Settings.isUsingProactivity):
+		#return
 	
 	Settings.windowFocused = DisplayServer.window_is_focused()
 	
-	if (Settings.windowFocused and Settings.proactiveMode):
-		Settings.setProactivityMode(false)
-	elif (not Settings.windowFocused and not Settings.proactiveMode):
-		Settings.setProactivityMode(true)
+	#if (Settings.windowFocused and Settings.proactiveMode):
+		#Settings.setProactivityMode(false)
+	#elif (not Settings.windowFocused and not Settings.proactiveMode):
+		#Settings.setProactivityMode(true)
 
 
 func _onChangeGameScale(scale : int):

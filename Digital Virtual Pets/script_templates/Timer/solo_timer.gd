@@ -11,17 +11,18 @@ func _ready() -> void:
 	GameEvents.ChangeProactivityMode.connect(_changeProactivity)
 
 
-func _changeProactivity(isProactive: bool):
-	if (is_stopped() or not _useProactivity):
-		return
-	
-	var progress = time_left / wait_time
-	var debug = wait_time
-	
-	if (isProactive):
-		start( lerpf(0,wait_time * Settings.getTimerMod(), progress))
-	else:
-		start(lerpf(0, (wait_time / (Settings.proactivityTimeModifier * 100)) * 100, progress))
+func _changeProactivity():
+	#TODO: HEY FIX THISSSSSSSSSSS
+	pass
+	#if (is_stopped()):
+		#return
+	#
+	#var progress = time_left / wait_time
+	#
+	#if (isProactive):
+		#start( lerpf(0,wait_time * Settings.getTimerMod(), progress))
+	#else:
+		#start(lerpf(0, (wait_time / (Settings.proactivityTimeModifier * 100)) * 100, progress))
 	
 
 

@@ -15,7 +15,7 @@ offset_bottom = 648.0
 mouse_filter = 2
 theme = ExtResource("1_kd0k7")
 script = ExtResource("1_ugwrh")
-_proactivityCheckbox = NodePath("Window/PanelControl/MenuWindow/Buttons/ProactivityCheckBox")
+_proactivityCheckbox = NodePath("")
 _windowAttentionSelection = NodePath("Window/PanelControl/MenuWindow/Buttons/WindowFocusOptions")
 _windowOrientationOptions = NodePath("Window/PanelControl/MenuWindow/Buttons/WindowOrientationOptions")
 _monitorOptions = NodePath("Window/PanelControl/MenuWindow/Buttons/MonitorOptions")
@@ -138,12 +138,21 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
-offset_top = 342.0
+offset_top = 319.0
 offset_right = 277.0
-offset_bottom = 363.0
+offset_bottom = 340.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderMedium"
-text = "Proactivity Mode"
+text = "Timer Speed"
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels/ProactivityLabel"]
+layout_mode = 0
+offset_left = 124.0
+offset_right = 212.0
+offset_bottom = 17.25
+text = "Normal"
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WindowFocusLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
@@ -190,9 +199,9 @@ editor_description = "
 "
 layout_mode = 0
 offset_left = 37.0
-offset_top = 316.0
+offset_top = 340.0
 offset_right = 291.0
-offset_bottom = 337.0
+offset_bottom = 361.0
 tooltip_text = "Dooty Doot doot"
 mouse_filter = 0
 text = "Frame Cap"
@@ -254,19 +263,6 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="ProactivityCheckBox" type="CheckBox" parent="Window/PanelControl/MenuWindow/Buttons"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -63.0
-offset_top = 338.0
-offset_right = -33.0
-offset_bottom = 368.0
-grow_horizontal = 0
-flat = true
-icon_alignment = 1
-
 [node name="WindowFocusOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 1
 anchors_preset = 1
@@ -327,9 +323,9 @@ popup/item_0/id = 0
 [node name="FrameCapOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
 layout_mode = 0
 offset_left = 279.0
-offset_top = 316.0
+offset_top = 340.0
 offset_right = 363.0
-offset_bottom = 338.0
+offset_bottom = 362.0
 selected = 1
 item_count = 3
 popup/item_0/text = "30 fps"
@@ -385,6 +381,17 @@ offset_bottom = 157.0
 value = 70.0
 scrollable = false
 
+[node name="TimerSpeed" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
+layout_mode = 0
+offset_left = 249.0
+offset_top = 320.0
+offset_right = 363.0
+offset_bottom = 336.0
+min_value = 1.0
+max_value = 5.0
+value = 3.0
+scrollable = false
+
 [node name="DeleteSaveButton" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 0
 offset_left = 37.0
@@ -417,9 +424,6 @@ horizontal_alignment = 1
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/CloseButton" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/CloseButton" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/CloseButton" to="." method="_onExit"]
-[connection signal="button_down" from="Window/PanelControl/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/PanelControl/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_mouseUp"]
-[connection signal="toggled" from="Window/PanelControl/MenuWindow/Buttons/ProactivityCheckBox" to="." method="_onProactivityToggle"]
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Buttons/WindowFocusOptions" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Buttons/WindowFocusOptions" to="." method="_mouseUp"]
 [connection signal="item_selected" from="Window/PanelControl/MenuWindow/Buttons/WindowFocusOptions" to="." method="_onSetWindowAttention"]

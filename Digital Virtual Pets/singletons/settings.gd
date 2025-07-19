@@ -16,6 +16,7 @@ var borderless : bool = true
 var activeMonitor : int = 0
 var _activeWindows : Array[Window]
 var minimized : bool
+
 #endregion
 
 #region Settings Variables
@@ -24,7 +25,7 @@ var minimized : bool
 var isUsingProactivity := false
 var isRequestAttentionAllowed := true
 ## Floats
-var proactivityTimeModifier := 0.50
+var proactivityTimeModifier := 3
 var masterVolume : float = .5
 var deviceVolume : float = 1.0
 var gameVolume : float = 1.0
@@ -87,19 +88,23 @@ func saveSettings():
 		"masterVolume" : masterVolume,
 		"deviceVolume" : deviceVolume,
 		"gameVolume" : gameVolume,
-		"gameScale" : gameScale
+		"gameScale" : gameScale,
+		"proactivityTimeModifier" : proactivityTimeModifier
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)
 
 #region User Settings Functions
-func setProactivitySetting(isTrue : bool):
-	if (isUsingProactivity == isTrue):
-		return
+func setProactivitySetting(proactiveMod : int):
+	proactivityTimeModifier = proactiveMod
+	GameEvents.ChangeProactivityMode.emit(true)
 	
-	isUsingProactivity = isTrue
-	if (!isUsingProactivity):
-		GameEvents.ChangeProactivityMode.emit(true)
+	#if (isUsingProactivity == isTrue):
+		#return
+	#
+	#isUsingProactivity = isTrue
+	#if (!isUsingProactivity):
+		#GameEvents.ChangeProactivityMode.emit(true)
 
 
 func setWindowAttentionMode(windowAttention : WindowAttentionOptions):
@@ -354,11 +359,21 @@ func removeFromActiveWindows(window : Window):
 #endregion
 
 #region Getter & Setter Functions
+## applies the proactivity modifier to the game's timers
 func getTimerMod() -> float:
-	if !proactiveMode:
-		return 1
-	else:
-		return proactivityTimeModifier
+	match proactivityTimeModifier:
+		1:
+			return .5
+		2:
+			return .75
+		3:
+			return 1
+		4:
+			return 1.25
+		5:
+			return 1.5
+		_:
+			return 1
 
 
 func getMonitorResolution(monitorIndex := -1) -> Rect2i:
@@ -377,11 +392,6 @@ func getMonitorCount() -> int:
 
 func getPrimaryMonitor() -> int:
 	return DisplayServer.get_primary_screen()
-
-
-func setProactivityMode(isProactive : bool):
-	proactiveMode = isProactive
-	GameEvents.ChangeProactivityMode.emit(proactiveMode)
 
 
 func setBorderless(isBorderless : bool) -> void:

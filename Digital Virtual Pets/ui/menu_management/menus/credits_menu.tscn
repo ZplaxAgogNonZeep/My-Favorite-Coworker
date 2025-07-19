@@ -44,7 +44,7 @@ pivot_offset = Vector2(167, 103)
 texture_filter = 1
 layout_mode = 0
 offset_right = 346.0
-offset_bottom = 203.0
+offset_bottom = 219.0
 theme = ExtResource("3_x7vos")
 
 [node name="Close" type="Button" parent="Window/PanelControl/MenuWindow"]
@@ -89,16 +89,17 @@ offset_left = 10.0
 offset_top = 50.0
 offset_right = 332.0
 offset_bottom = 68.0
-text = "Programming/Art/Sound - Aidan M.W. Barrett"
+text = "Programming/Art/Sound - Aidan M.W. Barrett
+Writing                                - DeceitfulAdvocate"
 
 [node name="Additional Help" type="Label" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 4.0
-offset_top = 57.0
+offset_top = 70.0
 offset_right = -4.0
-offset_bottom = 103.0
+offset_bottom = 116.0
 grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
 text = "Additional Help"

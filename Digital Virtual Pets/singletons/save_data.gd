@@ -120,7 +120,8 @@ func saveGameToFile():
 			config.set_value(data.category, propertyKey, data.properties[propertyKey])
 	
 	config.save_encrypted_pass(GAMEDATA_FILEPATH, password)
-	config.save(DEBUGDATA_FILEPATH)
+	if (Engine.is_editor_hint()):
+		config.save(DEBUGDATA_FILEPATH)
 
 
 func loadGameFromFile():

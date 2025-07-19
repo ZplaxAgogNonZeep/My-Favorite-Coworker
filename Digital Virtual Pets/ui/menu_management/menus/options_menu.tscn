@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_proactivityCheckbox", "_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_gameScaleOptions", "_masterVolumeBar", "_gameVolumeBar", "_deviceVolumeBar", "_window", "animator")]
+[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_gameScaleOptions", "_masterVolumeBar", "_gameVolumeBar", "_deviceVolumeBar", "_timerSpeedBar", "_timerSpeedLabel", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
@@ -15,7 +15,6 @@ offset_bottom = 648.0
 mouse_filter = 2
 theme = ExtResource("1_kd0k7")
 script = ExtResource("1_ugwrh")
-_proactivityCheckbox = NodePath("")
 _windowAttentionSelection = NodePath("Window/PanelControl/MenuWindow/Buttons/WindowFocusOptions")
 _windowOrientationOptions = NodePath("Window/PanelControl/MenuWindow/Buttons/WindowOrientationOptions")
 _monitorOptions = NodePath("Window/PanelControl/MenuWindow/Buttons/MonitorOptions")
@@ -24,6 +23,8 @@ _gameScaleOptions = NodePath("Window/PanelControl/MenuWindow/Buttons/GameScaleOp
 _masterVolumeBar = NodePath("Window/PanelControl/MenuWindow/Buttons/MasterVolume")
 _gameVolumeBar = NodePath("Window/PanelControl/MenuWindow/Buttons/GameVolume")
 _deviceVolumeBar = NodePath("Window/PanelControl/MenuWindow/Buttons/DeviceVolume")
+_timerSpeedBar = NodePath("Window/PanelControl/MenuWindow/Buttons/TimerSpeed")
+_timerSpeedLabel = NodePath("Window/PanelControl/MenuWindow/Labels/ProactivityLabel/Label")
 _dialogData = ExtResource("3_lbu1b")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
@@ -442,5 +443,6 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="Window/PanelControl/MenuWindow/Buttons/MasterVolume" to="." method="_onMasterVolume"]
 [connection signal="value_changed" from="Window/PanelControl/MenuWindow/Buttons/DeviceVolume" to="." method="_onDeviceVolume"]
 [connection signal="value_changed" from="Window/PanelControl/MenuWindow/Buttons/GameVolume" to="." method="_onGameVolume"]
+[connection signal="value_changed" from="Window/PanelControl/MenuWindow/Buttons/TimerSpeed" to="." method="_onProactivitySlider"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/DeleteSaveButton" to="." method="_onDeleteSaveData"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/ResetSettingsButton" to="." method="_onResetSettingsSaveData"]

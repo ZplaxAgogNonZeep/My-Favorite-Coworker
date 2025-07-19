@@ -1,7 +1,6 @@
 extends Menu
 
 @export_category("Node References")
-@export var _proactivityCheckbox : CheckBox
 @export var _windowAttentionSelection : OptionButton
 @export var _windowOrientationOptions : OptionButton
 @export var _monitorOptions : OptionButton
@@ -66,8 +65,8 @@ func _saveMenuSettings():
 	#Settings.setProactivitySetting(toggle)
 
 func _onProactivitySlider(value : float):
-	Settings.setProactivitySetting(value)
-	match value:
+	Settings.setProactivitySetting(int(value))
+	match int(value):
 		1:
 			_timerSpeedLabel.text = "Very Fast"
 		2:
@@ -78,8 +77,6 @@ func _onProactivitySlider(value : float):
 			_timerSpeedLabel.text = "Slow"
 		5:
 			_timerSpeedLabel.text = "Very Slow"
-		_:
-			_timerSpeedLabel.text = "Normal"
 	
 
 

@@ -1,6 +1,7 @@
 extends Timer
 
 @export var _useProactivity : bool = true
+var _previousTimeScale : float
 
 func _ready() -> void:
 	GameEvents.PauseTimers.connect(_pauseTimer)
@@ -9,21 +10,17 @@ func _ready() -> void:
 	GameEvents.UnpauseGame.connect(_unpauseTimer)
 	GameEvents.ResetAllTimers.connect(_stopTimer)
 	GameEvents.ChangeProactivityMode.connect(_changeProactivity)
+	_previousTimeScale = Settings.getTimerMod()
 
 
 func _changeProactivity():
-	#TODO: HEY FIX THISSSSSSSSSSS
-	pass
-	#if (is_stopped()):
-		#return
-	#
-	#var progress = time_left / wait_time
-	#
-	#if (isProactive):
-		#start( lerpf(0,wait_time * Settings.getTimerMod(), progress))
-	#else:
-		#start(lerpf(0, (wait_time / (Settings.proactivityTimeModifier * 100)) * 100, progress))
+	if (is_stopped()):
+		return
 	
+	var progress = time_left / wait_time
+	start((time_left / _previousTimeScale) * Settings.getTimerMod())
+	#print(name, ": ", wait_time)
+	_previousTimeScale = Settings.getTimerMod()
 
 
 func _pauseTimer() -> void:

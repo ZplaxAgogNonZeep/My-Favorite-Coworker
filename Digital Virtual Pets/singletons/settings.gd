@@ -52,6 +52,7 @@ func _ready() -> void:
 		changeActiveMonitor(monitorSetTo)
 	setWindowPosition()
 	setWindowAttentionMode(windowAttentionMode)
+	setProactivitySetting(proactivityTimeModifier)
 	setFrameCap(frameCapSetTo)
 	setVolume(SfxManager.BusType.MASTER, masterVolume)
 	setVolume(SfxManager.BusType.GAME, gameVolume)
@@ -97,7 +98,7 @@ func saveSettings():
 #region User Settings Functions
 func setProactivitySetting(proactiveMod : int):
 	proactivityTimeModifier = proactiveMod
-	GameEvents.ChangeProactivityMode.emit(true)
+	GameEvents.ChangeProactivityMode.emit()
 	
 	#if (isUsingProactivity == isTrue):
 		#return

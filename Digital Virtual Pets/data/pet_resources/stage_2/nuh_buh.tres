@@ -7,7 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://byjpb8rxwl8gl" path="res://assets/animation_frames/pets/stage2/nuh_buh_frames.tres" id="3_rstqr"]
 [ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="4_mphy6"]
 
-[sub_resource type="Resource" id="Resource_jdj1k"]
+[sub_resource type="Resource" id="Resource_mc7a4"]
 script = ExtResource("1_mc7a4")
 conditionLogic = 1
 POW = -1
@@ -28,5 +28,5 @@ yap = ExtResource("4_mphy6")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_mc7a4"), ExtResource("3_mc7a4")])
-evolutionConditions = Array[ExtResource("1_mc7a4")]([SubResource("Resource_jdj1k")])
+evolutionConditions = Array[ExtResource("1_mc7a4")]([SubResource("Resource_mc7a4")])
 encyclopediaEntry = "Oh you woeful creature…"

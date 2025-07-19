@@ -16,6 +16,7 @@ func _fillPetData():
 		if petData == null:
 			petData = PetTypeData.new()
 		petData.name = petDataList[0]
+		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])
 		petData.encyclopediaEntry = petDataList[2]
 		petData.evolutionConditions.clear()

@@ -27,5 +27,5 @@ stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
 evolutionConditions = Array[ExtResource("1_1m0d0")]([SubResource("Resource_1m0d0")])
-encyclopediaEntry = "The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitefire young mons to harness their true and raw potential."
+encyclopediaEntry = "The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential."
 metadata/_custom_type_script = "uid://ox62hdqejbbf"

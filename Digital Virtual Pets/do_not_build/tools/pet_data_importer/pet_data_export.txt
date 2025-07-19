@@ -1,7 +1,7 @@
-BuhEgg	0		Buh						
-Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh						
-BuhBuh	2		HeroBuh,NuhUhBuh			8	12		
+BuhEgg	0	The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime.	Buh						
+Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh						
+BuhBuh	2	A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!	HeroBuh,NuhUhBuh			8	12		
 NuhBuh	2	Oh you woeful creature…	NuhUhBuh,BanchoBub					15	>0
 HeroBuh	3	HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!				20	30		=0
 NuhUhBuh	3	When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence.						45	<2
-BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitefire young mons to harness their true and raw potential.		33	22				>1
+BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential.		33	22				>1

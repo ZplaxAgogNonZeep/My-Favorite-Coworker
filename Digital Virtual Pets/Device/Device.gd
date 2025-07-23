@@ -142,16 +142,33 @@ func _shiftDeviceOver():
 	var tween = create_tween()
 	
 	var direction = Settings.determineDeviceGrowDir()
-
+	var yog = _movementGroup.position.y
+	var ymod = 0
+	if (Settings.windowOrientation == Settings.WindowOrientationOptions.TOP_LEFT_CORNER or 
+		Settings.windowOrientation == Settings.WindowOrientationOptions.TOP_RIGHT_CORNER):
+			if (Settings.minimized):
+				ymod = -100
+			else:
+				_movementGroup.position.y -= 100
+				ymod = 100
+	
+	if (Settings.windowOrientation == Settings.WindowOrientationOptions.BOT_LEFT_CORNER or 
+		Settings.windowOrientation == Settings.WindowOrientationOptions.TOP_LEFT_CORNER):
+		if (!Settings.minimized):
+			_movementGroup.position.x -= (_minimizeShiftDistance * 5)
+	
 	if (!Settings.minimized):
 		direction *= -1
+	
+	var rightSidexPosn = _movementGroup.position.x + (_minimizeShiftDistance * 2) + _minimizeShiftDistance
 	var target = Vector2(_movementGroup.position.x + (
 							(_minimizeShiftDistance * 2) * direction), 
-						_movementGroup.position.y)
+						_movementGroup.position.y + ymod)
 	tween.tween_property(_movementGroup, "position", 
 						target, 
 						_animator.current_animation_length).set_ease(
 							Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
+	
 	
 	if (_shadow):
 		var tweem = create_tween()
@@ -174,6 +191,12 @@ func _shiftDeviceOver():
 		Settings.toggleMinimizedWindow(Settings.minimized)
 	
 	await tween.finished
+	if (Settings.windowOrientation == Settings.WindowOrientationOptions.BOT_LEFT_CORNER or 
+		Settings.windowOrientation == Settings.WindowOrientationOptions.TOP_LEFT_CORNER):
+		if (Settings.minimized):
+			_movementGroup.position.x = rightSidexPosn
+	if (Settings.minimized):
+				_movementGroup.position.y = yog
 	if (Settings.minimized):
 		Settings.toggleMinimizedWindow(Settings.minimized)
 

@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func _changeProactivity():
-	if (is_stopped()):
+	if (is_stopped() or !_useProactivity):
 		return
 	
 	var progress = time_left / wait_time

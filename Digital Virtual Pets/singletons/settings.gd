@@ -364,15 +364,15 @@ func removeFromActiveWindows(window : Window):
 func getTimerMod() -> float:
 	match proactivityTimeModifier:
 		1:
-			return .5
+			return .15
 		2:
-			return .75
+			return .5
 		3:
 			return 1
 		4:
-			return 1.25
-		5:
 			return 1.5
+		5:
+			return 2.5
 		_:
 			return 1
 

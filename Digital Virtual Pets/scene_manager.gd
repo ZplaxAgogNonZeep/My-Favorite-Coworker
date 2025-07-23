@@ -105,7 +105,6 @@ func _proactivityBehavior():
 
 func _onChangeGameScale(scale : int):
 	device.scale = Vector2(scale, scale)
-	print(get_viewport().get_window().size)
 	device.position.x = get_viewport().get_window().size.x * .5
 	device.position.y = get_viewport().get_window().size.y - (12 * Settings.gameScale)
 

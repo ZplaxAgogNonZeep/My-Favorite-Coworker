@@ -50,7 +50,8 @@ func _input(event: InputEvent) -> void:
 		#return
 	
 	if event.is_action_pressed("Debug"):
-		_displayDevice()
+		GameEvents.DisplayDialog.emit(Vector2i(0,0), _tutorialDialog, 
+					"Device Tutorial", Callable(self, "_deviceTutorialFinished"))
 	if event.is_action_pressed("Debug2"):
 		#Settings.setBorderless(!Settings.borderless)
 		#SfxManager.playMusic(_testSound)

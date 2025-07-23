@@ -247,13 +247,13 @@ func setWindowPosition(overrideWindowSize : Vector2i = Vector2i.ZERO) -> void:
 ## to place a new window in. Default position scaling direction should be up and to the left.
 func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowSize : Vector2i, 
 							originPosn := Vector2i.ZERO) -> Vector2i:
+	
 	var buildDir = Vector2i.ZERO
 	var gameWindowSize = get_viewport().get_window().size
 	var gameWindowPosition = get_viewport().get_window().position
 	var resolution = DisplayServer.screen_get_usable_rect(activeMonitor).size
 	var offset : Vector2i = (gameWindowSize * .5) - (windowSize * .5)
 	var finalWindowPosition = Vector2i.ZERO
-	
 	match windowOrientation:
 		WindowOrientationOptions.TOP_LEFT_CORNER:
 			buildDir = Vector2i(1, 1)
@@ -283,7 +283,7 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 													((windowSize.x * .5) * buildDir.x * -1), 
 								Vector2i(0, resolution.x))):
 			xBounds.x = windowOrigin.x
-		
+		print(xBounds)
 		var yBounds : Vector2i
 		yBounds.x = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * 2)
 		yBounds.y = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * .5)
@@ -307,7 +307,8 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 		
 		var randomPosn = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y))
 		#var randomPosn = Vector2i(max.x, max.y)
-		finalWindowPosition = randomPosn + offset
+		
+		finalWindowPosition = randomPosn
 		pass
 	elif (windowPositionType == SubWindowPositionType.MANAGED_WINDOW):
 		# The managed windows should appear in a random space past the manager window
@@ -347,7 +348,7 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 			min.y = yBounds.x
 		
 		finalWindowPosition = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y)) + offset
-	return gameWindowPosition + finalWindowPosition
+	return _convertWindowPosnWithinResolution(gameWindowPosition + finalWindowPosition, windowSize, resolution)
 
 
 func addToActiveWindows(window : Window):
@@ -441,5 +442,23 @@ func _convertPositionBetweenResolutions(screenPosn : Vector2i,
 ## Takes a [param point] within a single axis and returns if it falls inside that range.
 func _checkWhithinRange(point : float, resolution : Vector2) -> bool:
 	return point >= resolution.x and point <= resolution.y
+
+
+func _convertWindowPosnWithinResolution(posn : Vector2i, windowSize : Vector2i, resolution : Vector2i) -> Vector2i:
+	var returnPosn : Vector2i = posn
+	if (posn.x >= 0 and posn.x + windowSize.x <= resolution.x) and (posn.y > 0 and posn.y + windowSize.y < resolution.y):
+		return posn
+	
+	if (posn.x < 0):
+		returnPosn.x = 0
+	elif (posn.x + windowSize.x > resolution.x):
+		returnPosn.x = resolution.x - windowSize.x
+	
+	if (posn.y < 0):
+		returnPosn.y = 0
+	elif (posn.y + windowSize.y > resolution.y):
+		returnPosn.y = resolution.y - windowSize.y
+	
+	return returnPosn
 
 #endregion

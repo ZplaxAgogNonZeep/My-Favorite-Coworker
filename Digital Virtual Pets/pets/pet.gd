@@ -79,6 +79,7 @@ var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
 var _overfed := false
 var _nextAnimation : String
+var _feedingFrames := 0.0
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -136,7 +137,12 @@ func _process(delta):
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
 			sprite.play("Quirk")
-		#type.feedingBehavior()
+		_feedingFrames += delta
+		if (_feedingFrames > 60):
+			_feedingFrames = 0
+			targetPosn = position
+			petState = Enums.PetState.ROAMING
+			GameEvents.UnpauseTimers.emit()
 	elif petState == Enums.PetState.EVOLVING:
 		pass
 	

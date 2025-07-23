@@ -48,18 +48,18 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	#if !_recordingMode:
 		#return
-	
-	if event.is_action_pressed("Debug"):
-		GameEvents.DisplayDialog.emit(Vector2i(0,0), _tutorialDialog, 
-					"Device Tutorial", Callable(self, "_deviceTutorialFinished"))
-	if event.is_action_pressed("Debug2"):
-		#Settings.setBorderless(!Settings.borderless)
-		#SfxManager.playMusic(_testSound)
-		#await get_tree().create_timer(5).timeout
-		#SfxManager.incrementMusic(1)
-		pass
-	if (Input.is_action_just_pressed("Debug3")):
-		GameEvents.EvolveCheck.emit()
+	pass
+	#if event.is_action_pressed("Debug"):
+		#GameEvents.DisplayDialog.emit(Vector2i(0,0), _tutorialDialog, 
+					#"Device Tutorial", Callable(self, "_deviceTutorialFinished"))
+	#if event.is_action_pressed("Debug2"):
+		##Settings.setBorderless(!Settings.borderless)
+		##SfxManager.playMusic(_testSound)
+		##await get_tree().create_timer(5).timeout
+		##SfxManager.incrementMusic(1)
+		#pass
+	#if (Input.is_action_just_pressed("Debug3")):
+		#GameEvents.EvolveCheck.emit()
 
 
 func _displayDevice(skipAnimation := false):

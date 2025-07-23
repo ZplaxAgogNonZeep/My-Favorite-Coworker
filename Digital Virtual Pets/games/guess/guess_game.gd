@@ -34,14 +34,16 @@ func takeInput(input : Enums.DeviceButton):
 				Enums.DeviceButton.LEFT_BUTTON:
 					guessDirIsRight = false
 					isGuessMade = true
+					$PseudoPet.indicateDirection(false)
 				Enums.DeviceButton.RIGHT_BUTTON:
 					guessDirIsRight = true
 					isGuessMade = true
+					$PseudoPet.indicateDirection(true)
 
 
 func intervalMet():
 	if intervalCount == 5:
-		updateGameText("LEFT")
+		updateGameText("Left")
 		$PseudoPet.indicateDirection(false)
 	elif intervalCount == 4:
 		updateGameText("Right")

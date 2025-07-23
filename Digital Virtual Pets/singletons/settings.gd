@@ -363,6 +363,8 @@ func removeFromActiveWindows(window : Window):
 ## applies the proactivity modifier to the game's timers
 func getTimerMod() -> float:
 	match proactivityTimeModifier:
+		0:
+			return .1
 		1:
 			return .15
 		2:
@@ -373,6 +375,8 @@ func getTimerMod() -> float:
 			return 1.5
 		5:
 			return 2.5
+		6:
+			return 10
 		_:
 			return 1
 

@@ -26,6 +26,8 @@ func _loadSavedMenuSettings():
 	_monitorOptions.selected = Settings.activeMonitor
 	_timerSpeedBar.value = Settings.proactivityTimeModifier
 	match Settings.proactivityTimeModifier:
+		0:
+			_timerSpeedLabel.text = "Giga Fast"
 		1:
 			_timerSpeedLabel.text = "Very Fast"
 		2:
@@ -36,6 +38,8 @@ func _loadSavedMenuSettings():
 			_timerSpeedLabel.text = "Slow"
 		5:
 			_timerSpeedLabel.text = "Very Slow"
+		6:
+			_timerSpeedLabel.text = "Giga Slow"
 		_:
 			_timerSpeedLabel.text = "Normal"
 	if (Settings.frameCapSetTo >= 60):
@@ -67,6 +71,8 @@ func _saveMenuSettings():
 func _onProactivitySlider(value : float):
 	Settings.setProactivitySetting(int(value))
 	match int(value):
+		0:
+			_timerSpeedLabel.text = "Giga Fast"
 		1:
 			_timerSpeedLabel.text = "Very Fast"
 		2:
@@ -77,6 +83,10 @@ func _onProactivitySlider(value : float):
 			_timerSpeedLabel.text = "Slow"
 		5:
 			_timerSpeedLabel.text = "Very Slow"
+		6:
+			_timerSpeedLabel.text = "Giga Slow"
+		_:
+			_timerSpeedLabel.text = "Normal"
 	
 
 

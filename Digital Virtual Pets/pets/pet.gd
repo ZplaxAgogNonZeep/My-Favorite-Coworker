@@ -169,6 +169,10 @@ func eatFood(foodObject):
 	hungerValue += foodObject.feedAmount
 	
 	if hungerValue > MAX_HUNGER:
+		if (hungerValue >= 175):
+			traumaCount += 1
+			if traumaCount > 5:
+				GameEvents.PetDied.emit()
 		hungerValue = MAX_HUNGER
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
@@ -200,6 +204,10 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	joyValue += joyIncrement
 	
 	if joyValue > MAX_JOY:
+		if (joyValue >= 175):
+			traumaCount += 1
+			if traumaCount > 5:
+				GameEvents.PetDied.emit()
 		joyValue = MAX_JOY
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)

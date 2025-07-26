@@ -51,9 +51,9 @@ func onWin():
 	if (_connectedStat == StatToIncrement.RANDOM):
 		randomize()
 		var statToIncrease = randi_range(0,3)
-		connectedPet.receivePlay(joyIncrement, statToIncrease, statIncrement)
+		connectedPet.receivePlay(100, statToIncrease, statIncrement)
 	else:
-		connectedPet.receivePlay(joyIncrement, _connectedStat, statIncrement)
+		connectedPet.receivePlay(100, _connectedStat, statIncrement)
 	
 	if (SfxManager.isPlayingMusic()):
 		await SfxManager.MusicFinished
@@ -68,9 +68,9 @@ func onLose():
 	if (_connectedStat == StatToIncrement.RANDOM):
 		randomize()
 		var statToIncrease = randi_range(0,3)
-		connectedPet.receivePlay(joyIncrement, statToIncrease, 1)
+		connectedPet.receivePlay(75, statToIncrease, 1)
 	else:
-		connectedPet.receivePlay(joyIncrement, _connectedStat, 1)
+		connectedPet.receivePlay(75, _connectedStat, 1)
 	if (SfxManager.isPlayingMusic()):
 		await SfxManager.MusicFinished
 	else:

@@ -2,7 +2,7 @@ extends RigidBody2D
 
 var implements = [Interface.Food]
 
-var feedAmount := 50
+var feedAmount := 100
 var fallSpeed := 1
 var stopFallingAt : int
 var readyToEat := false

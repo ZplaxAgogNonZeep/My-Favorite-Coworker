@@ -19,7 +19,7 @@ signal ReadyToEvolve(evolvedForm)
 const STAT_MAX : int = 99
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
-const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20, 10]
 const EVOLVE_INTERVALS : Array[int] = [60, 1800, 3600, 8000]
 ## A note on timer intervals and their intentions
 ## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
@@ -104,7 +104,6 @@ func _process(delta):
 			if (sprite.animation != "Walk"):
 				_setNextAnimation("Walk")
 				#sprite.play("Walk")
-				
 		else:
 			if (sprite.animation != "Idle"):
 				_setNextAnimation("Idle")
@@ -207,8 +206,8 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	if joyValue > MAX_JOY:
 		if (joyValue >= 175):
 			traumaCount += 1
-			if traumaCount > 5:
-				GameEvents.PetDied.emit()
+			if (traumaCount > 5):
+				traumaCount = 5
 		joyValue = MAX_JOY
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)

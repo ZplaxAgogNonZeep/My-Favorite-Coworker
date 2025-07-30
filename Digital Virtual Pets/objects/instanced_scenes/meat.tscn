@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmm1qb4b40sv3"]
+[gd_scene load_steps=14 format=3 uid="uid://bmm1qb4b40sv3"]
 
 [ext_resource type="Script" uid="uid://d2gbrv46hxmqw" path="res://objects/Food.gd" id="2_6roqv"]
 [ext_resource type="Texture2D" uid="uid://b3f7j3m78huxk" path="res://assets/art/aesprite/minigame_assets/food_sheet.png" id="2_15wgv"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="3_10vnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvroj"]
 size = Vector2(9.5, 9)
@@ -80,7 +81,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Meat" type="RigidBody2D" node_paths=PackedStringArray("_sprite") groups=["Food", "Object"]]
+[node name="Meat" type="RigidBody2D" node_paths=PackedStringArray("collision", "_sprite", "_rotTimer") groups=["Food", "Object"]]
 collision_layer = 3
 collision_mask = 2
 gravity_scale = 0.0
@@ -88,9 +89,13 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("2_6roqv")
+collision = NodePath("CollisionShape2D")
 _sprite = NodePath("Sprite2D")
+_rotTimer = NodePath("RotTimer")
+_rotTimeLimit = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_lvroj")
 
@@ -99,4 +104,9 @@ position = Vector2(0, -4.5)
 sprite_frames = SubResource("SpriteFrames_0jhxg")
 animation = &"Idle"
 
+[node name="RotTimer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("3_10vnn")
+
 [connection signal="animation_finished" from="Sprite2D" to="." method="completeAnimation"]
+[connection signal="timeout" from="RotTimer" to="." method="_rotTimerTimeout"]

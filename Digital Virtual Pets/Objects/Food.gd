@@ -4,13 +4,17 @@ var implements = [Interface.Food]
 
 signal FinishedEating
 
+@export var collision : CollisionShape2D
 @export var _sprite : AnimatedSprite2D
+@export var _rotTimer : Timer
+@export var _rotTimeLimit : float
 
 var feedAmount := 100
 var fallSpeed := 1
 var stopFallingAt : int
 var readyToEat := false
 var hasEmittedVFX := false
+var rotten := false
 
 func _ready() -> void:
 	GameEvents.ShakeDeviceOnce.connect(deviceMoving)
@@ -39,11 +43,15 @@ func _process(delta):
 		if (coll != null and not hasEmittedVFX):
 			hasEmittedVFX = true
 			_onBodyCollision(coll.get_collider())
+			_rotTimer.start(_rotTimeLimit * Settings.getTimerMod())
 	elif (position.y >= stopFallingAt):
 		if not readyToEat:
+			collision.visible = true
 			freeze = true
 			readyToEat = true
 			GameEvents.FoodPlaced.emit(self)
+			if (!rotten and _rotTimer.is_stopped()):
+				_rotTimer.start(_rotTimeLimit * Settings.getTimerMod())
 
 
 func deviceMoving():
@@ -57,6 +65,7 @@ func deviceNotMoving():
 
 func startEating():
 	_sprite.play("Eating")
+	_rotTimer.stop()
 
 
 func _onBodyCollision(body):
@@ -69,3 +78,10 @@ func _onBodyCollision(body):
 func completeAnimation():
 	if (_sprite.animation == "Eating"):
 		FinishedEating.emit()
+
+
+func _rotTimerTimeout():
+	print("Timeout", rotten, " ", _sprite.animation)
+	if (!rotten and _sprite.animation == "Idle"):
+		rotten = true
+		_sprite.play("Rotten")

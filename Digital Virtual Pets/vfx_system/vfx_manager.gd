@@ -29,6 +29,7 @@ func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRig
 	
 	if (followObject != null):
 		effectToSpawn.attachedObject = followObject
+		followObject.tree_exited.connect(effectToSpawn.queue_free)
 	
 	await call_deferred("add_child", effectToSpawn)
 	effectToSpawn.VFXObjectComplete.connect(_removeVFXObject)

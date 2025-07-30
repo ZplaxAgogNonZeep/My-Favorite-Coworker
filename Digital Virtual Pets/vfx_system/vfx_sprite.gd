@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 				return
 			
 			position = attachedObject.position + givenPosition
-			attachedObject.tree_exiting.connect(queue_free)
+			
 
 func _startLifespanTimer():
 	sprite.play("Active")

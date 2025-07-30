@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=77 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/Device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://gg0fu6pmjra1" path="res://device/kill_screen.gd" id="10_qk4hv"]
 [ext_resource type="Texture2D" uid="uid://drrgqpmwm5jkv" path="res://assets/art/aesprite/ui/heart_sheet.png" id="11_ofcv6"]
 [ext_resource type="Texture2D" uid="uid://bq128floujtr" path="res://assets/art/aesprite/minigame_assets/cross_sheet.png" id="11_qk4hv"]
+[ext_resource type="PackedScene" uid="uid://dmud2i1efi0lj" path="res://vfx_system/effect_tscns/stink_lines_vfx.tscn" id="11_w57es"]
 [ext_resource type="SpriteFrames" uid="uid://b6u6tkw1fg2y1" path="res://assets/animation_frames/icons/food_icon_frames.tres" id="12_lwr14"]
 [ext_resource type="Theme" uid="uid://baukx2eaxg0xj" path="res://ui/fonts/menu_theme.tres" id="13_0s1ah"]
 [ext_resource type="Theme" uid="uid://dg8innd23voq6" path="res://ui/fonts/meter_label_theme.tres" id="14_veqju"]
@@ -517,7 +518,7 @@ script = ExtResource("5_0s1ah")
 [node name="GameVFX" type="Node2D" parent="PositionGroup/GameArea"]
 z_index = 1
 script = ExtResource("6_7tnq8")
-_effectArray = Array[PackedScene]([ExtResource("7_6uw0p")])
+_effectArray = Array[PackedScene]([ExtResource("7_6uw0p"), ExtResource("11_w57es")])
 _isForGameArea = true
 metadata/_edit_lock_ = true
 

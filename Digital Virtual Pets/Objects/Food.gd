@@ -46,12 +46,11 @@ func _process(delta):
 			_rotTimer.start(_rotTimeLimit * Settings.getTimerMod())
 	elif (position.y >= stopFallingAt):
 		if not readyToEat:
-			collision.visible = true
 			freeze = true
 			readyToEat = true
 			GameEvents.FoodPlaced.emit(self)
-			if (!rotten and _rotTimer.is_stopped()):
-				_rotTimer.start(_rotTimeLimit * Settings.getTimerMod())
+			if (!rotten and _rotTimer.time_left <= 0):
+				_rotTimer.start(_rotTimeLimit )
 
 
 func deviceMoving():
@@ -81,7 +80,7 @@ func completeAnimation():
 
 
 func _rotTimerTimeout():
-	print("Timeout", rotten, " ", _sprite.animation)
-	if (!rotten and _sprite.animation == "Idle"):
+	if (!rotten and _sprite.animation != "Rotten"):
+		GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.STINK_LINES, position - Vector2(0, 8.5), false, 2)
 		rotten = true
 		_sprite.play("Rotten")

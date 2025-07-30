@@ -91,7 +91,7 @@ script = ExtResource("2_6roqv")
 collision = NodePath("CollisionShape2D")
 _sprite = NodePath("Sprite2D")
 _rotTimer = NodePath("RotTimer")
-_rotTimeLimit = 1.0
+_rotTimeLimit = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

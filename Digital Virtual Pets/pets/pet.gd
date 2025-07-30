@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Pet
 
+enum StatusConditions {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS}
+
 class PetSaveData extends SaveData.SavableClass:
 	var petResource
 	var personality

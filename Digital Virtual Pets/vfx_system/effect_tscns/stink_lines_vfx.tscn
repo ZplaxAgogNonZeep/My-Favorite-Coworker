@@ -40,6 +40,7 @@ animations = [{
 z_index = -1
 script = ExtResource("1_wba5t")
 sprite = NodePath("AnimatedSprite2D")
+_behavior = 3
 _blinkRatio = 0.444
 _lifetime = 2.0
 lifeTimer = NodePath("LifeTimer")

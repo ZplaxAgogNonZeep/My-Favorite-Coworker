@@ -80,7 +80,7 @@ func completeAnimation():
 
 
 func _rotTimerTimeout():
-	if (!rotten and _sprite.animation != "Rotten"):
-		GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.STINK_LINES, position - Vector2(0, 8.5), false, 2)
+	if (!rotten and _sprite.animation != "Eating"):
+		GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.STINK_LINES,Vector2(0, -8.5), false, 2, self)
 		rotten = true
 		_sprite.play("Rotten")

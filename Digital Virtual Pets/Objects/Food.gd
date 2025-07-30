@@ -2,6 +2,10 @@ extends RigidBody2D
 
 var implements = [Interface.Food]
 
+signal FinishedEating
+
+@export var _sprite : AnimatedSprite2D
+
 var feedAmount := 100
 var fallSpeed := 1
 var stopFallingAt : int
@@ -51,9 +55,17 @@ func deviceNotMoving():
 	if (not readyToEat):
 		freeze = false
 
+func startEating():
+	_sprite.play("Eating")
+
 
 func _onBodyCollision(body):
 	if Interface.hasInterface(body, Interface.Food):
 		if position.y < body.position.y:
 			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position + Vector2(13, 0), true, 2)
 			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position - Vector2(13, 0), false, 2)
+
+
+func completeAnimation():
+	if (_sprite.animation == "Eating"):
+		FinishedEating.emit()

@@ -162,7 +162,8 @@ func eatFood(foodObject):
 	# Sets state to FEEDING to stop any roaming, faces the food, then waits while it eats.
 	petState = Enums.PetState.FEEDING
 	setSpriteDirection(foodObject.position.x < position.x)
-	await get_tree().create_timer(2).timeout
+	foodObject.startEating()
+	await foodObject.FinishedEating
 	
 	# Performs whatever unique thing the pet does when eating, then adds the hunger value
 	#type.onEatFood()

@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Pet
 
-enum StatusConditions {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS}
+enum StatusCondition {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS}
 
 class PetSaveData extends SaveData.SavableClass:
 	var petResource
@@ -13,6 +13,7 @@ class PetSaveData extends SaveData.SavableClass:
 	var evolvedFromIcons
 	var abilityStats
 	var age
+	var _statusHistory
 
 signal UpdateStatusBars(hungerValue, joyValue)
 signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array)
@@ -77,6 +78,7 @@ var isRoaming := false
 var isFoodReached := false
 var boundries : Array[Vector2] # Unsure
 
+var _statusHistory : Array[StatusCondition]
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
 var _overfed := false
@@ -170,8 +172,15 @@ func eatFood(foodObject):
 	#type.onEatFood()
 	hungerValue += foodObject.feedAmount
 	
+	if (foodObject.rotten):
+		traumaCount += 1
+		applyStatus(StatusCondition.STINKY)
+		if traumaCount > 5:
+			GameEvents.PetDied.emit()
+	
 	if hungerValue > MAX_HUNGER:
 		if (hungerValue >= 175):
+			applyStatus(StatusCondition.OVERFED)
 			traumaCount += 1
 			if traumaCount > 5:
 				GameEvents.PetDied.emit()
@@ -208,6 +217,7 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	if joyValue > MAX_JOY:
 		if (joyValue >= 175):
 			traumaCount += 1
+			applyStatus(StatusCondition.OVERSTIMULTED)
 			if (traumaCount > 5):
 				traumaCount = 5
 		joyValue = MAX_JOY
@@ -244,9 +254,6 @@ func foodPlaced(food):
 			targetPosn = food.position
 	else:
 		_foodQueue.append(food)
-		if (_foodQueue.size() > 3 and not _overfed):
-			_overfed = true
-			neglectTimeout(true)
 
 
 func tickHunger():
@@ -261,6 +268,7 @@ func tickHunger():
 		if hungerValue <= 0:
 			hungerValue = 0
 			traumaCount += 1
+			applyStatus(StatusCondition.HUNGRY)
 			startNeglectTimer()
 		
 		UpdateStatusBars.emit(hungerValue, joyValue)
@@ -276,6 +284,7 @@ func tickJoy():
 		if joyValue <= 0:
 			joyValue = 0
 			traumaCount += 1
+			applyStatus(StatusCondition.BORED)
 			startNeglectTimer()
 		UpdateStatusBars.emit(hungerValue, joyValue)
 
@@ -336,6 +345,14 @@ func getRawAge() -> float:
 
 func setRawAge(age : float) -> void:
 	_lifespanTracker.setLifespan(age)
+
+
+func applyStatus(status : StatusCondition):
+	if (!_statusHistory.has(status)):
+		_statusHistory.append(status)
+	else:
+		if (!_statusHistory.has(StatusCondition.ANXIOUS)):
+			_statusHistory.append(StatusCondition.ANXIOUS)
 
 
 func getStatTotal() -> int:

@@ -1,6 +1,7 @@
 extends Resource
 class_name EvolutionCondition
 enum LogicalConditionals {OR, AND}
+enum StatusCondition {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS, NONE, ANY}
 @export var conditionLogic : LogicalConditionals
 @export_category("Conditions")
 @export var POW := -1
@@ -12,6 +13,7 @@ enum LogicalConditionals {OR, AND}
 @export var TraumaEqual := -1
 @export var Personality := -1
 @export var statTotal := -1
+@export var conditions : Array[StatusCondition]
 
 func checkConditionMet(pet : Pet) -> bool:
 	if (POW > -1):
@@ -50,6 +52,16 @@ func checkConditionMet(pet : Pet) -> bool:
 			return false
 	if (Personality > -1):
 		if (pet.traumaCount != Personality):
+			return false
+	
+	for statusCondition in conditions:
+		if statusCondition == StatusCondition.ANY:
+			if (!pet.checkAnyStatus()):
+				return false
+		elif statusCondition == StatusCondition.NONE:
+			if (pet.checkAnyStatus()):
+				return false
+		elif (!pet.checkStatus(int(statusCondition))):
 			return false
 	
 	return true

@@ -94,7 +94,6 @@ _rotTimer = NodePath("RotTimer")
 _rotTimeLimit = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_lvroj")
 

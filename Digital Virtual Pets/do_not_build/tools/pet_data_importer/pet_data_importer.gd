@@ -21,7 +21,7 @@ func _fillPetData():
 		petData.encyclopediaEntry = petDataList[2]
 		petData.evolutionConditions.clear()
 		#TODO: 3 = Evolutions DO THIS LATER
-		# Okay so indexes 4-9 is for evolution conditions, in that, there's some extra formatting
+		# Okay so indexes 4-13 is for evolution conditions, in that, there's some extra formatting
 		# that needs to be done to enter that: [condition group number]-AND/OR+Stat Value
 		# to parse this, I'm going to create a dict of arrays that will contain lines to be parsed
 		# each group representing one condition with the first element being the "default" one
@@ -30,7 +30,7 @@ func _fillPetData():
 		
 		var count = 4
 		while count <= 9:
-			if (petDataList[count] == ""):
+			if (petDataList[count] == "" or petDataList[count] == "N/A"):
 				count += 1
 				continue
 			
@@ -48,6 +48,15 @@ func _fillPetData():
 					statString = "STATTOTAL|"
 				9:
 					statString = "TRAUMA|"
+				10:
+					statString = "CONDITION1|"
+				11:
+					statString = "CONDITION2|"
+				12:
+					statString = "CONDITION3|"
+				13:
+					statString = "CONDITION4|"
+					
 			if petDataList[count].contains("+"):
 				if groups.has(petDataList[count].split("+")[0]):
 					groups[petDataList[count].split("+")[0]].append(statString + petDataList[count].split("+")[1])
@@ -94,6 +103,12 @@ func _fillPetData():
 								condition.TraumaLesser = stat.split("|")[1].substr(1)
 							'=':
 								condition.TraumaEqual = stat.split("|")[1].substr(1)
+					"CONDITION1":
+						match stat.split("|")[1]:
+							"NONE":
+								condition.conditions.append(EvolutionCondition.StatusCondition.NONE)
+							"ANY":
+								condition.conditions.append(EvolutionCondition.StatusCondition.NONE)
 			
 			if (condition.conditionLogic == EvolutionCondition.LogicalConditionals.AND):
 				andConditions.append(condition)

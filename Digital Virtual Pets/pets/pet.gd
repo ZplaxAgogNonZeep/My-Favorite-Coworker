@@ -355,6 +355,14 @@ func applyStatus(status : StatusCondition):
 			_statusHistory.append(StatusCondition.ANXIOUS)
 
 
+func checkStatus(status : StatusCondition) -> bool:
+	return _statusHistory.has(status)
+
+
+func checkAnyStatus() -> bool:
+	return _statusHistory.size() > 0
+
+
 func getStatTotal() -> int:
 	var returnInt : int
 	for stat in abilityStats:

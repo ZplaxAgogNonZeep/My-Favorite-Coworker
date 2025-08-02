@@ -5,6 +5,7 @@ extends Node
 var x: Callable = _fillPetData
 @export var _rootFilepath : String
 @export var _petDataFilePathRoot : String
+@export var _placeholderSpriteFrames : SpriteFrames
 
 
 func _fillPetData():
@@ -15,6 +16,7 @@ func _fillPetData():
 		var petData = _getResourceFromName(petDataList[0], petDataList[1])
 		if petData == null:
 			petData = PetTypeData.new()
+			petData.spriteFrames = _placeholderSpriteFrames
 		petData.name = petDataList[0]
 		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])

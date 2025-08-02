@@ -16,7 +16,7 @@ class PetSaveData extends SaveData.SavableClass:
 	var _statusHistory
 
 signal UpdateStatusBars(hungerValue, joyValue)
-signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array)
+signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array, statusHistory : Array[StatusCondition])
 signal ReadyToEvolve(evolvedForm)
 
 const STAT_MAX : int = 99
@@ -336,7 +336,7 @@ func _evoStatsUpdated() -> void:
 	var evoStatArray : Array = [abilityStats[Enums.AbilityStat.POW], abilityStats[Enums.AbilityStat.END],
 								abilityStats[Enums.AbilityStat.SPD], abilityStats[Enums.AbilityStat.BAL],
 								traumaCount, getStatTotal()]
-	UpdateStatRecord.emit(petResource, evoStatArray)
+	UpdateStatRecord.emit(petResource, evoStatArray, _statusHistory)
 
 
 func getRawAge() -> float:
@@ -353,6 +353,8 @@ func applyStatus(status : StatusCondition):
 	else:
 		if (!_statusHistory.has(StatusCondition.ANXIOUS)):
 			_statusHistory.append(StatusCondition.ANXIOUS)
+	
+	_evoStatsUpdated()
 
 
 func checkStatus(status : StatusCondition) -> bool:

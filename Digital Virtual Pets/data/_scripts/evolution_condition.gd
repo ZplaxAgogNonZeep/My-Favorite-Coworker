@@ -91,7 +91,7 @@ func _to_string() -> String:
 	
 	return returnString
 
-func toFormattedString(statRecord : Array) -> String:
+func toFormattedString(statRecord : Array, statusRecord : Array) -> String:
 	var returnString : String
 	if POW > -1:
 		if (statRecord[0] < POW):
@@ -134,7 +134,22 @@ func toFormattedString(statRecord : Array) -> String:
 			returnString += "Trauma equal to " + str(TraumaEqual) + "\n"
 	
 	for condition in conditions:
-		pass
+		if (condition == (StatusCondition.ANY)):
+			if (statRecord.size() > 0):
+				returnString += "Any Care Mistake\n"
+			else:
+				returnString += "Care Mistake: ???\n"
+		elif (condition == (StatusCondition.NONE)):
+			if (statRecord.size() == 0):
+				returnString += "No Care Mistakes\n"
+			else:
+				returnString += "Care Mistake: ???\n"
+		else:
+			if (statusRecord.has(int(condition))):
+				returnString += StatusCondition.keys()[condition].to_pascal_case() + "\n"
+			else:
+				returnString += "Care Mistake: ???" + StatusCondition.keys()[condition].to_pascal_case() + "\n"
+		
 	
 	returnString = returnString.erase(returnString.rfind("\n"))
 	

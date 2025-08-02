@@ -96,6 +96,7 @@ func deleteSettingsSaveData():
 
 #region Game Data Handling
 func saveGameToFile():
+	print("Saving Game to file")
 	var password = OS.get_unique_id()
 	
 	var config = ConfigFile.new()
@@ -120,8 +121,8 @@ func saveGameToFile():
 			config.set_value(data.category, propertyKey, data.properties[propertyKey])
 	
 	config.save_encrypted_pass(GAMEDATA_FILEPATH, password)
-	if (Engine.is_editor_hint()):
-		config.save(DEBUGDATA_FILEPATH)
+	config.save(DEBUGDATA_FILEPATH)
+	#if (Engine.is_editor_hint()):
 
 
 func loadGameFromFile():

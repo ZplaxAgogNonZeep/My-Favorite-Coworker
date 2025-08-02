@@ -104,11 +104,25 @@ func _fillPetData():
 							'=':
 								condition.TraumaEqual = stat.split("|")[1].substr(1)
 					"CONDITION1":
-						match stat.split("|")[1]:
+						match stat.split("|")[1].to_upper():
 							"NONE":
 								condition.conditions.append(EvolutionCondition.StatusCondition.NONE)
-							"ANY":
-								condition.conditions.append(EvolutionCondition.StatusCondition.NONE)
+							"ANY CONDITION":
+								condition.conditions.append(EvolutionCondition.StatusCondition.ANY)
+							"OVERFED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.OVERFED)
+							"OVERSTIMULATED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.OVERSTIMULTED)
+							"HUNGRY":
+								condition.conditions.append(EvolutionCondition.StatusCondition.HUNGRY)
+							"BORED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.BORED)
+							"STINKY":
+								condition.conditions.append(EvolutionCondition.StatusCondition.STINKY)
+							"ANXIOUS":
+								condition.conditions.append(EvolutionCondition.StatusCondition.ANXIOUS)
+							_:
+								print("PARSE ERROR: Could not parse Status Condition: ", stat.split("|")[1].to_upper())
 			
 			if (condition.conditionLogic == EvolutionCondition.LogicalConditionals.AND):
 				andConditions.append(condition)

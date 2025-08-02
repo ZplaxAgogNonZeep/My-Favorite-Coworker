@@ -133,6 +133,9 @@ func toFormattedString(statRecord : Array) -> String:
 		else:
 			returnString += "Trauma equal to " + str(TraumaEqual) + "\n"
 	
+	for condition in conditions:
+		pass
+	
 	returnString = returnString.erase(returnString.rfind("\n"))
 	
 	return returnString

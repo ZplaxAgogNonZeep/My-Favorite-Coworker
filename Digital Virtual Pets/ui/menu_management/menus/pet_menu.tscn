@@ -18,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_8s5lr")
 script = ExtResource("2_44k7u")
-_slotContainer = NodePath("Window/PanelControl/MenuWindow/SubPanel/VBoxContainer")
+_slotContainer = NodePath("Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/VBoxContainer")
 _slotScene = ExtResource("3_npbw2")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
@@ -33,7 +33,6 @@ libraries = {
 transparent_bg = true
 title = "pet_data_manager.exe"
 size = Vector2i(1260, 810)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("5_4b6c8")
@@ -45,11 +44,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(224, 131)
 
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 0
 offset_right = 448.0
@@ -78,25 +75,6 @@ offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
 text = "pet_data_manager.exe"
 
-[node name="SubPanel" type="Panel" parent="Window/PanelControl/MenuWindow"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 48.0
-offset_right = 424.0
-offset_bottom = 208.0
-theme_type_variation = &"SubPanel"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/SubPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.025
-anchor_right = 0.99
-anchor_bottom = 0.96875
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Exit" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
@@ -111,19 +89,88 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("5_kpd25")
 icon_alignment = 1
 
-[node name="LoadPet" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="SlotsMenu" type="Control" parent="Window/PanelControl/MenuWindow"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubPanel" type="Panel" parent="Window/PanelControl/MenuWindow/SlotsMenu"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 216.0
-offset_right = 248.0
-offset_bottom = 240.0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 424.0
+offset_bottom = 208.0
+theme_type_variation = &"SubPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.025
+anchor_right = 0.99
+anchor_bottom = 0.96875
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadPet" type="Button" parent="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 168.0
+offset_right = 224.0
+offset_bottom = 192.0
 text = "Load"
+
+[node name="NewPetMenu" type="Control" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_type_variation = &"SubPanel"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/Panel/ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow/NewPetMenu/Panel/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_type_variation = &"MenuIcon"
+text = "Bu"
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/Exit" to="." method="_onExit"]
-[connection signal="button_down" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_loadSelectedPet"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_loadSelectedPet"]

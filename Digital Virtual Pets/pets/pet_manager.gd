@@ -192,10 +192,12 @@ func switchPet(index : int, previousPetDeleted := false):
 
 func killPet():
 	GameEvents.ResetAllTimers.emit()
+	GameEvents.ClearObjects.emit()
 	var petData = activePet.getSavableData()
 	activePet.queue_free()
 	activePet = null
 	deletePetSlot(_slotIndex, true)
+	
 	
 	CallPetDeathScreen.emit(petData)
 

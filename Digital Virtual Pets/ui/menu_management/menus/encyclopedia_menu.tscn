@@ -44,6 +44,7 @@ transparent_bg = true
 title = "encyclopedia.exe"
 position = Vector2i(0, 36)
 size = Vector2i(590, 400)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_8o6ii")

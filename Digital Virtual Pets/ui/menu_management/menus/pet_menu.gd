@@ -3,7 +3,9 @@ extends Menu
 @export_category("Pet Menu")
 @export var _slotContainer : VBoxContainer
 @export var _slotScene : PackedScene
+@export var _subMenus : Array[Control]
 
+var _subMenuIndex : int
 var _currentSelectedSlot : int
 var _petManager : PetManager
 
@@ -16,6 +18,8 @@ func openMenu(direct := false):
 	if (PetManager.instance):
 		PetManager.instance.gatherDataFromActivePet()
 	_fillPetSlots()
+	_subMenus[0].visible = true
+	_subMenus[1].visible = false
 
 func closeMenu():
 	super()
@@ -30,6 +34,30 @@ func _loadSavedMenuSettings():
 		_petManager = PetManager.instance
 		_currentSelectedSlot = _petManager.getSlotIndex()
 
+
+func _switchSubMenu(index := -1):
+	if (_subMenus.size() <= 1 or _subMenuIndex == index):
+		return
+	
+	_subMenus[_subMenuIndex].visible = false
+	
+	if (index > -1):
+		_subMenuIndex = index
+	else:
+		_subMenuIndex += 1
+	
+	if (_subMenuIndex >= _subMenus.size()):
+		_subMenuIndex = 0
+	elif _subMenuIndex < 0:
+		_subMenuIndex = _subMenus.size() - 1
+	
+	animator.play(_animationLibrary + "/close")
+	await animator.animation_finished
+	animator.play(_animationLibrary + "/open")
+	_subMenus[_subMenuIndex].visible = true
+	if (_subMenus[_subMenuIndex].has_method("openSubMenu")):
+		_subMenus[_subMenuIndex].openSubMenu()
+	
 
 #region Helper Functions
 
@@ -98,7 +126,18 @@ func _selectPet(index : int):
 
 
 func _createNewPet():
-	GameEvents.ChangePet.emit(_petManager.getPetSlots().size())
+	_switchSubMenu()
+	#GameEvents.ChangePet.emit(_petManager.getPetSlots().size())
+	#if (_openedDirectly):
+		#ChangeMenu.emit(-1)
+		#return
+	#if (menuManager.getMenuMode() == MenuManager.MenuMode.MULTI_MENU):
+		#ChangeMenu.emit(index)
+	#else:
+		#ChangeMenu.emit(0)
+
+
+func menuisdonepleaseremove():
 	if (_openedDirectly):
 		ChangeMenu.emit(-1)
 		return

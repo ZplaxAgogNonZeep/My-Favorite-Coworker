@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dit2ciyog2cba"]
+
+[ext_resource type="Script" uid="uid://0xufbxvxsdgf" path="res://ui/menu_management/menus/egg_button.gd" id="1_1m1jc"]
+
+[node name="EggSelectionButton" type="Button"]
+custom_minimum_size = Vector2(48, 48)
+theme_type_variation = &"MenuIcon"
+icon_alignment = 1
+vertical_icon_alignment = 2
+expand_icon = true
+script = ExtResource("1_1m1jc")
+
+[connection signal="pressed" from="." to="." method="_eggSelected"]

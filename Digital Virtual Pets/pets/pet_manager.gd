@@ -75,7 +75,7 @@ func addPercentToPosn(posn : Vector2, percentPosn : Vector2) -> Vector2:
 
 
 #region Pet Spawning & Evolving
-func spawnPet(index := -1, isNewPet := false):
+func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, givenName := ""):
 	if (index >= MAX_PET_SLOTS):
 		return
 	
@@ -89,7 +89,8 @@ func spawnPet(index := -1, isNewPet := false):
 		_petSlots.append({})
 		_slotIndex = 0
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petStartResource
+		newPet.petResource = petData
+		newPet.givenName = givenName
 	elif (index < 0 and not isNewPet):
 		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
 	elif (index < _petSlots.size() and index >= 0):
@@ -97,7 +98,8 @@ func spawnPet(index := -1, isNewPet := false):
 			_petSlots[index] = {}
 			_slotIndex = index
 			newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-			newPet.petResource = petStartResource
+			newPet.petResource = petData
+			newPet.givenName = givenName
 		else:
 			_slotIndex = index
 			newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
@@ -108,7 +110,8 @@ func spawnPet(index := -1, isNewPet := false):
 		else:
 			_slotIndex = index
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petStartResource
+		newPet.petResource = petData
+		newPet.givenName = givenName
 	
 	if !_encounteredPets.has(newPet.petResource.name):
 		_encounterNewPet(newPet.petResource)
@@ -188,6 +191,13 @@ func switchPet(index : int, previousPetDeleted := false):
 	if (activePet):
 		activePet.queue_free()
 	spawnPet(index)
+
+
+func createNewPet(petData : PetTypeData, givenname : String):
+	GameEvents.ResetAllTimers.emit()
+	if (activePet):
+		activePet.queue_free()
+	spawnPet(_petSlots.size(), true, petData, givenname)
 
 
 func killPet():

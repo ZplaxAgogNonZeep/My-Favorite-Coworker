@@ -95,9 +95,9 @@ func _ready():
 	GameEvents.EvolveCheck.connect(evolvePet)
 	GameEvents.PauseGame.connect(gamePaused)
 	GameEvents.UnpauseGame.connect(gameUnpaused)
+	startNeglectTimer()
 	
 	_moveTimer.connect("timeout", _onMoveTimerTimeout)
-	
 	UpdateStatusBars.emit(hungerValue, joyValue)
 
 
@@ -177,17 +177,13 @@ func eatFood(foodObject):
 	hungerValue += foodObject.feedAmount
 	
 	if (foodObject.rotten):
-		traumaCount += 1
+		_incrementTrauma()
 		applyStatus(StatusCondition.STINKY)
-		if traumaCount > 5:
-			GameEvents.PetDied.emit()
 	
 	if hungerValue > MAX_HUNGER:
 		if (hungerValue >= 175):
 			applyStatus(StatusCondition.OVERFED)
-			traumaCount += 1
-			if traumaCount > 5:
-				GameEvents.PetDied.emit()
+			_incrementTrauma()
 		hungerValue = MAX_HUNGER
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
@@ -220,10 +216,8 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	
 	if joyValue > MAX_JOY:
 		if (joyValue >= 175):
-			traumaCount += 1
+			_incrementTrauma()
 			applyStatus(StatusCondition.OVERSTIMULTED)
-			if (traumaCount > 5):
-				traumaCount = 5
 		joyValue = MAX_JOY
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
@@ -271,7 +265,7 @@ func tickHunger():
 		
 		if hungerValue <= 0:
 			hungerValue = 0
-			traumaCount += 1
+			_incrementTrauma()
 			applyStatus(StatusCondition.HUNGRY)
 			startNeglectTimer()
 		
@@ -287,21 +281,20 @@ func tickJoy():
 		joyValue -= randi_range(1, 3)
 		if joyValue <= 0:
 			joyValue = 0
-			traumaCount += 1
+			_incrementTrauma()
 			applyStatus(StatusCondition.BORED)
 			startNeglectTimer()
 		UpdateStatusBars.emit(hungerValue, joyValue)
 
 
 func neglectTimeout(skipValueCheck := false):
-	print("Neglect timedout with trauma at ", traumaCount)
-	SfxManager.playSoundEffect(petResource.yap)
 	if hungerValue <= 0 or joyValue <= 0 or skipValueCheck:
-		traumaCount += 1
-		if traumaCount > 5:
-			GameEvents.PetDied.emit()
-		else:
-			_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
+		_incrementTrauma()
+	
+	if traumaCount >= 5:
+		GameEvents.PetDied.emit()
+	else:
+		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
 	print("Evolve Check")
@@ -359,6 +352,13 @@ func applyStatus(status : StatusCondition):
 			_statusHistory.append(StatusCondition.ANXIOUS)
 	
 	_evoStatsUpdated()
+
+
+func _incrementTrauma():
+	traumaCount += 1
+	if (traumaCount > 5):
+		traumaCount = 5
+	_thoughtBubble.setMood(ThoughtBubble.PetMood.TRAUMA)
 
 
 func checkStatus(status : StatusCondition) -> bool:
@@ -452,7 +452,6 @@ func startNeglectTimer():
 		traumaCount = 5
 	
 	if _neglectTimer.time_left == 0:
-		print("Neglect Timer called at trauma ", traumaCount)
 		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
 
 

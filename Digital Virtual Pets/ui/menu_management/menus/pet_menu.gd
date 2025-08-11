@@ -18,6 +18,7 @@ func openMenu(direct := false):
 	if (PetManager.instance):
 		PetManager.instance.gatherDataFromActivePet()
 	_fillPetSlots()
+	_subMenuIndex = 0
 	_subMenus[0].visible = true
 	_subMenus[1].visible = false
 
@@ -37,6 +38,7 @@ func _loadSavedMenuSettings():
 
 func _switchSubMenu(index := -1):
 	if (_subMenus.size() <= 1 or _subMenuIndex == index):
+		print("tried to call same submenu as current")
 		return
 	
 	_subMenus[_subMenuIndex].visible = false
@@ -81,6 +83,7 @@ func _fillPetSlots():
 		if (count == _currentSelectedSlot):
 			newSlot.button_pressed = true
 		newSlot.loadPetData(petData, count)
+		newSlot.NewPetSelected.connect(_createNewPet)
 		newSlot.PetSlotSelected.connect(_selectPet)
 		newSlot.DeleteSaveSlot.connect(_deleteSlot)
 		newSlot.button_down.connect(_mouseDown)
@@ -170,11 +173,11 @@ func _deleteSlot(index : int):
 	_updateIndexes(index)
 	if (_currentSelectedSlot >= index and _currentSelectedSlot != 0):
 		_currentSelectedSlot -= 1
-		print(_currentSelectedSlot)
-	else:
-		print(_currentSelectedSlot)
 	_setSelectedHighlight()
-	_slotContainer.get_child(index).queue_free()
+	if (_petManager.getPetSlots().size() == 2):
+		_slotContainer.get_child(2).changeToNewPetButton()
+	else:
+		_slotContainer.get_child(index).queue_free()
 	
 	
 

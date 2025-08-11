@@ -58,5 +58,6 @@ func _eggButtonSelected(petData : PetTypeData):
 
 func _createPetSelected():
 	PetManager.instance.createNewPet(_selectedEgg, _textEntry.text)
+	closeSubMenu()
 	MenuDonePleaseGo.emit()
 	

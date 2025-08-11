@@ -29,6 +29,10 @@ func loadPetData(petData, slotIndex : int):
 								str(int(array[2])) + "m")
 
 
+func changeToNewPetButton():
+	$NewPetSlot.visible = true
+
+
 func newPetPressed():
 	NewPetSelected.emit()
 

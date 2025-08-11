@@ -93,6 +93,7 @@ icon = ExtResource("5_kpd25")
 icon_alignment = 1
 
 [node name="SlotsMenu" type="Control" parent="Window/PanelControl/MenuWindow"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,7 +129,6 @@ offset_bottom = 192.0
 text = "Load"
 
 [node name="NewPetMenu" type="Control" parent="Window/PanelControl/MenuWindow" node_paths=PackedStringArray("_textEntry", "_eggContainer", "_createPetButton")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,22 +137,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_fne88")
 _textEntry = NodePath("TextEdit")
-_eggContainer = NodePath("Panel/ScrollContainer/HBoxContainer")
+_eggContainer = NodePath("EggOptions/ScrollContainer/HBoxContainer")
 _createPetButton = NodePath("CreatePetButton")
 _eggButton = ExtResource("8_ds242")
 
-[node name="Panel" type="Panel" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+[node name="EggOptions" type="Panel" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 8.0
-offset_top = 32.0
+offset_top = 56.0
 offset_right = -8.0
-offset_bottom = 112.0
+offset_bottom = 136.0
 grow_horizontal = 2
 theme_type_variation = &"SubPanel"
+metadata/_edit_group_ = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/EggOptions"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -164,16 +165,18 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/Panel/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/EggOptions/ScrollContainer"]
 layout_mode = 2
 alignment = 1
 
 [node name="TextEdit" type="TextEdit" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 144.0
+offset_top = 168.0
 offset_right = 432.0
-offset_bottom = 184.0
+offset_bottom = 208.0
+placeholder_text = "pet name here"
+caret_blink = true
 
 [node name="CreatePetButton" type="Button" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
 layout_mode = 0
@@ -189,8 +192,32 @@ offset_left = 272.0
 offset_top = 216.0
 offset_right = 316.0
 offset_bottom = 237.0
-disabled = true
 text = "Cancel"
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 49.25
+theme_type_variation = &"HeaderLarge"
+text = "Select an Egg"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 140.0
+offset_right = -8.0
+offset_bottom = 163.958
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Name your new pet?"
+horizontal_alignment = 1
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]

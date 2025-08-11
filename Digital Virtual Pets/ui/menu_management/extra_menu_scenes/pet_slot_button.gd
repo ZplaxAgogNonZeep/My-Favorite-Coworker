@@ -11,7 +11,10 @@ func loadPetData(petData, slotIndex : int):
 		$NewPetSlot.visible = true
 	else:
 		index = slotIndex
-		$Name.text = petData["petResource"].name
+		if (petData["givenName"] == ""):
+			$Name.text = petData["petResource"].name
+		else:
+			$Name.text = petData["givenName"]
 		var tex = CanvasTexture.new()
 		var tex2 = ImageTexture.new()
 		tex2.set_image(petData["petResource"].getSpriteIcon().get_image())

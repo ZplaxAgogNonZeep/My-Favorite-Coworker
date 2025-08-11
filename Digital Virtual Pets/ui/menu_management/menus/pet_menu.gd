@@ -41,6 +41,9 @@ func _switchSubMenu(index := -1):
 	
 	_subMenus[_subMenuIndex].visible = false
 	
+	if (_subMenus[_subMenuIndex].has_method("closeSubMenu")):
+		_subMenus[_subMenuIndex].closeSubMenu()
+	
 	if (index > -1):
 		_subMenuIndex = index
 	else:
@@ -57,6 +60,7 @@ func _switchSubMenu(index := -1):
 	_subMenus[_subMenuIndex].visible = true
 	if (_subMenus[_subMenuIndex].has_method("openSubMenu")):
 		_subMenus[_subMenuIndex].openSubMenu()
+	
 	
 
 #region Helper Functions

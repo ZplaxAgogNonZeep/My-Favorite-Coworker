@@ -17,6 +17,9 @@ func openSubMenu():
 	_createPetButton.disabled = true
 	_fillEggSelection()
 
+func closeSubMenu():
+	_clearEggSelection()
+
 
 func _fillEggSelection():
 	var eggs = PetManager.instance.getPetProgressInformation()[0]
@@ -37,6 +40,13 @@ func _fillEggSelection():
 		button.EggSelected.connect(_eggButtonSelected)
 		
 		_eggContainer.add_child(button)
+
+
+func _clearEggSelection():
+	var count = _eggContainer.get_child_count() - 1
+	while (count >= 0):
+		_eggContainer.get_child(count).queue_free()
+		count -= 1
 
 
 func _eggButtonSelected(petData : PetTypeData):

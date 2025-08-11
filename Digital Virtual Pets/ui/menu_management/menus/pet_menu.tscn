@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="5_4b6c8"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="5_fne88"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_kpd25"]
-[ext_resource type="Script" uid="uid://cnfig7tdg4kfj" path="res://ui/menu_management/menus/newpet_submenu.gd" id="7_fne88"]
+[ext_resource type="Script" path="res://ui/menu_management/menus/newpet_submenu.gd" id="7_fne88"]
 [ext_resource type="PackedScene" uid="uid://dit2ciyog2cba" path="res://ui/menu_management/extra_menu_scenes/egg_selection_button.tscn" id="8_ds242"]
 
 [node name="PetMenu" type="Control" node_paths=PackedStringArray("_slotContainer", "_subMenus", "_window", "animator")]
@@ -202,6 +202,7 @@ offset_left = 8.0
 offset_top = 32.0
 offset_right = -8.0
 offset_bottom = 49.25
+grow_horizontal = 2
 theme_type_variation = &"HeaderLarge"
 text = "Select an Egg"
 horizontal_alignment = 1

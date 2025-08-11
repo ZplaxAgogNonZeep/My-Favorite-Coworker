@@ -297,6 +297,10 @@ func getPetSlots() -> Array:
 	return _petSlots
 
 
+func checkPetDir() -> bool:
+	return activePet.position.x >= lerp(leftBoundry.position.x, rightBoundry.position.x, .5)
+
+
 func deletePetSlot(index : int, death := false) -> void:
 	if (_petSlots.size() == 1 and !death):
 		return

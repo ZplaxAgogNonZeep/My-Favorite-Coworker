@@ -54,6 +54,7 @@ const personalityModifiers : Dictionary = {
 @export var _moveTimer : Timer
 @export var _neglectTimer : Timer
 @export var _lifespanTracker: Lifespan
+@export var _thoughtBubble : ThoughtBubble
 
 @export_category("Pet Values")
 @export var roamSpeed := .5
@@ -151,6 +152,7 @@ func _process(delta):
 	elif petState == Enums.PetState.EVOLVING:
 		pass
 	
+	_thoughtBubble.setDirection(!PetManager.instance.checkPetDir())
 	previousPosn = position
 
 

@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjw6oamscwe62"]
+[gd_scene load_steps=8 format=3 uid="uid://cjw6oamscwe62"]
 
 [ext_resource type="Script" uid="uid://k2oj7nb46bnk" path="res://pets/pet.gd" id="1_texxe"]
 [ext_resource type="Script" uid="uid://q50o7srs3m1o" path="res://pets/lifespan.gd" id="3_texxe"]
+[ext_resource type="Script" uid="uid://seohooju0qqv" path="res://pets/thought_bubble.gd" id="5_avjmw"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
+[ext_resource type="Texture2D" uid="uid://8m5rrktssxvj" path="res://assets/art/aesprite/minigame_assets/thought_bubble.png" id="5_p5xjq"]
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="6_hy41n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(8, 3)
 
-[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_lifespanTracker") groups=["Pet"]]
+[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_lifespanTracker", "_thoughtBubble") groups=["Pet"]]
 script = ExtResource("1_texxe")
 sprite = NodePath("Sprite")
 leftCollider = NodePath("LeftObjectColl")
@@ -16,6 +18,7 @@ rightCollider = NodePath("RightObjectColl")
 _moveTimer = NodePath("Type/MoveTimer")
 _neglectTimer = NodePath("Type/NeglectTimer")
 _lifespanTracker = NodePath("Type/Lifespan")
+_thoughtBubble = NodePath("ThoughtBubble")
 roamSpeed = 0.1
 roamPercentage = 0.25
 
@@ -54,6 +57,23 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
 shape = SubResource("RectangleShape2D_jamv8")
+
+[node name="ThoughtBubble" type="Node2D" parent="." node_paths=PackedStringArray("pet", "_bubbleSprite", "_moodIcon")]
+position = Vector2(-14, -13)
+script = ExtResource("5_avjmw")
+pet = NodePath("..")
+_bubbleSprite = NodePath("Bubblebase")
+_moodIcon = NodePath("MoodIcon")
+_spriteOffset = 6
+_petSpriteOffset = 8
+metadata/_edit_group_ = true
+
+[node name="Bubblebase" type="Sprite2D" parent="ThoughtBubble"]
+position = Vector2(0, -6)
+texture = ExtResource("5_p5xjq")
+
+[node name="MoodIcon" type="AnimatedSprite2D" parent="ThoughtBubble"]
+position = Vector2(0, -7)
 
 [connection signal="timeout" from="Type/NeglectTimer" to="." method="neglectTimeout"]
 [connection signal="area_entered" from="LeftObjectColl" to="." method="_objectAreaCollisionEnter"]

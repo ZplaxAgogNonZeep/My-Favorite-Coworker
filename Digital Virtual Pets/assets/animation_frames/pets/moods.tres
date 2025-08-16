@@ -1,0 +1,82 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ddmhg4ler7cmk"]
+
+[ext_resource type="Texture2D" uid="uid://bpkudfcveygmc" path="res://assets/art/aesprite/minigame_assets/mood_sheet.png" id="1_odn3k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hob"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(0, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ep4"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(10, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0sqi"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(0, 24, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssdhq"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(10, 24, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnr6r"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(0, 16, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ifn"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(10, 16, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjqj3"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(0, 0, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7utwq"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(10, 0, 10, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ep4")
+}],
+"loop": true,
+"name": &"Happy",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0sqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssdhq")
+}],
+"loop": true,
+"name": &"Mad",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnr6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ifn")
+}],
+"loop": true,
+"name": &"Sad",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjqj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7utwq")
+}],
+"loop": true,
+"name": &"Trauma",
+"speed": 3.0
+}]

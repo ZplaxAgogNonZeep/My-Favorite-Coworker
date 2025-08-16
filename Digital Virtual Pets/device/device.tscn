@@ -1,10 +1,12 @@
-[gd_scene load_steps=77 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=79 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/Device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
 [ext_resource type="Texture2D" uid="uid://2rexj2570ui" path="res://assets/art/aesprite/device/min_device_sheet.png" id="2_7tnq8"]
 [ext_resource type="Script" uid="uid://cqbjnned5i21h" path="res://device/game_area.gd" id="3_04b0e"]
+[ext_resource type="SpriteFrames" uid="uid://ddmhg4ler7cmk" path="res://assets/animation_frames/pets/moods.tres" id="3_veqju"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_qk4hv"]
+[ext_resource type="Script" uid="uid://bhxnu7sbm573f" path="res://device/mood_copycatcher.gd" id="4_ul75l"]
 [ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="5_0s1ah"]
 [ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_7tnq8"]
 [ext_resource type="Resource" uid="uid://bqs54n475n2yw" path="res://data/sound_grouping/device_beep.tres" id="6_myr8s"]
@@ -482,6 +484,13 @@ collision_mask = 2147483648
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PositionGroup/MinimizedSprite/MouseCollider"]
 shape = SubResource("CapsuleShape2D_7tnq8")
+
+[node name="MoodIcon" type="AnimatedSprite2D" parent="PositionGroup/MinimizedSprite"]
+visible = false
+position = Vector2(0, -16)
+sprite_frames = ExtResource("3_veqju")
+animation = &"Happy"
+script = ExtResource("4_ul75l")
 
 [node name="LinkDeviceSprite" parent="PositionGroup" instance=ExtResource("2_2w885")]
 

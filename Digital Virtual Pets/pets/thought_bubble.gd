@@ -36,6 +36,7 @@ func setDirection(dir : bool):
 func setMood(mood : PetMood):
 	if (mood == PetMood.NONE):
 		return
+	GameEvents.PetMoodChange.emit(mood, _moodDisplayTime)
 	
 	visible = true
 	

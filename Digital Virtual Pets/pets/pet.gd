@@ -250,11 +250,14 @@ func _moodBehavior():
 		if (hungerValue < MAX_HUNGER * _needsBarSadThreshold or 
 			joyValue < MAX_JOY * _needsBarSadThreshold):
 			
-			var rng = randi_range(0, 1)
-			if (rng == 0):
-				_thoughtBubble.setMood(ThoughtBubble.PetMood.SAD)
+			if (traumaCount >= 4):
+				_thoughtBubble.setMood(ThoughtBubble.PetMood.DYING)
 			else:
-				_thoughtBubble.setMood(ThoughtBubble.PetMood.MAD)
+				var rng = randi_range(0, 1)
+				if (rng == 0):
+					_thoughtBubble.setMood(ThoughtBubble.PetMood.SAD)
+				else:
+					_thoughtBubble.setMood(ThoughtBubble.PetMood.MAD)
 		elif (_statusHistory.size() <= 1):
 			_thoughtBubble.setMood(ThoughtBubble.PetMood.HAPPY)
 		

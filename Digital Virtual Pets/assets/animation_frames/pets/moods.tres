@@ -1,6 +1,14 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ddmhg4ler7cmk"]
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://ddmhg4ler7cmk"]
 
 [ext_resource type="Texture2D" uid="uid://bpkudfcveygmc" path="res://assets/art/aesprite/minigame_assets/mood_sheet.png" id="1_odn3k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odn3k"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(0, 32, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l8wn"]
+atlas = ExtResource("1_odn3k")
+region = Rect2(10, 32, 10, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8hob"]
 atlas = ExtResource("1_odn3k")
@@ -36,6 +44,17 @@ region = Rect2(10, 0, 10, 8)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odn3k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l8wn")
+}],
+"loop": true,
+"name": &"Dying",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q8hob")

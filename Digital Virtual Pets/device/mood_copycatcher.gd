@@ -20,6 +20,8 @@ func _displayMood(mood : ThoughtBubble.PetMood, time : float):
 			play("Sad")
 		ThoughtBubble.PetMood.MAD:
 			play("Mad")
+		ThoughtBubble.PetMood.DYING:
+			play("Dying")
 	
 	await get_tree().create_timer(time).timeout
 	visible = false

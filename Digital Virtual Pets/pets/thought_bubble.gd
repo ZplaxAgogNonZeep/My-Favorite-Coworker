@@ -2,7 +2,7 @@ extends Node2D
 
 class_name ThoughtBubble
 
-enum PetMood {NONE, TRAUMA, HAPPY, SAD, MAD}
+enum PetMood {NONE, TRAUMA, HAPPY, SAD, MAD, DYING}
 
 @export var pet : Pet
 @export var _bubbleSprite : Sprite2D
@@ -49,6 +49,8 @@ func setMood(mood : PetMood):
 			_moodIcon.play("Sad")
 		PetMood.MAD:
 			_moodIcon.play("Mad")
+		PetMood.DYING:
+			_moodIcon.play("Dying")
 	
 	_timer.start(_moodDisplayTime)
 	await _timer.timeout

@@ -145,7 +145,7 @@ texture = ExtResource("5_p5xjq")
 [node name="MoodIcon" type="AnimatedSprite2D" parent="ThoughtBubble"]
 position = Vector2(0, -7)
 sprite_frames = ExtResource("8_hjqj3")
-animation = &"Trauma"
+animation = &"Dying"
 
 [node name="Timer" type="Timer" parent="ThoughtBubble"]
 one_shot = true

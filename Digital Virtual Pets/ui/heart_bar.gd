@@ -12,7 +12,6 @@ func _ready():
 func updateBar(fillAmount : int, maxValue : int):
 	var segmentAmount : int = maxValue / heartObjects.size()
 	var fillValue : float = float(maxValue) / (float(heartObjects.size()) * 2)
-	print(fillValue)
 	var count = 0
 	for child in heartObjects:
 		if fillAmount >= fillValue * ((count + 1) * 2):

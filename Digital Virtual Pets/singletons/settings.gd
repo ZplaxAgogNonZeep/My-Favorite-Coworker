@@ -283,7 +283,6 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 													((windowSize.x * .5) * buildDir.x * -1), 
 								Vector2i(0, resolution.x))):
 			xBounds.x = windowOrigin.x
-		print(xBounds)
 		var yBounds : Vector2i
 		yBounds.x = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * 2)
 		yBounds.y = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * .5)

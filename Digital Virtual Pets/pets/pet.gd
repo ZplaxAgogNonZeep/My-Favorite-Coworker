@@ -401,7 +401,6 @@ func _incrementTrauma():
 	_behaviorPaused = true
 	_shiverContainer.visible = true
 	_specialAnimator.play("shiver")
-	print("shiver should be playing")
 	await get_tree().create_timer(.5).timeout
 	_specialAnimator.play("RESET")
 	_shiverContainer.visible = false

@@ -19,7 +19,6 @@ func _ready() -> void:
 func _playVFX(effect : VFXManager.VisualEffects, position : Vector2, isFacingRight : bool,
 																		lifespan : float, 
 																		followObject : Node2D = null) -> VFXObject:
-	print("vfx called")
 	var effectToSpawn : VFXObject = _effectArray[effect].instantiate()
 	effectToSpawn.position = position
 	effectToSpawn._lifetime = lifespan

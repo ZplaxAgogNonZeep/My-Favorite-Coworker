@@ -42,6 +42,12 @@ func setMood(mood : PetMood):
 	match mood:
 		PetMood.TRAUMA:
 			_moodIcon.play("Trauma")
+		PetMood.HAPPY:
+			_moodIcon.play("Happy")
+		PetMood.SAD:
+			_moodIcon.play("Sad")
+		PetMood.MAD:
+			_moodIcon.play("Mad")
 	
 	_timer.start(_moodDisplayTime)
 	await _timer.timeout

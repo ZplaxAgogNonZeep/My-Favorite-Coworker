@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cjw6oamscwe62"]
+[gd_scene load_steps=22 format=3 uid="uid://cjw6oamscwe62"]
 
 [ext_resource type="Script" uid="uid://k2oj7nb46bnk" path="res://pets/pet.gd" id="1_texxe"]
 [ext_resource type="Script" uid="uid://q50o7srs3m1o" path="res://pets/lifespan.gd" id="3_texxe"]
@@ -50,6 +50,30 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(8, 3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8hob"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(0, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7ep4"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(10, 8, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0sqi"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(0, 24, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssdhq"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(10, 24, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnr6r"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(0, 16, 10, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2ifn"]
+atlas = ExtResource("7_rl0xe")
+region = Rect2(10, 16, 10, 8)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjqj3"]
 atlas = ExtResource("7_rl0xe")
 region = Rect2(0, 0, 10, 8)
@@ -60,6 +84,39 @@ region = Rect2(10, 0, 10, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q8hob"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8hob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7ep4")
+}],
+"loop": true,
+"name": &"Happy",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0sqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssdhq")
+}],
+"loop": true,
+"name": &"Mad",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnr6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2ifn")
+}],
+"loop": true,
+"name": &"Sad",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hjqj3")
@@ -78,7 +135,7 @@ roamSpeed = 0.1
 roamPercentage = 0.25
 _overfeedThreshold = 0.625
 _moodIntervalRange = Vector2i(20, 90)
-_needsBarSadThreshold = 0.375
+_needsBarSadThreshold = 0.5
 sprite = NodePath("Sprite")
 _shiverContainer = NodePath("Sprite/ShiverEffect")
 leftCollider = NodePath("LeftObjectColl")
@@ -168,7 +225,6 @@ texture = ExtResource("5_p5xjq")
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_q8hob")
 animation = &"Trauma"
-frame_progress = 0.512608
 
 [node name="Timer" type="Timer" parent="ThoughtBubble"]
 one_shot = true

@@ -89,7 +89,10 @@ func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, give
 		_petSlots.append({})
 		_slotIndex = 0
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petData
+		if petData != null:
+			newPet.petResource = petData
+		else:
+			newPet.petResource = _availableEggs[0]
 		newPet.givenName = givenName
 	elif (index < 0 and not isNewPet):
 		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
@@ -98,7 +101,10 @@ func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, give
 			_petSlots[index] = {}
 			_slotIndex = index
 			newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-			newPet.petResource = petData
+			if petData != null:
+				newPet.petResource = petData
+			else:
+				newPet.petResource = _availableEggs[0]
 			newPet.givenName = givenName
 		else:
 			_slotIndex = index
@@ -110,7 +116,10 @@ func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, give
 		else:
 			_slotIndex = index
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petData
+		if petData != null:
+			newPet.petResource = petData
+		else:
+			newPet.petResource = _availableEggs[0]
 		newPet.givenName = givenName
 	
 	if !_encounteredPets.has(newPet.petResource.name):

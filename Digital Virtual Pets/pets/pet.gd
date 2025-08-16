@@ -247,8 +247,8 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 func _moodBehavior():
 	if (!_thoughtBubble.isActive() and _moodTimer.time_left <= 0):
 		randomize()
-		if (hungerValue <= MAX_HUNGER * _needsBarSadThreshold or 
-			joyValue <= MAX_JOY * _needsBarSadThreshold):
+		if (hungerValue < MAX_HUNGER * _needsBarSadThreshold or 
+			joyValue < MAX_JOY * _needsBarSadThreshold):
 			
 			var rng = randi_range(0, 1)
 			if (rng == 0):

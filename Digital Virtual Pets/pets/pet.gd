@@ -47,6 +47,15 @@ const personalityModifiers : Dictionary = {
 @onready var previousPosn := position
 @onready var defaultPosition := position
 
+
+@export_category("Behavior Values")
+@export var roamSpeed := .5
+@export_range(0, 1.0) var roamPercentage : float
+@export_range(0, 1.0, 0.125) var _overfeedThreshold
+@export_category("Mood Values")
+@export var _moodIntervalRange : Vector2i
+@export_range(0, 1.0, 0.125) var _needsBarSadThreshold
+
 @export_category("Object References")
 @export var sprite : AnimatedSprite2D
 @export var _shiverContainer : Node2D
@@ -54,13 +63,11 @@ const personalityModifiers : Dictionary = {
 @export var rightCollider : Area2D
 @export var _moveTimer : Timer
 @export var _neglectTimer : Timer
+@export var _moodTimer : Timer
 @export var _lifespanTracker: Lifespan
 @export var _specialAnimator : AnimationPlayer
 @export var _thoughtBubble : ThoughtBubble
 
-@export_category("Pet Values")
-@export var roamSpeed := .5
-@export_range(0, 1.0) var roamPercentage : float
 
 #region Saved Variables
 var petResource : PetTypeData #Saved
@@ -144,6 +151,7 @@ func _process(delta):
 			_moveTimer.start(randf_range(petResource.waitIntervals.x, petResource.waitIntervals.y))
 		
 		setSpriteDirection()
+		_moodBehavior()
 		
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
@@ -232,6 +240,31 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	
 	SfxManager.playSoundEffect(petResource.yap)
 	SaveData.saveGameToFile()
+
+
+## A function meant to be called every frame. It manages the pet's mood indicator by observing
+## it's stats and determining if it should be happy or sad.
+func _moodBehavior():
+	if (!_thoughtBubble.isActive() and _moodTimer.time_left <= 0):
+		randomize()
+		if (hungerValue <= MAX_HUNGER * _needsBarSadThreshold or 
+			joyValue <= MAX_JOY * _needsBarSadThreshold):
+			
+			var rng = randi_range(0, 1)
+			if (rng == 0):
+				_thoughtBubble.setMood(ThoughtBubble.PetMood.SAD)
+			else:
+				_thoughtBubble.setMood(ThoughtBubble.PetMood.MAD)
+		elif (_statusHistory.size() <= 1):
+			_thoughtBubble.setMood(ThoughtBubble.PetMood.HAPPY)
+		
+		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
+		_moodTimer.start(rng * Settings.getTimerMod())
+	elif (_moodTimer.time_left <= 0):
+		randomize()
+		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
+		_moodTimer.start(rng * Settings.getTimerMod())
+
 #endregion
 
 #region Events 

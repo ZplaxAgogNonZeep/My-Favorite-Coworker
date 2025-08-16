@@ -2,12 +2,27 @@
 
 [ext_resource type="Script" uid="uid://k2oj7nb46bnk" path="res://pets/pet.gd" id="1_texxe"]
 [ext_resource type="Script" uid="uid://q50o7srs3m1o" path="res://pets/lifespan.gd" id="3_texxe"]
-[ext_resource type="Script" path="res://pets/thought_bubble.gd" id="5_avjmw"]
+[ext_resource type="Script" uid="uid://seohooju0qqv" path="res://pets/thought_bubble.gd" id="5_avjmw"]
 [ext_resource type="Texture2D" uid="uid://drfnhikwal58k" path="res://assets/art/aesprite/minigame_assets/pet_shiver.png" id="5_hjqj3"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
 [ext_resource type="Texture2D" uid="uid://8m5rrktssxvj" path="res://assets/art/aesprite/minigame_assets/thought_bubble.png" id="5_p5xjq"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="6_hy41n"]
 [ext_resource type="Texture2D" uid="uid://bpkudfcveygmc" path="res://assets/art/aesprite/minigame_assets/mood_sheet.png" id="7_rl0xe"]
+
+[sub_resource type="Animation" id="Animation_7utwq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_hjqj3"]
 resource_name = "shiver"
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-0.5, 0), Vector2(0, 0), Vector2(0.5, 0), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_7utwq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q8hob"]
@@ -72,19 +72,23 @@ animations = [{
 "speed": 3.0
 }]
 
-[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "_shiverContainer", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_lifespanTracker", "_specialAnimator", "_thoughtBubble") groups=["Pet"]]
+[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "_shiverContainer", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_moodTimer", "_lifespanTracker", "_specialAnimator", "_thoughtBubble") groups=["Pet"]]
 script = ExtResource("1_texxe")
+roamSpeed = 0.1
+roamPercentage = 0.25
+_overfeedThreshold = 0.625
+_moodIntervalRange = Vector2i(20, 90)
+_needsBarSadThreshold = 0.375
 sprite = NodePath("Sprite")
 _shiverContainer = NodePath("Sprite/ShiverEffect")
 leftCollider = NodePath("LeftObjectColl")
 rightCollider = NodePath("RightObjectColl")
 _moveTimer = NodePath("Type/MoveTimer")
 _neglectTimer = NodePath("Type/NeglectTimer")
+_moodTimer = NodePath("Type/MoodTimer")
 _lifespanTracker = NodePath("Type/Lifespan")
 _specialAnimator = NodePath("AnimationPlayer")
 _thoughtBubble = NodePath("ThoughtBubble")
-roamSpeed = 0.1
-roamPercentage = 0.25
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -98,6 +102,10 @@ script = ExtResource("6_hy41n")
 _useProactivity = false
 
 [node name="NeglectTimer" type="Timer" parent="Type"]
+script = ExtResource("6_hy41n")
+
+[node name="MoodTimer" type="Timer" parent="Type"]
+one_shot = true
 script = ExtResource("6_hy41n")
 
 [node name="Lifespan" type="Node" parent="Type"]

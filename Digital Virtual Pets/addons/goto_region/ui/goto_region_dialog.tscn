@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://drcwyjc7ul2na"]
+
+[ext_resource type="Script" path="res://addons/goto_region/ui/goto_region_dialog.gd" id="1_8x0xt"]
+
+[node name="FilterRegionWindow" type="ConfirmationDialog"]
+title = "Go to region"
+position = Vector2i(0, 36)
+size = Vector2i(505, 435)
+visible = true
+script = ExtResource("1_8x0xt")
+
+[node name="Container" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/Content"]
+layout_mode = 2
+text = "Search:"
+
+[node name="SearchEdit" type="LineEdit" parent="Container/Content"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Content"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Matchs:"
+
+[node name="ShowPreviewCheck" type="CheckButton" parent="Container/Content/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Show Preview"
+
+[node name="ItemListPreviewSplit" type="VSplitContainer" parent="Container/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemList" type="ItemList" parent="Container/Content/ItemListPreviewSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+allow_search = false
+
+[node name="Preview" type="CodeEdit" parent="Container/Content/ItemListPreviewSplit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+focus_mode = 0
+context_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="gui_input" from="Container/Content/SearchEdit" to="." method="_on_search_edit_gui_input"]
+[connection signal="text_changed" from="Container/Content/SearchEdit" to="." method="_on_search_edit_text_changed"]
+[connection signal="text_submitted" from="Container/Content/SearchEdit" to="." method="_on_search_edit_text_submitted"]
+[connection signal="toggled" from="Container/Content/HBoxContainer/ShowPreviewCheck" to="." method="_on_show_preview_check_toggled"]
+[connection signal="item_activated" from="Container/Content/ItemListPreviewSplit/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_selected" from="Container/Content/ItemListPreviewSplit/ItemList" to="." method="_on_item_list_item_selected"]

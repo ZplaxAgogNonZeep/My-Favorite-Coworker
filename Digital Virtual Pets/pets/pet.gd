@@ -49,11 +49,13 @@ const personalityModifiers : Dictionary = {
 
 @export_category("Object References")
 @export var sprite : AnimatedSprite2D
+@export var _shiverContainer : Node2D
 @export var leftCollider : Area2D
 @export var rightCollider : Area2D
 @export var _moveTimer : Timer
 @export var _neglectTimer : Timer
 @export var _lifespanTracker: Lifespan
+@export var _specialAnimator : AnimationPlayer
 @export var _thoughtBubble : ThoughtBubble
 
 @export_category("Pet Values")
@@ -84,9 +86,10 @@ var givenName : String
 var _statusHistory : Array[StatusCondition]
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
-var _overfed := false
 var _nextAnimation : String
 var _feedingFrames := 0.0
+var _behaviorPaused := false
+
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -106,7 +109,9 @@ func _process(delta):
 		#GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
-	if petState == Enums.PetState.ROAMING:
+	if (_behaviorPaused):
+		pass
+	elif petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):
 				_setNextAnimation("Walk")
@@ -306,6 +311,7 @@ func evolvePet():
 		ReadyToEvolve.emit(petResource.getNextEvolution(self))
 		#petManager.evolvePet(type.getEvolvePet())
 
+
 #endregion
 
 #region Utility Functions 
@@ -359,6 +365,14 @@ func _incrementTrauma():
 	if (traumaCount > 5):
 		traumaCount = 5
 	_thoughtBubble.setMood(ThoughtBubble.PetMood.TRAUMA)
+	_behaviorPaused = true
+	_shiverContainer.visible = true
+	_specialAnimator.play("shiver")
+	print("shiver should be playing")
+	await get_tree().create_timer(.5).timeout
+	_specialAnimator.play("RESET")
+	_shiverContainer.visible = false
+	_behaviorPaused = false
 
 
 func checkStatus(status : StatusCondition) -> bool:

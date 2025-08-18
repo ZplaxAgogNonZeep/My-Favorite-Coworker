@@ -24,6 +24,8 @@ const MAX_PET_SLOTS := 3
 const EGG_DATA_PATH := "res://data/pet_resources/stage_0/"
 
 signal CallPetDeathScreen(petData : Dictionary)
+signal WaitingForStopGap
+signal _PassStopGap
 
 @export_category("Object References")
 @export var hungerBar : StatusBar
@@ -154,6 +156,8 @@ func evolvePet(evolveTarget: PetTypeData):
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	await get_tree().create_timer(1).timeout
+	WaitingForStopGap.emit()
+	await _PassStopGap
 	GameEvents.ClearObjects.emit()
 	
 	activePet.evolvedFromIcons += [activePet.getSpriteIcon()]

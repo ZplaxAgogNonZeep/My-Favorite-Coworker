@@ -191,7 +191,7 @@ func toggleMinimizedWindow(isMinimized : bool):
 
 
 ## Takes a game request for attention and decide what to do based on the settings.
-func requestPlayerAttention():
+func requestPlayerAttention(waitForResponse := false):
 	if (not Settings.isRequestAttentionAllowed):
 		return
 	match windowAttentionMode:
@@ -204,7 +204,7 @@ func requestPlayerAttention():
 		WindowAttentionOptions.DO_NOT_CHANGE:
 			DisplayServer.window_request_attention()
 	
-	if (minimized):
+	if (minimized or waitForResponse):
 		GameEvents.DeviceRequestAttention.emit()
 		await GameEvents.DeviceAttentionReceived
 	

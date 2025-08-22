@@ -1,12 +1,13 @@
 extends Node2D
 
-enum MenuState {MINIMIZED, PLAY, STATS, DEATH}
+enum MenuState {MINIMIZED, PLAY, STATS, DEATH, EVOLVE}
 
 @export_category("Object References")
 @export var miniMenu : Node2D
 @export var statMenu : Node2D
 @export var playMenu : Node2D
 @export var deathMenu : Node2D
+@export var evolveMenu : Node2D
 @export var _beepSound : SoundGroup
 
 var currentState : MenuState
@@ -35,6 +36,11 @@ func _ready():
 	
 	if deathMenu.implements.has(Interface.MenuState):
 		deathMenu.stateMachine = self
+	else:
+		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
+	
+	if evolveMenu.implements.has(Interface.MenuState):
+		evolveMenu.stateMachine = self
 	else:
 		print("MENU DOES NOT IMPLEMENT MENUSTATE INTERFACE")
 
@@ -68,6 +74,8 @@ func setState(state: MenuState, variable = null):
 			stateReference = playMenu
 		MenuState.DEATH:
 			stateReference = deathMenu
+		MenuState.EVOLVE:
+			stateReference = evolveMenu
 	
 	if (variable == null):
 		stateReference.initializeMenu()
@@ -89,6 +97,9 @@ func sendInput(input : Enums.DeviceButton):
 		MenuState.DEATH:
 			if deathMenu.implements.has(Interface.MenuState):
 				deathMenu.takeInput(input)
+		MenuState.EVOLVE:
+			if evolveMenu.implements.has(Interface.MenuState):
+				evolveMenu.takeInput(input)
 
 
 func playBeep():

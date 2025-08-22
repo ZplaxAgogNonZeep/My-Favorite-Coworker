@@ -60,8 +60,7 @@ func _handleButtonInput(button : Enums.DeviceButton):
 			if (_evolutionStopGap):
 				_evolutionStopGap = false
 				petManager._PassStopGap.emit()
-			else:
-				menuManager.handleInput(button)
+			menuManager.handleInput(button)
 		Enums.DeviceButton.LEFT_BUTTON:
 			menuManager.handleInput(button)
 		Enums.DeviceButton.RIGHT_BUTTON:
@@ -144,6 +143,7 @@ func _foodColliderEntered(body, number = 0):
 	if (Interface.hasInterface(body, Interface.Food)):
 		_spawnpointStatus[number] = false
 
+
 func _foodColliderExited(body, number = 0):
 	if (Interface.hasInterface(body, Interface.Food)):
 		_spawnpointStatus[number] = true
@@ -151,6 +151,7 @@ func _foodColliderExited(body, number = 0):
 
 func _receiveEvolutionStopGap():
 	_evolutionStopGap = true
+	menuManager.setState(menuManager.MenuState.EVOLVE)
 
 
 #endregion

@@ -155,10 +155,12 @@ func evolvePet(evolveTarget: PetTypeData):
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
+	GameEvents.ClearObjects.emit()
 	await get_tree().create_timer(1).timeout
+	if activePet.petResource.stage != 0:
+		activePet.sprite.play("Quirk")
 	WaitingForStopGap.emit()
 	await _PassStopGap
-	GameEvents.ClearObjects.emit()
 	
 	activePet.evolvedFromIcons += [activePet.getSpriteIcon()]
 	activePet.visible = false
@@ -182,6 +184,8 @@ func evolvePet(evolveTarget: PetTypeData):
 	
 	# Go about with the game
 	GameEvents.StartNeedsTimers.emit()
+	activePet.sprite.play("Quirk")
+	await get_tree().create_timer(1).timeout
 	GameEvents.NewPetEvolved.emit(false)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
 								activePet.position + Vector2(13, 0), 

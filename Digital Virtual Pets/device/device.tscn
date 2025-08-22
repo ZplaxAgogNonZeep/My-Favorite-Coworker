@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=80 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/Device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -7,13 +7,13 @@
 [ext_resource type="SpriteFrames" uid="uid://ddmhg4ler7cmk" path="res://assets/animation_frames/pets/moods.tres" id="3_veqju"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_qk4hv"]
 [ext_resource type="Script" uid="uid://bhxnu7sbm573f" path="res://device/mood_copycatcher.gd" id="4_ul75l"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="5_0s1ah"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="5_0s1ah"]
 [ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_7tnq8"]
 [ext_resource type="Resource" uid="uid://bqs54n475n2yw" path="res://data/sound_grouping/device_beep.tres" id="6_myr8s"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_6uw0p"]
 [ext_resource type="Texture2D" uid="uid://cxfiu12hvqate" path="res://assets/art/aesprite/device/game_background.png" id="8_5u0yl"]
 [ext_resource type="SpriteFrames" uid="uid://dmdqjiqs0oxha" path="res://assets/animation_frames/device/screen_frames.tres" id="9_5u0yl"]
-[ext_resource type="Script" uid="uid://dxkor68c3q6xw" path="res://device/Background.gd" id="9_5xc8b"]
+[ext_resource type="Script" uid="uid://dxkor68c3q6xw" path="res://device/background.gd" id="9_5xc8b"]
 [ext_resource type="PackedScene" uid="uid://2bbe7a4a3a8k" path="res://games/pseudo_pet.tscn" id="10_04b0e"]
 [ext_resource type="Script" uid="uid://bdgxms5h5rrmh" path="res://ui/heart_bar.gd" id="10_g2vwl"]
 [ext_resource type="Script" uid="uid://gg0fu6pmjra1" path="res://device/kill_screen.gd" id="10_qk4hv"]
@@ -49,6 +49,7 @@
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="35_071hk"]
 [ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://assets/art/aesprite/minigame_assets/hurdle.png" id="35_ofcv6"]
 [ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://assets/art/aesprite/minigame_assets/fishing_rod.png" id="36_myr8s"]
+[ext_resource type="Script" uid="uid://6pinamjty1l" path="res://device/evolve_menu.gd" id="46_v38ai"]
 
 [sub_resource type="Animation" id="Animation_7tnq8"]
 resource_name = "maximize_device"
@@ -540,20 +541,20 @@ metadata/_edit_lock_ = true
 
 [node name="DisplayScreen" type="AnimatedSprite2D" parent="PositionGroup/GameArea"]
 process_mode = 3
-visible = false
 z_index = 9
 z_as_relative = false
 position = Vector2(0, -58)
 sprite_frames = ExtResource("9_5u0yl")
-animation = &"Screen Off"
+animation = &"Transition In"
 metadata/_edit_lock_ = true
 
-[node name="MenuManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu")]
+[node name="MenuManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("miniMenu", "statMenu", "playMenu", "deathMenu", "evolveMenu")]
 script = ExtResource("9_5xc8b")
 miniMenu = NodePath("Menu/MiniMenu")
 statMenu = NodePath("Menu/StatMenu")
 playMenu = NodePath("Menu/PlayMenu")
 deathMenu = NodePath("Menu/DeathMenu")
+evolveMenu = NodePath("Menu/EvolveMenu")
 _beepSound = ExtResource("6_myr8s")
 
 [node name="StatusBars" type="Node2D" parent="PositionGroup/GameArea/MenuManager"]
@@ -1051,6 +1052,18 @@ text = "Age:
 0d 0h 0m"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="EvolveMenu" type="Node2D" parent="PositionGroup/GameArea/MenuManager/Menu" node_paths=PackedStringArray("_displayScreen", "_overlay")]
+visible = false
+script = ExtResource("46_v38ai")
+_displayScreen = NodePath("../../../DisplayScreen")
+_overlay = NodePath("Overlay")
+
+[node name="Overlay" type="AnimatedSprite2D" parent="PositionGroup/GameArea/MenuManager/Menu/EvolveMenu"]
+z_index = 8
+position = Vector2(0, -58)
+sprite_frames = ExtResource("9_5u0yl")
+animation = &"Evolve Menu"
 
 [node name="PetManager" type="Node2D" parent="PositionGroup/GameArea" node_paths=PackedStringArray("hungerBar", "joyBar", "leftBoundry", "rightBoundry", "animationManager", "petSpawnPoint", "_evolvingPet")]
 script = ExtResource("32_kagdc")

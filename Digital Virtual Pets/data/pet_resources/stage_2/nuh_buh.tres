@@ -19,6 +19,7 @@ TraumaLesser = -1
 TraumaEqual = -1
 Personality = -1
 statTotal = 15
+conditions = Array[int]([0])
 
 [resource]
 script = ExtResource("2_4bqmy")

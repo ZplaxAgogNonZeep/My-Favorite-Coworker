@@ -5,6 +5,7 @@ extends Node
 var x: Callable = _fillPetData
 @export var _rootFilepath : String
 @export var _petDataFilePathRoot : String
+@export var _placeholderSpriteFrames : SpriteFrames
 
 
 func _fillPetData():
@@ -15,13 +16,14 @@ func _fillPetData():
 		var petData = _getResourceFromName(petDataList[0], petDataList[1])
 		if petData == null:
 			petData = PetTypeData.new()
+			petData.spriteFrames = _placeholderSpriteFrames
 		petData.name = petDataList[0]
 		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])
 		petData.encyclopediaEntry = petDataList[2]
 		petData.evolutionConditions.clear()
 		#TODO: 3 = Evolutions DO THIS LATER
-		# Okay so indexes 4-9 is for evolution conditions, in that, there's some extra formatting
+		# Okay so indexes 4-13 is for evolution conditions, in that, there's some extra formatting
 		# that needs to be done to enter that: [condition group number]-AND/OR+Stat Value
 		# to parse this, I'm going to create a dict of arrays that will contain lines to be parsed
 		# each group representing one condition with the first element being the "default" one
@@ -30,7 +32,7 @@ func _fillPetData():
 		
 		var count = 4
 		while count <= 9:
-			if (petDataList[count] == ""):
+			if (petDataList[count] == "" or petDataList[count] == "N/A"):
 				count += 1
 				continue
 			
@@ -48,6 +50,15 @@ func _fillPetData():
 					statString = "STATTOTAL|"
 				9:
 					statString = "TRAUMA|"
+				10:
+					statString = "CONDITION1|"
+				11:
+					statString = "CONDITION2|"
+				12:
+					statString = "CONDITION3|"
+				13:
+					statString = "CONDITION4|"
+					
 			if petDataList[count].contains("+"):
 				if groups.has(petDataList[count].split("+")[0]):
 					groups[petDataList[count].split("+")[0]].append(statString + petDataList[count].split("+")[1])
@@ -94,6 +105,26 @@ func _fillPetData():
 								condition.TraumaLesser = stat.split("|")[1].substr(1)
 							'=':
 								condition.TraumaEqual = stat.split("|")[1].substr(1)
+					"CONDITION1":
+						match stat.split("|")[1].to_upper():
+							"NONE":
+								condition.conditions.append(EvolutionCondition.StatusCondition.NONE)
+							"ANY CONDITION":
+								condition.conditions.append(EvolutionCondition.StatusCondition.ANY)
+							"OVERFED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.OVERFED)
+							"OVERSTIMULATED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.OVERSTIMULTED)
+							"HUNGRY":
+								condition.conditions.append(EvolutionCondition.StatusCondition.HUNGRY)
+							"BORED":
+								condition.conditions.append(EvolutionCondition.StatusCondition.BORED)
+							"STINKY":
+								condition.conditions.append(EvolutionCondition.StatusCondition.STINKY)
+							"ANXIOUS":
+								condition.conditions.append(EvolutionCondition.StatusCondition.ANXIOUS)
+							_:
+								print("PARSE ERROR: Could not parse Status Condition: ", stat.split("|")[1].to_upper())
 			
 			if (condition.conditionLogic == EvolutionCondition.LogicalConditionals.AND):
 				andConditions.append(condition)

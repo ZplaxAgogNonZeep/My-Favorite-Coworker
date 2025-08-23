@@ -92,7 +92,6 @@ func setWindowPosition():
 
 func _buttonSelected(index : int):
 	DialogChoiceSelected.emit(index, _threadIndex, self)
-	print(index)
 
 
 func changeThreadIndex(index : int):

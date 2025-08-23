@@ -1,6 +1,7 @@
 extends Resource
 class_name EvolutionCondition
 enum LogicalConditionals {OR, AND}
+enum StatusCondition {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS, NONE, ANY}
 @export var conditionLogic : LogicalConditionals
 @export_category("Conditions")
 @export var POW := -1
@@ -12,6 +13,7 @@ enum LogicalConditionals {OR, AND}
 @export var TraumaEqual := -1
 @export var Personality := -1
 @export var statTotal := -1
+@export var conditions : Array[StatusCondition]
 
 func checkConditionMet(pet : Pet) -> bool:
 	if (POW > -1):
@@ -52,6 +54,16 @@ func checkConditionMet(pet : Pet) -> bool:
 		if (pet.traumaCount != Personality):
 			return false
 	
+	for statusCondition in conditions:
+		if statusCondition == StatusCondition.ANY:
+			if (!pet.checkAnyStatus()):
+				return false
+		elif statusCondition == StatusCondition.NONE:
+			if (pet.checkAnyStatus()):
+				return false
+		elif (!pet.checkStatus(int(statusCondition))):
+			return false
+	
 	return true
 
 func _to_string() -> String:
@@ -79,7 +91,7 @@ func _to_string() -> String:
 	
 	return returnString
 
-func toFormattedString(statRecord : Array) -> String:
+func toFormattedString(statRecord : Array, statusRecord : Array) -> String:
 	var returnString : String
 	if POW > -1:
 		if (statRecord[0] < POW):
@@ -120,6 +132,24 @@ func toFormattedString(statRecord : Array) -> String:
 			returnString += "Trauma: ???\n"
 		else:
 			returnString += "Trauma equal to " + str(TraumaEqual) + "\n"
+	
+	for condition in conditions:
+		if (condition == (StatusCondition.ANY)):
+			if (statRecord.size() > 0):
+				returnString += "Any Care Mistake\n"
+			else:
+				returnString += "Care Mistake: ???\n"
+		elif (condition == (StatusCondition.NONE)):
+			if (statRecord.size() == 0):
+				returnString += "No Care Mistakes\n"
+			else:
+				returnString += "Care Mistake: ???\n"
+		else:
+			if (statusRecord.has(int(condition))):
+				returnString += StatusCondition.keys()[condition].to_pascal_case() + "\n"
+			else:
+				returnString += "Care Mistake: ???" + StatusCondition.keys()[condition].to_pascal_case() + "\n"
+		
 	
 	returnString = returnString.erase(returnString.rfind("\n"))
 	

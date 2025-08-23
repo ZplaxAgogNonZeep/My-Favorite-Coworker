@@ -8,7 +8,7 @@ func _ready() -> void:
 	GameEvents.UnpauseTimers.connect(_unpauseTimer)
 	GameEvents.PauseGame.connect(_pauseTimer)
 	GameEvents.UnpauseGame.connect(_unpauseTimer)
-	GameEvents.ResetAllTimers.connect(_stopTimer)
+	GameEvents.ResetAllTimers.connect(_pauseTimer)
 	GameEvents.ChangeProactivityMode.connect(_changeProactivity)
 	_previousTimeScale = Settings.getTimerMod()
 

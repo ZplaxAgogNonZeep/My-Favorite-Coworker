@@ -80,7 +80,7 @@ func getFormattedEvolutionConditions() -> String:
 						returnString += "And\n"
 			
 			if (PetManager.instance != null):
-				returnString += condition.toFormattedString(PetManager.instance.getStatRecord(self)) + "\n"
+				returnString += condition.toFormattedString(PetManager.instance.getStatRecord(self), PetManager.instance.getStatusRecord(self)) + "\n"
 			else:
 				returnString += str(condition) + "\n"
 	

@@ -2,11 +2,19 @@ extends RigidBody2D
 
 var implements = [Interface.Food]
 
+signal FinishedEating
+
+@export var collision : CollisionShape2D
+@export var _sprite : AnimatedSprite2D
+@export var _rotTimer : Timer
+@export var _rotTimeLimit : float
+
 var feedAmount := 100
 var fallSpeed := 1
 var stopFallingAt : int
 var readyToEat := false
 var hasEmittedVFX := false
+var rotten := false
 
 func _ready() -> void:
 	GameEvents.ShakeDeviceOnce.connect(deviceMoving)
@@ -35,11 +43,14 @@ func _process(delta):
 		if (coll != null and not hasEmittedVFX):
 			hasEmittedVFX = true
 			_onBodyCollision(coll.get_collider())
+			_rotTimer.start(_rotTimeLimit * Settings.getTimerMod())
 	elif (position.y >= stopFallingAt):
 		if not readyToEat:
 			freeze = true
 			readyToEat = true
 			GameEvents.FoodPlaced.emit(self)
+			if (!rotten and _rotTimer.time_left <= 0):
+				_rotTimer.start(_rotTimeLimit )
 
 
 func deviceMoving():
@@ -51,9 +62,25 @@ func deviceNotMoving():
 	if (not readyToEat):
 		freeze = false
 
+func startEating():
+	_sprite.play("Eating")
+	_rotTimer.stop()
+
 
 func _onBodyCollision(body):
 	if Interface.hasInterface(body, Interface.Food):
 		if position.y < body.position.y:
 			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position + Vector2(13, 0), true, 2)
 			GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, position - Vector2(13, 0), false, 2)
+
+
+func completeAnimation():
+	if (_sprite.animation == "Eating"):
+		FinishedEating.emit()
+
+
+func _rotTimerTimeout():
+	if (!rotten and _sprite.animation != "Eating"):
+		GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.STINK_LINES,Vector2(0, -8.5), false, 2, self)
+		rotten = true
+		_sprite.play("Rotten")

@@ -7,4 +7,5 @@ signal ButtonPressed(button : Enums.DeviceButton)
 
 func _deviceButtonPressed(button : Enums.DeviceButton):
 	SfxManager.playSoundEffect(_buttonDownSound)
-	ButtonPressed.emit(button)
+	if (!get_tree().paused):
+		ButtonPressed.emit(button)

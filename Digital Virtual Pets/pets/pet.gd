@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Pet
 
+enum StatusCondition {OVERFED, OVERSTIMULTED, HUNGRY, BORED, STINKY, ANXIOUS}
+
 class PetSaveData extends SaveData.SavableClass:
 	var petResource
 	var personality
@@ -11,15 +13,17 @@ class PetSaveData extends SaveData.SavableClass:
 	var evolvedFromIcons
 	var abilityStats
 	var age
+	var _statusHistory
+	var givenName
 
 signal UpdateStatusBars(hungerValue, joyValue)
-signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array)
+signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array, statusHistory : Array[StatusCondition])
 signal ReadyToEvolve(evolvedForm)
 
 const STAT_MAX : int = 99
 const MAX_HUNGER : int = 100
 const MAX_JOY : int = 100
-const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20]
+const TRAUMA_INTERVALS : Array[int] = [60, 50, 40, 30, 20, 10]
 const EVOLVE_INTERVALS : Array[int] = [60, 1800, 3600, 8000]
 ## A note on timer intervals and their intentions
 ## Now that I've implemented a way to force evolution checks, I'm going to leave the intervals 
@@ -43,17 +47,27 @@ const personalityModifiers : Dictionary = {
 @onready var previousPosn := position
 @onready var defaultPosition := position
 
+
+@export_category("Behavior Values")
+@export var roamSpeed := .5
+@export_range(0, 1.0) var roamPercentage : float
+@export_range(0, 1.0, 0.125) var _overfeedThreshold
+@export_category("Mood Values")
+@export var _moodIntervalRange : Vector2i
+@export_range(0, 1.0, 0.125) var _needsBarSadThreshold
+
 @export_category("Object References")
 @export var sprite : AnimatedSprite2D
+@export var _shiverContainer : Node2D
 @export var leftCollider : Area2D
 @export var rightCollider : Area2D
 @export var _moveTimer : Timer
 @export var _neglectTimer : Timer
+@export var _moodTimer : Timer
 @export var _lifespanTracker: Lifespan
+@export var _specialAnimator : AnimationPlayer
+@export var _thoughtBubble : ThoughtBubble
 
-@export_category("Pet Values")
-@export var roamSpeed := .5
-@export_range(0, 1.0) var roamPercentage : float
 
 #region Saved Variables
 var petResource : PetTypeData #Saved
@@ -75,11 +89,14 @@ var isRoaming := false
 var isFoodReached := false
 var boundries : Array[Vector2] # Unsure
 
+var givenName : String
+var _statusHistory : Array[StatusCondition]
 var _objectsInRange : Array = []
 var _foodQueue : Array = [] 
-var _overfed := false
 var _nextAnimation : String
 var _feedingFrames := 0.0
+var _behaviorPaused := false
+
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -88,9 +105,9 @@ func _ready():
 	GameEvents.EvolveCheck.connect(evolvePet)
 	GameEvents.PauseGame.connect(gamePaused)
 	GameEvents.UnpauseGame.connect(gameUnpaused)
+	startNeglectTimer()
 	
 	_moveTimer.connect("timeout", _onMoveTimerTimeout)
-	
 	UpdateStatusBars.emit(hungerValue, joyValue)
 
 
@@ -99,12 +116,13 @@ func _process(delta):
 		#GameEvents.PetDied.emit()
 	if (petResource.stage == 0):
 		return
-	if petState == Enums.PetState.ROAMING:
+	if (_behaviorPaused):
+		pass
+	elif petState == Enums.PetState.ROAMING:
 		if (isRoaming):
 			if (sprite.animation != "Walk"):
 				_setNextAnimation("Walk")
 				#sprite.play("Walk")
-				
 		else:
 			if (sprite.animation != "Idle"):
 				_setNextAnimation("Idle")
@@ -133,6 +151,7 @@ func _process(delta):
 			_moveTimer.start(randf_range(petResource.waitIntervals.x, petResource.waitIntervals.y))
 		
 		setSpriteDirection()
+		_moodBehavior()
 		
 	elif petState == Enums.PetState.FEEDING:
 		if (sprite.animation != "Quirk"):
@@ -146,6 +165,7 @@ func _process(delta):
 	elif petState == Enums.PetState.EVOLVING:
 		pass
 	
+	_thoughtBubble.setDirection(!PetManager.instance.checkPetDir())
 	previousPosn = position
 
 
@@ -162,17 +182,21 @@ func eatFood(foodObject):
 	# Sets state to FEEDING to stop any roaming, faces the food, then waits while it eats.
 	petState = Enums.PetState.FEEDING
 	setSpriteDirection(foodObject.position.x < position.x)
-	await get_tree().create_timer(2).timeout
+	foodObject.startEating()
+	await foodObject.FinishedEating
 	
 	# Performs whatever unique thing the pet does when eating, then adds the hunger value
 	#type.onEatFood()
 	hungerValue += foodObject.feedAmount
 	
+	if (foodObject.rotten):
+		_incrementTrauma()
+		applyStatus(StatusCondition.STINKY)
+	
 	if hungerValue > MAX_HUNGER:
 		if (hungerValue >= 175):
-			traumaCount += 1
-			if traumaCount > 5:
-				GameEvents.PetDied.emit()
+			applyStatus(StatusCondition.OVERFED)
+			_incrementTrauma()
 		hungerValue = MAX_HUNGER
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
@@ -205,9 +229,8 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	
 	if joyValue > MAX_JOY:
 		if (joyValue >= 175):
-			traumaCount += 1
-			if traumaCount > 5:
-				GameEvents.PetDied.emit()
+			_incrementTrauma()
+			applyStatus(StatusCondition.OVERSTIMULTED)
 		joyValue = MAX_JOY
 	
 	UpdateStatusBars.emit(hungerValue, joyValue)
@@ -217,6 +240,34 @@ func receivePlay(joyIncrement : int, statToIncrease : Enums.AbilityStat, statInc
 	
 	SfxManager.playSoundEffect(petResource.yap)
 	SaveData.saveGameToFile()
+
+
+## A function meant to be called every frame. It manages the pet's mood indicator by observing
+## it's stats and determining if it should be happy or sad.
+func _moodBehavior():
+	if (!_thoughtBubble.isActive() and _moodTimer.time_left <= 0):
+		randomize()
+		if (hungerValue < MAX_HUNGER * _needsBarSadThreshold or 
+			joyValue < MAX_JOY * _needsBarSadThreshold):
+			
+			if (traumaCount >= 4):
+				_thoughtBubble.setMood(ThoughtBubble.PetMood.DYING)
+			else:
+				var rng = randi_range(0, 1)
+				if (rng == 0):
+					_thoughtBubble.setMood(ThoughtBubble.PetMood.SAD)
+				else:
+					_thoughtBubble.setMood(ThoughtBubble.PetMood.MAD)
+		elif (_statusHistory.size() <= 1):
+			_thoughtBubble.setMood(ThoughtBubble.PetMood.HAPPY)
+		
+		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
+		_moodTimer.start(rng * Settings.getTimerMod())
+	elif (_moodTimer.time_left <= 0):
+		randomize()
+		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
+		_moodTimer.start(rng * Settings.getTimerMod())
+
 #endregion
 
 #region Events 
@@ -242,9 +293,6 @@ func foodPlaced(food):
 			targetPosn = food.position
 	else:
 		_foodQueue.append(food)
-		if (_foodQueue.size() > 3 and not _overfed):
-			_overfed = true
-			neglectTimeout(true)
 
 
 func tickHunger():
@@ -258,7 +306,8 @@ func tickHunger():
 		
 		if hungerValue <= 0:
 			hungerValue = 0
-			traumaCount += 1
+			_incrementTrauma()
+			applyStatus(StatusCondition.HUNGRY)
 			startNeglectTimer()
 		
 		UpdateStatusBars.emit(hungerValue, joyValue)
@@ -273,20 +322,20 @@ func tickJoy():
 		joyValue -= randi_range(1, 3)
 		if joyValue <= 0:
 			joyValue = 0
-			traumaCount += 1
+			_incrementTrauma()
+			applyStatus(StatusCondition.BORED)
 			startNeglectTimer()
 		UpdateStatusBars.emit(hungerValue, joyValue)
 
 
 func neglectTimeout(skipValueCheck := false):
-	print("Neglect timedout with trauma at ", traumaCount)
-	SfxManager.playSoundEffect(petResource.yap)
 	if hungerValue <= 0 or joyValue <= 0 or skipValueCheck:
-		traumaCount += 1
-		if traumaCount > 5:
-			GameEvents.PetDied.emit()
-		else:
-			_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
+		_incrementTrauma()
+	
+	if traumaCount >= 5:
+		GameEvents.PetDied.emit()
+	else:
+		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount - 1] * Settings.getTimerMod())
 
 func evolvePet():
 	print("Evolve Check")
@@ -297,6 +346,7 @@ func evolvePet():
 			sprite.play("Quirk")
 		ReadyToEvolve.emit(petResource.getNextEvolution(self))
 		#petManager.evolvePet(type.getEvolvePet())
+
 
 #endregion
 
@@ -325,7 +375,7 @@ func _evoStatsUpdated() -> void:
 	var evoStatArray : Array = [abilityStats[Enums.AbilityStat.POW], abilityStats[Enums.AbilityStat.END],
 								abilityStats[Enums.AbilityStat.SPD], abilityStats[Enums.AbilityStat.BAL],
 								traumaCount, getStatTotal()]
-	UpdateStatRecord.emit(petResource, evoStatArray)
+	UpdateStatRecord.emit(petResource, evoStatArray, _statusHistory)
 
 
 func getRawAge() -> float:
@@ -334,6 +384,38 @@ func getRawAge() -> float:
 
 func setRawAge(age : float) -> void:
 	_lifespanTracker.setLifespan(age)
+
+
+func applyStatus(status : StatusCondition):
+	if (!_statusHistory.has(status)):
+		_statusHistory.append(status)
+	else:
+		if (!_statusHistory.has(StatusCondition.ANXIOUS)):
+			_statusHistory.append(StatusCondition.ANXIOUS)
+	
+	_evoStatsUpdated()
+
+
+func _incrementTrauma():
+	traumaCount += 1
+	if (traumaCount > 5):
+		traumaCount = 5
+	_thoughtBubble.setMood(ThoughtBubble.PetMood.TRAUMA)
+	_behaviorPaused = true
+	_shiverContainer.visible = true
+	_specialAnimator.play("shiver")
+	await get_tree().create_timer(.5).timeout
+	_specialAnimator.play("RESET")
+	_shiverContainer.visible = false
+	_behaviorPaused = false
+
+
+func checkStatus(status : StatusCondition) -> bool:
+	return _statusHistory.has(status)
+
+
+func checkAnyStatus() -> bool:
+	return _statusHistory.size() > 0
 
 
 func getStatTotal() -> int:
@@ -419,7 +501,6 @@ func startNeglectTimer():
 		traumaCount = 5
 	
 	if _neglectTimer.time_left == 0:
-		print("Neglect Timer called at trauma ", traumaCount)
 		_neglectTimer.start(TRAUMA_INTERVALS[traumaCount] * Settings.getTimerMod())
 
 

@@ -14,6 +14,7 @@ class DataSaver extends SaveData.DataSaver:
 	var _encounteredPets
 	var _availableEggs
 	var _statRecords
+	var _statusRecords
 	
 	func getDataToSave() -> Data:
 		obj.gatherDataFromActivePet()
@@ -23,6 +24,8 @@ const MAX_PET_SLOTS := 3
 const EGG_DATA_PATH := "res://data/pet_resources/stage_0/"
 
 signal CallPetDeathScreen(petData : Dictionary)
+signal WaitingForStopGap
+signal _PassStopGap
 
 @export_category("Object References")
 @export var hungerBar : StatusBar
@@ -45,6 +48,7 @@ var _boundryDistance : Vector2
 
 var _encounteredPets : Dictionary[String, PetTypeData]
 var _statRecords : Dictionary[PetTypeData, Array]
+var _statusRecords : Dictionary[PetTypeData, Array]
 var _availableEggs : Array[PetTypeData]
 
 # Called when the node enters the scene tree for the first time.
@@ -73,7 +77,7 @@ func addPercentToPosn(posn : Vector2, percentPosn : Vector2) -> Vector2:
 
 
 #region Pet Spawning & Evolving
-func spawnPet(index := -1, isNewPet := false):
+func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, givenName := ""):
 	if (index >= MAX_PET_SLOTS):
 		return
 	
@@ -87,7 +91,11 @@ func spawnPet(index := -1, isNewPet := false):
 		_petSlots.append({})
 		_slotIndex = 0
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petStartResource
+		if petData != null:
+			newPet.petResource = petData
+		else:
+			newPet.petResource = _availableEggs[0]
+		newPet.givenName = givenName
 	elif (index < 0 and not isNewPet):
 		newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
 	elif (index < _petSlots.size() and index >= 0):
@@ -95,7 +103,11 @@ func spawnPet(index := -1, isNewPet := false):
 			_petSlots[index] = {}
 			_slotIndex = index
 			newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-			newPet.petResource = petStartResource
+			if petData != null:
+				newPet.petResource = petData
+			else:
+				newPet.petResource = _availableEggs[0]
+			newPet.givenName = givenName
 		else:
 			_slotIndex = index
 			newPet.setSavableData(loadPetDataFromSlot(_slotIndex))
@@ -106,7 +118,11 @@ func spawnPet(index := -1, isNewPet := false):
 		else:
 			_slotIndex = index
 		newPet.personality = randi_range(0, Enums.Personality.values().size() - 1)
-		newPet.petResource = petStartResource
+		if petData != null:
+			newPet.petResource = petData
+		else:
+			newPet.petResource = _availableEggs[0]
+		newPet.givenName = givenName
 	
 	if !_encounteredPets.has(newPet.petResource.name):
 		_encounterNewPet(newPet.petResource)
@@ -139,8 +155,12 @@ func evolvePet(evolveTarget: PetTypeData):
 	GameEvents.ResetAllTimers.emit()
 	GameEvents.ShakeDeviceOnce.emit()
 	GameEvents.ShakeDeviceOnce.emit()
-	await get_tree().create_timer(1).timeout
 	GameEvents.ClearObjects.emit()
+	await get_tree().create_timer(1).timeout
+	if activePet.petResource.stage != 0:
+		activePet.sprite.play("Quirk")
+	WaitingForStopGap.emit()
+	await _PassStopGap
 	
 	activePet.evolvedFromIcons += [activePet.getSpriteIcon()]
 	activePet.visible = false
@@ -164,6 +184,8 @@ func evolvePet(evolveTarget: PetTypeData):
 	
 	# Go about with the game
 	GameEvents.StartNeedsTimers.emit()
+	activePet.sprite.play("Quirk")
+	await get_tree().create_timer(1).timeout
 	GameEvents.NewPetEvolved.emit(false)
 	GameEvents.PlayGameVFX.emit(VFXManager.VisualEffects.DUSTCLOUD, 
 								activePet.position + Vector2(13, 0), 
@@ -188,12 +210,21 @@ func switchPet(index : int, previousPetDeleted := false):
 	spawnPet(index)
 
 
+func createNewPet(petData : PetTypeData, givenname : String):
+	GameEvents.ResetAllTimers.emit()
+	if (activePet):
+		activePet.queue_free()
+	spawnPet(_petSlots.size(), true, petData, givenname)
+
+
 func killPet():
 	GameEvents.ResetAllTimers.emit()
+	GameEvents.ClearObjects.emit()
 	var petData = activePet.getSavableData()
 	activePet.queue_free()
 	activePet = null
 	deletePetSlot(_slotIndex, true)
+	
 	
 	CallPetDeathScreen.emit(petData)
 
@@ -222,13 +253,18 @@ func _encounterNewPet(petData : PetTypeData) -> void:
 
 ## Takes the stats from a pet and compares every element to the [param _statRecord] to see if it
 ## has been surpassed.
-func _updateStatRecord(petData : PetTypeData, evoStats : Array):
+func _updateStatRecord(petData : PetTypeData, evoStats : Array, statusHistory : Array[Pet.StatusCondition]):
 	for evolution : PetTypeData in petData.evolutions:
 		if (!_statRecords.has(evolution)):
 			_statRecords[evolution] = [0,0,0,0,0,0]
+		if (!_statusRecords.has(evolution)):
+			_statusRecords[evolution] = []
 		for x in range(evoStats.size()):
 			if (evoStats[x] > _statRecords[evolution][x]):
 				_statRecords[evolution][x] = evoStats[x]
+		for status in statusHistory:
+			if (!_statusRecords[evolution].has(int(status))):
+				_statusRecords[evolution].append(int(status))
 
 
 ## Gets the stat record for the given pet type. Returns a list of stats in the 
@@ -245,6 +281,11 @@ func getStatRecord(petData : PetTypeData) -> Array:
 	else:
 		return [0,0,0,0,0,0]
 
+func getStatusRecord(petData : PetTypeData) -> Array:
+	if (_statusRecords.has(petData)):
+		return _statusRecords[petData]
+	else:
+		return []
 
 func _unlockNewEgg(eggData : PetTypeData) -> void:
 	if (!_availableEggs.has(eggData)):
@@ -271,6 +312,10 @@ func getSlotIndex() -> int:
 
 func getPetSlots() -> Array:
 	return _petSlots
+
+
+func checkPetDir() -> bool:
+	return activePet.position.x >= lerp(leftBoundry.position.x, rightBoundry.position.x, .5)
 
 
 func deletePetSlot(index : int, death := false) -> void:

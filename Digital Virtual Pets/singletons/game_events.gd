@@ -38,6 +38,7 @@ signal EvolveCheck
 signal PetDied
 signal ClearObjects
 signal StartNeedsTimers
+signal PetMoodChange(mood : ThoughtBubble.PetMood, time : float)
 
 signal FeedPet
 signal FoodPlaced(food)

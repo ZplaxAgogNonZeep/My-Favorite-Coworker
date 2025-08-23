@@ -24,6 +24,7 @@ class_name GameArea
 var evolveInterval = 15
 
 var _spawnpointStatus = [true, true, true, true]
+var _evolutionStopGap := false
 
 func _ready():
 	GameEvents.NewPetSpawned.connect(petSpawned)
@@ -31,6 +32,7 @@ func _ready():
 	GameEvents.ClearObjects.connect(clearAllObjects)
 	GameEvents.StartNeedsTimers.connect(_startNeedsTimers)
 	petManager.CallPetDeathScreen.connect(_petDied)
+	petManager.WaitingForStopGap.connect(_receiveEvolutionStopGap)
 	_screenAnimator.visible = true
 	_screenAnimator.play("Screen Off")
 	_killScreen.visible = false
@@ -55,6 +57,9 @@ func startGame():
 func _handleButtonInput(button : Enums.DeviceButton):
 	match button:
 		Enums.DeviceButton.CENTER_BUTTON:
+			if (_evolutionStopGap):
+				_evolutionStopGap = false
+				petManager._PassStopGap.emit()
 			menuManager.handleInput(button)
 		Enums.DeviceButton.LEFT_BUTTON:
 			menuManager.handleInput(button)
@@ -138,8 +143,15 @@ func _foodColliderEntered(body, number = 0):
 	if (Interface.hasInterface(body, Interface.Food)):
 		_spawnpointStatus[number] = false
 
+
 func _foodColliderExited(body, number = 0):
 	if (Interface.hasInterface(body, Interface.Food)):
 		_spawnpointStatus[number] = true
+
+
+func _receiveEvolutionStopGap():
+	_evolutionStopGap = true
+	menuManager.setState(menuManager.MenuState.EVOLVE)
+
 
 #endregion

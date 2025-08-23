@@ -1,12 +1,86 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmm1qb4b40sv3"]
+[gd_scene load_steps=13 format=3 uid="uid://bmm1qb4b40sv3"]
 
-[ext_resource type="Script" uid="uid://d2gbrv46hxmqw" path="res://objects/food.gd" id="2_6roqv"]
-[ext_resource type="Texture2D" uid="uid://dxw4d0ccnhyk3" path="res://assets/art/aesprite/minigame_assets/meat.png" id="2_fogop"]
+[ext_resource type="Script" uid="uid://d2gbrv46hxmqw" path="res://objects/Food.gd" id="2_6roqv"]
+[ext_resource type="Texture2D" uid="uid://b3f7j3m78huxk" path="res://assets/art/aesprite/minigame_assets/food_sheet.png" id="2_15wgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lvroj"]
 size = Vector2(9.5, 9)
 
-[node name="Meat" type="RigidBody2D" groups=["Food", "Object"]]
+[sub_resource type="AtlasTexture" id="AtlasTexture_10vnn"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acb74"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(18, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h15en"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(27, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivype"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(36, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4n0d"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(45, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11kk4"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(54, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8kuk"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avrg1"]
+atlas = ExtResource("2_15wgv")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jhxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10vnn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acb74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h15en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivype")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4n0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11kk4")
+}],
+"loop": false,
+"name": &"Eating",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8kuk")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avrg1")
+}],
+"loop": false,
+"name": &"Rotten",
+"speed": 5.0
+}]
+
+[node name="Meat" type="RigidBody2D" node_paths=PackedStringArray("collision", "_sprite", "_rotTimer") groups=["Food", "Object"]]
 collision_layer = 3
 collision_mask = 2
 gravity_scale = 0.0
@@ -14,11 +88,24 @@ freeze_mode = 1
 contact_monitor = true
 max_contacts_reported = 100
 script = ExtResource("2_6roqv")
+collision = NodePath("CollisionShape2D")
+_sprite = NodePath("Sprite2D")
+_rotTimer = NodePath("RotTimer")
+_rotTimeLimit = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_lvroj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4.5)
-texture = ExtResource("2_fogop")
+sprite_frames = SubResource("SpriteFrames_0jhxg")
+animation = &"Idle"
+
+[node name="RotTimer" type="Timer" parent="."]
+process_mode = 3
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="animation_finished" from="Sprite2D" to="." method="completeAnimation"]
+[connection signal="timeout" from="RotTimer" to="." method="_rotTimerTimeout"]

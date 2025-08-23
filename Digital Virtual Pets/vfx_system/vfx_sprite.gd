@@ -2,13 +2,15 @@ extends VFXObject
 
 class_name VFXSprite
 
-enum BehaviorTypes {CUSTOM, STRAIGHT_HORI, STRAIGHT_VERT}
+enum BehaviorTypes {CUSTOM, STRAIGHT_HORI, STRAIGHT_VERT, FOLLOW}
 
 @export_category("Sprite Variables")
 @export var sprite : AnimatedSprite2D
 @export var _behavior : BehaviorTypes
 @export var _speed : float
 @export_range(0, 1) var _blinkRatio : float
+
+var givenPosition : Vector2
 
 func _process(delta: float) -> void:
 	if not _active:
@@ -28,6 +30,12 @@ func _process(delta: float) -> void:
 			position.y -= _speed * delta
 		BehaviorTypes.CUSTOM:
 			_customBehavior()
+		BehaviorTypes.FOLLOW:
+			if (attachedObject == null):
+				return
+			
+			position = attachedObject.position + givenPosition
+			
 
 func _startLifespanTimer():
 	sprite.play("Active")

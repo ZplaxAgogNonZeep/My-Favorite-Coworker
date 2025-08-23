@@ -22,13 +22,16 @@ expand_mode = 3
 stretch_mode = 5
 
 [node name="Name" type="Label" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.84
 offset_left = 48.0
 offset_top = 8.0
-offset_right = 117.0
 offset_bottom = 26.0
 theme_type_variation = &"HeaderMedium"
-text = "Pet Name"
+text = "Pet Name bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="Age" type="Label" parent="."]
 layout_mode = 0

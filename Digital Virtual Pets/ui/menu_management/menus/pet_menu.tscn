@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cw7xr6uluo8np"]
+[gd_scene load_steps=9 format=3 uid="uid://cw7xr6uluo8np"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_8s5lr"]
 [ext_resource type="Script" uid="uid://brweecnyow1tk" path="res://ui/menu_management/menus/pet_menu.gd" id="2_44k7u"]
@@ -6,8 +6,10 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="5_4b6c8"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="5_fne88"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="5_kpd25"]
+[ext_resource type="Script" path="res://ui/menu_management/menus/newpet_submenu.gd" id="7_fne88"]
+[ext_resource type="PackedScene" uid="uid://dit2ciyog2cba" path="res://ui/menu_management/extra_menu_scenes/egg_selection_button.tscn" id="8_ds242"]
 
-[node name="PetMenu" type="Control" node_paths=PackedStringArray("_slotContainer", "_window", "animator")]
+[node name="PetMenu" type="Control" node_paths=PackedStringArray("_slotContainer", "_subMenus", "_window", "animator")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -18,8 +20,9 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_8s5lr")
 script = ExtResource("2_44k7u")
-_slotContainer = NodePath("Window/PanelControl/MenuWindow/SubPanel/VBoxContainer")
+_slotContainer = NodePath("Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/VBoxContainer")
 _slotScene = ExtResource("3_npbw2")
+_subMenus = [NodePath("Window/PanelControl/MenuWindow/SlotsMenu"), NodePath("Window/PanelControl/MenuWindow/NewPetMenu")]
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
@@ -45,11 +48,9 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(224, 131)
 
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 0
 offset_right = 448.0
@@ -78,25 +79,6 @@ offset_bottom = 16.0
 theme_type_variation = &"HeaderSmall"
 text = "pet_data_manager.exe"
 
-[node name="SubPanel" type="Panel" parent="Window/PanelControl/MenuWindow"]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 48.0
-offset_right = 424.0
-offset_bottom = 208.0
-theme_type_variation = &"SubPanel"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/SubPanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.01
-anchor_top = 0.025
-anchor_right = 0.99
-anchor_bottom = 0.96875
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="Exit" type="Button" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1
 anchors_preset = 1
@@ -111,19 +93,144 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("5_kpd25")
 icon_alignment = 1
 
-[node name="LoadPet" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="SlotsMenu" type="Control" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SubPanel" type="Panel" parent="Window/PanelControl/MenuWindow/SlotsMenu"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 216.0
-offset_right = 248.0
-offset_bottom = 240.0
+offset_left = 24.0
+offset_top = 48.0
+offset_right = 424.0
+offset_bottom = 208.0
+theme_type_variation = &"SubPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.025
+anchor_right = 0.99
+anchor_bottom = 0.96875
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadPet" type="Button" parent="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 168.0
+offset_right = 224.0
+offset_bottom = 192.0
 text = "Load"
+
+[node name="NewPetMenu" type="Control" parent="Window/PanelControl/MenuWindow" node_paths=PackedStringArray("_textEntry", "_eggContainer", "_createPetButton")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("7_fne88")
+_textEntry = NodePath("TextEdit")
+_eggContainer = NodePath("EggOptions/ScrollContainer/HBoxContainer")
+_createPetButton = NodePath("CreatePetButton")
+_eggButton = ExtResource("8_ds242")
+
+[node name="EggOptions" type="Panel" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 56.0
+offset_right = -8.0
+offset_bottom = 136.0
+grow_horizontal = 2
+theme_type_variation = &"SubPanel"
+metadata/_edit_group_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/EggOptions"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/PanelControl/MenuWindow/NewPetMenu/EggOptions/ScrollContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 168.0
+offset_right = 432.0
+offset_bottom = 208.0
+placeholder_text = "pet name here"
+caret_blink = true
+
+[node name="CreatePetButton" type="Button" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 216.0
+offset_right = 264.0
+offset_bottom = 237.0
+text = "Create New Pet"
+
+[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 0
+offset_left = 272.0
+offset_top = 216.0
+offset_right = 316.0
+offset_bottom = 237.0
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = -8.0
+offset_bottom = 49.25
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Select an Egg"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Window/PanelControl/MenuWindow/NewPetMenu"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 8.0
+offset_top = 140.0
+offset_right = -8.0
+offset_bottom = 163.958
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Name your new pet?"
+horizontal_alignment = 1
 
 [connection signal="close_requested" from="Window" to="." method="_onExit"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Exit" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/Exit" to="." method="_onExit"]
-[connection signal="button_down" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseDown"]
-[connection signal="button_up" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_mouseUp"]
-[connection signal="pressed" from="Window/PanelControl/MenuWindow/LoadPet" to="." method="_loadSelectedPet"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/SlotsMenu/SubPanel/LoadPet" to="." method="_loadSelectedPet"]
+[connection signal="MenuDonePleaseGo" from="Window/PanelControl/MenuWindow/NewPetMenu" to="." method="menuisdonepleaseremove"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/NewPetMenu/CreatePetButton" to="Window/PanelControl/MenuWindow/NewPetMenu" method="_createPetSelected"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/NewPetMenu/Button" to="." method="_switchSubMenu"]

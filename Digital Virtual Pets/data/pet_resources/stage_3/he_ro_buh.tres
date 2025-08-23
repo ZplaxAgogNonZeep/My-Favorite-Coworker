@@ -17,6 +17,7 @@ TraumaLesser = -1
 TraumaEqual = 0
 Personality = -1
 statTotal = -1
+conditions = Array[int]([])
 
 [resource]
 script = ExtResource("1_lvwpk")

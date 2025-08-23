@@ -191,7 +191,7 @@ func toggleMinimizedWindow(isMinimized : bool):
 
 
 ## Takes a game request for attention and decide what to do based on the settings.
-func requestPlayerAttention():
+func requestPlayerAttention(waitForResponse := false):
 	if (not Settings.isRequestAttentionAllowed):
 		return
 	match windowAttentionMode:
@@ -204,7 +204,7 @@ func requestPlayerAttention():
 		WindowAttentionOptions.DO_NOT_CHANGE:
 			DisplayServer.window_request_attention()
 	
-	if (minimized):
+	if (minimized or waitForResponse):
 		GameEvents.DeviceRequestAttention.emit()
 		await GameEvents.DeviceAttentionReceived
 	
@@ -283,7 +283,6 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 													((windowSize.x * .5) * buildDir.x * -1), 
 								Vector2i(0, resolution.x))):
 			xBounds.x = windowOrigin.x
-		print(xBounds)
 		var yBounds : Vector2i
 		yBounds.x = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * 2)
 		yBounds.y = (gameWindowSize.y * .5 + originPosn.y) - (windowSize.y * .5)

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=78 format=3 uid="uid://u8x81rh1cxqd"]
+[gd_resource type="Theme" load_steps=79 format=3 uid="uid://u8x81rh1cxqd"]
 
 [ext_resource type="FontFile" uid="uid://kh0nk8lmp37u" path="res://ui/fonts/w95fa/W95FA.otf" id="1_56pb5"]
 [ext_resource type="Texture2D" uid="uid://dusp6wv423eiq" path="res://assets/art/aesprite/ui/menu/system_menu/button_9_slice.png" id="2_fngaf"]
@@ -268,6 +268,13 @@ texture_margin_top = 4.0
 texture_margin_right = 4.0
 texture_margin_bottom = 4.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n1u1y"]
+texture = ExtResource("22_5dsuw")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14eoe"]
 texture = ExtResource("2_fngaf")
 texture_margin_left = 4.0
@@ -444,6 +451,11 @@ RichTextLabel/font_sizes/normal_font_size = 16
 RichTextLabel/fonts/normal_font = ExtResource("1_56pb5")
 SubPanel/base_type = &"Panel"
 SubPanel/styles/panel = SubResource("StyleBoxTexture_4cels")
+TextEdit/colors/font_color = Color(0, 0, 0, 1)
+TextEdit/colors/font_placeholder_color = Color(0, 0, 0, 0.6)
+TextEdit/font_sizes/font_size = 16
+TextEdit/fonts/font = ExtResource("1_56pb5")
+TextEdit/styles/normal = SubResource("StyleBoxTexture_n1u1y")
 TooltipPanel/styles/panel = SubResource("StyleBoxTexture_14eoe")
 VScrollBar/styles/grabber = SubResource("StyleBoxTexture_x42gk")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_nt5yv")

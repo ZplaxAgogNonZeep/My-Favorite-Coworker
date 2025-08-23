@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://defndbcuw6dea"]
+[gd_scene load_steps=3 format=3 uid="uid://defndbcuw6dea"]
 
 [ext_resource type="Script" uid="uid://c0aqivjgy6njp" path="res://do_not_build/tools/pet_data_importer/pet_data_importer.gd" id="1_rf7al"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="2_2mwdk"]
 
 [node name="PetDataImporter" type="Node"]
 script = ExtResource("1_rf7al")
 _rootFilepath = "res://do_not_build/tools/pet_data_importer/pet_data_export.txt"
 _petDataFilePathRoot = "res://data/pet_resources/"
+_placeholderSpriteFrames = ExtResource("2_2mwdk")

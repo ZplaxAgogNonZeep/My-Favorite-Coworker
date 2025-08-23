@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmud2i1efi0lj"]
+
+[ext_resource type="Script" uid="uid://b2eg7e7abc2kb" path="res://vfx_system/vfx_sprite.gd" id="1_wba5t"]
+[ext_resource type="Texture2D" uid="uid://cdrmgsqw4bfjy" path="res://assets/art/aesprite/VFX/stink_lines.png" id="2_1qkft"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbuex"]
+atlas = ExtResource("2_1qkft")
+region = Rect2(0, 0, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkki3"]
+atlas = ExtResource("2_1qkft")
+region = Rect2(9, 0, 9, 9)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fxyix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbuex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkki3")
+}],
+"loop": true,
+"name": &"Active",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbuex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkki3")
+}],
+"loop": true,
+"name": &"Blinking",
+"speed": 5.0
+}]
+
+[node name="StinkLinesVFX" type="Node2D" node_paths=PackedStringArray("sprite", "lifeTimer")]
+z_index = -1
+script = ExtResource("1_wba5t")
+sprite = NodePath("AnimatedSprite2D")
+_behavior = 3
+_blinkRatio = 0.444
+_lifetime = 2.0
+lifeTimer = NodePath("LifeTimer")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4.5)
+sprite_frames = SubResource("SpriteFrames_fxyix")
+animation = &"Active"
+
+[node name="LifeTimer" type="Timer" parent="."]
+one_shot = true

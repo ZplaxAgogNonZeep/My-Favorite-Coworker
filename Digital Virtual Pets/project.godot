@@ -32,6 +32,7 @@ Enums="*res://singletons/enums.gd"
 GameEvents="*res://singletons/game_events.gd"
 Settings="*res://singletons/settings.gd"
 SfxManager="*res://singletons/sfx_manager.gd"
+AchievementManager="*res://singletons/achievement_manager.gd"
 
 [display]
 

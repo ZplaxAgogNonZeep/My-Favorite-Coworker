@@ -66,8 +66,29 @@ func getSpriteOffset() -> float:
 func getCollisionOffset() -> float:
 	return COLLISION_OFFSETS[stage]
 
+
+func getAllPossibleEvolutions() -> Array[PetTypeData]:
+	var unsortArray =  _r_getAllPossibleEvolutions()
+	var returnArray : Array[PetTypeData] = []
+	
+	for evolution in unsortArray:
+		if !returnArray.has(evolution):
+			returnArray.append(evolution)
+	
+	return returnArray
+
+
+func _r_getAllPossibleEvolutions() -> Array[PetTypeData]:
+	var returnArray : Array[PetTypeData] = []
+	returnArray.append(self)
+	for evolution in evolutions:
+		returnArray.append_array(evolution._r_getAllPossibleEvolutions())
+	return returnArray
+
+
 func _to_string() -> String:
 	return name
+
 
 func getFormattedEvolutionConditions() -> String:
 	var returnString : String

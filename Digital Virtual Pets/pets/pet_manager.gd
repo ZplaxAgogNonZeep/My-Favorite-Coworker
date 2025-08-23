@@ -53,6 +53,7 @@ var _availableEggs : Array[PetTypeData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(_availableEggs[0].getAllPossibleEvolutions())
 	GameEvents.PetDied.connect(killPet)
 	GameEvents.ChangePet.connect(switchPet)
 	GameEvents.UnlockNewEgg.connect(_unlockNewEgg)

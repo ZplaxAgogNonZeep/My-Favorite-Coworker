@@ -24,12 +24,15 @@ var _achievementFlags : Dictionary = {
 var _preReleaseChecked := false
 
 func _ready() -> void:
+	Steam.steamInit()
+	print(Steam.current_app_id)
 	_checkPreReleaseSaveData()
-	#_syncAchievWithSteam()
-
+	_syncAchievWithSteam()
+	
 
 ## Set's an achievement flag then syncs the achievements with Steam.
 func setAchievementFlag(achievementName : String):
+	print("Calling set flag ", achievementName)
 	if (!_achievementFlags[achievementName]):
 		_achievementFlags[achievementName] = true
 		_syncAchievWithSteam()
@@ -46,8 +49,8 @@ func getAchievementFlag(achievementName : String) -> bool:
 ## should only ever really be called once
 func _checkPreReleaseSaveData():
 	var data = SaveData.retrieveGameData("PetManager")
-	
-	#TODO: Add all checked achievements
+	if (data == null):
+		return
 	var petTrees : Array[Array]
 	for pet : PetTypeData in data.properties["_availableEggs"]:
 		var list = pet.getAllPossibleEvolutions()
@@ -85,11 +88,14 @@ func _syncAchievWithSteam():
 		var achievement := Steam.getAchievement(achiev)
 		if (achievement.has("ret")):
 			if (achievement["ret"]):
-				if (_achievementFlags[achiev] and achievement["achieved"]):
+				if (_achievementFlags[achiev] and !achievement["achieved"]):
 					Steam.setAchievement(achiev)
+				elif (!_achievementFlags[achiev] and achievement["achieved"]):
+					_achievementFlags[achiev] = true
 			else:
 				print("FAILED TO FIND ACHIEVEMENT: ", achiev)
 		else:
 			print("NO ACHIEVEMENT RECEIVED: ", achiev)
 	
 	Steam.storeStats()
+	SaveData.saveGameToFile()

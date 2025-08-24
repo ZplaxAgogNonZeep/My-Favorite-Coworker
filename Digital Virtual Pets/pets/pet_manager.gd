@@ -201,7 +201,7 @@ func evolvePet(evolveTarget: PetTypeData):
 		AchievementManager.setAchievementFlag("EvolveAchiev2")
 	if (activePet.petResource.stage > 2):
 		AchievementManager.setAchievementFlag("EvolveAchiev3")
-	
+	 
 	if (!AchievementManager.getAchievementFlag("EvolveAchiev4")):
 		var isComplete
 		for egg in _availableEggs:

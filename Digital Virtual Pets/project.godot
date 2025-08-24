@@ -13,10 +13,12 @@ config_version=5
 config/name="My Favorite Coworker"
 config/description="A virtual pet device in the corner of your screen! Feed and play with your pet while you work or play for dopamine boosts that makes even mundane tasks a little more fun!
 "
-config/version="0.5.0"
+config/version="0.5.1"
 run/main_scene="res://scene_manager.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=60
+boot_splash/bg_color=Color(0.14, 0.14, 0.14, 0)
+boot_splash/show_image=false
 config/icon="uid://wo8b330mq0ls"
 config/windows_native_icon="res://windowsIcon.ico"
 
@@ -107,3 +109,8 @@ renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_s3tc_bptc=true
 textures/vram_compression/import_etc2_astc=true
 viewport/transparent_background=true
+
+[steam]
+
+initialization/app_id=3704130
+initialization/embed_callbacks=true

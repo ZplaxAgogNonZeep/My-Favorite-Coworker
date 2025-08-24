@@ -1,7 +1,10 @@
 extends Node
 
 class DataSaver extends SaveData.DataSaver:
+	func getCategoryName():
+		return "Achievements"
 	var _achievementFlags
+	var _preReleaseChecked
 
 
 var _achievementFlags : Dictionary = {
@@ -18,11 +21,11 @@ var _achievementFlags : Dictionary = {
 	"PerfectPetAchiev" : false,
 	"ImperfectPetAchiev" : false,
 }
+var _preReleaseChecked := false
 
 func _ready() -> void:
-	pass
-	#_checkPreReleaseSaveData()
-	#_syncAchievWithSteam()
+	_checkPreReleaseSaveData()
+	_syncAchievWithSteam()
 
 
 func setAchievementFlag(achievementName : String):
@@ -33,21 +36,40 @@ func setAchievementFlag(achievementName : String):
 ## Achievements were implemented Prior to the release of the demo. Therefore, 
 ## we should fill in what achievements we can when the player starts the game
 ## post release. We can assume certain achievements, like the evolution ones
-## are already achieved by using existing save data.
+## are already achieved by using existing save data. Theoretically this function
+## should only ever really be called once
 func _checkPreReleaseSaveData():
 	var data = SaveData.retrieveGameData("PetManager")
 	
 	#TODO: Add all checked achievements
-	if (!_achievementFlags["EvolveAchiev1"]):
-		for petName : String in data.properties["_encounteredPets"].keys():
-			var petData = data.properties["_encounteredPets"][petName]
-			if (petData.stage > 0):
-				_achievementFlags["EvolveAchiev1"] = true
-			if (petData.stage > 1):
-				_achievementFlags["EvolveAchiev2"] = true
-			if (petData.stage > 2):
-				_achievementFlags["EvolveAchiev3"] = true
-			
+	var petTrees : Array[Array]
+	for petName : String in data.properties["_availableEggs"].keys():
+		var list = data.properties["_availableEggs"][petName].getAllPossibleEvolutions()
+		list.erase(data.properties["_availableEggs"][petName])
+		petTrees.append(list)
+		
+	for petName : String in data.properties["_encounteredPets"].keys():
+		var petData = data.properties["_encounteredPets"][petName]
+		# check if there are pets of the various possible stages already encountered
+		if (petData.stage > 0):
+			_achievementFlags["EvolveAchiev1"] = true
+		if (petData.stage > 1):
+			_achievementFlags["EvolveAchiev2"] = true
+		if (petData.stage > 2):
+			_achievementFlags["EvolveAchiev3"] = true
+		# check if an entire evolution tree is complete by removing any matching evolutions from
+		# the list, if it's empty, the tree is complete
+		
+		for tree in petTrees:
+			if tree.has(petData):
+				tree.erase(petData)
+	
+	for tree in petTrees:
+		if tree.size() == 0:
+			_achievementFlags["EvolveAchiev4"] = true
+			break
+	
+	_preReleaseChecked = true
 
 
 ## Check each existing achievement bool and check steam if they match. Should set achievements with 

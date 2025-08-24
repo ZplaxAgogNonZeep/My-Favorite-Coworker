@@ -25,12 +25,18 @@ var _preReleaseChecked := false
 
 func _ready() -> void:
 	_checkPreReleaseSaveData()
-	_syncAchievWithSteam()
+	#_syncAchievWithSteam()
 
 
+## Set's an achievement flag then syncs the achievements with Steam.
 func setAchievementFlag(achievementName : String):
-	_achievementFlags[achievementName] = true
-	_syncAchievWithSteam()
+	if (!_achievementFlags[achievementName]):
+		_achievementFlags[achievementName] = true
+		_syncAchievWithSteam()
+
+
+func getAchievementFlag(achievementName : String) -> bool:
+	return _achievementFlags[achievementName]
 
 
 ## Achievements were implemented Prior to the release of the demo. Therefore, 
@@ -43,9 +49,9 @@ func _checkPreReleaseSaveData():
 	
 	#TODO: Add all checked achievements
 	var petTrees : Array[Array]
-	for petName : String in data.properties["_availableEggs"].keys():
-		var list = data.properties["_availableEggs"][petName].getAllPossibleEvolutions()
-		list.erase(data.properties["_availableEggs"][petName])
+	for pet : PetTypeData in data.properties["_availableEggs"]:
+		var list = pet.getAllPossibleEvolutions()
+		list.erase(pet)
 		petTrees.append(list)
 		
 	for petName : String in data.properties["_encounteredPets"].keys():
@@ -77,10 +83,13 @@ func _checkPreReleaseSaveData():
 func _syncAchievWithSteam():
 	for achiev in _achievementFlags.keys():
 		var achievement := Steam.getAchievement(achiev)
-		if (achievement["ret"]):
-			if (_achievementFlags[achiev] and achievement["achieved"]):
-				Steam.setAchievement(achiev)
+		if (achievement.has("ret")):
+			if (achievement["ret"]):
+				if (_achievementFlags[achiev] and achievement["achieved"]):
+					Steam.setAchievement(achiev)
+			else:
+				print("FAILED TO FIND ACHIEVEMENT: ", achiev)
 		else:
-			print("FAILED TO FIND ACHIEVEMENT: ", achiev)
+			print("NO ACHIEVEMENT RECEIVED: ", achiev)
 	
 	Steam.storeStats()

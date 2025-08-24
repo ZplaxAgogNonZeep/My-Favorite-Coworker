@@ -53,7 +53,6 @@ var _availableEggs : Array[PetTypeData]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(_availableEggs[0].getAllPossibleEvolutions())
 	GameEvents.PetDied.connect(killPet)
 	GameEvents.ChangePet.connect(switchPet)
 	GameEvents.UnlockNewEgg.connect(_unlockNewEgg)
@@ -196,6 +195,24 @@ func evolvePet(evolveTarget: PetTypeData):
 								activePet.position - Vector2(13, 0), 
 								false, 
 								2)
+	if (activePet.petResource.stage > 0):
+		AchievementManager.setAchievementFlag("EvolveAchiev1")
+	if (activePet.petResource.stage > 1):
+		AchievementManager.setAchievementFlag("EvolveAchiev2")
+	if (activePet.petResource.stage > 2):
+		AchievementManager.setAchievementFlag("EvolveAchiev3")
+	
+	if (!AchievementManager.getAchievementFlag("EvolveAchiev4")):
+		var isComplete
+		for egg in _availableEggs:
+			isComplete = true
+			for pet in egg.getAllPossibleEvolutions():
+				if !_encounteredPets.has(pet.name):
+					isComplete = false
+					break
+			
+			if (isComplete):
+				break
 
 
 func switchPet(index : int, previousPetDeleted := false):

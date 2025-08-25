@@ -59,6 +59,8 @@ func onWin():
 		await SfxManager.MusicFinished
 	else:
 		await get_tree().create_timer(1).timeout
+	if _difficulty == DifficultyLevel.VERY_HARD:
+		AchievementManager.updateMinigameTracking(StatToIncrement)
 	endGame()
 
 

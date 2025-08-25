@@ -243,7 +243,7 @@ func killPet():
 	activePet = null
 	deletePetSlot(_slotIndex, true)
 	
-	
+	AchievementManager.incrementDeathCounter()
 	CallPetDeathScreen.emit(petData)
 
 #endregion

@@ -5,6 +5,8 @@ class DataSaver extends SaveData.DataSaver:
 		return "Achievements"
 	var _achievementFlags
 	var _preReleaseChecked
+	var _deathCounter
+	var _minigamesBeat
 
 
 var _achievementFlags : Dictionary = {
@@ -22,6 +24,8 @@ var _achievementFlags : Dictionary = {
 	"ImperfectPetAchiev" : false,
 }
 var _preReleaseChecked := false
+var _deathCounter := 0
+var _minigamesBeat := [false, false, false, false, false] #{POW, END, SPD, BAL, RANDOM}
 
 func _ready() -> void:
 	Steam.steamInit()
@@ -32,7 +36,6 @@ func _ready() -> void:
 
 ## Set's an achievement flag then syncs the achievements with Steam.
 func setAchievementFlag(achievementName : String):
-	print("Calling set flag ", achievementName)
 	if (!_achievementFlags[achievementName]):
 		_achievementFlags[achievementName] = true
 		_syncAchievWithSteam()
@@ -40,6 +43,21 @@ func setAchievementFlag(achievementName : String):
 
 func getAchievementFlag(achievementName : String) -> bool:
 	return _achievementFlags[achievementName]
+
+
+func incrementDeathCounter():
+	_deathCounter += 1
+	setAchievementFlag("DeathAchiev1")
+	
+	if (_deathCounter >= 10):
+		setAchievementFlag("DeathAchiev2")
+
+
+func updateMinigameTracking(minigame : Minigame.StatToIncrement):
+	_minigamesBeat[minigame] = true
+	
+	if !_minigamesBeat.has(false):
+		setAchievementFlag("MinigameAchiev")
 
 
 ## Achievements were implemented Prior to the release of the demo. Therefore, 

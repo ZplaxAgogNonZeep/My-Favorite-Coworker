@@ -15,6 +15,9 @@ class PetSaveData extends SaveData.SavableClass:
 	var age
 	var _statusHistory
 	var givenName
+	var hasReceivedPerfectTreatment
+	var hasAlwaysBeenFast
+	var hasAlwaysBeenSlow
 
 signal UpdateStatusBars(hungerValue, joyValue)
 signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array, statusHistory : Array[StatusCondition])

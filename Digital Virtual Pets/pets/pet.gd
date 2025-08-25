@@ -96,7 +96,9 @@ var _foodQueue : Array = []
 var _nextAnimation : String
 var _feedingFrames := 0.0
 var _behaviorPaused := false
-
+var hasReceivedPerfectTreatment := true
+var hasAlwaysBeenFast := true
+var hasAlwaysBeenSlow := true
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)
@@ -164,6 +166,11 @@ func _process(delta):
 			GameEvents.UnpauseTimers.emit()
 	elif petState == Enums.PetState.EVOLVING:
 		pass
+	
+	if hasAlwaysBeenFast and Settings.proactivityTimeModifier > 0:
+		hasAlwaysBeenFast = false
+	if hasAlwaysBeenSlow and Settings.proactivityTimeModifier < 6:
+		hasAlwaysBeenSlow = false
 	
 	_thoughtBubble.setDirection(!PetManager.instance.checkPetDir())
 	previousPosn = position
@@ -304,6 +311,9 @@ func tickHunger():
 		randomize()
 		hungerValue -= randi_range(1, 5)
 		
+		if (hungerValue < 50):
+			hasReceivedPerfectTreatment = false
+		
 		if hungerValue <= 0:
 			hungerValue = 0
 			_incrementTrauma()
@@ -320,6 +330,8 @@ func tickJoy():
 		#type.onTickJoy()
 		randomize()
 		joyValue -= randi_range(1, 3)
+		if (joyValue < 50):
+			hasReceivedPerfectTreatment = false
 		if joyValue <= 0:
 			joyValue = 0
 			_incrementTrauma()
@@ -392,6 +404,11 @@ func applyStatus(status : StatusCondition):
 	else:
 		if (!_statusHistory.has(StatusCondition.ANXIOUS)):
 			_statusHistory.append(StatusCondition.ANXIOUS)
+	
+	if (_statusHistory.has(StatusCondition.OVERFED) and _statusHistory.has(StatusCondition.ANXIOUS)
+	and _statusHistory.has(StatusCondition.OVERSTIMULTED) and _statusHistory.has(StatusCondition.HUNGRY)
+	and _statusHistory.has(StatusCondition.BORED) and _statusHistory.has(StatusCondition.STINKY)):
+		AchievementManager.setAchievementFlag("ImperfectPetAchiev")
 	
 	_evoStatsUpdated()
 

@@ -195,6 +195,8 @@ func evolvePet(evolveTarget: PetTypeData):
 								activePet.position - Vector2(13, 0), 
 								false, 
 								2)
+	
+	# check for achievements
 	if (activePet.petResource.stage > 0):
 		AchievementManager.setAchievementFlag("EvolveAchiev1")
 	if (activePet.petResource.stage > 1):
@@ -213,6 +215,15 @@ func evolvePet(evolveTarget: PetTypeData):
 			
 			if (isComplete):
 				break
+	
+	if (activePet.petResource.name == "BuhBuh" and activePet.hasReceivedPerfectTreatment):
+		AchievementManager.setAchievementFlag("BuhBuhReferenceAchiev")
+	if (activePet.petResource.stage >= 3 and activePet.hasReceivedPerfectTreatment):
+		AchievementManager.setAchievementFlag("PerfectPetAchiev")
+	if (activePet.petResource.stage >= 3 and activePet.hasAlwaysBeenFast):
+		AchievementManager.setAchievementFlag("GigaFastAchiev")
+	if (activePet.petResource.stage >= 3 and activePet.hasAlwaysBeenSlow):
+		AchievementManager.setAchievementFlag("GigaSlowAchiev")
 
 
 func switchPet(index : int, previousPetDeleted := false):

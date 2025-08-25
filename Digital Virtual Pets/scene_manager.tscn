@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene load_steps=20 format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ceixawk4uie76" path="res://ui/menu_management/menus/credits_menu.tscn" id="10_takr5"]
 [ext_resource type="PackedScene" uid="uid://udywtbcwhuj1" path="res://device/device.tscn" id="11_7o31v"]
 [ext_resource type="PackedScene" uid="uid://3v0b2cwbtgpq" path="res://ui/menu_management/menus/encyclopedia_menu.tscn" id="11_vxl1k"]
+[ext_resource type="PackedScene" uid="uid://18yhd6xsviof" path="res://ui/menu_management/menus/device_customization.tscn" id="13_p2vm5"]
 
 [sub_resource type="Animation" id="Animation_o4c3o"]
 length = 0.001
@@ -108,7 +109,7 @@ controller = NodePath("../..")
 _mouseDownSFX = ExtResource("7_takr5")
 _mouseUpSFX = ExtResource("8_vxl1k")
 _menuMode = 1
-_menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu"), NodePath("Credits"), NodePath("EncyclopediaMenu")]
+_menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu"), NodePath("Credits"), NodePath("EncyclopediaMenu"), NodePath("DeviceCustomization")]
 metadata/_edit_lock_ = true
 
 [node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
@@ -154,6 +155,9 @@ visible = false
 [node name="EncyclopediaMenu" parent="SystemUI/MenuManager" instance=ExtResource("11_vxl1k")]
 process_mode = 3
 visible = false
+layout_mode = 1
+
+[node name="DeviceCustomization" parent="SystemUI/MenuManager" instance=ExtResource("13_p2vm5")]
 layout_mode = 1
 
 [node name="SystemDialog" type="CanvasLayer" parent="."]

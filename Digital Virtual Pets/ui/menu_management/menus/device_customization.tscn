@@ -1,0 +1,197 @@
+[gd_scene load_steps=10 format=3 uid="uid://18yhd6xsviof"]
+
+[ext_resource type="Script" uid="uid://dqj412exl0wko" path="res://device_customization.gd" id="1_l1h5d"]
+[ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="2_4xfqt"]
+[ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_akh46"]
+[ext_resource type="Texture2D" uid="uid://bkhdg45wbwfyq" path="res://assets/art/aesprite/device/device_skins/classic_skin_preview.png" id="2_cc4bt"]
+[ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="3_cc4bt"]
+[ext_resource type="Texture2D" uid="uid://b2ax1chp57m8v" path="res://assets/art/aesprite/device/device_skins/default_color_palettes.png" id="3_ojnow"]
+[ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="4_3h8t4"]
+[ext_resource type="Script" uid="uid://vrs1twpulcy0" path="res://addons/PaletteSwapShader/PaletteMaterial.gd" id="8_05ig1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cn3ht"]
+shader_parameter/color_count = 8
+shader_parameter/source = PackedInt32Array(0, 0, 0, 26, 18, 33, 34, 32, 52, 242, 113, 33, 255, 137, 10, 255, 167, 74, 252, 186, 100, 253, 195, 109, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/output = PackedVector3Array(0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.94902, 0.443137, 0.129412, 1, 0.537255, 0.0392157, 1, 0.654902, 0.290196, 0.988235, 0.729412, 0.392157, 0.992157, 0.764706, 0.427451, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.713726, 0.0862745, 0.0862745, 0.858824, 0.121569, 0.121569, 1, 0.32549, 0.290196, 1, 0.447059, 0.419608, 1, 0.619608, 0.6, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.301961, 0.627451, 0.215686, 0.403922, 0.807843, 0.294118, 0.627451, 0.901961, 0.458824, 0.819608, 0.92549, 0.615686, 0.913725, 0.94902, 0.752941, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.0235294, 0.207843, 0.67451, 0.0784314, 0.427451, 0.882353, 0.231373, 0.615686, 0.909804, 0.407843, 0.760784, 0.909804, 0.356863, 0.831373, 0.901961, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.729412, 0.419608, 1, 0.823529, 0.505882, 1, 0.823529, 0.709804, 0.890196, 0.898039, 0.784314, 0.917647, 0.894118, 0.827451, 0.890196, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.552941, 0.780392, 0.478431, 0.662745, 0.843137, 0.517647, 0.815686, 0.882353, 0.639216, 0.886275, 0.933333, 0.647059, 0.956863, 0.968627, 0.709804, 0, 0, 0, 0.101961, 0.0705882, 0.129412, 0.133333, 0.12549, 0.203922, 0.466667, 0.556863, 0.894118, 0.498039, 0.67451, 0.960784, 0.592157, 0.839216, 1, 0.721569, 0.886275, 1, 0.8, 0.960784, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/row = 2
+shader_parameter/fps = 0.0
+shader_parameter/frame_count = 7
+script = ExtResource("8_05ig1")
+palette = ExtResource("3_ojnow")
+animation_fps = 6
+row = 2
+metadata/_custom_type_script = "uid://vrs1twpulcy0"
+
+[node name="DeviceCustomization" type="Control" node_paths=PackedStringArray("_previewDevice", "_paletteName", "_window", "animator")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, -1)
+script = ExtResource("1_l1h5d")
+_skins = Array[Texture2D]([ExtResource("2_cc4bt")])
+_colorPalettes = Array[Texture2D]([ExtResource("3_ojnow")])
+_paletteNames = Array[Array]([["Original Orange", "Candy Red", "Candy Green", "Candy Blue", "Ky's Purple", "Ky's Green", "Ky's Blue"]])
+_previewDevice = NodePath("Window/PanelControl/MenuWindow/DeviceDisplayPanel/PreviewTexture")
+_paletteName = NodePath("Window/PanelControl/MenuWindow/DeviceDisplayPanel/PaletteName")
+_window = NodePath("Window")
+animator = NodePath("AnimationPlayer")
+_animationLibrary = "pop_up_window_animations"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"pop_up_window_animations": ExtResource("2_4xfqt")
+}
+
+[node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
+transparent_bg = true
+title = "link_device_config.exe.exe"
+size = Vector2i(530, 445)
+borderless = true
+transparent = true
+script = ExtResource("3_cc4bt")
+_canvas = NodePath("PanelControl/MenuWindow")
+_windowType = 1
+
+[node name="PanelControl" type="Control" parent="Window"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(278, 154)
+metadata/_edit_lock_ = true
+
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
+layout_mode = 0
+offset_right = 515.0
+offset_bottom = 350.0
+theme = ExtResource("2_akh46")
+theme_type_variation = &"ClosedPanel"
+
+[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -30.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 15.0
+grow_horizontal = 2
+theme_type_variation = &"CloseButton"
+icon = ExtResource("4_3h8t4")
+icon_alignment = 1
+
+[node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow"]
+offset_left = 7.0
+offset_top = 2.0
+offset_right = 97.0
+offset_bottom = 20.0
+theme_type_variation = &"HeaderSmall"
+text = "link_device_config.exe"
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 17.0
+offset_right = 200.0
+offset_bottom = 53.0
+theme_type_variation = &"HeaderLarge"
+text = "Device Skins"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeviceDisplayPanel" type="Panel" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -304.0
+offset_top = 34.0
+offset_right = -27.0
+offset_bottom = 306.0
+grow_horizontal = 0
+theme_type_variation = &"SubPanel"
+
+[node name="PreviewTexture" type="TextureRect" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_cn3ht")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.982
+anchor_right = 0.5
+anchor_bottom = 0.982
+offset_left = -128.5
+offset_top = -256.104
+offset_right = 127.5
+offset_bottom = -0.104004
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_cc4bt")
+stretch_mode = 4
+
+[node name="LeftCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_top = 0.995
+anchor_right = 0.19
+anchor_bottom = 0.995
+offset_left = -0.435
+offset_top = -0.0850067
+offset_right = 0.0499992
+offset_bottom = 20.915
+text = "<"
+
+[node name="RightCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.81
+anchor_top = 0.995
+anchor_right = 0.995
+anchor_bottom = 0.995
+offset_left = -0.0500183
+offset_top = -0.0850067
+offset_right = 0.0249939
+offset_bottom = 20.915
+text = ">"
+
+[node name="PaletteName" type="Label" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.19
+anchor_top = 0.995
+anchor_right = 0.81
+anchor_bottom = 0.995
+offset_left = 0.0499992
+offset_top = -0.0850067
+offset_right = -0.0500183
+offset_bottom = 20.915
+grow_horizontal = 2
+theme_type_variation = &"HeaderSmall"
+text = "Original Orange"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 53.0
+offset_right = 202.0
+offset_bottom = 324.0
+
+[node name="ClassicSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "Classic Model"
+
+[connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/Button" to="." method="_onExit"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/DeviceDisplayPanel/LeftCycle" to="." method="_onChangePalette" binds= [-1]]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/DeviceDisplayPanel/RightCycle" to="." method="_onChangePalette" binds= [1]]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/VBoxContainer/ClassicSkin" to="." method="_onChangeSkin" binds= [0]]

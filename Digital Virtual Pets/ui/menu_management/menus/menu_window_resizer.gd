@@ -41,6 +41,7 @@ func _visibilityChanged():
 		Settings.addToActiveWindows(self)
 		if (_windowType != Settings.SubWindowPositionType.DIALOG):
 			position = Settings.findValidWindowPosition(_windowType, size)
+			
 		else:
 			_canvas.setWindowPosition()
 	else:

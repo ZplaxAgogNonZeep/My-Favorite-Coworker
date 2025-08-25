@@ -23,6 +23,10 @@ func _onPetButton():
 	ChangeMenu.emit(2)
 
 
+func _onDeviceSkinButton():
+	ChangeMenu.emit(5)
+
+
 func _onCloseButton():
 	ChangeMenu.emit(-1)
 #endregion

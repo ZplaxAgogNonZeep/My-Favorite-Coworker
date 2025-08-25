@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqs2mr65skd0q"]
+[gd_scene load_steps=11 format=3 uid="uid://cqs2mr65skd0q"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_pegra"]
 [ext_resource type="Script" uid="uid://ctmbnikaduj2l" path="res://ui/menu_management/menus/menu_icons.gd" id="1_x636n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://kwo0yao3dmsu" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_egg.png" id="5_xwarh"]
 [ext_resource type="Texture2D" uid="uid://q6axca63yfha" path="res://assets/art/aesprite/ui/menu/system_menu/exit_button_x.png" id="6_xwarh"]
 [ext_resource type="Texture2D" uid="uid://4msb6gmdndxl" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_encyclopedia.png" id="7_g5diw"]
+[ext_resource type="Texture2D" uid="uid://dw2uqcniv41kg" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_device_skin.png" id="8_de44f"]
 [ext_resource type="Texture2D" uid="uid://cdgm6c6nifqce" path="res://assets/art/aesprite/ui/menu/system_menu/menu_icon_credits.png" id="8_erflu"]
 
 [node name="MenuSelectionIcons" type="Control" node_paths=PackedStringArray("_petMenuButton", "_window", "animator")]
@@ -35,7 +36,7 @@ libraries = {
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 title = "menu_manager.exe"
-size = Vector2i(334, 120)
+size = Vector2i(1959, 120)
 visible = false
 borderless = true
 transparent = true
@@ -52,7 +53,7 @@ pivot_offset = Vector2(167, 69)
 [node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
 texture_filter = 1
 layout_mode = 0
-offset_right = 334.0
+offset_right = 415.0
 offset_bottom = 120.0
 
 [node name="Options" type="Button" parent="Window/PanelControl/MenuWindow"]
@@ -136,6 +137,33 @@ theme_type_variation = &"HeaderSmall"
 text = "Encyclopedia"
 horizontal_alignment = 1
 
+[node name="DeviceSkin" type="Button" parent="Window/PanelControl/MenuWindow"]
+texture_filter = 1
+layout_mode = 1
+offset_left = 249.0
+offset_top = 22.0
+offset_right = 328.0
+offset_bottom = 114.0
+focus_mode = 0
+theme_type_variation = &"MenuIcon"
+icon = ExtResource("8_de44f")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/DeviceSkin"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HeaderSmall"
+text = "Device Skin"
+horizontal_alignment = 1
+
 [node name="Credits" type="Button" parent="Window/PanelControl/MenuWindow"]
 texture_filter = 1
 layout_mode = 1
@@ -201,6 +229,9 @@ text = "menu_manager.exe"
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/Encyclopedia" to="." method="_onEncyclopediaButton"]
+[connection signal="button_down" from="Window/PanelControl/MenuWindow/DeviceSkin" to="." method="_mouseDown"]
+[connection signal="button_up" from="Window/PanelControl/MenuWindow/DeviceSkin" to="." method="_mouseUp"]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/DeviceSkin" to="." method="_onDeviceSkinButton"]
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Credits" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Credits" to="." method="_mouseUp"]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/Credits" to="." method="_onCreditsButton"]

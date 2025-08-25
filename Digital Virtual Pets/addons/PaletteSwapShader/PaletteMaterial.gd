@@ -17,9 +17,10 @@ class_name PaletteMaterial extends ShaderMaterial
 			animation_fps = v
 			set_shader_parameter(&"fps", animation_fps)
 
-@export var row: int:
+@export var row: int = 0:
 	set(v):
-		set_shader_parameter(&"row", v)
+		row = v
+		set_shader_parameter(&"row", row)
 
 func set_palette(pal: Texture2D):
 	if palette == pal:

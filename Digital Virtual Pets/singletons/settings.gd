@@ -37,6 +37,7 @@ var frameCapSetTo := 60
 ## Vectors
 var _customWindowPosn := Vector2i.ZERO
 var _defaultWindowSize : Vector2i = Vector2i(128, 160)
+var deviceSkin : Vector2i = Vector2i(0,0)
 ## Enums
 var windowAttentionMode : WindowAttentionOptions = WindowAttentionOptions.BRING_TO_FRONT
 var windowOrientation : WindowOrientationOptions = WindowOrientationOptions.BOT_RIGHT_CORNER
@@ -90,7 +91,8 @@ func saveSettings():
 		"deviceVolume" : deviceVolume,
 		"gameVolume" : gameVolume,
 		"gameScale" : gameScale,
-		"proactivityTimeModifier" : proactivityTimeModifier
+		"proactivityTimeModifier" : proactivityTimeModifier,
+		"deviceSkin" : deviceSkin
 	}
 	
 	SaveData.saveSettingsToFile(settingsDict)

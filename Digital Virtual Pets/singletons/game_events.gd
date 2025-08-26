@@ -46,6 +46,7 @@ signal Cry
 #endregion
 
 #region Device Events
+signal DeviceUpdateSkin
 signal DeviceRequestAttention
 signal DeviceAttentionReceived
 signal ShakeDeviceOnce

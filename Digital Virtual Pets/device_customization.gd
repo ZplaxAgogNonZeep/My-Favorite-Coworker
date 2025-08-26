@@ -6,8 +6,18 @@ extends Menu
 @export_category("Node References")
 @export var _previewDevice : TextureRect
 @export var _paletteName : Label
-
 var _currentIndex : Vector2i
+
+func _loadSavedMenuSettings():
+	_currentIndex = Settings.deviceSkin
+	_drawDevicePreview()
+
+
+func _saveMenuSettings():
+	Settings.deviceSkin = _currentIndex
+	GameEvents.DeviceUpdateSkin.emit()
+	super()
+
 
 func _onChangeSkin(index : int):
 	if (index == _currentIndex.x):

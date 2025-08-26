@@ -86,6 +86,7 @@ icon = ExtResource("4_3h8t4")
 icon_alignment = 1
 
 [node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
 offset_right = 97.0

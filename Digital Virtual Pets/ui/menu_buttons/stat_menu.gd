@@ -8,7 +8,7 @@ var _index : int
 
 func initializeMenu():
 		visible = true
-		Settings.pauseGame(true)
+		GameEvents.PauseTimers.emit
 		
 		if (get_tree().get_nodes_in_group("Pet").size() > 0):
 			var pet = PetManager.instance.activePet
@@ -49,7 +49,7 @@ func exitMenu():
 	$StatPage/Bal/Value.text = "0"
 	_index = 0
 	
-	Settings.pauseGame(false)
+	GameEvents.UnpauseTimers.emit()
 
 
 func takeInput(input : Enums.DeviceButton):

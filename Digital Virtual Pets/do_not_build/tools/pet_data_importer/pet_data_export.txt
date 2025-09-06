@@ -13,4 +13,4 @@ MeYow	2		NoMeYow			3-OR+15			1-OR+>2	2-OR+Any Condition	N/A	N/A	N/A
 PrincessMew	3			15			30		=0	N/A	N/A	N/A	N/A
 MeeMahMew	3							50		N/A	N/A	N/A	N/A
 PewPewMew	3					37	10			N/A	N/A	N/A	N/A
-NoMeyow	3				1-OR+25	1-OR+20				2-OR+Anxious	N/A	N/A	N/A
+NoMeYow	3				1-OR+25	1-OR+20				2-OR+Anxious	N/A	N/A	N/A

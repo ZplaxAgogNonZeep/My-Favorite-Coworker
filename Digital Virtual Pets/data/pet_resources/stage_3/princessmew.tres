@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_a65yk"]
 [ext_resource type="Texture2D" uid="uid://c61kq46nyfsr" path="res://assets/art/aesprite/_pets/stage3/princessmew_sheet.png" id="3_1c50q"]
 
-[sub_resource type="Resource" id="Resource_7v567"]
+[sub_resource type="Resource" id="Resource_1c50q"]
 script = ExtResource("1_1c50q")
 conditionLogic = 1
 POW = 15
@@ -85,5 +85,5 @@ spriteFrames = SubResource("SpriteFrames_64w7k")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
-evolutionConditions = Array[ExtResource("1_1c50q")]([SubResource("Resource_7v567")])
+evolutionConditions = Array[ExtResource("1_1c50q")]([SubResource("Resource_1c50q")])
 encyclopediaEntry = ""

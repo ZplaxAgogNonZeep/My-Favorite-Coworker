@@ -105,7 +105,8 @@ func getFormattedEvolutionConditions() -> String:
 			else:
 				returnString += str(condition) + "\n"
 	
-	returnString = returnString.erase(returnString.rfind("\n"))
+	if (returnString.contains("\n")):
+		returnString = returnString.erase(returnString.rfind("\n"))
 	
 	if returnString == "":
 		returnString = "No Evolution Conditions"

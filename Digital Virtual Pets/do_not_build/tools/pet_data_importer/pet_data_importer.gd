@@ -20,13 +20,14 @@ func _fillPetData():
 			print("Found no matching data for ", petDataList[0])
 			petData = PetTypeData.new()
 			petData.spriteFrames = _placeholderSpriteFrames
-			
+			ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + str(petData.stage) + "/" + petData.name.to_lower() + ".tres")
+			petData = _getResourceFromName(petDataList[0], petDataList[1])
+		
 		petData.name = petDataList[0]
 		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])
 		petData.encyclopediaEntry = petDataList[2]
 		petData.evolutionConditions.clear()
-		#TODO: 3 = Evolutions DO THIS LATER
 		# Okay so indexes 4-13 is for evolution conditions, in that, there's some extra formatting
 		# that needs to be done to enter that: [condition group number]-AND/OR+Stat Value
 		# to parse this, I'm going to create a dict of arrays that will contain lines to be parsed
@@ -137,9 +138,6 @@ func _fillPetData():
 		
 		for condition in andConditions:
 			petData.evolutionConditions.append(condition)
-		
-		if (writeToFile):
-			ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + str(petData.stage) + "/" + petData.name.to_lower() + ".tres")
 			
 	
 	# Now finally we do evolutions now that we've ensured that all pets from list
@@ -151,7 +149,9 @@ func _fillPetData():
 		
 		if petDataList[3] != "":
 			for evolutionName in petDataList[3].split(","):
+				print("evo: ",_getResourceFromName(evolutionName, str(petData.stage + 1)))
 				petData.evolutions.append(_getResourceFromName(evolutionName, str(petData.stage + 1)))
+		ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + str(petData.stage) + "/" + _getResourceFileNameFromName(petData.name, str(petData.stage)))
 	
 	
 	print("Pet Data Import Complete")
@@ -166,3 +166,14 @@ func _getResourceFromName(petName : String, stage : String) -> PetTypeData:
 			return resource
 	
 	return null
+
+
+func _getResourceFileNameFromName(petName : String, stage : String) -> String:
+	var fileNames = DirAccess.get_files_at(_petDataFilePathRoot + "stage_" + stage)
+	
+	for fileName in fileNames:
+		var resource = load(_petDataFilePathRoot + "stage_" + stage + "/" + fileName)
+		if resource.name == petName:
+			return fileName
+	
+	return ""

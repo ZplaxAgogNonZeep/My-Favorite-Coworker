@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=12 format=3 uid="uid://dkuhyneg1kgqg"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://dkuhyneg1kgqg"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_5wmse"]
+[ext_resource type="Resource" uid="uid://bhl0ga6pv4jwb" path="res://data/pet_resources/stage_3/meemahmew.tres" id="2_isu8c"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_p403b"]
+[ext_resource type="Resource" uid="uid://ddanct21s2xyy" path="res://data/pet_resources/stage_3/pewpewmew.tres" id="3_1j1yj"]
 [ext_resource type="Texture2D" uid="uid://bngndxmlmgiqa" path="res://assets/art/aesprite/_pets/stage2/pawmew_sheet.png" id="3_5wmse"]
 
-[sub_resource type="Resource" id="Resource_1j1yj"]
+[sub_resource type="Resource" id="Resource_5wmse"]
 script = ExtResource("1_5wmse")
 conditionLogic = 1
 POW = -1
@@ -84,6 +86,6 @@ name = "PawMew"
 spriteFrames = SubResource("SpriteFrames_k86t7")
 stage = 2
 waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([])
-evolutionConditions = Array[ExtResource("1_5wmse")]([SubResource("Resource_1j1yj")])
+evolutions = Array[Resource]([ExtResource("2_isu8c"), ExtResource("3_1j1yj")])
+evolutionConditions = Array[ExtResource("1_5wmse")]([SubResource("Resource_5wmse")])
 encyclopediaEntry = ""

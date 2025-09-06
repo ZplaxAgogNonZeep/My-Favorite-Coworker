@@ -199,10 +199,15 @@ func evolvePet(evolveTarget: PetTypeData):
 	# check for achievements
 	if (activePet.petResource.stage > 0):
 		AchievementManager.setAchievementFlag("EvolveAchiev1")
+		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
+			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
 	if (activePet.petResource.stage > 1):
 		AchievementManager.setAchievementFlag("EvolveAchiev2")
 	if (activePet.petResource.stage > 2):
 		AchievementManager.setAchievementFlag("EvolveAchiev3")
+		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
+			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
+		
 	 
 	if (!AchievementManager.getAchievementFlag("EvolveAchiev4")):
 		var isComplete

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_rgkjs"]
 [ext_resource type="Texture2D" uid="uid://dfhhk82lktind" path="res://assets/art/aesprite/_pets/stage3/nomeyow_sheet.png" id="3_pt1ur"]
 
-[sub_resource type="Resource" id="Resource_1md2t"]
+[sub_resource type="Resource" id="Resource_pt1ur"]
 script = ExtResource("1_pt1ur")
 conditionLogic = 0
 POW = -1
@@ -80,10 +80,10 @@ animations = [{
 
 [resource]
 script = ExtResource("2_rgkjs")
-name = "NoMeyow"
+name = "NoMeYow"
 spriteFrames = SubResource("SpriteFrames_00htw")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
-evolutionConditions = Array[ExtResource("1_pt1ur")]([SubResource("Resource_1md2t")])
+evolutionConditions = Array[ExtResource("1_pt1ur")]([SubResource("Resource_pt1ur")])
 encyclopediaEntry = ""

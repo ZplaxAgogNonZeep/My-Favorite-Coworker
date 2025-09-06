@@ -32,10 +32,14 @@ func initializeMenu():
 			
 			var count = 0
 			for i in pet.evolvedFromIcons:
-				var iconSprite = get_node_or_null("Display Sprite/EvoHist" + str(count))
+				var iconSprite = get_node_or_null("BioPage/Display Sprite/EvoHist" + str(count))
 				if iconSprite:
 					iconSprite.texture = i
 				count+=1
+			
+			var iconSprite = get_node_or_null("BioPage/Display Sprite/EvoHist" + str(count))
+			if iconSprite:
+				iconSprite.texture = pet.petResource.getSpriteIcon()
 				
 
 

@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=12 format=3 uid="uid://l6kehejoxmq1"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_pt1ur"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_rgkjs"]
+[ext_resource type="Texture2D" uid="uid://dfhhk82lktind" path="res://assets/art/aesprite/_pets/stage3/nomeyow_sheet.png" id="3_pt1ur"]
+
+[sub_resource type="Resource" id="Resource_1md2t"]
+script = ExtResource("1_pt1ur")
+conditionLogic = 0
+POW = -1
+END = 25
+SPD = 20
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgkjs"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky0vg"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1md2t"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inood"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sudpg"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo543"]
+atlas = ExtResource("3_pt1ur")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00htw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgkjs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky0vg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1md2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inood")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sudpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo543")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
+[resource]
+script = ExtResource("2_rgkjs")
+name = "NoMeyow"
+spriteFrames = SubResource("SpriteFrames_00htw")
+stage = 3
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+evolutionConditions = Array[ExtResource("1_pt1ur")]([SubResource("Resource_1md2t")])
+encyclopediaEntry = ""

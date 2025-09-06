@@ -1,7 +1,16 @@
-BuhEgg	0	The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime.	Buh						
-Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh						
-BuhBuh	2	A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!	HeroBuh,NuhUhBuh			8	12		
-NuhBuh	2	Oh you woeful creature…	NuhUhBuh,BanchoBub					15	>0
-HeroBuh	3	HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!				20	30		=0
-NuhUhBuh	3	When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence.						45	<2
-BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential.		33	22				>1
+BuhEgg	0	The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime.	Buh							N/A	N/A	N/A	N/A
+Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh							N/A	N/A	N/A	N/A
+BuhBuh	2	A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!	HeroBuh,NuhUhBuh			8	12			N/A	N/A	N/A	N/A
+NuhBuh	2	Oh you woeful creature…	NuhUhBuh,BanchoBub					15	>0	N/A	N/A	N/A	N/A
+HeroBuh	3	HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!				20	30		=0	N/A	N/A	N/A	N/A
+NuhUhBuh	3	When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence.						45	<2	N/A	N/A	N/A	N/A
+BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential.		33	22					N/A	N/A	N/A	N/A
+KittyEgg	0		Mew							N/A	N/A	N/A	N/A
+Mew	1		MeMew,PawMew,MeYow							N/A	N/A	N/A	N/A
+MeMew	2		PrincessMew,MeeMahMew	1-OR+11			1-OR+9	2-OR+25	2-OR+=0	N/A	N/A	N/A	N/A
+PawMew	2		MeeMahMew,PewPewMew					20		N/A	N/A	N/A	N/A
+MeYow	2		NoMeYow			3-OR+15			1-OR+>2	2-OR+Any Condition	N/A	N/A	N/A
+PrincessMew	3			15			30		=0	N/A	N/A	N/A	N/A
+MeeMahMew	3							50		N/A	N/A	N/A	N/A
+PewPewMew	3					37	10			N/A	N/A	N/A	N/A
+NoMeyow	3				1-OR+25	1-OR+20				2-OR+Anxious	N/A	N/A	N/A

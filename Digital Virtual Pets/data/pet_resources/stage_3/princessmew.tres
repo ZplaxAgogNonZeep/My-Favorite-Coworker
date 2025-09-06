@@ -1,0 +1,89 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=12 format=3 uid="uid://dfwspalol2eb5"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1c50q"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_a65yk"]
+[ext_resource type="Texture2D" uid="uid://c61kq46nyfsr" path="res://assets/art/aesprite/_pets/stage3/princessmew_sheet.png" id="3_1c50q"]
+
+[sub_resource type="Resource" id="Resource_7v567"]
+script = ExtResource("1_1c50q")
+conditionLogic = 1
+POW = 15
+END = -1
+SPD = -1
+BAL = 30
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = 0
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a65yk"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qtf3"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v567"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii4y6"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcoyw"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_811xd"]
+atlas = ExtResource("3_1c50q")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_64w7k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a65yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qtf3")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v567")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ii4y6")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcoyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_811xd")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
+[resource]
+script = ExtResource("2_a65yk")
+name = "PrincessMew"
+spriteFrames = SubResource("SpriteFrames_64w7k")
+stage = 3
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+evolutionConditions = Array[ExtResource("1_1c50q")]([SubResource("Resource_7v567")])
+encyclopediaEntry = ""

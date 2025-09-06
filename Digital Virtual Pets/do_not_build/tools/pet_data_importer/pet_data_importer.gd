@@ -14,9 +14,13 @@ func _fillPetData():
 	for line in lines:
 		var petDataList : PackedStringArray = line.split("\t")
 		var petData = _getResourceFromName(petDataList[0], petDataList[1])
+		var writeToFile = false
 		if petData == null:
+			writeToFile = true
+			print("Found no matching data for ", petDataList[0])
 			petData = PetTypeData.new()
 			petData.spriteFrames = _placeholderSpriteFrames
+			
 		petData.name = petDataList[0]
 		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])
@@ -133,6 +137,10 @@ func _fillPetData():
 		
 		for condition in andConditions:
 			petData.evolutionConditions.append(condition)
+		
+		if (writeToFile):
+			ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + str(petData.stage) + "/" + petData.name.to_lower() + ".tres")
+			
 	
 	# Now finally we do evolutions now that we've ensured that all pets from list
 	# have been added
@@ -144,6 +152,7 @@ func _fillPetData():
 		if petDataList[3] != "":
 			for evolutionName in petDataList[3].split(","):
 				petData.evolutions.append(_getResourceFromName(evolutionName, str(petData.stage + 1)))
+	
 	
 	print("Pet Data Import Complete")
 

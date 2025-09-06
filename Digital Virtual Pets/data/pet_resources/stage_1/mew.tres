@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=11 format=3 uid="uid://qdlkmmp80pan"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_vevf6"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_otbfa"]
+[ext_resource type="Texture2D" uid="uid://c7q8shx55fovd" path="res://assets/art/aesprite/_pets/stage1/mew-Sheet.png" id="3_vevf6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otbfa"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kthwg"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menm4"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk3r6"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rytxd"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unojp"]
+atlas = ExtResource("3_vevf6")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cedc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otbfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kthwg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_menm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk3r6")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rytxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unojp")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
+[resource]
+script = ExtResource("2_otbfa")
+name = "Mew"
+spriteFrames = SubResource("SpriteFrames_cedc8")
+stage = 1
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+evolutionConditions = Array[ExtResource("1_vevf6")]([])
+encyclopediaEntry = ""

@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://63k4yef015es"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ppsvh"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_mr1k3"]
+[ext_resource type="Texture2D" uid="uid://dqjk5uto1mwwl" path="res://assets/art/aesprite/_pets/stage2/memew_sheet.png" id="3_ppsvh"]
+
+[sub_resource type="Resource" id="Resource_ulftk"]
+script = ExtResource("1_ppsvh")
+conditionLogic = 0
+POW = 11
+END = -1
+SPD = -1
+BAL = 9
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_oyrxa"]
+script = ExtResource("1_ppsvh")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = 0
+Personality = -1
+statTotal = 25
+conditions = Array[int]([])
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr1k3"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6q1j"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulftk"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyrxa"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4w2p1"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xl5v0"]
+atlas = ExtResource("3_ppsvh")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cld7b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr1k3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6q1j")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulftk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyrxa")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4w2p1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xl5v0")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
+[resource]
+script = ExtResource("2_mr1k3")
+name = "MeMew"
+spriteFrames = SubResource("SpriteFrames_cld7b")
+stage = 2
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+evolutionConditions = Array[ExtResource("1_ppsvh")]([SubResource("Resource_ulftk"), SubResource("Resource_oyrxa")])
+encyclopediaEntry = ""

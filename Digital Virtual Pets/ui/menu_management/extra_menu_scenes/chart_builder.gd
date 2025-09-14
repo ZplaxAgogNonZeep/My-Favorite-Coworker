@@ -21,6 +21,8 @@ signal FillBioData(petData : PetTypeData)
 ## Start at the same as origin and space from there, creating an alternating pattern in the grid.
 func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, PetTypeData]) -> void:
 	# Define a list of lists for all of the resources we need, as well as all of the node positions
+	print(eggData, " =============================================================")
+	
 	var stages : Array[Array] # Array of arrays for resources
 	var nodePositions : Array[Array] # Array of arrays for each nodes positions relative to the origin
 	for x in range(0, 4):
@@ -35,6 +37,7 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 	# Define the actual positions for each node in the tree
 	var stageCount = 0
 	for stage in stages:
+		print(stage, " -------------------")
 		# Make a nulled out list that will mirror the stage variable
 		for pet in stage:
 			nodePositions[stageCount].append(Vector2.ZERO)
@@ -48,6 +51,7 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 				startingIndex = int((stage.size() * .5))
 			else:
 				startingIndex = floori(stage.size() * .5)
+		print(isEven, " Starting Index: ", startingIndex)
 		
 		var currentIndex = startingIndex
 		var count = 0
@@ -60,8 +64,10 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			# and how far we are from the origin point
 			if currentIndex >= startingIndex:
 				distanceFromStart = currentIndex - startingIndex
-				if (distanceFromStart == 0 and isEven):
-					distanceFromStart = 1
+				if (isEven):
+					distanceFromStart += 1
+				#if (distanceFromStart == 0 and isEven):
+					#distanceFromStart = 1
 			else:
 				distanceFromStart = startingIndex - currentIndex
 				dir *= -1
@@ -70,9 +76,14 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			if currentIndex < stage.size():
 				newPosn.x = (_nodeSpacing.x * stage[currentIndex].stage) + _horizontalSpacer
 				if isEven:
-					newPosn.y = ((((_nodeSpacing.y + 16) * (distanceFromStart)))) * dir
+					if (distanceFromStart > 1):
+						newPosn.y = ((((_nodeSpacing.y + 24) * (distanceFromStart)))) * dir
+					else:
+						newPosn.y = ((((_nodeSpacing.y + 16) * (distanceFromStart)))) * dir
 				else:
 					newPosn.y = (((_nodeSpacing.y + 32) * (distanceFromStart))) * dir
+				if (stage.size() == 4):
+					print(stage[currentIndex] , " = ", newPosn.y, " (index: ", currentIndex, " distanceFromStart: ", distanceFromStart,")")
 
 				nodePositions[stageCount][currentIndex] = newPosn
 				currentIndex += 1

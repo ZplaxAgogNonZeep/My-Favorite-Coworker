@@ -183,6 +183,7 @@ func evolvePet(evolveTarget: PetTypeData):
 	SaveData.saveGameToFile()
 	
 	# Go about with the game
+	GameEvents.UnpauseTimers.emit()
 	GameEvents.StartNeedsTimers.emit()
 	activePet.sprite.play("Quirk")
 	await get_tree().create_timer(1).timeout

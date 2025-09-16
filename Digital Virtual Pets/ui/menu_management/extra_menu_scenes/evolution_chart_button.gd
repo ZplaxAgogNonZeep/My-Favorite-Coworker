@@ -24,6 +24,12 @@ func getLineMarker(isRight : bool):
 	else:
 		return _markers[0].position + position
 
+func getParallelMarker(isAbove : bool):
+	if isAbove:
+		return _markers[2].position + position
+	else:
+		return _markers[3].position + position
+
 func setSilhouette(texture):
 	$SilhouetteIcon.icon = texture
 

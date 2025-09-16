@@ -15,11 +15,19 @@ icon = ExtResource("1_e68pr")
 icon_alignment = 1
 vertical_icon_alignment = 2
 script = ExtResource("3_l37q8")
-_markers = [NodePath("LeftMarker"), NodePath("RightMarker")]
+_markers = [NodePath("LeftMarker"), NodePath("RightMarker"), NodePath("UpMarker"), NodePath("DownMarker")]
 _hoverTimer = NodePath("ToolTipZone/Timer")
 
 [node name="RightMarker" type="Marker2D" parent="."]
 position = Vector2(32, 16)
+gizmo_extents = 2.0
+
+[node name="UpMarker" type="Marker2D" parent="."]
+position = Vector2(16, 0)
+gizmo_extents = 2.0
+
+[node name="DownMarker" type="Marker2D" parent="."]
+position = Vector2(16, 32)
 gizmo_extents = 2.0
 
 [node name="LeftMarker" type="Marker2D" parent="."]

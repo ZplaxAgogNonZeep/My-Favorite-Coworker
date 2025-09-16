@@ -152,6 +152,13 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 			newLine.add_point(child.getLineMarker(true))
 			newLine.add_point(getNodeByResource(container, evolution).getLineMarker(false))
 			container.call_deferred("add_child", newLine)
+		for parallelEvo in child.petData.parallelEvolutions:
+			var newLine = Line2D.new()
+			newLine.default_color = Color.RED
+			newLine.width = 2
+			newLine.add_point(child.getParallelMarker(true))
+			#newLine.add_point(getNodeByResource(container, evolution).getLineMarker(false))
+			container.call_deferred("add_child", newLine)
 
 #region Utility Functions
 ## A Recursive function that takes [param petData] and a running array, [param stages], then uses

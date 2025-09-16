@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://ddanct21s2xyy" path="res://data/pet_resources/stage_3/pewpewmew.tres" id="3_1j1yj"]
 [ext_resource type="Texture2D" uid="uid://bngndxmlmgiqa" path="res://assets/art/aesprite/_pets/stage2/pawmew_sheet.png" id="3_5wmse"]
 
-[sub_resource type="Resource" id="Resource_5wmse"]
+[sub_resource type="Resource" id="Resource_isu8c"]
 script = ExtResource("1_5wmse")
 conditionLogic = 1
 POW = -1
@@ -87,5 +87,7 @@ spriteFrames = SubResource("SpriteFrames_k86t7")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_isu8c"), ExtResource("3_1j1yj")])
-evolutionConditions = Array[ExtResource("1_5wmse")]([SubResource("Resource_5wmse")])
-encyclopediaEntry = ""
+parallelEvolutions = Array[ExtResource("2_p403b")]([])
+evolutionConditions = Array[ExtResource("1_5wmse")]([SubResource("Resource_isu8c")])
+parallelConditions = Array[ExtResource("1_5wmse")]([])
+encyclopediaEntry = "Insatiably curious, PawMew isn't satisfied until she's hit, shoved, or batted everything in sight with her long paws."

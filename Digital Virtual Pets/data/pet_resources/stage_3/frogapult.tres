@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://01wiebqbk270"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ru8ur"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_3f387"]
+[ext_resource type="Resource" uid="uid://igsu7u1x3wrq" path="res://data/pet_resources/stage_3/toyherobuh.tres" id="2_8kvis"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_8kvis"]
+[ext_resource type="Resource" uid="uid://c2ugn8gq67ugm" path="res://data/pet_resources/stage_3/mimimmi.tres" id="3_631eq"]
+
+[sub_resource type="Resource" id="Resource_8kvis"]
+script = ExtResource("1_ru8ur")
+conditionLogic = 0
+POW = 10
+END = -1
+SPD = 20
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_631eq"]
+script = ExtResource("1_ru8ur")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = 45
+conditions = Array[int]([])
+
+[resource]
+script = ExtResource("2_3f387")
+name = "FrogAPult"
+spriteFrames = ExtResource("3_8kvis")
+stage = 3
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+parallelEvolutions = Array[ExtResource("2_3f387")]([ExtResource("2_8kvis"), ExtResource("3_631eq")])
+evolutionConditions = Array[ExtResource("1_ru8ur")]([SubResource("Resource_8kvis"), SubResource("Resource_631eq")])
+parallelConditions = Array[ExtResource("1_ru8ur")]([])
+encyclopediaEntry = "Built as your new frog pet, a top-of-the-line motor made it's tongue a weapon and dangerous to kids."

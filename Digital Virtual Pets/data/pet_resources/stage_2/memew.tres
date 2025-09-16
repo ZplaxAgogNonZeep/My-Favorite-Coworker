@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqjk5uto1mwwl" path="res://assets/art/aesprite/_pets/stage2/memew_sheet.png" id="3_ppsvh"]
 [ext_resource type="Resource" uid="uid://bhl0ga6pv4jwb" path="res://data/pet_resources/stage_3/meemahmew.tres" id="3_ulftk"]
 
-[sub_resource type="Resource" id="Resource_oyrxa"]
+[sub_resource type="Resource" id="Resource_t6q1j"]
 script = ExtResource("1_ppsvh")
 conditionLogic = 0
 POW = 11
@@ -20,7 +20,7 @@ Personality = -1
 statTotal = -1
 conditions = Array[int]([])
 
-[sub_resource type="Resource" id="Resource_4w2p1"]
+[sub_resource type="Resource" id="Resource_ulftk"]
 script = ExtResource("1_ppsvh")
 conditionLogic = 0
 POW = -1
@@ -101,5 +101,7 @@ spriteFrames = SubResource("SpriteFrames_cld7b")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_t6q1j"), ExtResource("3_ulftk")])
-evolutionConditions = Array[ExtResource("1_ppsvh")]([SubResource("Resource_oyrxa"), SubResource("Resource_4w2p1")])
-encyclopediaEntry = ""
+parallelEvolutions = Array[ExtResource("2_mr1k3")]([])
+evolutionConditions = Array[ExtResource("1_ppsvh")]([SubResource("Resource_t6q1j"), SubResource("Resource_ulftk")])
+parallelConditions = Array[ExtResource("1_ppsvh")]([])
+encyclopediaEntry = "All your attention and love has made your pet a little... demanding. She shouts for attention and care and love."

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://qdlkmmp80pan"]
 
-[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_vevf6"]
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_menm4"]
 [ext_resource type="Resource" uid="uid://63k4yef015es" path="res://data/pet_resources/stage_2/memew.tres" id="2_menm4"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_otbfa"]
 [ext_resource type="Texture2D" uid="uid://c7q8shx55fovd" path="res://assets/art/aesprite/_pets/stage1/mew-Sheet.png" id="3_vevf6"]
@@ -74,5 +74,7 @@ spriteFrames = SubResource("SpriteFrames_cedc8")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_menm4"), ExtResource("3_xk3r6"), ExtResource("4_rytxd")])
-evolutionConditions = Array[ExtResource("1_vevf6")]([])
-encyclopediaEntry = ""
+parallelEvolutions = Array[ExtResource("2_otbfa")]([])
+evolutionConditions = Array[ExtResource("1_menm4")]([])
+parallelConditions = Array[ExtResource("1_menm4")]([])
+encyclopediaEntry = "An adorable little sweetiepie! Ever curious, ever learning, she'll follow you everywhere you go!"

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://csgqsrmotrcae"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ynu1k"]
+[ext_resource type="Resource" uid="uid://c2ugn8gq67ugm" path="res://data/pet_resources/stage_3/mimimmi.tres" id="2_5s4js"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_yfpm8"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_5s4js"]
+
+[sub_resource type="Resource" id="Resource_yfpm8"]
+script = ExtResource("1_ynu1k")
+conditionLogic = 1
+POW = -1
+END = 17
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_5s4js"]
+script = ExtResource("1_ynu1k")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_w5eun"]
+script = ExtResource("1_ynu1k")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[resource]
+script = ExtResource("2_yfpm8")
+name = "MiMi"
+spriteFrames = ExtResource("3_5s4js")
+stage = 2
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_5s4js")])
+parallelEvolutions = Array[ExtResource("2_yfpm8")]([])
+evolutionConditions = Array[ExtResource("1_ynu1k")]([SubResource("Resource_yfpm8")])
+parallelConditions = Array[ExtResource("1_ynu1k")]([SubResource("Resource_5s4js"), SubResource("Resource_w5eun")])
+encyclopediaEntry = "Wow! It grew from living with you! Make sure to keep it handy to get closer."

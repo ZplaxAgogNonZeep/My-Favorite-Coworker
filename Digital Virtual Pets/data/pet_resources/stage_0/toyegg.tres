@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=5 format=3 uid="uid://bk8g7v1r02kkk"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_u3dw7"]
+[ext_resource type="Resource" uid="uid://npuwf0827xnl" path="res://data/pet_resources/stage_1/bling.tres" id="2_c6fy5"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_u3dw7"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_c6fy5"]
+
+[resource]
+script = ExtResource("2_u3dw7")
+name = "ToyEgg"
+spriteFrames = ExtResource("3_c6fy5")
+stage = 0
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_c6fy5")])
+parallelEvolutions = Array[ExtResource("2_u3dw7")]([])
+evolutionConditions = Array[ExtResource("1_u3dw7")]([])
+parallelConditions = Array[ExtResource("1_u3dw7")]([])
+encyclopediaEntry = "A strange ticking, soft shaking... Your new best friend is being made. what kind of friend will they become?"

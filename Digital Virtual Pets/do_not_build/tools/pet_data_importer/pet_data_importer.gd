@@ -282,8 +282,9 @@ func _fillPetData():
 				parallelString = petDataList[3].split("|")[1]
 			
 			for evolutionName in evolutionString.split(","):
-				print("evo: ", evolutionName, "-", int(petDataList[1]) + 1, _getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
-				petData.evolutions.append(_getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
+				if (evolutionName != ""):
+					print("evo: ", evolutionName, "-", int(petDataList[1]) + 1, _getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
+					petData.evolutions.append(_getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
 			if parallelString != "":
 				for evolutionName in parallelString.split(","):
 					print("parallel evo: ", evolutionName, "-", petDataList[1], _getResourceFromName(evolutionName, petDataList[1]))

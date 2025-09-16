@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://igsu7u1x3wrq"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_witeb"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_6vkbn"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_5gfh1"]
+
+[sub_resource type="Resource" id="Resource_witeb"]
+script = ExtResource("1_witeb")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = 25
+BAL = 33
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_6vkbn"]
+script = ExtResource("1_witeb")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = 2
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[resource]
+script = ExtResource("2_6vkbn")
+name = "ToyHeroBuh"
+spriteFrames = ExtResource("3_5gfh1")
+stage = 3
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([])
+parallelEvolutions = Array[ExtResource("2_6vkbn")]([])
+evolutionConditions = Array[ExtResource("1_witeb")]([SubResource("Resource_witeb")])
+parallelConditions = Array[ExtResource("1_witeb")]([SubResource("Resource_6vkbn")])
+encyclopediaEntry = "This 1:16th size 18\" tall HeroBuh figure comes with 8 points of articulation and karate chop action!"

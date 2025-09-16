@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=7 format=3 uid="uid://npuwf0827xnl"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_umdoi"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_j0bsp"]
+[ext_resource type="Resource" uid="uid://dq05sgeq0nqav" path="res://data/pet_resources/stage_2/ducktron.tres" id="2_umdoi"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_3wgjj"]
+[ext_resource type="Resource" uid="uid://d2mhew1pvm07k" path="res://data/pet_resources/stage_1/toybuh.tres" id="4_cao08"]
+[ext_resource type="Resource" uid="uid://deajvgriu68p1" path="res://data/pet_resources/stage_1/mi.tres" id="5_ibudv"]
+
+[resource]
+script = ExtResource("2_j0bsp")
+name = "Bling"
+spriteFrames = ExtResource("3_3wgjj")
+stage = 1
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_umdoi")])
+parallelEvolutions = Array[ExtResource("2_j0bsp")]([ExtResource("4_cao08"), ExtResource("5_ibudv")])
+evolutionConditions = Array[ExtResource("1_umdoi")]([])
+parallelConditions = Array[ExtResource("1_umdoi")]([])
+encyclopediaEntry = "A simple beetle toy. Unsold, as the idea of an ebony inlay, red lacquered oak windup toy didn't excite parents."

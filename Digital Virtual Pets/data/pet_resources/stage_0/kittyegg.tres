@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://exuwj7531swr"]
 
-[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_t4ito"]
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_dq1au"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_dq1au"]
 [ext_resource type="Resource" uid="uid://qdlkmmp80pan" path="res://data/pet_resources/stage_1/mew.tres" id="2_iwr6x"]
 [ext_resource type="Texture2D" uid="uid://cs07mw3saj2ka" path="res://assets/art/aesprite/_pets/egg/cat_egg_sheet.png" id="3_t4ito"]
@@ -34,5 +34,7 @@ spriteFrames = SubResource("SpriteFrames_s4uoa")
 stage = 0
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_iwr6x")])
-evolutionConditions = Array[ExtResource("1_t4ito")]([])
-encyclopediaEntry = ""
+parallelEvolutions = Array[ExtResource("2_dq1au")]([])
+evolutionConditions = Array[ExtResource("1_dq1au")]([])
+parallelConditions = Array[ExtResource("1_dq1au")]([])
+encyclopediaEntry = "Curious and sweet. Keep track of her, she's eager to learn from you."

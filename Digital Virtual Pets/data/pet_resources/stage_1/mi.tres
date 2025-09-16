@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://deajvgriu68p1"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_7j36j"]
+[ext_resource type="Resource" uid="uid://csgqsrmotrcae" path="res://data/pet_resources/stage_2/mimi.tres" id="2_3v28u"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_pw8vr"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_3v28u"]
+
+[sub_resource type="Resource" id="Resource_pw8vr"]
+script = ExtResource("1_7j36j")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([2])
+
+[resource]
+script = ExtResource("2_pw8vr")
+name = "Mi"
+spriteFrames = ExtResource("3_3v28u")
+stage = 1
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_3v28u")])
+parallelEvolutions = Array[ExtResource("2_pw8vr")]([])
+evolutionConditions = Array[ExtResource("1_7j36j")]([])
+parallelConditions = Array[ExtResource("1_7j36j")]([SubResource("Resource_pw8vr")])
+encyclopediaEntry = "The modern version of the pet rock! Put it in your bedroom for maximum effect."

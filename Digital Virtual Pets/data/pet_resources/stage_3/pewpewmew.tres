@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=12 format=3 uid="uid://ddanct21s2xyy"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://ddanct21s2xyy"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_nbsdj"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_5i024"]
@@ -17,6 +17,20 @@ TraumaEqual = -1
 Personality = -1
 statTotal = -1
 conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_qh4fn"]
+script = ExtResource("1_nbsdj")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([0])
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5i024"]
 atlas = ExtResource("3_nbsdj")
@@ -85,5 +99,7 @@ spriteFrames = SubResource("SpriteFrames_p23dx")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])
+parallelEvolutions = Array[ExtResource("2_5i024")]([])
 evolutionConditions = Array[ExtResource("1_nbsdj")]([SubResource("Resource_nbsdj")])
+parallelConditions = Array[ExtResource("1_nbsdj")]([SubResource("Resource_qh4fn")])
 encyclopediaEntry = ""

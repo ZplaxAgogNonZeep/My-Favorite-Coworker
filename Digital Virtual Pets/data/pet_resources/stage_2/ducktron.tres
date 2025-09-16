@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=9 format=3 uid="uid://dq05sgeq0nqav"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ku8pv"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_hcvgk"]
+[ext_resource type="Resource" uid="uid://01wiebqbk270" path="res://data/pet_resources/stage_3/frogapult.tres" id="2_xfhvs"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_0xc6w"]
+[ext_resource type="Resource" uid="uid://c2wvhej177454" path="res://data/pet_resources/stage_2/toybuhbuh.tres" id="3_gpc02"]
+[ext_resource type="Resource" uid="uid://csgqsrmotrcae" path="res://data/pet_resources/stage_2/mimi.tres" id="4_vvwwd"]
+
+[sub_resource type="Resource" id="Resource_xfhvs"]
+script = ExtResource("1_ku8pv")
+conditionLogic = 0
+POW = -1
+END = 5
+SPD = -1
+BAL = 10
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_gpc02"]
+script = ExtResource("1_ku8pv")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = 30
+conditions = Array[int]([])
+
+[resource]
+script = ExtResource("2_hcvgk")
+name = "DuckTron"
+spriteFrames = ExtResource("3_0xc6w")
+stage = 2
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_xfhvs")])
+parallelEvolutions = Array[ExtResource("2_hcvgk")]([ExtResource("3_gpc02"), ExtResource("4_vvwwd")])
+evolutionConditions = Array[ExtResource("1_ku8pv")]([SubResource("Resource_xfhvs"), SubResource("Resource_gpc02")])
+parallelConditions = Array[ExtResource("1_ku8pv")]([])
+encyclopediaEntry = "Put a mechanical brain in a duck body? Adorable. Until the little pegboard brain turned evil."

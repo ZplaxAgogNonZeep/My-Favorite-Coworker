@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://c2wvhej177454"]
+
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_qf7i4"]
+[ext_resource type="Resource" uid="uid://igsu7u1x3wrq" path="res://data/pet_resources/stage_3/toyherobuh.tres" id="2_bkq4b"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_wbetq"]
+[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_bkq4b"]
+
+[sub_resource type="Resource" id="Resource_wbetq"]
+script = ExtResource("1_qf7i4")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = 10
+BAL = 13
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_bkq4b"]
+script = ExtResource("1_qf7i4")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_mrdy6"]
+script = ExtResource("1_qf7i4")
+conditionLogic = 0
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[resource]
+script = ExtResource("2_wbetq")
+name = "ToyBuhBuh"
+spriteFrames = ExtResource("3_bkq4b")
+stage = 2
+waitIntervals = Vector2(3, 10)
+evolutions = Array[Resource]([ExtResource("2_bkq4b")])
+parallelEvolutions = Array[ExtResource("2_wbetq")]([])
+evolutionConditions = Array[ExtResource("1_qf7i4")]([SubResource("Resource_wbetq")])
+parallelConditions = Array[ExtResource("1_qf7i4")]([SubResource("Resource_bkq4b"), SubResource("Resource_mrdy6")])
+encyclopediaEntry = "This sad little friend has earned himself a fidget toy! pull his string and watch him scuttle!"

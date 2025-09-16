@@ -23,13 +23,14 @@ func _fillPetData():
 			petData = PetTypeData.new()
 			petData.spriteFrames = _placeholderSpriteFrames
 			petData.name = petDataList[0]
+			petData.stage = int(petDataList[1])
 			ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + petDataList[1] + "/" + petDataList[0].to_lower() + ".tres")
 			petData = _getResourceFromName(petDataList[0], petDataList[1])
 		
 		petData.name = petDataList[0]
-		print("Updateing ", petData.name)
 		petData.stage = int(petDataList[1])
 		petData.encyclopediaEntry = petDataList[2]
+		print("Updateing ", petData.name,"-" , petData.stage,"=====================================")
 		
 		# This whole next part is entirely built around setting up evolution conditions,
 		# we'll do this section twice in order to account for parallel evolutions.
@@ -38,7 +39,7 @@ func _fillPetData():
 		# that needs to be done to enter that: [condition group number]-AND/OR+Stat Value
 		# to parse this, I'm going to create a dict of arrays that will contain lines to be parsed
 		# each group representing one condition with the first element being the "default" one
-		petData.evolutionConditions.clear()
+		petData.evolutionConditions = []
 		var groups : Dictionary[String, Array]
 		groups[""] = []
 		
@@ -47,7 +48,6 @@ func _fillPetData():
 			if (petDataList[count] == "" or petDataList[count] == "N/A"):
 				count += 1
 				continue
-			print(petDataList[0])
 			var statString
 			match count:
 				4:
@@ -141,15 +141,17 @@ func _fillPetData():
 			if (condition.conditionLogic == EvolutionCondition.LogicalConditionals.AND):
 				andConditions.append(condition)
 			else:
+				print(condition)
 				petData.evolutionConditions.append(condition)
 		
 		for condition in andConditions:
+			print(condition)
 			petData.evolutionConditions.append(condition)
 		#endregion
 		
 		#region Parallel Conditions
 		# repeating the ENTIRE process to account for parallel Evolution Conditions	14-23
-		petData.parallelConditions.clear()
+		petData.parallelConditions = []
 		groups = {}
 		groups[""] = []
 		
@@ -252,21 +254,25 @@ func _fillPetData():
 			if (condition.conditionLogic == EvolutionCondition.LogicalConditionals.AND):
 				andConditions.append(condition)
 			else:
+				print("PARALLEL: ", condition)
 				petData.parallelConditions.append(condition)
 		
 		for condition in andConditions:
+			print("PARALLEL ", condition)
 			petData.parallelConditions.append(condition)
 	
 	#endregion
 	# Now finally we do evolutions now that we've ensured that all pets from list
 	# have been added, to account for parallel evolutions we'll also need to seperate "|"
+	print("======================= starting Evoltions ===============")
 	for line in lines:
 		if line == "":
 			continue
 		var petDataList : PackedStringArray = line.split("\t")
 		var petData = _getResourceFromName(petDataList[0], petDataList[1])
-		petData.evolutions.clear()
-		petData.parallelEvolutions.clear()
+		print("========================", petDataList[1], " ", petData.name , " raw evo data: ", petDataList[3], " ===============")
+		petData.evolutions = []
+		petData.parallelEvolutions = []
 		
 		if petDataList[3] != "":
 			var evolutionString = petDataList[3]
@@ -276,13 +282,13 @@ func _fillPetData():
 				parallelString = petDataList[3].split("|")[1]
 			
 			for evolutionName in evolutionString.split(","):
-				print("evo: ",_getResourceFromName(evolutionName, str(petData.stage + 1)))
-				petData.evolutions.append(_getResourceFromName(evolutionName, str(petData.stage + 1)))
+				print("evo: ", evolutionName, "-", int(petDataList[1]) + 1, _getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
+				petData.evolutions.append(_getResourceFromName(evolutionName, str(int(petDataList[1]) + 1)))
 			if parallelString != "":
 				for evolutionName in parallelString.split(","):
-					print("parallel evo: ",_getResourceFromName(evolutionName, str(petData.stage + 1)))
-					petData.parallelEvolutions.append(_getResourceFromName(evolutionName, str(petData.stage + 1)))
-		ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + str(petData.stage) + "/" + _getResourceFileNameFromName(petData.name, str(petData.stage)))
+					print("parallel evo: ", evolutionName, "-", petDataList[1], _getResourceFromName(evolutionName, petDataList[1]))
+					petData.parallelEvolutions.append(_getResourceFromName(evolutionName, petDataList[1]))
+		ResourceSaver.save(petData, _petDataFilePathRoot + "stage_" + petDataList[1] + "/" + _getResourceFileNameFromName(petData.name, petDataList[1]))
 	
 	
 	print("Pet Data Import Complete")

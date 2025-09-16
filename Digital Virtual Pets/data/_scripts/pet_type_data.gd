@@ -23,7 +23,7 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 @export var parallelConditions : Array[EvolutionCondition]
 
 @export_category("Bio Info")
-@export var encyclopediaEntry : String
+@export var encyclopediaEntry : String = ""
 
 
 func getNextEvolution(pet : Pet) -> Resource:
@@ -107,7 +107,7 @@ func getFormattedEvolutionConditions() -> String:
 			else:
 				returnString += str(condition) + "\n"
 	
-	if (returnString.contains("\n")):
+	if (returnString.rfind("\n") > -1):
 		returnString = returnString.erase(returnString.rfind("\n"))
 	
 	if returnString == "":

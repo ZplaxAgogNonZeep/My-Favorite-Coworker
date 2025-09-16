@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://udywtbcwhuj1"]
+[gd_scene load_steps=90 format=3 uid="uid://udywtbcwhuj1"]
 
 [ext_resource type="Script" uid="uid://du1sb26rpgork" path="res://device/Device.gd" id="1_5u0yl"]
 [ext_resource type="PackedScene" uid="uid://bxgg1k0vh82t6" path="res://device/link_device_sprite.tscn" id="2_2w885"]
@@ -47,12 +47,15 @@
 [ext_resource type="Texture2D" uid="uid://cuilt6sx6tajo" path="res://assets/art/aesprite/minigame_assets/menu_arrow.png" id="32_qkux3"]
 [ext_resource type="Texture2D" uid="uid://cdcl22usg34t5" path="res://assets/art/aesprite/minigame_assets/hammer_sheet.png" id="33_5xc8b"]
 [ext_resource type="PackedScene" uid="uid://cjw6oamscwe62" path="res://pets/pet.tscn" id="33_lyjso"]
-[ext_resource type="Resource" uid="uid://c5hcs487cgau8" path="res://data/pet_resources/stage_0/buh_egg.tres" id="34_cijat"]
 [ext_resource type="Texture2D" uid="uid://duv117bxtsfny" path="res://assets/art/aesprite/minigame_assets/steam-Sheet.png" id="34_g2vwl"]
 [ext_resource type="Script" uid="uid://fkrivjuc8tmt" path="res://pets/pet_evolve_sequence.gd" id="35_071hk"]
 [ext_resource type="Texture2D" uid="uid://de2edkvkqk5gw" path="res://assets/art/aesprite/minigame_assets/hurdle.png" id="35_ofcv6"]
 [ext_resource type="Texture2D" uid="uid://cw7561cewgy03" path="res://assets/art/aesprite/minigame_assets/fishing_rod.png" id="36_myr8s"]
 [ext_resource type="Script" uid="uid://6pinamjty1l" path="res://device/evolve_menu.gd" id="46_v38ai"]
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="52_k7vqq"]
+[ext_resource type="Resource" uid="uid://dlx2fxo8jrc10" path="res://data/pet_resources/stage_1/buh.tres" id="53_t3ton"]
+[ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="54_dg2vs"]
+[ext_resource type="SpriteFrames" uid="uid://noxh6ocgu6nu" path="res://assets/animation_frames/pets/stage0/buh_egg.tres" id="55_0gch6"]
 
 [sub_resource type="Animation" id="Animation_7tnq8"]
 resource_name = "maximize_device"
@@ -410,6 +413,46 @@ animations = [{
 "name": &"default",
 "speed": 3.0
 }]
+
+[sub_resource type="Resource" id="Resource_cwsi5"]
+script = ExtResource("52_k7vqq")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = 10
+BAL = 13
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([])
+
+[sub_resource type="Resource" id="Resource_5qrur"]
+script = ExtResource("52_k7vqq")
+conditionLogic = 1
+POW = -1
+END = -1
+SPD = -1
+BAL = -1
+TraumaGreater = -1
+TraumaLesser = -1
+TraumaEqual = -1
+Personality = -1
+statTotal = -1
+conditions = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_fqxdl"]
+script = ExtResource("54_dg2vs")
+name = "BuhEgg"
+spriteFrames = ExtResource("55_0gch6")
+stage = 0
+waitIntervals = Vector2(0, 0)
+evolutions = Array[Resource]([ExtResource("53_t3ton")])
+parallelEvolutions = Array[ExtResource("54_dg2vs")]([null, null])
+evolutionConditions = Array[ExtResource("52_k7vqq")]([SubResource("Resource_cwsi5")])
+parallelConditions = Array[ExtResource("52_k7vqq")]([SubResource("Resource_5qrur")])
+encyclopediaEntry = "The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime."
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6jpmp"]
 radius = 2.0
@@ -1092,7 +1135,7 @@ rightBoundry = NodePath("Markers/RightBoundry")
 animationManager = NodePath("EvolvingPet/AnimationPlayer")
 respawnPet = ExtResource("33_lyjso")
 petSpawnPoint = NodePath("Markers/PetSpawnPoint")
-petStartResource = ExtResource("34_cijat")
+petStartResource = SubResource("Resource_fqxdl")
 _evolvingPet = NodePath("EvolvingPet")
 _evolveSequenceRate = 1.05
 

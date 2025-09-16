@@ -29,5 +29,7 @@ yap = ExtResource("4_mphy6")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_mc7a4"), ExtResource("3_mc7a4")])
+parallelEvolutions = Array[ExtResource("2_4bqmy")]([])
 evolutionConditions = Array[ExtResource("1_mc7a4")]([SubResource("Resource_mc7a4")])
+parallelConditions = Array[ExtResource("1_mc7a4")]([])
 encyclopediaEntry = "Oh you woeful creature…"

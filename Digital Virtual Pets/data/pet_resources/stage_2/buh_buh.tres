@@ -29,5 +29,7 @@ yap = ExtResource("4_yb00c")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("1_lqf5w"), ExtResource("3_1lxil")])
+parallelEvolutions = Array[ExtResource("2_j7l4c")]([])
 evolutionConditions = Array[ExtResource("1_1lxil")]([SubResource("Resource_1lxil")])
+parallelConditions = Array[ExtResource("1_1lxil")]([])
 encyclopediaEntry = "A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!"

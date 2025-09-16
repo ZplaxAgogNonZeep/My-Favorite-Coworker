@@ -12,5 +12,7 @@ spriteFrames = ExtResource("2_flmyc")
 stage = 0
 waitIntervals = Vector2(0, 0)
 evolutions = Array[Resource]([ExtResource("1_s8doy")])
+parallelEvolutions = Array[ExtResource("1_8c1qq")]([])
 evolutionConditions = Array[ExtResource("1_vq3lx")]([])
+parallelConditions = Array[ExtResource("1_vq3lx")]([])
 encyclopediaEntry = "The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime."

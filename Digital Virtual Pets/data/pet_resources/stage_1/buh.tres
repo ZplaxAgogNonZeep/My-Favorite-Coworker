@@ -15,5 +15,7 @@ yap = ExtResource("5_sedsm")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_sedsm"), ExtResource("3_p5uas")])
+parallelEvolutions = Array[ExtResource("3_y4khj")]([])
 evolutionConditions = Array[ExtResource("1_p5uas")]([])
+parallelConditions = Array[ExtResource("1_p5uas")]([])
 encyclopediaEntry = "A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports."

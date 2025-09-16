@@ -1,16 +1,26 @@
-BuhEgg	0	The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime.	Buh							N/A	N/A	N/A	N/A
-Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh							N/A	N/A	N/A	N/A
-BuhBuh	2	A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!	HeroBuh,NuhUhBuh			8	12			N/A	N/A	N/A	N/A
-NuhBuh	2	Oh you woeful creature…	NuhUhBuh,BanchoBub					15	>0	N/A	N/A	N/A	N/A
-HeroBuh	3	HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!				20	30		=0	N/A	N/A	N/A	N/A
-NuhUhBuh	3	When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence.						45	<2	N/A	N/A	N/A	N/A
-BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential.		33	22					N/A	N/A	N/A	N/A
-KittyEgg	0		Mew							N/A	N/A	N/A	N/A
-Mew	1		MeMew,PawMew,MeYow							N/A	N/A	N/A	N/A
-MeMew	2		PrincessMew,MeeMahMew	1-OR+11			1-OR+9	2-OR+25	2-OR+=0	N/A	N/A	N/A	N/A
-PawMew	2		MeeMahMew,PewPewMew					20		N/A	N/A	N/A	N/A
-MeYow	2		NoMeYow			3-OR+15			1-OR+>2	2-OR+Any Condition	N/A	N/A	N/A
-PrincessMew	3			15			30		=0	N/A	N/A	N/A	N/A
-MeeMahMew	3							50		N/A	N/A	N/A	N/A
-PewPewMew	3					37	10			N/A	N/A	N/A	N/A
-NoMeYow	3				1-OR+25	1-OR+20				2-OR+Anxious	N/A	N/A	N/A
+BuhEgg	0	The neatest bundle of joy. Nurture him in the corner of your screen and you'll get the friend of a lifetime.	Buh							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+Buh	1	A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports.	BuhBuh,NuhBuh							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+BuhBuh	2	A dramatic mon - weeping for joy, anger, sadness. A burning passion that urns to tears drives this companion on!	HeroBuh,NuhUhBuh			8	12			N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+NuhBuh	2	Oh you woeful creature…	NuhUhBuh,BanchoBub					15	>0	N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+HeroBuh	3	HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!				20	30		=0	N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+NuhUhBuh	3	When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence.						45	<2	N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+BanchoBub	3	The penultimate form of Buh. Conquering his fear, his cowardice and his blind optimism this mighty Buh adopts spitfire young mons to harness their true and raw potential.		33	22					N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+KittyEgg	0	Curious and sweet. Keep track of her, she's eager to learn from you.	Mew							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+Mew	1	An adorable little sweetiepie! Ever curious, ever learning, she'll follow you everywhere you go!	MeMew,PawMew,MeYow							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+MeMew	2	All your attention and love has made your pet a little... demanding. She shouts for attention and care and love.	PrincessMew,MeeMahMew	1-OR+11			1-OR+9	2-OR+25	2-OR+=0	N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+PawMew	2	Insatiably curious, PawMew isn't satisfied until she's hit, shoved, or batted everything in sight with her long paws.	MeeMahMew,PewPewMew					20		N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+MeYow	2	MeYow's struggles and trauma has left her skittish and shy. She'll hide away for days at a time.	NoMeYow			3-OR+15			1-OR+>2	2-OR+Any Condition	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+PrincessMew	3	Pampered and loved, PrincessMew has never felt the pang of hunger or the touch of bordem. When she calls, you'd better come running.		15			30		=0	N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+MeeMahMew	3	A Mew that has lived a very long and loved life. She sits idly, remembering the good times with you.						50		N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+PewPewMew	3	An Independent rogue. She wanders the world, tetherless. None have the strength to tame her.				37	10			N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+NoMeYow	3	One day, MeYow was gone. Not hiding, just gone.			1-OR+25	1-OR+20				2-OR+Anxious	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+ToyEgg	0	A strange ticking, soft shaking... Your new best friend is being made. what kind of friend will they become?	Bling							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+ToyBuh	1	Hatch your very own friend! Now in plush form. To-Scale &  Life-Sized, now with Buh accurate scent beads sewn in every limb. Now available for $129.87	ToyBuhBuh							N/A	N/A	N/A	N/A							Overfed	Overstimulated	N/A	N/A
+Bling	1	A simple beetle toy. Unsold, as the idea of an ebony inlay, red lacquered oak windup toy didn't excite parents.	DuckTron|ToyBuh,Mi							N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+Mi	1	The modern version of the pet rock! Put it in your bedroom for maximum effect.	MiMi							N/A	N/A	N/A	N/A							Hungry	Bored	N/A	N/A
+ToyBuhBuh	2	This sad little friend has earned himself a fidget toy! pull his string and watch him scuttle!	ToyHeroBuh			10	13			N/A	N/A	N/A	N/A							1-OR+Overfed	2-OR+Overstimulated	N/A	N/A
+DuckTron	2	Put a mechanical brain in a duck body? Adorable. Until the little pegboard brain turned evil.	FrogAPult|ToyBuhBuh,MiMi		1-OR+5		1-OR+10	2-OR+30		N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+MiMi	2	Wow! It grew from living with you! Make sure to keep it handy to get closer.	MiMiMmi		17					N/A	N/A	N/A	N/A							1-OR+Hungry	2-OR+Bored	N/A	N/A
+ToyHeroBuh	3	This 1:16th size 18" tall HeroBuh figure comes with 8 points of articulation and karate chop action!				25	33			N/A	N/A	N/A	N/A						<2	N/A	N/A	N/A	N/A
+FrogAPult	3	Built as your new frog pet, a top-of-the-line motor made it's tongue a weapon and dangerous to kids.	|ToyHeroBuh,MiMiMmi	1-OR+10		1-OR+20		2-OR+45		N/A	N/A	N/A	N/A							N/A	N/A	N/A	N/A
+MiMiMmi	3	... I-I think it's singing...			40					N/A	N/A	N/A	N/A						>3	N/A	N/A	N/A	N/A

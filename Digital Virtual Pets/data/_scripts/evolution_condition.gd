@@ -160,5 +160,8 @@ func toFormattedString(statRecord : Array, statusRecord : Array) -> String:
 		
 	if (returnString.rfind("\n") > -1):
 		returnString = returnString.erase(returnString.rfind("\n"))
-	print("'", returnString, "'")
+	
+	if (returnString == ""):
+		returnString = "EMPTY EVO CONDITION"
+	
 	return returnString

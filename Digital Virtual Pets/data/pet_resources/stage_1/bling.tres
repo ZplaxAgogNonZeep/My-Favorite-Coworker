@@ -1,16 +1,76 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=7 format=3 uid="uid://npuwf0827xnl"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://npuwf0827xnl"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_umdoi"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_j0bsp"]
 [ext_resource type="Resource" uid="uid://dq05sgeq0nqav" path="res://data/pet_resources/stage_2/ducktron.tres" id="2_umdoi"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_3wgjj"]
 [ext_resource type="Resource" uid="uid://d2mhew1pvm07k" path="res://data/pet_resources/stage_1/toybuh.tres" id="4_cao08"]
 [ext_resource type="Resource" uid="uid://deajvgriu68p1" path="res://data/pet_resources/stage_1/mi.tres" id="5_ibudv"]
+[ext_resource type="Texture2D" uid="uid://c2xp1irb884li" path="res://assets/art/aesprite/_pets/stage1/bling_sheet.png" id="6_umdoi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cao08"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibudv"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eaina"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap440"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ci0q"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kedxu"]
+atlas = ExtResource("6_umdoi")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umk7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cao08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibudv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eaina")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap440")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ci0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kedxu")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("2_j0bsp")
 name = "Bling"
-spriteFrames = ExtResource("3_3wgjj")
+spriteFrames = SubResource("SpriteFrames_umk7t")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_umdoi")])

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://01wiebqbk270"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=15 format=3 uid="uid://01wiebqbk270"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ru8ur"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_3f387"]
 [ext_resource type="Resource" uid="uid://igsu7u1x3wrq" path="res://data/pet_resources/stage_3/toyherobuh.tres" id="2_8kvis"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_8kvis"]
 [ext_resource type="Resource" uid="uid://c2ugn8gq67ugm" path="res://data/pet_resources/stage_3/mimimmi.tres" id="3_631eq"]
+[ext_resource type="Texture2D" uid="uid://dlxyfykwklomr" path="res://assets/art/aesprite/_pets/stage3/frogapult_sheet.png" id="5_8kvis"]
 
 [sub_resource type="Resource" id="Resource_8kvis"]
 script = ExtResource("1_ru8ur")
@@ -34,10 +34,70 @@ Personality = -1
 statTotal = 45
 conditions = Array[int]([])
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_631eq"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr3no"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8e80r"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nddol"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bes8"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duu2p"]
+atlas = ExtResource("5_8kvis")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r6ill"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_631eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xr3no")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8e80r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nddol")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bes8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duu2p")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
 [resource]
 script = ExtResource("2_3f387")
 name = "FrogAPult"
-spriteFrames = ExtResource("3_8kvis")
+spriteFrames = SubResource("SpriteFrames_r6ill")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])

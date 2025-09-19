@@ -1,14 +1,36 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=5 format=3 uid="uid://bk8g7v1r02kkk"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=8 format=3 uid="uid://bk8g7v1r02kkk"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_u3dw7"]
 [ext_resource type="Resource" uid="uid://npuwf0827xnl" path="res://data/pet_resources/stage_1/bling.tres" id="2_c6fy5"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_u3dw7"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_c6fy5"]
+[ext_resource type="Texture2D" uid="uid://v2xhfft8mbln" path="res://assets/art/aesprite/_pets/egg/toyegg_sheet.png" id="4_u3dw7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6fy5"]
+atlas = ExtResource("4_u3dw7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mxpi"]
+atlas = ExtResource("4_u3dw7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1qfv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6fy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mxpi")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}]
 
 [resource]
 script = ExtResource("2_u3dw7")
 name = "ToyEgg"
-spriteFrames = ExtResource("3_c6fy5")
+spriteFrames = SubResource("SpriteFrames_w1qfv")
 stage = 0
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_c6fy5")])

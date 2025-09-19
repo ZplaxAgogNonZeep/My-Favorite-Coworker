@@ -200,8 +200,11 @@ func evolvePet(evolveTarget: PetTypeData):
 	# check for achievements
 	if (activePet.petResource.stage > 0):
 		AchievementManager.setAchievementFlag("EvolveAchiev1")
+		#TODO: Get rid of this later please UwU
 		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
 			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
+		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))):
+			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
 	if (activePet.petResource.stage > 1):
 		AchievementManager.setAchievementFlag("EvolveAchiev2")
 	if (activePet.petResource.stage > 2):

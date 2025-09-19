@@ -108,7 +108,7 @@ func getFormattedEvolutionConditions() -> String:
 				returnString += str(condition) + "\n"
 	
 	if (parallelConditions.size() > 0):
-		returnString += "Parallel Evolution Conditions:"
+		returnString += "Parallel Evolution Conditions:\n"
 		var skip = true
 		for condition : EvolutionCondition in parallelConditions:
 			if !skip:
@@ -120,13 +120,16 @@ func getFormattedEvolutionConditions() -> String:
 						returnString += "And\n"
 			
 			if (PetManager.instance != null):
-				returnString += condition.toFormattedString(PetManager.instance.getStatRecord(self), PetManager.instance.getStatusRecord(self)) + "\n"
+				returnString += condition.toFormattedString(PetManager.instance.getStatRecord(self), 
+														PetManager.instance.getStatusRecord(self)) + "\n"
 			else:
 				returnString += str(condition) + "\n"
 	
 	if (returnString.rfind("\n") > -1):
 		returnString = returnString.erase(returnString.rfind("\n"))
 	
+	
 	if returnString == "":
 		returnString = "No Evolution Conditions"
+
 	return returnString

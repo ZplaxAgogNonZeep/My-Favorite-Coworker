@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=9 format=3 uid="uid://dq05sgeq0nqav"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=16 format=3 uid="uid://dq05sgeq0nqav"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ku8pv"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_hcvgk"]
 [ext_resource type="Resource" uid="uid://01wiebqbk270" path="res://data/pet_resources/stage_3/frogapult.tres" id="2_xfhvs"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_0xc6w"]
 [ext_resource type="Resource" uid="uid://c2wvhej177454" path="res://data/pet_resources/stage_2/toybuhbuh.tres" id="3_gpc02"]
 [ext_resource type="Resource" uid="uid://csgqsrmotrcae" path="res://data/pet_resources/stage_2/mimi.tres" id="4_vvwwd"]
+[ext_resource type="Texture2D" uid="uid://bljhj88cmsb53" path="res://assets/art/aesprite/_pets/stage2/ducktron_sheet.png" id="6_xfhvs"]
 
 [sub_resource type="Resource" id="Resource_xfhvs"]
 script = ExtResource("1_ku8pv")
@@ -35,10 +35,70 @@ Personality = -1
 statTotal = 30
 conditions = Array[int]([])
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpc02"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvwwd"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eqe4"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebvej"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puuow"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(0, 40, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeo2h"]
+atlas = ExtResource("6_xfhvs")
+region = Rect2(20, 40, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7dd6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpc02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvwwd")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eqe4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebvej")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puuow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeo2h")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
 [resource]
 script = ExtResource("2_hcvgk")
 name = "DuckTron"
-spriteFrames = ExtResource("3_0xc6w")
+spriteFrames = SubResource("SpriteFrames_c7dd6")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_xfhvs")])

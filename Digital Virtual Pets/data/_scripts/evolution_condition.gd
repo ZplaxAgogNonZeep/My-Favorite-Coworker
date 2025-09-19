@@ -156,9 +156,9 @@ func toFormattedString(statRecord : Array, statusRecord : Array) -> String:
 			if (statusRecord.has(int(condition))):
 				returnString += StatusCondition.keys()[condition].to_pascal_case() + "\n"
 			else:
-				returnString += "Care Mistake: ???" + StatusCondition.keys()[condition].to_pascal_case() + "\n"
+				returnString += "Care Mistake: ???\n"
 		
 	if (returnString.rfind("\n") > -1):
 		returnString = returnString.erase(returnString.rfind("\n"))
-	
+	print("'", returnString, "'")
 	return returnString

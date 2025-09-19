@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://deajvgriu68p1"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://deajvgriu68p1"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_7j36j"]
 [ext_resource type="Resource" uid="uid://csgqsrmotrcae" path="res://data/pet_resources/stage_2/mimi.tres" id="2_3v28u"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_pw8vr"]
-[ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="3_3v28u"]
+[ext_resource type="Texture2D" uid="uid://bno08p2q7emeg" path="res://assets/art/aesprite/_pets/stage1/mi_sheet.png" id="4_pw8vr"]
 
 [sub_resource type="Resource" id="Resource_pw8vr"]
 script = ExtResource("1_7j36j")
@@ -19,10 +19,70 @@ Personality = -1
 statTotal = -1
 conditions = Array[int]([2])
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v28u"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bwju"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj308"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3xce"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c0rv"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdg3"]
+atlas = ExtResource("4_pw8vr")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nygtp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v28u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bwju")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj308")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3xce")
+}],
+"loop": true,
+"name": &"Quirk",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c0rv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdg3")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 3.0
+}]
+
 [resource]
 script = ExtResource("2_pw8vr")
 name = "Mi"
-spriteFrames = ExtResource("3_3v28u")
+spriteFrames = SubResource("SpriteFrames_nygtp")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_3v28u")])

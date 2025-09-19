@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://c5mrxvhxbul13"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=7 format=3 uid="uid://c5mrxvhxbul13"]
 
+[ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_p5uas"]
 [ext_resource type="Resource" uid="uid://dmh0m64wchvdu" path="res://data/pet_resources/stage_2/buh_buh.tres" id="2_sedsm"]
 [ext_resource type="Resource" uid="uid://b5kj7phmtebca" path="res://data/pet_resources/stage_2/nuh_buh.tres" id="3_p5uas"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="3_y4khj"]
@@ -13,8 +14,8 @@ spriteFrames = ExtResource("4_td4rf")
 yap = ExtResource("5_sedsm")
 stage = 1
 waitIntervals = Vector2(3, 10)
-evolutions = [ExtResource("2_sedsm"), ExtResource("3_p5uas")]
-parallelEvolutions = []
-evolutionConditions = []
-parallelConditions = []
+evolutions = Array[Resource]([ExtResource("2_sedsm"), ExtResource("3_p5uas")])
+parallelEvolutions = Array[ExtResource("3_y4khj")]([])
+evolutionConditions = Array[ExtResource("1_p5uas")]([])
+parallelConditions = Array[ExtResource("1_p5uas")]([])
 encyclopediaEntry = "A veritable best friend and docile ally. The perfect point for any beginner - an endless font of positivity for long nights of studying and reports."

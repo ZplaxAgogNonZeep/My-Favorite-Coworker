@@ -86,7 +86,6 @@ func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, give
 	
 	# Load pet data from slots if applicable, otherwise use current slot, all else
 	# fails it will create a brand new one
-	# TODO: Update this for egg selection
 	if (_petSlots.size() <= 0):
 		_petSlots.append({})
 		_slotIndex = 0
@@ -200,11 +199,10 @@ func evolvePet(evolveTarget: PetTypeData):
 	# check for achievements
 	if (activePet.petResource.stage > 0):
 		AchievementManager.setAchievementFlag("EvolveAchiev1")
-		#TODO: Get rid of this later please UwU
-		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
-			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
-		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))):
-			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
+		#if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
+			#GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
+		#if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))):
+			#GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
 	if (activePet.petResource.stage > 1):
 		AchievementManager.setAchievementFlag("EvolveAchiev2")
 	if (activePet.petResource.stage > 2):
@@ -286,7 +284,6 @@ func loadPetDataFromSlot(index : int) -> Pet.PetSaveData:
 	return data
 
 func _encounterNewPet(petData : PetTypeData) -> void:
-	#TODO: Probably track achievements or something
 	_encounteredPets[petData.name] = petData
 
 ## Takes the stats from a pet and compares every element to the [param _statRecord] to see if it
@@ -339,7 +336,6 @@ func getStatusRecord(petData : PetTypeData) -> Array:
 
 func _unlockNewEgg(eggData : PetTypeData) -> void:
 	if (!_availableEggs.has(eggData)):
-		#TODO: Achievement Tracking
 		_encounterNewPet(eggData)
 		_availableEggs.append(eggData)
 

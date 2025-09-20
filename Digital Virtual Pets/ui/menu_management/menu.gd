@@ -43,7 +43,6 @@ func openMenu(direct := false):
 
 
 func closeMenu():
-	#TODO: Add a system for tracking what menus that are open want the game paused
 	_saveMenuSettings()
 	if !animator.has_animation(_animationLibrary +"/close"):
 		animator.play("open", -1, -1, true)

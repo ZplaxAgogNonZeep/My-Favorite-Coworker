@@ -30,7 +30,6 @@ var masterVolume : float = .5
 var deviceVolume : float = 1.0
 var gameVolume : float = 1.0
 ## Ints
-#TODO: Make sure this is implemented and the definitive way to check game scale
 var gameScale := 2
 var monitorSetTo := 0
 var frameCapSetTo := 60

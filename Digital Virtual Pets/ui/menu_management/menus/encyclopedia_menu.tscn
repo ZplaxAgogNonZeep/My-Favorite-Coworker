@@ -209,6 +209,7 @@ _testResource = ExtResource("7_7gjff")
 _petIconScene = ExtResource("8_w4ghv")
 _nodeSpacing = Vector2(55, 10)
 _horizontalSpacer = 10.0
+_parallelLineColor = Color(1, 0.13, 0.13, 0.219608)
 
 [node name="Bio" type="Control" parent="Window/PanelControl/MenuWindow"]
 layout_mode = 1

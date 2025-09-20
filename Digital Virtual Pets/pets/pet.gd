@@ -18,6 +18,7 @@ class PetSaveData extends SaveData.SavableClass:
 	var hasReceivedPerfectTreatment
 	var hasAlwaysBeenFast
 	var hasAlwaysBeenSlow
+	var hasParallelEvolved
 
 signal UpdateStatusBars(hungerValue, joyValue)
 signal UpdateStatRecord(petData : PetTypeData, evoStatArray : Array, statusHistory : Array[StatusCondition])
@@ -102,6 +103,7 @@ var _behaviorPaused := false
 var hasReceivedPerfectTreatment := true
 var hasAlwaysBeenFast := true
 var hasAlwaysBeenSlow := true
+var hasParallelEvolved := false
 
 func _ready():
 	GameEvents.TickHunger.connect(tickHunger)

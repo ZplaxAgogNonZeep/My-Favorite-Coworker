@@ -27,11 +27,39 @@ const COLLISION_OFFSETS : Array[float] = [0, 4, 10, 12]
 
 
 func getNextEvolution(pet : Pet) -> Resource:
+	if (!pet.hasParallelEvolved):
+		for evolution in parallelEvolutions:
+			if (evolution.checkParallelConditions(pet)):
+				return evolution
+	
 	for evolution : PetTypeData in evolutions:
 		if (evolution.checkEvolutionConditions(pet)):
 			return evolution
 		
 	return null
+
+
+func checkParallelConditions(pet : Pet) -> bool:
+	var andConditionMet = true
+	var orConditionMet = true
+	var orResults = []
+	var andResults = []
+	for condition : EvolutionCondition in parallelConditions:
+		match condition.conditionLogic:
+			EvolutionCondition.LogicalConditionals.AND:
+				orResults.append(condition.checkConditionMet(pet))
+			EvolutionCondition.LogicalConditionals.OR:
+				andResults.append(condition.checkConditionMet(pet))
+	
+	if (orResults.size() > 0):
+		if (!orResults.has(true)):
+			orConditionMet = false
+	
+	if (andResults.size() > 0):
+		if (andResults.has(false)):
+			andConditionMet = false
+	
+	return andConditionMet and orConditionMet
 
 
 func checkEvolutionConditions(pet : Pet) -> bool:

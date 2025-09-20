@@ -303,6 +303,18 @@ func _updateStatRecord(petData : PetTypeData, evoStats : Array, statusHistory : 
 		for status in statusHistory:
 			if (!_statusRecords[evolution].has(int(status))):
 				_statusRecords[evolution].append(int(status))
+	
+	for evolution : PetTypeData in petData.parallelEvolutions:
+		if (!_statRecords.has(evolution)):
+			_statRecords[evolution] = [0,0,0,0,0,0]
+		if (!_statusRecords.has(evolution)):
+			_statusRecords[evolution] = []
+		for x in range(evoStats.size()):
+			if (evoStats[x] > _statRecords[evolution][x]):
+				_statRecords[evolution][x] = evoStats[x]
+		for status in statusHistory:
+			if (!_statusRecords[evolution].has(int(status))):
+				_statusRecords[evolution].append(int(status))
 
 
 ## Gets the stat record for the given pet type. Returns a list of stats in the 

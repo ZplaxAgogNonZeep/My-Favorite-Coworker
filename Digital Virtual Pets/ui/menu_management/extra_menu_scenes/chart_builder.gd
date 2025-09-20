@@ -12,6 +12,7 @@ signal FillBioData(petData : PetTypeData)
 @export_category("Settings")
 @export var _nodeSpacing : Vector2
 @export var _horizontalSpacer : float
+@export var _parallelLineColor : Color
 
 ## Takes [param eggData] and extrapolates a Linked List of evolutions from it.
 ## The linked list is then used to generate a horizontal tree graph. Each node in the tree should be
@@ -155,8 +156,8 @@ func generateTree(eggData : PetTypeData, encounteredPets : Dictionary[String, Pe
 		var count = 0
 		for parallelEvo in child.petData.parallelEvolutions:
 			var newLine = Line2D.new()
-			newLine.default_color = Color.RED
-			newLine.width = 2
+			newLine.default_color = _parallelLineColor
+			newLine.width = 10
 			if (count == 0):
 				newLine.add_point(child.getParallelMarker(true))
 				newLine.add_point(getNodeByResource(container, parallelEvo).getParallelMarker(false))

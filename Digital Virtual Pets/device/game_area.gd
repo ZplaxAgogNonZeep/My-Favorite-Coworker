@@ -39,9 +39,9 @@ func _ready():
 
 
 #TODO: Remove Evolution Debug Function
-#func _unhandled_input(event):
-	#if Input.is_action_just_pressed("Debug"):
-		#_evolveCheck()
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("Debug"):
+		_evolveCheck()
 
 
 func startGame():

@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://cvwdxdbov28or" path="res://data/pet_resources/stage_3/nuh_uh_buh.tres" id="2_mc7a4"]
 [ext_resource type="Resource" uid="uid://bn7hde2gbjbfd" path="res://data/pet_resources/stage_3/bancho_buh.tres" id="3_mc7a4"]
 [ext_resource type="SpriteFrames" uid="uid://byjpb8rxwl8gl" path="res://assets/animation_frames/pets/stage2/nuh_buh_frames.tres" id="3_rstqr"]
-[ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="4_mphy6"]
+[ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/pet_groups/bark.tres" id="4_mphy6"]
 
 [sub_resource type="Resource" id="Resource_mc7a4"]
 script = ExtResource("1_mc7a4")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=4 format=3 uid="uid://ba60sv34t50cu"]
+
+[ext_resource type="AudioStream" uid="uid://ceqerjxkk56rp" path="res://assets/audio/mew_mew0.wav" id="1_uq3fc"]
+[ext_resource type="AudioStream" uid="uid://fkl5g7si4hdf" path="res://assets/audio/mew_mew1.wav" id="2_7hgmv"]
+[ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="3_gmg6k"]
+
+[resource]
+script = ExtResource("3_gmg6k")
+_audioStreams = Array[AudioStream]([ExtResource("1_uq3fc"), ExtResource("2_7hgmv")])
+bus = 2
+metadata/_custom_type_script = "uid://dn74yoyxw6eax"

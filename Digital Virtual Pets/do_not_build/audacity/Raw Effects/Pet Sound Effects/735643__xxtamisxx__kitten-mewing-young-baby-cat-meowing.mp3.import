@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bcld53la2v0n7"
+path="res://.godot/imported/735643__xxtamisxx__kitten-mewing-young-baby-cat-meowing.mp3-63a54e7eaf87134e8e006c13fd09c60f.mp3str"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/Pet Sound Effects/735643__xxtamisxx__kitten-mewing-young-baby-cat-meowing.mp3"
+dest_files=["res://.godot/imported/735643__xxtamisxx__kitten-mewing-young-baby-cat-meowing.mp3-63a54e7eaf87134e8e006c13fd09c60f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

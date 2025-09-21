@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://qdlkmmp80pan"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=15 format=3 uid="uid://qdlkmmp80pan"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_menm4"]
 [ext_resource type="Resource" uid="uid://63k4yef015es" path="res://data/pet_resources/stage_2/memew.tres" id="2_menm4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c7q8shx55fovd" path="res://assets/art/aesprite/_pets/stage1/mew-Sheet.png" id="3_vevf6"]
 [ext_resource type="Resource" uid="uid://dkuhyneg1kgqg" path="res://data/pet_resources/stage_2/pawmew.tres" id="3_xk3r6"]
 [ext_resource type="Resource" uid="uid://6p35jd4jh4mt" path="res://data/pet_resources/stage_2/meyow.tres" id="4_rytxd"]
+[ext_resource type="Resource" uid="uid://ba60sv34t50cu" path="res://data/sound_grouping/pet_groups/meow.tres" id="7_xk3r6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otbfa"]
 atlas = ExtResource("3_vevf6")
@@ -71,6 +72,7 @@ animations = [{
 script = ExtResource("2_otbfa")
 name = "Mew"
 spriteFrames = SubResource("SpriteFrames_cedc8")
+yap = ExtResource("7_xk3r6")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_menm4"), ExtResource("3_xk3r6"), ExtResource("4_rytxd")])

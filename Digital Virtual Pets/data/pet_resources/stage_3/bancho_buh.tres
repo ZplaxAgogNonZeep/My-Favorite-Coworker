@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1m0d0"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_2cjim"]
 [ext_resource type="SpriteFrames" uid="uid://domfvi45crybh" path="res://assets/animation_frames/pets/stage3/bancho_bub_frames.tres" id="3_1m0d0"]
-[ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/bark.tres" id="3_ke3x7"]
+[ext_resource type="Resource" uid="uid://b2wbw7jts8lf2" path="res://data/sound_grouping/pet_groups/bark.tres" id="3_ke3x7"]
 
 [sub_resource type="Resource" id="Resource_1m0d0"]
 script = ExtResource("1_1m0d0")

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://dfwspalol2eb5"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://dfwspalol2eb5"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_1c50q"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_a65yk"]
 [ext_resource type="Texture2D" uid="uid://c61kq46nyfsr" path="res://assets/art/aesprite/_pets/stage3/princessmew_sheet.png" id="3_1c50q"]
+[ext_resource type="Resource" uid="uid://ba60sv34t50cu" path="res://data/sound_grouping/pet_groups/meow.tres" id="4_a65yk"]
 
 [sub_resource type="Resource" id="Resource_1c50q"]
 script = ExtResource("1_1c50q")
@@ -96,6 +97,7 @@ animations = [{
 script = ExtResource("2_a65yk")
 name = "PrincessMew"
 spriteFrames = SubResource("SpriteFrames_64w7k")
+yap = ExtResource("4_a65yk")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])

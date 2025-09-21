@@ -21,6 +21,7 @@ func initializeMenu():
 	state = PlayState.MENU
 	visible = true
 	#Settings.pauseGame(true)
+	GameEvents.PauseTimers.emit()
 	#buttonController.setActive(true)
 	for page in _gamePageList:
 		page.visible = false
@@ -35,6 +36,7 @@ func exitMenu():
 	visible = false
 	game = null
 	#buttonController.setActive(false)
+	GameEvents.UnpauseTimers.emit()
 	GameEvents.HopDeviceOnce.emit()
 	GameEvents.HopDeviceOnce.emit()
 	#Settings.pauseGame(false)

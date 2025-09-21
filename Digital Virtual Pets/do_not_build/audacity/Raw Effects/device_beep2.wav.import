@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://caojyhpkwc2qt"
+path="res://.godot/imported/device_beep2.wav-20eac6b95276c0a4aca8c4561c53889e.sample"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/device_beep2.wav"
+dest_files=["res://.godot/imported/device_beep2.wav-20eac6b95276c0a4aca8c4561c53889e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

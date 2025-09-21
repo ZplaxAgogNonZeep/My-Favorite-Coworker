@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="SoundGroup" load_steps=3 format=3 uid="uid://b2wbw7jts8lf2"]
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=5 format=3 uid="uid://b2wbw7jts8lf2"]
 
-[ext_resource type="AudioStream" uid="uid://bvvilmk5levin" path="res://assets/audio/pet_bark_0.wav" id="1_7ti6b"]
+[ext_resource type="AudioStream" uid="uid://b48rvmuytv53i" path="res://assets/audio/buh_bark0.wav" id="1_fado5"]
 [ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_h8iyh"]
+[ext_resource type="AudioStream" uid="uid://gnsvflk72ro4" path="res://assets/audio/buh_bark1.wav" id="2_lsbe2"]
+[ext_resource type="AudioStream" uid="uid://bgjin0sfk7hw5" path="res://assets/audio/buh_bark2.wav" id="3_758bu"]
 
 [resource]
 script = ExtResource("1_h8iyh")
-_audioStreams = Array[AudioStream]([ExtResource("1_7ti6b")])
+_audioStreams = Array[AudioStream]([ExtResource("1_fado5"), ExtResource("2_lsbe2"), ExtResource("3_758bu")])
 bus = 2
 metadata/_custom_type_script = "uid://dn74yoyxw6eax"

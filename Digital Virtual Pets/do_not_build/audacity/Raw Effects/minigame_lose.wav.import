@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bhqighigw453o"
+path="res://.godot/imported/minigame_lose.wav-987784493428a454542f07cab7b1116e.sample"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/minigame_lose.wav"
+dest_files=["res://.godot/imported/minigame_lose.wav-987784493428a454542f07cab7b1116e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://3wttl6nk3ptl"
+path="res://.godot/imported/485961__spacejoe__dog-barking-distance-2.wav-641ba94b2a58d815ff37659bee42537e.sample"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/Pet Sound Effects/485961__spacejoe__dog-barking-distance-2.wav"
+dest_files=["res://.godot/imported/485961__spacejoe__dog-barking-distance-2.wav-641ba94b2a58d815ff37659bee42537e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

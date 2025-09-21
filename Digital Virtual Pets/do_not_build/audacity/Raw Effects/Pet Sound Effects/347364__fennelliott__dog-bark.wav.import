@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://std5mv6j6b10"
+path="res://.godot/imported/347364__fennelliott__dog-bark.wav-8f8c308129c9d83ea05c83da16ab06fc.sample"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/Pet Sound Effects/347364__fennelliott__dog-bark.wav"
+dest_files=["res://.godot/imported/347364__fennelliott__dog-bark.wav-8f8c308129c9d83ea05c83da16ab06fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MusicTrack" load_steps=5 format=3 uid="uid://bp8ypd8jtkily"]
 
 [ext_resource type="Script" uid="uid://bv7r6i2bx0y7x" path="res://data/_scripts/music_track.gd" id="1_bdoo7"]
-[ext_resource type="AudioStream" uid="uid://phq0ohqt77eg" path="res://assets/audio/minigame_loop_compressed.wav" id="2_plkb8"]
-[ext_resource type="AudioStream" uid="uid://bfbvhkmssqan7" path="res://assets/audio/minigame_lose_compressed.wav" id="3_8ty5i"]
-[ext_resource type="AudioStream" uid="uid://cle0s30auv661" path="res://assets/audio/minigame_win_compressed.wav" id="4_edmo4"]
+[ext_resource type="AudioStream" uid="uid://cthw0yejf1fim" path="res://assets/audio/minigame_loop.wav" id="2_plkb8"]
+[ext_resource type="AudioStream" uid="uid://pa1xoa3mm5j4" path="res://assets/audio/minigame_lose.wav" id="3_8ty5i"]
+[ext_resource type="AudioStream" uid="uid://bq2ppvqae8fq7" path="res://assets/audio/minigame_win.wav" id="4_edmo4"]
 
 [resource]
 script = ExtResource("1_bdoo7")

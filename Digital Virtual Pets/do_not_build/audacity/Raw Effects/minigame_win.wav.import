@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wmv27qij20ui"
+path="res://.godot/imported/minigame_win.wav-1da462d2c31c20f3028616a09e15a655.sample"
+
+[deps]
+
+source_file="res://do_not_build/audacity/Raw Effects/minigame_win.wav"
+dest_files=["res://.godot/imported/minigame_win.wav-1da462d2c31c20f3028616a09e15a655.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

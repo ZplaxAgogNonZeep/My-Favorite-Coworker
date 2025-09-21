@@ -275,10 +275,14 @@ func _moodBehavior():
 		
 		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
 		_moodTimer.start(rng * Settings.getTimerMod())
+		
+		SfxManager.playSoundEffect(petResource.yap)
 	elif (_moodTimer.time_left <= 0):
 		randomize()
 		var rng = randf_range(_moodIntervalRange.x, _moodIntervalRange.y)
 		_moodTimer.start(rng * Settings.getTimerMod())
+	
+		
 
 #endregion
 

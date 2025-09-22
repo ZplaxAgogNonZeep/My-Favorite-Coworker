@@ -446,8 +446,8 @@ func checkAnyStatus() -> bool:
 
 func getStatTotal() -> int:
 	var returnInt : int
-	for stat in abilityStats:
-		returnInt += stat
+	for stat in abilityStats.keys():
+		returnInt += abilityStats[stat]
 	return returnInt
 
 

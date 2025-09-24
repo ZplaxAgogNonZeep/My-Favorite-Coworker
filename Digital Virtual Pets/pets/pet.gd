@@ -399,6 +399,11 @@ func _evoStatsUpdated() -> void:
 	UpdateStatRecord.emit(petResource, evoStatArray, _statusHistory)
 
 
+## Iterates through the evolution history and returns the resource of the originating pey\t
+func getOriginType():
+	pass
+
+
 func getRawAge() -> float:
 	return _lifespanTracker.getLifespan()
 

@@ -199,17 +199,18 @@ func evolvePet(evolveTarget: PetTypeData):
 	# check for achievements
 	if (activePet.petResource.stage > 0):
 		AchievementManager.setAchievementFlag("EvolveAchiev1")
-		#if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
-			#GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
-		#if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))):
-			#GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
 	if (activePet.petResource.stage > 1):
 		AchievementManager.setAchievementFlag("EvolveAchiev2")
 	if (activePet.petResource.stage > 2):
 		AchievementManager.setAchievementFlag("EvolveAchiev3")
-		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))):
+		# This is kinda dumb but the idea is that everytime the pet evolves to a stage 3, we check to
+		# see if it's part of the evolution line of the key, as well as the lock in not already unlocked
+		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres")) and 
+			load(PetManager.EGG_DATA_PATH + "buh_egg.tres").getAllPossibleEvolutions().has(activePet)):
 			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
-		
+		elif (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres")) and 
+				load(PetManager.EGG_DATA_PATH + "kittyegg.tres").getAllPossibleEvolutions().has(activePet)):
+			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
 	 
 	if (!AchievementManager.getAchievementFlag("EvolveAchiev4")):
 		var isComplete

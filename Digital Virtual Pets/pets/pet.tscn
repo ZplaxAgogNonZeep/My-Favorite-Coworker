@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drfnhikwal58k" path="res://assets/art/aesprite/minigame_assets/pet_shiver.png" id="5_hjqj3"]
 [ext_resource type="SpriteFrames" uid="uid://kkt8ifrpyylt" path="res://assets/animation_frames/pets/unknown_pet.tres" id="5_ouj2v"]
 [ext_resource type="Texture2D" uid="uid://8m5rrktssxvj" path="res://assets/art/aesprite/minigame_assets/thought_bubble.png" id="5_p5xjq"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="6_hy41n"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="6_hy41n"]
 [ext_resource type="SpriteFrames" uid="uid://ddmhg4ler7cmk" path="res://assets/animation_frames/pets/moods.tres" id="8_hjqj3"]
 
 [sub_resource type="Animation" id="Animation_7utwq"]

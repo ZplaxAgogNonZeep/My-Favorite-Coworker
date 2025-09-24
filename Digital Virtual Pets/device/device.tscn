@@ -10,7 +10,7 @@
 [ext_resource type="SpriteFrames" uid="uid://ddmhg4ler7cmk" path="res://assets/animation_frames/pets/moods.tres" id="3_veqju"]
 [ext_resource type="PackedScene" uid="uid://bmm1qb4b40sv3" path="res://objects/instanced_scenes/meat.tscn" id="4_qk4hv"]
 [ext_resource type="Script" uid="uid://bhxnu7sbm573f" path="res://device/mood_copycatcher.gd" id="4_ul75l"]
-[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/timer/solo_timer.gd" id="5_0s1ah"]
+[ext_resource type="Script" uid="uid://b8s2phau8u2bl" path="res://script_templates/Timer/solo_timer.gd" id="5_0s1ah"]
 [ext_resource type="Script" uid="uid://ecko5m6yd7tk" path="res://vfx_system/vfx_manager.gd" id="6_7tnq8"]
 [ext_resource type="Resource" uid="uid://bqs54n475n2yw" path="res://data/sound_grouping/device_beep.tres" id="6_myr8s"]
 [ext_resource type="PackedScene" uid="uid://cbv2ueyv0kgaj" path="res://vfx_system/effect_tscns/dust_cloud_vfx.tscn" id="7_6uw0p"]

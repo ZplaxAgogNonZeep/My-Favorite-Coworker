@@ -29,7 +29,6 @@ var _minigamesBeat := [false, false, false, false, false] #{POW, END, SPD, BAL, 
 
 func _ready() -> void:
 	Steam.steamInit()
-	print(Steam.current_app_id)
 	_checkPreReleaseSaveData()
 	_syncAchievWithSteam()
 	

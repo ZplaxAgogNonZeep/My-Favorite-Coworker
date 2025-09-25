@@ -348,7 +348,10 @@ func findValidWindowPosition(windowPositionType : SubWindowPositionType, windowS
 			min.y = yBounds.x
 		
 		finalWindowPosition = Vector2i(randi_range(min.x, max.x), randi_range(min.y, max.y)) + offset
-	return _convertWindowPosnWithinResolution(gameWindowPosition + finalWindowPosition, windowSize, resolution)
+	#return gameWindowPosition + finalWindowPosition
+	return _convertWindowPosnWithinResolution(gameWindowPosition + finalWindowPosition, 
+												windowSize, 
+												resolution)
 
 
 func addToActiveWindows(window : Window):
@@ -451,14 +454,13 @@ func _convertWindowPosnWithinResolution(posn : Vector2i, windowSize : Vector2i, 
 	
 	if (posn.x < 0):
 		returnPosn.x = 0
-	elif (posn.x + windowSize.x > resolution.x):
+	elif (posn.x + windowSize.x > resolution.x + DisplayServer.screen_get_position(activeMonitor).x):
 		returnPosn.x = resolution.x - windowSize.x
-	
+	DisplayServer.screen_get_position()
 	if (posn.y < 0):
 		returnPosn.y = 0
-	elif (posn.y + windowSize.y > resolution.y):
+	elif (posn.y + windowSize.y > resolution.y + DisplayServer.screen_get_position(activeMonitor).y):
 		returnPosn.y = resolution.y - windowSize.y
-	
 	return returnPosn
 
 #endregion

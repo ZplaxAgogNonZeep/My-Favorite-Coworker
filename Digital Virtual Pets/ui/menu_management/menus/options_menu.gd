@@ -101,6 +101,8 @@ func _onWindowOrientationOptions(index : int):
 func _onMonitorOptions(index : int):
 	Settings.monitorSetTo = index
 	Settings.changeActiveMonitor(index)
+	ChangeMenu.emit(-1)
+	
 
 
 func _onFrameOptions(index : int):

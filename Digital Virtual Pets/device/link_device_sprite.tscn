@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxgg1k0vh82t6"]
+[gd_scene load_steps=32 format=3 uid="uid://bxgg1k0vh82t6"]
 
 [ext_resource type="Texture2D" uid="uid://lrhkprge1nn8" path="res://assets/art/aesprite/device/link_device_base.png" id="1_ex2ea"]
 [ext_resource type="Texture2D" uid="uid://b2ax1chp57m8v" path="res://assets/art/aesprite/device/device_skins/default_color_palettes.png" id="1_s3t2l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d13q43b0wpj8t" path="res://assets/art/aesprite/device/left_button_sheet.png" id="4_2t7hj"]
 [ext_resource type="Resource" uid="uid://d3gy505efe464" path="res://data/sound_grouping/button_up.tres" id="4_gfx1a"]
 [ext_resource type="Texture2D" uid="uid://btcrksoaem5g8" path="res://assets/art/aesprite/device/options_button_sheet.png" id="5_gfx1a"]
+[ext_resource type="Resource" uid="uid://dmqm2s20ea82l" path="res://data/link_device_skins.tres" id="5_pblih"]
 [ext_resource type="Texture2D" uid="uid://bvyegbhhtqubi" path="res://assets/art/aesprite/device/pet_button_sheet.png" id="6_s3t2l"]
 [ext_resource type="Texture2D" uid="uid://cbsfvo3e76li8" path="res://assets/art/aesprite/device/power_button_sheet.png" id="7_pblih"]
 [ext_resource type="Texture2D" uid="uid://cwydhgx4hqgxt" path="res://assets/art/aesprite/device/right_button_sheet.png" id="8_xk3an"]
@@ -212,8 +213,7 @@ material = SubResource("ShaderMaterial_s3t2l")
 texture = ExtResource("1_ex2ea")
 offset = Vector2(0, -64)
 script = ExtResource("2_7pd7f")
-_skins = Array[Texture2D]([ExtResource("1_ex2ea")])
-_palettes = Array[Texture2D]([ExtResource("1_s3t2l")])
+_skin = ExtResource("5_pblih")
 _buttonDownSound = ExtResource("3_2t7hj")
 _buttonUpSound = ExtResource("4_gfx1a")
 metadata/_edit_group_ = true

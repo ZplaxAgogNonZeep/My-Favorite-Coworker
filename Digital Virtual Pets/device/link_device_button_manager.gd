@@ -2,8 +2,7 @@ extends Sprite2D
 
 signal ButtonPressed(button : Enums.DeviceButton)
 @export_category("Skin Data")
-@export var _skins : Array[Texture2D]
-@export var _palettes : Array[Texture2D]
+@export var _skin : PaletteSwappableSkin
 @export_category("Sound Groups")
 @export var _buttonDownSound : SoundGroup
 @export var _buttonUpSound : SoundGroup
@@ -19,6 +18,7 @@ func _deviceButtonPressed(button : Enums.DeviceButton):
 
 
 func _updateSkin():
-	texture = _skins[Settings.deviceSkin.x]
-	material.palette = _palettes[Settings.deviceSkin.x]
+	texture = _skin.skins[Settings.deviceSkin.x]
+	material.palette = _skin.colorPalettes[Settings.deviceSkin.x]
 	material.row = Settings.deviceSkin.y
+	offset = _skin.spriteOffsets[Settings.deviceSkin.x]

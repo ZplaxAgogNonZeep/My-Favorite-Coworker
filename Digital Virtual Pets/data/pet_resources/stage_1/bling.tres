@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://npuwf0827xnl"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=15 format=3 uid="uid://npuwf0827xnl"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_umdoi"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_j0bsp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://d2mhew1pvm07k" path="res://data/pet_resources/stage_1/toybuh.tres" id="4_cao08"]
 [ext_resource type="Resource" uid="uid://deajvgriu68p1" path="res://data/pet_resources/stage_1/mi.tres" id="5_ibudv"]
 [ext_resource type="Texture2D" uid="uid://c2xp1irb884li" path="res://assets/art/aesprite/_pets/stage1/bling_sheet.png" id="6_umdoi"]
+[ext_resource type="Resource" uid="uid://b5tvl4u8pwnhg" path="res://data/sound_grouping/pet_groups/click.tres" id="7_cao08"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cao08"]
 atlas = ExtResource("6_umdoi")
@@ -71,6 +72,7 @@ animations = [{
 script = ExtResource("2_j0bsp")
 name = "Bling"
 spriteFrames = SubResource("SpriteFrames_umk7t")
+yap = ExtResource("7_cao08")
 stage = 1
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_umdoi")])

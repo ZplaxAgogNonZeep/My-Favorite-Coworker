@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=13 format=3 uid="uid://igsu7u1x3wrq"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://igsu7u1x3wrq"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_witeb"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_6vkbn"]
 [ext_resource type="Texture2D" uid="uid://df7gofsoak1ef" path="res://assets/art/aesprite/_pets/stage3/toyherobuh_sheet.png" id="3_witeb"]
+[ext_resource type="Resource" uid="uid://b5tvl4u8pwnhg" path="res://data/sound_grouping/pet_groups/click.tres" id="4_6vkbn"]
 
 [sub_resource type="Resource" id="Resource_witeb"]
 script = ExtResource("1_witeb")
@@ -96,6 +97,7 @@ animations = [{
 script = ExtResource("2_6vkbn")
 name = "ToyHeroBuh"
 spriteFrames = SubResource("SpriteFrames_08ivm")
+yap = ExtResource("4_6vkbn")
 stage = 3
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([])

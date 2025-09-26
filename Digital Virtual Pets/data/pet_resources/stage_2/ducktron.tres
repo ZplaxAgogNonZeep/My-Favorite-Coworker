@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=16 format=3 uid="uid://dq05sgeq0nqav"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=17 format=3 uid="uid://dq05sgeq0nqav"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ku8pv"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_hcvgk"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://c2wvhej177454" path="res://data/pet_resources/stage_2/toybuhbuh.tres" id="3_gpc02"]
 [ext_resource type="Resource" uid="uid://csgqsrmotrcae" path="res://data/pet_resources/stage_2/mimi.tres" id="4_vvwwd"]
 [ext_resource type="Texture2D" uid="uid://bljhj88cmsb53" path="res://assets/art/aesprite/_pets/stage2/ducktron_sheet.png" id="6_xfhvs"]
+[ext_resource type="Resource" uid="uid://b5tvl4u8pwnhg" path="res://data/sound_grouping/pet_groups/click.tres" id="7_gpc02"]
 
 [sub_resource type="Resource" id="Resource_xfhvs"]
 script = ExtResource("1_ku8pv")
@@ -99,6 +100,7 @@ animations = [{
 script = ExtResource("2_hcvgk")
 name = "DuckTron"
 spriteFrames = SubResource("SpriteFrames_c7dd6")
+yap = ExtResource("7_gpc02")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_xfhvs")])

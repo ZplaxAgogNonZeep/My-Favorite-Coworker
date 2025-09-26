@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=14 format=3 uid="uid://csgqsrmotrcae"]
+[gd_resource type="Resource" script_class="PetTypeData" load_steps=15 format=3 uid="uid://csgqsrmotrcae"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_ynu1k"]
 [ext_resource type="Resource" uid="uid://c2ugn8gq67ugm" path="res://data/pet_resources/stage_3/mimimmi.tres" id="2_5s4js"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="2_yfpm8"]
 [ext_resource type="Texture2D" uid="uid://brhgg1vk51y6h" path="res://assets/art/aesprite/_pets/stage2/mimi_sheet.png" id="4_yfpm8"]
+[ext_resource type="Resource" uid="uid://b5tvl4u8pwnhg" path="res://data/sound_grouping/pet_groups/click.tres" id="5_5s4js"]
 
 [sub_resource type="Resource" id="Resource_yfpm8"]
 script = ExtResource("1_ynu1k")
@@ -97,6 +98,7 @@ animations = [{
 script = ExtResource("2_yfpm8")
 name = "MiMi"
 spriteFrames = SubResource("SpriteFrames_8diav")
+yap = ExtResource("5_5s4js")
 stage = 2
 waitIntervals = Vector2(3, 10)
 evolutions = Array[Resource]([ExtResource("2_5s4js")])

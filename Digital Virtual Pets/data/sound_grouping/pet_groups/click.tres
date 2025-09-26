@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SoundGroup" load_steps=5 format=3 uid="uid://b5tvl4u8pwnhg"]
+
+[ext_resource type="Script" uid="uid://dn74yoyxw6eax" path="res://data/_scripts/sound_group.gd" id="1_31cjp"]
+[ext_resource type="AudioStream" uid="uid://bhpnb18x6c1ti" path="res://assets/audio/toy_click1.wav" id="1_tndsb"]
+[ext_resource type="AudioStream" uid="uid://dsjjvyu1rwxqt" path="res://assets/audio/toy_click2.wav" id="2_1j0u8"]
+[ext_resource type="AudioStream" uid="uid://b243j52e2clga" path="res://assets/audio/toy_click3.wav" id="3_masua"]
+
+[resource]
+script = ExtResource("1_31cjp")
+_audioStreams = Array[AudioStream]([ExtResource("1_tndsb"), ExtResource("2_1j0u8"), ExtResource("3_masua")])
+bus = 2
+metadata/_custom_type_script = "uid://dn74yoyxw6eax"

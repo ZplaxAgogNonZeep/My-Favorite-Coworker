@@ -119,8 +119,8 @@ func _ready():
 
 
 func _process(delta):
-	#if (Input.is_action_just_pressed("Debug2")):
-		#GameEvents.PetDied.emit()
+	if (Input.is_action_just_pressed("Debug2")):
+		ReadyToEvolve.emit(petResource.evolutions[0])
 	if (petResource.stage == 0):
 		return
 	if (_behaviorPaused):
@@ -306,7 +306,11 @@ func foodPlaced(food):
 			_foodQueue.append(food)
 			GameEvents.PauseTimers.emit()
 			await get_tree().create_timer(2).timeout
-			targetPosn = food.position
+			if food.position.x < position.x:
+				targetPosn = Vector2(food.position.x + petResource.getCollisionOffset(), position.y)
+			else:
+				targetPosn = Vector2(food.position.x - petResource.getCollisionOffset(), position.y)
+			
 	else:
 		_foodQueue.append(food)
 
@@ -439,6 +443,7 @@ func _incrementTrauma():
 	_specialAnimator.play("RESET")
 	_shiverContainer.visible = false
 	_behaviorPaused = false
+	_neglectTimer.start(TRAUMA_INTERVALS[traumaCount])
 
 
 func checkStatus(status : StatusCondition) -> bool:

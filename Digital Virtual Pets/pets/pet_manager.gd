@@ -61,6 +61,7 @@ func _ready():
 								rightBoundry.position.y - leftBoundry.position.y)
 
 
+
 ## Used to convert percentage positions to local positions
 func percentToPosn(percentPosn : Vector2) -> Vector2:
 	return Vector2(lerpf(leftBoundry.position.x, rightBoundry.position.x, percentPosn.x), 
@@ -144,6 +145,12 @@ func spawnPet(index := -1, isNewPet := false, petData : PetTypeData = null, give
 								false, 
 								2)
 	
+	# This is a post release fix to a progression issue, basically if the player starts the game with
+	# a stage 3, but doesn't have the kitty egg, this code will find that and correct it.
+	if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres")) 
+		and activePet.petResource.stage > 2):
+			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
+	
 	SaveData.saveGameToFile()
 
 
@@ -205,11 +212,17 @@ func evolvePet(evolveTarget: PetTypeData):
 		AchievementManager.setAchievementFlag("EvolveAchiev3")
 		# This is kinda dumb but the idea is that everytime the pet evolves to a stage 3, we check to
 		# see if it's part of the evolution line of the key, as well as the lock in not already unlocked
+		
+		#print("progression check: ", !_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres")),
+			#" - ", load(PetManager.EGG_DATA_PATH + "buh_egg.tres").getAllPossibleEvolutions().has(activePet.petResource))
+		#print(load(PetManager.EGG_DATA_PATH + "buh_egg.tres").getAllPossibleEvolutions())
+		
+		
 		if (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "kittyegg.tres")) and 
-			load(PetManager.EGG_DATA_PATH + "buh_egg.tres").getAllPossibleEvolutions().has(activePet)):
+			load(PetManager.EGG_DATA_PATH + "buh_egg.tres").getAllPossibleEvolutions().has(activePet.petResource)):
 			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "kittyegg.tres"))
 		elif (!_availableEggs.has(load(PetManager.EGG_DATA_PATH + "toyegg.tres")) and 
-				load(PetManager.EGG_DATA_PATH + "kittyegg.tres").getAllPossibleEvolutions().has(activePet)):
+				load(PetManager.EGG_DATA_PATH + "kittyegg.tres").getAllPossibleEvolutions().has(activePet.petResource)):
 			GameEvents.UnlockNewEgg.emit(load(PetManager.EGG_DATA_PATH + "toyegg.tres"))
 	 
 	if (!AchievementManager.getAchievementFlag("EvolveAchiev4")):
@@ -232,6 +245,8 @@ func evolvePet(evolveTarget: PetTypeData):
 		AchievementManager.setAchievementFlag("GigaFastAchiev")
 	if (activePet.petResource.stage >= 3 and activePet.hasAlwaysBeenSlow):
 		AchievementManager.setAchievementFlag("GigaSlowAchiev")
+		
+
 
 
 func switchPet(index : int, previousPetDeleted := false):

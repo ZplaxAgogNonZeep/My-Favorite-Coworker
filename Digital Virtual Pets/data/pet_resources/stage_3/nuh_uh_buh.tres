@@ -8,16 +8,8 @@
 [sub_resource type="Resource" id="Resource_vqig5"]
 script = ExtResource("1_vqig5")
 conditionLogic = 1
-POW = -1
-END = -1
-SPD = -1
-BAL = -1
-TraumaGreater = -1
 TraumaLesser = 2
-TraumaEqual = -1
-Personality = -1
 statTotal = 45
-conditions = Array[int]([])
 
 [resource]
 script = ExtResource("1_be3g0")
@@ -25,10 +17,6 @@ name = "NuhUhBuh"
 spriteFrames = ExtResource("3_vqig5")
 yap = ExtResource("3_a00hv")
 stage = 3
-waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([])
-parallelEvolutions = Array[ExtResource("1_be3g0")]([])
 evolutionConditions = Array[ExtResource("1_vqig5")]([SubResource("Resource_vqig5")])
-parallelConditions = Array[ExtResource("1_vqig5")]([])
 encyclopediaEntry = "When the spirit is broken but the body is willing, a new form awakens. The power to push through the contemptible forces that weave misfortune into reality and awaken from the sullen dream of existence."
 metadata/_custom_type_script = "uid://ox62hdqejbbf"

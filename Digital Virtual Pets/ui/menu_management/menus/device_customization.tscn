@@ -21,8 +21,6 @@ shader_parameter/fps = 0.0
 shader_parameter/frame_count = 7
 script = ExtResource("8_05ig1")
 palette = ExtResource("3_ojnow")
-animation_fps = 6
-row = 0
 metadata/_custom_type_script = "uid://vrs1twpulcy0"
 
 [node name="DeviceCustomization" type="Control" node_paths=PackedStringArray("_previewDevice", "_previewAddonsRect", "_paletteName", "_window", "animator")]
@@ -35,7 +33,7 @@ grow_vertical = 2
 pivot_offset = Vector2(0, -1)
 script = ExtResource("1_l1h5d")
 deviceSkin = ExtResource("2_cn3ht")
-_previewAddons = Array[Texture2D]([ExtResource("10_3l6qw"), ExtResource("4_15xab")])
+_previewAddons = Array[Texture2D]([ExtResource("10_3l6qw"), ExtResource("4_15xab"), ExtResource("4_15xab")])
 _previewDevice = NodePath("Window/PanelControl/MenuWindow/DeviceDisplayPanel/PreviewTexture")
 _previewAddonsRect = NodePath("Window/PanelControl/MenuWindow/DeviceDisplayPanel/PreviewTexture/TextureRect")
 _paletteName = NodePath("Window/PanelControl/MenuWindow/DeviceDisplayPanel/PaletteName")
@@ -50,6 +48,7 @@ libraries = {
 
 [node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
+oversampling_override = 1.0
 title = "link_device_config.exe.exe"
 size = Vector2i(530, 445)
 borderless = true
@@ -209,6 +208,11 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Magic Model"
 
+[node name="ChristmasSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+text = "Merry Model"
+
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]
 [connection signal="button_down" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseDown"]
 [connection signal="button_up" from="Window/PanelControl/MenuWindow/Button" to="." method="_mouseUp"]
@@ -217,3 +221,4 @@ text = "Magic Model"
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/DeviceDisplayPanel/RightCycle" to="." method="_onChangePalette" binds= [1]]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/VBoxContainer/ClassicSkin" to="." method="_onChangeSkin" binds= [0]]
 [connection signal="pressed" from="Window/PanelControl/MenuWindow/VBoxContainer/Oliver Skin" to="." method="_onChangeSkin" binds= [1]]
+[connection signal="pressed" from="Window/PanelControl/MenuWindow/VBoxContainer/ChristmasSkin" to="." method="_onChangeSkin" binds= [2]]

@@ -8,16 +8,9 @@
 [sub_resource type="Resource" id="Resource_7l4p1"]
 script = ExtResource("1_7l4p1")
 conditionLogic = 1
-POW = -1
-END = -1
 SPD = 20
 BAL = 30
-TraumaGreater = -1
-TraumaLesser = -1
 TraumaEqual = 0
-Personality = -1
-statTotal = -1
-conditions = Array[int]([])
 
 [resource]
 script = ExtResource("1_lvwpk")
@@ -25,9 +18,5 @@ name = "HeroBuh"
 spriteFrames = ExtResource("2_av6hh")
 yap = ExtResource("3_f5tyu")
 stage = 3
-waitIntervals = Vector2(3, 10)
-evolutions = Array[Resource]([])
-parallelEvolutions = Array[ExtResource("1_lvwpk")]([])
 evolutionConditions = Array[ExtResource("1_7l4p1")]([SubResource("Resource_7l4p1")])
-parallelConditions = Array[ExtResource("1_7l4p1")]([])
 encyclopediaEntry = "HeroBuh saw the conflict around him and rose above it. A vocal and powerful proponent of peace. Supersonic barks stop all in their tracks!"

@@ -3,7 +3,7 @@ extends Node
 const SETTINGS_FILEPATH := "user://settings.ini"
 const GAMEDATA_FILEPATH := "user://gamedata.ini"
 const DEBUGDATA_FILEPATH := "user://debugdata.ini"
-const LAST_COMPATIBLE_VERSION := "0.3.2"
+const LAST_COMPATIBLE_VERSION := "1.0.0"
 
 #region Data Saving Classes
 class SavableClass:
@@ -81,7 +81,9 @@ func loadSettingsFromFile():
 	if err != OK:
 		print("No Setting Save Data Found, using defaults")
 		return
-	
+	#if !isSaveDataCompatible(config):
+		#print("Attempted to load incompatible Save Data, assuming new file")
+		#return
 	var section = config.get_sections()[0]
 	for key in config.get_section_keys(section):
 		Settings.set(key, config.get_value(section, key))
@@ -134,7 +136,9 @@ func loadGameFromFile():
 	if err != OK:
 		print("No Game Save Data Found, assuming new game")
 		return
-	
+	if !isSaveDataCompatible(config):
+		print("Attempted to load incompatible Save Data, assuming new file")
+		return
 	
 	var sections = config.get_sections()
 	
@@ -189,6 +193,18 @@ func isSaveDataExists(isSettings : bool) -> bool:
 	else:
 		return DirAccess.dir_exists_absolute(GAMEDATA_FILEPATH)
 
+
+func isSaveDataCompatible(data : ConfigFile):
+	var fileVersion = data.get_value("Game Information", "version")
+	if fileVersion[0] > LAST_COMPATIBLE_VERSION[0]:
+		return true
+	elif fileVersion[0] == LAST_COMPATIBLE_VERSION[0] and fileVersion[2] > LAST_COMPATIBLE_VERSION[2]:
+		return true
+	elif (fileVersion[0] == LAST_COMPATIBLE_VERSION[0] and fileVersion[2] > LAST_COMPATIBLE_VERSION[2] and 
+			fileVersion[4] > LAST_COMPATIBLE_VERSION[4]):
+		return true
+	return false
+	
 
 func _checkForExistingCategory(data: Data) -> int:
 	var count = 0

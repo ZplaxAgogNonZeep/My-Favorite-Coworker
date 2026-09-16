@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ugt6g6nd6ugp"]
+[gd_scene format=3 uid="uid://ugt6g6nd6ugp"]
 
 [ext_resource type="Script" uid="uid://vx23a211l0u2" path="res://scene_manager.gd" id="1_yxx2a"]
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="2_h2pgc"]
@@ -54,7 +54,7 @@ _data = {
 &"device_spawn": SubResource("Animation_p2vm5")
 }
 
-[node name="SceneManager" type="Node2D" node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device", "_cutsceneAnimationPlayer")]
+[node name="SceneManager" type="Node2D" unique_id=882329013 node_paths=PackedStringArray("_camera", "_menuManager", "_iconMenu", "_background", "device", "_cutsceneAnimationPlayer")]
 script = ExtResource("1_yxx2a")
 _camera = NodePath("Camera2D")
 _menuManager = NodePath("SystemUI/MenuManager")
@@ -65,13 +65,13 @@ _tutorialDialog = ExtResource("2_takr5")
 _cutsceneAnimationPlayer = NodePath("CutscenePlayer")
 metadata/_edit_lock_ = true
 
-[node name="ToolTip" parent="." instance=ExtResource("3_p2vm5")]
+[node name="ToolTip" parent="." unique_id=1650468258 instance=ExtResource("3_p2vm5")]
 
-[node name="BackgroundCanvas" type="CanvasLayer" parent="."]
+[node name="BackgroundCanvas" type="CanvasLayer" parent="." unique_id=354443093]
 layer = -2
 visible = false
 
-[node name="SimpleBackground" type="Control" parent="BackgroundCanvas"]
+[node name="SimpleBackground" type="Control" parent="BackgroundCanvas" unique_id=1847495263]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,7 +82,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="ColorRect" type="ColorRect" parent="BackgroundCanvas/SimpleBackground"]
+[node name="ColorRect" type="ColorRect" parent="BackgroundCanvas/SimpleBackground" unique_id=1875416397]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -92,10 +92,10 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.905882, 0.909804, 1)
 
-[node name="SystemUI" type="CanvasLayer" parent="."]
+[node name="SystemUI" type="CanvasLayer" parent="." unique_id=804455805]
 process_mode = 3
 
-[node name="MenuManager" type="Control" parent="SystemUI" node_paths=PackedStringArray("controller", "_menuList")]
+[node name="MenuManager" type="Control" parent="SystemUI" unique_id=10892585 node_paths=PackedStringArray("controller", "_menuList")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +112,7 @@ _menuMode = 1
 _menuList = [NodePath("MenuSelectionIcons"), NodePath("OptionsMenu"), NodePath("PetMenu"), NodePath("Credits"), NodePath("EncyclopediaMenu"), NodePath("DeviceCustomization")]
 metadata/_edit_lock_ = true
 
-[node name="MenuSelectionIcons" parent="SystemUI/MenuManager" instance=ExtResource("4_jlwpj")]
+[node name="MenuSelectionIcons" parent="SystemUI/MenuManager" unique_id=464637952 instance=ExtResource("4_jlwpj")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -128,7 +128,7 @@ offset_bottom = -474.415
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="OptionsMenu" parent="SystemUI/MenuManager" instance=ExtResource("5_tpjnu")]
+[node name="OptionsMenu" parent="SystemUI/MenuManager" unique_id=2022128229 instance=ExtResource("5_tpjnu")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -139,7 +139,7 @@ offset_bottom = 976.0
 metadata/_edit_vertical_guides_ = [288.0]
 metadata/_edit_horizontal_guides_ = [256.0]
 
-[node name="PetMenu" parent="SystemUI/MenuManager" instance=ExtResource("7_l8mrh")]
+[node name="PetMenu" parent="SystemUI/MenuManager" unique_id=547722786 instance=ExtResource("7_l8mrh")]
 process_mode = 3
 visible = false
 layout_mode = 1
@@ -148,22 +148,23 @@ offset_top = 312.0
 offset_right = 336.0
 offset_bottom = 312.0
 
-[node name="Credits" parent="SystemUI/MenuManager" instance=ExtResource("10_takr5")]
+[node name="Credits" parent="SystemUI/MenuManager" unique_id=1217120115 instance=ExtResource("10_takr5")]
 process_mode = 3
 visible = false
+layout_mode = 0
 
-[node name="EncyclopediaMenu" parent="SystemUI/MenuManager" instance=ExtResource("11_vxl1k")]
+[node name="EncyclopediaMenu" parent="SystemUI/MenuManager" unique_id=2128402006 instance=ExtResource("11_vxl1k")]
 process_mode = 3
 visible = false
 layout_mode = 1
 
-[node name="DeviceCustomization" parent="SystemUI/MenuManager" instance=ExtResource("13_p2vm5")]
+[node name="DeviceCustomization" parent="SystemUI/MenuManager" unique_id=703854305 instance=ExtResource("13_p2vm5")]
 layout_mode = 1
 
-[node name="SystemDialog" type="CanvasLayer" parent="."]
+[node name="SystemDialog" type="CanvasLayer" parent="." unique_id=657609349]
 layer = 2
 
-[node name="DialogManager" type="Control" parent="SystemDialog"]
+[node name="DialogManager" type="Control" parent="SystemDialog" unique_id=494072752]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -178,14 +179,12 @@ _systemWindowScene = ExtResource("10_7o31v")
 _windowPosnVariance = Vector2(64, 64)
 metadata/_edit_lock_ = true
 
-[node name="CutscenePlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_172hj")
-}
+[node name="CutscenePlayer" type="AnimationPlayer" parent="." unique_id=988449904]
+libraries/ = SubResource("AnimationLibrary_172hj")
 
-[node name="Device" parent="." instance=ExtResource("11_7o31v")]
+[node name="Device" parent="." unique_id=335243051 instance=ExtResource("11_7o31v")]
 position = Vector2(128, 296)
 scale = Vector2(2, 2)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=25777720]
 anchor_mode = 0

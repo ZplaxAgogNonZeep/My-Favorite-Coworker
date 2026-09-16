@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://18yhd6xsviof"]
+[gd_scene format=3 uid="uid://18yhd6xsviof"]
 
 [ext_resource type="Script" uid="uid://dqj412exl0wko" path="res://device_customization.gd" id="1_l1h5d"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="2_4xfqt"]
@@ -23,7 +23,7 @@ script = ExtResource("8_05ig1")
 palette = ExtResource("3_ojnow")
 metadata/_custom_type_script = "uid://vrs1twpulcy0"
 
-[node name="DeviceCustomization" type="Control" node_paths=PackedStringArray("_previewDevice", "_previewAddonsRect", "_paletteName", "_window", "animator")]
+[node name="DeviceCustomization" type="Control" unique_id=1634554968 node_paths=PackedStringArray("_previewDevice", "_previewAddonsRect", "_paletteName", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -41,23 +41,22 @@ _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
 _animationLibrary = "pop_up_window_animations"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"pop_up_window_animations": ExtResource("2_4xfqt")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1993822045]
+libraries/pop_up_window_animations = ExtResource("2_4xfqt")
 
-[node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
+[node name="Window" type="Window" parent="." unique_id=862673921 node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
 oversampling_override = 1.0
 title = "link_device_config.exe.exe"
 size = Vector2i(530, 445)
+visible = false
 borderless = true
 transparent = true
 script = ExtResource("3_cc4bt")
 _canvas = NodePath("PanelControl/MenuWindow")
 _windowType = 1
 
-[node name="PanelControl" type="Control" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window" unique_id=1379699558]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -65,14 +64,14 @@ offset_bottom = 40.0
 pivot_offset = Vector2(278, 154)
 metadata/_edit_lock_ = true
 
-[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl" unique_id=1162010080]
 layout_mode = 0
 offset_right = 515.0
 offset_bottom = 394.0
 theme = ExtResource("2_akh46")
 theme_type_variation = &"ClosedPanel"
 
-[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="Button" type="Button" parent="Window/PanelControl/MenuWindow" unique_id=865901089]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -86,7 +85,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("4_3h8t4")
 icon_alignment = 1
 
-[node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow"]
+[node name="WindowName" type="Label" parent="Window/PanelControl/MenuWindow" unique_id=976950678]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 2.0
@@ -95,7 +94,7 @@ offset_bottom = 20.0
 theme_type_variation = &"HeaderSmall"
 text = "link_device_config.exe"
 
-[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow" unique_id=904084207]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 17.0
@@ -106,7 +105,7 @@ text = "Device Skins"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeviceDisplayPanel" type="Panel" parent="Window/PanelControl/MenuWindow"]
+[node name="DeviceDisplayPanel" type="Panel" parent="Window/PanelControl/MenuWindow" unique_id=1168594673]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -118,7 +117,7 @@ offset_bottom = 343.0
 grow_horizontal = 0
 theme_type_variation = &"SubPanel"
 
-[node name="PreviewTexture" type="TextureRect" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+[node name="PreviewTexture" type="TextureRect" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel" unique_id=601355179]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cn3ht")
 layout_mode = 1
@@ -136,7 +135,7 @@ texture = ExtResource("9_cn3ht")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="TextureRect" type="TextureRect" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel/PreviewTexture"]
+[node name="TextureRect" type="TextureRect" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel/PreviewTexture" unique_id=695307464]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -148,7 +147,7 @@ texture = ExtResource("4_15xab")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="LeftCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+[node name="LeftCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel" unique_id=792999104]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.007
@@ -161,7 +160,7 @@ offset_right = 0.0499992
 offset_bottom = 21.915
 text = "<"
 
-[node name="RightCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+[node name="RightCycle" type="Button" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel" unique_id=1301116756]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.81
@@ -174,7 +173,7 @@ offset_right = 0.0249939
 offset_bottom = 21.915
 text = ">"
 
-[node name="PaletteName" type="Label" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel"]
+[node name="PaletteName" type="Label" parent="Window/PanelControl/MenuWindow/DeviceDisplayPanel" unique_id=1530408757]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.19
@@ -191,24 +190,24 @@ text = "Original Orange"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/PanelControl/MenuWindow" unique_id=833026242]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 53.0
 offset_right = 202.0
 offset_bottom = 324.0
 
-[node name="ClassicSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer"]
+[node name="ClassicSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer" unique_id=1236015008]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Classic Model"
 
-[node name="Oliver Skin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer"]
+[node name="Oliver Skin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer" unique_id=1338303763]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Magic Model"
 
-[node name="ChristmasSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer"]
+[node name="ChristmasSkin" type="Button" parent="Window/PanelControl/MenuWindow/VBoxContainer" unique_id=1271752423]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 text = "Merry Model"

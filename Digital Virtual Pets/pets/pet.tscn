@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjw6oamscwe62"]
+[gd_scene format=3 uid="uid://cjw6oamscwe62"]
 
 [ext_resource type="Script" uid="uid://k2oj7nb46bnk" path="res://pets/pet.gd" id="1_texxe"]
 [ext_resource type="Script" uid="uid://q50o7srs3m1o" path="res://pets/lifespan.gd" id="3_texxe"]
@@ -50,7 +50,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jamv8"]
 size = Vector2(8, 3)
 
-[node name="Pet" type="Node2D" node_paths=PackedStringArray("sprite", "_shiverContainer", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_moodTimer", "_lifespanTracker", "_specialAnimator", "_thoughtBubble") groups=["Pet"]]
+[node name="Pet" type="Node2D" unique_id=746087 node_paths=PackedStringArray("sprite", "_shiverContainer", "leftCollider", "rightCollider", "_moveTimer", "_neglectTimer", "_moodTimer", "_lifespanTracker", "_specialAnimator", "_thoughtBubble") groups=["Pet"]]
 script = ExtResource("1_texxe")
 roamSpeed = 0.1
 roamPercentage = 0.25
@@ -68,66 +68,64 @@ _lifespanTracker = NodePath("Type/Lifespan")
 _specialAnimator = NodePath("AnimationPlayer")
 _thoughtBubble = NodePath("ThoughtBubble")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_q8hob")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=447083765]
+libraries/ = SubResource("AnimationLibrary_q8hob")
 
-[node name="Type" type="Node" parent="."]
+[node name="Type" type="Node" parent="." unique_id=174010223]
 
-[node name="MoveTimer" type="Timer" parent="Type"]
+[node name="MoveTimer" type="Timer" parent="Type" unique_id=1591078791]
 script = ExtResource("6_hy41n")
 _useProactivity = false
 
-[node name="NeglectTimer" type="Timer" parent="Type"]
+[node name="NeglectTimer" type="Timer" parent="Type" unique_id=387866948]
 script = ExtResource("6_hy41n")
 
-[node name="MoodTimer" type="Timer" parent="Type"]
+[node name="MoodTimer" type="Timer" parent="Type" unique_id=2026607885]
 one_shot = true
 script = ExtResource("6_hy41n")
 
-[node name="Lifespan" type="Node" parent="Type"]
+[node name="Lifespan" type="Node" parent="Type" unique_id=439901681]
 process_mode = 3
 script = ExtResource("3_texxe")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1830184899]
 sprite_frames = ExtResource("5_ouj2v")
 animation = &"Idle"
 offset = Vector2(0, -8)
 
-[node name="ShiverEffect" type="Node2D" parent="Sprite"]
+[node name="ShiverEffect" type="Node2D" parent="Sprite" unique_id=507958049]
 visible = false
 
-[node name="ShiverSprite" type="Sprite2D" parent="Sprite/ShiverEffect"]
+[node name="ShiverSprite" type="Sprite2D" parent="Sprite/ShiverEffect" unique_id=734744433]
 position = Vector2(-10, 0)
 texture = ExtResource("5_hjqj3")
 offset = Vector2(0, -12)
 
-[node name="ShiverSprite2" type="Sprite2D" parent="Sprite/ShiverEffect"]
+[node name="ShiverSprite2" type="Sprite2D" parent="Sprite/ShiverEffect" unique_id=2096249648]
 position = Vector2(10, 0)
 texture = ExtResource("5_hjqj3")
 offset = Vector2(0, -12)
 flip_h = true
 
-[node name="LeftObjectColl" type="Area2D" parent="."]
+[node name="LeftObjectColl" type="Area2D" parent="." unique_id=817160670]
 position = Vector2(-4, -2.5)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftObjectColl" unique_id=816884250]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_jamv8")
 
-[node name="RightObjectColl" type="Area2D" parent="."]
+[node name="RightObjectColl" type="Area2D" parent="." unique_id=694386553]
 position = Vector2(4, -1.5)
 collision_layer = 0
 collision_mask = 2
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightObjectColl" unique_id=1592291391]
 shape = SubResource("RectangleShape2D_jamv8")
 
-[node name="ThoughtBubble" type="Node2D" parent="." node_paths=PackedStringArray("pet", "_bubbleSprite", "_moodIcon", "_timer")]
+[node name="ThoughtBubble" type="Node2D" parent="." unique_id=1133496905 node_paths=PackedStringArray("pet", "_bubbleSprite", "_moodIcon", "_timer")]
 position = Vector2(-14, -13)
 script = ExtResource("5_avjmw")
 pet = NodePath("..")
@@ -138,16 +136,16 @@ _moodDisplayTime = 3.0
 _timer = NodePath("Timer")
 metadata/_edit_group_ = true
 
-[node name="Bubblebase" type="Sprite2D" parent="ThoughtBubble"]
+[node name="Bubblebase" type="Sprite2D" parent="ThoughtBubble" unique_id=1930548329]
 position = Vector2(0, -6)
 texture = ExtResource("5_p5xjq")
 
-[node name="MoodIcon" type="AnimatedSprite2D" parent="ThoughtBubble"]
+[node name="MoodIcon" type="AnimatedSprite2D" parent="ThoughtBubble" unique_id=1671177668]
 position = Vector2(0, -7)
 sprite_frames = ExtResource("8_hjqj3")
 animation = &"Dying"
 
-[node name="Timer" type="Timer" parent="ThoughtBubble"]
+[node name="Timer" type="Timer" parent="ThoughtBubble" unique_id=1499914036]
 one_shot = true
 script = ExtResource("6_hy41n")
 _useProactivity = false

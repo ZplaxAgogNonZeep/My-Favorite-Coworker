@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PetTypeData" load_steps=6 format=3 uid="uid://cxjugw70vu5vs"]
+[gd_resource type="Resource" script_class="PetTypeData" format=3 uid="uid://cxjugw70vu5vs"]
 
 [ext_resource type="Script" uid="uid://bsjn1ul82ivi0" path="res://data/_scripts/evolution_condition.gd" id="1_7l4p1"]
 [ext_resource type="Script" uid="uid://ox62hdqejbbf" path="res://data/_scripts/pet_type_data.gd" id="1_lvwpk"]

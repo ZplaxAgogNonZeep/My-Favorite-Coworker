@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://ddmhg4ler7cmk"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://ddmhg4ler7cmk"]
 
 [ext_resource type="Texture2D" uid="uid://bpkudfcveygmc" path="res://assets/art/aesprite/minigame_assets/mood_sheet.png" id="1_odn3k"]
 
@@ -51,7 +51,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8l8wn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Dying",
 "speed": 3.0
 }, {
@@ -62,7 +62,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e7ep4")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Happy",
 "speed": 3.0
 }, {
@@ -73,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ssdhq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Mad",
 "speed": 3.0
 }, {
@@ -84,7 +84,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d2ifn")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Sad",
 "speed": 3.0
 }, {
@@ -95,7 +95,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7utwq")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Trauma",
 "speed": 3.0
 }]

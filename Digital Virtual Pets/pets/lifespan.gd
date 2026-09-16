@@ -15,7 +15,7 @@ static func convertLifespanToAge(lifespan : float) -> Array:
 		var convertedAge = rawAge / 1440
 		formattedAge[0] = floori(convertedAge)
 		formattedAge[1] = rawAge - (1440 * formattedAge[0])
-	if (rawAge > 60):
+	elif (rawAge > 60):
 		# age is bigger than one hour
 		if (formattedAge[0] > 0 and formattedAge[1] > 60):
 			var convertedAge = formattedAge[1] / 60
@@ -28,7 +28,7 @@ static func convertLifespanToAge(lifespan : float) -> Array:
 			var convertedAge = rawAge / 60
 			formattedAge[1] = floori(convertedAge)
 			formattedAge[2] = formattedAge[1] - (60 * formattedAge[1])
-	if (rawAge > 0):
+	elif (rawAge > 0):
 		# age is bigger than one minute
 		if (formattedAge[2] > 0):
 			var convertedAge = formattedAge[2]

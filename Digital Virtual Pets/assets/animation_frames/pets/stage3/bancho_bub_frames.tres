@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://domfvi45crybh"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://domfvi45crybh"]
 
 [ext_resource type="Texture2D" uid="uid://nb8waiva5243" path="res://assets/art/aesprite/_pets/stage3/bancho_buh_sheet.png" id="1_t774f"]
 
@@ -35,7 +35,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1m0d0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 3.0
 }, {
@@ -46,7 +46,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0jdl8")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Quirk",
 "speed": 3.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kiws3")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 3.0
 }]

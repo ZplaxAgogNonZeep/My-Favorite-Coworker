@@ -11,6 +11,7 @@ extends Menu
 @export var _deviceVolumeBar : HSlider
 @export var _timerSpeedBar : HSlider
 @export var _timerSpeedLabel : Label
+@export var _versionNumberLabel : Label
 @export_category("Resources")
 @export var _dialogData : CharacterDialog
 
@@ -57,6 +58,7 @@ func _loadSavedMenuSettings():
 									Settings.deviceVolume)
 	_gameVolumeBar.value = lerp(_gameVolumeBar.min_value, _gameVolumeBar.max_value, 
 									Settings.gameVolume)
+	_versionNumberLabel.text = "v" + ProjectSettings.get_setting("application/config/version")
 
 
 func _saveMenuSettings():

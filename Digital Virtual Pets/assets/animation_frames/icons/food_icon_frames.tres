@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://b6u6tkw1fg2y1"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://b6u6tkw1fg2y1"]
 
 [ext_resource type="Texture2D" uid="uid://cbaycxxn418do" path="res://assets/art/aesprite/ui/icons/meat_icon_sheet.png" id="1_hefjl"]
 
@@ -16,7 +16,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_02q4j")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Selected",
 "speed": 5.0
 }, {
@@ -24,7 +24,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sx5of")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Unselected",
 "speed": 5.0
 }]

@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bkv0snxcdwahj"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://bkv0snxcdwahj"]
 
 [ext_resource type="Texture2D" uid="uid://cw340pd7ug2oo" path="res://assets/art/aesprite/VFX/Dustcloud.png" id="1_u1pcd"]
 
@@ -49,7 +49,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r7pp5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Active",
 "speed": 8.0
 }, {
@@ -75,7 +75,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e5tdh")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Blinking",
 "speed": 12.0
 }]

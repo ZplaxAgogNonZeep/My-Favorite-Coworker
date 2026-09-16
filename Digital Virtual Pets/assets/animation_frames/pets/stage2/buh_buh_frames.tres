@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://dqv4v2ycxf6g5"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://dqv4v2ycxf6g5"]
 
 [ext_resource type="Texture2D" uid="uid://cgfuuepoo5hh3" path="res://assets/art/aesprite/_pets/stage2/BuhBuh-Sheet.png" id="1_h31j1"]
 
@@ -35,7 +35,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j1cor")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 3.0
 }, {
@@ -46,7 +46,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tnaqw")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Quirk",
 "speed": 3.0
 }, {
@@ -57,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t06qi")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walk",
 "speed": 3.0
 }]

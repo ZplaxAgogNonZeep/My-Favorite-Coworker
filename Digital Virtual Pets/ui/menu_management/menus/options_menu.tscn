@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfh7qhfhtctv8"]
+[gd_scene format=3 uid="uid://bfh7qhfhtctv8"]
 
 [ext_resource type="Theme" uid="uid://u8x81rh1cxqd" path="res://ui/themes/system_menu_theme.tres" id="1_kd0k7"]
 [ext_resource type="Script" uid="uid://fmd5p8gt07qw" path="res://ui/menu_management/menus/options_menu.gd" id="1_ugwrh"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://wj2rshga5o5n" path="res://ui/menu_management/menus/menu_window_resizer.gd" id="4_ikuxl"]
 [ext_resource type="AnimationLibrary" uid="uid://bnrw6i1cp6voa" path="res://data/animator_resources/pop_up_window_animations.res" id="4_lbu1b"]
 
-[node name="OptionsMenu" type="Control" node_paths=PackedStringArray("_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_gameScaleOptions", "_masterVolumeBar", "_gameVolumeBar", "_deviceVolumeBar", "_timerSpeedBar", "_timerSpeedLabel", "_window", "animator")]
+[node name="OptionsMenu" type="Control" unique_id=1348258941 node_paths=PackedStringArray("_windowAttentionSelection", "_windowOrientationOptions", "_monitorOptions", "_frameOptions", "_gameScaleOptions", "_masterVolumeBar", "_gameVolumeBar", "_deviceVolumeBar", "_timerSpeedBar", "_timerSpeedLabel", "_versionNumberLabel", "_window", "animator")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 576.0
@@ -25,6 +25,7 @@ _gameVolumeBar = NodePath("Window/PanelControl/MenuWindow/Buttons/GameVolume")
 _deviceVolumeBar = NodePath("Window/PanelControl/MenuWindow/Buttons/DeviceVolume")
 _timerSpeedBar = NodePath("Window/PanelControl/MenuWindow/Buttons/TimerSpeed")
 _timerSpeedLabel = NodePath("Window/PanelControl/MenuWindow/Labels/ProactivityLabel/Label")
+_versionNumberLabel = NodePath("Window/PanelControl/MenuWindow/VersionNumber")
 _dialogData = ExtResource("3_lbu1b")
 _window = NodePath("Window")
 animator = NodePath("AnimationPlayer")
@@ -32,40 +33,38 @@ _animationLibrary = "pop_up_window_animations"
 metadata/_edit_vertical_guides_ = [37.0, 363.0]
 metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"pop_up_window_animations": ExtResource("4_lbu1b")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=473571115]
+libraries/pop_up_window_animations = ExtResource("4_lbu1b")
 
-[node name="Window" type="Window" parent="." node_paths=PackedStringArray("_canvas")]
+[node name="Window" type="Window" parent="." unique_id=662119286 node_paths=PackedStringArray("_canvas")]
 transparent_bg = true
+oversampling_override = 1.0
 title = "config.exe"
 size = Vector2i(1560, 845)
-visible = false
 borderless = true
 transparent = true
 script = ExtResource("4_ikuxl")
 _canvas = NodePath("PanelControl/MenuWindow")
 _windowType = 1
 
-[node name="PanelControl" type="Control" parent="Window"]
+[node name="PanelControl" type="Control" parent="Window" unique_id=89442939]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(116, 90)
 
-[node name="MenuWindow" type="Panel" parent="Window/PanelControl"]
+[node name="MenuWindow" type="Panel" parent="Window/PanelControl" unique_id=1329059608]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_bottom = 0.05
+anchor_bottom = 0.5
 offset_right = 400.0
 offset_bottom = 368.0
 theme_type_variation = &"ClosedPanel"
 metadata/_edit_use_anchors_ = true
 
-[node name="OptionsName" type="Label" parent="Window/PanelControl/MenuWindow"]
+[node name="OptionsName" type="Label" parent="Window/PanelControl/MenuWindow" unique_id=1117739516]
 layout_mode = 1
 offset_left = 7.0
 offset_top = 2.0
@@ -77,7 +76,7 @@ text = "device_config.exe"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CloseButton" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="CloseButton" type="Button" parent="Window/PanelControl/MenuWindow" unique_id=1346491565]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -91,7 +90,7 @@ theme_type_variation = &"CloseButton"
 icon = ExtResource("4_6eh78")
 icon_alignment = 1
 
-[node name="Labels" type="Control" parent="Window/PanelControl/MenuWindow"]
+[node name="Labels" type="Control" parent="Window/PanelControl/MenuWindow" unique_id=1824460294]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,7 +99,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MasterVolumeLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="MasterVolumeLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1681985514]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
@@ -112,7 +111,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Master Volume"
 vertical_alignment = 1
 
-[node name="DeviceVolumeLabel2" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="DeviceVolumeLabel2" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=736211847]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
@@ -124,7 +123,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Device Volume"
 vertical_alignment = 1
 
-[node name="GameVolumeLabel3" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="GameVolumeLabel3" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1849561102]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
@@ -136,7 +135,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Game Volume"
 vertical_alignment = 1
 
-[node name="ProactivityLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="ProactivityLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1905539724]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 37.0
@@ -148,7 +147,7 @@ theme_type_variation = &"HeaderMedium"
 text = "Timer Speed"
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels/ProactivityLabel"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels/ProactivityLabel" unique_id=166189647]
 layout_mode = 0
 offset_left = 124.0
 offset_right = 212.0
@@ -157,7 +156,7 @@ text = "Normal"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WindowFocusLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="WindowFocusLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=76913104]
 editor_description = "
 "
 layout_mode = 0
@@ -170,7 +169,7 @@ mouse_filter = 0
 text = "Window Focus Mode"
 vertical_alignment = 1
 
-[node name="WindowOrientationLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="WindowOrientationLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1025240850]
 editor_description = "
 "
 layout_mode = 0
@@ -183,7 +182,7 @@ mouse_filter = 0
 text = "Window Position"
 vertical_alignment = 1
 
-[node name="MonitorLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="MonitorLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1606137005]
 editor_description = "
 "
 layout_mode = 0
@@ -196,7 +195,7 @@ mouse_filter = 0
 text = "Active Monitor"
 vertical_alignment = 1
 
-[node name="FrameCapLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="FrameCapLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1196925872]
 editor_description = "
 "
 layout_mode = 0
@@ -209,7 +208,7 @@ mouse_filter = 0
 text = "Frame Cap"
 vertical_alignment = 1
 
-[node name="GameScaleLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="GameScaleLabel" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1458293867]
 editor_description = "
 "
 layout_mode = 0
@@ -222,7 +221,7 @@ mouse_filter = 0
 text = "Game Scale"
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1698078958]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 71.0
@@ -233,7 +232,7 @@ text = "-Audio Settings-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="Label2" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=1888241476]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 160.0
@@ -244,7 +243,7 @@ text = "-Window Settings-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Window/PanelControl/MenuWindow/Labels"]
+[node name="Label3" type="Label" parent="Window/PanelControl/MenuWindow/Labels" unique_id=150890571]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 291.0
@@ -255,7 +254,7 @@ text = "-Game Settings-"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="Control" parent="Window/PanelControl/MenuWindow"]
+[node name="Buttons" type="Control" parent="Window/PanelControl/MenuWindow" unique_id=1287536884]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -265,7 +264,7 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="WindowFocusOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="WindowFocusOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=1353912751]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -284,7 +283,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Do Not Change"
 popup/item_2/id = 2
 
-[node name="WindowOrientationOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="WindowOrientationOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=1375532701]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -307,7 +306,7 @@ popup/item_3/id = 3
 popup/item_4/text = "Custom"
 popup/item_4/id = 4
 
-[node name="MonitorOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="MonitorOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=963647534]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -322,7 +321,7 @@ item_count = 1
 popup/item_0/text = "Display 1"
 popup/item_0/id = 0
 
-[node name="FrameCapOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="FrameCapOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=692718395]
 layout_mode = 0
 offset_left = 279.0
 offset_top = 340.0
@@ -337,7 +336,7 @@ popup/item_1/id = 1
 popup/item_2/text = "Unlimited"
 popup/item_2/id = 2
 
-[node name="GameScaleOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="GameScaleOptions" type="OptionButton" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=923317034]
 layout_mode = 0
 offset_left = 321.0
 offset_top = 266.0
@@ -356,7 +355,7 @@ popup/item_3/id = 3
 popup/item_4/text = "x6"
 popup/item_4/id = 4
 
-[node name="MasterVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="MasterVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=435778064]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 97.0
@@ -365,7 +364,7 @@ offset_bottom = 113.0
 value = 70.0
 scrollable = false
 
-[node name="DeviceVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="DeviceVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=145958967]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 119.0
@@ -374,7 +373,7 @@ offset_bottom = 135.0
 value = 70.0
 scrollable = false
 
-[node name="GameVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="GameVolume" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=1681578978]
 layout_mode = 0
 offset_left = 204.0
 offset_top = 141.0
@@ -383,7 +382,7 @@ offset_bottom = 157.0
 value = 70.0
 scrollable = false
 
-[node name="TimerSpeed" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons"]
+[node name="TimerSpeed" type="HSlider" parent="Window/PanelControl/MenuWindow/Buttons" unique_id=1723866907]
 layout_mode = 0
 offset_left = 249.0
 offset_top = 320.0
@@ -393,7 +392,7 @@ max_value = 6.0
 value = 3.0
 scrollable = false
 
-[node name="DeleteSaveButton" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="DeleteSaveButton" type="Button" parent="Window/PanelControl/MenuWindow" unique_id=596467674]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 25.0
@@ -402,7 +401,7 @@ offset_bottom = 52.0
 theme_type_variation = &"CloseButton"
 text = "Delete Save Data"
 
-[node name="ResetSettingsButton" type="Button" parent="Window/PanelControl/MenuWindow"]
+[node name="ResetSettingsButton" type="Button" parent="Window/PanelControl/MenuWindow" unique_id=680357186]
 layout_mode = 0
 offset_left = 205.0
 offset_top = 25.0
@@ -410,7 +409,7 @@ offset_right = 363.0
 offset_bottom = 52.0
 text = "Restore Default Settings"
 
-[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow"]
+[node name="Label" type="Label" parent="Window/PanelControl/MenuWindow" unique_id=1374905414]
 layout_mode = 0
 offset_left = 37.0
 offset_top = 54.0
@@ -419,6 +418,17 @@ offset_bottom = 71.0
 theme_type_variation = &"ParagraphText"
 text = "-both options will requre the game to be closed-"
 horizontal_alignment = 1
+
+[node name="VersionNumber" type="Label" parent="Window/PanelControl/MenuWindow" unique_id=1366241577]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 365.0
+offset_right = 363.0
+offset_bottom = 383.0
+theme_type_variation = &"MiniText"
+text = "v0.0.0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="close_requested" from="Window" to="." method="closeMenu"]
 [connection signal="visibility_changed" from="Window" to="Window" method="_visibilityChanged"]

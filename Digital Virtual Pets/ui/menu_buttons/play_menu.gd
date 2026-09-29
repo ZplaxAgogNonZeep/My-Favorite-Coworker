@@ -12,6 +12,7 @@ var stateMachine : Node2D
 var game : Node2D
 var state = PlayState.MENU
 var _menuIndex := 0
+var _lastSelectedIndex := 0
 
 func _ready():
 	pass
@@ -25,11 +26,11 @@ func initializeMenu():
 	#buttonController.setActive(true)
 	for page in _gamePageList:
 		page.visible = false
-	_gamePageList[0].visible = true
-	_menuIndex = 0
+	_gamePageList[_lastSelectedIndex].visible = true
+	_menuIndex = _lastSelectedIndex
 	for x in range(_menuIndexContainer.get_child_count()):
 		_setVisualMenuIndex(x, false)
-	_setVisualMenuIndex(0, true)
+	_setVisualMenuIndex(_lastSelectedIndex, true)
 
 
 func exitMenu():
@@ -89,7 +90,7 @@ func _select(index : int):
 	if (index == _gamePageList.size() - 1):
 		onExitSelected()
 		return
-	
+	_lastSelectedIndex = index
 	if getPet():
 		game = miniGameList[_menuIndex].instantiate()
 		_miniGameContainer.add_child(game)

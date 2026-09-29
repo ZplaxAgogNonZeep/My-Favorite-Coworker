@@ -462,6 +462,7 @@ func getStatTotal() -> int:
 
 
 func getSavableData() -> PetSaveData:
+	
 	var data = PetSaveData.new()
 	data.age = getRawAge()
 	for property : Dictionary in data.get_property_list():
